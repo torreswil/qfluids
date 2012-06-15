@@ -1,1 +1,1 @@
-<?php echo 'qfluids autopull' ?>
+<?php echo 'qfluids autopull autopush' ?>
