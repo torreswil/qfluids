@@ -259,7 +259,7 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 32,
+				"buffer_size": 41,
 				"line_ending": "Unix"
 			}
 		},
@@ -268,6 +268,14 @@
 			"settings":
 			{
 				"buffer_size": 182,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 576,
 				"line_ending": "Unix"
 			}
 		}
@@ -308,6 +316,7 @@
 	},
 	"file_history":
 	[
+		"/home/josedaniel/projects/CodeIgniter_2.1.1/.gitignore",
 		"/home/josedaniel/projects/qfluids/.gitignore",
 		"/home/josedaniel/projects/zambo/application/config/database.php",
 		"/home/josedaniel/projects/zambo/application/config/constants.php",
@@ -443,7 +452,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -451,15 +460,15 @@
 					"file": "index.php",
 					"settings":
 					{
-						"buffer_size": 32,
+						"buffer_size": 41,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								32,
-								32
+								37,
+								37
 							]
 						],
 						"settings":
@@ -492,10 +501,40 @@
 						],
 						"settings":
 						{
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": ".gitignore",
+					"settings":
+					{
+						"buffer_size": 576,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								254,
+								254
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 102.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
