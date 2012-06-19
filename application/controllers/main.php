@@ -19,5 +19,4 @@ class Main extends CI_Controller {
 	public function styles(){
 		$this->load->view('styles');	
 	}
-
 }
