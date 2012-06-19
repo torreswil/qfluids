@@ -64,7 +64,6 @@
 						<input type="text" />
 					</td>
 				</tr>
-				
 			</table>
 			
 			<!-- HOLE -->
@@ -79,18 +78,26 @@
 					<tr>
 						<td class="label_m"><label class="emphasis">OPEN HOLE:</label></td>
 						<td><input type="text"></td>
+					</tr>
+					<td>
 						<td class="label_m"><label>Rice & Carbide Test:</label></td>
 						<td><input type="text"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Cuttings & Caving record:</label></td>
 						<td><input type="text"></td>
+					</tr>
+					<tr>
 						<td class="label_m"><label>Caliper:</label></td>
 						<td><input type="text"></td>
 					</tr>
+				</table>
+				<table>
 					<tr>
 						<td class="label_m"><label class="emphasis">WASHOUT (%):</label></td>
 						<td><input type="text" disabled="disabled"></td>
+					</tr>
+					<tr>
 						<td class="label_m"><label class="emphasis">AVERAGE HOLE:</label></td>
 						<td><input type="text" disabled="disabled"></td>
 					</tr>
