@@ -221,6 +221,82 @@
 				</table>
 				<table>
 					<tr>
+						<td class="label_m"><label>Section:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>OD:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>ID:</label></td>
+						<td><input type="text" /></td>
+						
+						<td class="label_m"><label>Length:</label></td>
+						<td><input type="text" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Section:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>OD:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>ID:</label></td>
+						<td><input type="text" /></td>
+						
+						<td class="label_m"><label>Length:</label></td>
+						<td><input type="text" /></td>
+					</tr><tr>
+						<td class="label_m"><label>Section:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>OD:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>ID:</label></td>
+						<td><input type="text" /></td>
+						
+						<td class="label_m"><label>Length:</label></td>
+						<td><input type="text" /></td>
+					</tr><tr>
+						<td class="label_m"><label>Section:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>OD:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>ID:</label></td>
+						<td><input type="text" /></td>
+						
+						<td class="label_m"><label>Length:</label></td>
+						<td><input type="text" /></td>
+					</tr><tr>
+						<td class="label_m"><label>Section:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>OD:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>ID:</label></td>
+						<td><input type="text" /></td>
+						
+						<td class="label_m"><label>Length:</label></td>
+						<td><input type="text" /></td>
+					</tr><tr>
+						<td class="label_m"><label>Section:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>OD:</label></td>
+						<td><input type="text" /></td>
+
+						<td class="label_m"><label>ID:</label></td>
+						<td><input type="text" /></td>
+						
+						<td class="label_m"><label>Length:</label></td>
+						<td><input type="text" /></td>
+					</tr>	
+				</table>
+				<table>
+					<tr>
 						<td class="label_m"><label>Drill Pipe diameter [internal]:</label></td>
 						<td><input type="text" /></td>
 
