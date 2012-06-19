@@ -41,8 +41,7 @@
 
 .sidebar{
 	float:left;
-	max-width:300px;
-	min-width:300px;
+	width:250px;
 	text-align:right;
 	margin-top:20px;
 }
@@ -55,7 +54,7 @@
 
 .sidebar li{
 	display: block;
-	width:300px;
+	width:250px;
 }
 
 .sidebar .main_navigation{
@@ -63,14 +62,14 @@
 }
 
 .panels{
-	width:1000px;
+	width:1050px;
 	float: left;
 	margin: 20px 0px 0px 20px;
 	min-height:400px;
 }
 
 #project_info{
-	width:980px;
+	width:1030px;
 	float: left;
 	padding:10px;
 	border:1px solid #F3DE44;
