@@ -14,6 +14,6 @@
   <link rel="stylesheet" href="/css/qfluids.css">
   <link rel="stylesheet" href="/css/media.css">
 
-  <script src="/js/libs/modernizr-2.5.3.min.js"></script>
+  <script src="/js/libs/modernizr-2.5.0.min.js"></script>
 </head>
 <body>

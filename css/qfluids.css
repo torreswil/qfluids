@@ -1,0 +1,75 @@
+/* qFluids custom styles
+ * @autor: jose.paternina@desarrollo22.com;
+*/
+
+.top_tools{
+	position: fixed;
+	top:0px;
+	left:0px;
+	right:0px;
+	background-color:#000;
+	color:#fff;
+	padding: 10px;
+}
+
+.app_name{
+	float: left;
+}
+.app_name h1{
+	display: block;
+	float: left;
+	font-size:13px;
+	margin-right:10px;
+}
+
+.user_tools{
+	float: right;
+}
+.user_tools .user_completename{
+	font-weight:bold;
+}
+
+.user_tools a{
+	color:#FF2900;
+}
+
+.qfluids_wrapper{
+	width:100%;
+	float: left;
+	margin-top:40px;
+}
+
+.sidebar{
+	float:left;
+	max-width:300px;
+	min-width:300px;
+	text-align:right;
+	margin-top:20px;
+}
+
+.sidebar ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+.sidebar li{
+	display: block;
+	width:300px;
+}
+
+.sidebar .main_navigation{
+	margin-bottom:20px;
+}
+
+.panels{
+	width:1000px;
+	float: left;
+	margin: 20px 0px 0px 20px;
+	min-height:400px;
+}
+
+#project_info{
+	width:1000px;
+	float: left;
+} 

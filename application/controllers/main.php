@@ -12,7 +12,7 @@ class Main extends CI_Controller {
 	}
 
 	public function qfluids(){
-		$data['main_content'] = 'qfluid';
+		$data['main_content'] = 'qfluids';
 		$this->load->view('partials/basic',$data);	
 	}
 

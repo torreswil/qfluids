@@ -5,13 +5,13 @@
 	<div class="login_form">
 		<table>
 			<tr>
-				<td class="label_m">Identificación:</td><td><input type="text" placeholder="Número de cédula" /></td>
+				<td class="label_m"><label>Identificación:</label></td><td><input type="text" placeholder="Número de cédula" /></td>
 			</tr>
 			<tr>
-				<td class="label_m">Contraseña:</td><td><input type="text" /></td>
+				<td class="label_m"><label>Contraseña:</label></td><td><input type="text" /></td>
 			</tr>
 			<tr>
-				<td class="label_m"></td><td><input type="button" value="Comenzar" /></td>
+				<td class="label_m"></td><td><input type="button" value="Comenzar" id="login_btn" /></td>
 			</tr>
 		</table>
 	</div>
