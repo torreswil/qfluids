@@ -74,12 +74,12 @@
 					Estimación del washout por incremento en pulgadas del diametro del pozo estimada
 					por los siguientes items:
 				</p>
-				<table>
+				<table style="float:left;">
 					<tr>
 						<td class="label_m"><label class="emphasis">OPEN HOLE:</label></td>
 						<td><input type="text"></td>
 					</tr>
-					<td>
+					<tr>
 						<td class="label_m"><label>Rice & Carbide Test:</label></td>
 						<td><input type="text"></td>
 					</tr>
@@ -92,7 +92,7 @@
 						<td><input type="text"></td>
 					</tr>
 				</table>
-				<table>
+				<table style="float:left;">
 					<tr>
 						<td class="label_m"><label class="emphasis">WASHOUT (%):</label></td>
 						<td><input type="text" disabled="disabled"></td>
