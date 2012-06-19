@@ -61,6 +61,10 @@
 	margin-bottom:20px;
 }
 
+.sidebar .main_navigation li{
+	margin-bottom:10px;
+}
+
 .panels{
 	width:1050px;
 	float: left;
@@ -84,4 +88,21 @@
 #project_info td{
 	height: 30px;
 	text-align: right;
+}
+
+.this_panel{
+	display: none;
+}
+
+.column{
+	width:450px;
+	margin-right:20px;
+}
+
+.this_panel .left{
+	float: left;
+}
+
+.this_panel .right{
+	float: right;
 }
