@@ -230,6 +230,16 @@ td { vertical-align: top; }
 		padding: 	0;
 	}
 
+	a{
+		color: #005cff;
+		font-weight:bold;
+		text-decoration:none;
+	}
+
+	a:hover{
+		text-decoration:underline;
+	}
+
    	/* CUSTOM FORM CONTROLS */
 	input[type="text"],input[type="password"]{
 	    font-size:13px;
@@ -336,4 +346,48 @@ td { vertical-align: top; }
 	label{
 		font-weight: bold;
 		color: #555;
+	}
+
+	/* PANTALLA DE LOGIN */
+	.login_wrapper{
+		width:100%;
+	}
+	.logo{
+		width:195px;
+		height:80px;
+		margin: 100px auto 0 auto;
+	}
+
+	.login_form{
+		width:300px;
+		background-color:#fff;
+		margin: 20px auto 0 auto;
+		box-shadow: 0 0 5px #888;
+		padding:40px 20px 20px 20px;
+	}
+
+	.login_form td{
+		padding-bottom:10px;
+	}
+
+	.bottom_tools{
+		position: absolute;
+		bottom:0px;
+		left:0px;
+		right:0px;
+		background-color:#fff;
+		border-top:1px solid #ddd;
+		padding: 20px;
+	}
+
+	.bottom_tools ul{
+		list-style:none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.bottom_tools li{
+		display: block;
+		float: left;
+		margin-right:20px;
 	}
