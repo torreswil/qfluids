@@ -348,6 +348,7 @@ td { vertical-align: top; }
 		font-weight: bold;
 		color: #555;
 		margin-right:5px;
+		text-transform: uppercase;
 	}
 
 	/* PANTALLA DE LOGIN */

@@ -70,6 +70,19 @@
 }
 
 #project_info{
-	width:1000px;
+	width:980px;
 	float: left;
-} 
+	padding:10px;
+	border:1px solid #F3DE44;
+	background-color:#F7FAB4;
+	color:#444;
+}
+
+#project_info strong{
+	text-transform: uppercase;
+}
+
+#project_info td{
+	height: 30px;
+	text-align: right;
+}

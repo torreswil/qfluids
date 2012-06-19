@@ -14,14 +14,34 @@
 	
 	<div class="panels">
 		<div id="project_info">
-			<table>
+			<table style="float:right;">
 				<tr>
-					<td><strong>Spud Day:</strong></td><td>2012-06-19</td>
-					<td><strong>Date:</strong></td><td>2012-06-19</td>
-					<td><strong>Operadora:</strong></td><td>QMAX.DEV</td>
-					<td><strong>Report Number:</strong></td><td>0001</td>
-					<td><strong>Well:</strong></td><td><input type="text" value="Nombre del Pozo" /></td>
-					<td><strong>Rig:</strong></td><td><input type="text" value="Nombre del taladro" /></td>
+					<td class="label_m"><strong>Spud Day:</strong></td>
+					<td class="label_m">2012-06-19</td>
+				</tr>
+				<tr>	
+					<td class="label_m"><strong>Date:</strong></td>
+					<td class="label_m">2012-06-19</td>
+				</tr>
+			</table>
+			<table style="float:right;margin-right:20px;">
+				<tr>
+					<td class="label_m"><strong>Operadora:</strong></td>
+					<td class="label_m">QMAX.DEV</td>
+				</tr>
+				<tr>
+					<td class="label_m"><strong>Report #:</strong></td>
+					<td class="label_m">0001</td>
+				</tr>
+			</table>
+			<table style="float:right;text-align:right;">
+				<tr>
+					<td class="label_m" style="text-align:right;"><strong>Well:</strong></td>
+					<td><input type="text" placeholder="Nombre del Pozo" /></td>
+				</tr>
+				<tr>
+					<td class="label_m" style="text-align:right;"><strong>Rig:</strong></td>
+					<td><input type="text" placeholder="Nombre del taladro" /></td>
 				</tr>
 			</table>	
 		</div>
@@ -312,34 +332,34 @@
 				<table>
 					<tr>
 						<td></td>
-						<td class="label_m"><label>PUMP 1</label></td>
-						<td class="label_m"><label>PUMP 2</label></td>
-						<td class="label_m"><label>PUMP 3</label></td>
-						<td class="label_m"><label>PUMP 4</label></td>
+						<td class="label_m"><label>PUMP 1:</label></td>
+						<td class="label_m"><label>PUMP 2:</label></td>
+						<td class="label_m"><label>PUMP 3:</label></td>
+						<td class="label_m"><label>PUMP 4:</label></td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>LINER/STK</label></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>GAL/STK</label></td>
+						<td class="label_m"><label>LINER/STK:</label></td>
 						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>SPM/STK</label></td>
+						<td class="label_m"><label>GAL/STK:</label></td>
 						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>GAL</label></td>
+						<td class="label_m"><label>SPM/STK:</label></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>GAL:</label></td>
 						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" /></td>
