@@ -3,7 +3,17 @@
 class Main extends CI_Controller {
 
 	public function index(){
-		$this->load->view('qmax_index');
+		redirect('/main/login');
+	}
+
+	public function login(){
+		$data['main_content'] = 'login';
+		$this->load->view('partials/basic',$data);
+	}
+
+	public function qfluids(){
+		$data['main_content'] = 'qfluid';
+		$this->load->view('partials/basic',$data);	
 	}
 
 	public function styles(){
