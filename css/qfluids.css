@@ -76,12 +76,12 @@
 }
 
 #project_info{
-	width:908px;
+	width:910px;
 	float: left;
 	padding:10px;
-	border:1px solid #F3DE44;
-	background-color:#F7FAB4;
-	color:#444;
+	border-bottom:1px solid #eee;
+	border-top:1px solid #eee;
+	background-color:#FCFEFE;
 }
 
 #project_info strong{
@@ -89,8 +89,8 @@
 }
 
 #project_info td{
-	height: 30px;
-	text-align: right;
+	text-align: left;
+	vertical-align: middle;
 }
 
 .this_panel{

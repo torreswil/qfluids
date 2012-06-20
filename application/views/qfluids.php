@@ -14,34 +14,19 @@
 	
 	<div class="panels">
 		<div id="project_info">
-			<table style="float:right;">
+			<table>
 				<tr>
-					<td class="label_m"><strong>Spud Day:</strong></td>
-					<td class="label_m">2012-06-19</td>
-				</tr>
-				<tr>	
-					<td class="label_m"><strong>Date:</strong></td>
-					<td class="label_m">2012-06-19</td>
-				</tr>
-			</table>
-			<table style="float:right;margin-right:20px;">
-				<tr>
-					<td class="label_m"><strong>Operadora:</strong></td>
-					<td class="label_m">QMAX.DEV</td>
-				</tr>
-				<tr>
-					<td class="label_m"><strong>Report #:</strong></td>
-					<td class="label_m">0001</td>
-				</tr>
-			</table>
-			<table style="float:right;text-align:right;">
-				<tr>
-					<td class="label_m" style="text-align:right;"><strong>Well:</strong></td>
-					<td><input type="text" placeholder="Nombre del Pozo" /></td>
-				</tr>
-				<tr>
-					<td class="label_m" style="text-align:right;"><strong>Rig:</strong></td>
-					<td><input type="text" placeholder="Nombre del taladro" /></td>
+					<td><strong>SPUD DAY:</strong><br />2012-06-19</td>
+					<td width="25"></td>
+					<td><strong>DATE:</strong><br />2012-06-19</td>
+					<td width="25"></td>
+					<td><strong>Operadora:</strong><br />QMAX.DEV</td>
+					<td width="25"></td>
+					<td><strong>Report #:</strong><br />0001</td>
+					<td width="25"></td>
+					<td><strong>Well:</strong><br /><input type="text" placeholder="Nombre del Pozo" /></td>
+					<td width="25"></td>
+					<td><strong>Rig:</strong><br /><input type="text" placeholder="Nombre del Taladro" /></td>
 				</tr>
 			</table>	
 		</div>
