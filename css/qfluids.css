@@ -10,6 +10,7 @@
 	background-color:#000;
 	color:#fff;
 	padding: 10px;
+	z-index: 2;
 }
 
 .app_name{
@@ -36,13 +37,16 @@
 .qfluids_wrapper{
 	width:1200px;
 	margin: 40px auto 0 auto;
+	position: relative;
 }
 
 .sidebar{
-	float:left;
 	width:250px;
 	text-align:right;
-	margin-top:20px;
+	position: fixed;
+	left: 0px;
+	top:60px;
+	display: none;
 }
 
 .sidebar ul{
@@ -65,14 +69,14 @@
 }
 
 .panels{
-	width:1050px;
-	float: left;
+	width:930px;
+	float: right;
 	margin: 20px 0px 0px 20px;
 	min-height:400px;
 }
 
 #project_info{
-	width:1030px;
+	width:908px;
 	float: left;
 	padding:10px;
 	border:1px solid #F3DE44;
@@ -91,6 +95,7 @@
 
 .this_panel{
 	display: none;
+	font-size: 12px;
 }
 
 .column{
