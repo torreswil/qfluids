@@ -109,6 +109,8 @@
 .this_panel{
 	display: none;
 	font-size: 12px;
+	float: left;
+	padding-bottom: 40px;
 }
 
 .this_panel h2{

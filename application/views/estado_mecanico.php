@@ -1,4 +1,4 @@
-<div class="this_panel" id="estado_mecanico" style="display:block;">
+<div class="this_panel" id="estado_mecanico">
 	<h2>Estado Mecánico</h2>
 	<table>
 		<tr>
