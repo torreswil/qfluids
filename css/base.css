@@ -219,10 +219,11 @@ td { vertical-align: top; }
    ========================================================================== */
 	body{
 		font-family: 'Open Sans', sans-serif;
-		background-image: url('/img/square_bg.png');
+		/*background-image: url('/img/square_bg.png');*/
 		background-attachment: fixed;
 		background-color: #fff;
 		font-size: 13px;
+		color: #444;
 	}
 
 	h1,h2,h3,h4{
@@ -230,14 +231,15 @@ td { vertical-align: top; }
 		padding: 	0;
 	}
 
-	a{
-		color: #005cff;
+	a,a:visited{
+		color: #008040;
 		font-weight:bold;
 		text-decoration:none;
 	}
 
 	a:hover{
 		text-decoration:underline;
+		color: #00954A;
 	}
 
    	/* CUSTOM FORM CONTROLS */
@@ -261,7 +263,7 @@ td { vertical-align: top; }
 		font-size:13px;
 		cursor: pointer;
 		border: none;
-		background-color: #005cff;
+		background-color: #008040;
 		text-align: right;
 		color: #fff;
 		padding: 7px 15px;
@@ -274,12 +276,12 @@ td { vertical-align: top; }
 
 	input[type="button"]:hover,input[type="submit"]:hover{
 		box-shadow: none;
-	    background-color:#1A6CFF;
+	    background-color:#009349;
 	}
 
 	input[type="button"]:active,input[type="submit"]:active{
 		box-shadow: inset 0 0 3px #333;
-	    background-color:#004FE2;
+	    background-color:#004F27;
 	}
 
 	select{
