@@ -12,7 +12,7 @@
 				<label>BIT DEPTH:</label>
 			</td>
 			<td>
-				<input type="text" />
+				<input type="text" class="small" />
 			</td>
 		</tr>
 	</table>

@@ -129,3 +129,7 @@
 .this_panel .right{
 	float: right;
 }
+
+.this_panel input[type="text"]{
+	width: 35px;
+}
