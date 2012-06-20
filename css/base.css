@@ -219,7 +219,7 @@ td { vertical-align: top; }
    ========================================================================== */
 	body{
 		font-family: 'Open Sans', sans-serif;
-		/*background-image: url('/img/square_bg.png');*/
+		background-image: url('/img/square_bg.png');
 		background-attachment: fixed;
 		background-color: #fff;
 		font-size: 13px;
