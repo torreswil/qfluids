@@ -1,4 +1,4 @@
-<div class="this_panel" id="datos_medianoche" style="display:block;">
+<div class="this_panel" id="datos_medianoche">
 	<h2>Datos de Media Noche</h2>
 	
 	<fieldset>
