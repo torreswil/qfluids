@@ -10,7 +10,7 @@
 	background-color:#000;
 	color:#fff;
 	padding: 10px;
-	z-index: 2;
+	z-index: 99;
 }
 
 .app_name{
@@ -31,7 +31,7 @@
 }
 
 .user_tools a{
-	color:#7BB11B;
+	color:#008040;
 }
 
 .qfluids_wrapper{
@@ -73,11 +73,24 @@
 	float: right;
 	margin: 20px 0px 0px 20px;
 	min-height:400px;
+	padding-top:100px;
+}
+
+
+.project_info_wrapper{
+	position: fixed;
+	top:0;
+	width:930px;
+	padding-top:60px;
+	padding-bottom: 40px;
+	background-image: url('/img/square_bg.png');
+	background-attachment: fixed;
+	z-index: 98;
+	background-color: #fff;
 }
 
 #project_info{
 	width:910px;
-	float: left;
 	padding:10px;
 	border-bottom:1px solid #eee;
 	border-top:1px solid #eee;
@@ -96,6 +109,12 @@
 .this_panel{
 	display: none;
 	font-size: 12px;
+}
+
+.this_panel h2{
+	font-size: 24px;
+	color:#008040;
+	margin-bottom: 20px;
 }
 
 .column{
