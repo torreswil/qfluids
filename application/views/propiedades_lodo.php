@@ -1,4 +1,4 @@
-<div class="this_panel" id="propiedades_lodo" style="display:block">
+<div class="this_panel" id="propiedades_lodo">
 	<h2>Propiedades del Lodo</h2>
 	<fieldset>
 		<table>
