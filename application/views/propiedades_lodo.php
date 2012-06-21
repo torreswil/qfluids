@@ -149,4 +149,122 @@
 			</tr>	
 		</table>
 	</fieldset>
+
+	<fieldset>
+		<legend>Químicas</legend>
+		<table>
+			<tr>
+				<td></td>
+				<td class="label_m"><label>Program</label></td>
+				<td class="label_m"><label>6:00</label></td>
+				<td class="label_m"><label>14:00</label></td>
+				<td class="label_m"><label>23:00</label></td>
+			</tr>
+			<tr>
+				<td>
+					<td class="label_m"><label>pH METER</label></td>	
+				</td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td>
+					<td class="label_m"><label>PM</label></td>	
+				</td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td>
+					<td class="label_m"><label>PF/MF</label></td>	
+				</td>
+				<td><input type="text"></td>
+				<td><input type="text">/<input type="text"></td>
+				<td><input type="text">/<input type="text"></td>
+				<td><input type="text">/<input type="text"></td>
+			</tr>
+			<tr>
+				<td>
+					<td class="label_m"><label>MBT</label></td>	
+				</td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td>
+					<td class="label_m"><label>CHLORIDES</label></td>	
+				</td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td>
+					<td class="label_m"><label>Ca++</label></td>	
+				</td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td>
+					<td class="label_m"><label>% water</label></td>	
+				</td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td>
+					<td class="label_m"><label>% oil</label></td>	
+				</td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+				<td><input type="text"></td>
+			</tr>
+		</table>
+	</fieldset>
+	<fieldset>
+		<legend>Others</legend>
+		<table>
+			<tr>
+				<td class="label_m"><label>MUD PROPERTIES<label></td>
+				<td class="label_m"><label>PROGRAM</label></td>
+				<td class="label_m"><label>6:00</label></td>
+				<td class="label_m"><label>14:00</label></td>
+				<td class="label_m"><label>23:00</label></td>
+			</tr>
+			<tr>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+			</tr>
+			<tr>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+			</tr>
+			<tr>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+				<td><input type="text" /></td>
+			</tr>
+		</table>
+	</fieldset>
 </div>
