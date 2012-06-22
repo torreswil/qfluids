@@ -1,19 +1,19 @@
 <div class="this_panel" id="estado_mecanico">
 	<h2>Estado Mecánico</h2>
 	<fieldset>
-		<table style="float:right;">
+		<table>
 			<tr>
 				<td class="label_m">
 					<label class="emphasis">DEPTH MD:</label>
 				</td>
-				<td>
-					<input type="text" />
+				<td class="label_m" style="padding-right:20px;">
+					<input type="text" style="margin-right:5px;" /> ft
 				</td>
 				<td class="label_m">
 					<label class="emphasis">BIT DEPTH:</label>
 				</td>
-				<td>
-					<input type="text" class="small" />
+				<td class="label_m" style="padding-right:20px;">
+					<input type="text" style="margin-right:5px;" /> ft
 				</td>
 			</tr>
 		</table>
