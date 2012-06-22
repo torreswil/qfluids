@@ -70,7 +70,7 @@
 				<table style="float:left;width:100%;">
 					<tr>
 						<td>
-							<textarea style="width:100%;"></textarea>
+							<textarea style="width:100%;heigth:150px;"></textarea>
 						</td>
 					</tr>
 				</table>

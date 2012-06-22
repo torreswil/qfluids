@@ -325,7 +325,7 @@ td { vertical-align: top; }
 	    outline: none;
 	    color:#444;
 	    min-width:400px;
-	    min-height:300px;
+	    min-height:150px;
 	    width:100%;
 	    box-sizing: border-box;
 	}
