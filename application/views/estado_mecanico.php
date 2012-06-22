@@ -83,7 +83,7 @@
 					</table>
 					<fieldset>
 						<legend>Jets</legend>
-						<table>
+						<table style="float:left;">
 							<tr>
 								<td><input type="text" placeholder="1"></td>
 								<td><input type="text" placeholder="2"></td>
@@ -101,6 +101,12 @@
 								<td><input type="text" placeholder="10"></td>
 								<td><input type="text" placeholder="11"></td>
 								<td><input type="text" placeholder="12"></td>
+							</tr>
+						</table>
+						<table style="float:right;margin-right:10px;">
+							<tr>
+								<td class="label_m"><label class="emphasis">TFA:</label></td>
+								<td class="label_m"><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" /> in<sup>2</sup></td>
 							</tr>
 						</table>
 					</fieldset>
