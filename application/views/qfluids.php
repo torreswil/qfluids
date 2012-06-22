@@ -33,6 +33,10 @@
 			</div>
 		</div>
 		
+		<div class="this_panel" id="welcome_panel" style="display:block;">
+			<p>Seleccione un formulario de datos de entrada para comenzar.</p>
+		</div>
+
 		<!-- PANELES DE DATOS DE ENTRADA-->
 		<?php $this->load->view('estado_mecanico'); ?>
 		<?php $this->load->view('datos_medianoche'); ?>

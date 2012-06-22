@@ -1,4 +1,4 @@
-<div class="this_panel" id="inventario" style="display:block">
+<div class="this_panel" id="inventario">
 	<h2>Inventario</h2>
 	<fieldset>
 		<table>

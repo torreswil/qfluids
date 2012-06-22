@@ -111,6 +111,7 @@
 	font-size: 12px;
 	float: left;
 	padding-bottom: 40px;
+	width: 930px;
 }
 
 .this_panel h2{
@@ -134,4 +135,12 @@
 
 .this_panel input[type="text"]{
 	width: 35px;
+}
+
+#welcome_panel{
+	padding-top:150px;
+	text-align:center;
+}
+
+.super_grid td{
 }

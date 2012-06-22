@@ -343,6 +343,8 @@ td { vertical-align: top; }
 	    font-weight: bold;
 	    display: block;
 	    background-color: #fff;
+	    text-transform: uppercase;
+	    color: #008040;
 	}
 
 	.label_m{

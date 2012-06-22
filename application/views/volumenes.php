@@ -140,9 +140,9 @@
 		<fieldset>
 			<table>
 				<tr>
-							<td class="label_m"><label>sub/surface</label></td>
-							<td><input type="text" /></td>
-						</tr>
+					<td class="label_m"><label>sub/surface</label></td>
+					<td><input type="text" /></td>
+				</tr>
 			</table>
 		</fieldset>
 		<fieldset>
@@ -282,96 +282,96 @@
 				<tr>
 					<td class="label_m"><label>Tanque de Viaje</label></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text" disabled="disabled"  />BBL</td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" disabled="disabled" />BBL</td>
 				</tr>
 				<tr>
 					<td class="label_m"><label>Pildora</label></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 				</tr>
 				<tr>
 					<td><input type="text" /></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 				</tr>
 				<tr>
 					<td><input type="text" /></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 				</tr>
 				<tr>
 					<td><input type="text" /></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 				</tr>
 				<tr>
 					<td><input type="text" /></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 				</tr>
 				<tr>
 					<td><input type="text" /></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 				</tr>
 				<tr>
 					<td><input type="text" /></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 				</tr>
 				<tr>
 					<td><input type="text" /></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 				</tr>
 				<tr>
 					<td><input type="text" /></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" disabled="disabled" />BBL</td>
+				</tr>
+				<tr>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 				</tr>
 				<tr>
 					<td class="label_m"><label>Reserva1</label></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
@@ -380,7 +380,7 @@
 					<td><input type="text" /></td>
 					<td><input type="text" /></td>
 					<td><input type="text" /></td>
-					<td><input type="text"  /></td>
+					<td><input type="text" /></td>
 					<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 			</table>
