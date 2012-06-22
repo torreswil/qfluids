@@ -104,6 +104,13 @@
 
 	<fieldset>
 		<legend>LOSSES ANALISYS</legend>
+		<fieldset>
+			<table>
+				<tr>
+					<td></td>
+				</tr>
+			</table>
+		</fieldset>
 	</fieldset>
 
 	<fieldset>
