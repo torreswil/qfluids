@@ -1,6 +1,6 @@
 <ul>
 	<li class="main_navigation">
-		<img src="/img/qmax_logo.png" />
+		<img src="/img/qmax_logo.png" width="150" />
 	</li>
 	<li class="main_navigation">
 		<h2>Datos de entrada</h2>

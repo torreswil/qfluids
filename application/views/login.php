@@ -1,6 +1,6 @@
 <div class="login_wrapper">
 	<div class="logo">
-		<img src="/img/qmax_logo.png">
+		<img src="/img/qmax_logo.png" width="150">
 	</div>
 	<div class="login_form">
 		<table>

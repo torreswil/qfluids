@@ -302,10 +302,10 @@
 								<td><input type="text" /></td>
 							</tr>
 							<tr>
-								<td class="label_m"><label>DPM:</label></td>
+								<td class="label_m"><label>DRILL PIPE DIAM.:</label></td>
 								<td><input type="text" disabled="disabled" /></td>
 								<td><input type="text" disabled="disabled" /></td>
-								<td></td>
+								<td><input type="text" disabled="disabled" /></td>
 							</tr>
 						</table>
 					</fieldset>
