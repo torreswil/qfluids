@@ -132,7 +132,7 @@
 				</tr>
 				<tr>
 					<td class="label_m"><label>OTHERS</label></td>
-					<td><input type="text" />fregon</td>
+					<td><input type="text" /></td>
 				</tr>
 			</table>
 		</fieldset>
