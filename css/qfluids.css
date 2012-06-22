@@ -137,6 +137,10 @@
 	width: 35px;
 }
 
+.this_panel input[type="text"].medium{
+	width: 110px;
+}
+
 #welcome_panel{
 	padding-top:150px;
 	text-align:center;

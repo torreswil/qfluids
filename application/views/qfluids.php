@@ -22,8 +22,8 @@
 						<td><strong>DATE:</strong><br /><span style="text-transform:uppercase;color:#008040;font-weight:bold;">2012-06-20</span></td>
 						<td width="25"></td>
 						<td><strong>Report#:</strong><br /><span style="text-transform:uppercase;color:#008040;font-weight:bold;">0001</span></td>
-						<td width="150"></td>
-						<td><strong>Operadora:</strong><br /><span style="text-transform:uppercase;color:#008040;font-weight:bold;">ECOPETROL</span></td>
+						<td width="25"></td>
+						<td><strong>Operadora:</strong><br /><input type="text" value="ECOPETROL" /></span></td>
 						<td width="25"></td>
 						<td><strong>Well:</strong><br /><input type="text" placeholder="Nombre del Pozo" /></td>
 						<td width="25"></td>

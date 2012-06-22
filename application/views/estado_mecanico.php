@@ -1,19 +1,19 @@
 <div class="this_panel" id="estado_mecanico">
 	<h2>Estado Mecánico</h2>
 	<fieldset>
-		<table style="float:right;">
+		<table>
 			<tr>
 				<td class="label_m">
 					<label class="emphasis">DEPTH MD:</label>
 				</td>
-				<td>
-					<input type="text" />
+				<td class="label_m" style="padding-right:20px;">
+					<input type="text" style="margin-right:5px;" /> ft
 				</td>
 				<td class="label_m">
 					<label class="emphasis">BIT DEPTH:</label>
 				</td>
-				<td>
-					<input type="text" class="small" />
+				<td class="label_m" style="padding-right:20px;">
+					<input type="text" style="margin-right:5px;" /> ft
 				</td>
 			</tr>
 		</table>
@@ -68,22 +68,22 @@
 					<table>
 						<tr>
 							<td class="label_m"><label>Bit #:</label></td>
-							<td><input type="text"></td>
+							<td><input type="text" class="medium"></td>
 							
 							<td class="label_m"><label>Bit Diameter:</label></td>
-							<td><input type="text"></td>
+							<td><input type="text" class="medium"></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Type:</label></td>
-							<td><input type="text"></td>
+							<td><input type="text" class="medium"></td>
 							
 							<td class="label_m"><label>Jets Number:</label></td>
-							<td><input type="text"></td>
+							<td><input type="text" class="medium"></td>
 						</tr>
 					</table>
 					<fieldset>
 						<legend>Jets</legend>
-						<table>
+						<table style="float:left;">
 							<tr>
 								<td><input type="text" placeholder="1"></td>
 								<td><input type="text" placeholder="2"></td>
@@ -101,6 +101,12 @@
 								<td><input type="text" placeholder="10"></td>
 								<td><input type="text" placeholder="11"></td>
 								<td><input type="text" placeholder="12"></td>
+							</tr>
+						</table>
+						<table style="float:right;margin-right:10px;">
+							<tr>
+								<td class="label_m"><label class="emphasis">TFA:</label></td>
+								<td class="label_m"><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" /> in<sup>2</sup></td>
 							</tr>
 						</table>
 					</fieldset>
