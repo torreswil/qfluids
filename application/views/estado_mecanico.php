@@ -121,67 +121,66 @@
 
 					<table>
 						<tr>
-							<td ><label>NAME</label></td>
-							<td ><label>OD</label></td>
-							<td ><label>ID</label></td>
-							<td ><label>LENGTH</label></td>	
-							<td ><label>LENGTH</label></td>														
+							<td class="label_m"><label>NAME</label></td>
+							<td class="label_m"><label>OD</label></td>
+							<td class="label_m"><label>ID</label></td>
+							<td class="label_m"><label>LENGTH</label></td>	
+							<td class="label_m"><label>LENGTH</label></td>														
 						</tr>
 						<tr>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>						
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>						
 						</tr>
 						<tr>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>						
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>						
 						</tr>
 						<tr>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>						
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>						
 						</tr>
 						<tr>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>						
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>						
 						</tr>
 						<tr>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>						
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>						
 						</tr>
 						<tr>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>						
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>						
 						</tr>
 						<tr>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>
-							<td ><label><input type="text" /></label></td>						
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>						
 						</tr>						
 					</table>
 				</fieldset>
 			</td>
 			<td>
 				<!-- DRILL STRING -->
-								<!-- DRILL STRING -->
 				<fieldset>
 					<legend>Drill String</legend>
 					<fieldset>
