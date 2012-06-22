@@ -21,7 +21,7 @@
 	
 	<table class="super_grid">
 		<tr>
-			<td>
+			<td style="width:465px;">
 				<!-- HOLE -->
 				<fieldset>
 					<legend>Hole</legend>
