@@ -17,11 +17,11 @@
 			<div id="project_info">
 				<table>
 					<tr>
-						<td><strong>SPUD DAY:</strong><br /><span style="text-transform:uppercase;color:#008040;font-weight:bold;">2012-06-19</span></td>
+						<td><strong>SPUD DAY:</strong><br /><span style="text-transform:uppercase;color:#259271;font-weight:bold;">2012-06-19</span></td>
 						<td width="25"></td>
-						<td><strong>DATE:</strong><br /><span style="text-transform:uppercase;color:#008040;font-weight:bold;">2012-06-20</span></td>
+						<td><strong>DATE:</strong><br /><span style="text-transform:uppercase;color:#259271;font-weight:bold;">2012-06-20</span></td>
 						<td width="25"></td>
-						<td><strong>Report#:</strong><br /><span style="text-transform:uppercase;color:#008040;font-weight:bold;">0001</span></td>
+						<td><strong>Report#:</strong><br /><span style="text-transform:uppercase;color:#259271;font-weight:bold;">0001</span></td>
 						<td width="25"></td>
 						<td><strong>Operadora:</strong><br /><input type="text" value="ECOPETROL" /></span></td>
 						<td width="25"></td>

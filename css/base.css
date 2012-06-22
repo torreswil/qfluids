@@ -233,7 +233,7 @@ td { vertical-align: top; }
 	}
 
 	a,a:visited{
-		color: #008040;
+		color:#259271;
 		font-weight:bold;
 		text-decoration:none;
 	}
@@ -273,7 +273,7 @@ td { vertical-align: top; }
 		font-size:13px;
 		cursor: pointer;
 		border: none;
-		background-color: #008040;
+		background-color:#259271;
 		text-align: right;
 		color: #fff;
 		padding: 7px 15px;
@@ -286,12 +286,12 @@ td { vertical-align: top; }
 
 	input[type="button"]:hover,input[type="submit"]:hover{
 		box-shadow: none;
-	    background-color:#009349;
+	    background-color:#02AF88;
 	}
 
 	input[type="button"]:active,input[type="submit"]:active{
 		box-shadow: inset 0 0 3px #333;
-	    background-color:#004F27;
+	    background-color:#02684E;
 	}
 
 	select{
@@ -347,7 +347,7 @@ td { vertical-align: top; }
 	    display: block;
 	    background-color: #fff;
 	    text-transform: uppercase;
-	    color: #008040;
+	    color:#259271;
 	}
 
 	.label_m{
@@ -412,5 +412,5 @@ td { vertical-align: top; }
 	}
 
 	.emphasis{
-		color:#008040;
+		color:#259271;
 	}
