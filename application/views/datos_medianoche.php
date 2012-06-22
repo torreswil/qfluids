@@ -64,13 +64,13 @@
 		</td>
 	</tr>
 	<tr>	
-		<td>
+		<td colspan="2">
 			<fieldset>
 				<legend>Comentarios</legend>
-				<table style="float:left;">
+				<table style="float:left;width:100%;">
 					<tr>
 						<td>
-							<textarea></textarea>
+							<textarea style="width:100%;"></textarea>
 						</td>
 					</tr>
 				</table>
