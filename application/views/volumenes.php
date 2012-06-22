@@ -134,6 +134,31 @@
 					<td class="label_m"><label>OTHERS</label></td>
 					<td><input type="text" /></td>
 				</tr>
+				
+			</table>
+		</fieldset>
+		<fieldset>
+		<table>
+		<tr>
+					<td class="label_m"><label>sub/surface</label></td>
+					<td><input type="text" /></td>
+				</tr>
+		</table>
+		</fieldset>
+		<fieldset>
+			<table>
+				<tr>
+					<td class="label_m"><label>Daily Surf.losses:</label></td>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<td class="label_m"><label>Cum Surf.losse:</label></td>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<td class="label_m"><label>Daily Sub/Surf.losse:</label></td>
+					<td><input type="text" /></td>
+				</tr>
 			</table>
 		</fieldset>
 	</fieldset>
