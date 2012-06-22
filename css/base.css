@@ -295,12 +295,13 @@ td { vertical-align: top; }
 	}
 
 	select{
-		width: 100%;
+		width: 190px;
 		background-color: #fff;
 		border:1px solid #bbb;
-		padding: 7px 15px;
+		padding: 2px 4px;
 		color: #999;
 		outline: none;
+		margin-right:5px;
 	}
 
 	option{

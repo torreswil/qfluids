@@ -21,9 +21,9 @@
 	
 	<table class="super_grid">
 		<tr>
-			<td style="width:465px;">
+			<td style="width:470px;">
 				<!-- HOLE -->
-				<fieldset>
+				<fieldset style="height:201px;">
 					<legend>Hole</legend>
 					<h4>Washout Estimation From:</h4>
 					<p>
@@ -63,7 +63,7 @@
 
 			<td>
 				<!-- BIT -->
-				<fieldset style="height:195px;">
+				<fieldset style="height:201px;">
 					<legend>Bit</legend>
 					<table>
 						<tr>
@@ -116,7 +116,7 @@
 		<tr>
 			<td>
 				<!-- CASING -->
-				<fieldset style="height:232px;">
+				<fieldset style="height:305px;">
 					<legend>Casing</legend>
 
 					<table>
@@ -128,49 +128,112 @@
 							<td class="label_m"><label>LENGTH</label></td>														
 						</tr>
 						<tr>
-							<td ><input type="text" /></td>
+							<td>
+								<select>
+									<option>Seleccione...</option>
+									<option>Herramienta 1</option>
+									<option>Herramienta 2</option>
+									<option>Herramienta 3</option>
+									<option>Herramienta 4</option>
+									<option>Herramienta 5</option>
+								</select>
+							</td>
+							<td><input type="text" /></td>
+							<td><input type="text" /></td>
+							<td><input type="text" /></td>
+							<td><input type="text" /></td>						
+						</tr>
+						<tr>
+							<td>
+								<select>
+									<option>Seleccione...</option>
+									<option>Herramienta 1</option>
+									<option>Herramienta 2</option>
+									<option>Herramienta 3</option>
+									<option>Herramienta 4</option>
+									<option>Herramienta 5</option>
+								</select>
+							</td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>						
 						</tr>
 						<tr>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>						
-						</tr>
-						<tr>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>						
-						</tr>
-						<tr>
-							<td ><input type="text" /></td>
+							<td>
+								<select>
+									<option>Seleccione...</option>
+									<option>Herramienta 1</option>
+									<option>Herramienta 2</option>
+									<option>Herramienta 3</option>
+									<option>Herramienta 4</option>
+									<option>Herramienta 5</option>
+								</select>
+							</td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>						
 						</tr>
 						<tr>
-							<td ><input type="text" /></td>
+							<td>
+								<select>
+									<option>Seleccione...</option>
+									<option>Herramienta 1</option>
+									<option>Herramienta 2</option>
+									<option>Herramienta 3</option>
+									<option>Herramienta 4</option>
+									<option>Herramienta 5</option>
+								</select>
+							</td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>						
 						</tr>
 						<tr>
-							<td ><input type="text" /></td>
+							<td>
+								<select>
+									<option>Seleccione...</option>
+									<option>Herramienta 1</option>
+									<option>Herramienta 2</option>
+									<option>Herramienta 3</option>
+									<option>Herramienta 4</option>
+									<option>Herramienta 5</option>
+								</select>
+							</td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>						
 						</tr>
 						<tr>
+							<td>
+								<select>
+									<option>Seleccione...</option>
+									<option>Herramienta 1</option>
+									<option>Herramienta 2</option>
+									<option>Herramienta 3</option>
+									<option>Herramienta 4</option>
+									<option>Herramienta 5</option>
+								</select>
+							</td>
 							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>
+							<td ><input type="text" /></td>						
+						</tr>
+						<tr>
+							<td>
+								<select>
+									<option>Seleccione...</option>
+									<option>Herramienta 1</option>
+									<option>Herramienta 2</option>
+									<option>Herramienta 3</option>
+									<option>Herramienta 4</option>
+									<option>Herramienta 5</option>
+								</select>
+							</td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>
 							<td ><input type="text" /></td>
@@ -203,45 +266,45 @@
 								<td class="label_m"><label>LENGTH:</label></td>
 							</tr>
 							<tr>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-							</tr>
-							<tr>
-								<td><input type="text" /></td>
+								<td><input type="text" class="medium"/></td>
 								<td><input type="text" /></td>
 								<td><input type="text" /></td>
 								<td><input type="text" /></td>
 							</tr>
 							<tr>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-							</tr>
-							<tr>
-								<td><input type="text" /></td>
+								<td><input type="text" class="medium"/></td>
 								<td><input type="text" /></td>
 								<td><input type="text" /></td>
 								<td><input type="text" /></td>
 							</tr>
 							<tr>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-							</tr>
-							<tr>
-								<td><input type="text" /></td>
+								<td><input type="text" class="medium"/></td>
 								<td><input type="text" /></td>
 								<td><input type="text" /></td>
 								<td><input type="text" /></td>
 							</tr>
 							<tr>
-								<td class="label_m"><label>Drill Pipe Diamter</label></td>
+								<td><input type="text" class="medium"/></td>
 								<td><input type="text" /></td>
 								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="medium"/></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="medium"/></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td class="label_m"><label>DPM:</label></td>
+								<td><input type="text" disabled="disabled" /></td>
+								<td><input type="text" disabled="disabled" /></td>
 								<td></td>
 							</tr>
 						</table>
