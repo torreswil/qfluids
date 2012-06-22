@@ -224,6 +224,7 @@ td { vertical-align: top; }
 		background-color: #fff;
 		font-size: 13px;
 		color: #444;
+		min-width: 1200px;
 	}
 
 	h1,h2,h3,h4{

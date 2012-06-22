@@ -1,14 +1,11 @@
 <div class="this_panel" id="datos_medianoche">
 	<h2>Datos de Media Noche</h2>
 	
-
-
-
 <fieldset>
-	<table style="float:right;" >
+	<table>
 		<tr>
-			<td class="label_m"><label>Activity:</label></td><td><input type="text" /></td>
-			<td class="label_m"><label>Formation</label></td><td><input type="text" /></td>
+			<td class="label_m"><label class="emphasis">Activity:</label></td><td><input type="text" class="medium" /></td>
+			<td class="label_m"><label class="emphasis">Formation</label></td><td><input type="text" class="medium" /></td>
 		</tr>
 	</table>
 </fieldset>
