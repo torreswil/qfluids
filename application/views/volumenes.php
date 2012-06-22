@@ -107,7 +107,32 @@
 		<fieldset>
 			<table>
 				<tr>
-					<td></td>
+					<td class="label_m"><label>SURFACE</label></td>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<td class="label_m"><label>SHAKERS/CAVINGS</label></td>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<td class="label_m"><label>MUD CLEANER</label></td>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<td class="label_m"><label>CENTRIFUGUES</label></td>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<td class="label_m"><label>DEWATERING</label></td>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<td class="label_m"><label>BEHIND CASING</label></td>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<td class="label_m"><label>OTHERS</label></td>
+					<td><input type="text" /></td>
 				</tr>
 			</table>
 		</fieldset>
