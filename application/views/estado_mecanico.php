@@ -121,184 +121,132 @@
 
 					<table>
 						<tr>
-							<td class="label_m"><label>Name:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
+							<td ><label>NAME</label></td>
+							<td ><label>OD</label></td>
+							<td ><label>ID</label></td>
+							<td ><label>LENGTH</label></td>	
+							<td ><label>LENGTH</label></td>														
 						</tr>
 						<tr>
-							<td class="label_m"><label>Name:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>						
 						</tr>
 						<tr>
-							<td class="label_m"><label>Name:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>						
 						</tr>
 						<tr>
-							<td class="label_m"><label>Name:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>						
 						</tr>
 						<tr>
-							<td class="label_m"><label>Name:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>						
 						</tr>
 						<tr>
-							<td class="label_m"><label>Name:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>						
 						</tr>
+						<tr>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>						
+						</tr>
+						<tr>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>
+							<td ><label><input type="text" /></label></td>						
+						</tr>						
 					</table>
 				</fieldset>
 			</td>
 			<td>
 				<!-- DRILL STRING -->
+								<!-- DRILL STRING -->
 				<fieldset>
 					<legend>Drill String</legend>
-					<table>
-						<tr>
-							<td class="label_m"><label>BHA#:</label></td>
-							<td><input type="text" /></td>
+					<fieldset>
+						<table>
+							<tr>
+								<td class="label_m"><label>BHA#:</label></td>
+								<td><input type="text" /></td>
 
-							<td class="label_m"><label>TOTAL LENGTH BHA:</label></td>
-							<td><input type="text" /></td>
-						</tr>
-					</table>
-					<table>
-						<tr>
-							<td class="label_m"><label>Section:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Section:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
-						</tr><tr>
-							<td class="label_m"><label>Section:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
-						</tr><tr>
-							<td class="label_m"><label>Section:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
-						</tr><tr>
-							<td class="label_m"><label>Section:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
-						</tr><tr>
-							<td class="label_m"><label>Section:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>OD:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>ID:</label></td>
-							<td><input type="text" /></td>
-							
-							<td class="label_m"><label>Length:</label></td>
-							<td><input type="text" /></td>
-						</tr>	
-					</table>
-					<table>
-						<tr>
-							<td class="label_m"><label>Drill Pipe diameter [internal]:</label></td>
-							<td><input type="text" /></td>
-
-							<td class="label_m"><label>Drill Pipe diameter [external]:</label></td>
-							<td><input type="text" /></td>
-						</tr>
-					</table>
+								<td class="label_m"><label>TOTAL LENGTH BHA:</label></td>
+								<td><input type="text" /></td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<table>
+							<tr>
+								<td class="label_m"><label>SECTION:</label></td>
+								<td class="label_m"><label>OD:</label></td>
+								<td class="label_m"><label>ID:</label></td>
+								<td class="label_m"><label>LENGTH:</label></td>
+							</tr>
+							<tr>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td class="label_m"><label>Drill Pipe Diamter</label></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td></td>
+							</tr>
+						</table>
+					</fieldset>
 				</fieldset>
 			</td>
 		</tr>
@@ -313,38 +261,37 @@
 							<td class="label_m"><label>PUMP 1:</label></td>
 							<td class="label_m"><label>PUMP 2:</label></td>
 							<td class="label_m"><label>PUMP 3:</label></td>
-							<td class="label_m"><label>PUMP 4:</label></td>
+							
 						</tr>
 						<tr>
 							<td class="label_m"><label>LINER/STK:</label></td>
 							<td><input type="text" /></td>
 							<td><input type="text" /></td>
 							<td><input type="text" /></td>
-							<td><input type="text" /></td>
+							
 						</tr>
 						<tr>
 							<td class="label_m"><label>GAL/STK:</label></td>
 							<td><input type="text" /></td>
 							<td><input type="text" /></td>
 							<td><input type="text" /></td>
-							<td><input type="text" /></td>
+							
 						</tr>
 						<tr>
 							<td class="label_m"><label>SPM/STK:</label></td>
 							<td><input type="text" /></td>
 							<td><input type="text" /></td>
 							<td><input type="text" /></td>
-							<td><input type="text" /></td>
+							
 						</tr>
 						<tr>
 							<td class="label_m"><label>GAL:</label></td>
 							<td><input type="text" /></td>
 							<td><input type="text" /></td>
 							<td><input type="text" /></td>
-							<td><input type="text" /></td>
+							
 						</tr>
 						<tr>
-							<td></td>
 							<td></td>
 							<td></td>
 							<td class="label_m"><label>TOTAL GAL:</label></td>
