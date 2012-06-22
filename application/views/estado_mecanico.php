@@ -68,17 +68,17 @@
 					<table>
 						<tr>
 							<td class="label_m"><label>Bit #:</label></td>
-							<td><input type="text"></td>
+							<td><input type="text" class="medium"></td>
 							
 							<td class="label_m"><label>Bit Diameter:</label></td>
-							<td><input type="text"></td>
+							<td><input type="text" class="medium"></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Type:</label></td>
-							<td><input type="text"></td>
+							<td><input type="text" class="medium"></td>
 							
 							<td class="label_m"><label>Jets Number:</label></td>
-							<td><input type="text"></td>
+							<td><input type="text" class="medium"></td>
 						</tr>
 					</table>
 					<fieldset>
