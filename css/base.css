@@ -340,6 +340,10 @@ td { vertical-align: top; }
 	    background-color: #fff;
 	    margin-top: 10px;
 	}
+
+	fieldset fieldset{
+		margin-top: 0;
+	}
 	
 	legend{
 	    padding:4px;
