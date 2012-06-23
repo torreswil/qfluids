@@ -4,10 +4,10 @@
 		<table>
 			<tr>
 				<td class="label_m">
-					<label>Mud Type:</label>
+					<label class="emphasis">Mud Type:</label>
 				</td>
 				<td>
-					<input type="text" />
+					<input type="text" class="medium" />
 				</td>
 			</tr>
 		</table>
