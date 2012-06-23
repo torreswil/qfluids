@@ -9,9 +9,9 @@
 			</tr>
 		</table>
 	</fieldset>
-<table>
+<table style="width:930px;">
 	<tr>
-		<td>
+		<td >
 			<fieldset>
 				<legend>VOLUMEN ACTIVO</legend>
 				<fieldset>
@@ -104,7 +104,7 @@
 				</fieldset>
 			</fieldset>
 		</td>
-		<td>
+		<td style="width:460px;">
 			<fieldset>
 				<legend>LOSSES ANALISYS</legend>
 				<fieldset>
@@ -171,229 +171,235 @@
 			</fieldset>
 		</td>	
 	</tr>
-</table>
-			
-
-			
-
-	<fieldset>
-		<legend>VOLUMENES TANQUE</legend>
+	<tr>
+		<td colspan='2'>
 			<fieldset>
-				<table>
-				<td class="label_m"><label>Max altura libre</label></td>
-				<td><input type="text" disabled="disabled" /></td>
-				</table>
+			<legend>VOLUMENES TANQUE</legend>
+				<fieldset>
+					<table>
+					<td class="label_m"><label>Max altura libre</label></td>
+					<td><input type="text" disabled="disabled" /></td>
+					</table>
+				</fieldset>
+				<fieldset>
+					<table>
+						<tr>
+							<td></td>
+							<td class="label_m"><label>Altura Libre in</label></td>
+							<td class="label_m"><label>Volumen en Barriles</label></td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Tanque de Viaje</label></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Pildora</label></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="text" /></td>
+							<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+						<td class="label_m"><label>Reserva1</label></td>
+						<td><input type="text" /></td>
+						<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+						<td class="label_m"><label>Reserva2</label></td>
+						<td><input type="text" /></td>
+						<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+					</table>	
+				</fieldset>
+				<fieldset>
+					<table>
+						<tr>
+						<td class="label_m"><label>Activo</label></td>
+						<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+						<td class="label_m"><label>Pildora</label></td>
+						<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+						<td class="label_m"><label>Tanque de Viaje</label></td>
+						<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+					</table>
+				</fieldset>
+			</fieldset>		
 			</fieldset>
+		</td>
+	</tr>
+	<tr>	
+		<td colspan='2'>
+			<fieldset>
+			<legend>MEDIDAS TANQUES</legend>
 			<fieldset>
 				<table>
 					<tr>
 						<td></td>
-						<td class="label_m"><label>Altura Libre in</label></td>
+						<td class="label_m"><label>Altura in</label></td>
+						<td class="label_m"><label>Ancho in</label></td>
+						<td class="label_m"><label>largo in</label></td>
+						<td class="label_m"><label>Fondo del tanque semicirculo altura in</label></td>
 						<td class="label_m"><label>Volumen en Barriles</label></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Tanque de Viaje</label></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Pildora</label></td>
 						<td><input type="text" /></td>
-						<td><input type="text" disabled="disabled" />BBL</td>
-					</tr>
-					<tr>
-						<td></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
-						<td></td>
+						<td><input type="text" style="width:90px;" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
-						<td></td>
+						<td><input type="text" style="width:90px;" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
-						<td></td>
+						<td><input type="text" style="width:90px;" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
-						<td></td>
+						<td><input type="text" style="width:90px;" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
-						<td></td>
+						<td><input type="text" style="width:90px;" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
-						<td></td>
+						<td><input type="text" style="width:90px;" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
-						<td></td>
+						<td><input type="text" style="width:90px;" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
-						<td></td>
+						<td><input type="text" style="width:90px;" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
 						<td><input type="text" /></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
-					<td class="label_m"><label>Reserva1</label></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
+						<td><input type="text" style="width:90px;" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" disabled="disabled" />BBL</td>
 					</tr>
 					<tr>
-					<td class="label_m"><label>Reserva2</label></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-					</tr>
-				</table>	
-			</fieldset>
-			<fieldset>
-				<table>
-					<tr>
-					<td class="label_m"><label>Activo</label></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-					</tr>
-					<tr>
-					<td class="label_m"><label>Pildora</label></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-					</tr>
-					<tr>
-					<td class="label_m"><label>Tanque de Viaje</label></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-					</tr>
+						<td class="label_m"><label>Reserva1</label></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
+						<tr>
+						<td class="label_m"><label>Reserva2</label></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" disabled="disabled" />BBL</td>
+						</tr>
 				</table>
+			</fieldset>		
 			</fieldset>
-	</fieldset>		
-	</fieldset>
-	<fieldset>
-		<legend>MEDIDAS TANQUES</legend>
-		<fieldset>
-			<table>
-				<tr>
-					<td></td>
-					<td class="label_m"><label>Altura in</label></td>
-					<td class="label_m"><label>Ancho in</label></td>
-					<td class="label_m"><label>largo in</label></td>
-					<td class="label_m"><label>Si el fondo del tanque es un semicirculo ingrese la altura in</label></td>
-					<td class="label_m"><label>Volumen en Barriles</label></td>
-				</tr>
-				<tr>
-					<td class="label_m"><label>Tanque de Viaje</label></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td class="label_m"><label>Pildora</label></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-				</tr>
-				<tr>
-					<td class="label_m"><label>Reserva1</label></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-					</tr>
-					<tr>
-					<td class="label_m"><label>Reserva2</label></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" disabled="disabled" />BBL</td>
-					</tr>
-			</table>
-		</fieldset>
-		
-	</fieldset>
+		</td>	
+	</tr>
+</table>
+	
+	
+	
 </div>
