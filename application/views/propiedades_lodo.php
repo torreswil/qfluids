@@ -17,6 +17,7 @@
 		<td>
 			<fieldset>
 				<legend>Fisicas</legend>
+				<fieldset>
 				<table>
 					<tr>
 						<td></td>
@@ -89,11 +90,13 @@
 						<td><input type="text"></td>
 					</tr>
 				</table>
+				</fieldset>
 			</fieldset>
 		</td>
 		<td>
-			<fieldset style="height:266px;">
+			<fieldset style="height:288px;">
 				<legend>Reologica</legend>
+				<fieldset>
 				<table>
 					<tr>
 						<td></td>
@@ -152,6 +155,7 @@
 						<td><input type="text"></td>
 					</tr>	
 				</table>
+				</fieldset>
 			</fieldset>
 		</td>
 	</tr>
@@ -159,6 +163,7 @@
 		<td>
 			<fieldset>
 				<legend>Químicas</legend>
+				<fieldset>
 				<table>
 					<tr>
 						<td></td>
@@ -240,11 +245,13 @@
 						<td><input type="text"></td>
 					</tr>
 				</table>
+				</fieldset>
 			</fieldset>
 		</td>
 		<td>
-			<fieldset style="height:241px;">
+			<fieldset style="height:263px;">
 				<legend>Others</legend>
+				<fieldset>
 				<table>
 					<tr>
 						<td class="label_m"><label>MUD PROPERTIES<label></td>
@@ -275,6 +282,7 @@
 						<td><input type="text" /></td>
 					</tr>
 				</table>
+				</fieldset>
 			</fieldset>
 		</td>
 	</tr>
