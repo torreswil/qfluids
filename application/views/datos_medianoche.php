@@ -2,7 +2,7 @@
 	<h2>Datos de Media Noche</h2>
 	
 <fieldset>
-	<table>
+	<table style="float:right;">
 		<tr>
 			<td class="label_m"><label class="emphasis">Activity:</label></td><td><input type="text" class="medium" /></td>
 			<td class="label_m"><label class="emphasis">Formation</label></td><td><input type="text" class="medium" /></td>
@@ -15,33 +15,41 @@
 		<td>
 			<fieldset>
 				<legend>Parámetros de Perforación</legend>
-				<table style="float:left;">
-					<tr>
-						<td class="label_m"><label>RPM:</label></td><td><input type="text" /></td>
-						<td class="label_m"><label>WOB:</label></td><td><input type="text" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Circ. Pres:</label></td><td><input type="text" /></td>
-						<td class="label_m"><label>GPM:</label></td><td><input type="text" /></td>
-					</tr>
-				</table>
-				<table style="float:left;">
-					<tr>
-						<td class="label_m"><label>Cir. time on Bottom-h:</label></td><td><input type="text" /></td>
-					</tr>
-					<tr>	
-						<td class="label_m"><label>Dayly avg ROP, ft/h:</label></td><td><input type="text" /></td>
-					</tr>
-					<tr>	
-						<td class="label_m"><label>Average cavings while, bbl/h:</label></td><td><input type="text" /></td>
-					</tr>
-					<tr>	
-						<td class="label_m"><label>Average cutting while bbl/h:</label></td><td><input type="text" /></td>
-					</tr>
-				</table>
+				<fieldset>
+					<table style="float:left;">
+						<tr>
+							<td class="label_m"><label>RPM:</label></td><td><input type="text" /></td>
+							<td class="label_m"><label>WOB:</label></td><td><input type="text" /></td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Circ. Pres:</label></td><td><input type="text" /></td>
+							<td class="label_m"><label>GPM:</label></td><td><input type="text" /></td>
+						</tr>
+					</table>
+				</fieldset>
+				<fieldset>	
+					<table style="float:left;">
+						<tr>
+							<td class="label_m"><label>Cir. time on Bottom-h:</label></td>
+							<td><input type="text" /></td>
+						</tr>
+						<tr>	
+							<td class="label_m"><label>Dayly avg ROP, ft/h:</label></td>
+							<td><input type="text" /></td>
+						</tr>
+						<tr>	
+							<td class="label_m"><label>Average cavings while, bbl/h:</label></td>
+							<td><input type="text" /></td>
+						</tr>
+						<tr>	
+							<td class="label_m"><label>Average cutting while bbl/h:</label></td>
+							<td><input type="text" /></td>
+						</tr>
+					</table>
+				</fieldset>
 			</fieldset>
 		<td>	
-			<fieldset>
+			<fieldset >
 				<legend>Survey</legend>
 				<table style="float:left;">
 					<tr>
@@ -81,17 +89,19 @@
 		<td>
 			<fieldset>
 				<legend>Personal y Charla Diaria</legend>
-				<table style="float:left;">
-					<tr>
-						<td class="label_m"><label>Costo Ingeniería [hoy]</label></td><td><input type="text" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label># Ingenieros a reportar</label></td><td><input type="text" /></td>
-					</tr>
-					<tr>	
-						<td class="label_m"><label>Costo ingeniería acumulado</label></td><td><input type="text" disabled="disabled" /></td>
-					</tr>
-				</table>
+				<fieldset>
+					<table style="float:left;">
+						<tr>
+							<td class="label_m"><label>Costo Ingeniería [hoy]</label></td><td><input type="text" /></td>
+						</tr>
+						<tr>
+							<td class="label_m"><label># Ingenieros a reportar</label></td><td><input type="text" /></td>
+						</tr>
+						<tr>	
+							<td class="label_m"><label>Costo ingeniería acumulado</label></td><td><input type="text" disabled="disabled" /></td>
+						</tr>
+					</table>
+				</fieldset>					
 				<fieldset>
 					<legend>Personal</legend>
 					<table style="float:left;">
