@@ -116,130 +116,131 @@
 		<tr>
 			<td>
 				<!-- CASING -->
-				<fieldset style="height:305px;">
+				<fieldset style="height:295px;">
 					<legend>Casing</legend>
-
-					<table>
-						<tr>
-							<td class="label_m"><label>NAME</label></td>
-							<td class="label_m"><label>OD</label></td>
-							<td class="label_m"><label>ID</label></td>
-							<td class="label_m"><label>LENGTH</label></td>	
-							<td class="label_m"><label>LENGTH</label></td>														
-						</tr>
-						<tr>
-							<td>
-								<select>
-									<option>Seleccione...</option>
-									<option>Herramienta 1</option>
-									<option>Herramienta 2</option>
-									<option>Herramienta 3</option>
-									<option>Herramienta 4</option>
-									<option>Herramienta 5</option>
-								</select>
-							</td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>						
-						</tr>
-						<tr>
-							<td>
-								<select>
-									<option>Seleccione...</option>
-									<option>Herramienta 1</option>
-									<option>Herramienta 2</option>
-									<option>Herramienta 3</option>
-									<option>Herramienta 4</option>
-									<option>Herramienta 5</option>
-								</select>
-							</td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>						
-						</tr>
-						<tr>
-							<td>
-								<select>
-									<option>Seleccione...</option>
-									<option>Herramienta 1</option>
-									<option>Herramienta 2</option>
-									<option>Herramienta 3</option>
-									<option>Herramienta 4</option>
-									<option>Herramienta 5</option>
-								</select>
-							</td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>						
-						</tr>
-						<tr>
-							<td>
-								<select>
-									<option>Seleccione...</option>
-									<option>Herramienta 1</option>
-									<option>Herramienta 2</option>
-									<option>Herramienta 3</option>
-									<option>Herramienta 4</option>
-									<option>Herramienta 5</option>
-								</select>
-							</td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>						
-						</tr>
-						<tr>
-							<td>
-								<select>
-									<option>Seleccione...</option>
-									<option>Herramienta 1</option>
-									<option>Herramienta 2</option>
-									<option>Herramienta 3</option>
-									<option>Herramienta 4</option>
-									<option>Herramienta 5</option>
-								</select>
-							</td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>						
-						</tr>
-						<tr>
-							<td>
-								<select>
-									<option>Seleccione...</option>
-									<option>Herramienta 1</option>
-									<option>Herramienta 2</option>
-									<option>Herramienta 3</option>
-									<option>Herramienta 4</option>
-									<option>Herramienta 5</option>
-								</select>
-							</td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>						
-						</tr>
-						<tr>
-							<td>
-								<select>
-									<option>Seleccione...</option>
-									<option>Herramienta 1</option>
-									<option>Herramienta 2</option>
-									<option>Herramienta 3</option>
-									<option>Herramienta 4</option>
-									<option>Herramienta 5</option>
-								</select>
-							</td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>
-							<td ><input type="text" /></td>						
-						</tr>						
-					</table>
+					<fieldset>
+						<table>
+							<tr>
+								<td class="label_m"><label>NAME</label></td>
+								<td class="label_m"><label>OD</label></td>
+								<td class="label_m"><label>ID</label></td>
+								<td class="label_m"><label>LENGTH</label></td>	
+								<td class="label_m"><label>LENGTH</label></td>														
+							</tr>
+							<tr>
+								<td>
+									<select>
+										<option>Seleccione...</option>
+										<option>Herramienta 1</option>
+										<option>Herramienta 2</option>
+										<option>Herramienta 3</option>
+										<option>Herramienta 4</option>
+										<option>Herramienta 5</option>
+									</select>
+								</td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>						
+							</tr>
+							<tr>
+								<td>
+									<select>
+										<option>Seleccione...</option>
+										<option>Herramienta 1</option>
+										<option>Herramienta 2</option>
+										<option>Herramienta 3</option>
+										<option>Herramienta 4</option>
+										<option>Herramienta 5</option>
+									</select>
+								</td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>						
+							</tr>
+							<tr>
+								<td>
+									<select>
+										<option>Seleccione...</option>
+										<option>Herramienta 1</option>
+										<option>Herramienta 2</option>
+										<option>Herramienta 3</option>
+										<option>Herramienta 4</option>
+										<option>Herramienta 5</option>
+									</select>
+								</td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>						
+							</tr>
+							<tr>
+								<td>
+									<select>
+										<option>Seleccione...</option>
+										<option>Herramienta 1</option>
+										<option>Herramienta 2</option>
+										<option>Herramienta 3</option>
+										<option>Herramienta 4</option>
+										<option>Herramienta 5</option>
+									</select>
+								</td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>						
+							</tr>
+							<tr>
+								<td>
+									<select>
+										<option>Seleccione...</option>
+										<option>Herramienta 1</option>
+										<option>Herramienta 2</option>
+										<option>Herramienta 3</option>
+										<option>Herramienta 4</option>
+										<option>Herramienta 5</option>
+									</select>
+								</td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>						
+							</tr>
+							<tr>
+								<td>
+									<select>
+										<option>Seleccione...</option>
+										<option>Herramienta 1</option>
+										<option>Herramienta 2</option>
+										<option>Herramienta 3</option>
+										<option>Herramienta 4</option>
+										<option>Herramienta 5</option>
+									</select>
+								</td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>						
+							</tr>
+							<tr>
+								<td>
+									<select>
+										<option>Seleccione...</option>
+										<option>Herramienta 1</option>
+										<option>Herramienta 2</option>
+										<option>Herramienta 3</option>
+										<option>Herramienta 4</option>
+										<option>Herramienta 5</option>
+									</select>
+								</td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>
+								<td ><input type="text" /></td>						
+							</tr>						
+						</table>
+					</fieldset>
 				</fieldset>
 			</td>
 			<td>
@@ -257,7 +258,7 @@
 							</tr>
 						</table>
 					</fieldset>
-					<fieldset>
+					<fieldset style="margin-top:10px;">
 						<table>
 							<tr>
 								<td class="label_m"><label>SECTION:</label></td>
