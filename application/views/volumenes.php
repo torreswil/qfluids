@@ -260,12 +260,8 @@
 						<tr>
 						<td class="label_m"><label>Activo</label></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
-						</tr>
-						<tr>
 						<td class="label_m"><label>Pildora</label></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
-						</tr>
-						<tr>
 						<td class="label_m"><label>Tanque de Viaje</label></td>
 						<td><input type="text" disabled="disabled" />BBL</td>
 						</tr>
