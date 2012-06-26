@@ -1,5 +1,5 @@
-<div class="this_panel" id="propiedades_lodo">
-	<h2>Propiedades del Lodo</h2>
+<div class="this_panel" id="propiedades_fluido">
+	<h2>Propiedades del Fluido</h2>
 	<fieldset>
 		<table>
 			<tr>

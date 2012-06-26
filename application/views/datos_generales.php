@@ -1,5 +1,5 @@
-<div class="this_panel" id="datos_medianoche">
-	<h2>Datos de Media Noche</h2>
+<div class="this_panel" id="datos_generales">
+	<h2>Datos Generales</h2>
 	
 <fieldset>
 	<table>

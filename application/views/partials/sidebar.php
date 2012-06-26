@@ -6,8 +6,8 @@
 		<h2>Datos de entrada</h2>
 		<ul class="nav_links">
 			<li><a href="#geometria_pozo">Geometría del Pozo</a></li>
-			<li><a href="#datos_medianoche">Datos de Media Noche</a></li>
-			<li><a href="#propiedades_lodo">Propiedades del Lodo</a></li>
+			<li><a href="#datos_generales">Datos Generales</a></li>
+			<li><a href="#propiedades_fluido">Propiedades del Fluido</a></li>
 			<li><a href="#inventario">Inventario</a></li>
 			<li><a href="#volumenes">Volúmenes</a></li>
 		</ul>

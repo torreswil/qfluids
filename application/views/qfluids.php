@@ -39,8 +39,8 @@
 
 		<!-- PANELES DE DATOS DE ENTRADA-->
 		<?php $this->load->view('geometria_pozo'); ?>
-		<?php $this->load->view('datos_medianoche'); ?>
-		<?php $this->load->view('propiedades_lodo'); ?>
+		<?php $this->load->view('datos_generales'); ?>
+		<?php $this->load->view('propiedades_fluido'); ?>
 		<?php $this->load->view('inventario'); ?>
 		<?php $this->load->view('volumenes'); ?>
 
