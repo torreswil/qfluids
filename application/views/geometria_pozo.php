@@ -18,6 +18,7 @@
 			</tr>
 		</table>
 	</fieldset>
+	
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">
 	      <li><a href="#">Hole</a></li>
