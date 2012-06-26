@@ -11,7 +11,7 @@
 			<li><a href="#datos_generales">Datos Generales</a></li>
 			<li><a href="#propiedades_fluido">Propiedades del Fluido</a></li>
 			<li><a href="#inventario">Inventario</a></li>
-			<li><a href="#volumenes">Volúmenes</a></li>lala
+			<li><a href="#volumenes">Volúmenes</a></li>
 		</ul>
 	</li>
 	<li class="main_navigation">

@@ -2,6 +2,7 @@
   <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
   <script src="/js/plugins.js"></script>
+  <script src="/js/libs/simpletabs_1.3.packed.js"></script>
   <script src="/js/base.js"></script>
   <script src="/js/qfluids.js"></script>
 
