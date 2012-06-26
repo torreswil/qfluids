@@ -23,7 +23,7 @@
 		<tr>
 			<td style="width:470px;">
 				<!-- HOLE -->
-				<fieldset style="height:201px;">
+				<fieldset style="height:295px;">
 					<legend>Hole</legend>
 					<h4>Washout Estimation From:</h4>
 					<p>
@@ -61,52 +61,70 @@
 				</fieldset>
 			</td>
 
-			<td>
-				<!-- BIT -->
-				<fieldset style="height:201px;">
-					<legend>Bit</legend>
-					<table>
-						<tr>
-							<td class="label_m"><label>Bit #:</label></td>
-							<td><input type="text" class="medium"></td>
-							
-							<td class="label_m"><label>Bit Diameter:</label></td>
-							<td><input type="text" class="medium"></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Type:</label></td>
-							<td><input type="text" class="medium"></td>
-							
-							<td class="label_m"><label>Jets Number:</label></td>
-							<td><input type="text" class="medium"></td>
-						</tr>
-					</table>
+			<td style="width:470px;">
+				<!-- DRILL STRING -->
+				<fieldset>
+					<legend>Drill String</legend>
 					<fieldset>
-						<legend>Jets</legend>
-						<table style="float:left;">
+						<table>
 							<tr>
-								<td><input type="text" placeholder="1"></td>
-								<td><input type="text" placeholder="2"></td>
-								<td><input type="text" placeholder="3"></td>
-								<td><input type="text" placeholder="4"></td>
-							</tr>
-							<tr>
-								<td><input type="text" placeholder="5"></td>
-								<td><input type="text" placeholder="6"></td>
-								<td><input type="text" placeholder="7"></td>
-								<td><input type="text" placeholder="8"></td>
-							</tr>
-							<tr>
-								<td><input type="text" placeholder="9"></td>
-								<td><input type="text" placeholder="10"></td>
-								<td><input type="text" placeholder="11"></td>
-								<td><input type="text" placeholder="12"></td>
+								<td class="label_m"><label>BHA#:</label></td>
+								<td><input type="text" /></td>
+
+								<td class="label_m"><label>TOTAL LENGTH BHA:</label></td>
+								<td><input type="text" /></td>
 							</tr>
 						</table>
-						<table style="float:right;margin-right:10px;">
+					</fieldset>
+					<fieldset style="margin-top:10px;">
+						<table>
 							<tr>
-								<td class="label_m"><label class="emphasis">TFA:</label></td>
-								<td class="label_m"><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" /> in<sup>2</sup></td>
+								<td class="label_m"><label>SECTION:</label></td>
+								<td class="label_m"><label>OD:</label></td>
+								<td class="label_m"><label>ID:</label></td>
+								<td class="label_m"><label>LENGTH:</label></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="medium"/></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="medium"/></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="medium"/></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="medium"/></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="medium"/></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="medium"/></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td class="label_m"><label>DRILL PIPE DIAM.:</label></td>
+								<td><input type="text" disabled="disabled" /></td>
+								<td><input type="text" disabled="disabled" /></td>
+								<td><input type="text" disabled="disabled" /></td>
 							</tr>
 						</table>
 					</fieldset>
@@ -244,124 +262,7 @@
 				</fieldset>
 			</td>
 			<td>
-				<!-- DRILL STRING -->
-				<fieldset>
-					<legend>Drill String</legend>
-					<fieldset>
-						<table>
-							<tr>
-								<td class="label_m"><label>BHA#:</label></td>
-								<td><input type="text" /></td>
-
-								<td class="label_m"><label>TOTAL LENGTH BHA:</label></td>
-								<td><input type="text" /></td>
-							</tr>
-						</table>
-					</fieldset>
-					<fieldset style="margin-top:10px;">
-						<table>
-							<tr>
-								<td class="label_m"><label>SECTION:</label></td>
-								<td class="label_m"><label>OD:</label></td>
-								<td class="label_m"><label>ID:</label></td>
-								<td class="label_m"><label>LENGTH:</label></td>
-							</tr>
-							<tr>
-								<td><input type="text" class="medium"/></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-							</tr>
-							<tr>
-								<td><input type="text" class="medium"/></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-							</tr>
-							<tr>
-								<td><input type="text" class="medium"/></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-							</tr>
-							<tr>
-								<td><input type="text" class="medium"/></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-							</tr>
-							<tr>
-								<td><input type="text" class="medium"/></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-							</tr>
-							<tr>
-								<td><input type="text" class="medium"/></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-							</tr>
-							<tr>
-								<td class="label_m"><label>DRILL PIPE DIAM.:</label></td>
-								<td><input type="text" disabled="disabled" /></td>
-								<td><input type="text" disabled="disabled" /></td>
-								<td><input type="text" disabled="disabled" /></td>
-							</tr>
-						</table>
-					</fieldset>
-				</fieldset>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<!-- MUD PUMP -->
-				<fieldset>
-					<legend>Mud pump</legend>
-					<table>
-						<tr>
-							<td></td>
-							<td class="label_m"><label>PUMP 1:</label></td>
-							<td class="label_m"><label>PUMP 2:</label></td>
-							<td class="label_m"><label>PUMP 3:</label></td>
-							
-						</tr>
-						<tr>
-							<td class="label_m"><label>LINER/STK:</label></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							
-						</tr>
-						<tr>
-							<td class="label_m"><label>GAL/STK:</label></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							
-						</tr>
-						<tr>
-							<td class="label_m"><label>SPM/STK:</label></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							
-						</tr>
-						<tr>
-							<td class="label_m"><label>GAL:</label></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td class="label_m"><label>TOTAL GAL:</label></td>
-							<td><input type="text" /></td>
-						</tr>
-					</table>
-				</fieldset>
+				<!-- antes estaba drill string -->
 			</td>
 		</tr>
 	</table>
