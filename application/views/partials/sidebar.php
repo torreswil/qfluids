@@ -5,7 +5,7 @@
 	<li class="main_navigation">
 		<h2>Datos de entrada</h2>
 		<ul class="nav_links">
-			<li><a href="#estado_mecanico">Estado Mecánico</a></li>
+			<li><a href="#geometria_pozo">Geometría del Pozo</a></li>
 			<li><a href="#datos_medianoche">Datos de Media Noche</a></li>
 			<li><a href="#propiedades_lodo">Propiedades del Lodo</a></li>
 			<li><a href="#inventario">Inventario</a></li>

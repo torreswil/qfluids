@@ -38,7 +38,7 @@
 		</div>
 
 		<!-- PANELES DE DATOS DE ENTRADA-->
-		<?php $this->load->view('estado_mecanico'); ?>
+		<?php $this->load->view('geometria_pozo'); ?>
 		<?php $this->load->view('datos_medianoche'); ?>
 		<?php $this->load->view('propiedades_lodo'); ?>
 		<?php $this->load->view('inventario'); ?>

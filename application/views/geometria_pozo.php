@@ -1,5 +1,5 @@
-<div class="this_panel" id="estado_mecanico">
-	<h2>Estado Mecánico</h2>
+<div class="this_panel" id="geometria_pozo">
+	<h2>Geometría del Pozo</h2>
 	<fieldset>
 		<table>
 			<tr>
