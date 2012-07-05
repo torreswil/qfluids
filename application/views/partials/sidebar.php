@@ -8,8 +8,8 @@
 			<li><a href="#geometria_pozo">Geometría del Pozo</a></li>
 			<li><a href="#broca">Datos de la Broca</a></li>
 			<li><a href="#bomba">Datos de la Bomba</a></li>
-			<li><a href="#datos_generales">Datos Generales</a></li>
 			<li><a href="#propiedades_fluido">Propiedades del Fluido</a></li>
+			<li><a href="#datos_generales">Datos Generales</a></li>
 			<li><a href="#inventario">Inventario</a></li>
 			<li><a href="#volumenes">Volúmenes</a></li>
 		</ul>

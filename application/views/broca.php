@@ -10,17 +10,17 @@
 				<table>
 					<tr>
 						<td class="label_m"><label>Bit #:</label></td>
-						<td><input type="text" class="medium"></td>
+						<td><input type="text" class="medium" id="bit_bitnumber"></td>
 						
 						<td class="label_m"><label>Bit Diameter:</label></td>
 						<td><input type="text" class="medium"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Type:</label></td>
-						<td><input type="text" class="medium"></td>
+						<td><input type="text" class="medium pick_bit"></td>
 						
 						<td class="label_m"><label>Jets Number:</label></td>
-						<td><input type="text" class="medium"></td>
+						<td><input type="text" class="medium jets_number"></td>
 					</tr>
 				</table>
 				<fieldset>
