@@ -52,7 +52,7 @@
 						<tr>
 							<td class="label_m"><label>OD:</label></td>
 							<td>
-								<input type="text" disabled="disabled" name="oddfracc" class="required" /> <em>ej.: 3 1/4</em>
+								<input type="text" disabled="disabled" name="odfracc" class="required" /> <em>ej.: 3 1/4</em>
 							</td>
 						</tr>
 						<tr>
@@ -68,7 +68,10 @@
 							</td>
 						</tr>
 					</table>
-					<input type="text" name="odddeci" />
+					<input type="hidden" name="odddeci" class="required" />
+					<input type="hidden" name="unit_oddfracc" value="in" />
+					<input type="hidden" name="unit_odddeci" value="in" />
+					<input type="hidden" name="unit_length" value="ft" />
 				</form>
 			</div>
 

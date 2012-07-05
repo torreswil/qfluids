@@ -8,6 +8,7 @@ function sidebar_position(){
 	}
 }
 
+
 $(window).resize(function(){
 	console.log($('.qfluids_wrapper').position().left);
 	sidebar_position();	
@@ -93,14 +94,14 @@ $(document).ready(function(){
 		
 		//CREATE A NEW BIT
 		if($('#checkbox_bit_not_found:checked').length == 1){
-			var od 		= $('#new_bit_form input[name=oddfracc]').val();
+			var od 		= $('#new_bit_form input[name=odfracc]').val();
 			od 			= od.split(' ');
 			if(od.length !== 2){
-				if(parseInt($('#new_bit_form input[name=oddfracc]').val()) == NaN){
+				if(parseInt($('#new_bit_form input[name=odfracc]').val()) == NaN){
 					alert('Existe un error en la sintaxis del OD, por favor verifique e intente de nuevo.');	
 				}else{
 					log('solo un numero');
-					$('#new_bit_form input[name=odddeci]').val($('#new_bit_form input[name=oddfracc]').val());
+					$('#new_bit_form input[name=odddeci]').val($('#new_bit_form input[name=odfracc]').val());
 				}	
 			}else{
 				var int_part 	= od[0];
@@ -109,33 +110,46 @@ $(document).ready(function(){
 				if(real_part.length !== 2){
 					alert('Existe un error en la sintaxis del OD, por favor verifique e intente de nuevo.');	
 				}else{
-					var decimal_part 	= parseInt(real_part[0])/parseInt(real_part[1]);
-					var decimal_od 		= parseInt(int_part) + decimal_part;
-					$('#new_bit_form input[name=odddeci]').val(decimal_od);
+					if(real_part[1].length > 0){
+				        var decimal_part 	= parseInt(real_part[0])/parseInt(real_part[1]);
+    					var decimal_od 		= parseInt(int_part) + decimal_part;
+    					$('#new_bit_form input[name=odddeci]').val(decimal_od);    
+					}else{
+					    alert('Existe un error en la sintaxis del OD, por favor verifique e intente de nuevo.');   
+					}
 				}
 			}
 
 			
-			var data 	= $('#new_bit_form').serialize();
-			log(data);	
-			
-			
+			var error_qty = 0;
+			$('#new_bit_form .required').each(function(){
+				if($(this).val() == ''){
+					error_qty = error_qty + 1;
+				}
+			});
+
+			if(error_qty > 0){
+				alert('Hay campos incompletos en el formulario de creación de brocas.\nPor favor verifique e intente de nuevo.');
+			}else{
+				var data = $('#new_bit_form').serialize();
+				$.post('/rest/insertar_broca',data,function(r){
+					hide_bit_overlay();
+				},'json');	
+			}
 
 		//SELECT A BIT FROM THE DROPDOWN SYSTEM
 		}else if($('#checkbox_bit_not_found:checked').length == 0){
-
+			hide_bit_overlay();
 		}
-		
+	});
 
-		/*
+	function hide_bit_overlay(){
 		var no_option = '<option value="" selected="selected">Seleccione...</option>';
 		$('#bit_overlay_listaods,#bit_overlay_listamodelos').html(no_option);
 		$('#bit_overlay_listabrocas,#bit_overlay_listabrocas_new').val('')
 		$('#select_bit_overlay').hide();
 		$('.pick_bit').removeAttr('disabled');
-		$('.jets_number').focus();
-		*/
-	});
-
+		$('.jets_number').focus();	
+	}
 
 });

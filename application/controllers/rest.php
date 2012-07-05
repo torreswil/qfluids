@@ -19,5 +19,7 @@ class Rest extends CI_Controller {
 	public function listar_modelos_broca(){
 		echo json_encode($this->Api->get_where('brocas_modelos',$_POST));
 	}
-	public function insertar_broca(){}
+	public function insertar_broca(){
+		echo json_encode($this->Api->create('brocas_modelos',$_POST));
+	}
 }
