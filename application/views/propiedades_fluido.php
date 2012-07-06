@@ -133,9 +133,9 @@
 					<tr>
 						<td class="label_m"><label>mud weight ppg</label></td>
 						<td><input type="text" class="medium"></td>
-						<td><input type="text" style="width:56px;"></td>
-						<td><input type="text" style="width:56px;"></td>
-						<td><input type="text" style="width:56px;"></td>
+						<td><input type="text" style="width:56px;" id="mw_1" class="mw"></td>
+						<td><input type="text" style="width:56px;" id="mw_2" class="mw"></td>
+						<td><input type="text" style="width:56px;" id="mw_3" class="mw"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Funnel viscocity</label></td>

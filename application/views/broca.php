@@ -1,5 +1,5 @@
 <div class="this_panel" id="broca">
-	<h2>Datos de la Broca</h2>
+	<h2>Bit Data</h2>
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">
 	      <li><a href="#">Bit</a></li>
@@ -38,22 +38,22 @@
 								<legend>Jets</legend>
 								<table style="float:left;">
 									<tr>
-										<td><input type="text" class="broca_jet" id="broca_jet_1"></td>
-										<td><input type="text" class="broca_jet" id="broca_jet_2"></td>
-										<td><input type="text" class="broca_jet" id="broca_jet_3"></td>
-										<td><input type="text" class="broca_jet" id="broca_jet_4"></td>
+										<td><input type="text" class="broca_jet" id="j_1"></td>
+										<td><input type="text" class="broca_jet" id="j_2"></td>
+										<td><input type="text" class="broca_jet" id="j_3"></td>
+										<td><input type="text" class="broca_jet" id="j_4"></td>
 									</tr>
 									<tr>
-										<td><input type="text" class="broca_jet" id="broca_jet_5"></td>
-										<td><input type="text" class="broca_jet" id="broca_jet_6"></td>
-										<td><input type="text" class="broca_jet" id="broca_jet_7"></td>
-										<td><input type="text" class="broca_jet" id="broca_jet_8"></td>
+										<td><input type="text" class="broca_jet" id="j_5"></td>
+										<td><input type="text" class="broca_jet" id="j_6"></td>
+										<td><input type="text" class="broca_jet" id="j_7"></td>
+										<td><input type="text" class="broca_jet" id="j_8"></td>
 									</tr>
 									<tr>
-										<td><input type="text" class="broca_jet" id="broca_jet_9"></td>
-										<td><input type="text" class="broca_jet" id="broca_jet_10"></td>
-										<td><input type="text" class="broca_jet" id="broca_jet_11"></td>
-										<td><input type="text" class="broca_jet" id="broca_jet_12"></td>
+										<td><input type="text" class="broca_jet" id="j_9"></td>
+										<td><input type="text" class="broca_jet" id="j_10"></td>
+										<td><input type="text" class="broca_jet" id="j_11"></td>
+										<td><input type="text" class="broca_jet" id="j_12"></td>
 									</tr>
 								</table>
 							</fieldset>
@@ -68,15 +68,15 @@
 								</tr>
 								<tr>
 									<td class="label_m"><label>TFA:</label></td>
-									<td class="label_m"><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" /> in<sup>2</sup></td>
+									<td class="label_m"><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" id="tfa" name="tfa" /> in<sup>2</sup></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Vel Jets:</label></td>
-									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" /> ft/seg</td>
+									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" name="veljet" id="veljet" /> ft/seg</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>PD <sub>BIT</sub>:</label></td>
-									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" /> psi</td>
+									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" id="pdbit" name="pdbit" /> psi</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>% PD <sub>BIT</sub>:</label></td>
@@ -84,11 +84,11 @@
 								</tr>
 								<tr>
 									<td class="label_m"><label>HHP <sub>BIT</sub>:</label></td>
-									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" /> hp</td>
+									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" id="hhp" name="hhp" /> hp</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>HSI <sub>BIT</sub>:</label> </td>
-									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" /> hp/in<sup>2</sup></td>
+									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" id="hsi" name="hsi" /> hp/in<sup>2</sup></td>
 								</tr>
 							</table>
 						</fieldset>

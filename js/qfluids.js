@@ -174,7 +174,8 @@ $(document).ready(function(){
 		$('#table_bit_creator').hide();
 		$('#select_bit_overlay').hide();
 		$('.pick_bit').removeAttr('disabled');
-		$('#broca_jet_1').focus();	
+		$('#j_1').focus();
+		run_calculos_broca();	
 	}
 
 
@@ -188,6 +189,85 @@ $(document).ready(function(){
 
 	function hide_casing_overlay(){
 		$('#select_casing_overlay').hide();	
+	}
+
+	//CALCULOS TOTALES
+	//************************************************
+	$('#qfluids_form input').keyup(function(){
+		correr_calculos();
+	});
+	$('#qfluids_form select').change(function(){
+		correr_calculos();
+	})
+	$('#qfluids_form input[type="button"]').click(function(){
+		correr_calculos();
+	})
+
+	function correr_calculos(){
+		correr_calculos_broca();	
+	}
+
+	//CALCULOS 'BROCA'
+	//************************************************
+	function correr_calculos_broca(){
+		//TFA
+		var tfa = 0;
+		var jets_sum = 0;
+		$('.broca_jet').each(function(){
+			var a = $(this).val();
+			if(a !== ''){
+				var this_jet_square = Math.pow($(this).val(),2);
+				tfa = tfa + this_jet_square;
+				jets_sum = tfa;
+			}
+		});
+		tfa = Math.PI * tfa/4096;
+		if(tfa !== Infinity){
+			$('#tfa').val(tfa);	
+		}else{
+			$('#tfa').val(0);
+		}
+		
+		//VEL JETS
+		var veljet = 0;
+		veljet = 0.32 * parseFloat($('#qgaltotal').val()) / tfa;
+		if(veljet !== Infinity){
+			$('#veljet').val(veljet);	
+		}else{
+			$('#veljet').val(0);
+		}
+		
+
+		//PD BIT
+		var pdbit = 0;
+		var mw = 0;
+		$('.mw').each(function(){
+			if($(this).val() !== ''){
+				mw = parseFloat($(this).val());
+			}
+		});
+		pdbit = Math.pow(veljet,2) * mw / 1120;
+		if(pdbit !== Infinity){
+			$('#pdbit').val(pdbit);	
+		}else{
+			$('#pdbit').val(0);
+		}
+
+		//HHPBIT
+		var hhp = pdbit * $('#qgaltotal').val() / 1714;
+		if(hhp !== Infinity){
+			$('#hhp').val(hhp);
+		}else{
+			$('#hhp').val(0);
+		}
+
+		//HSI
+		var hsi = hhp / (jets_sum * 0.000767);
+		if(hsi !== Infinity){
+			$('#hsi').val(hsi);
+		}else{
+			$('#hsi').val(0);
+		}
 	}
 
 });

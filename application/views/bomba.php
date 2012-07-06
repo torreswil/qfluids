@@ -47,7 +47,7 @@
 						<td></td>
 						<td></td>
 						<td class="label_m"><label>TOTAL GAL:</label></td>
-						<td><input type="text" /></td>
+						<td><input type="text" id="qgaltotal" name="qgaltotal" value="0" /></td>
 					</tr>
 				</table>
 			</fieldset>

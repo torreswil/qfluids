@@ -36,16 +36,16 @@
 		<div class="this_panel" id="welcome_panel" style="display:block;">
 			<p>Seleccione un formulario de datos de entrada para comenzar.</p>
 		</div>
-
-		<!-- PANELES DE DATOS DE ENTRADA-->
-		<?php $this->load->view('geometria_pozo'); ?>
-		<?php $this->load->view('broca'); ?>
-		<?php $this->load->view('bomba'); ?>
-		<?php $this->load->view('datos_generales'); ?>
-		<?php $this->load->view('propiedades_fluido'); ?>
-		<?php $this->load->view('inventario'); ?>
-		<?php $this->load->view('volumenes'); ?>
-
+		<form id="qfluids_form">
+			<!-- PANELES DE DATOS DE ENTRADA-->
+			<?php $this->load->view('geometria_pozo'); ?>
+			<?php $this->load->view('broca'); ?>
+			<?php $this->load->view('bomba'); ?>
+			<?php $this->load->view('datos_generales'); ?>
+			<?php $this->load->view('propiedades_fluido'); ?>
+			<?php $this->load->view('inventario'); ?>
+			<?php $this->load->view('volumenes'); ?>
+		</form>
 	</div>
 </div>
 
