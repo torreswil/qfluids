@@ -23,6 +23,7 @@
 				<table>
 					<tr>
 						<td></td>
+						<td class="unit_field"></td>
 						<td class="label_m"><label>Program</label></td>
 						<td class="label_m">
 							<select style="width:70px;">
@@ -111,63 +112,90 @@
 					</tr>
 					<tr>
 						<td class="label_m"><label>depth</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field">ft</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>pit flow line</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="label_m"><label>pit/flow line</label></td>
+						<td class="unit_field"></td>
+						<td><input type="text" style="width:60px;"></td>
+						<td>
+							<select style="width:70px;">
+								<option val="">Select...</option>
+								<option val="pit">Pit</option>
+								<option val="flow_line">Flow Line</option>
+							</select>
+						</td>
+						<td>
+							<select style="width:70px;">
+								<option val="">Select...</option>
+								<option val="pit">Pit</option>
+								<option val="flow_line">Flow Line</option>
+							</select>
+						</td>
+						<td>
+							<select style="width:70px;">
+								<option val="">Select...</option>
+								<option val="pit">Pit</option>
+								<option val="flow_line">Flow Line</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>flowline temp</label></td>
+						<td class="unit_field">ºF</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>flowline temp ºF</label></td>
-						<td><input type="text" class="medium"></td>
-						<td><input type="text" style="width:56px;"></td>
-						<td><input type="text" style="width:56px;"></td>
-						<td><input type="text" style="width:56px;"></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>mud weight ppg</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="label_m"><label>mud weight</label></td>
+						<td class="unit_field">ppg</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;" id="mw_1" class="mw"></td>
 						<td><input type="text" style="width:56px;" id="mw_2" class="mw"></td>
 						<td><input type="text" style="width:56px;" id="mw_3" class="mw"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Funnel viscocity</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field">sec/qt</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>API filter cake</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="label_m"><label>API fl/cake</label></td>
+						<td class="unit_field">c.c./30min</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Sand</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field">% vol</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Lubricant</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field">% vol</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>Inhibidor</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="label_m"><label>Inhibitor</label></td>
+						<td class="unit_field">gpb</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
@@ -175,63 +203,72 @@
 
 					<tr>
 						<td class="label_m"><label>pH METER</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field"></td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>PM</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field">ml <span style="text-transform:uppercase">H<sub>2</sub>SO<sub>4</sub></span></td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>PF/MF</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field">ml <span style="text-transform:uppercase">H<sub>2</sub>SO<sub>4</sub></span></td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>MBT</label></td>	
-						<td><input type="text" class="medium"></td>
+						<td class="label_m"><label>MBT</label></td>
+						<td class="unit_field">lb/bbl eq</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>CHLORIDES</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field">mg/l</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Ca++</label></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field">mg/l</td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
 						<td><input type="text" class="medium"></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field"><input type="text" style="width:20px;margin-right:0;" /></td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
 						<td><input type="text" class="medium"></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field"><input type="text" style="width:20px;margin-right:0;" /></td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 					</tr>
 					<tr>
 						<td><input type="text" class="medium"></td>
-						<td><input type="text" class="medium"></td>
+						<td class="unit_field"><input type="text" style="width:20px;margin-right:0;" /></td>
+						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>
 						<td><input type="text" style="width:56px;"></td>

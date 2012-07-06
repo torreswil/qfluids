@@ -200,3 +200,9 @@
 .overlay_dialog .content input[type="text"]{
 	width: 162px;
 }
+
+.unit_field{
+	text-align: right;
+	padding-right: 5px;
+	vertical-align: middle;
+}
