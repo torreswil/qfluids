@@ -204,7 +204,8 @@ $(document).ready(function(){
 	})
 
 	function correr_calculos(){
-		correr_calculos_broca();	
+		correr_calculos_broca();
+		correr_calculos_propiedadeslodo();	
 	}
 
 	//CALCULOS 'BROCA'
@@ -267,6 +268,141 @@ $(document).ready(function(){
 			$('#hsi').val(hsi);
 		}else{
 			$('#hsi').val(0);
+		}
+	}
+
+	//CALCULOS 'PROPIEDADES DEL LODO'
+	//************************************************
+	function correr_calculos_propiedadeslodo(){
+
+		//clocks
+		$('.clock_1,.clock_2,.clock_3').change(function(){
+			var this_class = $(this).attr('class');
+			var new_hour = $(this).val();
+			$('.'+this_class).val(new_hour);
+		});
+
+		//PV_1
+		var pv_1 = 0;
+		pv_1 = $('#teta_601').val() - $('#teta_301').val();
+		if(pv_1 !== Infinity){
+			$('#pv_1').val(pv_1);
+		}else{
+			$('#pv_1').val(0);
+		}
+
+		//PV_2
+		var pv_2 = 0;
+		pv_2 = $('#teta_602').val() - $('#teta_302').val();
+		if(pv_2 !== Infinity){
+			$('#pv_2').val(pv_2);
+		}else{
+			$('#pv_2').val(0);
+		}
+
+		//PV_3
+		var pv_3 = 0;
+		pv_3 = $('#teta_603').val() - $('#teta_303').val();
+		if(pv_1 !== Infinity){
+			$('#pv_3').val(pv_3);
+		}else{
+			$('#pv_3').val(0);
+		}
+
+		//YP_1
+		var yp_1 = 0;
+		yp_1 =  $('#teta_301').val() - $('#pv_1').val(); 
+		if(yp_1 !== Infinity){
+			$('#yp_1').val(yp_1);
+		}else{
+			$('#yp_1').val(0);
+		}
+
+		//YP_2
+		var yp_2 = 0;
+		yp_2 =  $('#teta_302').val() - $('#pv_2').val();
+		if(yp_2 !== Infinity){
+			$('#yp_2').val(yp_2);
+		}else{
+			$('#yp_2').val(0);
+		}
+
+		//YP_3
+		var yp_3 = 0;
+		yp_3 =  $('#teta_303').val() - $('#pv_3').val();
+		if(yp_3 !== Infinity){
+			$('#yp_3').val(yp_3);
+		}else{
+			$('#yp_3').val(0);
+		}
+
+		//YS_1
+		var ys_1 = 0;
+		ys_1 = 2 * $('#teta_31').val() - $('#teta_61').val();
+		$('#ys_1').val(ys_1); 
+
+		//YS_2
+		var ys_2 = 0;
+		ys_2 = 2 * $('#teta_32').val() - $('#teta_62').val();
+		$('#ys_2').val(ys_2);
+		
+		//YS_3
+		var ys_3 = 0;
+		ys_3 = 2 * $('#teta_33').val() - $('#teta_63').val();
+		$('#ys_3').val(ys_3);
+
+		//n_1
+		var n_1 = 0;
+		n_1 = 1.44 * Math.log(((2*pv_1)+yp_1)/(pv_1 + yp_1));
+		if(n_1 !== Infinity){
+			$('#n_1').val(n_1);
+		}else{
+			$('#n_1').val(0);
+		}
+
+		//n_2
+		var n_2 = 0;
+		n_2 = 1.44 * Math.log(((2*pv_2)+yp_2)/(pv_2 + yp_2));
+		if(n_2 !== Infinity){
+			$('#n_2').val(n_2);
+		}else{
+			$('#n_2').val(0);
+		}
+
+		//n_3
+		var n_3 = 0;
+		n_3 = 1.44 * Math.log(((2*pv_3)+yp_3)/(pv_3 + yp_3));
+		if(n_3 !== Infinity){
+			$('#n_3').val(n_3);
+		}else{
+			$('#n_3').val(0);
+		}
+
+		//k_1
+		var k_1 = 0;
+		k_1 = (Math.pow(511, n_1 * -1) * (pv_1 + yp_1));
+		if(k_1 !== Infinity){
+			$('#k_1').val(k_1);
+		}else{
+			$('#k_1').val(0);
+		}
+
+		//k_2
+		var k_2 = 0;
+		k_2 = (Math.pow(511, n_2 * -1) * (pv_2 + yp_2));
+		if(k_2 !== Infinity){
+			$('#k_2').val(k_2);
+		}else{
+			$('#k_2').val(0);
+		}
+
+		//k_3
+		var k_3 = 0;
+		k_3 = (Math.pow(511, n_3 * -1) * (pv_3 + yp_3));
+		if(k_3 !== Infinity){
+			$('#k_3').val(k_3);
+		}else{
+			$('#k_3').val(0);
 		}
 	}
 
