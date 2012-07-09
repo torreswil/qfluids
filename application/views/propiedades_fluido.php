@@ -515,6 +515,7 @@
 			</table>
 	    </div>
 	    <div class="simpleTabsContent">
+	    	<!-- CALCULO DE SOLIDOS -->
 	    	<fieldset>
 		    	<table>
 					<tr>
