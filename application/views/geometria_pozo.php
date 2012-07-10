@@ -115,8 +115,8 @@
 							</tr>
 							<tr>
 								<td class="label_m"><label>DRILL PIPE:</label></td>
-								<td><input type="text" disabled="disabled" /></td>
-								<td><input type="text" disabled="disabled" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
 								<td><input type="text" disabled="disabled" /></td>
 								<td></td>
 							</tr>
@@ -129,7 +129,7 @@
 							</tr>
 						</thead>
 						<tbody class="drill_string_pieces">
-							<tr id="row_select_drill_string_1">
+							<tr id="row_select_drill_string_1" class="row_select_drill_string">
 								<td>
 									<select class="select_drill_string" id="select_drill_string_1">
 										<option value="">Select...</option>

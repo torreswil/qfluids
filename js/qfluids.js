@@ -210,7 +210,7 @@ $(document).ready(function(){
 		first_id = first_id[1];
 
 		if(cantidad_vacios > 0){
-			alert('You can add another Drill String just when all the drill string fields are not empty');
+			return false;
 		}else if(cantidad_completos == 8){
 			alert('You can have maximum 8 Drill String tools in your system.');
 		}else{
@@ -231,7 +231,7 @@ $(document).ready(function(){
 			if($('.select_drill_string').length > 1){
 				$('#row_select_drill_string_' + id).remove();	
 			}else{
-				alert('At least 1 Drill String is required');
+				$('.row_select_drill_string select,.row_select_drill_string input').val('');
 			}	
 		}else{
 			return false;
