@@ -118,13 +118,39 @@
 											<td class="label_m"><label>OD:</label></td>
 											<td class="label_m"><label>ID:</label></td>
 											<td class="label_m"><label>LENGTH:</label></td>
+											<td class="label_m"><label>Capac.</label></td>
+											<td class="label_m"><label>Displac.</label></td>
+											<td class="label_m"><label>Vel.</label></td>
+											<td class="label_m"><label>Capac.</label></td>
+											<td class="label_m"><label>Displa.</label></td>
+											<td class="label_m" colspan="2"><label>Pressure Losses</label></td>
 											<td></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="unit_field" style="text-align:center;">ft</td>
+											<td class="unit_field" style="text-align:center;">Vol bbl</td>
+											<td class="unit_field" style="text-align:center;">Vol bbl</td>
+											<td class="unit_field" style="text-align:center;">ft/sec</td>
+											<td class="unit_field" style="text-align:center;">bbl/ft</td>
+											<td class="unit_field" style="text-align:center;">bbl/ft</td>
+											<td class="unit_field" style="text-align:center;">Power</td>
+											<td class="unit_field" style="text-align:center;">Bingh</td>
 										</tr>
 										<tr>
 											<td class="label_m"><label>DRILL PIPE:</label></td>
 											<td><input type="text" /></td>
 											<td><input type="text" /></td>
-											<td><input type="text" disabled="disabled" /></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
 											<td></td>
 										</tr>
 										<tr>
@@ -159,46 +185,20 @@
 											</td>
 											<td><input type="text" /></td>
 											<td><input type="text" /></td>
-											<td><input type="text" /></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
+											<td><input type="text" disabled="disabled"/></td>
 											<td class="label_m"><a href="#removeds_1" class="remove_ds">Remove</a></td>
 										</tr>
 									</tbody>
 								</table>
 							</fieldset>
-						</td>
-						<td>
-							<fieldset>
-								<table>
-									<tr>
-										<td class="label_m"><label>Capac.</label></td>
-										<td class="label_m"><label>Displac.</label></td>
-										<td class="label_m"><label>Vel.</label></td>
-										<td class="label_m"><label>Capac.</label></td>
-										<td class="label_m"><label>Displa.</label></td>
-										<td class="label_m" colspan="2"><label>Pressure Losses</label></td>
-									</tr>
-									<tr>
-										<td class="unit_field" style="text-align:center;">Vol bbl</td>
-										<td class="unit_field" style="text-align:center;">Vol bbl</td>
-										<td class="unit_field" style="text-align:center;">ft/sec</td>
-										<td class="unit_field" style="text-align:center;">bbl/ft</td>
-										<td class="unit_field" style="text-align:center;">bbl/ft</td>
-										<td class="unit_field" style="text-align:center;">Power</td>
-										<td class="unit_field" style="text-align:center;">Bingh</td>
-									</tr>
-									<tr>
-										<td><input type="text" /></td>
-										<td><input type="text" /></td>
-										<td><input type="text" /></td>
-										<td><input type="text" /></td>
-										<td><input type="text" /></td>
-										<td><input type="text" /></td>
-										<td><input type="text" /></td>
-										<td><input type="text" /></td>
-									</tr>
-								</table>
-							</fieldset>	
-						</td>
+						</td>						
 					</tr>
 				</table>
         </div>
