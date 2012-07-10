@@ -92,72 +92,115 @@
 	    </div>
         <div class="simpleTabsContent" style="height:329px;">
         		<!-- DRILL STRING -->
-				<fieldset>
-					<table>
-						<tr>
-							<td class="label_m"><label>BHA#:</label></td>
-							<td><input type="text" /></td>
+				<table>
+					<tr>
+						<td colspan="2">
+							<fieldset>
+								<table>
+									<tr>
+										<td class="label_m"><label>BHA#:</label></td>
+										<td><input type="text" /></td>
 
-							<td class="label_m"><label>TOTAL LENGTH BHA:</label></td>
-							<td><input type="text" /></td>
-						</tr>
-					</table>
-				</fieldset>
-				<fieldset style="margin-top:10px;">
-					<table>
-						<thead>
-							<tr>
-								<td class="label_m"><label>SECTION:</label></td>
-								<td class="label_m"><label>OD:</label></td>
-								<td class="label_m"><label>ID:</label></td>
-								<td class="label_m"><label>LENGTH:</label></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td class="label_m"><label>DRILL PIPE:</label></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" disabled="disabled" /></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td><a href="#" id="add_another_drill">Add another...</a></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</thead>
-						<tbody class="drill_string_pieces">
-							<tr id="row_select_drill_string_1" class="row_select_drill_string">
-								<td>
-									<select class="select_drill_string" id="select_drill_string_1">
-										<option value="">Select...</option>
-										<option value="bit_sub">Bit + Sub</option>
-										<option value="bit">Bit</option>
-										<option value="hw">HW</option>
-										<option value="dc">DC</option>
-										<option value="motor">Motor</option>
-										<option value="stb">STB</option>
-										<option value="xo">XO</option>
-										<option value="hwdp">HWDP</option>
-										<option value="mwd">MWD</option>
-										<option value="dp">DP</option>
-										<option value="xodp">XODP</option>
-										<option value="jar">Jar</option>
-										<option value="power_drive">Power Drive</option>
-										<option value="vortex">Vortex</option>
-										<option value="lwd">LWD</option>
-									</select>
-								</td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td><input type="text" /></td>
-								<td class="label_m"><a href="#removeds_1" class="remove_ds">Remove</a></td>
-							</tr>
-						</tbody>
-					</table>
-				</fieldset>
+										<td class="label_m"><label>TOTAL LENGTH BHA:</label></td>
+										<td><input type="text" /></td>
+									</tr>
+								</table>
+							</fieldset>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<fieldset style="margin-top:10px;">
+								<table>
+									<thead>
+										<tr>
+											<td class="label_m"><label>SECTION:</label></td>
+											<td class="label_m"><label>OD:</label></td>
+											<td class="label_m"><label>ID:</label></td>
+											<td class="label_m"><label>LENGTH:</label></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td class="label_m"><label>DRILL PIPE:</label></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" disabled="disabled" /></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td><a href="#" id="add_another_drill">Add another...</a></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</thead>
+									<tbody class="drill_string_pieces">
+										<tr id="row_select_drill_string_1" class="row_select_drill_string">
+											<td>
+												<select class="select_drill_string" id="select_drill_string_1">
+													<option value="">Select...</option>
+													<option value="bit_sub">Bit + Sub</option>
+													<option value="bit">Bit</option>
+													<option value="hw">HW</option>
+													<option value="dc">DC</option>
+													<option value="motor">Motor</option>
+													<option value="stb">STB</option>
+													<option value="xo">XO</option>
+													<option value="hwdp">HWDP</option>
+													<option value="mwd">MWD</option>
+													<option value="dp">DP</option>
+													<option value="xodp">XODP</option>
+													<option value="jar">Jar</option>
+													<option value="power_drive">Power Drive</option>
+													<option value="vortex">Vortex</option>
+													<option value="lwd">LWD</option>
+												</select>
+											</td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td class="label_m"><a href="#removeds_1" class="remove_ds">Remove</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</fieldset>
+						</td>
+						<td>
+							<fieldset>
+								<table>
+									<tr>
+										<td class="label_m"><label>Capac.</label></td>
+										<td class="label_m"><label>Displac.</label></td>
+										<td class="label_m"><label>Vel.</label></td>
+										<td class="label_m"><label>Capac.</label></td>
+										<td class="label_m"><label>Displa.</label></td>
+										<td class="label_m" colspan="2"><label>Pressure Losses</label></td>
+									</tr>
+									<tr>
+										<td class="unit_field" style="text-align:center;">Vol bbl</td>
+										<td class="unit_field" style="text-align:center;">Vol bbl</td>
+										<td class="unit_field" style="text-align:center;">ft/sec</td>
+										<td class="unit_field" style="text-align:center;">bbl/ft</td>
+										<td class="unit_field" style="text-align:center;">bbl/ft</td>
+										<td class="unit_field" style="text-align:center;">Power</td>
+										<td class="unit_field" style="text-align:center;">Bingh</td>
+									</tr>
+									<tr>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+									</tr>
+								</table>
+							</fieldset>	
+						</td>
+					</tr>
+				</table>
         </div>
 	</div>
 </div>
