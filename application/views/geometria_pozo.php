@@ -21,10 +21,37 @@
 	
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">
+	      <li><a href="#">Casing</a></li>
 	      <li><a href="#">Hole</a></li>
 	      <li><a href="#">Drill String</a></li>
-	      <li><a href="#">Casing</a></li>
 	    </ul>
+	    <div class="simpleTabsContent" style="height:329px;">
+			<!-- CASING -->
+			<fieldset>
+				<table>
+					<tr>
+						<td class="label_m"><label>NAME</label></td>
+						<td class="label_m"><label>OD [<span style="text-transform:lowercase;">in</span>]</label></td>
+						<td class="label_m"><label>ID [<span style="text-transform:lowercase;">in</span>]</label></td>
+						<td class="label_m"><label>TOP [<span style="text-transform:lowercase;">ft</span>]</label></td>	
+						<td class="label_m"><label>BOTTOM [<span style="text-transform:lowercase;">ft</span>]</label></td>														
+					</tr>
+					<tr>
+						<td>
+							<select class="pick_casing">
+								<option>Seleccione...</option>
+								<option value="casing">Casing</option>
+								<option valie="liner">Liner</option>
+							</select>
+						</td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>
+						<td><input type="text" /></td>						
+					</tr>						
+				</table>
+			</fieldset>
+        </div>
 	    <div class="simpleTabsContent" style="height:329px;">
 	    	<!-- HOLE -->
 			<fieldset>
@@ -78,81 +105,57 @@
 				</fieldset>
 				<fieldset style="margin-top:10px;">
 					<table>
-						<tr>
-							<td class="label_m"><label>SECTION:</label></td>
-							<td class="label_m"><label>OD:</label></td>
-							<td class="label_m"><label>ID:</label></td>
-							<td class="label_m"><label>LENGTH:</label></td>
-						</tr>
-						<tr>
-							<td><input type="text" class="medium"/></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-						</tr>
-						<tr>
-							<td><input type="text" class="medium"/></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-						</tr>
-						<tr>
-							<td><input type="text" class="medium"/></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-						</tr>
-						<tr>
-							<td><input type="text" class="medium"/></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-						</tr>
-						<tr>
-							<td><input type="text" class="medium"/></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-						</tr>
-						<tr>
-							<td><input type="text" class="medium"/></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>DRILL PIPE DIAM.:</label></td>
-							<td><input type="text" disabled="disabled" /></td>
-							<td><input type="text" disabled="disabled" /></td>
-							<td><input type="text" disabled="disabled" /></td>
-						</tr>
-					</table>
-				</fieldset>
-        </div>
-        <div class="simpleTabsContent" style="height:329px;">
-				<!-- CASING -->
-				<fieldset>
-					<table>
-						<tr>
-							<td class="label_m"><label>NAME</label></td>
-							<td class="label_m"><label>OD [<span style="text-transform:lowercase;">in</span>]</label></td>
-							<td class="label_m"><label>ID [<span style="text-transform:lowercase;">in</span>]</label></td>
-							<td class="label_m"><label>TOP [<span style="text-transform:lowercase;">ft</span>]</label></td>	
-							<td class="label_m"><label>BOTTOM [<span style="text-transform:lowercase;">ft</span>]</label></td>														
-						</tr>
-						<tr>
-							<td>
-								<select class="pick_casing">
-									<option>Seleccione...</option>
-									<option value="casing">Casing</option>
-									<option valie="liner">Liner</option>
-								</select>
-							</td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>
-							<td><input type="text" /></td>						
-						</tr>						
+						<thead>
+							<tr>
+								<td class="label_m"><label>SECTION:</label></td>
+								<td class="label_m"><label>OD:</label></td>
+								<td class="label_m"><label>ID:</label></td>
+								<td class="label_m"><label>LENGTH:</label></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td class="label_m"><label>DRILL PIPE:</label></td>
+								<td><input type="text" disabled="disabled" /></td>
+								<td><input type="text" disabled="disabled" /></td>
+								<td><input type="text" disabled="disabled" /></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="#" id="add_another_drill">Add another...</a></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</thead>
+						<tbody class="drill_string_pieces">
+							<tr id="row_select_drill_string_1">
+								<td>
+									<select class="select_drill_string" id="select_drill_string_1">
+										<option value="">Select...</option>
+										<option value="bit_sub">Bit + Sub</option>
+										<option value="bit">Bit</option>
+										<option value="hw">HW</option>
+										<option value="dc">DC</option>
+										<option value="motor">Motor</option>
+										<option value="stb">STB</option>
+										<option value="xo">XO</option>
+										<option value="hwdp">HWDP</option>
+										<option value="mwd">MWD</option>
+										<option value="dp">DP</option>
+										<option value="xodp">XODP</option>
+										<option value="jar">Jar</option>
+										<option value="power_drive">Power Drive</option>
+										<option value="vortex">Vortex</option>
+										<option value="lwd">LWD</option>
+									</select>
+								</td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td><input type="text" /></td>
+								<td class="label_m"><a href="#removeds_1" class="remove_ds">Remove</a></td>
+							</tr>
+						</tbody>
 					</table>
 				</fieldset>
         </div>

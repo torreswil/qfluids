@@ -172,9 +172,9 @@
 						<td class="label_m"><label>API fl/cake</label></td>
 						<td class="unit_field">c.c./30min</td>
 						<td><input type="text" style="width:60px;"></td>
-						<td><input type="text" style="width:56px;"></td>
-						<td><input type="text" style="width:56px;"></td>
-						<td><input type="text" style="width:56px;"></td>
+						<td><input type="text" style="width:56px;" placeholder="00/00"></td>
+						<td><input type="text" style="width:56px;" placeholder="00/00"></td>
+						<td><input type="text" style="width:56px;" placeholder="00/00"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Sand</label></td>

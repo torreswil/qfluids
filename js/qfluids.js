@@ -191,6 +191,53 @@ $(document).ready(function(){
 		$('#select_casing_overlay').hide();	
 	}
 
+
+	//DRILL STRING: ADD ANOTHER
+	$('#add_another_drill').click(function(e){
+		e.preventDefault();
+		var cantidad_vacios 	= 0;
+		var cantidad_completos 	= 0;
+		$('.select_drill_string').each(function(){
+			if($(this).val() == ''){
+				cantidad_vacios = cantidad_vacios + 1;
+			}else{
+				cantidad_completos = cantidad_completos + 1;
+			}
+		});
+
+		var first_id = $('.select_drill_string').filter(':first').attr('id');
+		first_id = first_id.split('select_drill_string_');
+		first_id = first_id[1];
+
+		if(cantidad_vacios > 0){
+			alert('You can add another Drill String just when all the drill string fields are not empty');
+		}else if(cantidad_completos == 8){
+			alert('You can have maximum 8 Drill String tools in your system.');
+		}else{
+			$.post('/rest/new_drill_string_row',{'drillstring_qty' : first_id},function(r){
+				$('.drill_string_pieces').prepend(r);
+			});
+		}
+	});
+
+	//DRILL STRING: REMOVE
+	$('.remove_ds').live('click',function(e){
+		if(confirm('Are you sure you want to delete this item?\nThis action can\'t be undone.')){
+			e.preventDefault();
+			var href 	= $(this).attr('href');
+			var id 		= href.split('_');
+			id 			= id[1];
+
+			if($('.select_drill_string').length > 1){
+				$('#row_select_drill_string_' + id).remove();	
+			}else{
+				alert('At least 1 Drill String is required');
+			}	
+		}else{
+			return false;
+		}
+	});
+
 	//clocks
 	$('.clock_1,.clock_2,.clock_3').change(function(){
 		var this_class = $(this).attr('class');
@@ -235,6 +282,24 @@ $(document).ready(function(){
 	//CALCULOS 'BROCA'
 	//************************************************
 	function correr_calculos_broca(){
+		//jets_string
+		var jets_string = '';
+		$('.broca_jet').each(function(){
+			if($(this).val() !== ''){
+				var this_value 			= $(this).val();
+				var this_value_count 	= 0;
+				$('.broca_jet').each(function(){
+					if($(this).val() == this_value){
+						this_value_count = this_value_count + 1;
+					}
+				});
+				var new_part  = this_value_count + '*' + this_value;
+				jets_string = jets_string.replace(new_part,'');
+				jets_string = $.trim(jets_string + ' ' + new_part);
+			}
+		});
+		completar_campo_val('jets_string',jets_string);
+
 		//TFA
 		var tfa = 0;
 		var jets_sum = 0;

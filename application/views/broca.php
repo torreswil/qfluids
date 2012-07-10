@@ -64,7 +64,7 @@
 							<table>
 								<tr>
 									<td class="label_m"><label>Jets:</label></td>
-									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" /></td>
+									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" id="jets_string" name="jets_string" id="jets_string" /></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>TFA:</label></td>
