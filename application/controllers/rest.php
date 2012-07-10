@@ -29,7 +29,7 @@ class Rest extends CI_Controller {
 	public function new_drill_string_row(){
 		$index = $_POST['drillstring_qty'] + 1;
 		?>
-			<tr id="row_select_drill_string_<?=$index;?>">
+			<tr id="row_select_drill_string_<?=$index;?>" class="row_select_drill_string">
 				<td>
 					<select  class="select_drill_string" id="select_drill_string_<?=$index; ?>">
 						<option value="">Select...</option>
@@ -52,7 +52,14 @@ class Rest extends CI_Controller {
 				</td>
 				<td><input type="text" /></td>
 				<td><input type="text" /></td>
-				<td><input type="text" /></td>
+				<td><input type="text" disabled="disabled"/></td>
+				<td><input type="text" disabled="disabled"/></td>
+				<td><input type="text" disabled="disabled"/></td>
+				<td><input type="text" disabled="disabled"/></td>
+				<td><input type="text" disabled="disabled"/></td>
+				<td><input type="text" disabled="disabled"/></td>
+				<td><input type="text" disabled="disabled"/></td>
+				<td><input type="text" disabled="disabled"/></td>
 				<td class="label_m"><a href="#removeds_<?=$index;?>" class="remove_ds">Remove</a></td>
 			</tr>
 		<?php

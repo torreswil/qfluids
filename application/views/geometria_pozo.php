@@ -130,14 +130,14 @@
 											<td></td>
 											<td></td>
 											<td></td>
-											<td class="unit_field" style="text-align:center;">ft</td>
-											<td class="unit_field" style="text-align:center;">Vol bbl</td>
-											<td class="unit_field" style="text-align:center;">Vol bbl</td>
-											<td class="unit_field" style="text-align:center;">ft/sec</td>
-											<td class="unit_field" style="text-align:center;">bbl/ft</td>
-											<td class="unit_field" style="text-align:center;">bbl/ft</td>
-											<td class="unit_field" style="text-align:center;">Power</td>
-											<td class="unit_field" style="text-align:center;">Bingh</td>
+											<td class="unit_field" style="text-align:center;padding-rigth:5px;">ft</td>
+											<td class="unit_field" style="text-align:center;padding-rigth:5px;">Vol bbl</td>
+											<td class="unit_field" style="text-align:center;padding-rigth:5px;">Vol bbl</td>
+											<td class="unit_field" style="text-align:center;padding-rigth:5px;">ft/sec</td>
+											<td class="unit_field" style="text-align:center;padding-rigth:5px;">bbl/ft</td>
+											<td class="unit_field" style="text-align:center;padding-rigth:5px;">bbl/ft</td>
+											<td class="unit_field" style="text-align:center;padding-rigth:5px;">Power</td>
+											<td class="unit_field" style="text-align:center;padding-rigth:5px;">Bingh</td>
 										</tr>
 										<tr>
 											<td class="label_m"><label>DRILL PIPE:</label></td>
