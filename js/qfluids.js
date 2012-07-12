@@ -247,13 +247,13 @@ $(document).ready(function(){
 
 	//CALCULOS TOTALES
 	//************************************************
-	$('#qfluids_form input').keyup(function(){
+	$('#qfluids_form input').live('keyup',function(){
 		correr_calculos();
 	});
-	$('#qfluids_form select').change(function(){
+	$('#qfluids_form select').live('change',function(){
 		correr_calculos();
 	})
-	$('#qfluids_form input[type="button"]').click(function(){
+	$('#qfluids_form input[type="button"]').live('click',function(){
 		correr_calculos();
 	})
 
@@ -510,6 +510,81 @@ $(document).ready(function(){
 		var hgsppb_3 = 0;
 		hgsppb_3 = (hgspercent_3 / 100) * 979;
 		completar_campo_val('hgsppb_3',hgsppb_3);
+
+		//capdp
+		var capdp = 0;
+		capdp = Math.pow(parseFloat($('#iddp').val()),2) / 1029.4;
+		completar_campo_val('capdp',capdp);
+
+		//capvdp
+		var capvdp = 0;
+		capvdp = capdp * parseFloat($('#longdp').val());
+		completar_campo_val('capvdp',capvdp);
+
+		//dispdp
+		var dispdp = 0;
+		dispdp = (Math.pow(parseFloat($('#oddp').val()),2) - Math.pow(parseFloat($('#iddp').val()),2)) / 1029.4;
+		completar_campo_val('dispdp',dispdp);
+
+		//dispvdp
+		var dispvdp = 0;
+		dispvdp = dispdp * parseFloat($('#longdp').val());
+		completar_campo_val('dispvdp',dispvdp);
+
+		//drill_string_tools
+		$('.select_drill_string').each(function(){
+			var id_raw = $(this).attr('id');
+			var id = id_raw.split('select_drill_string_');
+			id = id[1];
+
+			//capbha
+			var capbha = 0 
+			capbha = Math.pow(parseFloat($('#idbha_'+id).val()),2)/1029.4
+			completar_campo_val('capbha_'+id,capbha);
+
+			//capvbha
+			var capvbha = 0;
+			capvbha = parseFloat($('#capbha_'+id).val()) * $('#longbha_'+id).val();
+			completar_campo_val('capvbha_'+id,capvbha);
+
+			//dispbha
+			var dispbha = 0;
+			dispbha = (parseFloat(Math.pow($('#odbha_'+id).val(),2)) - parseFloat(Math.pow($('#idbha_'+id).val(),2)))/1029.4;
+			completar_campo_val('dispbha_'+id,dispbha);
+
+			//dispvbha
+			var dispvbha = 0;
+			dispvbha = parseFloat($('#dispbha_'+id).val()) * parseFloat($('#longbha_'+id).val());
+			completar_campo_val('dispvbha_'+id,dispvbha);
+		});
+
+		//totalbha
+		var totalbha = 0;
+		$('.longbha').each(function(){
+			totalbha = totalbha + parseFloat($(this).val());
+		});
+		completar_campo_val('totalbha',totalbha);
+
+		//totalds
+		var totalds = 0;
+		totalds = totalbha + parseFloat($("#longdp").val());
+		completar_campo_val('totalds',totalds);
+
+		//captotal
+		var captotal = 0;
+		$('.capvbha').each(function(){
+			captotal = captotal + parseFloat($(this).val());
+		});
+		captotal = captotal + parseFloat($('#capvdp').val());
+		completar_campo_val('captotal',captotal);
+
+		//disptotal
+		var disptotal = 0;
+		$('.dispvbha').each(function(){
+			disptotal = disptotal + parseFloat($(this).val());
+		});
+		disptotal = disptotal + parseFloat($('#dispvdp').val());
+		completar_campo_val('disptotal',disptotal);
 
 	}
 

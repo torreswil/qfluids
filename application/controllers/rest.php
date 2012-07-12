@@ -31,7 +31,7 @@ class Rest extends CI_Controller {
 		?>
 			<tr id="row_select_drill_string_<?=$index;?>" class="row_select_drill_string">
 				<td>
-					<select  class="select_drill_string" id="select_drill_string_<?=$index; ?>">
+					<select  class="select_drill_string  drillstring_tool_<?=$index; ?>" id="select_drill_string_<?=$index; ?>">
 						<option value="">Select...</option>
 						<option value="bit_sub">Bit + Sub</option>
 						<option value="bit">Bit</option>
@@ -50,16 +50,16 @@ class Rest extends CI_Controller {
 						<option value="lwd">LWD</option>
 					</select>
 				</td>
-				<td><input type="text" /></td>
-				<td><input type="text" /></td>
-				<td><input type="text" disabled="disabled"/></td>
-				<td><input type="text" disabled="disabled"/></td>
-				<td><input type="text" disabled="disabled"/></td>
-				<td><input type="text" disabled="disabled"/></td>
-				<td><input type="text" disabled="disabled"/></td>
-				<td><input type="text" disabled="disabled"/></td>
-				<td><input type="text" disabled="disabled"/></td>
-				<td><input type="text" disabled="disabled"/></td>
+				<td><input type="text" type="text" name="odbha_<?=$index;?>" id="odbha_<?=$index;?>" class="odbha_<?=$index;?> odbha" /></td>
+				<td><input type="text" type="text" name="idbha_<?=$index;?>" id="idbha_<?=$index;?>" class="idbha_<?=$index;?> idbha" /></td>
+				<td><input type="text" type="text" name="longbha_<?=$index;?>" id="longbha_<?=$index;?>" class="longbha_<?=$index;?> longbha" /></td>
+				<td><input type="text" type="text" name="capvbha_<?=$index;?>" id="capvbha_<?=$index;?>" disabled="disabled" class="capvbha_<?=$index;?> capvbha" /></td>
+				<td><input type="text" type="text" name="dispvbha_<?=$index;?>" id="dispvbha_<?=$index;?>" class="dispvbha_<?=$index;?> dispvbha" disabled="disabled"/></td>
+				<td><input type="text" type="text" name="" id="" disabled="disabled"/></td>
+				<td><input type="text" type="text" name="capbha_<?=$index;?>" id="capbha_<?=$index;?>" class="capbha_<?=$index;?> capbha" disabled="disabled"/></td>
+				<td><input type="text" type="text" name="dispbha_<?=$index;?>" id="dispbha_<?=$index;?>" class="dispbha_<?=$index;?> dispbha" disabled="disabled"/></td>
+				<td><input type="text" type="text" name="" id="" disabled="disabled"/></td>
+				<td><input type="text" type="text" name="" id="" disabled="disabled"/></td>
 				<td class="label_m"><a href="#removeds_<?=$index;?>" class="remove_ds">Remove</a></td>
 			</tr>
 		<?php
