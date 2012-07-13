@@ -10,6 +10,7 @@ class Rest extends CI_Controller {
 		redirect('/main/login');
 	}
 
+	//BIT FUNCTIONS
 	public function listar_brocas(){
 		echo json_encode($this->Api->get('brocas'));
 	}
@@ -26,6 +27,7 @@ class Rest extends CI_Controller {
 		echo json_encode($this->Api->create('brocas_modelos',$_POST));
 	}
 
+	//DRILL STRING FUNCTIONS
 	public function new_drill_string_row(){
 		$index = $_POST['drillstring_qty'] + 1;
 		?>
@@ -63,5 +65,30 @@ class Rest extends CI_Controller {
 				<td class="label_m"><a href="#removeds_<?=$index;?>" class="remove_ds">Remove</a></td>
 			</tr>
 		<?php
+	}
+
+	//PUMP FUNCTIONS
+	public function get_pump_types(){
+		echo json_encode($this->Api->get_distinct_where('bombas','type',$_POST));
+	}
+
+	public function get_pump_strokelength(){
+		echo json_encode($this->Api->get_distinct_where('bombas','strokelength',$_POST));
+	}
+
+	public function get_pump_linerdiameter(){
+		echo json_encode($this->Api->get_distinct_where('bombas','linerdiameter',$_POST));
+	}
+
+	public function get_pump_rod(){
+		echo json_encode($this->Api->get_distinct_where('bombas','rod',$_POST));	
+	}
+
+	public function get_pump_model(){
+		echo json_encode($this->Api->get_distinct_where('bombas','modelo',$_POST));	
+	}
+
+	public function get_pump_pression(){
+		echo json_encode($this->Api->get_distinct_where('bombas','presion',$_POST));	
 	}
 }

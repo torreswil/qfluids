@@ -25,14 +25,14 @@ $(document).ready(function(){
 	});
 
 	//CUADRO DE DIALOGO 'SELECCION DE BROCA'
-	//************************************************
+	//**********************************************************************************************************************************************************
 	$('.pick_bit').focus(function(){
 		$('#select_bit_overlay').show();
 		$(this).attr('disabled','disabled');
 	});
 
 	$('#bit_overlay_listabrocas').change(function(){
-		var no_option = '<option value="" selected="selected">Seleccione...</option>';
+		var no_option = '<option value="" selected="selected">Select...</option>';
 		if($(this).val() == ''){
 			$('#bit_overlay_listaods,#bit_overlay_listamodelos').html(no_option);
 		}else{
@@ -50,7 +50,7 @@ $(document).ready(function(){
 	});
 
 	$('#bit_overlay_listaods').change(function(){
-		var no_option = '<option value="" selected="selected">Seleccione...</option>';
+		var no_option = '<option value="" selected="selected">Select...</option>';
 		if($(this).val() == ''){
 			$('#bit_overlay_listamodelos').html(no_option);
 		}else{
@@ -80,7 +80,7 @@ $(document).ready(function(){
 
 	$('#select_bit_overlay .cancel_link a').click(function(e){
 		e.preventDefault();
-		var no_option = '<option value="" selected="selected">Seleccione...</option>';
+		var no_option = '<option value="" selected="selected">Select...</option>';
 		$('#bit_overlay_listaods,#bit_overlay_listamodelos').html(no_option);
 		$('#select_bit_overlay').hide();
 		$('.pick_bit').removeAttr('disabled');
@@ -164,7 +164,7 @@ $(document).ready(function(){
 	});
 
 	function hide_bit_overlay(){
-		var no_option = '<option value="" selected="selected">Seleccione...</option>';
+		var no_option = '<option value="" selected="selected">Select...</option>';
 		$('#bit_overlay_listaods,#bit_overlay_listamodelos').html(no_option);
 		$('#bit_overlay_listabrocas,#bit_overlay_listabrocas_new').val('');
 		$('#odfracc_new,#nombre_modelo_new,#new_bit_form input[name=odddeci],#new_bit_form input[name=length]').val('');
@@ -180,6 +180,7 @@ $(document).ready(function(){
 
 
 	//CUADRO DE DIALOGO SELECCION DE CASING
+	//*************************************************************************************************************************
 	$('.pick_casing').change(function(){
 		if($(this).val() !== ''){
 			$('#select_casing_overlay').show();
@@ -192,6 +193,130 @@ $(document).ready(function(){
 	}
 
 
+
+	//CUADRO DE DIALOGO SELECCION DE BOMBAS
+	//**************************************************************************************************************************
+	$('.pick_pump').focus(function(e){
+		e.preventDefault();
+		$('#select_pump_overlay').show();
+	});
+
+	$('#pump_picker_maker').change(function(e){
+		e.preventDefault();
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		if($(this).val() !== ''){	
+			$.post('/rest/get_pump_types',{'maker':$(this).val()},function(r){
+				var append_string = no_option;
+				$(r).each(function(){
+					append_string = append_string + '<option value="'+this.type+'">'+this.type+'</option>';
+				});
+				$('#pump_picker_type').html(append_string);
+			},'json');
+		}else{
+			$('#pump_picker_type').html(no_option);
+			$('#pump_picker_stroke').html(no_option);
+			$('#pump_picker_diameter').html(no_option);
+			$('#pump_picker_rod').html(no_option);
+			$('#pump_picker_model').html(no_option);
+			$('#pump_picker_presure').html(no_option);
+		}
+	});
+
+	$('#pump_picker_type').change(function(e){
+		e.preventDefault();
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		if($(this).val() !== ''){	
+			$.post('/rest/get_pump_strokelength',{'type':$(this).val()},function(r){
+				log(r);
+				var append_string = no_option;
+				$(r).each(function(){
+					append_string = append_string + '<option value="'+this.strokelength+'">'+this.strokelength+' in</option>';
+				});
+				$('#pump_picker_stroke').html(append_string);
+			},'json');
+		}else{
+			$('#pump_picker_stroke').html(no_option);
+			$('#pump_picker_diameter').html(no_option);
+			$('#pump_picker_rod').html(no_option);
+			$('#pump_picker_model').html(no_option);
+			$('#pump_picker_presure').html(no_option);
+		}
+	});
+
+	$('#pump_picker_stroke').change(function(e){
+		e.preventDefault();
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		if($(this).val() !== ''){	
+			$.post('/rest/get_pump_linerdiameter',{'strokelength':$(this).val()},function(r){
+				var append_string = no_option;
+				$(r).each(function(){
+					append_string = append_string + '<option value="'+this.linerdiameter+'">'+this.linerdiameter+' in</option>';
+				});
+				$('#pump_picker_diameter').html(append_string);
+			},'json');
+		}else{
+			$('#pump_picker_diameter').html(no_option);
+			$('#pump_picker_rod').html(no_option);
+			$('#pump_picker_model').html(no_option);
+			$('#pump_picker_presure').html(no_option);
+		}
+	});
+
+	$('#pump_picker_diameter').change(function(e){
+		e.preventDefault();
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		if($(this).val() !== ''){	
+			$.post('/rest/get_pump_rod',{'linerdiameter':$(this).val()},function(r){
+				var append_string = no_option;
+				$(r).each(function(){
+					if(this.rod !== null){
+						append_string = append_string + '<option value="'+this.rod+'">'+this.rod+' in</option>';
+					}			
+				});
+				$('#pump_picker_rod').html(append_string);
+			},'json');
+		}else{
+			$('#pump_picker_rod').html(no_option);
+			$('#pump_picker_model').html(no_option);
+			$('#pump_picker_presure').html(no_option);
+		}
+	});
+
+	$('#pump_picker_rod').change(function(e){
+		e.preventDefault();
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		if($(this).val() !== ''){	
+			$.post('/rest/get_pump_model',{'rod':$(this).val()},function(r){
+				var append_string = no_option;
+				$(r).each(function(){
+					append_string = append_string + '<option value="'+this.modelo+'">'+this.modelo+'</option>';
+				});
+				$('#pump_picker_model').html(append_string);
+			},'json');
+		}else{
+			$('#pump_picker_model').html(no_option);
+			$('#pump_picker_presure').html(no_option);
+		}
+	});
+
+	$('#pump_picker_model').change(function(e){
+		e.preventDefault();
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		if($(this).val() !== ''){	
+			$.post('/rest/get_pump_pression',{'modelo':$(this).val()},function(r){
+				var append_string = no_option;
+				$(r).each(function(){
+					append_string = append_string + '<option value="'+this.presion+'">'+this.presion+' psi</option>';
+				});
+				$('#pump_picker_presure').html(append_string);
+			},'json');
+		}else{
+			$('#pump_picker_presure').html(no_option);
+		}
+	});
+
+
+	//*********************************************************************************************************************************************
 	//DRILL STRING: ADD ANOTHER
 	$('#add_another_drill').click(function(e){
 		e.preventDefault();
@@ -237,7 +362,7 @@ $(document).ready(function(){
 			return false;
 		}
 	});
-
+	//********************************************************************************************************************************************
 	//clocks
 	$('.clock_1,.clock_2,.clock_3').change(function(){
 		var this_class = $(this).attr('class');
@@ -245,8 +370,12 @@ $(document).ready(function(){
 		$('.'+this_class+'_label').html(new_hour);
 	});
 
-	//CALCULOS TOTALES
-	//************************************************
+
+
+	//*******************************************************************************
+	// CALCULOS 																	*
+	//*******************************************************************************
+	
 	$('#qfluids_form input').live('keyup',function(){
 		correr_calculos();
 	});
@@ -258,8 +387,7 @@ $(document).ready(function(){
 	})
 
 	function correr_calculos(){
-		correr_calculos_broca();
-		correr_calculos_propiedadeslodo();
+		calculos_raw();
 		corregir_data();
 	}
 
@@ -272,16 +400,14 @@ $(document).ready(function(){
 	}
 
 	function completar_campo_val(nombre_campo,valor){
-		if(valor == Infinity || valor == NaN){
-			$('#'+nombre_campo).val(0);
-		}else{
-			$('#'+nombre_campo).val(valor);	
-		}
+		$('#'+nombre_campo).val(valor);	
 	}
 
-	//CALCULOS 'BROCA'
-	//************************************************
-	function correr_calculos_broca(){
+	
+	function calculos_raw(){
+
+		//CALCULOS 'BROCA'
+		//************************************************	
 		//jets_string
 		var jets_string = '';
 		$('.broca_jet').each(function(){
@@ -338,11 +464,11 @@ $(document).ready(function(){
 		//HSI
 		var hsi = hhp / (jets_sum * 0.000767);
 		completar_campo_val('hsi',hsi);
-	}
+	
 
-	//CALCULOS 'PROPIEDADES DEL LODO'
-	//************************************************
-	function correr_calculos_propiedadeslodo(){
+		//CALCULOS 'PROPIEDADES DEL LODO'
+		//************************************************
+	
 		//PV_1
 		var pv_1 = 0;
 		pv_1 = $('#teta_601').val() - $('#teta_301').val();
@@ -585,6 +711,11 @@ $(document).ready(function(){
 		});
 		disptotal = disptotal + parseFloat($('#dispvdp').val());
 		completar_campo_val('disptotal',disptotal);
+
+		//CALCULOS 'DATOS DE LA BOMBA'
+		//*******************************************************
+
+		
 
 	}
 

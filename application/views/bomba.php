@@ -16,38 +16,73 @@
 						
 					</tr>
 					<tr>
-						<td class="label_m"><label>LINER/STK:</label></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
+						<td class="label_m"><label>MAKER:</label></td>
+						<td><input type="text" style="width:100px;" class="pick_pump" placeholder="Click to select..." /></td>
+						<td><input type="text" style="width:100px;" class="pick_pump" placeholder="Click to select..." /></td>
+						<td><input type="text" style="width:100px;" class="pick_pump" placeholder="Click to select..." /></td>
 						
 					</tr>
 					<tr>
-						<td class="label_m"><label>GAL/STK:</label></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
+						<td class="label_m"><label>MODEL:</label></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
 						
 					</tr>
 					<tr>
-						<td class="label_m"><label>SPM/STK:</label></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
+						<td class="label_m"><label>TYPE:</label></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
 						
 					</tr>
 					<tr>
-						<td class="label_m"><label>GAL:</label></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
-						<td><input type="text" /></td>
+						<td class="label_m"><label>MAX PRESS:</label></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						
+					</tr>
+					<tr>
+						<td class="label_m"><label>ROD:</label></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						
+					</tr>
+					<tr>
+						<td class="label_m"><label>Liner/Diameter:</label></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						
+					</tr>
+					<tr>
+						<td class="label_m"><label>Stroke/Length:</label></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						
+					</tr>
+					<tr>
+						<td class="label_m"><label>Efficiency:</label></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						
+					</tr>
+					<tr>
+						<td class="label_m"><label>SPM:</label></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
+						<td><input type="text" style="width:100px;" /></td>
 						
 					</tr>
 					<tr>
 						<td></td>
 						<td></td>
 						<td class="label_m"><label>TOTAL GAL:</label></td>
-						<td><input type="text" id="qgaltotal" name="qgaltotal" value="0" /></td>
+						<td><input type="text" style="width:100px;" id="qgaltotal" name="qgaltotal" value="0" /></td>
 					</tr>
 				</table>
 			</fieldset>

@@ -52,4 +52,5 @@
 <div id="hidden_sections">
 	<?php $this->load->view('select_bit_overlay'); ?>
 	<?php $this->load->view('select_casing_overlay'); ?>
+	<?php $this->load->view('select_pump_overlay'); ?>
 </div>

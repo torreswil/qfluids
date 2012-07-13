@@ -17,7 +17,7 @@
 								</tr>
 								<tr>
 									<td class="label_m"><label>BIT TYPE:</label></td>
-									<td><input type="text" class="medium pick_bit" style="width:144px;" id="broca_bit_type"></td>
+									<td><input type="text" class="medium pick_bit" style="width:144px;" id="broca_bit_type" placeholder="Click to select..."></td>
 								</tr>
 								<tr>		
 									<td class="label_m">
