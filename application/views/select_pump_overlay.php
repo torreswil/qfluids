@@ -1,5 +1,5 @@
 <!-- FORMULARIO SELECCION BOMBAS -->
-<div class="overlay_wrapper" id="select_pump_overlay" style="display:block;">
+<div class="overlay_wrapper" id="select_pump_overlay">
 	<div class="overlay_dialog_wrapper" style="margin-top:50px">
 		<div class="overlay_dialog">
 			<h5>PICK A PUMP [Pump <span class="current_pump_number"></span>]:</h5>
