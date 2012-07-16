@@ -40,7 +40,7 @@
 							</select>
 						</td>
 					</tr>
-					<tr>
+					<tr class="rod_row">
 						<td class="label_m"><label>Rod:</label></td>
 						<td>
 							<select id="pump_picker_rod">

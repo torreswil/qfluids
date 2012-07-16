@@ -26,7 +26,7 @@
 						<td class="label_m"><label>MODEL:</label></td>
 						<td><input type="text" style="width:100px;" class="pump_1" id="pump_1_model" disabled="disabled" /></td>
 						<td><input type="text" style="width:100px;" class="pump_2" id="pump_2_model" disabled="disabled" /></td>
-						<td><input type="text" style="width:100px;" class="pump_3" id="pump_2_model" disabled="disabled" /></td>
+						<td><input type="text" style="width:100px;" class="pump_3" id="pump_3_model" disabled="disabled" /></td>
 						
 					</tr>
 					<tr>

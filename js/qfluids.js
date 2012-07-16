@@ -203,6 +203,7 @@ $(document).ready(function(){
 		pump_element = pump_element.split('_');
 		pump_element = pump_element[1];
 		$('#select_pump_overlay .current_pump_number').html(pump_element);
+		$('.rod_row').show();
 		$('#select_pump_overlay').show();
 	});
 
@@ -231,7 +232,19 @@ $(document).ready(function(){
 	$('#pump_picker_type').change(function(e){
 		e.preventDefault();
 		var no_option = '<option value="" selected="selected">Select...</option>';
+
+		$('#pump_picker_stroke').html(no_option);
+		$('#pump_picker_diameter').html(no_option);
+		$('#pump_picker_rod').html(no_option);
+		$('#pump_picker_model').html(no_option);
+		$('#pump_picker_presure').html(no_option);
+
 		if($(this).val() !== ''){
+			if($(this).val() == 'TRIPLEX'){
+				$('.rod_row').hide();
+			}else{
+				$('.rod_row').show();	
+			}
 			var data = {
 				'maker'			: $('#pump_picker_maker').val(),
 				'type'			: $('#pump_picker_type').val(),
@@ -255,6 +268,11 @@ $(document).ready(function(){
 
 	$('#pump_picker_stroke').change(function(e){
 		e.preventDefault();
+		$('#pump_picker_diameter').html(no_option);
+		$('#pump_picker_rod').html(no_option);
+		$('#pump_picker_model').html(no_option);
+		$('#pump_picker_presure').html(no_option);
+
 		var no_option = '<option value="" selected="selected">Select...</option>';
 		if($(this).val() !== ''){	
 			var data = {
@@ -280,6 +298,10 @@ $(document).ready(function(){
 	$('#pump_picker_diameter').change(function(e){
 		e.preventDefault();
 		var no_option = '<option value="" selected="selected">Select...</option>';
+		$('#pump_picker_rod').html(no_option);
+		$('#pump_picker_model').html(no_option);
+		$('#pump_picker_presure').html(no_option);
+
 		if($(this).val() !== ''){	
 			var data = {
 				'maker'			: $('#pump_picker_maker').val(),
@@ -287,14 +309,32 @@ $(document).ready(function(){
 				'strokelength'	: $('#pump_picker_stroke').val(),
 				'linerdiameter'	: $('#pump_picker_diameter').val()
 			};
-			$.post('/rest/get_pump_rod',data,function(r){
+
+			if($('#pump_picker_type').val() == 'TRIPLEX'){
+				var post_resource = '/rest/get_pump_model';	
+			}else{
+				var post_resource = '/rest/get_pump_rod';
+			}
+			
+
+			$.post(post_resource,data,function(r){
 				var append_string = no_option;
 				$(r).each(function(){
 					if(this.rod !== null){
-						append_string = append_string + '<option value="'+this.rod+'">'+this.rod+' in</option>';
+						if($('#pump_picker_type').val() == 'TRIPLEX'){
+							append_string = append_string + '<option value="'+this.modelo+'">'+this.modelo+'</option>';	
+						}else{
+							append_string = append_string + '<option value="'+this.rod+'">'+this.rod+' in</option>';
+						}
 					}			
 				});
-				$('#pump_picker_rod').html(append_string);
+
+				if($('#pump_picker_type').val() == 'TRIPLEX'){
+					$('#pump_picker_model').html(append_string);
+				}else{
+					$('#pump_picker_rod').html(append_string);		
+				}
+			
 			},'json');
 		}else{
 			$('#pump_picker_rod').html(no_option);
@@ -306,6 +346,9 @@ $(document).ready(function(){
 	$('#pump_picker_rod').change(function(e){
 		e.preventDefault();
 		var no_option = '<option value="" selected="selected">Select...</option>';
+		$('#pump_picker_model').html(no_option);
+		$('#pump_picker_presure').html(no_option);
+		
 		if($(this).val() !== ''){	
 			var data = {
 				'maker'			: $('#pump_picker_maker').val(),
@@ -330,15 +373,28 @@ $(document).ready(function(){
 	$('#pump_picker_model').change(function(e){
 		e.preventDefault();
 		var no_option = '<option value="" selected="selected">Select...</option>';
+		$('#pump_picker_presure').html(no_option);
 		if($(this).val() !== ''){
-			var data = {
-				'maker'			: $('#pump_picker_maker').val(),
-				'type'			: $('#pump_picker_type').val(),
-				'strokelength'	: $('#pump_picker_stroke').val(),
-				'linerdiameter'	: $('#pump_picker_diameter').val(),
-				'rod'			: $('#pump_picker_rod').val(),
-				'modelo'		: $('#pump_picker_model').val()
-			};			
+			
+			if($('#pump_picker_type').val() == 'TRIPLEX'){
+				var data = {
+					'maker'			: $('#pump_picker_maker').val(),
+					'type'			: $('#pump_picker_type').val(),
+					'strokelength'	: $('#pump_picker_stroke').val(),
+					'linerdiameter'	: $('#pump_picker_diameter').val(),
+					'modelo'		: $('#pump_picker_model').val()
+				};
+			}else{
+				var data = {
+					'maker'			: $('#pump_picker_maker').val(),
+					'type'			: $('#pump_picker_type').val(),
+					'strokelength'	: $('#pump_picker_stroke').val(),
+					'linerdiameter'	: $('#pump_picker_diameter').val(),
+					'rod'			: $('#pump_picker_rod').val(),
+					'modelo'		: $('#pump_picker_model').val()
+				};
+			}
+
 			$.post('/rest/get_pump_pression',data,function(r){
 				var append_string = no_option;
 				$(r).each(function(){
@@ -372,27 +428,59 @@ $(document).ready(function(){
 	//PUMP PICKER: CONTINUE
 	$('#btn_pump_selected').click(function(e){
 		e.preventDefault();
-		var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
-		$('#pump_'+pump_number+'_maker').val($('#pump_picker_maker').val());
-		$('#pump_'+pump_number+'_type').val($('#pump_picker_type').val());
-		$('#pump_'+pump_number+'_stroke').val($('#pump_picker_stroke').val());
-		$('#pump_'+pump_number+'_diameter').val($('#pump_picker_diameter').val());
-		$('#pump_'+pump_number+'_rod').val($('#pump_picker_rod').val());
-		$('#pump_'+pump_number+'_model').val($('#pump_picker_model').val());
-		$('#pump_'+pump_number+'_presure').val($('#pump_picker_presure').val());
-	
-		var no_option = '<option value="" selected="selected">Select...</option>';
-		$('#pump_picker_maker').val('');
-		$('#pump_picker_type').html(no_option);
-		$('#pump_picker_stroke').html(no_option);
-		$('#pump_picker_diameter').html(no_option);
-		$('#pump_picker_rod').html(no_option);
-		$('#pump_picker_model').html(no_option);
-		$('#pump_picker_presure').html(no_option);
-		$('#select_pump_overlay .current_pump_number').html('');
-		$('#select_pump_overlay').hide();
+		var error_qty = 0;
+		$('#select_pump_overlay select').each(function(){
+			if($(this).val() == ''){
+				error_qty = error_qty + 1;
+			}
+		});
 
-		$('#pump_'+pump_number+'_maker').removeAttr('disabled');
+		
+		if($('#pump_picker_type').val() == 'TRIPLEX'){
+			if(error_qty == 1){
+				var pump_continue = true;
+			}else{
+				var pump_continue = false;
+			}
+		}else{
+			if(error_qty > 0){
+				var pump_continue = false;
+			}else{
+				var pump_continue = true;
+			}
+		}
+
+		if(pump_continue == true){
+			var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
+			$('#pump_'+pump_number+'_maker').val($('#pump_picker_maker').val());
+			$('#pump_'+pump_number+'_type').val($('#pump_picker_type').val());
+			$('#pump_'+pump_number+'_stroke').val($('#pump_picker_stroke').val());
+			$('#pump_'+pump_number+'_diameter').val($('#pump_picker_diameter').val());
+			
+			if($('#pump_picker_type').val() == 'TRIPLEX'){
+				$('#pump_'+pump_number+'_rod').val(0);
+			}else{
+				$('#pump_'+pump_number+'_rod').val($('#pump_picker_rod').val());
+			}
+			
+			$('#pump_'+pump_number+'_model').val($('#pump_picker_model').val());
+			$('#pump_'+pump_number+'_presure').val($('#pump_picker_presure').val());
+		
+			var no_option = '<option value="" selected="selected">Select...</option>';
+			$('#pump_picker_maker').val('');
+			$('#pump_picker_type').html(no_option);
+			$('#pump_picker_stroke').html(no_option);
+			$('#pump_picker_diameter').html(no_option);
+			$('#pump_picker_rod').html(no_option);
+			$('#pump_picker_model').html(no_option);
+			$('#pump_picker_presure').html(no_option);
+			$('#select_pump_overlay .current_pump_number').html('');
+			$('#select_pump_overlay').hide();
+
+			$('#pump_'+pump_number+'_maker').removeAttr('disabled');
+		}else{
+			alert('Some fields are empty. Please verify and try again.');
+		}
 
 	});
 
@@ -797,7 +885,6 @@ $(document).ready(function(){
 		//CALCULOS 'DATOS DE LA BOMBA'
 		//*******************************************************
 
-		
 
 	}
 
