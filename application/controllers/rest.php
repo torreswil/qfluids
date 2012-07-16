@@ -91,4 +91,8 @@ class Rest extends CI_Controller {
 	public function get_pump_pression(){
 		echo json_encode($this->Api->get_distinct_where('bombas','presion',$_POST));	
 	}
+
+	public function insert_pump(){
+		echo json_encode($this->Api->create('bombas',$_POST));
+	}
 }

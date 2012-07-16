@@ -407,6 +407,18 @@ $(document).ready(function(){
 		}
 	});
 
+	$('#checkbox_pump_not_found').change(function(){
+		if($(this).attr('checked') == 'checked'){
+			$('#table_bit_picker select,#table_bit_picker input').attr('disabled','disabled');
+			$('#table_bit_creator select,#table_bit_creator input').removeAttr('disabled');
+			$('#table_bit_creator').show();
+		}else{
+			$('#table_bit_picker select,#table_bit_picker input').removeAttr('disabled');
+			$('#table_bit_creator select,#table_bit_creator input').attr('disabled','disabled');
+			$('#table_bit_creator').hide();
+		}
+	});
+
 	//PUMP PICKER: CANCEL OVERLAY
 	$('#select_pump_overlay a.cancel_overlay').click(function(e){
 		e.preventDefault();
