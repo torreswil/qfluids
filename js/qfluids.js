@@ -205,7 +205,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		var no_option = '<option value="" selected="selected">Select...</option>';
 		if($(this).val() !== ''){	
-			$.post('/rest/get_pump_types',{'maker':$(this).val()},function(r){
+			var data = {'maker':$(this).val()};
+			$.post('/rest/get_pump_types',data,function(r){
 				var append_string = no_option;
 				$(r).each(function(){
 					append_string = append_string + '<option value="'+this.type+'">'+this.type+'</option>';
@@ -225,8 +226,12 @@ $(document).ready(function(){
 	$('#pump_picker_type').change(function(e){
 		e.preventDefault();
 		var no_option = '<option value="" selected="selected">Select...</option>';
-		if($(this).val() !== ''){	
-			$.post('/rest/get_pump_strokelength',{'type':$(this).val()},function(r){
+		if($(this).val() !== ''){
+			var data = {
+				'maker'			: $('#pump_picker_maker').val(),
+				'type'			: $('#pump_picker_type').val(),
+			};	
+			$.post('/rest/get_pump_strokelength',data,function(r){
 				log(r);
 				var append_string = no_option;
 				$(r).each(function(){
@@ -247,7 +252,12 @@ $(document).ready(function(){
 		e.preventDefault();
 		var no_option = '<option value="" selected="selected">Select...</option>';
 		if($(this).val() !== ''){	
-			$.post('/rest/get_pump_linerdiameter',{'strokelength':$(this).val()},function(r){
+			var data = {
+				'maker'			: $('#pump_picker_maker').val(),
+				'type'			: $('#pump_picker_type').val(),
+				'strokelength'	: $('#pump_picker_stroke').val(),
+			};
+			$.post('/rest/get_pump_linerdiameter',data,function(r){
 				var append_string = no_option;
 				$(r).each(function(){
 					append_string = append_string + '<option value="'+this.linerdiameter+'">'+this.linerdiameter+' in</option>';
@@ -266,7 +276,13 @@ $(document).ready(function(){
 		e.preventDefault();
 		var no_option = '<option value="" selected="selected">Select...</option>';
 		if($(this).val() !== ''){	
-			$.post('/rest/get_pump_rod',{'linerdiameter':$(this).val()},function(r){
+			var data = {
+				'maker'			: $('#pump_picker_maker').val(),
+				'type'			: $('#pump_picker_type').val(),
+				'strokelength'	: $('#pump_picker_stroke').val(),
+				'linerdiameter'	: $('#pump_picker_diameter').val()
+			};
+			$.post('/rest/get_pump_rod',data,function(r){
 				var append_string = no_option;
 				$(r).each(function(){
 					if(this.rod !== null){
@@ -286,7 +302,14 @@ $(document).ready(function(){
 		e.preventDefault();
 		var no_option = '<option value="" selected="selected">Select...</option>';
 		if($(this).val() !== ''){	
-			$.post('/rest/get_pump_model',{'rod':$(this).val()},function(r){
+			var data = {
+				'maker'			: $('#pump_picker_maker').val(),
+				'type'			: $('#pump_picker_type').val(),
+				'strokelength'	: $('#pump_picker_stroke').val(),
+				'linerdiameter'	: $('#pump_picker_diameter').val(),
+				'rod'			: $('#pump_picker_rod').val()
+			};
+			$.post('/rest/get_pump_model',data,function(r){
 				var append_string = no_option;
 				$(r).each(function(){
 					append_string = append_string + '<option value="'+this.modelo+'">'+this.modelo+'</option>';
@@ -302,8 +325,16 @@ $(document).ready(function(){
 	$('#pump_picker_model').change(function(e){
 		e.preventDefault();
 		var no_option = '<option value="" selected="selected">Select...</option>';
-		if($(this).val() !== ''){	
-			$.post('/rest/get_pump_pression',{'modelo':$(this).val()},function(r){
+		if($(this).val() !== ''){
+			var data = {
+				'maker'			: $('#pump_picker_maker').val(),
+				'type'			: $('#pump_picker_type').val(),
+				'strokelength'	: $('#pump_picker_stroke').val(),
+				'linerdiameter'	: $('#pump_picker_diameter').val(),
+				'rod'			: $('#pump_picker_rod').val(),
+				'modelo'		: $('#pump_picker_model').val()
+			};			
+			$.post('/rest/get_pump_pression',data,function(r){
 				var append_string = no_option;
 				$(r).each(function(){
 					append_string = append_string + '<option value="'+this.presion+'">'+this.presion+' psi</option>';
