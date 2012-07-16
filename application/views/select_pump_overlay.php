@@ -69,15 +69,15 @@
 				<p><input type="checkbox" id="checkbox_pump_not_found" value="model_not_found" /> I can't find my model. I need to create a new one.</p>
 				
 				<form id="new_pump_form">
-					<table id="table_pump_creator">	
+					<table id="table_pump_creator" style="display:none;">	
 						<tr>
-							<td class="label_m"><label>maker</label></td>
-							<td><input type="text" name="maker" /></td>
+							<td class="label_m"><label>Maker:</label></td>
+							<td><input type="text" name="maker" disabled="disabled" class="required" /></td>
 						</tr>
 						<tr>
-							<td class="label_m"><label>type</label></td>
+							<td class="label_m"><label>Type:</label></td>
 							<td>
-								<select name="type">
+								<select name="type" disabled="disabled" class="required">
 									<option value="">Select...</option>
 									<option value="DUPLEX">DUPLEX</option>
 									<option value="TRIPLEX">TRIPLEX</option>
@@ -85,28 +85,24 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label_m"><label>modelo</label></td>
-							<td><input type="text" name="modelo" /></td>
+							<td class="label_m"><label>Stroke/Length:</label></td>
+							<td><input type="text" name="strokelength" disabled="disabled" class="required" /></td>
 						</tr>
 						<tr>
-							<td class="label_m"><label>strokelength</label></td>
-							<td><input type="text" name="" /></td>
+							<td class="label_m"><label>Liner/Diameter:</label></td>
+							<td><input type="text" name="linerdiameter" disabled="disabled" class="required" /></td>
+						</tr>
+						<tr class="new_pump_rod_tr">
+							<td class="label_m"><label>Rod:</label></td>
+							<td><input type="text" name="rod" disabled="disabled" /></td>
 						</tr>
 						<tr>
-							<td class="label_m"><label>linerdiameter</label></td>
-							<td><input type="text" name="strokelength" /></td>
+							<td class="label_m"><label>Model:</label></td>
+							<td><input type="text" name="modelo" disabled="disabled" class="required" /></td>
 						</tr>
 						<tr>
-							<td class="label_m"><label>rod</label></td>
-							<td><input type="text" name="rod" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>presion</label></td>
-							<td><input type="text" name="presion" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>max_spm</label></td>
-							<td><input type="text" name="max_spm" /></td>
+							<td class="label_m"><label>Max Press:</label></td>
+							<td><input type="text" name="presion" disabled="disabled" class="required" /></td>
 						</tr>
 					</table>
 				</form>

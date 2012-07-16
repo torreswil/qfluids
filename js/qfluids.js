@@ -175,7 +175,7 @@ $(document).ready(function(){
 		$('#select_bit_overlay').hide();
 		$('.pick_bit').removeAttr('disabled');
 		$('#j_1').focus();
-		run_calculos_broca();	
+		correr_calculos();	
 	}
 
 
@@ -407,15 +407,16 @@ $(document).ready(function(){
 		}
 	});
 
+	//SELECT O CREATE PUMP
 	$('#checkbox_pump_not_found').change(function(){
 		if($(this).attr('checked') == 'checked'){
-			$('#table_bit_picker select,#table_bit_picker input').attr('disabled','disabled');
-			$('#table_bit_creator select,#table_bit_creator input').removeAttr('disabled');
-			$('#table_bit_creator').show();
+			$('#table_pump_picker select').attr('disabled','disabled');
+			$('#table_pump_creator select,#table_pump_creator input').removeAttr('disabled');
+			$('#table_pump_creator').show();
 		}else{
-			$('#table_bit_picker select,#table_bit_picker input').removeAttr('disabled');
-			$('#table_bit_creator select,#table_bit_creator input').attr('disabled','disabled');
-			$('#table_bit_creator').hide();
+			$('#table_pump_picker select').removeAttr('disabled');
+			$('#table_pump_creator select,#table_pump_creator input').attr('disabled','disabled');
+			$('#table_pump_creator').hide();
 		}
 	});
 
@@ -440,60 +441,144 @@ $(document).ready(function(){
 	//PUMP PICKER: CONTINUE
 	$('#btn_pump_selected').click(function(e){
 		e.preventDefault();
-		var error_qty = 0;
-		$('#select_pump_overlay select').each(function(){
-			if($(this).val() == ''){
-				error_qty = error_qty + 1;
-			}
-		});
-
-		
-		if($('#pump_picker_type').val() == 'TRIPLEX'){
-			if(error_qty == 1){
-				var pump_continue = true;
-			}else{
-				var pump_continue = false;
-			}
+		if($('#checkbox_pump_not_found:checked').length == 1){
+			var current_action = 'creating_pump';
 		}else{
-			if(error_qty > 0){
-				var pump_continue = false;
-			}else{
-				var pump_continue = true;
-			}
+			current_action = 'selecting_pump';
 		}
 
-		if(pump_continue == true){
-			var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
-			$('#pump_'+pump_number+'_maker').val($('#pump_picker_maker').val());
-			$('#pump_'+pump_number+'_type').val($('#pump_picker_type').val());
-			$('#pump_'+pump_number+'_stroke').val($('#pump_picker_stroke').val());
-			$('#pump_'+pump_number+'_diameter').val($('#pump_picker_diameter').val());
+		if(current_action == 'selecting_pump'){
+			var error_qty = 0;
+			$('#select_pump_overlay select').each(function(){
+				if($(this).val() == ''){
+					error_qty = error_qty + 1;
+				}
+			});
+
 			
 			if($('#pump_picker_type').val() == 'TRIPLEX'){
-				$('#pump_'+pump_number+'_rod').val(0);
+				if(error_qty == 1){
+					var pump_continue = true;
+				}else{
+					var pump_continue = false;
+				}
 			}else{
-				$('#pump_'+pump_number+'_rod').val($('#pump_picker_rod').val());
+				if(error_qty > 0){
+					var pump_continue = false;
+				}else{
+					var pump_continue = true;
+				}
 			}
+
+			if(pump_continue == true){
+				var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
+				$('#pump_'+pump_number+'_maker').val($('#pump_picker_maker').val());
+				$('#pump_'+pump_number+'_type').val($('#pump_picker_type').val());
+				$('#pump_'+pump_number+'_stroke').val($('#pump_picker_stroke').val());
+				$('#pump_'+pump_number+'_diameter').val($('#pump_picker_diameter').val());
+				
+				if($('#pump_picker_type').val() == 'TRIPLEX'){
+					$('#pump_'+pump_number+'_rod').val(0);
+				}else{
+					$('#pump_'+pump_number+'_rod').val($('#pump_picker_rod').val());
+				}
+				
+				$('#pump_'+pump_number+'_model').val($('#pump_picker_model').val());
+				$('#pump_'+pump_number+'_presure').val($('#pump_picker_presure').val());
 			
-			$('#pump_'+pump_number+'_model').val($('#pump_picker_model').val());
-			$('#pump_'+pump_number+'_presure').val($('#pump_picker_presure').val());
-		
-			var no_option = '<option value="" selected="selected">Select...</option>';
-			$('#pump_picker_maker').val('');
-			$('#pump_picker_type').html(no_option);
-			$('#pump_picker_stroke').html(no_option);
-			$('#pump_picker_diameter').html(no_option);
-			$('#pump_picker_rod').html(no_option);
-			$('#pump_picker_model').html(no_option);
-			$('#pump_picker_presure').html(no_option);
-			$('#select_pump_overlay .current_pump_number').html('');
-			$('#select_pump_overlay').hide();
+				//reset select pump
+				var no_option = '<option value="" selected="selected">Select...</option>';
+				$('#pump_picker_maker').val('');
+				$('#pump_picker_type').html(no_option);
+				$('#pump_picker_stroke').html(no_option);
+				$('#pump_picker_diameter').html(no_option);
+				$('#pump_picker_rod').html(no_option);
+				$('#pump_picker_model').html(no_option);
+				$('#pump_picker_presure').html(no_option);
+				$('#select_pump_overlay .current_pump_number').html('');
+				
+				//reset create pump
+				$('#table_pump_creator input').val('');
+				$('#table_pump_creator select[name="type"]').val('DUPLEX');
+				$('#new_pump_form input[name="rod"]').addClass('required');	
+				$('.new_pump_rod_tr').show();
+				$('#table_pump_picker select').removeAttr('disabled');
+				$('#table_pump_creator select,#table_pump_creator input').attr('disabled','disabled');
+				$('#table_pump_creator').hide();
+				$('#select_pump_overlay').hide();
+				$('#pump_'+pump_number+'_maker').removeAttr('disabled');
+			}else{
+				alert('Some fields are empty. Please verify and try again.');
+			}
+		}else if(current_action == 'creating_pump'){
+			var error_qty = 0;
+			$('#new_pump_form .required').each(function(){
+				if($(this).val() == ''){
+					error_qty = error_qty + 1;
+				}
+			});
 
-			$('#pump_'+pump_number+'_maker').removeAttr('disabled');
-		}else{
-			alert('Some fields are empty. Please verify and try again.');
+			if(error_qty > 0){
+				alert('Some fields are empty. Please verify and try again.');
+			}else{
+				var data = $('#new_pump_form').serialize();
+				$.post('/rest/insert_pump',data,function(r){
+					var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
+					$('#pump_'+pump_number+'_maker').val($('#table_pump_creator input[name="maker"]').val());
+					$('#pump_'+pump_number+'_type').val($('#table_pump_creator select[name="type"]').val());
+					$('#pump_'+pump_number+'_stroke').val($('#table_pump_creator input[name="strokelength"]').val());
+					$('#pump_'+pump_number+'_diameter').val($('#table_pump_creator input[name="linerdiameter"]').val());
+					
+					if($('#table_pump_creator select[name="type"]').val() == 'TRIPLEX'){
+						$('#pump_'+pump_number+'_rod').val(0);
+					}else{
+						$('#pump_'+pump_number+'_rod').val($('#table_pump_creator input[name="rod"]').val());
+					}
+					
+					$('#pump_'+pump_number+'_model').val($('#table_pump_creator input[name="modelo"]').val());
+					$('#pump_'+pump_number+'_presure').val($('#table_pump_creator input[name="presion"]').val());
+				
+					//reset select pump
+					var no_option = '<option value="" selected="selected">Select...</option>';
+					$('#pump_picker_maker').val('');
+					$('#pump_picker_type').html(no_option);
+					$('#pump_picker_stroke').html(no_option);
+					$('#pump_picker_diameter').html(no_option);
+					$('#pump_picker_rod').html(no_option);
+					$('#pump_picker_model').html(no_option);
+					$('#pump_picker_presure').html(no_option);
+					$('#select_pump_overlay .current_pump_number').html('');
+					$('#checkbox_pump_not_found:checked').removeAttr('checked');
+					
+					//reset create pump
+					$('#table_pump_creator input').val('');
+					$('#table_pump_creator select[name="type"]').val('DUPLEX');
+					$('#new_pump_form input[name="rod"]').addClass('required');	
+					$('.new_pump_rod_tr').show();
+					$('#table_pump_picker select').removeAttr('disabled');
+					$('#table_pump_creator select,#table_pump_creator input').attr('disabled','disabled');
+					$('#table_pump_creator').hide();
+					$('#checkbox_pump_not_found:checked').removeAttr('checked');					
+
+					$('#select_pump_overlay').hide();
+					$('#pump_'+pump_number+'_maker').removeAttr('disabled');					
+				},'json');
+			}
 		}
+	});
 
+	$('#new_pump_form select[name="type"]').change(function(e){
+		e.preventDefault();
+		if($(this).val() == 'DUPLEX'){
+			$('#new_pump_form input[name="rod"]').addClass('required');	
+			$('.new_pump_rod_tr').show();
+		}else if($(this).val() == 'TRIPLEX'){
+			$('.new_pump_rod_tr').hide();
+			$('#new_pump_form input[name="rod"]').removeClass('required');
+		}else{
+			$('#new_pump_form input[name="rod"]').removeClass('required');	
+			$('.new_pump_rod_tr').show();	
+		}
 	});
 
 
