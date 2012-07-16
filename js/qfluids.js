@@ -444,12 +444,12 @@ $(document).ready(function(){
 		if($('#checkbox_pump_not_found:checked').length == 1){
 			var current_action = 'creating_pump';
 		}else{
-			current_action = 'selecting_pump';
+			var current_action = 'selecting_pump';
 		}
 
 		if(current_action == 'selecting_pump'){
 			var error_qty = 0;
-			$('#select_pump_overlay select').each(function(){
+			$('#table_pump_picker select').each(function(){
 				if($(this).val() == ''){
 					error_qty = error_qty + 1;
 				}
@@ -459,14 +459,18 @@ $(document).ready(function(){
 			if($('#pump_picker_type').val() == 'TRIPLEX'){
 				if(error_qty == 1){
 					var pump_continue = true;
-				}else{
+					log('triplex, 1 error');
+				}else if(error_qty > 1){
 					var pump_continue = false;
+					log('triplex, +1 error');
 				}
 			}else{
 				if(error_qty > 0){
 					var pump_continue = false;
+					log('duplex, +0 errores');
 				}else{
 					var pump_continue = true;
+					log('duplex, no errores');
 				}
 			}
 
