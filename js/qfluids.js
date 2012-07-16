@@ -388,7 +388,8 @@ $(document).ready(function(){
 				$('#row_select_drill_string_' + id).remove();	
 			}else{
 				$('.row_select_drill_string select,.row_select_drill_string input').val('');
-			}	
+			}
+			correr_calculos();	
 		}else{
 			return false;
 		}
