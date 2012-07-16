@@ -198,6 +198,11 @@ $(document).ready(function(){
 	//**************************************************************************************************************************
 	$('.pick_pump').focus(function(e){
 		e.preventDefault();
+		$(this).attr('disabled','disabled');
+		var pump_element = $(this).attr('id');
+		pump_element = pump_element.split('_');
+		pump_element = pump_element[1];
+		$('#select_pump_overlay .current_pump_number').html(pump_element);
 		$('#select_pump_overlay').show();
 	});
 
@@ -344,6 +349,51 @@ $(document).ready(function(){
 		}else{
 			$('#pump_picker_presure').html(no_option);
 		}
+	});
+
+	//PUMP PICKER: CANCEL OVERLAY
+	$('#select_pump_overlay a.cancel_overlay').click(function(e){
+		e.preventDefault();
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		$('#pump_picker_maker').val('');
+		$('#pump_picker_type').html(no_option);
+		$('#pump_picker_stroke').html(no_option);
+		$('#pump_picker_diameter').html(no_option);
+		$('#pump_picker_rod').html(no_option);
+		$('#pump_picker_model').html(no_option);
+		$('#pump_picker_presure').html(no_option);
+		$('#select_pump_overlay').hide();
+
+		var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
+		$('#pump_'+pump_number+'_maker').removeAttr('disabled');
+		$('#select_pump_overlay .current_pump_number').html('');
+	});
+
+	//PUMP PICKER: CONTINUE
+	$('#btn_pump_selected').click(function(e){
+		e.preventDefault();
+		var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
+		$('#pump_'+pump_number+'_maker').val($('#pump_picker_maker').val());
+		$('#pump_'+pump_number+'_type').val($('#pump_picker_type').val());
+		$('#pump_'+pump_number+'_stroke').val($('#pump_picker_stroke').val());
+		$('#pump_'+pump_number+'_diameter').val($('#pump_picker_diameter').val());
+		$('#pump_'+pump_number+'_rod').val($('#pump_picker_rod').val());
+		$('#pump_'+pump_number+'_model').val($('#pump_picker_model').val());
+		$('#pump_'+pump_number+'_presure').val($('#pump_picker_presure').val());
+	
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		$('#pump_picker_maker').val('');
+		$('#pump_picker_type').html(no_option);
+		$('#pump_picker_stroke').html(no_option);
+		$('#pump_picker_diameter').html(no_option);
+		$('#pump_picker_rod').html(no_option);
+		$('#pump_picker_model').html(no_option);
+		$('#pump_picker_presure').html(no_option);
+		$('#select_pump_overlay .current_pump_number').html('');
+		$('#select_pump_overlay').hide();
+
+		$('#pump_'+pump_number+'_maker').removeAttr('disabled');
+
 	});
 
 

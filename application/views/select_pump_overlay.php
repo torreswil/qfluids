@@ -6,7 +6,7 @@
 			<div class="content">
 				<table id="table_pump_picker">
 					<tr>
-						<td class="label_m">Maker:</td>
+						<td class="label_m"><label>Maker:</label></td>
 						<td>
 							<select id="pump_picker_maker">
 								<option value="" selected="selected">Select...</option>
@@ -17,7 +17,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Type:</td>
+						<td class="label_m"><label>Type:</label></td>
 						<td>
 							<select id="pump_picker_type">
 								<option value="" selected="selected">Select...</option>
@@ -25,7 +25,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Strokelength:</td>
+						<td class="label_m"><label>Stroke/Length:</label></td>
 						<td>
 							<select id="pump_picker_stroke">
 								<option value="" selected="selected">Select...</option>
@@ -33,7 +33,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Liner Diameter:</td>
+						<td class="label_m"><label>Liner/Diameter:</label></td>
 						<td>
 							<select id="pump_picker_diameter">
 								<option value="" selected="selected">Select...</option>
@@ -41,7 +41,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Rod:</td>
+						<td class="label_m"><label>Rod:</label></td>
 						<td>
 							<select id="pump_picker_rod">
 								<option value="" selected="selected">Select...</option>
@@ -49,7 +49,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Model:</td>
+						<td class="label_m"><label>Model:</label></td>
 						<td>
 							<select id="pump_picker_model">
 								<option value="" selected="selected">Select...</option>
@@ -57,15 +57,16 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Presure:</td>
+						<td class="label_m"><label>Max Press:</label></td>
 						<td>
 							<select id="pump_picker_presure">
 								<option value="" selected="selected">Select...</option>
 							</select>
 						</td>
 					</tr>	
-				</table>	
-				
+				</table>
+				<p>To - Do: Insert a new pump in the database.</p>	
+			<!--	
 				<p><input type="checkbox" id="checkbox_pump_not_found" value="model_not_found" /> I can't find my model. I need to create a new one.</p>
 				
 				<form id="new_pump_form">
@@ -73,6 +74,7 @@
 						
 					</table>
 				</form>
+			-->
 			</div>
 
 			<div class="cancel_link">
