@@ -73,6 +73,7 @@
 						<tr>
 							<td class="label_m"><label>Maker:</label></td>
 							<td><input type="text" name="maker" disabled="disabled" class="required" /></td>
+							<td></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Type:</label></td>
@@ -83,26 +84,46 @@
 									<option value="TRIPLEX">TRIPLEX</option>
 								</select>
 							</td>
+							<td></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Stroke/Length:</label></td>
-							<td><input type="text" name="strokelength" disabled="disabled" class="required" /></td>
+							<td><input type="text" name="strokefrac" disabled="disabled" class="required" /></td>
+							<td class="unit_field">ej. 2 1/4</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Liner/Diameter:</label></td>
-							<td><input type="text" name="linerdiameter" disabled="disabled" class="required" /></td>
+							<td><input type="text" name="linerdiameter_frac" disabled="disabled" class="required" /></td>
+							<td class="unit_field">ej. 1 1/2</td>
 						</tr>
 						<tr class="new_pump_rod_tr">
 							<td class="label_m"><label>Rod:</label></td>
-							<td><input type="text" name="rod" disabled="disabled" /></td>
+							<td><input type="text" name="rodfrac" disabled="disabled" /></td>
+							<td class="unit_field">ej. 3 1/8</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Model:</label></td>
 							<td><input type="text" name="modelo" disabled="disabled" class="required" /></td>
+							<td></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Max Press:</label></td>
 							<td><input type="text" name="presion" disabled="disabled" class="required" /></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<input type="hidden" name="strokelength" />
+								<input type="hidden" name="linerdiameter" />
+								<input type="hidden" name="rod" />
+
+								<input type="hidden" val="in" name="strokelength_unit" />
+								<input type="hidden" val="in" name="linerdiameter_unit" />
+								<input type="hidden" val="in" name="rod_unit" />
+								<input type="hidden" val="in" name="strokefrac_unit" />
+								<input type="hidden" val="in" name="linerdiameterfrac_unit" />
+								<input type="hidden" val="in" name="rodfrac_unit" />
+							</td>
 						</tr>
 					</table>
 				</form>

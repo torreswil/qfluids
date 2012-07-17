@@ -73,15 +73,15 @@ class Rest extends CI_Controller {
 	}
 
 	public function get_pump_strokelength(){
-		echo json_encode($this->Api->get_distinct_where('bombas','strokelength',$_POST));
+		echo json_encode($this->Api->get_distinct_where('bombas','strokelength, strokefrac',$_POST));
 	}
 
 	public function get_pump_linerdiameter(){
-		echo json_encode($this->Api->get_distinct_where('bombas','linerdiameter',$_POST));
+		echo json_encode($this->Api->get_distinct_where('bombas','linerdiameter, linerdiameter_frac',$_POST));
 	}
 
 	public function get_pump_rod(){
-		echo json_encode($this->Api->get_distinct_where('bombas','rod',$_POST));	
+		echo json_encode($this->Api->get_distinct_where('bombas','rod, rodfrac',$_POST));	
 	}
 
 	public function get_pump_model(){
