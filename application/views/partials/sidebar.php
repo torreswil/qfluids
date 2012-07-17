@@ -7,7 +7,7 @@
 		<ul class="nav_links">
 			<li><a href="#geometria_pozo">Geometría del Pozo</a></li>
 			<li><a href="#broca">Bit Data</a></li>
-			<li><a href="#bomba">Datos de la Bomba</a></li>
+			<li><a href="#bomba">Pump Data</a></li>
 			<li><a href="#propiedades_fluido">Mud Properties</a></li>
 			<li><a href="#datos_generales">Datos Generales</a></li>
 			<li><a href="#inventario">Inventario</a></li>
