@@ -206,3 +206,9 @@
 	padding-right: 5px;
 	vertical-align: middle;
 }
+
+input[disabled="disabled"].white_disabled{
+    background-color:#fff;
+    border:none;
+    box-shadow:none;	
+}
