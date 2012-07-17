@@ -59,6 +59,21 @@
 						</td>
 					</tr>
 					<tr>
+						<td class="label_m"><label>Stroke/Length:</label></td>
+						<td>
+							<input type="text" style="width:100px;" class="pump_1" id="pump_1_stroke_dummie" disabled="disabled" />
+							<input type="hidden" class="pump_1" id="pump_1_stroke" />
+						</td>
+						<td>
+							<input type="text" style="width:100px;" class="pump_2" id="pump_2_stroke_dummie" disabled="disabled" />
+							<input type="hidden" class="pump_2" id="pump_2_stroke" />
+						</td>
+						<td>
+							<input type="text" style="width:100px;" class="pump_3" id="pump_3_stroke_dummie" disabled="disabled" />
+							<input type="hidden" class="pump_3" id="pump_3_stroke" />
+						</td>
+					</tr>					
+					<tr>
 						<td class="label_m"><label>Liner/Diameter:</label></td>
 						<td>
 							<input type="text" style="width:100px;" class="pump_1" id="pump_1_diameter_dummie" disabled="disabled" />
@@ -73,21 +88,6 @@
 							<input type="hidden" class="pump_3" id="pump_3_diameter" />
 						</td>
 						
-					</tr>
-					<tr>
-						<td class="label_m"><label>Stroke/Length:</label></td>
-						<td>
-							<input type="text" style="width:100px;" class="pump_1" id="pump_1_stroke_dummie" disabled="disabled" />
-							<input type="hidden" class="pump_1" id="pump_1_stroke" />
-						</td>
-						<td>
-							<input type="text" style="width:100px;" class="pump_2" id="pump_2_stroke_dummie" disabled="disabled" />
-							<input type="hidden" class="pump_2" id="pump_2_stroke" />
-						</td>
-						<td>
-							<input type="text" style="width:100px;" class="pump_3" id="pump_3_stroke_dummie" disabled="disabled" />
-							<input type="hidden" class="pump_3" id="pump_3_stroke" />
-						</td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Efficiency:</label></td>
