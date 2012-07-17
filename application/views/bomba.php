@@ -1,5 +1,5 @@
 <div class="this_panel" id="bomba">
-	<h2>Datos de la Bomba</h2>
+	<h2>Pump Data</h2>
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">
 	      <li><a href="#">Mud Pump</a></li>
