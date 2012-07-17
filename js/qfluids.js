@@ -8,21 +8,6 @@ function sidebar_position(){
 	}
 }
 
-function mixnumber_to_float(mixnumber){
-	var components 	= mixnumber.split(' ');
-	if(components.length == 1){
-		return parseInt(mixnumber);
-	}else if(components.length == 0){
-		return false;
-	}else if(components.length > 0){
-		var int_part 	= parseFloat(components[0]);
-		var float_part 	= parseFloat(eval(components[1]));
-		var float_num	= int_part + float_part;
-		return float_num;
-	}
-}
-
-
 $(window).resize(function(){
 	sidebar_position();	
 });
@@ -486,12 +471,12 @@ $(document).ready(function(){
 					log('triplex, +1 error');
 				}
 			}else{
-				if(error_qty > 0){
+				if(error_qty > 0 && error_qty < 7){
 					var pump_continue = false;
-					log('duplex, +0 errores');
+				}else if(error_qty == 7){
+					var pump_continue = 'clear';
 				}else{
 					var pump_continue = true;
-					log('duplex, no errores');
 				}
 			}
 
@@ -503,12 +488,12 @@ $(document).ready(function(){
 				$('#pump_'+pump_number+'_diameter').val($('#pump_picker_diameter').val());
 		
 				var stroke_dummie = $('#pump_picker_stroke option:selected').html();
-				stroke_dummie = stroke_dummie.split(' ');
+				stroke_dummie = stroke_dummie.split(' in');
 				stroke_dummie = stroke_dummie[0];
 				$('#pump_'+pump_number+'_stroke_dummie').val(stroke_dummie);
 				
 				var diameter_dummie = $('#pump_picker_diameter option:selected').html();
-				diameter_dummie = diameter_dummie.split(' ');
+				diameter_dummie = diameter_dummie.split(' in');
 				diameter_dummie = diameter_dummie[0];
 				$('#pump_'+pump_number+'_diameter_dummie').val(diameter_dummie);
 				
@@ -519,7 +504,7 @@ $(document).ready(function(){
 					$('#pump_'+pump_number+'_rod').val($('#pump_picker_rod').val());
 
 					var rod_dummie = $('#pump_picker_rod option:selected').html();
-					rod_dummie = rod_dummie.split(' ');
+					rod_dummie = rod_dummie.split(' in');
 					rod_dummie = rod_dummie[0];
 					$('#pump_'+pump_number+'_rod_dummie').val(rod_dummie);
 				}
@@ -548,6 +533,50 @@ $(document).ready(function(){
 				$('#table_pump_creator').hide();
 				$('#select_pump_overlay').hide();
 				$('#pump_'+pump_number+'_maker').removeAttr('disabled');
+
+			}else if(pump_continue == 'clear'){
+
+				var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
+				$('#pump_'+pump_number+'_maker').val('');
+				$('#pump_'+pump_number+'_type').val('');
+				$('#pump_'+pump_number+'_stroke').val('');
+				$('#pump_'+pump_number+'_diameter').val('');
+				$('#pump_'+pump_number+'_stroke_dummie').val('');
+				$('#pump_'+pump_number+'_diameter_dummie').val('');
+				
+				if($('#pump_picker_type').val() == 'TRIPLEX'){
+					$('#pump_'+pump_number+'_rod').val('');
+					$('#pump_'+pump_number+'_rod_dummie').val('');
+				}else{
+					$('#pump_'+pump_number+'_rod').val('');
+					$('#pump_'+pump_number+'_rod_dummie').val('');
+				}
+				
+				$('#pump_'+pump_number+'_model').val('');
+				$('#pump_'+pump_number+'_presure').val('');
+			
+				//reset select pump
+				var no_option = '<option value="" selected="selected">Select...</option>';
+				$('#pump_picker_maker').val('');
+				$('#pump_picker_type').html(no_option);
+				$('#pump_picker_stroke').html(no_option);
+				$('#pump_picker_diameter').html(no_option);
+				$('#pump_picker_rod').html(no_option);
+				$('#pump_picker_model').html(no_option);
+				$('#pump_picker_presure').html(no_option);
+				$('#select_pump_overlay .current_pump_number').html('');
+				
+				//reset create pump
+				$('#table_pump_creator input').val('');
+				$('#table_pump_creator select[name="type"]').val('DUPLEX');
+				$('#new_pump_form input[name="rodfrac"]').addClass('required');	
+				$('.new_pump_rod_tr').show();
+				$('#table_pump_picker select').removeAttr('disabled');
+				$('#table_pump_creator select,#table_pump_creator input').attr('disabled','disabled');
+				$('#table_pump_creator').hide();
+				$('#select_pump_overlay').hide();
+				$('#pump_'+pump_number+'_maker').removeAttr('disabled');
+
 			}else{
 				alert('Some fields are empty. Please verify and try again.');
 			}
@@ -621,7 +650,10 @@ $(document).ready(function(){
 						$('#checkbox_pump_not_found:checked').removeAttr('checked');					
 
 						$('#select_pump_overlay').hide();
-						$('#pump_'+pump_number+'_maker').removeAttr('disabled');					
+						$('#pump_'+pump_number+'_maker').removeAttr('disabled');
+
+						$('#eff_'+pump_number).focus();
+						correr_calculos();	
 					},'json');
 				}else{
 					alert('There are some sintax errors. Please verify and try again.');
@@ -700,12 +732,8 @@ $(document).ready(function(){
 		$('.'+this_class+'_label').html(new_hour);
 	});
 
-
-
-	//*******************************************************************************
-	// CALCULOS 																	*
-	//*******************************************************************************
 	
+	// TRIGGERS CALCULOS
 	$('#qfluids_form input').live('keyup',function(){
 		correr_calculos();
 	});
@@ -716,336 +744,405 @@ $(document).ready(function(){
 		correr_calculos();
 	})
 
-	function correr_calculos(){
-		calculos_raw();
-		corregir_data();
-	}
-
-	function corregir_data(){
-		$('#qfluids_form input').each(function(){
-			if($(this).val() == 'NaN' || $(this).val() == 'Infinity'){
-				$(this).val(0);
-			}
-		});	
-	}
-
-	function completar_campo_val(nombre_campo,valor){
-		$('#'+nombre_campo).val(valor);	
-	}
-
-	
-	function calculos_raw(){
-
-		//CALCULOS 'BROCA'
-		//************************************************	
-		//jets_string
-		var jets_string = '';
-		$('.broca_jet').each(function(){
-			if($(this).val() !== ''){
-				var this_value 			= $(this).val();
-				var this_value_count 	= 0;
-				$('.broca_jet').each(function(){
-					if($(this).val() == this_value){
-						this_value_count = this_value_count + 1;
-					}
-				});
-				var new_part  = this_value_count + '*' + this_value;
-				jets_string = jets_string.replace(new_part,'');
-				jets_string = $.trim(jets_string + ' ' + new_part);
-			}
-		});
-		completar_campo_val('jets_string',jets_string);
-
-		//TFA
-		var tfa = 0;
-		var jets_sum = 0;
-		$('.broca_jet').each(function(){
-			var a = $(this).val();
-			if(a !== ''){
-				var this_jet_square = Math.pow($(this).val(),2);
-				tfa = tfa + this_jet_square;
-				jets_sum = tfa;
-			}
-		});
-		tfa = Math.PI * tfa/4096;
-		completar_campo_val('tfa',tfa);
-		
-		//VEL JETS
-		var veljet = 0;
-		veljet = 0.32 * parseFloat($('#qgaltotal').val()) / tfa;
-		completar_campo_val('veljet',veljet);
-		
-
-		//PD BIT
-		var pdbit = 0;
-		var mw = 0;
-		$('.mw').each(function(){
-			if($(this).val() !== ''){
-				mw = parseFloat($(this).val());
-			}
-		});
-		pdbit = Math.pow(veljet,2) * mw / 1120;
-		completar_campo_val('pdbit',pdbit);
-
-		//HHPBIT
-		var hhp = pdbit * $('#qgaltotal').val() / 1714;
-		completar_campo_val('hhp',hhp);
-
-		//HSI
-		var hsi = hhp / (jets_sum * 0.000767);
-		completar_campo_val('hsi',hsi);
-	
-
-		//CALCULOS 'PROPIEDADES DEL LODO'
-		//************************************************
-	
-		//PV_1
-		var pv_1 = 0;
-		pv_1 = $('#teta_601').val() - $('#teta_301').val();
-		completar_campo_val('pv_1',pv_1);
-
-		//PV_2
-		var pv_2 = 0;
-		pv_2 = $('#teta_602').val() - $('#teta_302').val();
-		completar_campo_val('pv_2',pv_2);
-
-		//PV_3
-		var pv_3 = 0;
-		pv_3 = $('#teta_603').val() - $('#teta_303').val();
-		completar_campo_val('pv_3',pv_3);
-
-		//YP_1
-		var yp_1 = 0;
-		yp_1 =  $('#teta_301').val() - $('#pv_1').val(); 
-		completar_campo_val('yp_1',yp_1);
-
-		//YP_2
-		var yp_2 = 0;
-		yp_2 =  $('#teta_302').val() - $('#pv_2').val();
-		completar_campo_val('yp_2',yp_2);
-
-		//YP_3
-		var yp_3 = 0;
-		yp_3 =  $('#teta_303').val() - $('#pv_3').val();
-		completar_campo_val('yp_3',yp_3);
-
-		//YS_1
-		var ys_1 = 0;
-		ys_1 = 2 * $('#teta_31').val() - $('#teta_61').val();
-		completar_campo_val('ys_1',ys_1); 
-
-		//YS_2
-		var ys_2 = 0;
-		ys_2 = 2 * $('#teta_32').val() - $('#teta_62').val();
-		completar_campo_val('ys_2',ys_2);
-		
-		//YS_3
-		var ys_3 = 0;
-		ys_3 = 2 * $('#teta_33').val() - $('#teta_63').val();
-		completar_campo_val('ys_3',ys_3);
-
-		//n_1
-		var n_1 = 0;
-		n_1 = 1.44 * Math.log(((2*pv_1)+yp_1)/(pv_1 + yp_1));
-		completar_campo_val('n_1',n_1);
-
-		//n_2
-		var n_2 = 0;
-		n_2 = 1.44 * Math.log(((2*pv_2)+yp_2)/(pv_2 + yp_2));
-		completar_campo_val('n_2',n_2);
-
-		//n_3
-		var n_3 = 0;
-		n_3 = 1.44 * Math.log(((2*pv_3)+yp_3)/(pv_3 + yp_3));
-		completar_campo_val('n_3',n_3);
-
-		//k_1
-		var k_1 = 0;
-		k_1 = (Math.pow(511, n_1 * -1) * (pv_1 + yp_1));
-		completar_campo_val('k_1',k_1);
-
-		//k_2
-		var k_2 = 0;
-		k_2 = (Math.pow(511, n_2 * -1) * (pv_2 + yp_2));
-		completar_campo_val('k_2',k_2);
-
-		//k_3
-		var k_3 = 0;
-		k_3 = (Math.pow(511, n_3 * -1) * (pv_3 + yp_3));
-		completar_campo_val('k_3',k_3);
-
-		//sol_1
-		var sol_1 = 0;
-		sol_1 = 100 - $('#wa_1').val() - $('#oil_1').val();
-		sol_1 = (sol_1 == 100) ? 0 : sol_1;
-		completar_campo_val('sol_1',sol_1);
-
-		//sol_2
-		var sol_2 = 0;
-		sol_2 = 100 - $('#wa_2').val() - $('#oil_2').val();
-		sol_2 = (sol_2 == 100) ? 0 : sol_2;
-		completar_campo_val('sol_2',sol_2);
-
-		//sol_3
-		var sol_3 = 0;
-		sol_3 = 100 - $('#wa_3').val() - $('#oil_3').val();
-		sol_3 = (sol_3 == 100) ? 0 : sol_3;
-		completar_campo_val('sol_3',sol_3);
-
-		//asg_1
-		var asg_1 = 0;
-		asg_1 = (($('#mw_1').val()/8.33) - (($('#wa_1').val() / 100) + ($('#oil_1').val() * 0.84/100))) / (sol_1 / 100);
-		completar_campo_val('asg_1',asg_1);
-
-		//asg_2
-		var asg_2 = 0;
-		asg_2 = (($('#mw_2').val()/8.33) - (($('#wa_2').val() / 100) + ($('#oil_2').val() * 0.84/100))) / (sol_2 / 100);
-		completar_campo_val('asg_2',asg_2);
-
-		//asg_3
-		var asg_3 = 0;
-		asg_3 = (($('#mw_3').val()/8.33) - (($('#wa_3').val() / 100) + ($('#oil_3').val() * 0.84/100))) / (sol_3 / 100);
-		completar_campo_val('asg_3',asg_3);
-
-		//lgspercent_1
-		var lgspercent_1 = 0;
-		lgspercent_1 = ((parseFloat($('#wa_1').val()) + (sol_1 * 4.2) + (parseFloat($('#oil_1').val()) * 0.84)) - (100 * (parseFloat($('#mw_1').val()) / 8.33))) / 1.6;
-		completar_campo_val('lgspercent_1',lgspercent_1);
-
-		//lgspercent_2
-		var lgspercent_2 = 0;
-		lgspercent_2 = ((parseFloat($('#wa_2').val()) + (sol_2 * 4.2) + (parseFloat($('#oil_2').val()) * 0.84)) - (100 * (parseFloat($('#mw_2').val()) / 8.33))) / 1.6;
-		completar_campo_val('lgspercent_2',lgspercent_2);
-
-		//lgspercent_3
-		var lgspercent_3 = 0;
-		lgspercent_3 = ((parseFloat($('#wa_3').val()) + (sol_3 * 4.2) + (parseFloat($('#oil_3').val()) * 0.84)) - (100 * (parseFloat($('#mw_3').val()) / 8.33))) / 1.6;
-		completar_campo_val('lgspercent_3',lgspercent_3);
-
-		//hgspercent_1
-		var hgspercent_1 = 0;
-		hgspercent_1 = (100 * (parseFloat($('#mw_1').val()) / 8.33 ) - (parseFloat($('#wa_1').val()) + (sol_1 * 2.6) + (parseFloat($('#oil_1').val()) * 0.84))) / 1.6;
-		completar_campo_val('hgspercent_1',hgspercent_1);
-
-		//hgspercent_2
-		var hgspercent_2 = 0;
-		hgspercent_2 = (100 * (parseFloat($('#mw_2').val()) / 8.33 ) - (parseFloat($('#wa_2').val()) + (sol_2 * 2.6) + (parseFloat($('#oil_2').val()) * 0.84))) / 1.6;
-		completar_campo_val('hgspercent_2',hgspercent_2);
-
-		//hgspercent_3
-		var hgspercent_3 = 0;
-		hgspercent_3 = (100 * (parseFloat($('#mw_3').val()) / 8.33 ) - (parseFloat($('#wa_3').val()) + (sol_3 * 2.6) + (parseFloat($('#oil_3').val()) * 0.84))) / 1.6;
-		completar_campo_val('hgspercent_3',hgspercent_3);
-
-		//lgsppb_1
-		var lgsppb_1 = 0;
-		lgsppb_1 = (lgspercent_1 / 100) * 909.7;
-		completar_campo_val('lgsppb_1',lgsppb_1);
-
-		//lgsppb_2
-		var lgsppb_2 = 0;
-		lgsppb_2 = (lgspercent_2 / 100) * 909.7;
-		completar_campo_val('lgsppb_2',lgsppb_2);
-
-		//lgsppb_3
-		var lgsppb_3 = 0;
-		lgsppb_3 = (lgspercent_3 / 100) * 909.7;
-		completar_campo_val('lgsppb_3',lgsppb_3);
-
-		//hgsppb_1
-		var hgsppb_1 = 0;
-		hgsppb_1 = (hgspercent_1 / 100) * 979;
-		completar_campo_val('hgsppb_1',hgsppb_1);
-
-		//hgsppb_2
-		var hgsppb_2 = 0;
-		hgsppb_2 = (hgspercent_2 / 100) * 979;
-		completar_campo_val('hgsppb_2',hgsppb_2);
-
-		//hgsppb_3
-		var hgsppb_3 = 0;
-		hgsppb_3 = (hgspercent_3 / 100) * 979;
-		completar_campo_val('hgsppb_3',hgsppb_3);
-
-		//capdp
-		var capdp = 0;
-		capdp = Math.pow(parseFloat($('#iddp').val()),2) / 1029.4;
-		completar_campo_val('capdp',capdp);
-
-		//capvdp
-		var capvdp = 0;
-		capvdp = capdp * parseFloat($('#longdp').val());
-		completar_campo_val('capvdp',capvdp);
-
-		//dispdp
-		var dispdp = 0;
-		dispdp = (Math.pow(parseFloat($('#oddp').val()),2) - Math.pow(parseFloat($('#iddp').val()),2)) / 1029.4;
-		completar_campo_val('dispdp',dispdp);
-
-		//dispvdp
-		var dispvdp = 0;
-		dispvdp = dispdp * parseFloat($('#longdp').val());
-		completar_campo_val('dispvdp',dispvdp);
-
-		//drill_string_tools
-		$('.select_drill_string').each(function(){
-			var id_raw = $(this).attr('id');
-			var id = id_raw.split('select_drill_string_');
-			id = id[1];
-
-			//capbha
-			var capbha = 0 
-			capbha = Math.pow(parseFloat($('#idbha_'+id).val()),2)/1029.4
-			completar_campo_val('capbha_'+id,capbha);
-
-			//capvbha
-			var capvbha = 0;
-			capvbha = parseFloat($('#capbha_'+id).val()) * $('#longbha_'+id).val();
-			completar_campo_val('capvbha_'+id,capvbha);
-
-			//dispbha
-			var dispbha = 0;
-			dispbha = (parseFloat(Math.pow($('#odbha_'+id).val(),2)) - parseFloat(Math.pow($('#idbha_'+id).val(),2)))/1029.4;
-			completar_campo_val('dispbha_'+id,dispbha);
-
-			//dispvbha
-			var dispvbha = 0;
-			dispvbha = parseFloat($('#dispbha_'+id).val()) * parseFloat($('#longbha_'+id).val());
-			completar_campo_val('dispvbha_'+id,dispvbha);
-		});
-
-		//totalbha
-		var totalbha = 0;
-		$('.longbha').each(function(){
-			totalbha = totalbha + parseFloat($(this).val());
-		});
-		completar_campo_val('totalbha',totalbha);
-
-		//totalds
-		var totalds = 0;
-		totalds = totalbha + parseFloat($("#longdp").val());
-		completar_campo_val('totalds',totalds);
-
-		//captotal
-		var captotal = 0;
-		$('.capvbha').each(function(){
-			captotal = captotal + parseFloat($(this).val());
-		});
-		captotal = captotal + parseFloat($('#capvdp').val());
-		completar_campo_val('captotal',captotal);
-
-		//disptotal
-		var disptotal = 0;
-		$('.dispvbha').each(function(){
-			disptotal = disptotal + parseFloat($(this).val());
-		});
-		disptotal = disptotal + parseFloat($('#dispvdp').val());
-		completar_campo_val('disptotal',disptotal);
-
-		//CALCULOS 'DATOS DE LA BOMBA'
-		//*******************************************************
-
-
-	}
 
 });
+
+//*******************************************************************************
+// CALCULOS 																	*
+//*******************************************************************************
+
+function mixnumber_to_float(mixnumber){
+	var components 	= mixnumber.split(' ');
+	if(components.length == 1){
+		return parseInt(mixnumber);
+	}else if(components.length == 0){
+		return false;
+	}else if(components.length > 0){
+		var int_part 	= parseFloat(components[0]);
+		var float_part 	= parseFloat(eval(components[1]));
+		var float_num	= int_part + float_part;
+		return float_num;
+	}
+}
+
+function power(selector,exponente){
+	return Math.pow(parseFloat($('#'+selector).val()),exponente);
+}
+
+function correr_calculos(){
+	calculos_raw();
+	corregir_data();
+}
+
+function corregir_data(){
+	$('#qfluids_form input').each(function(){
+		if($(this).val() == 'NaN' || $(this).val() == 'Infinity'){
+			$(this).val(0);
+		}
+	});	
+}
+
+function completar_campo_val(nombre_campo,valor){
+	$('#'+nombre_campo).val(valor);	
+}
+
+function calculos_raw(){
+
+	//CALCULOS 'BROCA'
+	//************************************************	
+	//jets_string
+	var jets_string = '';
+	$('.broca_jet').each(function(){
+		if($(this).val() !== ''){
+			var this_value 			= $(this).val();
+			var this_value_count 	= 0;
+			$('.broca_jet').each(function(){
+				if($(this).val() == this_value){
+					this_value_count = this_value_count + 1;
+				}
+			});
+			var new_part  = this_value_count + '*' + this_value;
+			jets_string = jets_string.replace(new_part,'');
+			jets_string = $.trim(jets_string + ' ' + new_part);
+		}
+	});
+	completar_campo_val('jets_string',jets_string);
+
+	//TFA
+	var tfa = 0;
+	var jets_sum = 0;
+	$('.broca_jet').each(function(){
+		var a = $(this).val();
+		if(a !== ''){
+			var this_jet_square = Math.pow($(this).val(),2);
+			tfa = tfa + this_jet_square;
+			jets_sum = tfa;
+		}
+	});
+	tfa = Math.PI * tfa/4096;
+	completar_campo_val('tfa',tfa);
+	
+	//VEL JETS
+	var veljet = 0;
+	veljet = 0.32 * parseFloat($('#qgaltotal').val()) / tfa;
+	completar_campo_val('veljet',veljet);
+	
+
+	//PD BIT
+	var pdbit = 0;
+	var mw = 0;
+	$('.mw').each(function(){
+		if($(this).val() !== ''){
+			mw = parseFloat($(this).val());
+		}
+	});
+	pdbit = Math.pow(veljet,2) * mw / 1120;
+	completar_campo_val('pdbit',pdbit);
+
+	//HHPBIT
+	var hhp = pdbit * $('#qgaltotal').val() / 1714;
+	completar_campo_val('hhp',hhp);
+
+	//HSI
+	var hsi = hhp / (jets_sum * 0.000767);
+	completar_campo_val('hsi',hsi);
+
+
+	//CALCULOS 'PROPIEDADES DEL LODO'
+	//************************************************
+
+	//PV_1
+	var pv_1 = 0;
+	pv_1 = $('#teta_601').val() - $('#teta_301').val();
+	completar_campo_val('pv_1',pv_1);
+
+	//PV_2
+	var pv_2 = 0;
+	pv_2 = $('#teta_602').val() - $('#teta_302').val();
+	completar_campo_val('pv_2',pv_2);
+
+	//PV_3
+	var pv_3 = 0;
+	pv_3 = $('#teta_603').val() - $('#teta_303').val();
+	completar_campo_val('pv_3',pv_3);
+
+	//YP_1
+	var yp_1 = 0;
+	yp_1 =  $('#teta_301').val() - $('#pv_1').val(); 
+	completar_campo_val('yp_1',yp_1);
+
+	//YP_2
+	var yp_2 = 0;
+	yp_2 =  $('#teta_302').val() - $('#pv_2').val();
+	completar_campo_val('yp_2',yp_2);
+
+	//YP_3
+	var yp_3 = 0;
+	yp_3 =  $('#teta_303').val() - $('#pv_3').val();
+	completar_campo_val('yp_3',yp_3);
+
+	//YS_1
+	var ys_1 = 0;
+	ys_1 = 2 * $('#teta_31').val() - $('#teta_61').val();
+	completar_campo_val('ys_1',ys_1); 
+
+	//YS_2
+	var ys_2 = 0;
+	ys_2 = 2 * $('#teta_32').val() - $('#teta_62').val();
+	completar_campo_val('ys_2',ys_2);
+	
+	//YS_3
+	var ys_3 = 0;
+	ys_3 = 2 * $('#teta_33').val() - $('#teta_63').val();
+	completar_campo_val('ys_3',ys_3);
+
+	//n_1
+	var n_1 = 0;
+	n_1 = 1.44 * Math.log(((2*pv_1)+yp_1)/(pv_1 + yp_1));
+	completar_campo_val('n_1',n_1);
+
+	//n_2
+	var n_2 = 0;
+	n_2 = 1.44 * Math.log(((2*pv_2)+yp_2)/(pv_2 + yp_2));
+	completar_campo_val('n_2',n_2);
+
+	//n_3
+	var n_3 = 0;
+	n_3 = 1.44 * Math.log(((2*pv_3)+yp_3)/(pv_3 + yp_3));
+	completar_campo_val('n_3',n_3);
+
+	//k_1
+	var k_1 = 0;
+	k_1 = (Math.pow(511, n_1 * -1) * (pv_1 + yp_1));
+	completar_campo_val('k_1',k_1);
+
+	//k_2
+	var k_2 = 0;
+	k_2 = (Math.pow(511, n_2 * -1) * (pv_2 + yp_2));
+	completar_campo_val('k_2',k_2);
+
+	//k_3
+	var k_3 = 0;
+	k_3 = (Math.pow(511, n_3 * -1) * (pv_3 + yp_3));
+	completar_campo_val('k_3',k_3);
+
+	//sol_1
+	var sol_1 = 0;
+	sol_1 = 100 - $('#wa_1').val() - $('#oil_1').val();
+	sol_1 = (sol_1 == 100) ? 0 : sol_1;
+	completar_campo_val('sol_1',sol_1);
+
+	//sol_2
+	var sol_2 = 0;
+	sol_2 = 100 - $('#wa_2').val() - $('#oil_2').val();
+	sol_2 = (sol_2 == 100) ? 0 : sol_2;
+	completar_campo_val('sol_2',sol_2);
+
+	//sol_3
+	var sol_3 = 0;
+	sol_3 = 100 - $('#wa_3').val() - $('#oil_3').val();
+	sol_3 = (sol_3 == 100) ? 0 : sol_3;
+	completar_campo_val('sol_3',sol_3);
+
+	//asg_1
+	var asg_1 = 0;
+	asg_1 = (($('#mw_1').val()/8.33) - (($('#wa_1').val() / 100) + ($('#oil_1').val() * 0.84/100))) / (sol_1 / 100);
+	completar_campo_val('asg_1',asg_1);
+
+	//asg_2
+	var asg_2 = 0;
+	asg_2 = (($('#mw_2').val()/8.33) - (($('#wa_2').val() / 100) + ($('#oil_2').val() * 0.84/100))) / (sol_2 / 100);
+	completar_campo_val('asg_2',asg_2);
+
+	//asg_3
+	var asg_3 = 0;
+	asg_3 = (($('#mw_3').val()/8.33) - (($('#wa_3').val() / 100) + ($('#oil_3').val() * 0.84/100))) / (sol_3 / 100);
+	completar_campo_val('asg_3',asg_3);
+
+	//lgspercent_1
+	var lgspercent_1 = 0;
+	lgspercent_1 = ((parseFloat($('#wa_1').val()) + (sol_1 * 4.2) + (parseFloat($('#oil_1').val()) * 0.84)) - (100 * (parseFloat($('#mw_1').val()) / 8.33))) / 1.6;
+	completar_campo_val('lgspercent_1',lgspercent_1);
+
+	//lgspercent_2
+	var lgspercent_2 = 0;
+	lgspercent_2 = ((parseFloat($('#wa_2').val()) + (sol_2 * 4.2) + (parseFloat($('#oil_2').val()) * 0.84)) - (100 * (parseFloat($('#mw_2').val()) / 8.33))) / 1.6;
+	completar_campo_val('lgspercent_2',lgspercent_2);
+
+	//lgspercent_3
+	var lgspercent_3 = 0;
+	lgspercent_3 = ((parseFloat($('#wa_3').val()) + (sol_3 * 4.2) + (parseFloat($('#oil_3').val()) * 0.84)) - (100 * (parseFloat($('#mw_3').val()) / 8.33))) / 1.6;
+	completar_campo_val('lgspercent_3',lgspercent_3);
+
+	//hgspercent_1
+	var hgspercent_1 = 0;
+	hgspercent_1 = (100 * (parseFloat($('#mw_1').val()) / 8.33 ) - (parseFloat($('#wa_1').val()) + (sol_1 * 2.6) + (parseFloat($('#oil_1').val()) * 0.84))) / 1.6;
+	completar_campo_val('hgspercent_1',hgspercent_1);
+
+	//hgspercent_2
+	var hgspercent_2 = 0;
+	hgspercent_2 = (100 * (parseFloat($('#mw_2').val()) / 8.33 ) - (parseFloat($('#wa_2').val()) + (sol_2 * 2.6) + (parseFloat($('#oil_2').val()) * 0.84))) / 1.6;
+	completar_campo_val('hgspercent_2',hgspercent_2);
+
+	//hgspercent_3
+	var hgspercent_3 = 0;
+	hgspercent_3 = (100 * (parseFloat($('#mw_3').val()) / 8.33 ) - (parseFloat($('#wa_3').val()) + (sol_3 * 2.6) + (parseFloat($('#oil_3').val()) * 0.84))) / 1.6;
+	completar_campo_val('hgspercent_3',hgspercent_3);
+
+	//lgsppb_1
+	var lgsppb_1 = 0;
+	lgsppb_1 = (lgspercent_1 / 100) * 909.7;
+	completar_campo_val('lgsppb_1',lgsppb_1);
+
+	//lgsppb_2
+	var lgsppb_2 = 0;
+	lgsppb_2 = (lgspercent_2 / 100) * 909.7;
+	completar_campo_val('lgsppb_2',lgsppb_2);
+
+	//lgsppb_3
+	var lgsppb_3 = 0;
+	lgsppb_3 = (lgspercent_3 / 100) * 909.7;
+	completar_campo_val('lgsppb_3',lgsppb_3);
+
+	//hgsppb_1
+	var hgsppb_1 = 0;
+	hgsppb_1 = (hgspercent_1 / 100) * 979;
+	completar_campo_val('hgsppb_1',hgsppb_1);
+
+	//hgsppb_2
+	var hgsppb_2 = 0;
+	hgsppb_2 = (hgspercent_2 / 100) * 979;
+	completar_campo_val('hgsppb_2',hgsppb_2);
+
+	//hgsppb_3
+	var hgsppb_3 = 0;
+	hgsppb_3 = (hgspercent_3 / 100) * 979;
+	completar_campo_val('hgsppb_3',hgsppb_3);
+
+	//capdp
+	var capdp = 0;
+	capdp = Math.pow(parseFloat($('#iddp').val()),2) / 1029.4;
+	completar_campo_val('capdp',capdp);
+
+	//capvdp
+	var capvdp = 0;
+	capvdp = capdp * parseFloat($('#longdp').val());
+	completar_campo_val('capvdp',capvdp);
+
+	//dispdp
+	var dispdp = 0;
+	dispdp = (Math.pow(parseFloat($('#oddp').val()),2) - Math.pow(parseFloat($('#iddp').val()),2)) / 1029.4;
+	completar_campo_val('dispdp',dispdp);
+
+	//dispvdp
+	var dispvdp = 0;
+	dispvdp = dispdp * parseFloat($('#longdp').val());
+	completar_campo_val('dispvdp',dispvdp);
+
+	//drill_string_tools
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+
+		//capbha
+		var capbha = 0 
+		capbha = Math.pow(parseFloat($('#idbha_'+id).val()),2)/1029.4
+		completar_campo_val('capbha_'+id,capbha);
+
+		//capvbha
+		var capvbha = 0;
+		capvbha = parseFloat($('#capbha_'+id).val()) * $('#longbha_'+id).val();
+		completar_campo_val('capvbha_'+id,capvbha);
+
+		//dispbha
+		var dispbha = 0;
+		dispbha = (parseFloat(Math.pow($('#odbha_'+id).val(),2)) - parseFloat(Math.pow($('#idbha_'+id).val(),2)))/1029.4;
+		completar_campo_val('dispbha_'+id,dispbha);
+
+		//dispvbha
+		var dispvbha = 0;
+		dispvbha = parseFloat($('#dispbha_'+id).val()) * parseFloat($('#longbha_'+id).val());
+		completar_campo_val('dispvbha_'+id,dispvbha);
+	});
+
+	//totalbha
+	var totalbha = 0;
+	$('.longbha').each(function(){
+		totalbha = totalbha + parseFloat($(this).val());
+	});
+	completar_campo_val('totalbha',totalbha);
+
+	//totalds
+	var totalds = 0;
+	totalds = totalbha + parseFloat($("#longdp").val());
+	completar_campo_val('totalds',totalds);
+
+	//captotal
+	var captotal = 0;
+	$('.capvbha').each(function(){
+		captotal = captotal + parseFloat($(this).val());
+	});
+	captotal = captotal + parseFloat($('#capvdp').val());
+	completar_campo_val('captotal',captotal);
+
+	//disptotal
+	var disptotal = 0;
+	$('.dispvbha').each(function(){
+		disptotal = disptotal + parseFloat($(this).val());
+	});
+	disptotal = disptotal + parseFloat($('#dispvdp').val());
+	completar_campo_val('disptotal',disptotal);
+
+	
+
+	//CALCULOS 'DATOS DE LA BOMBA'
+	//*******************************************************
+
+	//galstk_1
+	var galstk_1 = 0;
+	if($('#pump_1_type').val() == 'DUPLEX'){
+		galstk_1 = ((2 * Math.pow(parseFloat($('#pump_1_diameter').val()),2) - Math.pow(parseFloat($('#pump_1_rod').val()),2)) * parseFloat($('#pump_1_stroke').val()) / 6176.4) * 42 * (parseFloat($('#eff_1').val()) / 100);
+	}else if($('#pump_1_type').val() == 'TRIPLEX'){
+		galstk_1 = power('pump_1_diameter',2) * 0.000243 * $('#pump_1_stroke').val() * 42 * ($('#eff_1').val() / 100);
+	}
+	completar_campo_val('galstk_1',galstk_1.toFixed(2));
+
+	//qgal_1
+	var qgal_1 = 0;
+	qgal_1 = $('#spm_1').val() * galstk_1;
+	completar_campo_val('qgal_1',qgal_1.toFixed(2));
+
+	//galstk_2
+	var galstk_2 = 0;
+	if($('#pump_2_type').val() == 'DUPLEX'){
+		galstk_2 = ((2 * Math.pow(parseFloat($('#pump_2_diameter').val()),2) - Math.pow(parseFloat($('#pump_2_rod').val()),2)) * parseFloat($('#pump_2_stroke').val()) / 6176.4) * 42 * (parseFloat($('#eff_2').val()) / 100);
+	}else if($('#pump_2_type').val() == 'TRIPLEX'){
+		galstk_2 = power('pump_2_diameter',2) * 0.000243 * $('#pump_2_stroke').val() * 42 * ($('#eff_2').val() / 100);
+	}
+	completar_campo_val('galstk_2',galstk_2.toFixed(2));
+
+	//qgal_2
+	var qgal_2 = 0;
+	qgal_2 = $('#spm_2').val() * galstk_2;
+	completar_campo_val('qgal_2',qgal_2.toFixed(2));
+
+	//galstk_3
+	var galstk_3 = 0;
+	if($('#pump_3_type').val() == 'DUPLEX'){
+		galstk_3 = ((2 * Math.pow(parseFloat($('#pump_3_diameter').val()),2) - Math.pow(parseFloat($('#pump_3_rod').val()),2)) * parseFloat($('#pump_3_stroke').val()) / 6176.4) * 42 * (parseFloat($('#eff_3').val()) / 100);
+	}else if($('#pump_3_type').val() == 'TRIPLEX'){
+		galstk_3 = power('pump_3_diameter',2) * 0.000243 * $('#pump_3_stroke').val() * 42 * ($('#eff_3').val() / 100);
+	}
+	completar_campo_val('galstk_3',galstk_3.toFixed(2));
+
+	//qgal_3
+	var qgal_3 = 0;
+	qgal_3 = $('#spm_3').val() * galstk_3;
+	completar_campo_val('qgal_3',qgal_3.toFixed(2));
+
+	//qgaltotal
+	var qgaltotal = 0;
+	qgaltotal = qgal_1 + qgal_2 + qgal_3;
+	completar_campo_val('qgaltotal',qgaltotal.toFixed(2));
+}
