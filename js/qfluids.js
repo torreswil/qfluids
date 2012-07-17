@@ -524,7 +524,7 @@ $(document).ready(function(){
 				//reset create pump
 				$('#table_pump_creator input').val('');
 				$('#table_pump_creator select[name="type"]').val('DUPLEX');
-				$('#new_pump_form input[name="rod"]').addClass('required');	
+				$('#new_pump_form input[name="rodfrac"]').addClass('required');	
 				$('.new_pump_rod_tr').show();
 				$('#table_pump_picker select').removeAttr('disabled');
 				$('#table_pump_creator select,#table_pump_creator input').attr('disabled','disabled');
@@ -590,7 +590,7 @@ $(document).ready(function(){
 						//reset create pump
 						$('#table_pump_creator input').val('');
 						$('#table_pump_creator select[name="type"]').val('DUPLEX');
-						$('#new_pump_form input[name="rod"]').addClass('required');	
+						$('#new_pump_form input[name="rodfrac"]').addClass('required');	
 						$('.new_pump_rod_tr').show();
 						$('#table_pump_picker select').removeAttr('disabled');
 						$('#table_pump_creator select,#table_pump_creator input').attr('disabled','disabled');
