@@ -610,13 +610,13 @@ $(document).ready(function(){
 	$('#new_pump_form select[name="type"]').change(function(e){
 		e.preventDefault();
 		if($(this).val() == 'DUPLEX'){
-			$('#new_pump_form input[name="rod_frac"]').addClass('required');	
+			$('#new_pump_form input[name="rodfrac"]').addClass('required');	
 			$('.new_pump_rod_tr').show();
 		}else if($(this).val() == 'TRIPLEX'){
 			$('.new_pump_rod_tr').hide();
-			$('#new_pump_form input[name="rod_frac"]').removeClass('required');
+			$('#new_pump_form input[name="rodfrac"]').removeClass('required');
 		}else{
-			$('#new_pump_form input[name="rod_frac"]').removeClass('required');	
+			$('#new_pump_form input[name="rodfrac"]').removeClass('required');	
 			$('.new_pump_rod_tr').show();	
 		}
 	});
