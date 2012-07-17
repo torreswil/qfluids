@@ -494,17 +494,27 @@ $(document).ready(function(){
 				$('#pump_'+pump_number+'_type').val($('#pump_picker_type').val());
 				$('#pump_'+pump_number+'_stroke').val($('#pump_picker_stroke').val());
 				$('#pump_'+pump_number+'_diameter').val($('#pump_picker_diameter').val());
-
-				$('#pump_'+pump_number+'_type_dummie').val($('#pump_picker_type option:selected').html());
-				$('#pump_'+pump_number+'_stroke_dummie').val($('#pump_picker_stroke option:selected').html());
-				$('#pump_'+pump_number+'_diameter_dummie').val($('#pump_picker_diameter option:selected').html());
+		
+				var stroke_dummie = $('#pump_picker_stroke option:selected').html();
+				stroke_dummie = stroke_dummie.split(' ');
+				stroke_dummie = stroke_dummie[0];
+				$('#pump_'+pump_number+'_stroke_dummie').val(stroke_dummie);
+				
+				var diameter_dummie = $('#pump_picker_diameter option:selected').html();
+				diameter_dummie = diameter_dummie.split(' ');
+				diameter_dummie = diameter_dummie[0];
+				$('#pump_'+pump_number+'_diameter_dummie').val(diameter_dummie);
 				
 				if($('#pump_picker_type').val() == 'TRIPLEX'){
 					$('#pump_'+pump_number+'_rod').val(0);
-					$('#pump_'+pump_number+'_rod_dummien').val(0);
+					$('#pump_'+pump_number+'_rod_dummie').val(0);
 				}else{
 					$('#pump_'+pump_number+'_rod').val($('#pump_picker_rod').val());
-					$('#pump_'+pump_number+'_rod_dummie').val($('#pump_picker_rod option:selected').html());
+
+					var rod_dummie = $('#pump_picker_rod option:selected').html();
+					rod_dummie = rod_dummie.split(' ');
+					rod_dummie = rod_dummie[0];
+					$('#pump_'+pump_number+'_rod_dummie').val(rod_dummie);
 				}
 				
 				$('#pump_'+pump_number+'_model').val($('#pump_picker_model').val());
