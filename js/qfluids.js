@@ -450,6 +450,13 @@ $(document).ready(function(){
 		var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
 		$('#pump_'+pump_number+'_maker').removeAttr('disabled');
 		$('#select_pump_overlay .current_pump_number').html('');
+
+		if($('#checkbox_pump_not_found:checked').length == 1){
+			$('#checkbox_pump_not_found').removeAttr('checked');
+			$('#new_pump_form input').val('');
+			$('#new_pump_form select').val('');
+			$('#table_pump_creator').hide();
+		}
 	});
 
 	//PUMP PICKER: CONTINUE
