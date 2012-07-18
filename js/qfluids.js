@@ -708,12 +708,12 @@ $(document).ready(function(){
 				var ds_group_preppend = '';
 				ds_group_preppend = ds_group_preppend +		'<tr id="ds_group_'+new_id+'">';
                 ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +		'</tr>';
                 $('#ds_group').prepend(ds_group_preppend);
 
@@ -721,14 +721,13 @@ $(document).ready(function(){
 				var ds_group_preppend = '';
 				ds_group_preppend = ds_group_preppend +		'<tr id="bingham_'+new_id+'">';
                 ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +		'</tr>';
                 $('#bingham_group').prepend(ds_group_preppend);
-
 			});
 		}
 	});
@@ -813,6 +812,10 @@ function corregir_data(){
 
 function completar_campo_val(nombre_campo,valor){
 	$('#'+nombre_campo).val(valor);	
+}
+
+function log10(val) {
+  return Math.log(val) / Math.LN10;
 }
 
 function calculos_raw(){
@@ -1102,8 +1105,16 @@ function calculos_raw(){
 
 		//veltubbha
 		var veltubbha = 0;
-		veltubbha = 0.408 * $('#qgaltotal').val() / power('idbha_'+id,2);
-		completar_campo_val('veltubbha_'+id,veltubbha);
+		veltubbha = 0.408 * parseFloat($('#qgaltotal').val()) / power('idbha_'+id,2);
+		completar_campo_val('veltubbha_'+id,veltubbha.toFixed(2));
+
+		//retbha
+		var retbha = 0;
+		var npt = parseFloat($('#npt').val());
+		var kpt = parseFloat($('#kpt').val());
+		retbha = (89100 * mw * Math.pow(veltubbha,(2-npt))) / kpt * Math.pow(0.0416 * parseFloat($('#idbha_'+id).val()) / (3 + 1 / npt),npt);
+		log('(89100 * '+mw+' * Math.pow('+veltubbha+',(2-'+npt+'))) / '+kpt+' * Math.pow(0.0416 * '+parseFloat($('#idbha_'+id).val())+' / (3 + 1 / '+npt+'),'+npt+')');
+		completar_campo_val('retbha_'+id,retbha.toFixed(2));
 	});
 
 	//totalbha
@@ -1139,7 +1150,51 @@ function calculos_raw(){
 	veltubdp = 0.408 * $('#qgaltotal').val() / power('iddp',2);
 	completar_campo_val('veltubdp',veltubdp.toFixed(2));
 
+	// MATEMATICA DE LA TUBERIA
 
+	//t_600
+	var t_600 = 0;
+	$('.t_600').each(function(){
+		if($(this).val() !== ''){
+			t_600 = $(this).val();
+		}
+	});
+	completar_campo_val('t_600',t_600);
+
+	//t_300
+	var t_300 = 0;
+	$('.t_300').each(function(){
+		if($(this).val() !== ''){
+			t_300 = $(this).val();
+		}
+	});
+	completar_campo_val('t_300',t_300);
+
+	//npt
+	var npt = 0;
+	npt = 3.32 * log10(t_600 / t_300);
+	completar_campo_val('npt',npt.toFixed(2));
+
+	//kpt
+	var kpt = 0;
+	kpt = (511 * t_300) / Math.pow(511,npt);
+	completar_campo_val('kpt',kpt.toFixed(2));
+
+	//at
+	var at = 0;
+	at = (log10(npt) + 3.93) / 50;
+	completar_campo_val('at',at.toFixed(3));
+
+	//bt
+	var bt = 0;
+	bt = (1.75 - log10(npt)) / 7;
+	completar_campo_val('bt',bt.toFixed(3));
+
+
+	//retdp
+	var retdp = 0;
+	retdp = (89100 * mw * Math.pow(veltubdp,(2-npt))) / kpt * Math.pow(0.0416 * iddp / (3 + 1 / npt),npt);
+	completar_campo_val('retdp',retdp.toFixed(2));
 	
 
 	//CALCULOS 'DATOS DE LA BOMBA'

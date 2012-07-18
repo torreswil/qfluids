@@ -2,14 +2,14 @@
     <legend>Ley de Potencias</legend>
     <table>
     	<tr>
-    		<td class="label_m"><label>&#216;600</label></td><td><input type="text" value="59"></td>
-    		<td class="label_m"><label>np</label></td><td><input type="text" value="0.672799"></td>
-    		<td class="label_m"><label>a</label></td><td><input type="text" value="0.075"></td>
+    		<td class="label_m"><label>&#216;600</label></td><td><input type="text" value="0" id="t_600" name="t_600"></td>
+    		<td class="label_m"><label style="text-transform:lowercase">n<sub>p</sub></label></td><td><input type="text" value="0" id="npt" name="npt"></td>
+    		<td class="label_m"><label style="text-transform:lowercase">a</label></td><td><input type="text" value="0" id="at" name="at"></td>
     	</tr>
     	<tr>
-    		<td class="label_m"><label>&#216;300</label></td><td><input type="text" value="37"></td>
-    		<td class="label_m"><label>kp</label></td><td><input type="text" value="284.70813"></td>
-    		<td class="label_m"><label>b</label></td><td><input type="text" value="0.275"></td>
+    		<td class="label_m"><label>&#216;300</label></td><td><input type="text" value="0" id="t_300" name="t_300"></td>
+    		<td class="label_m"><label style="text-transform:lowercase;">k<sub>p</sub></label></td><td><input type="text" value="0" id="kpt" name="kpt"></td>
+    		<td class="label_m"><label style="text-transform:lowercase;">b</label></td><td><input type="text" value="0" id="bt" name="bt"></td>
     	</tr>
     </table>
 
@@ -17,8 +17,8 @@
     	<thead>
                 <tr>
             		<td></td>
-            		<td class="label_m"><label>NRe</label></td>
-            		<td class="label_m"><label>Fp<br />Laminar</label></td>
+            		<td class="label_m"><label>VEL<br /><span style="text-transform:lowercase;">ft/s</span></label></td>
+            		<td class="label_m"><label>N<sub>R<span style="text-transform:lowercase;">e</span></sub></label></td>
             		<td class="label_m"><label>Fp<br />Turbulento</label></td>
             		<td class="label_m"><label>PDp<br />Laminar</label></td>
             		<td class="label_m"><label>PDp<br />Turbulento</label></td>
@@ -26,8 +26,8 @@
             	</tr>
                 <tr>
                     <td class="label_m"><label>dp</label></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td><input type="text" id="veltubdp" name="veltubdp" /></td>
+                    <td><input type="text" id="retdp" name="retdp" /></td>
                     <td><input type="text"></td>
                     <td><input type="text"></td>
                     <td><input type="text"></td>
@@ -37,8 +37,8 @@
     	<tbody id="ds_group">
             <tr id="ds_group_1">
         		<td class="label_m"><label>ds_1</label></td>
-        		<td><input type="text"></td>
-        		<td><input type="text"></td>
+        		<td><input type="text" id="veltubbha_1" name="veltubbha_1"></td>
+        		<td><input type="text" id="retbha_1" name="retbha_1"></td>
         		<td><input type="text"></td>
         		<td><input type="text"></td>
         		<td><input type="text"></td>

@@ -298,16 +298,16 @@
 								<tr>
 									<td class="label_m"><label>600</label></td>
 									<td><input type="text" style="width:60px;" ></td>
-									<td><input type="text" style="width:65px;" id="teta_601" name="teta_601" /></td>
-									<td><input type="text" style="width:65px;" id="teta_602" name="teta_602"></td>
-									<td><input type="text" style="width:65px;" id="teta_603" name="teta_603"></td>
+									<td><input type="text" style="width:65px;" class="t_600" id="teta_601" name="teta_601" /></td>
+									<td><input type="text" style="width:65px;" class="t_600" id="teta_602" name="teta_602"></td>
+									<td><input type="text" style="width:65px;" class="t_600" id="teta_603" name="teta_603"></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>300</label></td>
 									<td><input type="text" style="width:60px;" ></td>
-									<td><input type="text" style="width:65px;" id="teta_301" name="teta_301"></td>
-									<td><input type="text" style="width:65px;" id="teta_302" name="teta_302"></td>
-									<td><input type="text" style="width:65px;" id="teta_303" name="teta_303"></td>
+									<td><input type="text" style="width:65px;" class="t_300" id="teta_301" name="teta_301"></td>
+									<td><input type="text" style="width:65px;" class="t_300" id="teta_302" name="teta_302"></td>
+									<td><input type="text" style="width:65px;" class="t_300" id="teta_303" name="teta_303"></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>200</label></td>

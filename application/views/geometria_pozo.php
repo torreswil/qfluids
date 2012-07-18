@@ -121,7 +121,6 @@
 											<td class="label_m" style="text-align:center;"><label>LENGTH:</label></td>
 											<td class="label_m" style="text-align:center;"><label>Capac.</label></td>
 											<td class="label_m" style="text-align:center;"><label>Displac.</label></td>
-											<td class="label_m" style="text-align:center;"><label>Vel.</label></td>
 											<td class="label_m" style="text-align:center;"><label>Capac.</label></td>
 											<td class="label_m" style="text-align:center;"><label>Displa.</label></td>
 											<td class="label_m" colspan="2" style="text-align:center;"><label>Pressure Losses</label></td>
@@ -134,7 +133,6 @@
 											<td class="unit_field" style="text-align:center;padding-rigth:5px;">ft</td>
 											<td class="unit_field" style="text-align:center;padding-rigth:5px;">Vol bbl</td>
 											<td class="unit_field" style="text-align:center;padding-rigth:5px;">Vol bbl</td>
-											<td class="unit_field" style="text-align:center;padding-rigth:5px;">ft/sec</td>
 											<td class="unit_field" style="text-align:center;padding-rigth:5px;">bbl/ft</td>
 											<td class="unit_field" style="text-align:center;padding-rigth:5px;">bbl/ft</td>
 											<td class="unit_field" style="text-align:center;padding-rigth:5px;">Power</td>
@@ -147,7 +145,6 @@
 											<td><input type="text" name="longdp" id="longdp" value="0" style="width:40px;" /></td>
 											<td><input type="text" name="capvdp" id="capvdp" disabled="disabled"/></td>
 											<td><input type="text" name="dispvdp" id="dispvdp" disabled="disabled"/></td>
-											<td><input type="text" name="veltubdp" id="veltubdp" disabled="disabled"/></td>
 											<td><input type="text" name="capdp" id="capdp" disabled="disabled" style="width:40px;" /></td>
 											<td><input type="text" name="dispdp" id="dispdp" disabled="disabled" style="width:40px;"/></td>
 											<td><input type="text" name="" id="" disabled="disabled"/></td>
@@ -189,7 +186,6 @@
 											<td><input type="text" type="text" name="longbha_1" id="longbha_1" class="longbha_1 longbha" value="0" style="width:40px;" /></td>
 											<td><input type="text" type="text" name="capvbha_1" id="capvbha_1" disabled="disabled" class="capvbha_1 capvbha" /></td>
 											<td><input type="text" type="text" name="dispvbha_1" id="dispvbha_1" class="dispvbha_1 dispvbha" disabled="disabled"/></td>
-											<td><input type="text" type="text" name="veltubbha_1" id="veltubbha_1" disabled="disabled"/></td>
 											<td><input type="text" type="text" name="capbha_1" id="capbha_1" class="capbha_1 capbha" disabled="disabled" style="width:40px;" /></td>
 											<td><input type="text" type="text" name="dispbha_1" id="dispbha_1" class="dispbha_1 dispbha" disabled="disabled" style="width:40px;" /></td>
 											<td><input type="text" type="text" name="" id="" disabled="disabled"/></td>
@@ -203,7 +199,6 @@
 											<td><input type="text" disabled="disabled" id="totalds" name="totalds" style="width:40px;" /></td>
 											<td><input type="text" disabled="disabled" id="captotal" name="captotal"/></td>
 											<td><input type="text" disabled="disabled" id="disptotal" name="disptotal" /></td>
-											<td></td>
 											<td></td>
 											<td class="label_m"><label>TOTAL:</label></td>
 											<td><input type="text" disabled="disabled" /></td>
