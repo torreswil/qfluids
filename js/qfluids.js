@@ -702,6 +702,33 @@ $(document).ready(function(){
 		}else{
 			$.post('/rest/new_drill_string_row',{'drillstring_qty' : first_id},function(r){
 				$('.drill_string_pieces').prepend(r);
+				var new_id = parseInt(first_id) + 1;
+
+				//prepend a new row in the dsmath_tab:exponents table
+				var ds_group_preppend = '';
+				ds_group_preppend = ds_group_preppend +		'<tr id="ds_group_'+new_id+'">';
+                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +		'</tr>';
+                $('#ds_group').prepend(ds_group_preppend);
+
+                //prepend a new row in the dsmath_tab:bingham table
+				var ds_group_preppend = '';
+				ds_group_preppend = ds_group_preppend +		'<tr id="bingham_'+new_id+'">';
+                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled"></td>';
+                ds_group_preppend = ds_group_preppend +		'</tr>';
+                $('#bingham_group').prepend(ds_group_preppend);
+
 			});
 		}
 	});
@@ -715,9 +742,9 @@ $(document).ready(function(){
 			id 			= id[1];
 
 			if($('.select_drill_string').length > 1){
-				$('#row_select_drill_string_' + id).remove();	
+				$('#row_select_drill_string_' + id + ', #ds_group_' + id + ', #bingham_' + id).remove();	
 			}else{
-				$('.row_select_drill_string select,.row_select_drill_string input').val('');
+				$('.row_select_drill_string select,.row_select_drill_string input, #ds_group input').val(0);		
 			}
 			correr_calculos();	
 		}else{
@@ -742,7 +769,9 @@ $(document).ready(function(){
 	})
 	$('#qfluids_form input[type="button"]').live('click',function(){
 		correr_calculos();
-	})
+	});
+
+	$('#ds_math input').attr('disabled','disabled').css('width',100);
 
 
 });
@@ -1022,23 +1051,29 @@ function calculos_raw(){
 	//capdp
 	var capdp = 0;
 	capdp = Math.pow(parseFloat($('#iddp').val()),2) / 1029.4;
-	completar_campo_val('capdp',capdp);
+	completar_campo_val('capdp',capdp.toFixed(4));
 
 	//capvdp
 	var capvdp = 0;
 	capvdp = capdp * parseFloat($('#longdp').val());
-	completar_campo_val('capvdp',capvdp);
+	completar_campo_val('capvdp',capvdp.toFixed(2));
 
 	//dispdp
 	var dispdp = 0;
 	dispdp = (Math.pow(parseFloat($('#oddp').val()),2) - Math.pow(parseFloat($('#iddp').val()),2)) / 1029.4;
-	completar_campo_val('dispdp',dispdp);
+	completar_campo_val('dispdp',dispdp.toFixed(4));
 
 	//dispvdp
 	var dispvdp = 0;
 	dispvdp = dispdp * parseFloat($('#longdp').val());
-	completar_campo_val('dispvdp',dispvdp);
+	completar_campo_val('dispvdp',dispvdp.toFixed(2));
 
+	
+	// CALCULOS GEOMETRIA DEL POZO
+	//**************************************************
+	
+	// 1. DRILL STRING (TUBERIA)
+	
 	//drill_string_tools
 	$('.select_drill_string').each(function(){
 		var id_raw = $(this).attr('id');
@@ -1048,22 +1083,27 @@ function calculos_raw(){
 		//capbha
 		var capbha = 0 
 		capbha = Math.pow(parseFloat($('#idbha_'+id).val()),2)/1029.4
-		completar_campo_val('capbha_'+id,capbha);
+		completar_campo_val('capbha_'+id,capbha.toFixed(4));
 
 		//capvbha
 		var capvbha = 0;
 		capvbha = parseFloat($('#capbha_'+id).val()) * $('#longbha_'+id).val();
-		completar_campo_val('capvbha_'+id,capvbha);
+		completar_campo_val('capvbha_'+id,capvbha.toFixed(2));
 
 		//dispbha
 		var dispbha = 0;
 		dispbha = (parseFloat(Math.pow($('#odbha_'+id).val(),2)) - parseFloat(Math.pow($('#idbha_'+id).val(),2)))/1029.4;
-		completar_campo_val('dispbha_'+id,dispbha);
+		completar_campo_val('dispbha_'+id,dispbha.toFixed(4));
 
 		//dispvbha
 		var dispvbha = 0;
 		dispvbha = parseFloat($('#dispbha_'+id).val()) * parseFloat($('#longbha_'+id).val());
-		completar_campo_val('dispvbha_'+id,dispvbha);
+		completar_campo_val('dispvbha_'+id,dispvbha.toFixed(2));
+
+		//veltubbha
+		var veltubbha = 0;
+		veltubbha = 0.408 * $('#qgaltotal').val() / power('idbha_'+id,2);
+		completar_campo_val('veltubbha_'+id,veltubbha);
 	});
 
 	//totalbha
@@ -1093,6 +1133,12 @@ function calculos_raw(){
 	});
 	disptotal = disptotal + parseFloat($('#dispvdp').val());
 	completar_campo_val('disptotal',disptotal);
+
+	//veltubdp
+	var veltubdp = 0;
+	veltubdp = 0.408 * $('#qgaltotal').val() / power('iddp',2);
+	completar_campo_val('veltubdp',veltubdp.toFixed(2));
+
 
 	
 

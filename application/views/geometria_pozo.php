@@ -1,4 +1,4 @@
-<div class="this_panel" id="geometria_pozo">
+<div class="this_panel" id="geometria_pozo" style="display:block;">
 	<h2>Geometría del Pozo</h2>
 	<fieldset>
 		<table>
@@ -7,13 +7,13 @@
 					<label class="emphasis">DEPTH MD:</label>
 				</td>
 				<td class="label_m" style="padding-right:20px;">
-					<input type="text" style="margin-right:5px;" /> ft
+					<input type="text" style="margin-right:5px;width:40px;" /> ft
 				</td>
 				<td class="label_m">
 					<label class="emphasis">BIT DEPTH:</label>
 				</td>
 				<td class="label_m" style="padding-right:20px;">
-					<input type="text" style="margin-right:5px;" /> ft
+					<input type="text" style="margin-right:5px;width:40px;" /> ft
 				</td>
 			</tr>
 		</table>
@@ -24,6 +24,7 @@
 	      <li><a href="#">Casing</a></li>
 	      <li><a href="#">Hole</a></li>
 	      <li><a href="#">Drill String</a></li>
+	      <li><a href="#">Drill String Math</a></li>
 	    </ul>
 	    <div class="simpleTabsContent" style="height:329px;">
 			<!-- CASING -->
@@ -99,10 +100,10 @@
 								<table>
 									<tr>
 										<td class="label_m"><label>BHA#:</label></td>
-										<td><input type="text" /></td>
+										<td><input type="text" style="width:40px;" /></td>
 
 										<td class="label_m"><label>TOTAL LENGTH BHA:</label></td>
-										<td><input type="text" name="totalbha" id="totalbha" disabled="disabled" /></td>
+										<td><input type="text" name="totalbha" id="totalbha" disabled="disabled" style="width:40px;" /></td>
 									</tr>
 								</table>
 							</fieldset>
@@ -143,12 +144,12 @@
 											<td class="label_m"><label>DRILL PIPE:</label></td>
 											<td><input type="text" name="oddp" id="oddp" /></td>
 											<td><input type="text" name="iddp" id="iddp" /></td>
-											<td><input type="text" name="longdp" id="longdp" /></td>
+											<td><input type="text" name="longdp" id="longdp" value="0" style="width:40px;" /></td>
 											<td><input type="text" name="capvdp" id="capvdp" disabled="disabled"/></td>
 											<td><input type="text" name="dispvdp" id="dispvdp" disabled="disabled"/></td>
-											<td><input type="text" name="" id="" disabled="disabled"/></td>
-											<td><input type="text" name="capdp" id="capdp" disabled="disabled"/></td>
-											<td><input type="text" name="dispdp" id="dispdp" disabled="disabled"/></td>
+											<td><input type="text" name="veltubdp" id="veltubdp" disabled="disabled"/></td>
+											<td><input type="text" name="capdp" id="capdp" disabled="disabled" style="width:40px;" /></td>
+											<td><input type="text" name="dispdp" id="dispdp" disabled="disabled" style="width:40px;"/></td>
 											<td><input type="text" name="" id="" disabled="disabled"/></td>
 											<td><input type="text" name="" id="" disabled="disabled"/></td>
 											<td></td>
@@ -185,12 +186,12 @@
 											</td>
 											<td><input type="text" type="text" name="odbha_1" id="odbha_1" class="odbha_1 odbha" /></td>
 											<td><input type="text" type="text" name="idbha_1" id="idbha_1" class="idbha_1 idbha" /></td>
-											<td><input type="text" type="text" name="longbha_1" id="longbha_1" class="longbha_1 longbha" /></td>
+											<td><input type="text" type="text" name="longbha_1" id="longbha_1" class="longbha_1 longbha" value="0" style="width:40px;" /></td>
 											<td><input type="text" type="text" name="capvbha_1" id="capvbha_1" disabled="disabled" class="capvbha_1 capvbha" /></td>
 											<td><input type="text" type="text" name="dispvbha_1" id="dispvbha_1" class="dispvbha_1 dispvbha" disabled="disabled"/></td>
-											<td><input type="text" type="text" name="" id="" disabled="disabled"/></td>
-											<td><input type="text" type="text" name="capbha_1" id="capbha_1" class="capbha_1 capbha" disabled="disabled"/></td>
-											<td><input type="text" type="text" name="dispbha_1" id="dispbha_1" class="dispbha_1 dispbha" disabled="disabled"/></td>
+											<td><input type="text" type="text" name="veltubbha_1" id="veltubbha_1" disabled="disabled"/></td>
+											<td><input type="text" type="text" name="capbha_1" id="capbha_1" class="capbha_1 capbha" disabled="disabled" style="width:40px;" /></td>
+											<td><input type="text" type="text" name="dispbha_1" id="dispbha_1" class="dispbha_1 dispbha" disabled="disabled" style="width:40px;" /></td>
 											<td><input type="text" type="text" name="" id="" disabled="disabled"/></td>
 											<td><input type="text" type="text" name="" id="" disabled="disabled"/></td>
 											<td class="label_m"><a href="#removeds_1" class="remove_ds">Remove</a></td>
@@ -199,7 +200,7 @@
 											<td></td>
 											<td></td>
 											<td class="label_m"><label>TOTAL:</label></td>
-											<td><input type="text" disabled="disabled" id="totalds" name="totalds" /></td>
+											<td><input type="text" disabled="disabled" id="totalds" name="totalds" style="width:40px;" /></td>
 											<td><input type="text" disabled="disabled" id="captotal" name="captotal"/></td>
 											<td><input type="text" disabled="disabled" id="disptotal" name="disptotal" /></td>
 											<td></td>
@@ -215,6 +216,9 @@
 						</td>						
 					</tr>
 				</table>
+        </div>
+        <div class="simpleTabsContent" id="ds_math">
+        	<?php $this->load->view('ds_math'); ?>
         </div>
 	</div>
 </div>

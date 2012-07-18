@@ -33,7 +33,7 @@
 			</div>
 		</div>
 		
-		<div class="this_panel" id="welcome_panel" style="display:block;">
+		<div class="this_panel" id="welcome_panel" style="display:none;">
 			<p>Seleccione un formulario de datos de entrada para comenzar.</p>
 		</div>
 		<form id="qfluids_form">
