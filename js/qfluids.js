@@ -710,8 +710,8 @@ $(document).ready(function(){
                 ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:100px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +		'</tr>';
@@ -1115,6 +1115,17 @@ function calculos_raw(){
 		retbha = (89100 * mw * Math.pow(veltubbha,(2-npt))) / kpt * Math.pow(0.0416 * parseFloat($('#idbha_'+id).val()) / (3 + 1 / npt),npt);
 		log('(89100 * '+mw+' * Math.pow('+veltubbha+',(2-'+npt+'))) / '+kpt+' * Math.pow(0.0416 * '+parseFloat($('#idbha_'+id).val())+' / (3 + 1 / '+npt+'),'+npt+')');
 		completar_campo_val('retbha_'+id,retbha.toFixed(2));
+
+		//fft_bha_lami
+		var fft_bha_lami = 0;
+		fft_bha_lami = 1 / retbha;
+		completar_campo_val('fft_bha_lami_'+id,fft_bha_lami);
+
+		//fft_bha_tur
+		var fft_bha_tur = 0;
+		fft_bha_tur = parseFloat($('#at').val()) / Math.pow(retbha,parseFloat($('#bt').val()));
+		completar_campo_val('fft_bha_tur_'+id,fft_bha_tur);
+
 	});
 
 	//totalbha
@@ -1195,6 +1206,22 @@ function calculos_raw(){
 	var retdp = 0;
 	retdp = (89100 * mw * Math.pow(veltubdp,(2-npt))) / kpt * Math.pow(0.0416 * iddp / (3 + 1 / npt),npt);
 	completar_campo_val('retdp',retdp.toFixed(2));
+
+	//retc
+	var retc = 0;
+	retc = 3470 - 1370 * npt;
+	completar_campo_val('retc',retc);
+
+	//fft_dp_lami
+	var fft_dp_lami = 0;
+	fft_dp_lami = 1 / retdp;
+	completar_campo_val('fft_dp_lami',fft_dp_lami);
+
+	//fft_dp_tur
+	var fft_dp_tur = 0;
+	fft_dp_tur = at / Math.pow(retdp,bt);
+	completar_campo_val('fft_dp_tur',fft_dp_tur);
+
 	
 
 	//CALCULOS 'DATOS DE LA BOMBA'
