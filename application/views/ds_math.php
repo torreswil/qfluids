@@ -23,8 +23,8 @@
             		<td class="label_m"><label>N<sub>R<span style="text-transform:lowercase;">e</span></sub></label></td>
             		<td class="label_m"><label>F<sub>p</sub><br />Laminar</label></td>
             		<td class="label_m"><label>F<sub>p</sub><br />Turbulento</label></td>
-            		<td class="label_m"><label>PDp<br />Turbulento</label></td>
-            		<td class="label_m"><label>PDp</label></td>
+            		<td class="label_m"><label>Caida de presion<br />Laminar</label></td>
+            		<td class="label_m"><label>caida de presion</label>turbulento</td>
             	</tr>
                 <tr>
                     <td class="label_m"><label>dp</label></td>
