@@ -712,8 +712,9 @@ $(document).ready(function(){
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:100px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpl_'+new_id+'" id="ptpl_'+new_id+'" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpt_'+new_id+'" id="ptpt_'+new_id+'" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="laminarlabelbha_'+new_id+'" id="laminarlabelbha_'+new_id+'" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +		'</tr>';
                 $('#ds_group').prepend(ds_group_preppend);
 
@@ -1246,6 +1247,69 @@ function calculos_raw(){
 		fft_bha_tur = parseFloat($('#at').val()) / power('retbha_'+id,parseFloat($('#bt').val()));
 		completar_campo_val('fft_bha_tur_'+id,fft_bha_tur.toFixed(6));
 	});
+
+	//ptpldp
+	var ptpldp = 0;
+	ptpldp =  (kpt * Math.pow(veltubdp,npt) * Math.pow((( 3 + 1 / npt) / 0.0416 ),npt) / (144000 * power('iddp',(1 + npt)))) * parseFloat($('#longdp').val());
+	completar_campo_val('ptpldp',ptpldp.toFixed(2));
+
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+
+		//ptpl
+		var ptpl = 0;
+		ptpl =  (kpt * power('veltubbha_'+id,npt) * Math.pow((( 3 + 1 / npt) / 0.0416 ),npt) / (144000 * power('idbha_'+id,(1 + npt)))) * parseFloat($('#longbha_'+id).val());
+		log('('+kpt+' * '+power('veltubbha_'+id,npt)+' * '+Math.pow((( 3 + 1 / npt) / 0.0416 ),npt)+' / (144000 * '+power('idbha_'+id,(1 + npt))+')) * '+parseFloat($('#longbha_'+id).val())+'');
+		completar_campo_val('ptpl_'+id,ptpl.toFixed(2));
+	});
+
+	//ptptdp
+	var ptptdp = 0;
+	ptptdp = fft_dp_tur * mw * Math.pow(veltubdp,2) / (25.8 * parseFloat($('#iddp').val())) * parseFloat($('#longdp').val());
+	completar_campo_val('ptptdp',ptptdp.toFixed(2));
+
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+
+		//ptpt
+		var ptpt = 0;
+		ptpt = parseFloat($('#fft_bha_tur_'+id).val()) * mw * power('veltubbha_'+id,2) / (25.8 * parseFloat($('#idbha_'+id).val())) * parseFloat($('#longbha_'+id).val());
+		log(''+parseFloat($('#fft_bha_tur_'+id).val())+' * '+mw+' * '+power('veltubbha_'+id,2)+' / (25.8 * '+parseFloat($('#idbha_'+id).val())+') * '+parseFloat($('#longbha_'+id).val())+'');
+		completar_campo_val('ptpt_'+id,ptpt.toFixed(2));
+	});
+
+	//laminarlabeldp
+	var laminarlabeldp = '';
+	laminarlabeldp = retdp > retc ? laminarlabeldp = 'TURBULENTO' : laminarlabeldp = 'LAMINAR';
+	$('#laminarlabeldp').val(laminarlabeldp);
+	if(laminarlabeldp == 'TURBULENTO'){
+		$('#powerlosspb').val($('#ptptdp').val());
+	}else if(laminarlabeldp == 'LAMINAR'){
+		$('#powerlosspb').val($('#ptpldp').val());
+	}
+	
+
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+
+		//laminarlabelbha
+		var laminarlabelbha = '';
+		laminarlabelbha = parseFloat($('#retbha_'+id).val()) > retc ? laminarlabeldp = 'TURBULENTO' : laminarlabeldp = 'LAMINAR';
+		$('#laminarlabelbha_'+id).val(laminarlabelbha);
+		if(laminarlabelbha == 'TURBULENTO'){
+			$('#powerlossbha_'+id).val($('#ptpt_'+id).val());
+		}else if(laminarlabelbha == 'LAMINAR'){
+			$('#powerlossbha_'+id).val($('#ptpl_'+id).val());
+		}
+
+	});
+
 
 
 	//CALCULOS 'DATOS DE LA BOMBA'

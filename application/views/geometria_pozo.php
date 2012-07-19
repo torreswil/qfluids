@@ -147,7 +147,7 @@
 											<td><input type="text" name="dispvdp" id="dispvdp" disabled="disabled"/></td>
 											<td><input type="text" name="capdp" id="capdp" disabled="disabled" style="width:40px;" /></td>
 											<td><input type="text" name="dispdp" id="dispdp" disabled="disabled" style="width:40px;"/></td>
-											<td><input type="text" name="" id="" disabled="disabled"/></td>
+											<td><input type="text" name="powerlosspb" id="powerlosspb" disabled="disabled"/></td>
 											<td><input type="text" name="" id="" disabled="disabled"/></td>
 											<td></td>
 										</tr>
@@ -188,7 +188,7 @@
 											<td><input type="text" type="text" name="dispvbha_1" id="dispvbha_1" class="dispvbha_1 dispvbha" disabled="disabled"/></td>
 											<td><input type="text" type="text" name="capbha_1" id="capbha_1" class="capbha_1 capbha" disabled="disabled" style="width:40px;" /></td>
 											<td><input type="text" type="text" name="dispbha_1" id="dispbha_1" class="dispbha_1 dispbha" disabled="disabled" style="width:40px;" /></td>
-											<td><input type="text" type="text" name="" id="" disabled="disabled"/></td>
+											<td><input type="text" type="text" name="powerlossbha_1" id="powerlossbha_1" disabled="disabled"/></td>
 											<td><input type="text" type="text" name="" id="" disabled="disabled"/></td>
 											<td class="label_m"><a href="#removeds_1" class="remove_ds">Remove</a></td>
 										</tr>

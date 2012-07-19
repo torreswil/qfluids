@@ -23,17 +23,19 @@
             		<td class="label_m"><label>N<sub>R<span style="text-transform:lowercase;">e</span></sub></label></td>
             		<td class="label_m"><label>F<sub>p</sub><br />Laminar</label></td>
             		<td class="label_m"><label>F<sub>p</sub><br />Turbulento</label></td>
-            		<td class="label_m"><label>Caida de presion<br />Laminar</label></td>
-            		<td class="label_m"><label>caida de presion</label>turbulento</td>
-            	</tr>
+            		<td class="label_m"><label>Caida de presion<br />Laminar</label> Psi</td>
+            		<td class="label_m"><label>caida de presion<br />turbulento</label> Psi</td>
+            	   <td></td>
+                </tr>
                 <tr>
                     <td class="label_m"><label>dp</label></td>
                     <td><input type="text" id="veltubdp" name="veltubdp" /></td>
                     <td><input type="text" id="retdp" name="retdp" /></td>
                     <td><input type="text" id="fft_dp_lami" name="fft_dp_lami"></td>
                     <td><input type="text" id="fft_dp_tur" name="fft_dp_tur" /></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td><input type="text" id="ptpldp" name="ptpldp"></td>
+                    <td><input type="text" id="ptptdp" name="ptptdp"></td>
+                    <td><input type="text" id="laminarlabeldp" name="laminarlabeldp" /></td>
                 </tr>
             </thead>
     	<tbody id="ds_group">
@@ -43,8 +45,9 @@
         		<td><input type="text" id="retbha_1" name="retbha_1"></td>
         		<td><input type="text" id="fft_bha_lami_1" name="fft_bha_lami_1"></td>
         		<td><input type="text" id="fft_bha_tur_1" name="fft_bha_tur_1"></td>
-        		<td><input type="text"></td>
-        		<td><input type="text"></td>
+        		<td><input type="text" id="ptpl_1" name="ptpl_1"></td>
+        		<td><input type="text" id="ptpt_1" name="ptpt_1"></td>
+                <td><input type="text" id="laminarlabelbha_1" name="laminarlabelbha_1" /></td>
         	</tr>
         </tbody>
     </table>		
