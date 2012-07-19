@@ -804,7 +804,7 @@ function correr_calculos(){
 
 function corregir_data(){
 	$('#qfluids_form input').each(function(){
-		if($(this).val() == 'NaN' || $(this).val() == 'Infinity'){
+		if($(this).val() == 'NaN' || $(this).val() == 'Infinity' || $(this).val() == '-Infinity'){
 			$(this).val(0);
 		}
 	});	
