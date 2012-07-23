@@ -39,8 +39,7 @@
 		<form id="qfluids_form">
 			<!-- PANELES DE DATOS DE ENTRADA-->
 			<?php $this->load->view('geometria_pozo'); ?>
-			<?php $this->load->view('broca'); ?>
-			<?php $this->load->view('bomba'); ?>
+			<?php $this->load->view('informacion_operacional'); ?>
 			<?php $this->load->view('datos_generales'); ?>
 			<?php $this->load->view('propiedades_fluido'); ?>
 			<?php $this->load->view('inventario'); ?>
