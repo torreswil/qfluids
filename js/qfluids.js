@@ -763,6 +763,19 @@ $(document).ready(function(){
 		$(this).attr('disabled','disabled');
 	});
 
+	$('#checkbox_mud_not_found').change(function(){
+		if($(this).attr('checked') == 'checked'){
+			$('#table_mud_picker select').attr('disabled','disabled');
+			$('#table_mud_creator input').removeAttr('disabled');
+			$('#table_mud_creator').show();
+		}else{
+			$('#table_mud_picker select').removeAttr('disabled');
+			$('#table_mud_creator input').attr('disabled','disabled');
+			$('#table_mud_creator').hide();
+		}
+
+	});
+
 
 
 

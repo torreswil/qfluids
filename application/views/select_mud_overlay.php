@@ -25,12 +25,7 @@
 						<tr>
 							<td class="label_m"><label>mud TYPE:</label></td>
 							<td>
-								<select id="mud_overlay_listabrocas_new" disabled="disabled" name="id_broca" class="required">
-									<option selected="selected" value="">Select...</option>
-									<?php foreach ($lista_brocas as $tipo_broca) {
-										?><option value="<?= $tipo_broca['id'] ?>"><?= $tipo_broca['nombre_broca'] ?></option><?php
-									} ?>
-								</select>
+								<input type="text" name="nombre">
 							</td>
 						</tr>
 					</table>
