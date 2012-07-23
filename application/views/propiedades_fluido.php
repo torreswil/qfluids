@@ -7,7 +7,7 @@
 					<label class="emphasis">Mud Type:</label>
 				</td>
 				<td>
-					<input type="text" class="medium" />
+					<input type="text" class="medium" value="Please select..." />
 				</td>
 			</tr>
 		</table>

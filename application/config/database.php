@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-if($_SERVER['HTTP_HOST'] == 'qfluids.josepaternina.dev' || $_SERVER['HTTP_HOST'] == 'qfluids.freddy'){
+if($_SERVER['HTTP_HOST'] == 'qfluids.josepaternina.dev' || $_SERVER['HTTP_HOST'] == 'qfluids.freddy' || $_SERVER['HTTP_HOST'] == 'qfluids.josepaternina.com'){
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = '';

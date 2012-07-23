@@ -1,78 +1,16 @@
 <div class="this_panel" id="datos_generales">
 	<h2>Datos Generales</h2>
 	
-<fieldset>
-	<table>
-		<tr>
-			<td class="label_m"><label class="emphasis">Activity:</label></td>
-			<td><input type="text" class="medium" style="width:140px;" /></td>
-			<td class="label_m"><label class="emphasis">Formation</label></td>
-			<td><input type="text" class="medium" style="width:140px;" /></td>
-		</tr>
-	</table>
-</fieldset>
-		
+	
 <table class="super_grid" style="width:930px;">
 	<tr>
 		<td>
 			<fieldset>
 				<legend>Parámetros de Perforación</legend>
-				<fieldset>
-					<table style="float:left;">
-						<tr>
-							<td class="label_m"><label>RPM:</label></td><td><input type="text" class="medium" /></td>
-							<td class="label_m"><label>WOB:</label></td><td><input type="text" class="medium" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Circ. Pres:</label></td><td><input type="text" class="medium" /></td>
-							<td class="label_m"><label>GPM:</label></td><td><input type="text" class="medium" /></td>
-						</tr>
-					</table>
-				</fieldset>
-				<fieldset style="margin-top:10px;">	
-					<table style="float:left;">
-						<tr>
-							<td class="label_m"><label>Cir. time on Bottom-h:</label></td>
-							<td><input type="text" class="medium" style="width:150px;" /></td>
-						</tr>
-						<tr>	
-							<td class="label_m"><label>Dayly avg ROP, ft/h:</label></td>
-							<td><input type="text" class="medium" style="width:150px;" /></td>
-						</tr>
-						<tr>	
-							<td class="label_m"><label>Average cavings while, bbl/h:</label></td>
-							<td><input type="text" class="medium" style="width:150px;" /></td>
-						</tr>
-						<tr>	
-							<td class="label_m"><label>Average cutting while bbl/h:</label></td>
-							<td><input type="text" class="medium" style="width:150px;" /></td>
-						</tr>
-					</table>
-				</fieldset>
 			</fieldset>
 		<td>	
 			<fieldset style="height:227px;">
-				<legend>Survey</legend>
-				<fieldset>
-					<table style="float:left;">
-						<tr>
-							<td class="label_m"><label>MD:</label></td><td><input type="text" style="width:165px" /></td>
-						</tr>
-						<tr>	
-							<td class="label_m"><label>TVD:</label></label></td><td><input type="text" style="width:165px" /></td>
-						</tr>
-						<tr>	
-							<td class="label_m"><label>INCL:</label></td><td><input type="text" style="width:165px" /></td>
-						</tr>
-						<tr>	
-							<td class="label_m"><label>AZIMUT:</label></td><td><input type="text" style="width:165px" /></td>
-						</tr>
-						<tr>	
-							<td class="label_m"><label>DOG LEG:</label></td><td><input type="text" style="width:165px" /></td>
-						</tr>
-					</table>
-				</fieldset>
-			</fieldset>								
+				<legend>Survey</legend>								
 		</td>
 	</tr>
 	<tr>	

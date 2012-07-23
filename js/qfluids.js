@@ -760,6 +760,27 @@ $(document).ready(function(){
 		$('.'+this_class+'_label').html(new_hour);
 	});
 
+
+	//drilling_time_select
+	$('.drilling_time_select').change(function(){
+		if($(this).val() !== ''){
+			var current_val = $(this).val();
+			error_qty = 0;
+			var current_id = $(this).attr('id');
+			$('.drilling_time_select').each(function(){
+				if(current_id !== $(this).attr('id')){
+					if($(this).val() == current_val){
+						error_qty = error_qty + 1;
+					}	
+				}
+			});
+
+			if(error_qty > 0){
+				alert('This activity is already selected.\nPlease select another one.');
+				$(this).val('');
+			}
+		}
+	});
 	
 	// TRIGGERS CALCULOS
 	$('#qfluids_form input').live('keyup',function(){
@@ -854,12 +875,12 @@ function calculos_raw(){
 		}
 	});
 	tfa = Math.PI * tfa/4096;
-	completar_campo_val('tfa',tfa);
+	completar_campo_val('tfa',tfa.toFixed(3));
 	
 	//VEL JETS
 	var veljet = 0;
 	veljet = 0.32 * parseFloat($('#qgaltotal').val()) / tfa;
-	completar_campo_val('veljet',veljet);
+	completar_campo_val('veljet',veljet.toFixed(3));
 	
 
 	//PD BIT
@@ -871,15 +892,15 @@ function calculos_raw(){
 		}
 	});
 	pdbit = Math.pow(veljet,2) * mw / 1120;
-	completar_campo_val('pdbit',pdbit);
+	completar_campo_val('pdbit',pdbit.toFixed(3));
 
 	//HHPBIT
 	var hhp = pdbit * $('#qgaltotal').val() / 1714;
-	completar_campo_val('hhp',hhp);
+	completar_campo_val('hhp',hhp.toFixed(3));
 
 	//HSI
 	var hsi = hhp / (jets_sum * 0.000767);
-	completar_campo_val('hsi',hsi);
+	completar_campo_val('hsi',hsi.toFixed(3));
 
 
 	//CALCULOS 'PROPIEDADES DEL LODO'
@@ -1362,4 +1383,15 @@ function calculos_raw(){
 	var qgaltotal = 0;
 	qgaltotal = qgal_1 + qgal_2 + qgal_3;
 	completar_campo_val('qgaltotal',qgaltotal.toFixed(2));
+
+	//CALCULOS INFORMACION OPERACIONAL
+
+	//drillingtimetotal
+	var drillingtimetotal = 0;
+	$('.drillingt').each(function(){
+		if($(this).val() !== ''){
+			drillingtimetotal = drillingtimetotal + parseFloat($(this).val());
+		}
+	});
+	completar_campo_val('drillingtimetotal',drillingtimetotal.toFixed(1));
 }

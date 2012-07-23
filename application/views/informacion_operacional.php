@@ -1,9 +1,22 @@
 <div class="this_panel" id="informacion_operacional">
 	<h2>Operational Info</h2>
+	<fieldset>
+		<table>
+			<tr>
+				<td class="label_m"><label class="emphasis">Activity:</label></td>
+				<td><input type="text" class="medium" style="width:140px;" /></td>
+				<td class="label_m"><label class="emphasis">Formation</label></td>
+				<td><input type="text" class="medium" style="width:140px;" /></td>
+			</tr>
+		</table>
+	</fieldset>
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Bit Data</a></li>
 	      	<li><a href="#">Mud Pump Data</a></li>
+	      	<li><a href="#">Drilling Time</a></li>
+	      	<li><a href="#">Drilling Parameters</a></li>
+	      	<li><a href="#">Survey</a></li>
 	    </ul>
 	    <div class="simpleTabsContent">
 	    	<table style="width:100%;">
@@ -65,7 +78,7 @@
 							<table>
 								<tr>
 									<td class="label_m"><label>Jets:</label></td>
-									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" id="jets_string" name="jets_string" id="jets_string" /></td>
+									<td><input type="text" disabled="disabled" style="margin-right:5px;width:105px;" id="jets_string" name="jets_string" id="jets_string" /></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>TFA:</label></td>
@@ -260,6 +273,346 @@
 	    			</td>
 	    		</tr>
 	    	</table>
+	    </div>
+	    <div class="simpleTabsContent">
+	    	<table>
+	    		<tr>
+	    			<td class="label_m"><label>Activity</label></td>
+	    			<td class="label_m"><label>Time</label></td>
+	    		</tr>
+	    		<tr>
+	    			<td><input type="text" value="Drilling" disabled="disabled" style="width:86px;"></td>
+	    			<td><input type="text" name="drillingt_0" id="drillingt_0" class="drillingt" /></td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<select style="width:100px;" class="drilling_time_select" id="drillingtime_1">
+	    					<option value="">Select...</option>
+	    					<option value="Trips">Trips</option>
+	    					<option value="Circulating">Circulating</option>
+	    					<option value="Rig">Rig</option>
+	    					<option value="Surveys">Surveys</option>
+	    					<option value="Fishing">Fishing</option>
+	    					<option value="Run Casing">Run Casing</option>
+	    					<option value="Coring">Coring</option>
+	    					<option value="Reaming">Reaming</option>
+	    					<option value="Testing">Testing</option>
+	    					<option value="Logging">Logging</option>
+	    					<option value="Dir work">Dir work</option>
+	    					<option value="Repair">Repair</option>
+	    					<option value="Cementation">Cementation</option>
+	    					<option value="Harden">Harden</option>
+	    					<option value="Connection">Connection</option>
+	    					<option value="Others">Others</option>
+	    				</select>
+	    			</td>
+	    			<td>
+	    				<input type="text" id="drillingt_1" name="drillingt_1" class="drillingt" />
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<select style="width:100px;" class="drilling_time_select" id="drillingtime_2">
+	    					<option value="">Select...</option>
+	    					<option value="Trips">Trips</option>
+	    					<option value="Circulating">Circulating</option>
+	    					<option value="Rig">Rig</option>
+	    					<option value="Surveys">Surveys</option>
+	    					<option value="Fishing">Fishing</option>
+	    					<option value="Run Casing">Run Casing</option>
+	    					<option value="Coring">Coring</option>
+	    					<option value="Reaming">Reaming</option>
+	    					<option value="Testing">Testing</option>
+	    					<option value="Logging">Logging</option>
+	    					<option value="Dir work">Dir work</option>
+	    					<option value="Repair">Repair</option>
+	    					<option value="Cementation">Cementation</option>
+	    					<option value="Harden">Harden</option>
+	    					<option value="Connection">Connection</option>
+	    					<option value="Others">Others</option>
+	    				</select>
+	    			</td>
+	    			<td>
+	    				<input type="text" id="drillingt_2" name="drillingt_2" class="drillingt" />
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<select style="width:100px;" class="drilling_time_select" id="drillingtime_3">
+	    					<option value="">Select...</option>
+	    					<option value="Trips">Trips</option>
+	    					<option value="Circulating">Circulating</option>
+	    					<option value="Rig">Rig</option>
+	    					<option value="Surveys">Surveys</option>
+	    					<option value="Fishing">Fishing</option>
+	    					<option value="Run Casing">Run Casing</option>
+	    					<option value="Coring">Coring</option>
+	    					<option value="Reaming">Reaming</option>
+	    					<option value="Testing">Testing</option>
+	    					<option value="Logging">Logging</option>
+	    					<option value="Dir work">Dir work</option>
+	    					<option value="Repair">Repair</option>
+	    					<option value="Cementation">Cementation</option>
+	    					<option value="Harden">Harden</option>
+	    					<option value="Connection">Connection</option>
+	    					<option value="Others">Others</option>
+	    				</select>
+	    			</td>
+	    			<td>
+	    				<input type="text" id="drillingt_3" name="drillingt_3" class="drillingt" />
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<select style="width:100px;" class="drilling_time_select" id="drillingtime_4">
+	    					<option value="">Select...</option>
+	    					<option value="Trips">Trips</option>
+	    					<option value="Circulating">Circulating</option>
+	    					<option value="Rig">Rig</option>
+	    					<option value="Surveys">Surveys</option>
+	    					<option value="Fishing">Fishing</option>
+	    					<option value="Run Casing">Run Casing</option>
+	    					<option value="Coring">Coring</option>
+	    					<option value="Reaming">Reaming</option>
+	    					<option value="Testing">Testing</option>
+	    					<option value="Logging">Logging</option>
+	    					<option value="Dir work">Dir work</option>
+	    					<option value="Repair">Repair</option>
+	    					<option value="Cementation">Cementation</option>
+	    					<option value="Harden">Harden</option>
+	    					<option value="Connection">Connection</option>
+	    					<option value="Others">Others</option>
+	    				</select>
+	    			</td>
+	    			<td>
+	    				<input type="text" id="drillingt_4" name="drillingt_4" class="drillingt" />
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<select style="width:100px;" class="drilling_time_select" id="drillingtime_5">
+	    					<option value="">Select...</option>
+	    					<option value="Trips">Trips</option>
+	    					<option value="Circulating">Circulating</option>
+	    					<option value="Rig">Rig</option>
+	    					<option value="Surveys">Surveys</option>
+	    					<option value="Fishing">Fishing</option>
+	    					<option value="Run Casing">Run Casing</option>
+	    					<option value="Coring">Coring</option>
+	    					<option value="Reaming">Reaming</option>
+	    					<option value="Testing">Testing</option>
+	    					<option value="Logging">Logging</option>
+	    					<option value="Dir work">Dir work</option>
+	    					<option value="Repair">Repair</option>
+	    					<option value="Cementation">Cementation</option>
+	    					<option value="Harden">Harden</option>
+	    					<option value="Connection">Connection</option>
+	    					<option value="Others">Others</option>
+	    				</select>
+	    			</td>
+	    			<td>
+	    				<input type="text" id="drillingt_5" name="drillingt_5" class="drillingt" />
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<select style="width:100px;" class="drilling_time_select" id="drillingtime_6">
+	    					<option value="">Select...</option>
+	    					<option value="Trips">Trips</option>
+	    					<option value="Circulating">Circulating</option>
+	    					<option value="Rig">Rig</option>
+	    					<option value="Surveys">Surveys</option>
+	    					<option value="Fishing">Fishing</option>
+	    					<option value="Run Casing">Run Casing</option>
+	    					<option value="Coring">Coring</option>
+	    					<option value="Reaming">Reaming</option>
+	    					<option value="Testing">Testing</option>
+	    					<option value="Logging">Logging</option>
+	    					<option value="Dir work">Dir work</option>
+	    					<option value="Repair">Repair</option>
+	    					<option value="Cementation">Cementation</option>
+	    					<option value="Harden">Harden</option>
+	    					<option value="Connection">Connection</option>
+	    					<option value="Others">Others</option>
+	    				</select>
+	    			</td>
+	    			<td>
+	    				<input type="text" id="drillingt_6" name="drillingt_6" class="drillingt" />
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<select style="width:100px;" class="drilling_time_select" id="drillingtime_7">
+	    					<option value="">Select...</option>
+	    					<option value="Trips">Trips</option>
+	    					<option value="Circulating">Circulating</option>
+	    					<option value="Rig">Rig</option>
+	    					<option value="Surveys">Surveys</option>
+	    					<option value="Fishing">Fishing</option>
+	    					<option value="Run Casing">Run Casing</option>
+	    					<option value="Coring">Coring</option>
+	    					<option value="Reaming">Reaming</option>
+	    					<option value="Testing">Testing</option>
+	    					<option value="Logging">Logging</option>
+	    					<option value="Dir work">Dir work</option>
+	    					<option value="Repair">Repair</option>
+	    					<option value="Cementation">Cementation</option>
+	    					<option value="Harden">Harden</option>
+	    					<option value="Connection">Connection</option>
+	    					<option value="Others">Others</option>
+	    				</select>
+	    			</td>
+	    			<td>
+	    				<input type="text" id="drillingt_7" name="drillingt_7" class="drillingt" />
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<select style="width:100px;" class="drilling_time_select" id="drillingtime_8">
+	    					<option value="">Select...</option>
+	    					<option value="Trips">Trips</option>
+	    					<option value="Circulating">Circulating</option>
+	    					<option value="Rig">Rig</option>
+	    					<option value="Surveys">Surveys</option>
+	    					<option value="Fishing">Fishing</option>
+	    					<option value="Run Casing">Run Casing</option>
+	    					<option value="Coring">Coring</option>
+	    					<option value="Reaming">Reaming</option>
+	    					<option value="Testing">Testing</option>
+	    					<option value="Logging">Logging</option>
+	    					<option value="Dir work">Dir work</option>
+	    					<option value="Repair">Repair</option>
+	    					<option value="Cementation">Cementation</option>
+	    					<option value="Harden">Harden</option>
+	    					<option value="Connection">Connection</option>
+	    					<option value="Others">Others</option>
+	    				</select>
+	    			</td>
+	    			<td>
+	    				<input type="text" id="drillingt_8" name="drillingt_8" class="drillingt" />
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<select style="width:100px;" class="drilling_time_select" id="drillingtime_9">
+	    					<option value="">Select...</option>
+	    					<option value="Trips">Trips</option>
+	    					<option value="Circulating">Circulating</option>
+	    					<option value="Rig">Rig</option>
+	    					<option value="Surveys">Surveys</option>
+	    					<option value="Fishing">Fishing</option>
+	    					<option value="Run Casing">Run Casing</option>
+	    					<option value="Coring">Coring</option>
+	    					<option value="Reaming">Reaming</option>
+	    					<option value="Testing">Testing</option>
+	    					<option value="Logging">Logging</option>
+	    					<option value="Dir work">Dir work</option>
+	    					<option value="Repair">Repair</option>
+	    					<option value="Cementation">Cementation</option>
+	    					<option value="Harden">Harden</option>
+	    					<option value="Connection">Connection</option>
+	    					<option value="Others">Others</option>
+	    				</select>
+	    			</td>
+	    			<td>
+	    				<input type="text" id="drillingt_9" name="drillingt_9" class="drillingt" />
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td class="label_m" style="text-align:right;"><label>Total:</label></td>
+	    			<td><input type="text" disabled="disabled" id="drillingtimetotal" name="drillingtimetotal"/></td>
+	    		</tr>
+	    	</table>	
+	    </div>
+	    <div class="simpleTabsContent">
+	    	<table>
+	    		<tr>
+	    			<td style="width:450px;">
+						<fieldset>	
+							<table style="float:left;">
+								<tr>
+									<td class="label_m" style="padding-right:20px;"><label>Daily RPM:</label></td>
+									<td class="unit_field"></td>
+									<td><input type="text" class="medium" style="width:70px;" /></td>
+								</tr>
+								<tr>	
+									<td class="label_m" style="padding-right:20px;"><label>Daily WOB:</label></td>
+									<td class="unit_field"></td>
+									<td><input type="text" class="medium" style="width:70px;" /></td>
+								</tr>
+								<tr>	
+									<td class="label_m" style="padding-right:20px;"><label>Circ. Press:</label></td>
+									<td class="unit_field">psi</td>
+									<td><input type="text" class="medium" style="width:70px;" /></td>
+								</tr>
+								<tr>	
+									<td class="label_m" style="padding-right:20px;"><label>Average cavings while:</label></td>
+									<td class="unit_field">bbl/h</td>
+									<td><input type="text" class="medium" style="width:70px;" /></td>
+								</tr>
+								<tr>	
+									<td class="label_m" style="padding-right:20px;"><label>Average cutting while:</label></td>
+									<td class="unit_field">bbl/h</td>
+									<td><input type="text" class="medium" style="width:70px;" /></td>
+								</tr>
+							</table>
+						</fieldset>
+	    			</td>
+	    			<td>
+						<fieldset style="margin-left:20px;">	
+							<table style="float:left;">
+								<tr>
+									<td class="label_m" style="padding-right:20px;"><label>Feet drilling:</label></td>
+									<td class="unit_field">ft</td>
+									<td><input type="text" disabled="disabled" class="medium" style="width:70px;" /></td>
+								</tr>
+								<tr>	
+									<td class="label_m" style="padding-right:20px;"><label>Daily ROP:</label></td>
+									<td class="unit_field">ft</td>
+									<td><input type="text" disabled="disabled" class="medium" style="width:70px;" /></td>
+								</tr>
+								<tr>	
+									<td class="label_m" style="padding-right:20px;"><label>Daily avge Temp:</label></td>
+									<td class="unit_field">ºF</td>
+									<td><input type="text" disabled="disabled" class="medium" style="width:70px;" /></td>
+								</tr>
+							</table>
+						</fieldset>
+	    			</td>
+	    		</tr>
+	    	</table>
+	    </div>
+	    <div class="simpleTabsContent">
+	    	<fieldset>
+					<table style="float:left;">
+						<tr>
+							<td class="label_m" style="padding-right:20px;"><label>SURVEY MD:</label></td>
+							<td class="unit_field">ft</td>
+							<td><input type="text" style="width:70px" /></td>
+						</tr>
+						<tr>	
+							<td class="label_m" style="padding-right:20px;"><label>SURVEY TVD:</label></label></td>
+							<td class="unit_field">ft</td>
+							<td><input type="text" style="width:70px" /></td>
+						</tr>
+						<tr>	
+							<td class="label_m" style="padding-right:20px;"><label>INCLINATION:</label></td>
+							<td class="unit_field">Deg.</td>
+							<td><input type="text" style="width:70px" /></td>
+						</tr>
+						<tr>	
+							<td class="label_m" style="padding-right:20px;"><label>AZIMUT:</label></td>
+							<td class="unit_field"></td>
+							<td><input type="text" style="width:70px" /></td>
+						</tr>
+						<tr>	
+							<td class="label_m" style="padding-right:20px;"><label>DOG LEG:</label></td>
+							<td class="unit_field"></td>
+							<td><input type="text" style="width:70px" /></td>
+						</tr>
+					</table>
+				</fieldset>
+			</fieldset>
 	    </div>
 	</div>
 </div>
