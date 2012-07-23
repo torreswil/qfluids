@@ -94,4 +94,10 @@ class Rest extends CI_Controller {
 	public function insert_pump(){
 		echo json_encode($this->Api->create('bombas',$_POST));
 	}
+
+
+	//MUD FUNCTIONS
+	public function insert_mud(){
+		echo json_encode($this->Api->create('lodos',$_POST));
+	}
 }

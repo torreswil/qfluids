@@ -783,7 +783,40 @@ $(document).ready(function(){
 		$('#table_mud_picker select').val('');;
 		$('#select_mud_overlay').hide();
 		$('.pick_mud').removeAttr('disabled');
+		$('#table_mud_picker select').removeAttr('disabled');
 		$('#table_mud_creator').hide();	
+	});
+
+	$('#btn_mud_selected').click(function(e){
+		e.preventDefault();
+		if($('#checkbox_mud_not_found:checked').length == 1){
+			var error_qty = 0;
+			$('#new_mud_form input').each(function(){
+				if($(this).val() == ''){
+					error_qty = error_qty + 1;
+				}
+			});
+
+			if(error_qty > 0){
+				alert('Some fields are empty, please verify and try again');
+			}else{
+				var data = $('#new_mud_form').serialize();
+				$.post('/rest/insert_mud',data,function(r){
+					$('.pick_mud').val($('#new_mud_form input').val());	
+					$('#checkbox_mud_not_found').removeAttr('checked');
+					
+					$('#new_mud_form input').val('');
+					$('#table_mud_picker select').val('');
+					$('#table_mud_picker select').removeAttr('disabled');
+					$('#select_mud_overlay').hide();
+					$('.pick_mud').removeAttr('disabled');
+					$('#table_mud_creator').hide();	
+				},'json');
+			}
+		}else{
+
+		}
+
 	});
 
 
