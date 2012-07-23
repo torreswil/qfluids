@@ -804,7 +804,6 @@ $(document).ready(function(){
 				$.post('/rest/insert_mud',data,function(r){
 					$('.pick_mud').val($('#new_mud_form input').val());	
 					$('#checkbox_mud_not_found').removeAttr('checked');
-					
 					$('#new_mud_form input').val('');
 					$('#table_mud_picker select').val('');
 					$('#table_mud_picker select').removeAttr('disabled');
@@ -814,7 +813,14 @@ $(document).ready(function(){
 				},'json');
 			}
 		}else{
-
+			$('.pick_mud').val($('#table_mud_picker select').val());		
+			$('#checkbox_mud_not_found').removeAttr('checked');
+			$('#new_mud_form input').val('');
+			$('#table_mud_picker select').val('');
+			$('#table_mud_picker select').removeAttr('disabled');
+			$('#select_mud_overlay').hide();
+			$('.pick_mud').removeAttr('disabled');
+			$('#table_mud_creator').hide();	
 		}
 
 	});
