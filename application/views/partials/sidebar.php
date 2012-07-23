@@ -5,7 +5,7 @@
 	<li class="main_navigation">
 		<h2>Datos de entrada</h2>
 		<ul class="nav_links">
-			<li><a href="#geometria_pozo">Geometría del Pozo</a></li>
+			<li><a href="#geometria_pozo">Hole Geometry</a></li>
 			<li><a href="#informacion_operacional">Operational Info</a></li>
 			<li><a href="#propiedades_fluido">Mud Properties</a></li>
 			<li><a href="#datos_generales">Datos Generales</a></li>

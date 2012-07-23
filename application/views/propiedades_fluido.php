@@ -1,5 +1,5 @@
 <div class="this_panel" id="propiedades_fluido">
-	<h2>Propiedades del Fluido</h2>
+	<h2>Mud Properties</h2>
 	<fieldset>
 		<table>
 			<tr>

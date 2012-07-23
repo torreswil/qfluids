@@ -1,5 +1,5 @@
 <div class="this_panel" id="geometria_pozo" style="display:block;">
-	<h2>Geometría del Pozo</h2>
+	<h2>Hole Geometry</h2>
 	<fieldset>
 		<table>
 			<tr>
