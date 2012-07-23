@@ -3,7 +3,7 @@
 		<img src="/img/qmax_logo.png" width="150" />
 	</li>
 	<li class="main_navigation">
-		<h2>Datos de entrada</h2>
+		<h2>Data input</h2>
 		<ul class="nav_links">
 			<li><a href="#geometria_pozo">Hole Geometry</a></li>
 			<li><a href="#informacion_operacional">Operational Info</a></li>
