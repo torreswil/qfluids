@@ -776,6 +776,16 @@ $(document).ready(function(){
 
 	});
 
+	$('#select_mud_overlay .cancel_link a').click(function(e){
+		e.preventDefault();
+		$('#checkbox_mud_not_found').removeAttr('checked');
+		$('#new_mud_form input').val('');
+		$('#table_mud_picker select').val('');;
+		$('#select_mud_overlay').hide();
+		$('.pick_mud').removeAttr('disabled');
+		$('#table_mud_creator').hide();	
+	});
+
 
 
 
