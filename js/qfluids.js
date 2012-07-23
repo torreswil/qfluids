@@ -21,6 +21,7 @@ $(document).ready(function(){
 		var target = $(this).attr('href');
 		$('.this_panel').hide();
 		$(target).show();
+		correr_calculos();
 	});
 
 	//CUADRO DE DIALOGO 'SELECCION DE BROCA'
