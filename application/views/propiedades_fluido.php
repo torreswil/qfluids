@@ -147,10 +147,10 @@
 					<tr>
 						<td class="label_m"><label>flowline temp</label></td>
 						<td class="unit_field">ºF</td>
-						<td><input type="text" style="width:60px;"></td>
-						<td><input type="text" style="width:56px;"></td>
-						<td><input type="text" style="width:56px;"></td>
-						<td><input type="text" style="width:56px;"></td>
+						<td><input type="text" id="" name="" style="width:60px;"></td>
+						<td><input type="text" id="ztemp_1" name="ztemp_1" style="width:56px;" class="ztemp"></td>
+						<td><input type="text" id="ztemp_2" name="ztemp_2" style="width:56px;" class="ztemp"></td>
+						<td><input type="text" id="ztemp_3" name="ztemp_3" style="width:56px;" class="ztemp"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>mud weight</label></td>
@@ -161,7 +161,7 @@
 						<td><input type="text" style="width:56px;" id="mw_3" class="mw"></td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>Funnel viscocity</label></td>
+						<td class="label_m"><label>Funnel viscosity</label></td>
 						<td class="unit_field">sec/qt</td>
 						<td><input type="text" style="width:60px;"></td>
 						<td><input type="text" style="width:56px;"></td>
@@ -395,17 +395,17 @@
 									<td class="label_m"><label>pv</label></td>
 									<td class="unit_field">lbf/100 ft<sup>2</sup></td>
 									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:60px;" disabled="disabled" id="pv_1" name="pv_1"></td>
-									<td><input type="text" style="width:60px;" disabled="disabled" id="pv_2" name="pv_2"></td>
-									<td><input type="text" style="width:60px;" disabled="disabled" id="pv_3" name="pv_3"></td>
+									<td><input type="text" style="width:60px;" disabled="disabled" id="pv_1" name="pv_1" class="pv"></td>
+									<td><input type="text" style="width:60px;" disabled="disabled" id="pv_2" name="pv_2" class="pv"></td>
+									<td><input type="text" style="width:60px;" disabled="disabled" id="pv_3" name="pv_3" class="pv"></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>yp</label></td>
 									<td class="unit_field">lbf/100 ft<sup>2</sup></td>
 									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:60px;" disabled="disabled" id="yp_1" name="yp_1"></td>
-									<td><input type="text" style="width:60px;" disabled="disabled" id="yp_2" name="yp_2"></td>
-									<td><input type="text" style="width:60px;" disabled="disabled" id="yp_3" name="yp_3"></td>
+									<td><input type="text" style="width:60px;" disabled="disabled" id="yp_1" name="yp_1" class="yp"></td>
+									<td><input type="text" style="width:60px;" disabled="disabled" id="yp_2" name="yp_2" class="yp"></td>
+									<td><input type="text" style="width:60px;" disabled="disabled" id="yp_3" name="yp_3" class="yp"></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>YS</label></td>
@@ -553,9 +553,9 @@
 									<td class="label_m"><label>HGS</label></td>
 									<td class="unit_field">% Vol.</td>
 									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_1" name="pv_1"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_2" name="pv_2"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_3" name="pv_3"></td>
+									<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_1" name="hgspercent_1"></td>
+									<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_2" name="hgspercent_2"></td>
+									<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_3" name="hgspercent_3"></td>
 								</tr>								
 							</table>
 						</fieldset>

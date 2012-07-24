@@ -151,7 +151,6 @@ $(document).ready(function(){
 		}else if($('#checkbox_bit_not_found:checked').length == 0){
 			var data = 'id=' + $('#bit_overlay_listamodelos').val();
 			$.post('/rest/listar_detalle_brocas',data,function(r){
-				log(r[0].id);
 				$('#broca_bit_type').val(r[0].nombre_broca);
 				$('#broca_bit_diameter').html(r[0].odfracc+' in');
 				$('#broca_bit_model').html(r[0].nombre_modelo);
@@ -250,7 +249,6 @@ $(document).ready(function(){
 				'type'			: $('#pump_picker_type').val(),
 			};	
 			$.post('/rest/get_pump_strokelength',data,function(r){
-				log(r);
 				var append_string = no_option;
 				$(r).each(function(){
 					append_string = append_string + '<option value="'+this.strokelength+'">'+this.strokefrac+' in</option>';
@@ -466,10 +464,8 @@ $(document).ready(function(){
 			if($('#pump_picker_type').val() == 'TRIPLEX'){
 				if(error_qty == 1){
 					var pump_continue = true;
-					log('triplex, 1 error');
 				}else if(error_qty > 1){
 					var pump_continue = false;
-					log('triplex, +1 error');
 				}
 			}else{
 				if(error_qty > 0 && error_qty < 7){
@@ -586,7 +582,6 @@ $(document).ready(function(){
 			$('#new_pump_form .required').each(function(){
 				if($(this).val() == ''){
 					error_qty = error_qty + 1;
-					log($(this).parents('table'));
 				}
 			});
 
@@ -723,11 +718,10 @@ $(document).ready(function(){
 				var ds_group_preppend = '';
 				ds_group_preppend = ds_group_preppend +		'<tr id="bingham_'+new_id+'">';
                 ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="velcritbha_'+new_id+'" name="velcritbha_'+new_id+'" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptblbha_'+new_id+'" name="ptblbha_'+new_id+'" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptbtbha_'+new_id+'" name="ptbtbha_'+new_id+'" style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="zbinghamflujobha_'+new_id+'" name="zbinghamflujobha_'+new_id+'" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +		'</tr>';
                 $('#bingham_group').prepend(ds_group_preppend);
 			});
@@ -1232,6 +1226,19 @@ function calculos_raw(){
 	disptotal = disptotal + parseFloat($('#dispvdp').val());
 	completar_campo_val('disptotal',disptotal);
 
+	//zavgtemp
+	var zavgtemp = 0
+	var ztemp_pro = 0;
+	$('.ztemp').each(function(){
+		if($(this).val() !== '' && $(this).val() !== 0){
+			ztemp_pro = ztemp_pro + 1;
+			zavgtemp = zavgtemp + parseFloat($(this).val());
+		}
+	});
+
+	zavgtemp = zavgtemp / ztemp_pro;
+	completar_campo_val('zavgtemp',zavgtemp.toFixed(2));
+
 	
 	// 2. HIDRAULICA - POWER LOW
 	//*************************************************************
@@ -1299,7 +1306,6 @@ function calculos_raw(){
 		//retbha
 		var retbha = 0;
 		retbha = (89100 * mw * power('veltubbha_'+id,(2-npt))) / kpt * Math.pow(0.0416 * parseFloat($('#idbha_'+id).val()) / (3 + 1 / npt),npt);
-		//log('(89100 * '+mw+' * power('veltubbha'+id,(2-npt))) / kpt * Math.pow(0.0416 * parseFloat($('#idbha_'+id).val()) / (3 + 1 / npt),npt)');
 		completar_campo_val('retbha_'+id,retbha.toFixed(2));	
 	});
 
@@ -1359,7 +1365,6 @@ function calculos_raw(){
 		//ptpl
 		var ptpl = 0;
 		ptpl =  (kpt * power('veltubbha_'+id,npt) * Math.pow((( 3 + 1 / npt) / 0.0416 ),npt) / (144000 * power('idbha_'+id,(1 + npt)))) * parseFloat($('#longbha_'+id).val());
-		log('('+kpt+' * '+power('veltubbha_'+id,npt)+' * '+Math.pow((( 3 + 1 / npt) / 0.0416 ),npt)+' / (144000 * '+power('idbha_'+id,(1 + npt))+')) * '+parseFloat($('#longbha_'+id).val())+'');
 		completar_campo_val('ptpl_'+id,ptpl.toFixed(2));
 	});
 
@@ -1376,7 +1381,6 @@ function calculos_raw(){
 		//ptpt
 		var ptpt = 0;
 		ptpt = parseFloat($('#fft_bha_tur_'+id).val()) * mw * power('veltubbha_'+id,2) / (25.8 * parseFloat($('#idbha_'+id).val())) * parseFloat($('#longbha_'+id).val());
-		log(''+parseFloat($('#fft_bha_tur_'+id).val())+' * '+mw+' * '+power('veltubbha_'+id,2)+' / (25.8 * '+parseFloat($('#idbha_'+id).val())+') * '+parseFloat($('#longbha_'+id).val())+'');
 		completar_campo_val('ptpt_'+id,ptpt.toFixed(2));
 	});
 
@@ -1407,6 +1411,126 @@ function calculos_raw(){
 		}
 
 	});
+
+
+	//pv
+	var pv = 0;
+	$('.pv').each(function(){
+		if($(this).val() !== '' && $(this).val() !== '0' && $(this).val() !== 0){
+			pv = parseFloat($(this).val());
+		}
+	});
+
+	//yp
+	var yp = 0;
+	$('.yp').each(function(){
+		if($(this).val() !== '' && $(this).val() !== '0' && $(this).val() !== 0){
+			yp = parseFloat($(this).val());
+		}
+	});
+
+	//velcritdp
+	var velcritdp = 0;
+	velcritdp = (97 * pv + 97 * Math.sqrt( ( Math.pow(pv,2) + (8.2 * mw * power('iddp',2) * yp)))) / (mw * parseFloat($('#iddp').val()) * 60);
+	completar_campo_val('velcritdp',velcritdp.toFixed(2));
+
+	
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+
+		//velcritbha
+		var velcritbha = 0;
+		velcritbha = (97 * pv + 97 * Math.sqrt( ( Math.pow(pv,2) + (8.2 * mw * power('idbha_'+id,2) * yp)))) / (mw * parseFloat($('#idbha_'+id).val()) * 60);
+		completar_campo_val('velcritbha_'+id,velcritbha.toFixed(2));
+	});
+
+
+	//ptbldp
+	var ptbldp = 0;
+	ptbldp = ((pv * veltubdp) / (1500 * power('iddp',2)) + yp / (225 * parseFloat($('#iddp').val()))) * parseFloat($('#longdp').val());
+	completar_campo_val('ptbldp',ptbldp.toFixed(2));
+
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+
+		//ptblbha
+		var ptblbha = 0;
+		ptblbha = ((pv * parseFloat($('#veltubbha_'+id).val())) / (1500 * power('idbha_'+id,2)) + yp / (225 * parseFloat($('#idbha_'+id).val()))) * parseFloat($('#longbha_'+id).val());
+		completar_campo_val('ptblbha_'+id,ptblbha.toFixed(2));
+	});
+
+
+	//ptbtdp
+	var ptbtdp = 0;
+	ptbtdp = ( Math.pow(mw,0.75) * Math.pow(veltubdp,1.75) * Math.pow(pv,0.25) / (1800 * power('iddp',1.25) ) ) * parseFloat($('#longdp').val());
+	completar_campo_val('ptbtdp',ptbtdp.toFixed(2));
+
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+
+		//ptbtbha
+		var ptbtbha = 0;
+		ptbtbha = ( Math.pow(mw,0.75) * power('veltubbha_'+id,1.75) * Math.pow(pv,0.25) / (1800 * power('idbha_'+id,1.25) ) ) * parseFloat($('#longbha_'+id).val());
+		completar_campo_val('ptbtbha_'+id,ptbtbha.toFixed(2));
+	});
+
+
+	//zbinghamflujodp
+	var zbinghamflujodp = '';
+	if(veltubdp > velcritdp){
+		zbinghamflujodp = 'TURBULENTO';	
+	}else{
+		zbinghamflujodp = 'LAMINAR';
+	}
+	completar_campo_val('zbinghamflujodp',zbinghamflujodp);
+
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+
+		//zbinghamflujobha
+		var zbinghamflujobha = '';
+		if(parseFloat($('#veltubbha_'+id).val()) > parseFloat($('#velcritbha_'+id).val())){
+			zbinghamflujobha = 'TURBULENTO';	
+		}else{
+			zbinghamflujobha = 'LAMINAR';
+		}
+		completar_campo_val('zbinghamflujobha_'+id,zbinghamflujobha);
+	});
+
+	//zbinglosspb
+	var zbinglosspb = 0;
+	if(veltubdp > velcritdp){
+		zbinglosspb = ptbtdp;	
+	}else{
+		zbinglosspb = ptbldp;
+	}
+	completar_campo_val('zbinglosspb',zbinglosspb.toFixed(2));
+
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+
+		//zbinglossbha
+		var zbinglossbha = '';
+		if(parseFloat($('#veltubbha_'+id).val()) > parseFloat($('#velcritbha_'+id).val())){
+			zbinglossbha = parseFloat($('#ptbtbha_'+id).val());	
+		}else{
+			zbinglossbha = parseFloat($('#ptblbha_'+id).val());
+		}
+		completar_campo_val('zbinglossbha_'+id,zbinglossbha.toFixed(2));
+	});	
+
+
+
 
 
 

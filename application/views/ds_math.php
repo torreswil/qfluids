@@ -23,8 +23,8 @@
             		<td class="label_m"><label>N<sub>R<span style="text-transform:lowercase;">e</span></sub></label></td>
             		<td class="label_m"><label>F<sub>p</sub><br />Laminar</label></td>
             		<td class="label_m"><label>F<sub>p</sub><br />Turbulento</label></td>
-            		<td class="label_m"><label>Caida de presion<br />Laminar</label> Psi</td>
-            		<td class="label_m"><label>caida de presion<br />turbulento</label> Psi</td>
+            		<td class="label_m"><label>&Delta; P.<br />Laminar</label> Psi</td>
+            		<td class="label_m"><label>&Delta; P.<br />turbulento</label> Psi</td>
             	   <td></td>
                 </tr>
                 <tr>
@@ -59,29 +59,26 @@
         <thead>
             <tr>
                 <td></td>
-                <td class="label_m"><label>Vc</label></td>
-                <td class="label_m"><label>PBingham<br />Laminar</label></td>
-                <td class="label_m"><label>Pbingham<br />Turbulento</label></td>
-                <td class="label_m"><label>PDp</label></td>
-                <td></td>
+                <td class="label_m"><label>Vel Critical<br /><span style="text-transform:lowercase;">ft/s</span></label></td>
+                <td class="label_m"><label>&Delta; P.<br />Laminar</label> Psi</td>
+                <td class="label_m"><label>&Delta; P.<br />Turbulento</label> Psi</td>
+                <td class="label_m"><label></label></td>
             </tr>
             <tr>
                 <td class="label_m"><label>dp</label></td>
-                <td><input type="text" /></td>
-                <td><input type="text" /></td>
-                <td><input type="text" /></td>
-                <td><input type="text" /></td>
-                <td><input type="text" /></td>
+                <td><input type="text" id="velcritdp" name="velcritdp" /></td>
+                <td><input type="text" id="ptbldp" name="ptbldp" /></td>
+                <td><input type="text" id="ptbtdp" name="ptbtdp"  /></td>
+                <td><input type="text" id="zbinghamflujodp" name="zbinghamflujodp" /></td>
             </tr>
         </thead>
         <tbody id="bingham_group">
             <tr id="bingham_1">
                 <td class="label_m"><label>ds_1</label></td>
-                <td><input type="text" /></td>
-                <td><input type="text" /></td>
-                <td><input type="text" /></td>
-                <td><input type="text" /></td>
-                <td><input type="text" /></td>
+                <td><input type="text" id="velcritbha_1" name="velcritbha_1" /></td>
+                <td><input type="text" id="ptblbha_1" name="ptblbha_1" /></td>
+                <td><input type="text" id="ptbtbha_1" name="ptbtbha_1" /></td>
+                <td><input type="text" id="zbinghamflujobha_1" name="zbinghamflujobha_1" /></td>
             </tr>
         </tbody>
     </table>	

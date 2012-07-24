@@ -574,7 +574,7 @@
 								<tr>	
 									<td class="label_m" style="padding-right:20px;"><label>Daily avge Temp:</label></td>
 									<td class="unit_field">ºF</td>
-									<td><input type="text" disabled="disabled" class="medium" style="width:70px;" /></td>
+									<td><input type="text" disabled="disabled" class="medium" style="width:70px;" name="zavgtemp" id="zavgtemp" /></td>
 								</tr>
 							</table>
 						</fieldset>

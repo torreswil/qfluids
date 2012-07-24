@@ -60,7 +60,7 @@ class Rest extends CI_Controller {
 				<td><input type="text" type="text" name="capbha_<?=$index;?>" id="capbha_<?=$index;?>" class="capbha_<?=$index;?> capbha" disabled="disabled" style="width:40px;" /></td>
 				<td><input type="text" type="text" name="dispbha_<?=$index;?>" id="dispbha_<?=$index;?>" class="dispbha_<?=$index;?> dispbha" disabled="disabled" style="width:40px;" /></td>
 				<td><input type="text" type="text" name="powerlossbha_<?=$index;?>" id="powerlossbha_<?=$index;?>" disabled="disabled"/></td>
-				<td><input type="text" type="text" name="" id="" disabled="disabled"/></td>
+				<td><input type="text" type="text" name="zbinglossbha_<?=$index;?>" id="zbinglossbha_<?=$index;?>" disabled="disabled"/></td>
 				<td class="label_m"><a href="#removeds_<?=$index;?>" class="remove_ds">Remove</a></td>
 			</tr>
 		<?php
