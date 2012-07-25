@@ -1,5 +1,18 @@
 <div class="this_panel" id="datos_generales">
-	<h2>Datos Generales</h2>
+	<h2>Team</h2>
+	<div class="simpleTabs">
+		<ul class="simpleTabsNavigation">
+	      <li><a href="#">Third Party</a></li>
+	      <li><a href="#">Qmax</a></li>
+	      <li><a href="#">Solids Equipment</a></li>
+	    </ul>
+	    <div class="simpleTabsContent" style="height:329px;">
+	    </div>
+	    <div class="simpleTabsContent" style="height:329px;">
+	    </div>
+	    <div class="simpleTabsContent" style="height:329px;">
+	    </div>
+	</div>
 	
 	
 <table class="super_grid" style="width:930px;">
