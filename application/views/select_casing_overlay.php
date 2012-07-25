@@ -3,47 +3,85 @@
 	<div class="overlay_dialog_wrapper">
 		<div class="overlay_dialog">
 			<h5>Please select a casing tool:</h5>
-
-			<form id="form_pickcasing">
-				<table id="table_pickcasing">
-					<tr>
-						<td>Casing Type:</td>
-						<td>
-							<select>
-								<option value="">Select...</option>
-								<option value="Casing">Casing</option>
-								<option value="Liner">Liner</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>OD:</td>
-						<td>
-							<select id="pickcasing_od">
-								<option value="">Select...</option>
-								<?php foreach($lista_casing as $casing){ ?>
-									<option value="<?= $casing['oddeci'] ?>"><?= $casing['odfrac'] ?></option>
-								<?php }?>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>ID:</td>
-						<td>
-							<select>
-								<option value="">Select...</option>
-							</select>
-						</td>
-					</tr>
-				</table>
-			</form>
-
 			<div class="content">
-					
-				<p><input type="checkbox" id="checkbox_casing_not_found" /> No encuentro el diámetro, deseo crear uno nuevo.</p>
-				
+				<form id="form_pickcasing">
+					<table id="table_pickcasing">
+						<tr>
+							<td class="label_m"><label>Casing Type:</label></td>
+							<td>
+								<select id="pickcasing_type">
+									<option value="">Select...</option>
+									<option value="Casing">Casing</option>
+									<option value="Liner">Liner</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>OD:</label></td>
+							<td>
+								<select id="pickcasing_od">
+									<option value="">Select...</option>
+									<?php foreach($lista_casing as $casing){ ?>
+										<option value="<?= $casing['oddeci'] ?>"><?= $casing['odfrac'] ?></option>
+									<?php }?>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>ID:</label></td>
+							<td>
+								<select id="pickcasing_id">
+									<option value="">Select...</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Top:</label></td>
+							<td><input type="text" name="" id="pickcasing_top" /></td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Bottom:</label></td>
+							<td><input type="text" name="" id="pickcasing_bottom" /></td>
+						</tr>
+					</table>
+				</form>
+				<p><input type="checkbox" id="checkbox_casing_not_found" />I can't find the casing I need. I wish to create a new one.</p>
+				<form id="form_createcasing">
+					<table id="table_createcasing" style="display:none;">
+						<tr>
+							<td class="label_m"><label>Casing Type:</label></td>
+							<td>
+								<select id="createcasing_type">
+									<option value="">Select...</option>
+									<option value="Casing">Casing</option>
+									<option value="Liner">Liner</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>OD:</label></td>
+							<td>
+								<input type="text" name="odfrac" />
+								<input type="hidden" name="oddeci" />
+							</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>ID:</label></td>
+							<td>
+								<input type="text" name="iddeci" />
+							</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Top:</label></td>
+							<td><input type="text" name="" id="createcasing_top" /></td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Bottom:</label></td>
+							<td><input type="text" name="" id="createcasing_bottom" /></td>
+						</tr>
+					</table>
+				</form>
 			</div>
-
 			<div class="cancel_link">
 				<a href="#cancel" class="cancel_overlay">Cancelar</a>
 			</div>

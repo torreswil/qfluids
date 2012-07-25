@@ -187,24 +187,59 @@ $(document).ready(function(){
 		}
 	});
 
+	$('#pickcasing_type').change(function(){
+		if($(this).val() == 'Casing'){
+			$('#pickcasing_top').val(0).attr('disabled','disabled');
+		}else if($(this).val() == 'Liner'){
+			$('#pickcasing_top').val('').removeAttr('disabled');
+		}else{
+
+		}
+	});
+
 	$('#pickcasing_od').change(function(){
 		var no_option = '<option value="" selected="selected">Select...</option>';
 		if($(this).val() !== ''){
 			var data = 'oddeci='+$(this).val();
+			log(data);
+			var preppend_string = no_option;
 			$.post('/rest/listar_id_casing',data,function(r){
 				$(r).each(function(){
-					var opt = document.createElement('option');
-					//$(opt).attr('value',this.)
+					var opt = '<option value="'+this.iddeci+'">'+this.iddeci+'</option>'
+					preppend_string = preppend_string + opt;
 				});
+				$('#pickcasing_id').html(preppend_string);
 			},'json');
 		}
 	});
 
 	function hide_casing_overlay(){
-		$('#select_casing_overlay').hide();	
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		$('#select_casing_overlay').hide();
+		$('#pickcasing_id').html(no_option);
+		$('#pickcasing_od').val('');
+		$('#pickcasing_type').val('');
+		$('#pickcasing_top').val('');
+		$('#pickcasing_bottom').val('');
+		$('.pick_casing').removeAttr('disabled');
 	}
 
+	$('#select_casing_overlay .cancel_overlay').click(function(e){
+		e.preventDefault();
+		hide_casing_overlay();
+	});
 
+	$('#checkbox_casing_not_found').change(function(){
+		if($(this).attr('checked') == 'checked'){
+			$('#table_pickcasing select,#table_pickcasing input').attr('disabled','disabled');
+			$('#table_createcasing select,#table_createcasing input').removeAttr('disabled');
+			$('#table_createcasing').show();
+		}else{
+			$('#table_pickcasing select,#table_pickcasing input').removeAttr('disabled');
+			$('#table_createcasing select,#table_createcasing input').attr('disabled','disabled');
+			$('#table_createcasing').hide();
+		}
+	});	
 
 	//CUADRO DE DIALOGO SELECCION DE BOMBAS
 	//**************************************************************************************************************************
@@ -717,12 +752,12 @@ $(document).ready(function(){
 				var ds_group_preppend = '';
 				ds_group_preppend = ds_group_preppend +		'<tr id="ds_group_'+new_id+'">';
                 ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';     
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:50px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:50px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:50px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpl_'+new_id+'" id="ptpl_'+new_id+'" style="width:50px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpt_'+new_id+'" id="ptpt_'+new_id+'" style="width:50px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="laminarlabelbha_'+new_id+'" id="laminarlabelbha_'+new_id+'" style="width:50px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:70px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:70px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:70px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpl_'+new_id+'" id="ptpl_'+new_id+'" style="width:70px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpt_'+new_id+'" id="ptpt_'+new_id+'" style="width:70px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="laminarlabelbha_'+new_id+'" id="laminarlabelbha_'+new_id+'" style="width:70px;"></td>';
                 ds_group_preppend = ds_group_preppend +		'</tr>';
                 $('#ds_group').prepend(ds_group_preppend);
 
@@ -730,11 +765,11 @@ $(document).ready(function(){
 				var ds_group_preppend = '';
 				ds_group_preppend = ds_group_preppend +		'<tr id="bingham_'+new_id+'">';
                 ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:50px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="velcritbha_'+new_id+'" name="velcritbha_'+new_id+'" style="width:50px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptblbha_'+new_id+'" name="ptblbha_'+new_id+'" style="width:50px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptbtbha_'+new_id+'" name="ptbtbha_'+new_id+'" style="width:50px;"></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="zbinghamflujobha_'+new_id+'" name="zbinghamflujobha_'+new_id+'" style="width:50px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:70px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="velcritbha_'+new_id+'" name="velcritbha_'+new_id+'" style="width:70px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptblbha_'+new_id+'" name="ptblbha_'+new_id+'" style="width:70px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptbtbha_'+new_id+'" name="ptbtbha_'+new_id+'" style="width:70px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="zbinghamflujobha_'+new_id+'" name="zbinghamflujobha_'+new_id+'" style="width:70px;"></td>';
                 ds_group_preppend = ds_group_preppend +		'</tr>';
                 $('#bingham_group').prepend(ds_group_preppend);
 			});
