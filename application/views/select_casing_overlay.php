@@ -2,7 +2,16 @@
 <div class="overlay_wrapper" id="select_casing_overlay">
 	<div class="overlay_dialog_wrapper">
 		<div class="overlay_dialog">
-			<h5>Seleccione el diámetro del casing:</h5>
+			<h5>Please select a casing tool:</h5>
+
+			<form id="form_pickcasing">
+				<table>
+					<tr>
+						<td>Casing Type:</td>
+					</tr>
+				</table>
+			</form>
+
 			<div class="content">
 					
 				<p><input type="checkbox" id="checkbox_casing_not_found" /> No encuentro el diámetro, deseo crear uno nuevo.</p>

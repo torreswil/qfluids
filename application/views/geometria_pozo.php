@@ -39,11 +39,7 @@
 					</tr>
 					<tr>
 						<td>
-							<select class="pick_casing">
-								<option>Seleccione...</option>
-								<option value="casing">Casing</option>
-								<option valie="liner">Liner</option>
-							</select>
+							<input type="text" value="Select..." class="pick_casing" style="width:100px;">
 						</td>
 						<td><input type="text" /></td>
 						<td><input type="text" /></td>

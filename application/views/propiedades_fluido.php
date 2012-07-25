@@ -469,17 +469,17 @@
 									<td class="label_m"><label>Water</label></td>
 									<td class="unit_field">% Vol</td>
 									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" id="wa_1" name="wa_1"></td>
-									<td><input type="text" style="width:50px;" id="wa_2" name="wa_2"></td>
-									<td><input type="text" style="width:50px;" id="wa_3" name="wa_3"></td>
+									<td><input type="text" style="width:50px;" id="wa_1" name="wa_1" value="0"></td>
+									<td><input type="text" style="width:50px;" id="wa_2" name="wa_2" value="0"></td>
+									<td><input type="text" style="width:50px;" id="wa_3" name="wa_3" value="0"></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Oil</label></td>
 									<td class="unit_field">% Vol</td>
 									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" id="oil_1" name="oil_1"></td>
-									<td><input type="text" style="width:50px;" id="oil_2" name="oil_2"></td>
-									<td><input type="text" style="width:50px;" id="oil_3" name="oil_3"></td>
+									<td><input type="text" style="width:50px;" id="oil_1" name="oil_1" value="0"></td>
+									<td><input type="text" style="width:50px;" id="oil_2" name="oil_2" value="0"></td>
+									<td><input type="text" style="width:50px;" id="oil_3" name="oil_3" value="0"></td>
 								</tr>								
 							</table>
 						</fieldset>

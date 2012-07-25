@@ -180,7 +180,7 @@ $(document).ready(function(){
 
 	//CUADRO DE DIALOGO SELECCION DE CASING
 	//*************************************************************************************************************************
-	$('.pick_casing').change(function(){
+	$('.pick_casing').focus(function(){
 		if($(this).val() !== ''){
 			$('#select_casing_overlay').show();
 			$(this).attr('disabled','disabled');	
@@ -703,8 +703,7 @@ $(document).ready(function(){
 				//prepend a new row in the dsmath_tab:exponents table
 				var ds_group_preppend = '';
 				ds_group_preppend = ds_group_preppend +		'<tr id="ds_group_'+new_id+'">';
-                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
-                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:100px;"></td>';
+                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';     
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:100px;"></td>';
@@ -718,6 +717,7 @@ $(document).ready(function(){
 				var ds_group_preppend = '';
 				ds_group_preppend = ds_group_preppend +		'<tr id="bingham_'+new_id+'">';
                 ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
+                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="velcritbha_'+new_id+'" name="velcritbha_'+new_id+'" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptblbha_'+new_id+'" name="ptblbha_'+new_id+'" style="width:100px;"></td>';
                 ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptbtbha_'+new_id+'" name="ptbtbha_'+new_id+'" style="width:100px;"></td>';
@@ -851,6 +851,22 @@ $(document).ready(function(){
 			}
 		}
 	});
+
+	// POPULAR EL NOMBRE DE LA HERRAMIENTA A LAS TABLAS DE LA HIDRAULICA
+	$('.select_drill_string').live('change',function(){
+		var id = $(this).attr('id');
+		id = id.split('select_drill_string_');
+		id = id[1];
+
+		if($(this).val() !== ''){
+			$('#bingham_'+id+' label').html($(this).val());	
+		}
+
+		if($(this).val() !== ''){
+			$('#bingham_'+id+' label,#ds_group_'+id+' label').html($(this).val());	
+		}
+		
+	});
 	
 	// TRIGGERS CALCULOS
 	$('#qfluids_form input').live('keyup',function(){
@@ -863,7 +879,7 @@ $(document).ready(function(){
 		correr_calculos();
 	});
 
-	$('#ds_math input').attr('disabled','disabled').css('width',100);
+	$('#ds_math input').attr('disabled','disabled').css('width',70);
 
 
 });
@@ -1024,125 +1040,125 @@ function calculos_raw(){
 	//n_1
 	var n_1 = 0;
 	n_1 = 1.44 * Math.log(((2*pv_1)+yp_1)/(pv_1 + yp_1));
-	completar_campo_val('n_1',n_1);
+	completar_campo_val('n_1',n_1.toFixed(3));
 
 	//n_2
 	var n_2 = 0;
 	n_2 = 1.44 * Math.log(((2*pv_2)+yp_2)/(pv_2 + yp_2));
-	completar_campo_val('n_2',n_2);
+	completar_campo_val('n_2',n_2.toFixed(3));
 
 	//n_3
 	var n_3 = 0;
 	n_3 = 1.44 * Math.log(((2*pv_3)+yp_3)/(pv_3 + yp_3));
-	completar_campo_val('n_3',n_3);
+	completar_campo_val('n_3',n_3.toFixed(3));
 
 	//k_1
 	var k_1 = 0;
 	k_1 = (Math.pow(511, n_1 * -1) * (pv_1 + yp_1));
-	completar_campo_val('k_1',k_1);
+	completar_campo_val('k_1',k_1.toFixed(3));
 
 	//k_2
 	var k_2 = 0;
 	k_2 = (Math.pow(511, n_2 * -1) * (pv_2 + yp_2));
-	completar_campo_val('k_2',k_2);
+	completar_campo_val('k_2',k_2.toFixed(3));
 
 	//k_3
 	var k_3 = 0;
 	k_3 = (Math.pow(511, n_3 * -1) * (pv_3 + yp_3));
-	completar_campo_val('k_3',k_3);
+	completar_campo_val('k_3',k_3.toFixed(3));
 
 	//sol_1
 	var sol_1 = 0;
 	sol_1 = 100 - $('#wa_1').val() - $('#oil_1').val();
 	sol_1 = (sol_1 == 100) ? 0 : sol_1;
-	completar_campo_val('sol_1',sol_1);
+	completar_campo_val('sol_1',sol_1.toFixed(2));
 
 	//sol_2
 	var sol_2 = 0;
 	sol_2 = 100 - $('#wa_2').val() - $('#oil_2').val();
 	sol_2 = (sol_2 == 100) ? 0 : sol_2;
-	completar_campo_val('sol_2',sol_2);
+	completar_campo_val('sol_2',sol_2.toFixed(2));
 
 	//sol_3
 	var sol_3 = 0;
 	sol_3 = 100 - $('#wa_3').val() - $('#oil_3').val();
 	sol_3 = (sol_3 == 100) ? 0 : sol_3;
-	completar_campo_val('sol_3',sol_3);
+	completar_campo_val('sol_3',sol_3.toFixed(2));
 
 	//asg_1
 	var asg_1 = 0;
 	asg_1 = (($('#mw_1').val()/8.33) - (($('#wa_1').val() / 100) + ($('#oil_1').val() * 0.84/100))) / (sol_1 / 100);
-	completar_campo_val('asg_1',asg_1);
+	completar_campo_val('asg_1',asg_1.toFixed(2));
 
 	//asg_2
 	var asg_2 = 0;
 	asg_2 = (($('#mw_2').val()/8.33) - (($('#wa_2').val() / 100) + ($('#oil_2').val() * 0.84/100))) / (sol_2 / 100);
-	completar_campo_val('asg_2',asg_2);
+	completar_campo_val('asg_2',asg_2.toFixed(2));
 
 	//asg_3
 	var asg_3 = 0;
 	asg_3 = (($('#mw_3').val()/8.33) - (($('#wa_3').val() / 100) + ($('#oil_3').val() * 0.84/100))) / (sol_3 / 100);
-	completar_campo_val('asg_3',asg_3);
+	completar_campo_val('asg_3',asg_3.toFixed(2));
 
 	//lgspercent_1
 	var lgspercent_1 = 0;
 	lgspercent_1 = ((parseFloat($('#wa_1').val()) + (sol_1 * 4.2) + (parseFloat($('#oil_1').val()) * 0.84)) - (100 * (parseFloat($('#mw_1').val()) / 8.33))) / 1.6;
-	completar_campo_val('lgspercent_1',lgspercent_1);
+	completar_campo_val('lgspercent_1',lgspercent_1.toFixed(2));
 
 	//lgspercent_2
 	var lgspercent_2 = 0;
 	lgspercent_2 = ((parseFloat($('#wa_2').val()) + (sol_2 * 4.2) + (parseFloat($('#oil_2').val()) * 0.84)) - (100 * (parseFloat($('#mw_2').val()) / 8.33))) / 1.6;
-	completar_campo_val('lgspercent_2',lgspercent_2);
+	completar_campo_val('lgspercent_2',lgspercent_2.toFixed(2));
 
 	//lgspercent_3
 	var lgspercent_3 = 0;
 	lgspercent_3 = ((parseFloat($('#wa_3').val()) + (sol_3 * 4.2) + (parseFloat($('#oil_3').val()) * 0.84)) - (100 * (parseFloat($('#mw_3').val()) / 8.33))) / 1.6;
-	completar_campo_val('lgspercent_3',lgspercent_3);
+	completar_campo_val('lgspercent_3',lgspercent_3.toFixed(2));
 
 	//hgspercent_1
 	var hgspercent_1 = 0;
 	hgspercent_1 = (100 * (parseFloat($('#mw_1').val()) / 8.33 ) - (parseFloat($('#wa_1').val()) + (sol_1 * 2.6) + (parseFloat($('#oil_1').val()) * 0.84))) / 1.6;
-	completar_campo_val('hgspercent_1',hgspercent_1);
+	completar_campo_val('hgspercent_1',hgspercent_1.toFixed(2));
 
 	//hgspercent_2
 	var hgspercent_2 = 0;
 	hgspercent_2 = (100 * (parseFloat($('#mw_2').val()) / 8.33 ) - (parseFloat($('#wa_2').val()) + (sol_2 * 2.6) + (parseFloat($('#oil_2').val()) * 0.84))) / 1.6;
-	completar_campo_val('hgspercent_2',hgspercent_2);
+	completar_campo_val('hgspercent_2',hgspercent_2.toFixed(2));
 
 	//hgspercent_3
 	var hgspercent_3 = 0;
 	hgspercent_3 = (100 * (parseFloat($('#mw_3').val()) / 8.33 ) - (parseFloat($('#wa_3').val()) + (sol_3 * 2.6) + (parseFloat($('#oil_3').val()) * 0.84))) / 1.6;
-	completar_campo_val('hgspercent_3',hgspercent_3);
+	completar_campo_val('hgspercent_3',hgspercent_3.toFixed(2));
 
 	//lgsppb_1
 	var lgsppb_1 = 0;
 	lgsppb_1 = (lgspercent_1 / 100) * 909.7;
-	completar_campo_val('lgsppb_1',lgsppb_1);
+	completar_campo_val('lgsppb_1',lgsppb_1.toFixed(2));
 
 	//lgsppb_2
 	var lgsppb_2 = 0;
 	lgsppb_2 = (lgspercent_2 / 100) * 909.7;
-	completar_campo_val('lgsppb_2',lgsppb_2);
+	completar_campo_val('lgsppb_2',lgsppb_2.toFixed(2));
 
 	//lgsppb_3
 	var lgsppb_3 = 0;
 	lgsppb_3 = (lgspercent_3 / 100) * 909.7;
-	completar_campo_val('lgsppb_3',lgsppb_3);
+	completar_campo_val('lgsppb_3',lgsppb_3.toFixed(2));
 
 	//hgsppb_1
 	var hgsppb_1 = 0;
 	hgsppb_1 = (hgspercent_1 / 100) * 979;
-	completar_campo_val('hgsppb_1',hgsppb_1);
+	completar_campo_val('hgsppb_1',hgsppb_1.toFixed(2));
 
 	//hgsppb_2
 	var hgsppb_2 = 0;
 	hgsppb_2 = (hgspercent_2 / 100) * 979;
-	completar_campo_val('hgsppb_2',hgsppb_2);
+	completar_campo_val('hgsppb_2',hgsppb_2.toFixed(2));
 
 	//hgsppb_3
 	var hgsppb_3 = 0;
 	hgsppb_3 = (hgspercent_3 / 100) * 979;
-	completar_campo_val('hgsppb_3',hgsppb_3);
+	completar_campo_val('hgsppb_3',hgsppb_3.toFixed(2));
 
 	//capdp
 	var capdp = 0;
