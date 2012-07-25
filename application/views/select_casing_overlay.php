@@ -5,9 +5,35 @@
 			<h5>Please select a casing tool:</h5>
 
 			<form id="form_pickcasing">
-				<table>
+				<table id="table_pickcasing">
 					<tr>
 						<td>Casing Type:</td>
+						<td>
+							<select>
+								<option value="">Select...</option>
+								<option value="Casing">Casing</option>
+								<option value="Liner">Liner</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>OD:</td>
+						<td>
+							<select id="pickcasing_od">
+								<option value="">Select...</option>
+								<?php foreach($lista_casing as $casing){ ?>
+									<option value="<?= $casing['oddeci'] ?>"><?= $casing['odfrac'] ?></option>
+								<?php }?>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>ID:</td>
+						<td>
+							<select>
+								<option value="">Select...</option>
+							</select>
+						</td>
 					</tr>
 				</table>
 			</form>

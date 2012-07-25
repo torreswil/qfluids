@@ -187,6 +187,19 @@ $(document).ready(function(){
 		}
 	});
 
+	$('#pickcasing_od').change(function(){
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		if($(this).val() !== ''){
+			var data = 'oddeci='+$(this).val();
+			$.post('/rest/listar_id_casing',data,function(r){
+				$(r).each(function(){
+					var opt = document.createElement('option');
+					//$(opt).attr('value',this.)
+				});
+			},'json');
+		}
+	});
+
 	function hide_casing_overlay(){
 		$('#select_casing_overlay').hide();	
 	}

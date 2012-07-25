@@ -100,4 +100,9 @@ class Rest extends CI_Controller {
 	public function insert_mud(){
 		echo json_encode($this->Api->create('lodos',$_POST));
 	}
+
+	//CASING FUNCTIONS
+	public function listar_id_casing(){
+		echo json_encode($this->Api->get_where('casing',array('oddeci'=>$_POST['oddeci'])));
+	}
 }

@@ -13,6 +13,7 @@ class Main extends CI_Controller {
 
 	public function qfluids(){
 		$this->load->model('Api');
+		$data['lista_casing']			= $this->Api->get_distinct_where('casing','oddeci,odfrac');
 		$data['lista_lodos']			= $this->Api->get('lodos');
 		$data['lista_brocas'] 			= $this->Api->get('brocas');
 		$data['lista_bombas'] 			= $this->Api->get_distinct_where('bombas','maker');

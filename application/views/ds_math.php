@@ -53,7 +53,7 @@
 </fieldset>
 
 <fieldset>
-    <legend>Bingham Law</legend>
+    <legend>Bingham</legend>
     <table>
         <thead>
             <tr>
