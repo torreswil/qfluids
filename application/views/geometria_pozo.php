@@ -25,6 +25,7 @@
 	      <li><a href="#">Hole</a></li>
 	      <li><a href="#">Drill String</a></li>
 	      <li><a href="#">Drill String Math</a></li>
+	      <li><a href="#">Anular Section Math</a></li>
 	    </ul>
 	    <div class="simpleTabsContent" style="height:329px;">
 			<!-- CASING -->
@@ -208,8 +209,13 @@
 					</tr>
 				</table>
         </div>
+        <!-- DRILL STRING MATH -->
         <div class="simpleTabsContent" id="ds_math">
         	<?php $this->load->view('ds_math'); ?>
+        </div>
+        <!-- ANULAR SECTION MATH -->
+        <div class="simpleTabsContent" id="as_math">
+        	<?php $this->load->view('as_math'); ?>
         </div>
 	</div>
 </div>

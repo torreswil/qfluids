@@ -6,28 +6,47 @@
 	      <li><a href="#">Qmax</a></li>
 	      <li><a href="#">Solids Equipment</a></li>
 	    </ul>
+	    <!--third party -->
 	    <div class="simpleTabsContent" style="height:329px;">
-	    </div>
-	    <div class="simpleTabsContent" style="height:329px;">
-	    </div>
-	    <div class="simpleTabsContent" style="height:329px;">
-	    </div>
-	</div>
-	
-	
-<table class="super_grid" style="width:930px;">
-	<tr>
-		<td>
-			<fieldset>
-				<legend>Parámetros de Perforación</legend>
+	    	<fieldset>
+				<legend>Personal</legend>
+				<table style="float:left;">
+					<tr>
+						<td class="label_m"><label>Ing. Fluidos 1:</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Ing. Fluidos 2:</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Ing. CO-MAN:</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Ing. CO-MAN:</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Pusher:</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Charla Diaria:</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+				</table>
 			</fieldset>
-		<td>	
-			<fieldset style="height:227px;">
-				<legend>Survey</legend>								
-		</td>
-	</tr>
-	<tr>	
-		<td colspan="2">
+		</div>
+		<!-- Qmax -->
+	    <div class="simpleTabsContent" style="height:329px;">
+	    	<fieldset>
+				<table style="float:left;">
+					<tr>
+						<td class="label_m"><label>Costo Ingeniería [hoy]</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label># Ingenieros a reportar</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+					<tr>	
+						<td class="label_m"><label>Costo ingeniería acumulado</label></td><td><input type="text" disabled="disabled" style="width:165px;" /></td>
+					</tr>
+				</table>
+			</fieldset>	
 			<fieldset>
 				<legend>Comentarios</legend>
 				<table style="float:left;width:100%;">
@@ -38,52 +57,10 @@
 					</tr>
 				</table>
 			</fieldset>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<fieldset style="height:439px;">
-				<legend>Personal y Charla Diaria</legend>
-				<fieldset>
-					<table style="float:left;">
-						<tr>
-							<td class="label_m"><label>Costo Ingeniería [hoy]</label></td><td><input type="text" style="width:165px;" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label># Ingenieros a reportar</label></td><td><input type="text" style="width:165px;" /></td>
-						</tr>
-						<tr>	
-							<td class="label_m"><label>Costo ingeniería acumulado</label></td><td><input type="text" disabled="disabled" style="width:165px;" /></td>
-						</tr>
-					</table>
-				</fieldset>					
-				<fieldset>
-					<legend>Personal</legend>
-					<table style="float:left;">
-						<tr>
-							<td class="label_m"><label>Ing. Fluidos 1:</label></td><td><input type="text" style="width:165px;" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Ing. Fluidos 2:</label></td><td><input type="text" style="width:165px;" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Ing. CO-MAN:</label></td><td><input type="text" style="width:165px;" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Ing. CO-MAN:</label></td><td><input type="text" style="width:165px;" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Pusher:</label></td><td><input type="text" style="width:165px;" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Charla Diaria:</label></td><td><input type="text" style="width:165px;" /></td>
-						</tr>
-					</table>
-				</fieldset>
-			</fieldset>
-		</td>
-		<td>
-			<fieldset>
+	    </div>
+	    <!-- Solids Equipment-->
+	    <div class="simpleTabsContent" style="height:460px;">
+	    	<fieldset>
 				<legend>Equipos CTS</legend>
 				<fieldset>
 					<legend>Shakers</legend>
@@ -110,8 +87,7 @@
 							<td><input type="text" /></td>
 						</tr>
 					</table>
-				</fieldset>
-				
+				</fieldset>				
 				<fieldset>
 					<legend>Skalpers</legend>
 					<table style="float:left;">
@@ -125,7 +101,6 @@
 						</tr>
 					</table>
 				</fieldset>
-
 				<fieldset>
 					<legend>Mud Cleaner</legend>
 					<table style="float:left;">
@@ -170,9 +145,6 @@
 					</table>
 				</fieldset>
 			</fieldset>
-		</td>
-	</tr>	
-</table>	
-
-		
+	    </div>
+	</div>
 </div>
