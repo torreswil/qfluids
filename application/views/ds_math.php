@@ -1,5 +1,5 @@
 <fieldset>
-    <legend>Ley de Potencias</legend>
+    <legend>Power Law</legend>
     <table>
     	<tr>
     		<td class="label_m"><label>&#216;600</label></td><td><input type="text" value="0" id="t_600" name="t_600"></td>
@@ -20,10 +20,10 @@
                 <tr>
             		<td></td>
             		<td class="label_m"><label>N<sub>R<span style="text-transform:lowercase;">e</span></sub></label></td>
-            		<td class="label_m"><label>F<sub>p</sub><br />Laminar</label></td>
-            		<td class="label_m"><label>F<sub>p</sub><br />Turbulento</label></td>
-            		<td class="label_m"><label>&Delta; P.<br />Laminar</label> Psi</td>
-            		<td class="label_m"><label>&Delta; P.<br />turbulento</label> Psi</td>
+            		<td class="label_m"><label>F<sub>p</sub><br />Laminate</label></td>
+            		<td class="label_m"><label>F<sub>p</sub><br />Turbulent</label></td>
+            		<td class="label_m"><label>&Delta; P.<br />Laminate</label> Psi</td>
+            		<td class="label_m"><label>&Delta; P.<br />turbulent</label> Psi</td>
             	   <td></td>
                 </tr>
                 <tr>
@@ -53,15 +53,15 @@
 </fieldset>
 
 <fieldset>
-    <legend>Ley de Bingham</legend>
+    <legend>Bingham Law</legend>
     <table>
         <thead>
             <tr>
                 <td></td>
                 <td class="label_m"><label>VEL<br /><span style="text-transform:lowercase;">ft/s</span></label></td>
                 <td class="label_m"><label>Vel Critical<br /><span style="text-transform:lowercase;">ft/s</span></label></td>
-                <td class="label_m"><label>&Delta; P.<br />Laminar</label> Psi</td>
-                <td class="label_m"><label>&Delta; P.<br />Turbulento</label> Psi</td>
+                <td class="label_m"><label>&Delta; P.<br />Laminate</label> Psi</td>
+                <td class="label_m"><label>&Delta; P.<br />Turbulent</label> Psi</td>
                 <td class="label_m"><label></label></td>
             </tr>
             <tr>
