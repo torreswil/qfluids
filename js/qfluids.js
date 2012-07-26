@@ -304,6 +304,7 @@ $(document).ready(function(){
 
 		$('#casing_tool_'+target+' .pick_casing').val('Select...');
 		$('#casing_tool_'+target+' .od,#casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom').val(0);
+		correr_calculos();
 	});
 
 	function hide_casing_overlay(){
@@ -319,6 +320,7 @@ $(document).ready(function(){
 		$('#table_createcasing').hide();
 		$('#checkbox_casing_not_found').removeAttr('checked');
 		$('#table_pickcasing select,#table_pickcasing input').removeAttr('disabled');
+		correr_calculos();
 	}	
 
 	//CUADRO DE DIALOGO SELECCION DE BOMBAS
