@@ -105,4 +105,8 @@ class Rest extends CI_Controller {
 	public function listar_id_casing(){
 		echo json_encode($this->Api->get_where('casing',array('oddeci'=>$_POST['oddeci'])));
 	}
+
+	public function insert_casing(){
+		echo json_encode($this->Api->create('casing',$_POST));
+	}
 }

@@ -3,6 +3,7 @@
 	<div class="overlay_dialog_wrapper">
 		<div class="overlay_dialog">
 			<h5>Please select a casing tool:</h5>
+			<input type="hidden" id="casing_number" />
 			<div class="content">
 				<form id="form_pickcasing">
 					<table id="table_pickcasing">
@@ -57,19 +58,22 @@
 									<option value="Liner">Liner</option>
 								</select>
 							</td>
+							<td></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>OD:</label></td>
 							<td>
-								<input type="text" name="odfrac" />
-								<input type="hidden" name="oddeci" />
+								<input type="text" name="odfrac" id="createcasing_odfrac" />
+								<input type="hidden" name="oddeci" id="createcasing_od" />
 							</td>
+							<td><em>ej. 1 1/2</em></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>ID:</label></td>
 							<td>
-								<input type="text" name="iddeci" />
+								<input type="text" name="iddeci" id="createcasing_id" />
 							</td>
+							<td>ej. 2.05</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Top:</label></td>
@@ -78,6 +82,7 @@
 						<tr>
 							<td class="label_m"><label>Bottom:</label></td>
 							<td><input type="text" name="" id="createcasing_bottom" /></td>
+							<td></td>
 						</tr>
 					</table>
 				</form>

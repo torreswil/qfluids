@@ -183,7 +183,11 @@ $(document).ready(function(){
 	$('.pick_casing').focus(function(){
 		if($(this).val() !== ''){
 			$('#select_casing_overlay').show();
-			$(this).attr('disabled','disabled');	
+			$(this).attr('disabled','disabled');
+			var casing_id = $(this).attr('id');
+			casing_id = casing_id.split('picker_');
+			casing_id = casing_id[1];
+			$('#casing_number').val(casing_id);
 		}
 	});
 
@@ -213,17 +217,7 @@ $(document).ready(function(){
 		}
 	});
 
-	function hide_casing_overlay(){
-		var no_option = '<option value="" selected="selected">Select...</option>';
-		$('#select_casing_overlay').hide();
-		$('#pickcasing_id').html(no_option);
-		$('#pickcasing_od').val('');
-		$('#pickcasing_type').val('');
-		$('#pickcasing_top').val('');
-		$('#pickcasing_bottom').val('');
-		$('.pick_casing').removeAttr('disabled');
-	}
-
+	
 	$('#select_casing_overlay .cancel_overlay').click(function(e){
 		e.preventDefault();
 		hide_casing_overlay();
@@ -239,7 +233,93 @@ $(document).ready(function(){
 			$('#table_createcasing select,#table_createcasing input').attr('disabled','disabled');
 			$('#table_createcasing').hide();
 		}
-	});	
+	});
+
+	$('#createcasing_type').change(function(){
+		if($(this).val() == 'Casing'){
+			$('#createcasing_top').val(0).attr('disabled','disabled');
+		}else if($(this).val() == 'Liner'){
+			$('#createcasing_top').val('').removeAttr('disabled');
+		}
+	});
+
+	$('#btn_casing_selected').click(function(e){
+		e.preventDefault();
+		
+		//CASING FOUND
+		if($('#checkbox_casing_not_found:checked').length == 0){
+			var eqty = 0;
+			$('#table_pickcasing input,#table_pickcasing select').each(function(){
+				if($(this).val() == ''){
+					eqty = eqty + 1;
+				}
+			});	
+
+			if(eqty > 0){
+				alert('Some fields are empty. Please verify and try again.');
+			}else{
+				var target = $('#casing_number').val();
+				$('#picker_'+target).val($('#pickcasing_type').val());
+				$('#casing_tool_'+target+' .od').val($('#pickcasing_od').val());
+				$('#casing_tool_'+target+' .id').val($('#pickcasing_id').val());
+				$('#casing_tool_'+target+' .top').val($('#pickcasing_top').val());
+				$('#casing_tool_'+target+' .bottom').val($('#pickcasing_bottom').val());
+				hide_casing_overlay();
+			}
+
+		//CASING NOT FOUND
+		}else{
+			var eqty = 0;
+			$('#createcasing_od').val(mixnumber_to_float($('#createcasing_odfrac').val()));
+			$('#table_createcasing input,#table_createcasing select').each(function(){
+				if($(this).val() == ''){
+					eqty = eqty + 1;
+					log(this);
+				}
+			});
+
+			if(eqty > 0){
+				alert('Some fields are empty. Please verify and try again. create');
+			}else{
+				var data = $('#form_createcasing').serialize();
+				$.post('/rest/insert_casing',data,function(r){
+					var target = $('#casing_number').val();
+					$('#picker_'+target).val($('#createcasing_type').val());
+					$('#casing_tool_'+target+' .od').val($('#createcasing_od').val());
+					$('#casing_tool_'+target+' .id').val($('#createcasing_id').val());
+					$('#casing_tool_'+target+' .top').val($('#createcasing_top').val());
+					$('#casing_tool_'+target+' .bottom').val($('#createcasing_bottom').val());
+					hide_casing_overlay();	
+				},'json');
+			}
+		}
+	});
+
+	$('a.casingclear').click(function(e){
+		e.preventDefault();
+		var target = $(this).attr('href');
+		target = target.split('#casingclear_');
+		target = target[1];
+		log(target);
+
+		$('#casing_tool_'+target+' .pick_casing').val('Select...');
+		$('#casing_tool_'+target+' .od,#casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom').val(0);
+	});
+
+	function hide_casing_overlay(){
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		$('#select_casing_overlay').hide();
+		$('#pickcasing_id').html(no_option);
+		$('#pickcasing_od').val('');
+		$('#pickcasing_type').val('');
+		$('#pickcasing_top').val('');
+		$('#pickcasing_bottom').val('');
+		$('.pick_casing').removeAttr('disabled');
+		$('#table_createcasing select,#table_createcasing input').attr('disabled','disabled');
+		$('#table_createcasing').hide();
+		$('#checkbox_casing_not_found').removeAttr('checked');
+		$('#table_pickcasing select,#table_pickcasing input').removeAttr('disabled');
+	}	
 
 	//CUADRO DE DIALOGO SELECCION DE BOMBAS
 	//**************************************************************************************************************************

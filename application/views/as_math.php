@@ -28,7 +28,6 @@
                 </tr>
                 <tr>
                     <td class="label_m"><label>dp</label></td>
-                    
                     <td><input type="text" style="width:50px;" id="retdp" name="retdp" /></td>
                     <td><input type="text" style="width:50px;" id="fft_dp_lami" name="fft_dp_lami"></td>
                     <td><input type="text" style="width:50px;" id="fft_dp_tur" name="fft_dp_tur" /></td>
@@ -40,7 +39,6 @@
     	<tbody id="ds_group">
             <tr id="ds_group_1">
         		<td class="label_m"><label>ds_1</label></td>
-        		
         		<td><input type="text" style="width:50px;" id="retbha_1" name="retbha_1"></td>
         		<td><input type="text" style="width:50px;" id="fft_bha_lami_1" name="fft_bha_lami_1"></td>
         		<td><input type="text" style="width:50px;" id="fft_bha_tur_1" name="fft_bha_tur_1"></td>
