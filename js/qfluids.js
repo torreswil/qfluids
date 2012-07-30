@@ -1357,26 +1357,24 @@ function calculos_raw(){
 		if($('#'+target + ' .pick_casing').val() == 'Casing'){
 			var length = parseFloat($('#bottomcsg_'+id).val());
 			completar_campo_val('longcsg_'+id,length);
-			
-
 		}else if($('#'+ target + ' .pick_casing').val() == 'Liner'){
 			var last_id = parseFloat(id) - 1;
-
 			if($('#casing_tool_'+ last_id + ' .pick_casing').val() == 'Liner'){
 				var last_length = parseFloat($('#topscsg_'+id).val()) - parseFloat($('#topscsg_'+last_id).val());	
 				completar_campo_val('longcsg_'+last_id,last_length);
-
 				var length = parseFloat($('#bottomcsg_'+id).val()) - parseFloat($('#topscsg_'+id).val());
 				completar_campo_val('longcsg_'+id,length);
-				
 			}else if($('#casing_tool_'+ last_id + ' .pick_casing').val() == 'Casing'){
 				var last_length = parseFloat($('#topscsg_'+id).val());
 				completar_campo_val('longcsg_'+last_id,last_length);
-				
 				var length = parseFloat($('#bottomcsg_'+id).val()) - last_length;
 				completar_campo_val('longcsg_'+id,length);	
 			}
 		}
+
+		var volcsg = 0;
+		volcsg = power('idcsg_'+id,2) * $('#longcsg_'+id).val() / 1029.4;
+		completar_campo_val('volcsg_'+id,volcsg.toFixed(2));
 
 	});
 
