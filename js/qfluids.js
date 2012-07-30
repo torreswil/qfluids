@@ -1351,11 +1351,33 @@ function calculos_raw(){
 
 	$('#casing_table .active').each(function(){
 		var target =  $(this).attr('id');
-		if($('#'+target + ' .pick_casing').val() == 'Liner'){
+		var id 	= target.split('casing_tool_');
+		id 		= id[1];
+
+		if($('#'+target + ' .pick_casing').val() == 'Casing'){
+			var length = parseFloat($('#bottomcsg_'+id).val());
+			completar_campo_val('longcsg_'+id,length);
 			
-		}else if($('#'+target + ' .pick_casing').val() == 'Casing'){
-			
+
+		}else if($('#'+ target + ' .pick_casing').val() == 'Liner'){
+			var last_id = parseFloat(id) - 1;
+
+			if($('#casing_tool_'+ last_id + ' .pick_casing').val() == 'Liner'){
+				var last_length = parseFloat($('#topscsg_'+id).val()) - parseFloat($('#topscsg_'+last_id).val());	
+				completar_campo_val('longcsg_'+last_id,last_length);
+
+				var length = parseFloat($('#bottomcsg_'+id).val()) - parseFloat($('#topscsg_'+id).val());
+				completar_campo_val('longcsg_'+id,length);
+				
+			}else if($('#casing_tool_'+ last_id + ' .pick_casing').val() == 'Casing'){
+				var last_length = parseFloat($('#topscsg_'+id).val());
+				completar_campo_val('longcsg_'+last_id,last_length);
+				
+				var length = parseFloat($('#bottomcsg_'+id).val()) - last_length;
+				completar_campo_val('longcsg_'+id,length);	
+			}
 		}
+
 	});
 
 
