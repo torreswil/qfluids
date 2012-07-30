@@ -259,11 +259,19 @@ $(document).ready(function(){
 				alert('Some fields are empty. Please verify and try again.');
 			}else{
 				var target = $('#casing_number').val();
+				var new_casing = parseInt(target) + 1;
 				$('#picker_'+target).val($('#pickcasing_type').val());
 				$('#casing_tool_'+target+' .od').val($('#pickcasing_od').val());
+				$('#casing_tool_'+target+' .od_dummie').val($('#pickcasing_od option:selected').html());
 				$('#casing_tool_'+target+' .id').val($('#pickcasing_id').val());
 				$('#casing_tool_'+target+' .top').val($('#pickcasing_top').val());
 				$('#casing_tool_'+target+' .bottom').val($('#pickcasing_bottom').val());
+				$('#casing_tool_'+new_casing).show();
+				$('.casingclear').each(function(){
+					$(this).hide();
+				});
+				$('.casingclear','#casing_tool_'+new_casing).show();
+				$('#casing_tool_'+target).addClass('active');
 				hide_casing_overlay();
 			}
 
@@ -284,27 +292,24 @@ $(document).ready(function(){
 				var data = $('#form_createcasing').serialize();
 				$.post('/rest/insert_casing',data,function(r){
 					var target = $('#casing_number').val();
+					var new_casing = parseInt(target) + 1;
 					$('#picker_'+target).val($('#createcasing_type').val());
-					$('#casing_tool_'+target+' .od').val($('#createcasing_od').val());
+					$('#casing_tool_'+target+' .od_dummie').val($('#createcasing_odfrac').val());
+					$('#casing_tool_'+target+' .od').val($('#_od').val());
 					$('#casing_tool_'+target+' .id').val($('#createcasing_id').val());
 					$('#casing_tool_'+target+' .top').val($('#createcasing_top').val());
 					$('#casing_tool_'+target+' .bottom').val($('#createcasing_bottom').val());
+					$('#casing_tool_' + parseInt(target) + 1).show();
+					$('#casing_tool_'+new_casing).show();
+					$('.casingclear').each(function(){
+						$(this).hide();
+					});
+					$('.casingclear','#casing_tool_'+new_casing).show();
+					$('#casing_tool_'+target).addClass('active');
 					hide_casing_overlay();	
 				},'json');
 			}
 		}
-	});
-
-	$('a.casingclear').click(function(e){
-		e.preventDefault();
-		var target = $(this).attr('href');
-		target = target.split('#casingclear_');
-		target = target[1];
-		log(target);
-
-		$('#casing_tool_'+target+' .pick_casing').val('Select...');
-		$('#casing_tool_'+target+' .od,#casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom').val(0);
-		correr_calculos();
 	});
 
 	function hide_casing_overlay(){
@@ -321,7 +326,32 @@ $(document).ready(function(){
 		$('#checkbox_casing_not_found').removeAttr('checked');
 		$('#table_pickcasing select,#table_pickcasing input').removeAttr('disabled');
 		correr_calculos();
-	}	
+	}
+
+	// HERRAMIENTA DE AGREGAR Y ELIMINAR CASING
+
+	$('#casing_tool_1').show();
+
+	$('a.casingclear').click(function(e){
+		e.preventDefault();
+	
+		var target = $(this).attr('href');
+		target = target.split('#casingclear_');
+		target = target[1];
+
+		//$('#casing_tool_'+target+' .pick_casing').val('Select...');
+		//$('#casing_tool_'+target+' .od,#casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom').val(0);
+		
+		if($(this).parents('.casing_tool_row').attr('id') !== 'casing_tool_1'){
+			$('#casing_tool_'+target).hide().removeClass('active');
+		}
+
+		var last_row = target - 1;
+		$('a.casingclear','#casing_tool_' + last_row).show();
+		$('#casing_tool_'+target+' .pick_casing').val('Select...');
+		$('#casing_tool_'+target+' .od,#casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom,#casing_tool_'+target+' .volume, #casing_tool_'+target+' .length').val(0);
+		correr_calculos();
+	});
 
 	//CUADRO DE DIALOGO SELECCION DE BOMBAS
 	//**************************************************************************************************************************
@@ -997,6 +1027,9 @@ $(document).ready(function(){
 		}
 		
 	});
+
+
+
 	
 	// TRIGGERS CALCULOS
 	$('#qfluids_form input').live('keyup',function(){
@@ -1314,7 +1347,20 @@ function calculos_raw(){
 	// CALCULOS GEOMETRIA DEL POZO
 	//**************************************************
 	
-	// 1. DRILL STRING (TUBERIA)
+	// 1. CASING (REVESTIMIENTO)
+
+	$('#casing_table .active').each(function(){
+		var target =  $(this).attr('id');
+		if($('#'+target + ' .pick_casing').val() == 'Liner'){
+			
+		}else if($('#'+target + ' .pick_casing').val() == 'Casing'){
+			
+		}
+	});
+
+
+
+	// 2. DRILL STRING (TUBERIA)
 	
 	//drill_string_tools
 	$('.select_drill_string').each(function(){
@@ -1674,10 +1720,6 @@ function calculos_raw(){
 		}
 		completar_campo_val('zbinglossbha_'+id,zbinglossbha.toFixed(2));
 	});	
-
-
-
-
 
 
 	//CALCULOS 'DATOS DE LA BOMBA'

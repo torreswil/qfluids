@@ -30,84 +30,121 @@
 	    <div class="simpleTabsContent" style="height:329px;">
 			<!-- CASING -->
 			<fieldset>
-				<table>
+				<table id="casing_table">
 					<tr>
 						<td class="label_m"><label>NAME</label></td>
 						<td class="label_m"><label>OD [<span style="text-transform:lowercase;">in</span>]</label></td>
 						<td class="label_m"><label>ID [<span style="text-transform:lowercase;">in</span>]</label></td>
 						<td class="label_m"><label>TOP [<span style="text-transform:lowercase;">ft</span>]</label></td>	
-						<td class="label_m"><label>BOTTOM [<span style="text-transform:lowercase;">ft</span>]</label></td>														
+						<td class="label_m"><label>BOTTOM [<span style="text-transform:lowercase;">ft</span>]</label></td>
+						<td class="label_m"><label>VOLUME[<span style="text-transform:lowercase;">bbl</span>]</label></td>
+						<td class="label_m"><label>LENGTH[<span style="text-transform:lowercase;">ft</span>]</label></td>														
 						<td></td>
 					</tr>
-					<tr id="casing_tool_1">
+					<tr id="casing_tool_1" class="casing_tool_row">
 						<td>
 							<input type="text" value="Select..." class="pick_casing" id="picker_1" style="width:100px;">
 						</td>
-						<td><input type="text" class="od" disabled="disabled" value="0" /></td>
+						<td>
+							<input type="hidden" class="od" disabled="disabled" value="0" />
+							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
+						</td>
 						<td><input type="text" class="id" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="top" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="bottom" disabled="disabled" value="0" /></td>
-						<td><a href="#casingclear_1" class="casingclear">Clear</a></td>					
+						<td><input type="text" class="volume" disabled="disabled" value="0" /></td>
+						<td><input type="text" class="length" disabled="disabled" value="0" /></td>
+						<td><a href="#casingclear_1" class="casingclear" style="display:none;">Clear</a></td>					
 					</tr>
-					<tr id="casing_tool_2">
+					<tr id="casing_tool_2" class="casing_tool_row">
 						<td>
 							<input type="text" value="Select..." class="pick_casing" id="picker_2" style="width:100px;">
 						</td>
-						<td><input type="text" class="od" disabled="disabled" value="0" /></td>
+						<td>
+							<input type="hidden" class="od" disabled="disabled" value="0" />
+							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
+						</td>
 						<td><input type="text" class="id" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="top" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="bottom" disabled="disabled" value="0" /></td>
-						<td><a href="#casingclear_2" class="casingclear">Clear</a></td>						
+						<td><input type="text" class="volume" disabled="disabled" value="0" /></td>
+						<td><input type="text" class="length" disabled="disabled" value="0" /></td>
+						<td><a href="#casingclear_2" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
-					<tr id="casing_tool_3">
+					<tr id="casing_tool_3" class="casing_tool_row">
 						<td>
 							<input type="text" value="Select..." class="pick_casing" id="picker_3" style="width:100px;">
 						</td>
-						<td><input type="text" class="od" disabled="disabled" value="0" /></td>
+						<td>
+							<input type="hidden" class="od" disabled="disabled" value="0" />
+							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
+						</td>
 						<td><input type="text" class="id" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="top" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="bottom" disabled="disabled" value="0" /></td>
-						<td><a href="#casingclear_3" class="casingclear">Clear</a></td>						
+						<td><input type="text" class="volume" disabled="disabled" value="0" /></td>
+						<td><input type="text" class="length" disabled="disabled" value="0" /></td>
+						<td><a href="#casingclear_3" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
-					<tr id="casing_tool_4">
+					<tr id="casing_tool_4" class="casing_tool_row">
 						<td>
 							<input type="text" value="Select..." class="pick_casing" id="picker_4" style="width:100px;">
 						</td>
-						<td><input type="text" class="od" disabled="disabled" value="0" /></td>
+						<td>
+							<input type="hidden" class="od" disabled="disabled" value="0" />
+							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
+						</td>
 						<td><input type="text" class="id" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="top" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="bottom" disabled="disabled" value="0" /></td>
-						<td><a href="#casingclear_4" class="casingclear">Clear</a></td>						
+						<td><input type="text" class="volume" disabled="disabled" value="0" /></td>
+						<td><input type="text" class="length" disabled="disabled" value="0" /></td>
+						<td><a href="#casingclear_4" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
-					<tr id="casing_tool_5">
+					<tr id="casing_tool_5" class="casing_tool_row">
 						<td>
 							<input type="text" value="Select..." class="pick_casing" id="picker_5" style="width:100px;">
 						</td>
-						<td><input type="text" class="od" disabled="disabled" value="0" /></td>
+						<td>
+							<input type="hidden" class="od" disabled="disabled" value="0" />
+							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
+						</td>
 						<td><input type="text" class="id" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="top" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="bottom" disabled="disabled" value="0" /></td>
-						<td><a href="#casingclear_5" class="casingclear">Clear</a></td>						
+						<td><input type="text" class="volume" disabled="disabled" value="0" /></td>
+						<td><input type="text" class="length" disabled="disabled" value="0" /></td>
+						<td><a href="#casingclear_5" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
-					<tr id="casing_tool_6">
+					<tr id="casing_tool_6" class="casing_tool_row">
 						<td>
 							<input type="text" value="Select..." class="pick_casing" id="picker_6" style="width:100px;">
 						</td>
-						<td><input type="text" class="od" disabled="disabled" value="0" /></td>
+						<td>
+							<input type="hidden" class="od" disabled="disabled" value="0" />
+							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
+						</td>
 						<td><input type="text" class="id" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="top" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="bottom" disabled="disabled" value="0" /></td>
-						<td><a href="#casingclear_6" class="casingclear">Clear</a></td>						
+						<td><input type="text" class="volume" disabled="disabled" value="0" /></td>
+						<td><input type="text" class="length" disabled="disabled" value="0" /></td>
+						<td><a href="#casingclear_6" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
-					<tr id="casing_tool_7">
+					<tr id="casing_tool_7" class="casing_tool_row">
 						<td>
 							<input type="text" value="Select..." class="pick_casing" id="picker_7" style="width:100px;">
 						</td>
-						<td><input type="text" class="od" disabled="disabled" value="0" /></td>
+						<td>
+							<input type="hidden" class="od" disabled="disabled" value="0" />
+							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
+						</td>
 						<td><input type="text" class="id" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="top" disabled="disabled" value="0" /></td>
 						<td><input type="text" class="bottom" disabled="disabled" value="0" /></td>
-						<td><a href="#casingclear_7" class="casingclear">Clear</a></td>						
+						<td><input type="text" class="volume" disabled="disabled" value="0" /></td>
+						<td><input type="text" class="length" disabled="disabled" value="0" /></td>
+						<td><a href="#casingclear_7" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>						
 				</table>
 			</fieldset>
