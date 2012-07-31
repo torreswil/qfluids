@@ -259,20 +259,44 @@ $(document).ready(function(){
 				alert('Some fields are empty. Please verify and try again.');
 			}else{
 				var target = $('#casing_number').val();
-				var new_casing = parseInt(target) + 1;
-				$('#picker_'+target).val($('#pickcasing_type').val());
-				$('#casing_tool_'+target+' .od').val($('#pickcasing_od').val());
-				$('#casing_tool_'+target+' .od_dummie').val($('#pickcasing_od option:selected').html());
-				$('#casing_tool_'+target+' .id').val($('#pickcasing_id').val());
-				$('#casing_tool_'+target+' .top').val($('#pickcasing_top').val());
-				$('#casing_tool_'+target+' .bottom').val($('#pickcasing_bottom').val());
-				$('#casing_tool_'+new_casing).show();
-				$('.casingclear').each(function(){
-					$(this).hide();
-				});
-				$('.casingclear','#casing_tool_'+new_casing).show();
-				$('#casing_tool_'+target).addClass('active');
-				hide_casing_overlay();
+				var last_target = parseInt(target) - 1;
+				log(last_target);
+				if(last_target > 0){
+					//VALIDATE THE OD IS LESS THAN THE OD OF THE LAST SELECTED CASING
+					if(parseFloat($('#casing_tool_'+last_target+' .od').val()) <= parseFloat($('#pickcasing_od').val())){
+						alert('The OD in this tool cannot be greater than the OD in the last selected tool');
+					}else{
+						var new_casing = parseInt(target) + 1;
+						$('#picker_'+target).val($('#pickcasing_type').val());
+						$('#casing_tool_'+target+' .od').val($('#pickcasing_od').val());
+						$('#casing_tool_'+target+' .od_dummie').val($('#pickcasing_od option:selected').html());
+						$('#casing_tool_'+target+' .id').val($('#pickcasing_id').val());
+						$('#casing_tool_'+target+' .top').val($('#pickcasing_top').val());
+						$('#casing_tool_'+target+' .bottom').val($('#pickcasing_bottom').val());
+						$('#casing_tool_'+new_casing).show();
+						$('.casingclear').each(function(){
+							$(this).hide();
+						});
+						$('.casingclear','#casing_tool_'+new_casing).show();
+						$('#casing_tool_'+target).addClass('active');
+						hide_casing_overlay();	
+					}	
+				}else{
+						var new_casing = parseInt(target) + 1;
+						$('#picker_'+target).val($('#pickcasing_type').val());
+						$('#casing_tool_'+target+' .od').val($('#pickcasing_od').val());
+						$('#casing_tool_'+target+' .od_dummie').val($('#pickcasing_od option:selected').html());
+						$('#casing_tool_'+target+' .id').val($('#pickcasing_id').val());
+						$('#casing_tool_'+target+' .top').val($('#pickcasing_top').val());
+						$('#casing_tool_'+target+' .bottom').val($('#pickcasing_bottom').val());
+						$('#casing_tool_'+new_casing).show();
+						$('.casingclear').each(function(){
+							$(this).hide();
+						});
+						$('.casingclear','#casing_tool_'+new_casing).show();
+						$('#casing_tool_'+target).addClass('active');
+						hide_casing_overlay();
+				}
 			}
 
 		//CASING NOT FOUND
@@ -292,21 +316,46 @@ $(document).ready(function(){
 				var data = $('#form_createcasing').serialize();
 				$.post('/rest/insert_casing',data,function(r){
 					var target = $('#casing_number').val();
-					var new_casing = parseInt(target) + 1;
-					$('#picker_'+target).val($('#createcasing_type').val());
-					$('#casing_tool_'+target+' .od_dummie').val($('#createcasing_odfrac').val());
-					$('#casing_tool_'+target+' .od').val($('#_od').val());
-					$('#casing_tool_'+target+' .id').val($('#createcasing_id').val());
-					$('#casing_tool_'+target+' .top').val($('#createcasing_top').val());
-					$('#casing_tool_'+target+' .bottom').val($('#createcasing_bottom').val());
-					$('#casing_tool_' + parseInt(target) + 1).show();
-					$('#casing_tool_'+new_casing).show();
-					$('.casingclear').each(function(){
-						$(this).hide();
-					});
-					$('.casingclear','#casing_tool_'+new_casing).show();
-					$('#casing_tool_'+target).addClass('active');
-					hide_casing_overlay();	
+					var last_target = parseInt(target) - 1;
+					if(last_target > 0){
+						if(parseFloat($('#casing_tool_'+last_target+' .od').val()) <= parseFloat($('#createcasing_od').val())){
+							alert('The OD in this tool cannot be greater than the OD in the last selected tool');	
+						}else{
+							var new_casing = parseInt(target) + 1;
+							$('#picker_'+target).val($('#createcasing_type').val());
+							$('#casing_tool_'+target+' .od_dummie').val($('#createcasing_odfrac').val());
+							$('#casing_tool_'+target+' .od').val($('#createcasing_od').val());
+							$('#casing_tool_'+target+' .id').val($('#createcasing_id').val());
+							$('#casing_tool_'+target+' .top').val($('#createcasing_top').val());
+							$('#casing_tool_'+target+' .bottom').val($('#createcasing_bottom').val());
+							$('#casing_tool_' + parseInt(target) + 1).show();
+							$('#casing_tool_'+new_casing).show();
+							$('.casingclear').each(function(){
+								$(this).hide();
+							});
+							$('.casingclear','#casing_tool_'+new_casing).show();
+							$('#casing_tool_'+target).addClass('active');
+							hide_casing_overlay();
+						}
+					}else{
+						var new_casing = parseInt(target) + 1;
+						$('#picker_'+target).val($('#createcasing_type').val());
+						$('#casing_tool_'+target+' .od_dummie').val($('#createcasing_odfrac').val());
+						$('#casing_tool_'+target+' .od').val($('#createcasing_od').val());
+						$('#casing_tool_'+target+' .id').val($('#createcasing_id').val());
+						$('#casing_tool_'+target+' .top').val($('#createcasing_top').val());
+						$('#casing_tool_'+target+' .bottom').val($('#createcasing_bottom').val());
+						$('#casing_tool_' + parseInt(target) + 1).show();
+						$('#casing_tool_'+new_casing).show();
+						$('.casingclear').each(function(){
+							$(this).hide();
+						});
+						$('.casingclear','#casing_tool_'+new_casing).show();
+						$('#casing_tool_'+target).addClass('active');
+						hide_casing_overlay();
+					}
+
+						
 				},'json');
 			}
 		}

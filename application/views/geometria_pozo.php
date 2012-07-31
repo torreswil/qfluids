@@ -44,17 +44,17 @@
 					<tr>
 						<td></td>
 						<td class="label_m" style="text-align:center">
-							<label><span style="text-transform:lowercase;">in</span></label></td>
+							<span style="text-transform:lowercase;">in</span></td>
 						<td class="label_m" style="text-align: center">
-							<label><span style="text-transform:lowercase;">in</span></label></td>
+							<span style="text-transform:lowercase;">in</span></td>
 						<td class="label_m" style="text-align: center">
-							<label><span style="text-transform:lowercase;">ft</span></label></td>	
+							<span style="text-transform:lowercase;">ft</span></td>	
 						<td class="label_m" style="text-align: center">
-							<label><span style="text-transform:lowercase;">ft</span></label></td>
+							<span style="text-transform:lowercase;">ft</span></td>
 						<td class="label_m" style="text-align: center">
-							<label><span style="text-transform:lowercase;">bbl</span></label></td>
+							<span style="text-transform:lowercase;">bbl</span></td>
 						<td class="label_m" style="text-align: center">
-							<label><span style="text-transform:lowercase;">ft</span></label></td>														
+							<span style="text-transform:lowercase;">ft</span></td>														
 						<td></td>
 					</tr>
 					
