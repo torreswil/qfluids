@@ -16,6 +16,7 @@
 									<option value="Liner">Liner</option>
 								</select>
 							</td>
+							<td class="label_m"></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>OD:</label></td>
@@ -27,6 +28,7 @@
 									<?php }?>
 								</select>
 							</td>
+							<td class="label_m">in</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>ID:</label></td>
@@ -35,14 +37,17 @@
 									<option value="">Select...</option>
 								</select>
 							</td>
+							<td class="label_m">in</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Top:</label></td>
 							<td><input type="text" name="" id="pickcasing_top" /></td>
+							<td class="label_m">ft</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Bottom:</label></td>
 							<td><input type="text" name="" id="pickcasing_bottom" /></td>
+							<td class="label_m">ft</td>
 						</tr>
 					</table>
 				</form>
@@ -58,7 +63,7 @@
 									<option value="Liner">Liner</option>
 								</select>
 							</td>
-							<td></td>
+							<td><strong></strong></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>OD:</label></td>
@@ -66,23 +71,24 @@
 								<input type="text" name="odfrac" id="createcasing_odfrac" />
 								<input type="hidden" name="oddeci" id="createcasing_od" />
 							</td>
-							<td><em>ej. 1 1/2</em></td>
+							<td class="label_m">in <strong>ej. 1 1/2</strong></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>ID:</label></td>
 							<td>
 								<input type="text" name="iddeci" id="createcasing_id" />
 							</td>
-							<td>ej. 2.05</td>
+							<td class="label_m">in <strong>ej. 2.05</strong></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Top:</label></td>
-							<td><input type="text" name="" id="createcasing_top" /></td>
+							<td><input type="text" name="createcasing_top" id="createcasing_top" /></td>
+							<td class="label_m">ft</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Bottom:</label></td>
 							<td><input type="text" name="" id="createcasing_bottom" /></td>
-							<td></td>
+							<td class="label_m">ft</td>
 						</tr>
 					</table>
 				</form>
