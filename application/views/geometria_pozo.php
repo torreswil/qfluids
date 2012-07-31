@@ -234,17 +234,17 @@
 						</tr>
 						<tr>
 							<td class="label_m"><label>Total Empty Hole:</label></td>
-							<td><input type="text" disabled="disabled" /></td>
+							<td><input type="text" disabled="disabled" id="volholeempty" name="volholeempty" /></td>
 							<td class="label_m">bbl</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>String Displacement:</label></td>
-							<td><input type="text" disabled="disabled" /></td>
+							<td><input type="text" disabled="disabled" name="zdisptotal" id="zdisptotal" /></td>
 							<td class="label_m">bbl</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Hole W/ String:</label></td>
-							<td><input type="text" disabled="disabled" /></td>
+							<td><input type="text" disabled="disabled" id="volwstring" name="volwstring" /></td>
 							<td class="label_m">bbl</td>
 						</tr>
 					</table>
@@ -298,21 +298,21 @@
 											<td class="unit_field" style="text-align:center;padding-rigth:5px;">Power</td>
 											<td class="unit_field" style="text-align:center;padding-rigth:5px;">Bingh</td>
 										</tr>
-										<tr>
+										<tr style="display:none;">
 											<td class="label_m"><label>DRILL PIPE:</label></td>
-											<td><input type="text" name="oddp" id="oddp" /></td>
-											<td><input type="text" name="iddp" id="iddp" /></td>
+											<td><input type="text" name="oddp" id="oddp" value="0" /></td>
+											<td><input type="text" name="iddp" id="iddp" value="0" /></td>
 											<td><input type="text" name="longdp" id="longdp" value="0" style="width:40px;" /></td>
-											<td><input type="text" name="capvdp" id="capvdp" disabled="disabled"/></td>
-											<td><input type="text" name="dispvdp" id="dispvdp" disabled="disabled"/></td>
-											<td><input type="text" name="capdp" id="capdp" disabled="disabled" style="width:40px;" /></td>
-											<td><input type="text" name="dispdp" id="dispdp" disabled="disabled" style="width:40px;"/></td>
-											<td><input type="text" name="powerlosspb" id="powerlosspb" disabled="disabled"/></td>
-											<td><input type="text" name="zbinglosspb" id="zbinglosspb" disabled="disabled"/></td>
+											<td><input type="text" name="capvdp" id="capvdp" value="0" disabled="disabled"/></td>
+											<td><input type="text" name="dispvdp" id="dispvdp" value="0" disabled="disabled"/></td>
+											<td><input type="text" name="capdp" id="capdp" disabled="disabled" style="width:40px;" value="0" /></td>
+											<td><input type="text" name="dispdp" id="dispdp" disabled="disabled" style="width:40px;" value="0"/></td>
+											<td><input type="text" name="powerlosspb" id="powerlosspb" disabled="disabled" value="0"/></td>
+											<td><input type="text" name="zbinglosspb" id="zbinglosspb" disabled="disabled" value="0"/></td>
 											<td></td>
 										</tr>
 										<tr>
-											<td><a href="#" id="add_another_drill">Add another...</a></td>
+											<td><a href="#" id="add_another_drill">Add a BHA tool...</a></td>
 											<td></td>
 											<td></td>
 											<td></td>

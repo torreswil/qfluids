@@ -26,7 +26,7 @@
             		<td class="label_m"><label>&Delta; P.<br />turbulent</label> Psi</td>
             	   <td></td>
                 </tr>
-                <tr>
+                <tr style="display:none;">
                     <td class="label_m"><label>dp</label></td>
                     
                     <td><input type="text" style="width:50px;" id="retdp" name="retdp" /></td>
@@ -64,7 +64,7 @@
                 <td class="label_m"><label>&Delta; P.<br />Turbulent</label> Psi</td>
                 <td class="label_m"><label></label></td>
             </tr>
-            <tr>
+            <tr style="display:none;">
                 <td class="label_m"><label>dp</label></td>
                 <td><input type="text" style="width:50px;" id="veltubdp" name="veltubdp" /></td>
                 <td><input type="text" style="width:50px;" id="velcritdp" name="velcritdp" /></td>

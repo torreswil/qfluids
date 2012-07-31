@@ -917,8 +917,8 @@ $(document).ready(function(){
 
 		if(cantidad_vacios > 0){
 			return false;
-		}else if(cantidad_completos == 8){
-			alert('You can have maximum 8 Drill String tools in your system.');
+		}else if(cantidad_completos == 9){
+			alert('You can have maximum 9 Drill String tools in your system.');
 		}else{
 			$.post('/rest/new_drill_string_row',{'drillstring_qty' : first_id},function(r){
 				$('.drill_string_pieces').prepend(r);
@@ -1492,7 +1492,7 @@ function calculos_raw(){
 		bottomcsg_partial = $(this).val();
 	});
 	longhoyo = parseFloat($('#md').val()) - parseFloat(bottomcsg_partial);
-	completar_campo_val('longhoyo',longhoyo);
+	completar_campo_val('longhoyo',longhoyo.toFixed(2));
 	
 
 	//volhole
@@ -1527,8 +1527,12 @@ function calculos_raw(){
 			}
 		}
 	});
-	completar_campo_val('volcsgt',volcsgt);
+	completar_campo_val('volcsgt',volcsgt.toFixed(2));
 
+	//volholeempty
+	var volholeempty = 0;
+	volholeempty = volhole + volcsgt;
+	completar_campo_val('volholeempty',volholeempty.toFixed(2));
 
 
 
@@ -1588,7 +1592,13 @@ function calculos_raw(){
 		disptotal = disptotal + parseFloat($(this).val());
 	});
 	disptotal = disptotal + parseFloat($('#dispvdp').val());
-	completar_campo_val('disptotal',disptotal);
+	completar_campo_val('disptotal',disptotal.toFixed(2));
+	completar_campo_val('zdisptotal',disptotal.toFixed(2));
+
+	//volwstring
+	var volwstring = 0;
+	volwstring = volholeempty - disptotal;
+	completar_campo_val('volwstring',volwstring.toFixed(2));
 
 	//zavgtemp
 	var zavgtemp = 0
