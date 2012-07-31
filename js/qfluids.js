@@ -1115,6 +1115,10 @@ $(document).ready(function(){
 // CALCULOS 																	*
 //*******************************************************************************
 
+$('#md').keyup(function(){
+	$('#bitdepth').val($(this).val());
+});
+
 function mixnumber_to_float(mixnumber){
 	var components 	= mixnumber.split(' ');
 	if(components.length == 1){
@@ -1443,8 +1447,92 @@ function calculos_raw(){
 	});
 
 
+	//2. HUECO
 
-	// 2. DRILL STRING (TUBERIA)
+	//zhole
+	//var zhole = 0;
+	//zhole = mixnumber_to_float($.trim($('#zholed').val()));
+	//completar_campo_val('zhole',zhole);
+
+	//openhole
+	var openhole = 0;
+	
+	var zhole = 0;
+	if($('#zhole').val() !== ''){
+		zhole = parseFloat($('#zhole').val());
+	}
+
+	var zrice = 0;
+	if($('#zrice').val() !== ''){
+		zrice = parseFloat($('#zrice').val());
+	}
+
+	var zcuttings = 0;
+	if($('#zcuttings').val() !== ''){
+		zcuttings = parseFloat($('#zcuttings').val());
+	}
+
+	var zcaliper = 0;
+	if($('#zcaliper').val() !== ''){
+		zcaliper = parseFloat($('#zcaliper').val());
+	}
+
+	openhole = zhole + zrice + zcuttings + zcaliper; 
+	completar_campo_val('openhole',openhole.toFixed(3));
+
+	//zwashout
+	var zwashout = 0;
+	zwashout = 100 * (openhole - zhole) / zhole;
+	completar_campo_val('zwashout',zwashout.toFixed(2));
+
+	//longhoyo
+	var longhoyo = 0;
+	var bottomcsg_partial = 0;
+	$('#casing_table .active .bottom').each(function(){
+		bottomcsg_partial = $(this).val();
+	});
+	longhoyo = parseFloat($('#md').val()) - parseFloat(bottomcsg_partial);
+	completar_campo_val('longhoyo',longhoyo);
+	
+
+	//volhole
+	var volhole = 0;
+	volhole = Math.pow(openhole,2) * longhoyo / 1029.4; 
+	completar_campo_val('volhole',volhole.toFixed(2));
+
+
+	//volcsgt
+	var volcsgt = 0;
+	$('#casing_table .active').each(function(){
+		var target =  $(this).attr('id');
+		var id 	= target.split('casing_tool_');
+		id 		= id[1];
+
+		if($('#'+target + ' .pick_casing').val() == 'Casing'){
+			volcsgt = parseFloat($('#volcsg_'+id).val());
+		}else if($('#'+ target + ' .pick_casing').val() == 'Liner'){
+			var last_id = parseFloat(id) - 1;
+			if($('#casing_tool_'+ last_id + ' .pick_casing').val() == 'Liner'){
+				var count = id;
+				volcsgt = parseFloat($('#volcsg_'+count).val());
+				while(count > 0){
+					count = count - 1;
+					volcsgt = volcsgt + parseFloat($('#volcsg_'+count).val());
+					if($('#casing_tool_'+ count + ' .pick_casing').val() == 'Casing'){
+						count = 0;
+					}
+				}
+			}else if($('#casing_tool_'+ last_id + ' .pick_casing').val() == 'Casing'){
+				volcsgt = parseFloat($('#volcsg_'+id).val()) + parseFloat($('#volcsg_'+last_id).val());		
+			}
+		}
+	});
+	completar_campo_val('volcsgt',volcsgt);
+
+
+
+
+	// 3. DRILL STRING (TUBERIA)
 	
 	//drill_string_tools
 	$('.select_drill_string').each(function(){
@@ -1867,3 +1955,13 @@ function calculos_raw(){
 	});
 	completar_campo_val('drillingtimetotal',drillingtimetotal.toFixed(1));
 }
+
+/*
+var name_acum = '';
+$('input').each(function(){
+	if($(this).attr('id') !== '' && $(this).attr('id') !== undefined){
+		name_acum = name_acum + ',' + $(this).attr('id');
+	}
+});
+$('#name_list').html(name_acum);
+*/

@@ -7,13 +7,13 @@
 					<label class="emphasis">DEPTH MD:</label>
 				</td>
 				<td class="label_m" style="padding-right:20px;">
-					<input type="text" style="margin-right:5px;width:40px;" /> ft
+					<input type="text" id="md" name="md" style="margin-right:5px;width:40px;" value="0" /> ft
 				</td>
 				<td class="label_m">
 					<label class="emphasis">BIT DEPTH:</label>
 				</td>
 				<td class="label_m" style="padding-right:20px;">
-					<input type="text" style="margin-right:5px;width:40px;" /> ft
+					<input type="text" name="bitdepth" id="bitdepth" style="margin-right:5px;width:40px;" value="0" /> ft
 				</td>
 			</tr>
 		</table>
@@ -173,8 +173,8 @@
 					<table style="float:left;">
 						<tr>
 							<td class="label_m"><label class="emphasis">OPEN HOLE:</label></td>
-							<td><input type="text"></td>
-							<td class="label_m">in</td>
+							<td><input type="hidden" name="zholed" id="zholed" disabled="disabled"><input type="text" name="zhole" id="zhole" value="0"></td>
+							<td class="label_m">in [decimals, not fracs]</td>
 						</tr>
 					</table>
 				</fieldset>
@@ -187,35 +187,35 @@
 					<table style="float:left;">
 						<tr>
 							<td class="label_m"><label>Rice & Carbide Test:</label></td>
-							<td><input type="text" style="margin-right:3px;"></td>
+							<td><input class="zero" type="text" name="zrice" id="zrice" style="margin-right:3px;" value="0"></td>
 							<td class="label_m" style="text-align:left;">in</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Cuttings & Caving record:</label></td>
-							<td><input type="text" style="margin-right:3px;"></td>
+							<td><input class="zero" type="text" name="zcuttings" id="zcuttings" style="margin-right:3px;" value="0"></td>
 							<td class="label_m" style="text-align:left;">in</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Caliper:</label></td>
-							<td><input type="text" style="margin-right:3px;"></td>
+							<td><input class="zero" type="text" name="zcalipper" id="zcaliper" style="margin-right:3px;" value="0"></td>
 							<td class="label_m" style="text-align:left;">in</td>
 						</tr>
 					</table>
 					<table style="float:right;margin-right:50px;">
 						<tr>
 							<td class="label_m" style="padding-left:6px;"><label>WASHOUT:</label></td>
-							<td><input type="text" disabled="disabled"></td>
+							<td><input type="text" name="zwashout" id="zwashout" disabled="disabled"></td>
 							<td class="label_m">%</td>
 						</tr>
 						<tr>
 							<td class="label_m" style="padding-left:6px;"><label>AVERAGE HOLE:</label></td>
-							<td><input type="text" disabled="disabled"></td>
+							<td><input type="text" name="openhole" id="openhole" disabled="disabled"></td>
 							<td class="label_m">in</td>
 						</tr>
 						<tr>
 							<td class="label_m" style="padding-left:6px;"><label>OPEN HOLE LENGTH:</label></td>
-							<td><input type="text" disabled="disabled"></td>
-							<td class="label_m">in</td>
+							<td><input type="text" name="longhoyo" id="longhoyo" disabled="disabled"></td>
+							<td class="label_m">ft</td>
 						</tr>
 					</table>
 				</fieldset>
@@ -224,12 +224,12 @@
 					<table>
 						<tr>
 							<td class="label_m"><label>Casing:</label></td>
-							<td><input type="text" disabled="disabled" /></td>
+							<td><input type="text" name="volcsgt" id="volcsgt" disabled="disabled" /></td>
 							<td class="label_m">bbl</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Open Hole:</label></td>
-							<td><input type="text" disabled="disabled" /></td>
+							<td><input type="text" disabled="disabled" id="volhole" name="volhole" /></td>
 							<td class="label_m">bbl</td>
 						</tr>
 						<tr>
@@ -382,3 +382,4 @@
         </div>
 	</div>
 </div>
+<?php // <div id="name_list"></div> ?>

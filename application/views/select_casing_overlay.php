@@ -2,13 +2,13 @@
 <div class="overlay_wrapper" id="select_casing_overlay">
 	<div class="overlay_dialog_wrapper">
 		<div class="overlay_dialog">
-			<h5>Please select a casing tool:</h5>
+			<h5>Please select a coater tool:</h5>
 			<input type="hidden" id="casing_number" />
 			<div class="content">
 				<form id="form_pickcasing">
 					<table id="table_pickcasing">
 						<tr>
-							<td class="label_m"><label>Casing Type:</label></td>
+							<td class="label_m"><label>Coater Type:</label></td>
 							<td>
 								<select id="pickcasing_type">
 									<option value="">Select...</option>
