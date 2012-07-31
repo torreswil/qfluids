@@ -32,15 +32,33 @@
 			<fieldset>
 				<table id="casing_table">
 					<tr>
-						<td class="label_m"><label>NAME</label></td>
-						<td class="label_m"><label>OD [<span style="text-transform:lowercase;">in</span>]</label></td>
-						<td class="label_m"><label>ID [<span style="text-transform:lowercase;">in</span>]</label></td>
-						<td class="label_m"><label>TOP [<span style="text-transform:lowercase;">ft</span>]</label></td>	
-						<td class="label_m"><label>BOTTOM [<span style="text-transform:lowercase;">ft</span>]</label></td>
-						<td class="label_m"><label>CAPACITY[<span style="text-transform:lowercase;">bbl</span>]</label></td>
-						<td class="label_m"><label>LENGTH[<span style="text-transform:lowercase;">ft</span>]</label></td>														
+						<td class="label_m"><label>NAME:</label></td>
+						<td class="label_m"  style="text-align: center"><label>OD: </td>
+						<td class="label_m"  style="text-align: center"><label>ID: </td>
+						<td class="label_m"  style="text-align: center"><label>TOP: </td>	
+						<td class="label_m"  style="text-align: center"><label>BOTTOM: </td>
+						<td class="label_m"  style="text-align: center"><label>CAPAC.:</td>
+						<td class="label_m"  style="text-align: center"><label>LENGTH:</td>														
 						<td></td>
 					</tr>
+					<tr>
+						<td></td>
+						<td class="label_m" style="text-align:center">
+							<label><span style="text-transform:lowercase;">in</span></label></td>
+						<td class="label_m" style="text-align: center">
+							<label><span style="text-transform:lowercase;">in</span></label></td>
+						<td class="label_m" style="text-align: center">
+							<label><span style="text-transform:lowercase;">ft</span></label></td>	
+						<td class="label_m" style="text-align: center">
+							<label><span style="text-transform:lowercase;">ft</span></label></td>
+						<td class="label_m" style="text-align: center">
+							<label><span style="text-transform:lowercase;">bbl</span></label></td>
+						<td class="label_m" style="text-align: center">
+							<label><span style="text-transform:lowercase;">ft</span></label></td>														
+						<td></td>
+					</tr>
+					
+					
 					<tr id="casing_tool_1" class="casing_tool_row">
 						<td>
 							<input type="text" value="Select..." class="pick_casing" id="picker_1" style="width:100px;">
@@ -49,11 +67,11 @@
 							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_1" id="odcsg_1" />
 							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
 						</td>
-						<td><input type="text" class="id" disabled="disabled" value="0" name="idcsg_1" id="idcsg_1" /></td>
-						<td><input type="text" class="top" disabled="disabled" value="0" name="topcsg_1" id="topscsg_1" /></td>
-						<td><input type="text" class="bottom" disabled="disabled" value="0" name="bottomcsg_1" id="bottomcsg_1" /></td>
-						<td><input type="text" class="volume" disabled="disabled" value="0" name="volcsg_1" id="volcsg_1" /></td>
-						<td><input type="text" class="length" disabled="disabled" value="0" name="longcsg_1" id="longcsg_1" /></td>
+						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_1" id="idcsg_1" /></td>
+						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_1" id="topscsg_1" /></td>
+						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_1" id="bottomcsg_1" /></td>
+						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_1" id="volcsg_1" /></td>
+						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_1" id="longcsg_1" /></td>
 						<td><a href="#casingclear_1" class="casingclear" style="display:none;">Clear</a></td>					
 					</tr>
 					<tr id="casing_tool_2" class="casing_tool_row">
@@ -64,11 +82,11 @@
 							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_2" id="odcsg_2" />
 							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
 						</td>
-						<td><input type="text" class="id" disabled="disabled" value="0" name="idcsg_2" id="idcsg_2" /></td>
-						<td><input type="text" class="top" disabled="disabled" value="0" name="topcsg_2" id="topscsg_2" /></td>
-						<td><input type="text" class="bottom" disabled="disabled" value="0" name="bottomcsg_2" id="bottomcsg_2" /></td>
-						<td><input type="text" class="volume" disabled="disabled" value="0" name="volcsg_2" id="volcsg_2" /></td>
-						<td><input type="text" class="length" disabled="disabled" value="0" name="longcsg_2" id="longcsg_2" /></td>
+						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_2" id="idcsg_2" /></td>
+						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_2" id="topscsg_2" /></td>
+						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_2" id="bottomcsg_2" /></td>
+						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_2" id="volcsg_2" /></td>
+						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_2" id="longcsg_2" /></td>
 						<td><a href="#casingclear_2" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
 					<tr id="casing_tool_3" class="casing_tool_row">
@@ -79,11 +97,11 @@
 							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_3" id="odcsg_3" />
 							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
 						</td>
-						<td><input type="text" class="id" disabled="disabled" value="0" name="idcsg_3" id="idcsg_3" /></td>
-						<td><input type="text" class="top" disabled="disabled" value="0" name="topcsg_3" id="topscsg_3" /></td>
-						<td><input type="text" class="bottom" disabled="disabled" value="0" name="bottomcsg_3" id="bottomcsg_3" /></td>
-						<td><input type="text" class="volume" disabled="disabled" value="0" name="volcsg_3" id="volcsg_3" /></td>
-						<td><input type="text" class="length" disabled="disabled" value="0" name="longcsg_3" id="longcsg_3" /></td>
+						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_3" id="idcsg_3" /></td>
+						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_3" id="topscsg_3" /></td>
+						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_3" id="bottomcsg_3" /></td>
+						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_3" id="volcsg_3" /></td>
+						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_3" id="longcsg_3" /></td>
 						<td><a href="#casingclear_3" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
 					<tr id="casing_tool_4" class="casing_tool_row">
@@ -94,11 +112,11 @@
 							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_4" id="odcsg_4" />
 							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
 						</td>
-						<td><input type="text" class="id" disabled="disabled" value="0" name="idcsg_4" id="idcsg_4" /></td>
-						<td><input type="text" class="top" disabled="disabled" value="0" name="topcsg_4" id="topscsg_4" /></td>
-						<td><input type="text" class="bottom" disabled="disabled" value="0" name="bottomcsg_4" id="bottomcsg_4" /></td>
-						<td><input type="text" class="volume" disabled="disabled" value="0" name="volcsg_4" id="volcsg_4" /></td>
-						<td><input type="text" class="length" disabled="disabled" value="0" name="longcsg_4" id="longcsg_4" /></td>
+						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_4" id="idcsg_4" /></td>
+						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_4" id="topscsg_4" /></td>
+						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_4" id="bottomcsg_4" /></td>
+						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_4" id="volcsg_4" /></td>
+						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_4" id="longcsg_4" /></td>
 						<td><a href="#casingclear_4" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
 					<tr id="casing_tool_5" class="casing_tool_row">
@@ -109,11 +127,11 @@
 							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_5" id="odcsg_5" />
 							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
 						</td>
-						<td><input type="text" class="id" disabled="disabled" value="0" name="idcsg_5" id="idcsg_5" /></td>
-						<td><input type="text" class="top" disabled="disabled" value="0" name="topcsg_5" id="topscsg_5" /></td>
-						<td><input type="text" class="bottom" disabled="disabled" value="0" name="bottomcsg_5" id="bottomcsg_5"/></td>
-						<td><input type="text" class="volume" disabled="disabled" value="0" name="volcsg_5" id="volcsg_5" /></td>
-						<td><input type="text" class="length" disabled="disabled" value="0" name="longcsg_5" id="longcsg_5" /></td>
+						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_5" id="idcsg_5" /></td>
+						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_5" id="topscsg_5" /></td>
+						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_5" id="bottomcsg_5"/></td>
+						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_5" id="volcsg_5" /></td>
+						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_5" id="longcsg_5" /></td>
 						<td><a href="#casingclear_5" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
 					<tr id="casing_tool_6" class="casing_tool_row">
@@ -124,11 +142,11 @@
 							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_6" id="odcsg_6" />
 							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
 						</td>
-						<td><input type="text" class="id" disabled="disabled" value="0" name="idcsg_6" id="idcsg_6" /></td>
-						<td><input type="text" class="top" disabled="disabled" value="0" name="topcsg_6" id="topscsg_6" /></td>
-						<td><input type="text" class="bottom" disabled="disabled" value="0" name="bottomcsg_6" id="bottomcsg_6" /></td>
-						<td><input type="text" class="volume" disabled="disabled" value="0" name="volcsg_6" id="volcsg_6" /></td>
-						<td><input type="text" class="length" disabled="disabled" value="0" name="longcsg_6" id="longcsg_6" /></td>
+						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_6" id="idcsg_6" /></td>
+						<td><input type="text" class="top" style="width:60px;"  disabled="disabled" value="0" name="topcsg_6" id="topscsg_6" /></td>
+						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_6" id="bottomcsg_6" /></td>
+						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_6" id="volcsg_6" /></td>
+						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_6" id="longcsg_6" /></td>
 						<td><a href="#casingclear_6" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
 					<tr id="casing_tool_7" class="casing_tool_row">
@@ -139,11 +157,11 @@
 							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_7" id="odcsg_7" />
 							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
 						</td>
-						<td><input type="text" class="id" disabled="disabled" value="0" name="idcsg_7" id="idcsg_7" /></td>
-						<td><input type="text" class="top" disabled="disabled" value="0" name="topcsg_7" id="topscsg_7" /></td>
-						<td><input type="text" class="bottom" disabled="disabled" value="0" name="bottomcsg_7" id="bottomcsg_7" /></td>
-						<td><input type="text" class="volume" disabled="disabled" value="0" name="volcsg_7" id="volcsg_7" /></td>
-						<td><input type="text" class="length" disabled="disabled" value="0" name="longcsg_7" id="longcsg_7" /></td>
+						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_7" id="idcsg_7" /></td>
+						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_7" id="topscsg_7" /></td>
+						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_7" id="bottomcsg_7" /></td>
+						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_7" id="volcsg_7" /></td>
+						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_7" id="longcsg_7" /></td>
 						<td><a href="#casingclear_7" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>						
 				</table>
