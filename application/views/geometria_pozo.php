@@ -168,42 +168,88 @@
 			</fieldset>
         </div>
 	    <div class="simpleTabsContent" style="height:329px;">
-	    	<!-- HOLE -->
-			<fieldset>
-				<h4>Washout Estimation From:</h4>
-				<p>
-					Estimación del washout por incremento en pulgadas del diametro del pozo estimada
-					por los siguientes items:
-				</p>
-				<table style="float:left;">
-					<tr>
-						<td class="label_m"><label class="emphasis">OPEN HOLE:</label></td>
-						<td><input type="text"></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Rice & Carbide Test:</label></td>
-						<td><input type="text"></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Cuttings & Caving record:</label></td>
-						<td><input type="text"></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Caliper:</label></td>
-						<td><input type="text"></td>
-					</tr>
-				</table>
-				<table style="float:left;">
-					<tr>
-						<td class="label_m"><label class="emphasis">WASHOUT (%):</label></td>
-						<td><input type="text" disabled="disabled"></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label class="emphasis">AVERAGE HOLE:</label></td>
-						<td><input type="text" disabled="disabled"></td>
-					</tr>
-				</table>
-			</fieldset>
+	    		<!-- HOLE -->
+				<fieldset>
+					<table style="float:left;">
+						<tr>
+							<td class="label_m"><label class="emphasis">OPEN HOLE:</label></td>
+							<td><input type="text"></td>
+							<td class="label_m">in</td>
+						</tr>
+					</table>
+				</fieldset>
+				
+				<fieldset style="width:560px;float:left;height:148px;">
+					<legend>Washout Estimation From...:</legend>
+					<p style="margin-top:0px;">
+						Open hole increment in inches, by the following items:
+					</p>
+					<table style="float:left;">
+						<tr>
+							<td class="label_m"><label>Rice & Carbide Test:</label></td>
+							<td><input type="text" style="margin-right:3px;"></td>
+							<td class="label_m" style="text-align:left;">in</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Cuttings & Caving record:</label></td>
+							<td><input type="text" style="margin-right:3px;"></td>
+							<td class="label_m" style="text-align:left;">in</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Caliper:</label></td>
+							<td><input type="text" style="margin-right:3px;"></td>
+							<td class="label_m" style="text-align:left;">in</td>
+						</tr>
+					</table>
+					<table style="float:right;margin-right:50px;">
+						<tr>
+							<td class="label_m" style="padding-left:6px;"><label>WASHOUT:</label></td>
+							<td><input type="text" disabled="disabled"></td>
+							<td class="label_m">%</td>
+						</tr>
+						<tr>
+							<td class="label_m" style="padding-left:6px;"><label>AVERAGE HOLE:</label></td>
+							<td><input type="text" disabled="disabled"></td>
+							<td class="label_m">in</td>
+						</tr>
+						<tr>
+							<td class="label_m" style="padding-left:6px;"><label>OPEN HOLE LENGTH:</label></td>
+							<td><input type="text" disabled="disabled"></td>
+							<td class="label_m">in</td>
+						</tr>
+					</table>
+				</fieldset>
+				<fieldset style="float:right;width:272px">
+					<legend>Volume resume:</legend>
+					<table>
+						<tr>
+							<td class="label_m"><label>Casing:</label></td>
+							<td><input type="text" disabled="disabled" /></td>
+							<td class="label_m">bbl</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Open Hole:</label></td>
+							<td><input type="text" disabled="disabled" /></td>
+							<td class="label_m">bbl</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Total Empty Hole:</label></td>
+							<td><input type="text" disabled="disabled" /></td>
+							<td class="label_m">bbl</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>String Displacement:</label></td>
+							<td><input type="text" disabled="disabled" /></td>
+							<td class="label_m">bbl</td>
+						</tr>
+						<tr>
+							<td class="label_m"><label>Hole W/ String:</label></td>
+							<td><input type="text" disabled="disabled" /></td>
+							<td class="label_m">bbl</td>
+						</tr>
+					</table>
+				</fieldset>
+			
 	    </div>
         <div class="simpleTabsContent" style="height:329px;">
         		<!-- DRILL STRING -->
