@@ -312,30 +312,30 @@
 								<tr>
 									<td class="label_m"><label>200</label></td>
 									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:65px;" id="teta_201" name="teta_201"></td>
-									<td><input type="text" style="width:65px;" id="teta_202" name="teta_202"></td>
-									<td><input type="text" style="width:65px;" id="teta_203" name="teta_203"></td>
+									<td><input type="text" style="width:65px;" class="t_200" id="teta_201" name="teta_201"></td>
+									<td><input type="text" style="width:65px;" class="t_200" id="teta_202" name="teta_202"></td>
+									<td><input type="text" style="width:65px;" class="t_200" id="teta_203" name="teta_203"></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>100</label></td>
 									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:65px;" id="teta_101" name="teta_101"></td>
-									<td><input type="text" style="width:65px;" id="teta_102" name="teta_102"></td>
-									<td><input type="text" style="width:65px;" id="teta_103" name="teta_103"></td>
+									<td><input type="text" style="width:65px;" class="t_100" id="teta_101" name="teta_101"></td>
+									<td><input type="text" style="width:65px;" class="t_100" id="teta_102" name="teta_102"></td>
+									<td><input type="text" style="width:65px;" class="t_100" id="teta_103" name="teta_103"></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>6</label></td>
 									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:65px;" id="teta_61" name="teta_61"></td>
-									<td><input type="text" style="width:65px;" id="teta_62" name="teta_62"></td>
-									<td><input type="text" style="width:65px;" id="teta_63" name="teta_63"></td>
+									<td><input type="text" style="width:65px;" class="t_6" id="teta_61" name="teta_61"></td>
+									<td><input type="text" style="width:65px;" class="t_6" id="teta_62" name="teta_62"></td>
+									<td><input type="text" style="width:65px;" class="t_6" id="teta_63" name="teta_63"></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>3</label></td>
 									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:65px;" id="teta_31" name="teta_31"></td>
-									<td><input type="text" style="width:65px;" id="teta_32" name="teta_32"></td>
-									<td><input type="text" style="width:65px;" id="teta_33" name="teta_33"></td>
+									<td><input type="text" style="width:65px;" class="t_3" id="teta_31" name="teta_31"></td>
+									<td><input type="text" style="width:65px;" class="t_3" id="teta_32" name="teta_32"></td>
+									<td><input type="text" style="width:65px;" class="t_3" id="teta_33" name="teta_33"></td>
 								</tr>
 								<tr>
 									<td style="height:16px;"></td>

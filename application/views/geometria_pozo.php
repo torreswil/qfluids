@@ -26,6 +26,7 @@
 	      <li><a href="#">Drill String</a></li>
 	      <li><a href="#">Drill String Math</a></li>
 	      <li><a href="#">Anular Section Math</a></li>
+	      <li><a href="#">Hydraulics</a></li>
 	    </ul>
 	    <div class="simpleTabsContent" style="height:329px;">
 			<!-- CASING -->
@@ -204,17 +205,17 @@
 					<table style="float:right;margin-right:50px;">
 						<tr>
 							<td class="label_m" style="padding-left:6px;"><label>WASHOUT:</label></td>
-							<td><input type="text" name="zwashout" id="zwashout" disabled="disabled"></td>
+							<td><input type="text" name="zwashout" id="zwashout" disabled="disabled" style="width:50px;"></td>
 							<td class="label_m">%</td>
 						</tr>
 						<tr>
 							<td class="label_m" style="padding-left:6px;"><label>AVERAGE HOLE:</label></td>
-							<td><input type="text" name="openhole" id="openhole" disabled="disabled"></td>
+							<td><input type="text" name="openhole" id="openhole" disabled="disabled" style="width:50px;"></td>
 							<td class="label_m">in</td>
 						</tr>
 						<tr>
 							<td class="label_m" style="padding-left:6px;"><label>OPEN HOLE LENGTH:</label></td>
-							<td><input type="text" name="longhoyo" id="longhoyo" disabled="disabled"></td>
+							<td><input type="text" name="longhoyo" id="longhoyo" disabled="disabled" style="width:50px;"></td>
 							<td class="label_m">ft</td>
 						</tr>
 					</table>
@@ -379,6 +380,9 @@
         <!-- ANULAR SECTION MATH -->
         <div class="simpleTabsContent" id="as_math">
         	<?php $this->load->view('as_math'); ?>
+        </div>
+        <div class="simpleTabsContent" id="hydraulics">
+        	<?php $this->load->view('hydraulics'); ?>
         </div>
 	</div>
 </div>

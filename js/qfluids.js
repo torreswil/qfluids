@@ -1137,6 +1137,14 @@ function power(selector,exponente){
 	return Math.pow(parseFloat($('#'+selector).val()),exponente);
 }
 
+function fval(selector){
+	return parseFloat($('#'+selector).val());
+}
+
+function ival(selector){
+	return parseInt($('#'+selector).val());
+}
+
 function correr_calculos(){
 	calculos_raw();
 	corregir_data();
@@ -1964,6 +1972,194 @@ function calculos_raw(){
 		}
 	});
 	completar_campo_val('drillingtimetotal',drillingtimetotal.toFixed(1));
+
+
+	//CALCULOS SECCION ANULAR
+	//-------------------------------------------------------------------------------------
+
+
+	$('.velanular').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('velanular_');
+		id = id[1];
+
+		//velanular
+		var velanular = 0;
+		velanular =  0.408 * qgaltotal / (power('idhole_'+id, 2) - power('odstring_'+id,2));
+		completar_campo_val('velanular_'+id,velanular.toFixed(2));
+	});
+
+	//t_100
+	var t_100 = 0;
+	$('.t_100').each(function(){
+		if($(this).val() !== ''){
+			t_100 = $(this).val();
+		}
+	});
+	completar_campo_val('t_100',t_100);
+
+	//t_3
+	var t_3 = 0;
+	$('.t_3').each(function(){
+		if($(this).val() !== ''){
+			t_3 = $(this).val();
+		}
+	});
+	completar_campo_val('t_3',t_3);
+
+	var npa = 0;
+	npa = 0.657 * log10(t_100/t_3);
+	completar_campo_val('npa',npa.toFixed(2));
+
+	var kpa = 0;
+	kpa = 511 * t_3 / Math.pow(5.11,npa);
+	completar_campo_val('kpa',kpa.toFixed(2));
+
+	var apa = 0;
+	apa = (log10(npa)+3.93) / 50;
+	completar_campo_val('apa',apa.toFixed(3));
+
+	var bpb = 0;
+	bpb = (1.75 - (log10(npa))) / 7;
+	completar_campo_val('bpb',bpb.toFixed(3));
+
+	var reycritanular = 0;
+	reycritanular=  3470 - 1370 * npa;
+	completar_campo_val('reycritanular',reycritanular.toFixed(2));
+
+	$('.reyanular').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('reyanular_');
+		id = id[1];
+
+		//reyanular
+		var reyanular = 0;
+		reyanular =  (109100 * mw * power('velanular_'+id,(2 - npa)) / kpa) * Math.pow((0.0208*(parseFloat($('#idhole_'+id).val()) - parseFloat($('#odstring_'+id).val()))/(2+1/npa)),npa);
+		completar_campo_val('reyanular_'+id,reyanular.toFixed(2));
+	});
+
+	$('.faclamianular').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('faclamianular_');
+		id = id[1];
+
+		//faclamianular
+		var faclamianular = 0;
+		faclamianular =  16 / parseFloat($('#reyanular_'+id).val());
+		completar_campo_val('faclamianular_'+id,faclamianular.toFixed(6));
+	});
+
+	$('.faclamiturb').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('faclamiturb_');
+		id = id[1];
+
+		//faclamiturb
+		var faclamiturb = 0;
+		faclamiturb =  apa / power('reyanular_'+id,bpb);
+		completar_campo_val('faclamiturb_'+id,faclamiturb.toFixed(6));
+	});
+
+
+	$('.ppowerturb').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('ppowerturb_');
+		id = id[1];
+
+		//ppowerturb
+		var ppowerturb = 0;
+		ppowerturb =  parseFloat($('#faclamiturb_'+id).val()) * mw * power('velanular_'+id,2) * parseFloat($('#longanular_'+id).val()) / (21.1 * (parseFloat($('#idhole_'+id).val()) - parseFloat($('#odstring_'+id).val())));
+		completar_campo_val('ppowerturb_'+id,ppowerturb.toFixed(2));
+	});
+
+	$('.ppowerlam').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('ppowerlam_');
+		id = id[1];
+
+		//ppowerlam
+		var ppowerlam = 0;
+		ppowerlam =  kpa * parseFloat($('#longanular_'+id).val()) * power('velanular_'+id,npa) * Math.pow((2+1/npa)/0.0208,npa)/ (144000 * Math.pow((parseFloat($('#idhole_'+id).val()) - parseFloat($('#odstring_'+id).val())),(1 + npa)));
+		completar_campo_val('ppowerlam_'+id,ppowerlam.toFixed(2));
+	});
+
+	$('.velcritanul').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('velcritanul_');
+		id = id[1];
+
+		//velcritanul
+		var velcritanul = 0;
+		var raiz = Math.sqrt(Math.pow(pv,2) + 9.256 * Math.pow((fval('idhole_'+id) - fval('odstring_'+id)),2) * yp * mw);
+		velcritanul = (1.078 * pv + 1.078 * raiz) / (mw * (fval('idhole_'+ id) - fval('odstring_'+id)));
+		completar_campo_val('velcritanul_'+id,velcritanul.toFixed(2));
+	});
+
+
+	$('.qcritico').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('qcritico_');
+		id = id[1];
+
+		//qcritico
+		var qcritico = 0;
+		qcritico = 2.45 * fval('velcritanul_'+id) * (power('idhole_'+id,2) - power('odstring_'+id,2));
+		completar_campo_val('qcritico_'+id,qcritico.toFixed(2));
+	});
+
+	$('.pbinlam').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('pbinlam_');
+		id = id[1];
+
+		//pbinlam
+		var pbinlam = 0;
+		pbinlam = (pv * fval('velanular_'+id) / (1000 * Math.pow((fval('idhole_'+id) - fval('odstring_'+id)),2)) + yp / (200*(fval('idhole_'+id) - fval('odstring_'+id)))) * fval('longanular_'+id);
+		log('('+pv+' * '+fval('velanular_'+id)+' / (1000 * Math.pow(('+fval('idhole_'+id)+' - '+fval('odstring_'+id)+'),2)) + '+yp+' / (200*('+fval('idhole_'+id)+' - '+fval('odstring_'+id)+'))) * '+fval('longanular_'+id)+'');
+		completar_campo_val('pbinlam_'+id,pbinlam.toFixed(2));
+	});
+
+	$('.pbintur').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('pbintur_');
+		id = id[1];
+
+		//pbintur
+		var pbintur = 0;
+		pbintur = Math.pow(mw,0.75) * Math.pow(fval('velanular_'+id),1.75) * Math.pow(pv,0.25) * fval('longanular_'+id) / (1396 * Math.pow((fval('idhole_'+id) - fval('odstring_'+id)),1.25));
+		completar_campo_val('pbintur_'+id,pbintur.toFixed(2));
+	});
+
+	$('.ztipoflujoanularp').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('ztipoflujoanularp_');
+		id = id[1];
+
+		//ztipoflujoanularp
+		var ztipoflujoanularp = '';
+		if(fval('reyanular_'+id) > fval('reycritanular')){
+			ztipoflujoanularp = 'TURBULENT';
+		}else{
+			ztipoflujoanularp = 'LAMINAR';	
+		}
+		completar_campo_val('ztipoflujoanularp_'+id,ztipoflujoanularp);	
+	});
+
+	$('.ztipoflujoanularb').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('ztipoflujoanularb_');
+		id = id[1];
+
+		//ztipoflujoanularb
+		var ztipoflujoanularb = '';
+		if(fval('velanular_'+id) > fval('velcritanul_'+id)){
+			ztipoflujoanularb = 'TURBULENT';
+		}else{
+			ztipoflujoanularb = 'LAMINAR';	
+		}
+		completar_campo_val('ztipoflujoanularb_'+id,ztipoflujoanularb);	
+	});
+
 }
 
 /*
