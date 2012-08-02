@@ -33,8 +33,8 @@
 			</div>
 		</div>
 		
-		<div class="this_panel" id="welcome_panel" style="display:none;">
-			<p>Seleccione un formulario de datos de entrada para comenzar.</p>
+		<div class="this_panel" id="welcome_panel" style="display:block;">
+			<p>Select a data input form to start.</p>
 		</div>
 		<form id="qfluids_form">
 			<!-- PANELES DE DATOS DE ENTRADA-->
@@ -44,6 +44,12 @@
 			<?php $this->load->view('propiedades_fluido'); ?>
 			<?php $this->load->view('inventario'); ?>
 			<?php $this->load->view('volumenes'); ?>
+
+			<!-- PANELES OCULTOS -->
+			<div class="hidden_tabs">
+				<?php $this->load->view('as_math'); ?>
+				<?php $this->load->view('ds_math'); ?>
+			</div>
 		</form>
 	</div>
 </div>

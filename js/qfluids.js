@@ -15,6 +15,21 @@ $(window).resize(function(){
 $(document).ready(function(){
 	sidebar_position();
 
+	$('#pressure_loss_fieldset a').click(function(e){
+		e.preventDefault();
+		var target = $(this).attr('href');
+		$(target).fadeIn('fast');
+	});
+
+	//CLICK PARA OCULTAR UN OVERLAY
+	$(".this_hidden_panel").click(function(e) {
+        if (e.target.id == "as_math" || $(e.target).parents("#as_math").size() || e.target.id == "ds_math" || $(e.target).parents("#ds_math").size()) { 
+        	log('math clicked');    
+        }else {
+        	$('.this_hidden_panel').fadeOut('fast');	
+        }
+    });
+
 	//CLICK EN UN ENLACE DE LA BARRA LATERAL
 	$('.nav_links a').click(function(e){
 		e.preventDefault();
@@ -205,7 +220,6 @@ $(document).ready(function(){
 		var no_option = '<option value="" selected="selected">Select...</option>';
 		if($(this).val() !== ''){
 			var data = 'oddeci='+$(this).val();
-			log(data);
 			var preppend_string = no_option;
 			$.post('/rest/listar_id_casing',data,function(r){
 				$(r).each(function(){
@@ -260,7 +274,6 @@ $(document).ready(function(){
 			}else{
 				var target = $('#casing_number').val();
 				var last_target = parseInt(target) - 1;
-				log(last_target);
 				if(last_target > 0){
 					//VALIDATE THE OD IS LESS THAN THE OD OF THE LAST SELECTED CASING
 					if(parseFloat($('#casing_tool_'+last_target+' .od').val()) <= parseFloat($('#pickcasing_od').val())){
@@ -315,7 +328,6 @@ $(document).ready(function(){
 			$('#table_createcasing input,#table_createcasing select').each(function(){
 				if($(this).val() == ''){
 					eqty = eqty + 1;
-					log(this);
 				}
 			});
 
@@ -1217,7 +1229,9 @@ function calculos_raw(){
 		}
 	});
 	pdbit = Math.pow(veljet,2) * mw / 1120;
-	completar_campo_val('pdbit',pdbit.toFixed(3));
+	completar_campo_val('pdbit',pdbit.toFixed(2));
+	completar_campo_val('zpdbit',pdbit.toFixed(2));
+	completar_campo_val('zzpdbit',pdbit.toFixed(2));
 
 	//HHPBIT
 	var hhp = pdbit * $('#qgaltotal').val() / 1714;
@@ -2115,7 +2129,6 @@ function calculos_raw(){
 		//pbinlam
 		var pbinlam = 0;
 		pbinlam = (pv * fval('velanular_'+id) / (1000 * Math.pow((fval('idhole_'+id) - fval('odstring_'+id)),2)) + yp / (200*(fval('idhole_'+id) - fval('odstring_'+id)))) * fval('longanular_'+id);
-		log('('+pv+' * '+fval('velanular_'+id)+' / (1000 * Math.pow(('+fval('idhole_'+id)+' - '+fval('odstring_'+id)+'),2)) + '+yp+' / (200*('+fval('idhole_'+id)+' - '+fval('odstring_'+id)+'))) * '+fval('longanular_'+id)+'');
 		completar_campo_val('pbinlam_'+id,pbinlam.toFixed(2));
 	});
 
@@ -2139,8 +2152,10 @@ function calculos_raw(){
 		var ztipoflujoanularp = '';
 		if(fval('reyanular_'+id) > fval('reycritanular')){
 			ztipoflujoanularp = 'TURBULENT';
+			completar_campo_val('zapowerloss_'+id,fval('ppowerturb_'+id));
 		}else{
-			ztipoflujoanularp = 'LAMINAR';	
+			ztipoflujoanularp = 'LAMINAR';
+			completar_campo_val('zapowerloss_'+id,fval('ppowerlam_'+id));	
 		}
 		completar_campo_val('ztipoflujoanularp_'+id,ztipoflujoanularp);	
 	});
@@ -2154,12 +2169,106 @@ function calculos_raw(){
 		var ztipoflujoanularb = '';
 		if(fval('velanular_'+id) > fval('velcritanul_'+id)){
 			ztipoflujoanularb = 'TURBULENT';
+			completar_campo_val('zabinghloss_'+id,fval('pbintur_'+id));
 		}else{
-			ztipoflujoanularb = 'LAMINAR';	
+			ztipoflujoanularb = 'LAMINAR';
+			completar_campo_val('zabinghloss_'+id,fval('pbinlam_'+id));
 		}
 		completar_campo_val('ztipoflujoanularb_'+id,ztipoflujoanularb);	
 	});
 
+	
+	$('.capanul').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('capanul_');
+		id = id[1];
+		
+		//capanul
+		var capanul = 0;
+		capanul =  (power('idhole_'+id,2) - power('odstring_'+id,2)) * fval('longanular_'+id) / 1029.4
+		completar_campo_val('capanul_'+id,capanul.toFixed(2));
+	});
+
+	//capanultotal
+	var capanultotal = 0;
+	$('.capanul').each(function(){
+		if($(this).val() !== '' && $(this).val() !== 'NaN'){
+			capanultotal = capanultotal + parseFloat($(this).val());
+		}
+	});
+	completar_campo_val('capanultotal',capanultotal.toFixed(2));
+
+	//totalanulpow
+	var totalanulpow = 0;
+	$('.zapowerloss').each(function(){
+		if($(this).val() !== '' && $(this).val() !== 'NaN' && $(this).val() !== NaN){
+			totalanulpow = totalanulpow + parseFloat($(this).val());
+		}	
+	});
+	completar_campo_val('totalanulpow',totalanulpow.toFixed(2));
+	completar_campo_val('ztotalanulpow',totalanulpow.toFixed(2));
+
+	//totalanulbin
+	var totalanulbin = 0;
+	$('.zabinghloss').each(function(){
+		if($(this).val() !== '' && $(this).val() !== 'NaN' && $(this).val() !== NaN){
+			totalanulbin = totalanulbin + parseFloat($(this).val());
+		}
+	});
+	completar_campo_val('totalanulbin',totalanulbin.toFixed(2));
+	completar_campo_val('ztotalanulbin',totalanulbin.toFixed(2));
+
+	//totalstringpow
+	totalstringpow = 0;
+	$('.powerlossbha').each(function(){
+		if($(this).val() !== 'NaN' && $(this).val() !== ''){
+			totalstringpow = totalstringpow + parseFloat($(this).val());
+		}
+	});
+	completar_campo_val('totalstringpow',totalstringpow.toFixed(2));
+	completar_campo_val('ztotalstringpow',totalstringpow.toFixed(2));
+	
+	//totalstringbing
+	totalstringbing = 0;
+	$('.zbinglossbha').each(function(){
+		if($(this).val() !== 'NaN' && $(this).val() !== ''){
+			totalstringbing = totalstringbing + parseFloat($(this).val());
+		}
+	});
+	completar_campo_val('totalstringbing',totalstringbing.toFixed(2));
+	completar_campo_val('ztotalstringbing',totalstringbing.toFixed(2));
+
+	//CALCULOS HIDRAULICA, RESUMEN DE PERDIDAS DE PRESION
+	
+	//funelv
+	var funelv = 0;
+	$('.funelv').each(function(){
+		if($(this).val() !== ''){
+			funelv = $(this).val();
+		}
+	});
+
+	//lossesurf
+	var lossesurf = 0
+	lossesurf = (mw / 9) * (funelv / 45 ) * (qgaltotal / 400) * 25;
+	completar_campo_val('lossesurf',lossesurf.toFixed(2));
+	completar_campo_val('zlossesurf',lossesurf.toFixed(2));
+
+	totalmotor_1 = fval('totalmotor_1');
+	if(totalmotor_1 == ''){totalmotor_1 = 0;}
+
+	totalmotor_2 = fval('totalmotor_2');
+	if(totalmotor_2 == ''){totalmotor_2 = 0;}
+
+	//totallossespow
+	var totallossespow = 0;
+	totallossespow = lossesurf + totalstringpow + totalanulpow + totalmotor_1 + pdbit;
+	completar_campo_val('totallossespow',totallossespow.toFixed(2));
+
+	//totallossesbin
+	var totallossesbin = 0;
+	totallossesbin = lossesurf + totalstringbing + totalanulbin + totalmotor_2 + pdbit;
+	completar_campo_val('totallossesbin',totallossesbin.toFixed(2));
 }
 
 /*

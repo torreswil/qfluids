@@ -1,4 +1,4 @@
-<div class="this_panel" id="geometria_pozo" style="display:block;">
+<div class="this_panel" id="geometria_pozo">
 	<h2>Hole Geometry</h2>
 	<fieldset>
 		<table>
@@ -24,8 +24,6 @@
 	      <li><a href="#">Casing</a></li>
 	      <li><a href="#">Hole</a></li>
 	      <li><a href="#">Drill String</a></li>
-	      <li><a href="#">Drill String Math</a></li>
-	      <li><a href="#">Anular Section Math</a></li>
 	      <li><a href="#">Hydraulics</a></li>
 	    </ul>
 	    <div class="simpleTabsContent" style="height:329px;">
@@ -349,8 +347,8 @@
 											<td><input type="text" type="text" name="dispvbha_1" id="dispvbha_1" class="dispvbha_1 dispvbha" disabled="disabled"/></td>
 											<td><input type="text" type="text" name="capbha_1" id="capbha_1" class="capbha_1 capbha" disabled="disabled" style="width:40px;" /></td>
 											<td><input type="text" type="text" name="dispbha_1" id="dispbha_1" class="dispbha_1 dispbha" disabled="disabled" style="width:40px;" /></td>
-											<td><input type="text" type="text" name="powerlossbha_1" id="powerlossbha_1" disabled="disabled"/></td>
-											<td><input type="text" type="text" name="zbinglossbha_1" id="zbinglossbha_1" disabled="disabled"/></td>
+											<td><input type="text" type="text" name="powerlossbha_1" id="powerlossbha_1" class="powerlossbha" disabled="disabled"/></td>
+											<td><input type="text" type="text" name="zbinglossbha_1" id="zbinglossbha_1" class="zbinglossbha" disabled="disabled"/></td>
 											<td class="label_m"><a href="#removeds_1" class="remove_ds">Remove</a></td>
 										</tr>
 										<tr>
@@ -362,8 +360,8 @@
 											<td><input type="text" disabled="disabled" id="disptotal" name="disptotal" /></td>
 											<td></td>
 											<td class="label_m"><label>TOTAL:</label></td>
-											<td><input type="text" disabled="disabled" /></td>
-											<td><input type="text" disabled="disabled" /></td>
+											<td><input type="text" disabled="disabled" id="totalstringpow" name="totalstringpow" /></td>
+											<td><input type="text" disabled="disabled" id="totalstringbing" name="totalstringbing" /></td>
 											<td></td>
 										</tr>
 									</tbody>
@@ -373,17 +371,10 @@
 					</tr>
 				</table>
         </div>
-        <!-- DRILL STRING MATH -->
-        <div class="simpleTabsContent" id="ds_math">
-        	<?php $this->load->view('ds_math'); ?>
-        </div>
-        <!-- ANULAR SECTION MATH -->
-        <div class="simpleTabsContent" id="as_math">
-        	<?php $this->load->view('as_math'); ?>
-        </div>
+        <!-- HYDRAULICS -->
         <div class="simpleTabsContent" id="hydraulics">
         	<?php $this->load->view('hydraulics'); ?>
-        </div>
+        </div>   
 	</div>
 </div>
 <?php // <div id="name_list"></div> ?>

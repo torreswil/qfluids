@@ -164,9 +164,9 @@
 						<td class="label_m"><label>Funnel viscosity</label></td>
 						<td class="unit_field">sec/qt</td>
 						<td><input type="text" style="width:60px;"></td>
-						<td><input type="text" style="width:56px;"></td>
-						<td><input type="text" style="width:56px;"></td>
-						<td><input type="text" style="width:56px;"></td>
+						<td><input type="text" style="width:56px;" id="funelv_1" name="funelv_1" class="funelv"></td>
+						<td><input type="text" style="width:56px;" id="funelv_2" name="funelv_2" class="funelv"></td>
+						<td><input type="text" style="width:56px;" id="funelv_3" name="funelv_3" class="funelv"></td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>API fl/cake</label></td>
