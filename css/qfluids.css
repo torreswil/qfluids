@@ -259,3 +259,12 @@
 .hp_content .realcontent fieldset{
 	float: left;
 }
+
+#geometria_pozo .warning{
+	display: block;
+	float: left;
+	width: auto;
+	padding: 3px 5px 3px 5px;
+	background-color: #FFFF99;
+	border:1px solid #FFCC00;
+}

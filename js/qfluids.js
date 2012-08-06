@@ -962,6 +962,7 @@ $(document).ready(function(){
                 $('#bingham_group').prepend(ds_group_preppend);
 			});
 		}
+		anular_section_parts();
 	});
 
 	//DRILL STRING: REMOVE
@@ -1127,10 +1128,6 @@ $(document).ready(function(){
 // CALCULOS 																	*
 //*******************************************************************************
 
-$('#md').keyup(function(){
-	$('#bitdepth').val($(this).val());
-});
-
 function mixnumber_to_float(mixnumber){
 	var components 	= mixnumber.split(' ');
 	if(components.length == 1){
@@ -1160,6 +1157,7 @@ function ival(selector){
 function correr_calculos(){
 	calculos_raw();
 	corregir_data();
+	anular_section_parts();
 }
 
 function corregir_data(){
@@ -1551,6 +1549,36 @@ function calculos_raw(){
 	});
 	completar_campo_val('volcsgt',volcsgt.toFixed(2));
 
+
+	//zrangetop - zrrange_btm
+	$('#casing_table .active').each(function(){
+		var target =  $(this).attr('id');
+		var id 	= target.split('casing_tool_');
+		id 		= id[1];
+
+		if($('#'+target + ' .pick_casing').val() == 'Casing'){
+			var zrrange_top = 0;
+			var zrrange_btm	= parseFloat($('#'+target + ' .length').val());
+			completar_campo_val('zrrange_top_'+id,zrrange_top);
+			completar_campo_val('zrrange_btm_'+id,zrrange_btm);
+
+			var previous_casing = parseFloat(id);
+			while(previous_casing > 0){
+				previous_casing = previous_casing - 1;
+				completar_campo_val('zrrange_top_'+previous_casing,0);
+				completar_campo_val('zrrange_btm_'+previous_casing,0);	
+			}
+
+		}else if($('#'+ target + ' .pick_casing').val() == 'Liner'){
+			var zrrange_top = fval('topscsg_'+id);
+			var zrrange_btm = fval('bottomcsg_'+id);
+			completar_campo_val('zrrange_top_'+id,zrrange_top);
+			completar_campo_val('zrrange_btm_'+id,zrrange_btm);
+			var previous_casing = parseFloat(id) - 1;
+			completar_campo_val('zrrange_btm_'+previous_casing,zrrange_top);
+		}
+	});
+
 	//volholeempty
 	var volholeempty = 0;
 	volholeempty = volhole + volcsgt;
@@ -1591,14 +1619,27 @@ function calculos_raw(){
 	//totalbha
 	var totalbha = 0;
 	$('.longbha').each(function(){
-		totalbha = totalbha + parseFloat($(this).val());
+		var id = $(this).attr('id');
+		id = id.split('longbha_');
+		id = id[1];
+		if($('#select_drill_string_'+id).val() !== 'dp'){
+			if($(this).val() !== ''){
+				totalbha = totalbha + parseFloat($(this).val());	
+			}
+		}
+		
 	});
 	completar_campo_val('totalbha',totalbha);
 
 	//totalds
 	var totalds = 0;
-	totalds = totalbha + parseFloat($("#longdp").val());
+	$('.longbha').each(function(){
+		if($(this).val() !== ''){
+			totalds = totalds + parseFloat($(this).val());	
+		}
+	});
 	completar_campo_val('totalds',totalds);
+	completar_campo_val('bitdepth',totalds);
 
 	//captotal
 	var captotal = 0;
@@ -2269,14 +2310,80 @@ function calculos_raw(){
 	var totallossesbin = 0;
 	totallossesbin = lossesurf + totalstringbing + totalanulbin + totalmotor_2 + pdbit;
 	completar_campo_val('totallossesbin',totallossesbin.toFixed(2));
+
+
+	if(fval('bitdepth') > fval('md')){
+		$('#geometria_pozo .warning').show();
+	}else{
+		$('#geometria_pozo .warning').hide();	
+	}
 }
 
-/*
-var name_acum = '';
-$('input').each(function(){
-	if($(this).attr('id') !== '' && $(this).attr('id') !== undefined){
-		name_acum = name_acum + ',' + $(this).attr('id');
-	}
-});
-$('#name_list').html(name_acum);
-*/
+function anular_section_parts(){
+	//obtener la profundidad del hueco y el bottom de la broca
+	var md 	            = fval('md');
+	var bitdepth 	    = fval('bitdepth');
+    var ds_length       = 0;
+	var last_top 		= 0;
+	var next_id			= 0;
+	
+	//inverted run accross all the drill string parts
+	$($('.row_select_drill_string').get().reverse()).each(function(){
+		var id = $(this).attr('id');
+		id = id.split('row_select_drill_string_');
+		id = parseInt(id[1]);
+
+		var tool_name = $('#select_drill_string_'+id).val();
+		if(tool_name == ''){
+			tool_name = 'DS_'+id;
+		}
+		
+		//calculate top and bottom values for this element
+		if(id == 1){
+		    var position = {'bottom':bitdepth,'top':bitdepth - fval('longbha_'+id)};
+		}else{
+			var position = {'bottom':last_top,'top'	:last_top - fval('longbha_'+id)}	
+		}
+		
+		//get the current drill string length and the next bottom (or last top)
+		last_top = position.top;
+		ds_length = ds_length + fval('longbha_'+id);
+
+		//log('id',id,'position:',position,'last_top:',last_top,'ds_length:',ds_length);
+
+
+		//get the position of the element relative to the hole
+		var oh_start = md - fval('longhoyo');
+		if(position.top >= oh_start){
+			log(tool_name+' esta totalmente adentro del open hole');
+		}else if(position.top < oh_start && position.bottom <= oh_start){
+			//log(tool_name+' esta totalmente adentro del revestidor');
+			$('#casing_table .active').each(function(){
+				var coater_name = $('.pick_casing',this).val();
+				var zrrange_top = parseFloat($('.zrrange_top',this).val());
+				var zrrange_btm = parseFloat($('.zrrange_btm',this).val());  
+				
+				if(zrrange_top - zrrange_btm  !== 0){
+					if(position.top >= zrrange_top && position.bottom <= zrrange_btm){
+						log(tool_name+' esta totalmente adentro de un '+coater_name);
+					}else if(position.top >= zrrange_top && position.top < zrrange_btm && position.bottom > zrrange_btm){
+						var top_section = zrrange_btm - position.top;
+						log(tool_name+' esta parcialmente adentro de un '+coater_name+' (top:'+top_section+')');
+					}else if(position.top < zrrange_top && position.bottom > zrrange_top && position.bottom < zrrange_btm){
+						var bottom_section = zrrange_top - fval('longbha_'+id);
+						log(tool_name+' esta parcialmente adentro de un '+coater_name+' (btm:'+bottom_section+')');
+					}
+				}
+
+			});
+		}else{
+			var top_section = oh_start - position.top;
+			var bottom_section = fval('longbha_'+id) - top_section;
+			log(tool_name+' esta parcialmente en el revestidor (top:'+top_section+')');
+			if(bottom_section !== 0){
+				log(tool_name+' esta parcialmente en el open hole (btm:'+bottom_section+')');	
+			}
+		}		
+		
+	});	
+}

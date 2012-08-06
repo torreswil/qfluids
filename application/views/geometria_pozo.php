@@ -1,7 +1,7 @@
 <div class="this_panel" id="geometria_pozo">
 	<h2>Hole Geometry</h2>
 	<fieldset>
-		<table>
+		<table style="float:left;">
 			<tr>
 				<td class="label_m">
 					<label class="emphasis">DEPTH MD:</label>
@@ -13,10 +13,11 @@
 					<label class="emphasis">BIT DEPTH:</label>
 				</td>
 				<td class="label_m" style="padding-right:20px;">
-					<input type="text" name="bitdepth" id="bitdepth" style="margin-right:5px;width:40px;" value="0" /> ft
+					<input type="text" name="bitdepth" id="bitdepth" style="margin-right:5px;width:40px;" value="0" disabled="disabled" /> ft
 				</td>
 			</tr>
 		</table>
+		<span class="warning" style="display:none;"><strong>Warning:</strong> The <strong>BIT DEPTH</strong> can not be greater than the <strong>DEPTH MD</strong>.</span>
 	</fieldset>
 	
 	<div class="simpleTabs">
@@ -37,7 +38,7 @@
 						<td class="label_m"  style="text-align: center"><label>TOP: </td>	
 						<td class="label_m"  style="text-align: center"><label>BOTTOM: </td>
 						<td class="label_m"  style="text-align: center"><label>CAPAC.:</td>
-						<td class="label_m"  style="text-align: center"><label>LENGTH:</td>														
+						<td class="label_m"  style="text-align: left"><label>LENGTH:</td>														
 						<td></td>
 					</tr>
 					<tr>
@@ -52,7 +53,7 @@
 							<span style="text-transform:lowercase;">ft</span></td>
 						<td class="label_m" style="text-align: center">
 							<span style="text-transform:lowercase;">bbl</span></td>
-						<td class="label_m" style="text-align: center">
+						<td class="label_m" style="text-align: left">
 							<span style="text-transform:lowercase;">ft</span></td>														
 						<td></td>
 					</tr>
@@ -70,7 +71,11 @@
 						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_1" id="topscsg_1" /></td>
 						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_1" id="bottomcsg_1" /></td>
 						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_1" id="volcsg_1" /></td>
-						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_1" id="longcsg_1" /></td>
+						<td>
+							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_1" id="longcsg_1" />
+							<input type="text" class="zrrange_top" id="zrrange_top_1" name="zrrange_top_1" disabled="disabled" value="0">
+							<input type="text" class="zrrange_btm" id="zrrange_btm_1" name="zrrange_btm_1" disabled="disabled" value="0">
+						</td>
 						<td><a href="#casingclear_1" class="casingclear" style="display:none;">Clear</a></td>					
 					</tr>
 					<tr id="casing_tool_2" class="casing_tool_row">
@@ -85,7 +90,11 @@
 						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_2" id="topscsg_2" /></td>
 						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_2" id="bottomcsg_2" /></td>
 						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_2" id="volcsg_2" /></td>
-						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_2" id="longcsg_2" /></td>
+						<td>
+							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_2" id="longcsg_2" />
+							<input type="text" class="zrrange_top" id="zrrange_top_2" name="zrrange_top_2" disabled="disabled" value="0">
+							<input type="text" class="zrrange_btm" id="zrrange_btm_2" name="zrrange_btm_2" disabled="disabled" value="0">
+						</td>
 						<td><a href="#casingclear_2" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
 					<tr id="casing_tool_3" class="casing_tool_row">
@@ -100,7 +109,11 @@
 						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_3" id="topscsg_3" /></td>
 						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_3" id="bottomcsg_3" /></td>
 						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_3" id="volcsg_3" /></td>
-						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_3" id="longcsg_3" /></td>
+						<td>
+							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_3" id="longcsg_3" />
+							<input type="text" class="zrrange_top" id="zrrange_top_3" name="zrrange_top_3" disabled="disabled" value="0">
+							<input type="text" class="zrrange_btm" id="zrrange_btm_3" name="zrrange_btm_3" disabled="disabled" value="0">
+						</td>
 						<td><a href="#casingclear_3" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
 					<tr id="casing_tool_4" class="casing_tool_row">
@@ -115,7 +128,11 @@
 						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_4" id="topscsg_4" /></td>
 						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_4" id="bottomcsg_4" /></td>
 						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_4" id="volcsg_4" /></td>
-						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_4" id="longcsg_4" /></td>
+						<td>
+							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_4" id="longcsg_4" />
+							<input type="text" class="zrrange_top" id="zrrange_top_4" name="zrrange_top_4" disabled="disabled" value="0">
+							<input type="text" class="zrrange_btm" id="zrrange_btm_4" name="zrrange_btm_4" disabled="disabled" value="0">
+						</td>
 						<td><a href="#casingclear_4" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
 					<tr id="casing_tool_5" class="casing_tool_row">
@@ -130,7 +147,11 @@
 						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_5" id="topscsg_5" /></td>
 						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_5" id="bottomcsg_5"/></td>
 						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_5" id="volcsg_5" /></td>
-						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_5" id="longcsg_5" /></td>
+						<td>
+							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_5" id="longcsg_5" />
+							<input type="text" class="zrrange_top" id="zrrange_top_5" name="zrrange_top_5" disabled="disabled" value="0">
+							<input type="text" class="zrrange_btm" id="zrrange_btm_5" name="zrrange_btm_5" disabled="disabled" value="0">
+						</td>
 						<td><a href="#casingclear_5" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
 					<tr id="casing_tool_6" class="casing_tool_row">
@@ -145,7 +166,11 @@
 						<td><input type="text" class="top" style="width:60px;"  disabled="disabled" value="0" name="topcsg_6" id="topscsg_6" /></td>
 						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_6" id="bottomcsg_6" /></td>
 						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_6" id="volcsg_6" /></td>
-						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_6" id="longcsg_6" /></td>
+						<td>
+							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_6" id="longcsg_6" />
+							<input type="text" class="zrrange_top" id="zrrange_top_6" name="zrrange_top_6" disabled="disabled" value="0">
+							<input type="text" class="zrrange_btm" id="zrrange_btm_6" name="zrrange_btm_6" disabled="disabled" value="0">
+						</td>
 						<td><a href="#casingclear_6" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>
 					<tr id="casing_tool_7" class="casing_tool_row">
@@ -160,7 +185,11 @@
 						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_7" id="topscsg_7" /></td>
 						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_7" id="bottomcsg_7" /></td>
 						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_7" id="volcsg_7" /></td>
-						<td><input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_7" id="longcsg_7" /></td>
+						<td>
+							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_7" id="longcsg_7" />
+							<input type="text" class="zrrange_top" id="zrrange_top_7" name="zrrange_top_7" disabled="disabled" value="0">
+							<input type="text" class="zrrange_btm" id="zrrange_btm_7" name="zrrange_btm_7" disabled="disabled" value="0">
+						</td>
 						<td><a href="#casingclear_7" class="casingclear" style="display:none;">Remove</a></td>						
 					</tr>						
 				</table>
