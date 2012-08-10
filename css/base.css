@@ -419,6 +419,61 @@ td { vertical-align: top; }
 		color:#259271;
 	}
 
+	.project_selector{
+	    width:900px;
+	    margin:70px auto 0 auto;
+
+	}
+
+	.project_selector .lateral{
+	    width:150px;
+	    float:left;
+	}
+	.project_selector .projects{
+	    width:690px;
+	    margin-left:20px;
+	    float:left;
+	    background-color:#fff;
+	    padding:20px;
+	    box-shadow: 0 0 5px #888;
+	    min-height: 500px;
+	}
+	
+	.project_selector table{
+	    width:690px;
+	    border: 1px solid #E0F0EB;
+	}
+	
+	.project_selector thead{
+	    text-transform:uppercase;
+	    font-weight:bold;
+	}
+	
+	.project_selector thead td{
+	    background-color:#259271;
+	    color:#fff;
+	    padding:5px;
+	}
+	
+	.project_selector tbody td{
+	    padding:5px;
+	    cursor: pointer;
+	}
+	
+	.project_selector tbody tr:nth-child(even){
+	    background-color:#E0F0EB;
+	}
+	
+	.project_selector input[type="button"]{
+	    float:right;
+	    margin-bottom:20px
+	}
+	
+	.project_selector h1{
+	    float:left;
+	    color:#259271;
+	}
+
 	/*SIMPLETABS*/
 	div.simpleTabs { padding:20px 0 0 0; }
 	ul.simpleTabsNavigation { margin:0 10px; padding:0; text-align:left; }

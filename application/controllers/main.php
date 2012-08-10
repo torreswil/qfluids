@@ -11,6 +11,11 @@ class Main extends CI_Controller {
 		$this->load->view('partials/basic',$data);
 	}
 
+	public function projects(){
+		$data['main_content'] = 'projects';
+		$this->load->view('partials/basic',$data);
+	}
+
 	public function qfluids(){
 		$this->load->model('Api');
 		$data['lista_casing']			= $this->Api->get_distinct_where('casing','oddeci,odfrac');

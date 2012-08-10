@@ -3,7 +3,17 @@
 $(document).ready(function(){
 
 	$('#login_btn').click(function(){
-		window.location = '/main/qfluids';
+		window.location = '/main/projects';
+	});
+
+	$('#btn_new_project').click(function(e){
+		e.preventDefault();
+		$('#create_project_overlay').fadeIn('fast');
+	});
+
+	$('#create_project_overlay .cancel_overlay').click(function(e){
+		e.preventDefault();
+		$('#create_project_overlay').hide();
 	});
 
 
