@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-07-30 12:17:54
+Date: 2012-08-10 16:43:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -307,7 +307,7 @@ CREATE TABLE `brocas_modelos` (
   `unit_length` varchar(255) DEFAULT NULL,
   `nombre_modelo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of brocas_modelos
@@ -373,6 +373,7 @@ INSERT INTO `brocas_modelos` VALUES ('58', '1', '5 7/8', 'in', '5.875', 'in', '0
 INSERT INTO `brocas_modelos` VALUES ('59', '1', '5 7/8', 'in', '5.875', 'in', '0.82', 'ft', 'FM2633i');
 INSERT INTO `brocas_modelos` VALUES ('60', '1', '5 7/8', 'in', '5.875', 'in', '0.66', 'ft', 'FM2641');
 INSERT INTO `brocas_modelos` VALUES ('61', '1', '5 7/8', 'in', '5.875', 'in', '1.08', 'ft', 'FM2641r');
+INSERT INTO `brocas_modelos` VALUES ('62', '1', '8 1/2', 'in', '8.5', 'in', '1', 'ft', 'cxxx');
 
 -- ----------------------------
 -- Table structure for `casing`
@@ -389,7 +390,7 @@ CREATE TABLE `casing` (
   `weight` decimal(10,3) DEFAULT NULL,
   `w_unit` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of casing
@@ -592,6 +593,44 @@ INSERT INTO `casing` VALUES ('195', '42', '42.000', 'in', '40', '40.000', 'in', 
 INSERT INTO `casing` VALUES ('196', '1 1/2', '1.500', null, null, '30.000', null, null, null);
 INSERT INTO `casing` VALUES ('197', '1 1/2', '1.500', null, null, '2.800', null, null, null);
 INSERT INTO `casing` VALUES ('198', '1 1/2', '1.500', null, null, '2.050', null, null, null);
+INSERT INTO `casing` VALUES ('199', '6', '6.000', null, null, '5.000', null, null, null);
+INSERT INTO `casing` VALUES ('200', '4', '4.000', null, null, '5.000', null, null, null);
+INSERT INTO `casing` VALUES ('201', '2', '2.000', null, null, '5.000', null, null, null);
+
+-- ----------------------------
+-- Table structure for `config`
+-- ----------------------------
+DROP TABLE IF EXISTS `config`;
+CREATE TABLE `config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of config
+-- ----------------------------
+INSERT INTO `config` VALUES ('1', 'global_id', '1');
+
+-- ----------------------------
+-- Table structure for `enginers`
+-- ----------------------------
+DROP TABLE IF EXISTS `enginers`;
+CREATE TABLE `enginers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identification` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `project` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of enginers
+-- ----------------------------
+INSERT INTO `enginers` VALUES ('1', '80249560', 'Gomez', 'Oscar', '1');
+INSERT INTO `enginers` VALUES ('2', '1030529971', 'Paternina', 'José', '1');
 
 -- ----------------------------
 -- Table structure for `lodos`
@@ -618,7 +657,58 @@ INSERT INTO `lodos` VALUES ('9', 'Q - Vert');
 INSERT INTO `lodos` VALUES ('10', 'Q - NK');
 
 -- ----------------------------
+-- Table structure for `projects`
+-- ----------------------------
+DROP TABLE IF EXISTS `projects`;
+CREATE TABLE `projects` (
+  `id` int(11) NOT NULL,
+  `project_name` varchar(255) DEFAULT NULL,
+  `last_modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of projects
+-- ----------------------------
+INSERT INTO `projects` VALUES ('1', 'Qmudplan ', null);
+
+-- ----------------------------
+-- Table structure for `projects_enginers`
+-- ----------------------------
+DROP TABLE IF EXISTS `projects_enginers`;
+CREATE TABLE `projects_enginers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project` int(11) DEFAULT NULL,
+  `enginer` int(11) DEFAULT NULL,
+  `workin` datetime DEFAULT NULL,
+  `workout` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of projects_enginers
+-- ----------------------------
+INSERT INTO `projects_enginers` VALUES ('1', '1', '1', '2012-08-10 14:18:02', null);
+INSERT INTO `projects_enginers` VALUES ('2', '1', '2', '2012-08-10 14:18:59', null);
+
+-- ----------------------------
+-- Table structure for `reports`
+-- ----------------------------
+DROP TABLE IF EXISTS `reports`;
+CREATE TABLE `reports` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of reports
+-- ----------------------------
+INSERT INTO `reports` VALUES ('1', '1', '2012-08-10');
+
+-- ----------------------------
 -- View structure for `vista_brocas`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_brocas`;
-CREATE VIEW `vista_brocas` AS select `qfluids`.`brocas_modelos`.`id` AS `id`,`qfluids`.`brocas_modelos`.`id_broca` AS `id_broca`,`qfluids`.`brocas_modelos`.`odfracc` AS `odfracc`,`qfluids`.`brocas_modelos`.`unit_oddfracc` AS `unit_oddfracc`,`qfluids`.`brocas_modelos`.`odddeci` AS `odddeci`,`qfluids`.`brocas_modelos`.`unit_odddeci` AS `unit_odddeci`,`qfluids`.`brocas_modelos`.`length` AS `length`,`qfluids`.`brocas_modelos`.`unit_length` AS `unit_length`,`qfluids`.`brocas_modelos`.`nombre_modelo` AS `nombre_modelo`,`qfluids`.`brocas`.`nombre_broca` AS `nombre_broca` from (`brocas` join `brocas_modelos` on((`qfluids`.`brocas`.`id` = `qfluids`.`brocas_modelos`.`id_broca`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_brocas` AS select `brocas_modelos`.`id` AS `id`,`brocas_modelos`.`id_broca` AS `id_broca`,`brocas_modelos`.`odfracc` AS `odfracc`,`brocas_modelos`.`unit_oddfracc` AS `unit_oddfracc`,`brocas_modelos`.`odddeci` AS `odddeci`,`brocas_modelos`.`unit_odddeci` AS `unit_odddeci`,`brocas_modelos`.`length` AS `length`,`brocas_modelos`.`unit_length` AS `unit_length`,`brocas_modelos`.`nombre_modelo` AS `nombre_modelo`,`brocas`.`nombre_broca` AS `nombre_broca` from (`brocas` join `brocas_modelos` on((`brocas`.`id` = `brocas_modelos`.`id_broca`))) ;
