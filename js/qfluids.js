@@ -380,6 +380,7 @@ $(document).ready(function(){
 							});
 							$('.casingclear','#casing_tool_'+new_casing).show();
 							$('#casing_tool_'+target).addClass('active');
+							
 							hide_casing_overlay();	
 						}
 					}	
@@ -401,6 +402,7 @@ $(document).ready(function(){
 		$('#table_createcasing').hide();
 		$('#checkbox_casing_not_found').removeAttr('checked');
 		$('#table_pickcasing select,#table_pickcasing input').removeAttr('disabled');
+		
 		correr_calculos();
 	}
 
@@ -426,6 +428,7 @@ $(document).ready(function(){
 		$('a.casingclear','#casing_tool_' + last_row).show();
 		$('#casing_tool_'+target+' .pick_casing').val('Select...');
 		$('#casing_tool_'+target+' .od,#casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom,#casing_tool_'+target+' .volume, #casing_tool_'+target+' .length').val(0);
+		
 		correr_calculos();
 	});
 
@@ -962,7 +965,7 @@ $(document).ready(function(){
                 $('#bingham_group').prepend(ds_group_preppend);
 			});
 		}
-		anular_section_parts();
+		
 	});
 
 	//DRILL STRING: REMOVE
@@ -978,6 +981,7 @@ $(document).ready(function(){
 			}else{
 				$('.row_select_drill_string select,.row_select_drill_string input, #ds_group input').val(0);		
 			}
+			
 			correr_calculos();	
 		}else{
 			return false;
@@ -1110,12 +1114,15 @@ $(document).ready(function(){
 	
 	// TRIGGERS CALCULOS
 	$('#qfluids_form input').live('keyup',function(){
+		
 		correr_calculos();
 	});
 	$('#qfluids_form select').live('change',function(){
+		
 		correr_calculos();
 	})
 	$('#qfluids_form input[type="button"]').live('click',function(){
+		
 		correr_calculos();
 	});
 
@@ -1157,7 +1164,6 @@ function ival(selector){
 function correr_calculos(){
 	calculos_raw();
 	corregir_data();
-	anular_section_parts();
 }
 
 function corregir_data(){
@@ -1584,6 +1590,223 @@ function calculos_raw(){
 	volholeempty = volhole + volcsgt;
 	completar_campo_val('volholeempty',volholeempty.toFixed(2));
 
+
+	//TABLA DE DATOS DE LA SECCION ANULAR
+	var zdstop = 0
+	var zdsbtm = 0;
+	var astable = Array();
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+		
+		//dsod
+		if($('#odbha_'+id).val() !== ''){
+			var dsod = fval('odbha_'+id);	
+		}else{
+			var dsod = 0;
+		}
+		
+		//toolname
+		var tool_name = $(this).val().toUpperCase();
+		if(tool_name == ''){
+			tool_name = 'DS_'+id;
+		}	
+
+		//bottom de este elemento
+		zdsbtm = zdsbtm + fval('longbha_'+id);
+		longbha = fval('longbha_'+id);
+
+		//averiguar en que seccion del casing se encuentra
+		$('#casing_table .active').each(function(){
+			var csgtop 	= parseFloat($('.zrrange_top',this).val());
+			var csgbtm 	= parseFloat($('.zrrange_btm',this).val());
+			var csgid  	= parseFloat($('.id',this).val());
+			var csgname	= $('.pick_casing',this).val();
+			if(csgname == 'Casing'){
+				csgname = 'CSG';
+			}else{
+				csgname = 'LINER';
+			}
+
+
+			if(csgtop + csgbtm !== 0){
+				if(zdstop == csgtop && zdsbtm == csgbtm){
+					var this_match = {
+						'name'		: csgname+' - '+tool_name,
+						'idhole'	: csgid,
+						'odstring'	: dsod,
+						'len'		: longbha
+					}
+					
+					if(this_match.len > 0){
+						astable.push(this_match);	
+					}	
+				}else if(zdstop < csgtop && zdsbtm < csgbtm){
+					var this_match = {
+						'name'		: csgname+' - '+tool_name,
+						'idhole'	: csgid,
+						'odstring'	: dsod,
+						'len'		: zdsbtm - csgtop
+					}
+					if(this_match.len > 0){
+						astable.push(this_match);	
+					}
+				}else if(zdstop > csgtop && zdsbtm > csgbtm){
+					var this_match = {
+						'name'		: csgname+' - '+tool_name,
+						'idhole'	: csgid,
+						'odstring'	: dsod,
+						'len'		: csgbtm - zdstop
+					}
+					if(this_match.len > 0){
+						astable.push(this_match);	
+					}
+				}else if(zdstop > csgtop && zdsbtm < csgbtm){
+					var this_match = {
+						'name'		: csgname+' - '+tool_name,
+						'idhole'	: csgid,
+						'odstring'	: dsod,
+						'len'		: longbha
+					}
+					if(this_match.len > 0){
+						astable.push(this_match);	
+					}
+				}else if(zdstop < csgtop && zdsbtm > csgbtm){
+					var this_match = {
+						'name'		: csgname+' - '+tool_name,
+						'idhole'	: csgid,
+						'odstring'	: dsod,
+						'len'		: csgbtm - csgtop
+					}
+					if(this_match.len > 0){
+						astable.push(this_match);	
+					}
+				}else if(zdstop < csgtop && zdsbtm == csgbtm){
+					var this_match = {
+						'name'		: csgname+' - '+tool_name,
+						'idhole'	: csgid,
+						'odstring'	: dsod,
+						'len'		: zdsbtm - csgtop
+					}
+					if(this_match.len > 0){
+						astable.push(this_match);	
+					}
+				}else if(zdstop == csgtop && zdsbtm > csgbtm){
+					var this_match = {
+						'name'		: csgname+' - '+tool_name,
+						'idhole'	: csgid,
+						'odstring'	: dsod,
+						'len'		: csgbtm - zdstop
+					}
+					if(this_match.len > 0){
+						astable.push(this_match);	
+					}
+				}else if(zdstop > csgtop && zdsbtm == csgbtm){
+					var this_match = {
+						'name'		: csgname+' - '+tool_name,
+						'idhole'	: csgid,
+						'odstring'	: dsod,
+						'len'		: longbha
+					}
+					if(this_match.len > 0){
+						astable.push(this_match);	
+					}
+				}else if(zdstop == csgtop && zdsbtm < csgbtm){
+					var this_match = {
+						'name'		: csgname+' - '+tool_name,
+						'idhole'	: csgid,
+						'odstring'	: dsod,
+						'len'		: longbha
+					}
+					if(this_match.len > 0){
+						astable.push(this_match);	
+					}
+				}
+			}
+		});
+
+		
+		//repetir la accion, pero para open hole
+		var ohbtm 	= fval('md');
+		var ohtop 	= ohbtm - fval('longhoyo');
+		var ohname	= 'OH';
+		var ohid	= fval('zhole');
+
+		if(ohbtm + ohtop !== 0){
+			if(zdstop == ohtop && zdsbtm == ohbtm){
+				var oh_match = {
+					'name'		: ohname+' - '+tool_name,
+					'idhole'	: ohid,
+					'odstring'	: dsod,
+					'len'		: longbha
+				}
+				if(oh_match.len > 0){
+					astable.push(oh_match);
+				}
+			}else if(zdstop < ohtop && zdsbtm < ohbtm){
+				var oh_match = {
+					'name'		: ohname+' - '+tool_name,
+					'idhole'	: ohid,
+					'odstring'	: dsod,
+					'len'		: zdsbtm - ohtop
+				}
+				if(oh_match.len > 0){
+					astable.push(oh_match);
+				}
+			}else if(zdstop > ohtop && zdsbtm < ohbtm){
+				var oh_match = {
+					'name'		: ohname+' - '+tool_name,
+					'idhole'	: ohid,
+					'odstring'	: dsod,
+					'len'		: longbha
+				}
+				if(oh_match.len > 0){
+					astable.push(oh_match);
+				}
+			}else if(zdstop > ohtop && zdsbtm == ohbtm){
+				var oh_match = {
+					'name'		: ohname+' - '+tool_name,
+					'idhole'	: ohid,
+					'odstring'	: dsod,
+					'len'		: longbha
+				}
+				if(oh_match.len > 0){
+					astable.push(oh_match);
+				}
+			}else if(zdstop == ohtop && zdsbtm < ohbtm){
+				var oh_match = {
+					'name'		: ohname+' - '+tool_name,
+					'idhole'	: ohid,
+					'odstring'	: dsod,
+					'len'		: longbha
+				}
+				if(oh_match.len > 0){
+					astable.push(oh_match);
+				}
+			}
+		}
+		
+		//top del siguiente elemento
+		zdstop = zdsbtm;
+
+	});
+	var zascount 			= 0;
+	var hidraulics_table 	= '';
+	$(astable).each(function(){
+		zascount = zascount + 1;
+		
+		hidraulics_table = hidraulics_table + '<tr>'
+        hidraulics_table = hidraulics_table + '    <td><input type="text" style="width:100px;" value="'+this.name+'" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" id="idhole_'+zascount+'" name="idhole_'+zascount+'" class="idhole" style="margin-right: 0px; width: 70px;" value="'+this.idhole+'" disabled="disabled" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" id="odstring_'+zascount+'" name="odstring_'+zascount+'" class="odstring" style="margin-right: 0px; width: 70px;" value="'+this.odstring+'" disabled="disabled"/></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" id="longanular_'+zascount+'" name="longanular_'+zascount+'" class="longanular" style="margin-right: 0px; width: 70px;" value="'+this.len+'" disabled="disabled" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" disabled="disabled" id="capanul_'+zascount+'" name="capanul_'+zascount+'" class="capanul" style="margin-right: 0px; width: 70px;"/></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" id="zapowerloss_'+zascount+'" name="zapowerloss_'+zascount+'" class="zapowerloss" style="margin-right: 0px; width: 70px;" disabled="disabled" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" id="zabinghloss_'+zascount+'" name="zabinghloss_'+zascount+'" class="zabinghloss" style="margin-right: 0px; width: 70px;" disabled="disabled" /></td>';
+        hidraulics_table = hidraulics_table + '</tr>';	
+	});
+	$('#hidraulics_table_content').html(hidraulics_table);
 
 
 	// 3. DRILL STRING (TUBERIA)
@@ -2319,6 +2542,7 @@ function calculos_raw(){
 	}
 }
 
+/*
 function anular_section_parts(){
 	//obtener la profundidad del hueco y el bottom de la broca
 	var md 	            = fval('md');
@@ -2326,6 +2550,7 @@ function anular_section_parts(){
     var ds_length       = 0;
 	var last_top 		= 0;
 	var next_id			= 0;
+	var append_array	= Array();
 	
 	//inverted run accross all the drill string parts
 	$($('.row_select_drill_string').get().reverse()).each(function(){
@@ -2337,6 +2562,8 @@ function anular_section_parts(){
 		if(tool_name == ''){
 			tool_name = 'DS_'+id;
 		}
+
+		var odbha = $('#odbha_'+id).val();
 		
 		//calculate top and bottom values for this element
 		if(id == 1){
@@ -2353,37 +2580,181 @@ function anular_section_parts(){
 
 
 		//get the position of the element relative to the hole
-		var oh_start = md - fval('longhoyo');
+		var oh_start 	= md - fval('longhoyo');
+		var oh_diam 	= fval('zhole'); 
+		
+		//totalmente en el open hole
 		if(position.top >= oh_start){
 			log(tool_name+' esta totalmente adentro del open hole');
+			var this_element = {
+				'name'		:'OH - '+tool_name,
+				'idhole'	: oh_diam,
+				'odstring'	: odbha,
+				'len'		: fval('longbha_'+id)
+			}
+			append_array.push(this_element);
+
+		//totalmente en el revestidor
 		}else if(position.top < oh_start && position.bottom <= oh_start){
-			//log(tool_name+' esta totalmente adentro del revestidor');
+
 			$('#casing_table .active').each(function(){
 				var coater_name = $('.pick_casing',this).val();
+				if(coater_name == 'Casing'){
+					coater_name = 'CSG';
+				}else{
+					coater_name = 'LINER';
+				}
+
 				var zrrange_top = parseFloat($('.zrrange_top',this).val());
-				var zrrange_btm = parseFloat($('.zrrange_btm',this).val());  
+				var zrrange_btm = parseFloat($('.zrrange_btm',this).val());
+				var id_hole		= $('.id',this).val();  
 				
 				if(zrrange_top - zrrange_btm  !== 0){
-					if(position.top >= zrrange_top && position.bottom <= zrrange_btm){
-						log(tool_name+' esta totalmente adentro de un '+coater_name);
-					}else if(position.top >= zrrange_top && position.top < zrrange_btm && position.bottom > zrrange_btm){
+
+					//parcialmente adentro del revestidor (parte superior de la pieza)	
+					 if(position.top >= zrrange_top && position.top < zrrange_btm && position.bottom > zrrange_btm){
 						var top_section = zrrange_btm - position.top;
-						log(tool_name+' esta parcialmente adentro de un '+coater_name+' (top:'+top_section+')');
+						log(tool_name+' esta parcialmente adentro de un '+coater_name+' (len:'+top_section+')');
+						var this_element = {
+							'name'		: coater_name+' - '+tool_name,
+							'idhole'	: id_hole,
+							'odstring'	: odbha,
+							'len'		: top_section
+						}
+						append_array.push(this_element);
+
+					//parcialmente adentro del revestidor (parte inferior de la pieza)	
 					}else if(position.top < zrrange_top && position.bottom > zrrange_top && position.bottom < zrrange_btm){
 						var bottom_section = zrrange_top - fval('longbha_'+id);
-						log(tool_name+' esta parcialmente adentro de un '+coater_name+' (btm:'+bottom_section+')');
+						log(tool_name+' esta parcialmente adentro de un '+coater_name+' (len:'+bottom_section+')');
+						var this_element = {
+							'name'		: coater_name+' - '+tool_name,
+							'idhole'	: id_hole,
+							'odstring'	: odbha,
+							'len'		: bottom_section
+						}
+						append_array.push(this_element);
+					//totalmente adentro de este revestidor
+					}else if(position.top >= zrrange_top && position.bottom <= zrrange_btm){
+						log(tool_name+' esta totalmente adentro de un '+coater_name);
+						var this_element = {
+							'name'		: coater_name+' - '+tool_name,
+							'idhole'	: id_hole,
+							'odstring'	: odbha,
+							'len'		: fval('longbha_'+id)
+						}
+						append_array.push(this_element);
 					}
+
 				}
 
 			});
+
+		//parcialmente en el revestidor - parcialmente en open hole
 		}else{
-			var top_section = oh_start - position.top;
-			var bottom_section = fval('longbha_'+id) - top_section;
-			log(tool_name+' esta parcialmente en el revestidor (top:'+top_section+')');
+			
+			var bottom_section 	= 	position.bottom - oh_start;				//esto es otra longitud (la de la parte inferior de la pieza)
+			var top_section 	=  	fval('longbha_'+id) - bottom_section; 	//esto es una longitud (la de la parte superior de la pieza)
+			log(top_section);
+
+			var segmento_revestidor_top = position.top;
+			var segmento_revestidor_btm = oh_start;
+			
+
+			//documentar la parte inferior de la pieza (facil porque es open hole)
 			if(bottom_section !== 0){
-				log(tool_name+' esta parcialmente en el open hole (btm:'+bottom_section+')');	
+				log(tool_name+' esta parcialmente en el open hole (btm:'+bottom_section+')');
+				var this_element = {
+					'name'		: 'OH - '+tool_name,
+					'idhole'	: oh_diam,
+					'odstring'	: odbha,
+					'len'		: bottom_section
+				}
+				append_array.push(this_element);	
 			}
+
+
+			//---------------------------------------------------------------------------------------------------
+
+			$('#casing_table .active').each(function(){
+				var coater_name = $('.pick_casing',this).val();
+				if(coater_name == 'Casing'){
+					coater_name = 'CSG';
+				}else{
+					coater_name = 'LINER';
+				}
+
+				var zrrange_top = parseFloat($('.zrrange_top',this).val());
+				var zrrange_btm = parseFloat($('.zrrange_btm',this).val());
+				var id_hole		= $('.id',this).val();  
+				
+				if(zrrange_top - zrrange_btm  !== 0){
+
+					//totalmente adentro de este revestidor
+					if(segmento_revestidor_top >= zrrange_top && segmento_revestidor_btm <= zrrange_btm){
+						log(tool_name+' esta totalmente adentro de un '+coater_name);
+						var this_element = {
+							'name'		: coater_name+' - '+tool_name,
+							'idhole'	: id_hole,
+							'odstring'	: odbha,
+							'len'		: top_section
+						}
+						append_array.push(this_element);
+
+					//parcialmente adentro del revestidor (parte superior de la pieza)	
+					}else if(segmento_revestidor_top >= zrrange_top && segmento_revestidor_top < zrrange_btm && segmento_revestidor_btm > zrrange_btm){
+						//var top_section = zrrange_btm - segmento_revestidor_top;
+						log(tool_name+' esta parcialmente adentro de un '+coater_name+' (len:'+top_section+')');
+						var this_element = {
+							'name'		: coater_name+' - '+tool_name,
+							'idhole'	: id_hole,
+							'odstring'	: odbha,
+							'len'		: top_section
+						}
+						append_array.push(this_element);
+
+					//parcialmente adentro del revestidor (parte inferior de la pieza)	
+					}else if(segmento_revestidor_top < zrrange_top && segmento_revestidor_btm > zrrange_top && segmento_revestidor_btm < zrrange_btm){
+						//var bottom_section = zrrange_top - fval('longbha_'+id);
+						log(tool_name+' esta parcialmente adentro de un '+coater_name+' (len:'+bottom_section+')');
+						var this_element = {
+							'name'		: coater_name+' - '+tool_name,
+							'idhole'	: id_hole,
+							'odstring'	: odbha,
+							'len'		: bottom_section
+						}
+						append_array.push(this_element);
+					}
+
+				}
+
+			});			
+
+			//---------------------------------------------------------------------------------------------------
+			log(tool_name+' esta parcialmente en el revestidor (top:'+top_section+')');
 		}		
 		
-	});	
+	});
+
+	append_array.reverse();
+	var hidraulics_table 		= '';
+	var hidraulics_table_count 	= 0;
+	$(append_array).each(function(){
+		hidraulics_table_count = hidraulics_table_count + 1;
+		
+		hidraulics_table = hidraulics_table + '<tr>'
+        hidraulics_table = hidraulics_table + '    <td><input type="text" style="width:100px;" value="'+this.name+'" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" id="idhole_'+hidraulics_table_count+'" name="idhole_'+hidraulics_table_count+'" class="idhole" style="margin-right: 0px; width: 70px;" value="'+this.idhole+'" disabled="disabled" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" id="odstring_'+hidraulics_table_count+'" name="odstring_'+hidraulics_table_count+'" class="odstring" style="margin-right: 0px; width: 70px;" value="'+this.odstring+'" disabled="disabled"/></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" id="longanular_'+hidraulics_table_count+'" name="longanular_'+hidraulics_table_count+'" class="longanular" style="margin-right: 0px; width: 70px;" value="'+this.len+'" disabled="disabled" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" disabled="disabled" id="capanul_'+hidraulics_table_count+'" name="capanul_'+hidraulics_table_count+'" class="capanul" style="margin-right: 0px; width: 70px;"/></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" id="zapowerloss_'+hidraulics_table_count+'" name="zapowerloss_'+hidraulics_table_count+'" class="zapowerloss" style="margin-right: 0px; width: 70px;" disabled="disabled" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" id="zabinghloss_'+hidraulics_table_count+'" name="zabinghloss_'+hidraulics_table_count+'" class="zabinghloss" style="margin-right: 0px; width: 70px;" disabled="disabled" /></td>';
+        hidraulics_table = hidraulics_table + '</tr>';	
+	});
+	
+	$('#hidraulics_table_content').html(hidraulics_table);
+	//correr_calculos();	
 }
+
+*/
