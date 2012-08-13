@@ -59,7 +59,7 @@
 			</fieldset>
 	    </div>
 	    <!-- Solids Equipment-->
-	    <div class="simpleTabsContent" style="height:460px;">
+	    <div class="simpleTabsContent" style="height:329px;">
 	    	<fieldset>
 				<legend>Equipos CTS</legend>
 				<fieldset>

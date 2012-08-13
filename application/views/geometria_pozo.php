@@ -27,7 +27,7 @@
 	      <li><a href="#">Drill String</a></li>
 	      <li><a href="#">Hydraulics</a></li>
 	    </ul>
-	    <div class="simpleTabsContent" style="height:329px;">
+	    <div class="simpleTabsContent" style="height:315px;">
 			<!-- CASING -->
 			<fieldset>
 				<table id="casing_table">
@@ -195,7 +195,7 @@
 				</table>
 			</fieldset>
         </div>
-	    <div class="simpleTabsContent" style="height:329px;">
+	    <div class="simpleTabsContent" style="height:315px;">
 	    		<!-- HOLE -->
 				<fieldset>
 					<table style="float:left;">
@@ -279,7 +279,7 @@
 				</fieldset>
 			
 	    </div>
-        <div class="simpleTabsContent" style="height:329px;">
+        <div class="simpleTabsContent" style="height:315px;">
         		<!-- DRILL STRING -->
 				<table>
 					<tr>

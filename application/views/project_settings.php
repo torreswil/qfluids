@@ -5,7 +5,6 @@
 	      <li><a href="#">General</a></li>
 	      <li><a href="#">Rig</a></li>
 	      <li><a href="#">Solids Equipment</a></li>
-	      <li><a href="#">Mud Cleaner</a></li>
 	      <li><a href="#">Tanks</a></li>
 	      <li><a href="#">Mud Properties</a></li>
 	    </ul>
@@ -80,7 +79,7 @@
         	</fieldset>
         	<fieldset>
         		<legend>System BOPs</legend>
-        		<fieldset style="float:left; width:410px; height:229px;">
+        		<fieldset style="float:left; width:410px;">
 	        		<legend>Anular</legend>
 	        		<table>
 	        			<tr>
@@ -97,46 +96,46 @@
 	        		<legend>Rams</legend>
 	        		<table>
 	        			<tr>
-	        				<td class="label_m"><input type="checkbox" /></td>
-	        				<td class="label_m"><label>Pipe ram:</label></td>
+	        				<td class="label_m"><input type="checkbox" class="cb_piperam" /></td>
+	        				<td class="label_m"><label>Pipe ram</label></td>
 	        				<td></td>
 	        			</tr>
-	        			<tr>
+	        			<tr class="pipe_ram" style="display:none;">
 	        				<td class="label_m"></td>
 	        				<td class="label_m"><label>Model:</label></td>
 	        				<td><input type="text" style="width:150px;" /></td>
 	        			</tr>
-	        			<tr>
+	        			<tr class="pipe_ram" style="display:none;">
 	        				<td></td>
 	        				<td class="label_m"><label>Nominal Cap.:</label></td>
 	        				<td><input type="text" style="width:150px;" /></td>
 	        			</tr>
 	        			<tr>
-	        				<td class="label_m"><input type="checkbox" /></td>
-	        				<td class="label_m"><label>Blind ram:</label></td>
+	        				<td class="label_m"><input type="checkbox" class="cb_blindram" /></td>
+	        				<td class="label_m"><label>Blind ram</label></td>
 	        				<td></td>
 	        			</tr>
-	        			<tr>
+	        			<tr class="blindram" style="display:none;">
 	        				<td class="label_m"></td>
 	        				<td class="label_m"><label>Model:</label></td>
 	        				<td><input type="text" style="width:150px;" /></td>
 	        			</tr>
-	        			<tr>
+	        			<tr class="blindram" style="display:none;">
 	        				<td></td>
 	        				<td class="label_m"><label>Nominal Cap.:</label></td>
 	        				<td><input type="text" style="width:150px;" /></td>
 	        			</tr>
 	        			<tr>
-	        				<td class="label_m"><input type="checkbox" /></td>
-	        				<td class="label_m"><label>Shear ram:</label></td>
+	        				<td class="label_m"><input type="checkbox" class="cb_shearram" /></td>
+	        				<td class="label_m"><label>Shear ram</label></td>
 	        				<td></td>
 	        			</tr>
-	        			<tr>
+	        			<tr class="shearram" style="display:none;">
 	        				<td class="label_m"></td>
 	        				<td class="label_m"><label>Model:</label></td>
 	        				<td><input type="text" style="width:150px;" /></td>
 	        			</tr>
-	        			<tr>
+	        			<tr class="shearram" style="display:none;">
 	        				<td></td>
 	        				<td class="label_m"><label>Nominal Cap.:</label></td>
 	        				<td><input type="text" style="width:150px;" /></td>

@@ -476,14 +476,14 @@ td { vertical-align: top; }
 	}
 
 	/*SIMPLETABS*/
-	div.simpleTabs { padding:20px 0 0 0; }
-	ul.simpleTabsNavigation { margin:0 10px; padding:0; text-align:left; }
+	div.simpleTabs { padding:20px 0 0 0; margin-top:20px; }
+	ul.simpleTabsNavigation { margin:-20px 10px 0 10px; padding:0; text-align:left; position: fixed; }
 	ul.simpleTabsNavigation li { list-style:none; display:inline; margin:0; padding:0; }
 	/*ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#F0F0F0; font-size:14px; text-decoration:none; color:#666;} */
 	ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#259271; font-size:14px; text-decoration:none; color:#FFF;}
 	ul.simpleTabsNavigation li a:hover { background-color:#259271; }
 	ul.simpleTabsNavigation li a.current { background:#fff; color:#259271; border-bottom:1px solid #fff; }
-	div.simpleTabsContent { border:1px solid #E0E0E0; padding:5px 15px 15px; margin-top:3px; display:none; background-color: #fff; }
+	div.simpleTabsContent { border:1px solid #E0E0E0; padding:5px 15px 15px; margin-top:3px; display:none; background-color: #fff; overflow:auto; height: 379px; }
 	div.simpleTabsContent.currentTab { display:block; }
 
 	::-webkit-scrollbar {-webkit-appearance: none; width: 8px; height: 8px;}

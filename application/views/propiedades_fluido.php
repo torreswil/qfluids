@@ -18,7 +18,7 @@
 	      <li><a href="#">Rheology</a></li>
 	      <li><a href="#">Solids math</a></li>
 	    </ul>
-	    <div class="simpleTabsContent">
+	    <div class="simpleTabsContent" style="height:315px;">
 			<fieldset>
 				<table>
 					<tr>
@@ -276,7 +276,7 @@
 				</table>
 			</fieldset>    
 	    </div>
-	    <div class="simpleTabsContent">
+	    <div class="simpleTabsContent" style="height:315px;">
 			<table style="width:100%;">
 				<tr>
 					<td style="width:380px;">
@@ -445,7 +445,7 @@
 				</tr>
 			</table>
 	    </div>
-	    <div class="simpleTabsContent">
+	    <div class="simpleTabsContent" style="height:315px;">
 	    	<table style="width:100%;">
 				<tr>
 					<td style="width:400px;">

@@ -1110,6 +1110,32 @@ $(document).ready(function(){
 	});
 
 
+	//OCULTAR Y MOSTRAR LAS RAMS EN LA CONFIGURACION DEL PROYECTO
+	$('.cb_piperam').change(function(){
+		if($('.cb_piperam:checked').length == 1){
+			$('.pipe_ram').show();
+		}else{
+			$('.pipe_ram').hide();
+		}
+	});
+
+	$('.cb_blindram').change(function(){
+		if($('.cb_blindram:checked').length == 1){
+			$('.blindram').show();
+		}else{
+			$('.blindram').hide();
+		}
+	});
+
+	$('.cb_shearram').change(function(){
+		if($('.cb_shearram:checked').length == 1){
+			$('.shearram').show();
+		}else{
+			$('.shearram').hide();
+		}
+	});
+
+
 
 	
 	// TRIGGERS CALCULOS
