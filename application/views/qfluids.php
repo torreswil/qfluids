@@ -51,6 +51,7 @@
 				<?php $this->load->view('ds_math'); ?>
 			</div>
 		</form>
+		<?php $this->load->view('project_settings'); ?>
 	</div>
 </div>
 

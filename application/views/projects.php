@@ -1,9 +1,10 @@
 <div class="project_selector">
-	<div class="lateral">
-		<img src="/img/qmax_logo.png" width="150" />
-	</div>
+	<h1 style="width:600px;padding:0 20px 20px 20px">Please select a Project to start:</h1>
 	<div class="projects">
-		<h1>Please select a Project to start:</h1>
+		<div class="filter_section">
+			<label>Filter:</label>
+			<input type="text" placeholder="Search..." />
+		</div>
 		<input type="button" value="New Project" id="btn_new_project">
 		<table>
 			<thead>
@@ -14,7 +15,7 @@
 					<td>Last Modified</td>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="project_list_tbody">
 				<tr>
 					<td>2012-08-10</td>
 					<td>ECOPETROL</td>

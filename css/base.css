@@ -420,27 +420,22 @@ td { vertical-align: top; }
 	}
 
 	.project_selector{
-	    width:900px;
+	    width:640px;
 	    margin:70px auto 0 auto;
 
 	}
 
-	.project_selector .lateral{
-	    width:150px;
-	    float:left;
-	}
 	.project_selector .projects{
-	    width:690px;
+	    width:600px;
 	    margin-left:20px;
 	    float:left;
 	    background-color:#fff;
 	    padding:20px;
 	    box-shadow: 0 0 5px #888;
-	    min-height: 500px;
 	}
 	
 	.project_selector table{
-	    width:690px;
+	    width:600px;
 	    border: 1px solid #E0F0EB;
 	}
 	
@@ -472,6 +467,12 @@ td { vertical-align: top; }
 	.project_selector h1{
 	    float:left;
 	    color:#259271;
+	}
+
+	.filter_section{
+		display: block;
+		float: left;
+		margin-top: 5px;
 	}
 
 	/*SIMPLETABS*/

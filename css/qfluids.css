@@ -268,3 +268,9 @@
 	background-color: #FFFF99;
 	border:1px solid #FFCC00;
 }
+
+#create_project_overlay .step{
+	width: 100%;
+	float: left;
+	display: none;
+}

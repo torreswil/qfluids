@@ -16,6 +16,10 @@ $(document).ready(function(){
 		$('#create_project_overlay').hide();
 	});
 
+	$('#project_list_tbody tr').click(function(e){
+		e.preventDefault();
+		window.location = '/main/qfluids';
+	});
 
 });
 
