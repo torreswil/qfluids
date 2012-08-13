@@ -2,6 +2,10 @@
  * @autor: jose.paternina@desarrollo22.com;
 */
 
+.main_content{
+	min-height: 620px;
+}
+
 .top_tools{
 	position: fixed;
 	top:0px;

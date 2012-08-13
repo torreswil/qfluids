@@ -1,4 +1,6 @@
 /* Author: jose.paternina@desarrollo22.com */
+window.moveTo(0,0);
+window.resizeTo(screen.width,screen.height);
 
 $(document).ready(function(){
 

@@ -149,13 +149,20 @@
         		<legend>Shakers</legend>
         		<table>
 	        		<tr>
-	        			<td class="label_m"><label>Name:</label></td>
-	        			<td class="label_m"><label>Type:</label></td>
 	        			<td class="label_m"><label>Maker:</label></td>
+	        			<td class="label_m"><label>Model:</label></td>
+	        			<td class="label_m"><label>Maximo Caudal</label></td>
 	        			<td class="label_m"><label>Screens:</label></td>
 	        			<td class="label_m"><label>Movement:</label></td>
 	        		</tr>
 	        		<tr>
+	        			<td class="label_m"></td>
+	        			<td class="label_m"></td>
+	        			<td class="label_m">gpm</td>
+	        			<td class="label_m"></td>
+	        			<td class="label_m"></td>
+	        		</tr>
+	        		<tr>
 	        			<td><input type="text" style="width:150px;"></td>
 	        			<td><input type="text" style="width:150px;"></td>
 	        			<td><input type="text" style="width:150px;"></td>
@@ -166,7 +173,6 @@
 	        					<option value="3">3</option>
 	        					<option value="4">4</option>
 	        					<option value="5">5</option>
-	        					<option value="6">6</option>
 	        				</select>
 	        			</td>
 	        			<td>
@@ -188,7 +194,6 @@
 	        					<option value="3">3</option>
 	        					<option value="4">4</option>
 	        					<option value="5">5</option>
-	        					<option value="6">6</option>
 	        				</select>
 	        			</td>
 	        			<td>
@@ -210,7 +215,6 @@
 	        					<option value="3">3</option>
 	        					<option value="4">4</option>
 	        					<option value="5">5</option>
-	        					<option value="6">6</option>
 	        				</select>
 	        			</td>
 	        			<td>
@@ -232,7 +236,6 @@
 	        					<option value="3">3</option>
 	        					<option value="4">4</option>
 	        					<option value="5">5</option>
-	        					<option value="6">6</option>
 	        				</select>
 	        			</td>
 	        			<td>
@@ -254,7 +257,6 @@
 	        					<option value="3">3</option>
 	        					<option value="4">4</option>
 	        					<option value="5">5</option>
-	        					<option value="6">6</option>
 	        				</select>
 	        			</td>
 	        			<td>
@@ -372,7 +374,6 @@
         						<option value="3">3</option>
         						<option value="4">4</option>
         						<option value="5">5</option>
-        						<option value="6">6</option>
         					</select>
         				</td>
         				<td class="label_m">
