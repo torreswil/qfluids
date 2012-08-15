@@ -23,6 +23,29 @@ $(document).ready(function(){
 		window.location = '/main/qfluids';
 	});
 
+	$('#btn_cp_next').click(function(e){
+		e.preventDefault();
+		var eqyt = 0;
+		$('#create_project .required').each(function(){
+			if($(this).val() == ''){
+				eqyt = eqyt + 1;
+			}
+		});
+
+		if(eqyt > 0){
+			alert('All fields are required.\nPlease verify and try again.');
+		}else{
+			var data = $('#create_project').serialize();
+			$.post('/main/projects',data,function(r){
+				if(parseInt(r)){
+					location.reload();
+				}else{
+					alert('There was an error in the saving routine.\nPlease inform the development team for further support.');
+				}
+			},'json');
+		}
+	});
+
 });
 
 function numbersonly(e, decimal) {

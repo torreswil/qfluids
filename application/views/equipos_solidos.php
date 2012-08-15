@@ -317,9 +317,10 @@
         		<table id="centrifuge_1_properties" style="display:none;">
         			<tr>
         				<td class="label_m"><label>Bowl Diam.:</label></td>
-        				<td class="label_m"><label>Bowl P. Diam.:</label></td>
-        				<td class="label_m"><label>Motor P. Diam.:</label></td>
+        				<td class="label_m"><label>Bowl Pulley.<br />Diam.:</label></td>
+        				<td class="label_m"><label>Motor Pulley.<br />Diam.:</label></td>
         				<td class="label_m"><label>Motor RPM:</label></td>
+        				<td class="label_m"><label>Speed RPM:</label></td>
         				<td class="label_m"><label>G force:</label></td>
         				<td class="label_m"><label>Type:</label></td>
         			</tr>
@@ -330,8 +331,10 @@
         				<td class="label_m"></td>
         				<td class="label_m"></td>
         				<td class="label_m"></td>
+        				<td class="label_m"></td>
         			</tr>
         			<tr>
+        				<td class="label_m"><input type="text" style="width:85px;" /></td>
         				<td class="label_m"><input type="text" style="width:85px;" /></td>
         				<td class="label_m"><input type="text" style="width:85px;" /></td>
         				<td class="label_m"><input type="text" style="width:85px;" /></td>
@@ -379,9 +382,10 @@
         		<table style="display:none;" id="centrifuge_2_properties">
         			<tr>
         				<td class="label_m"><label>Bowl Diam.:</label></td>
-        				<td class="label_m"><label>Bowl P. Diam.:</label></td>
-        				<td class="label_m"><label>Motor P. Diam.:</label></td>
+        				<td class="label_m"><label>Bowl Pulley.<br />Diam.:</label></td>
+        				<td class="label_m"><label>Motor Pulley.<br />Diam.:</label></td>
         				<td class="label_m"><label>Motor RPM:</label></td>
+        				<td class="label_m"><label>Speed RPM:</label></td>
         				<td class="label_m"><label>G force:</label></td>
         				<td class="label_m"><label>Type:</label></td>
         			</tr>
@@ -392,8 +396,10 @@
         				<td class="label_m"></td>
         				<td class="label_m"></td>
         				<td class="label_m"></td>
+        				<td class="label_m"></td>
         			</tr>
         			<tr>
+        				<td class="label_m"><input type="text" style="width:85px;" /></td>
         				<td class="label_m"><input type="text" style="width:85px;" /></td>
         				<td class="label_m"><input type="text" style="width:85px;" /></td>
         				<td class="label_m"><input type="text" style="width:85px;" /></td>
