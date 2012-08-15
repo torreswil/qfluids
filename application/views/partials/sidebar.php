@@ -8,6 +8,7 @@
 			<li><a href="#geometria_pozo">Hole Geometry</a></li>
 			<li><a href="#informacion_operacional">Operational Info</a></li>
 			<li><a href="#propiedades_fluido">Mud Properties</a></li>
+			<li><a href="#equipos_solidos">Solids Equipement</a></li>
 			<li><a href="#datos_generales">Team</a></li>
 			<li><a href="#inventario">Inventario</a></li>
 			<li><a href="#volumenes">Volúmenes</a></li>

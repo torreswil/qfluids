@@ -42,6 +42,7 @@
 			<?php $this->load->view('informacion_operacional'); ?>
 			<?php $this->load->view('datos_generales'); ?>
 			<?php $this->load->view('propiedades_fluido'); ?>
+			<?php $this->load->view('equipos_solidos'); ?>
 			<?php $this->load->view('inventario'); ?>
 			<?php $this->load->view('volumenes'); ?>
 

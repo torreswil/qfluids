@@ -151,7 +151,7 @@
 	        		<tr>
 	        			<td class="label_m"><label>Maker:</label></td>
 	        			<td class="label_m"><label>Model:</label></td>
-	        			<td class="label_m"><label>Maximo Caudal</label></td>
+	        			<td class="label_m"><label>Max. Flow</label></td>
 	        			<td class="label_m"><label>Screens:</label></td>
 	        			<td class="label_m"><label>Movement:</label></td>
 	        		</tr>
@@ -165,9 +165,9 @@
 	        		<tr>
 	        			<td><input type="text" style="width:150px;"></td>
 	        			<td><input type="text" style="width:150px;"></td>
-	        			<td><input type="text" style="width:150px;"></td>
+	        			<td><input type="text" style="width:75px;"></td>
 	        			<td>
-	        				<select style="width:74px;">
+	        				<select style="width:75px;">
 	        					<option value="1">1</option>
 	        					<option value="2">2</option>
 	        					<option value="3">3</option>
@@ -176,7 +176,7 @@
 	        				</select>
 	        			</td>
 	        			<td>
-	        				<select>
+	        				<select style="width:75px">
 	        					<option value="lineal">Lineal</option>
 	        					<option value="circular">Circular</option>
 	        					<option value="eliptico">Eliptico</option>
@@ -186,9 +186,9 @@
 	        		<tr>
 	        			<td><input type="text" style="width:150px;"></td>
 	        			<td><input type="text" style="width:150px;"></td>
-	        			<td><input type="text" style="width:150px;"></td>
+	        			<td><input type="text" style="width:75px;"></td>
 	        			<td>
-	        				<select style="width:74px;">
+	        				<select style="width:75px;">
 	        					<option value="1">1</option>
 	        					<option value="2">2</option>
 	        					<option value="3">3</option>
@@ -197,7 +197,7 @@
 	        				</select>
 	        			</td>
 	        			<td>
-	        				<select>
+	        				<select style="width:75px">
 	        					<option value="lineal">Lineal</option>
 	        					<option value="circular">Circular</option>
 	        					<option value="eliptico">Eliptico</option>
@@ -207,9 +207,9 @@
 	        		<tr>
 	        			<td><input type="text" style="width:150px;"></td>
 	        			<td><input type="text" style="width:150px;"></td>
-	        			<td><input type="text" style="width:150px;"></td>
+	        			<td><input type="text" style="width:75px;"></td>
 	        			<td>
-	        				<select style="width:74px;">
+	        				<select style="width:75px;">
 	        					<option value="1">1</option>
 	        					<option value="2">2</option>
 	        					<option value="3">3</option>
@@ -218,7 +218,7 @@
 	        				</select>
 	        			</td>
 	        			<td>
-	        				<select>
+	        				<select style="width:75px">
 	        					<option value="lineal">Lineal</option>
 	        					<option value="circular">Circular</option>
 	        					<option value="eliptico">Eliptico</option>
@@ -228,9 +228,9 @@
 	        		<tr>
 	        			<td><input type="text" style="width:150px;"></td>
 	        			<td><input type="text" style="width:150px;"></td>
-	        			<td><input type="text" style="width:150px;"></td>
+	        			<td><input type="text" style="width:75px;"></td>
 	        			<td>
-	        				<select style="width:74px;">
+	        				<select style="width:75px;">
 	        					<option value="1">1</option>
 	        					<option value="2">2</option>
 	        					<option value="3">3</option>
@@ -239,7 +239,7 @@
 	        				</select>
 	        			</td>
 	        			<td>
-	        				<select>
+	        				<select style="width:75px">
 	        					<option value="lineal">Lineal</option>
 	        					<option value="circular">Circular</option>
 	        					<option value="eliptico">Eliptico</option>
@@ -249,9 +249,9 @@
 	        		<tr>
 	        			<td><input type="text" style="width:150px;"></td>
 	        			<td><input type="text" style="width:150px;"></td>
-	        			<td><input type="text" style="width:150px;"></td>
+	        			<td><input type="text" style="width:75px;"></td>
 	        			<td>
-	        				<select style="width:74px;">
+	        				<select style="width:75px;">
 	        					<option value="1">1</option>
 	        					<option value="2">2</option>
 	        					<option value="3">3</option>
@@ -260,7 +260,7 @@
 	        				</select>
 	        			</td>
 	        			<td>
-	        				<select>
+	        				<select style="width:75px">
 	        					<option value="lineal">Lineal</option>
 	        					<option value="circular">Circular</option>
 	        					<option value="eliptico">Eliptico</option>
