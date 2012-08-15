@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-08-10 16:43:09
+Date: 2012-08-15 16:42:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -661,16 +661,27 @@ INSERT INTO `lodos` VALUES ('10', 'Q - NK');
 -- ----------------------------
 DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
-  `id` int(11) NOT NULL,
-  `project_name` varchar(255) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `last_modified` datetime DEFAULT NULL,
+  `well_name` varchar(255) DEFAULT NULL,
+  `operator` varchar(255) DEFAULT NULL,
+  `rig` varchar(255) DEFAULT NULL,
+  `geozone` varchar(255) DEFAULT NULL,
+  `contract_number` varchar(255) DEFAULT NULL,
+  `field` varchar(255) DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
+  `universal_identifier` int(11) DEFAULT NULL,
+  `creation_timestamp` datetime DEFAULT NULL,
+  `spud_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of projects
 -- ----------------------------
-INSERT INTO `projects` VALUES ('1', 'Qmudplan ', null);
+INSERT INTO `projects` VALUES ('1', '2012-08-15 15:59:13', 'ORITO', 'PETROMINERALES', 'PEGASO 1', 'ORITO', '2225', 'ORITO', '1', '1', '2012-08-15 15:59:13', null);
+INSERT INTO `projects` VALUES ('2', '2012-08-15 16:02:49', 'PETROLEA 235', 'ECOPETROL', 'NABORS16', 'TIBU', '44444', 'PETROLEA', '1', '1', '2012-08-15 16:02:49', null);
+INSERT INTO `projects` VALUES ('3', '2012-08-15 16:04:43', 'PETROLEA 2', 'ECOPETROL', 'PEGASO3', 'PIEDECUESTA', '2134', 'PIEDECUESTA', '1', '1', '2012-08-15 16:04:43', null);
 
 -- ----------------------------
 -- Table structure for `projects_enginers`
