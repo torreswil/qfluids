@@ -250,38 +250,159 @@
         				</td>
         			</tr>
         		</table>
-        		<table>
-        			<tr>
-        				<td class="label_m"><label></label></td>
-        				<td class="label_m"><label>Model:</label></td>
-        				<td class="label_m"><label>Screens:</label></td>
-        				<td class="label_m"><label>Movement:</label></td>
-        			</tr> 
-        			<tr>
-        				<td class="label_m"><label>Shaker:</label></td>
-        				<td class="label_m"><input type="text" style="width:150px;"></td>
-        				<td class="label_m">
-        					<select style="width:164px;">
-        						<option value="1">1</option>
-        						<option value="2">2</option>
-        						<option value="3">3</option>
-        						<option value="4">4</option>
-        						<option value="5">5</option>
-        					</select>
-        				</td>
-        				<td class="label_m">
-        					<select style="width:164px;">
-        						<option value="lineal">Lineal</option>
-        						<option value="circular">Circular</option>
-        						<option value="eliptico">Elíptico</option>
-        					</select>
-        				</td>
-        			</tr>        			
+        		<table style="margin-top:20px;">
+	        		<tr>
+	        			<td style="width:100px;"></td>
+	        			<td class="label_m"><label>Maker:</label></td>
+	        			<td class="label_m"><label>Model:</label></td>
+	        			<td class="label_m"><label>Movement:</label></td>
+	        			<td class="label_m"><label>Screens:</label></td>
+	        			<td class="label_m"><label>Hours:</label></td>
+	        		</tr>	
+	        		<tr>
+	        			<td><label>Shaker</label></td>
+	        			<td><input type="text" style="width:100px;" disabled="disabled" value="Panasonic"></td>
+	        			<td><input type="text" style="width:120px;" disabled="disabled" value="KXP-1150i"></td>
+	        			<td>
+	        				<input type="text" style="width:75px;" disabled="disabled" value="Eliptic" />
+	        			</td>
+	        			<td style="padding-bottom:20px;">
+	        				<table>
+	        					<tr><td class="label_m"><label>1:</label><input type="text" style="width:55px;" /></td></tr>
+	        					<tr><td class="label_m"><label>2:</label><input type="text" style="width:55px;" /></td></tr>
+	        					<tr><td class="label_m"><label>3:</label><input type="text" style="width:55px;" /></td></tr>
+	        				</table>
+	        			</td>
+	        			<td><input type="text" style="width:75px;" /></td>
+	        		</tr>
         		</table>
         	</fieldset>
         </div>
         <div class="simpleTabsContent">
-
+        	<fieldset>
+        		<legend>Centrifuge 1</legend>
+        		<table>
+        			<tr>
+        				<td class="label_m"><label>Name:</label></td>
+        				<td class="label_m"><label>Type:</label></td>
+        				<td class="label_m"><label>Max RPM:</label></td>
+        				<td class="label_m"><label>Speed:</label></td>
+        				<td class="label_m"><label>Overflow:</label></td>
+        				<td class="label_m"><label>Underflow:</label></td>
+        				<td class="label_m"><label>Feet rate:</label></td>
+        				<td class="label_m"><label>Hours:</label></td>
+        			</tr>
+        			<tr>
+        				<td class="label_m"></td>
+        				<td class="label_m"></td>
+        				<td class="label_m"></td>
+        				<td class="label_m"></td>
+        				<td class="label_m">ppg</td>
+        				<td class="label_m">ppg</td>
+        				<td class="label_m">gpm</td>
+        				<td class="label_m"></td>
+        			</tr>
+        			<tr>
+        				<td class="label_m"><input type="text" style="width:150px;" disabled="disabled" /></td>
+        				<td class="label_m"><input type="text" style="width:75px;" disabled="disabled" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" disabled="disabled" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
+        			</tr>
+        		</table>
+        		<p><a href="" id="show_cp_1">Show Centrifuge Properties</a></p>
+        		<table id="centrifuge_1_properties" style="display:none;">
+        			<tr>
+        				<td class="label_m"><label>Bowl Diam.:</label></td>
+        				<td class="label_m"><label>Bowl P. Diam.:</label></td>
+        				<td class="label_m"><label>Motor P. Diam.:</label></td>
+        				<td class="label_m"><label>Motor RPM:</label></td>
+        				<td class="label_m"><label>G force:</label></td>
+        				<td class="label_m"><label>Type:</label></td>
+        			</tr>
+        			<tr>
+        				<td class="label_m">in.</td>
+        				<td class="label_m">in.</td>
+        				<td class="label_m">in.</td>
+        				<td class="label_m"></td>
+        				<td class="label_m"></td>
+        				<td class="label_m"></td>
+        			</tr>
+        			<tr>
+        				<td class="label_m"><input type="text" style="width:85px;" /></td>
+        				<td class="label_m"><input type="text" style="width:85px;" /></td>
+        				<td class="label_m"><input type="text" style="width:85px;" /></td>
+        				<td class="label_m"><input type="text" style="width:85px;" /></td>
+        				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
+        				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
+        			</tr>
+        		</table>
+        	</fieldset>
+        	<fieldset>
+        		<legend>Centrifuge 2</legend>
+        		<table>
+        			<tr>
+        				<td class="label_m"><label>Name:</label></td>
+        				<td class="label_m"><label>Type:</label></td>
+        				<td class="label_m"><label>Max RPM:</label></td>
+        				<td class="label_m"><label>Speed:</label></td>
+        				<td class="label_m"><label>Overflow:</label></td>
+        				<td class="label_m"><label>Underflow:</label></td>
+        				<td class="label_m"><label>Feet rate:</label></td>
+        				<td class="label_m"><label>Hours:</label></td>
+        			</tr>
+        			<tr>
+        				<td class="label_m"></td>
+        				<td class="label_m"></td>
+        				<td class="label_m"></td>
+        				<td class="label_m"></td>
+        				<td class="label_m">ppg</td>
+        				<td class="label_m">ppg</td>
+        				<td class="label_m">gpm</td>
+        				<td class="label_m"></td>
+        			</tr>
+        			<tr>
+        				<td class="label_m"><input type="text" style="width:150px;" disabled="disabled" /></td>
+        				<td class="label_m"><input type="text" style="width:75px;" disabled="disabled" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" disabled="disabled" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
+        			</tr>
+        		</table>
+        		<p><a href="#" id="show_cp_2">Show centrifuge properties</a></p>
+        		<table style="display:none;" id="centrifuge_2_properties">
+        			<tr>
+        				<td class="label_m"><label>Bowl Diam.:</label></td>
+        				<td class="label_m"><label>Bowl P. Diam.:</label></td>
+        				<td class="label_m"><label>Motor P. Diam.:</label></td>
+        				<td class="label_m"><label>Motor RPM:</label></td>
+        				<td class="label_m"><label>G force:</label></td>
+        				<td class="label_m"><label>Type:</label></td>
+        			</tr>
+        			<tr>
+        				<td class="label_m">in.</td>
+        				<td class="label_m">in.</td>
+        				<td class="label_m">in.</td>
+        				<td class="label_m"></td>
+        				<td class="label_m"></td>
+        				<td class="label_m"></td>
+        			</tr>
+        			<tr>
+        				<td class="label_m"><input type="text" style="width:85px;" /></td>
+        				<td class="label_m"><input type="text" style="width:85px;" /></td>
+        				<td class="label_m"><input type="text" style="width:85px;" /></td>
+        				<td class="label_m"><input type="text" style="width:85px;" /></td>
+        				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
+        				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
+        			</tr>
+        		</table>
+        	</fieldset>
         </div>
     </div>
 </div>

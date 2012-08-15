@@ -396,13 +396,23 @@
         			</tr>
         			<tr>
         				<td class="label_m"><input type="text" style="width:150px;" /></td>
-        				<td class="label_m"><input type="text" style="width:150px;" /></td>
-        				<td class="label_m"><input type="text" style="width:150px;" /></td>
+        				<td class="label_m">
+        					<select style="width:70px;">
+        						<option value="lgs">LGS</option>
+        						<option value="hgs">HGS</option>
+        					</select>
+        				</td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
         			</tr>
         			<tr>
         				<td class="label_m"><input type="text" style="width:150px;" /></td>
-        				<td class="label_m"><input type="text" style="width:150px;" /></td>
-        				<td class="label_m"><input type="text" style="width:150px;" /></td>
+        				<td class="label_m">
+        					<select style="width:70px;">
+        						<option value="lgs">LGS</option>
+        						<option value="hgs">HGS</option>
+        					</select>
+        				</td>
+        				<td class="label_m"><input type="text" style="width:60px;" /></td>
         			</tr>
         		</table>
         	</fieldset>

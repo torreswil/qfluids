@@ -1136,6 +1136,28 @@ $(document).ready(function(){
 	});
 
 
+	//EQUIPOS DE SOLIDOS - CENTRIFUGAS
+	$('#show_cp_1').click(function(e){
+		e.preventDefault();
+		if($(this).hasClass('open')){
+			$('#centrifuge_1_properties').hide();
+			$(this).removeClass('open').html('Show centrifuge properties');
+		}else{
+			$('#centrifuge_1_properties').show();
+			$(this).addClass('open').html('Hide centrifuge properties');
+		}
+	});
+
+	$('#show_cp_2').click(function(e){
+		e.preventDefault();
+		if($(this).hasClass('open')){
+			$('#centrifuge_2_properties').hide();
+			$(this).removeClass('open').html('Show centrifuge properties');
+		}else{
+			$('#centrifuge_2_properties').show();
+			$(this).addClass('open').html('Hide centrifuge properties');
+		}
+	});
 
 	
 	// TRIGGERS CALCULOS
