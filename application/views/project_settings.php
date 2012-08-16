@@ -1,5 +1,5 @@
 <?php 
-	if($project['spud_date'] == ''){
+	if($project['configured'] == 0){
 		$settings_style	='display:block;';
 	}else{
 		$settings_style	='display:none;';
@@ -155,147 +155,149 @@
 	        <div class="simpleTabsContent">
 	        	<fieldset>
 	        		<legend>Shakers</legend>
-	        		<table style="margin-bottom:10px;">
-	        			<tr>
-	        				<td class="label_m" style="width:175px;">
-	        					<label>Shakers to use:</label>
-	        				</td>
-	        				<td>
-	        					<select style="width:50px;" class="shaker_touse">
-	        						<option value="1">1</option>
-	        						<option value="2">2</option>
-	        						<option value="3">3</option>
-	        						<option value="4">4</option>
-	        						<option value="5">5</option>
-	        					</select>
-	        				</td>
-	        			</tr>
-	        		</table>
-	        		<table id="shakers_table">
-		        		<thead>
-			        		<tr>
-			        			<td class="label_m"><label>Maker:</label></td>
-			        			<td class="label_m"><label>Model:</label></td>
-			        			<td class="label_m"><label>Nominal Flow</label></td>
-			        			<td class="label_m"><label>Screens:</label></td>
-			        			<td class="label_m"><label>Movement:</label></td>
-			        		</tr>
-			        		<tr>
-			        			<td class="label_m"></td>
-			        			<td class="label_m"></td>
-			        			<td class="label_m">gpm</td>
-			        			<td class="label_m"></td>
-			        			<td class="label_m"></td>
-			        		</tr>
-			        	</thead>
-			        	<tbody>
-			        		<tr>
-			        			<td><input type="text" style="width:150px;"></td>
-			        			<td><input type="text" style="width:150px;"></td>
-			        			<td><input type="text" style="width:75px;"></td>
-			        			<td>
-			        				<select style="width:75px;" class="screens">
-			        					<option value="1">1</option>
-			        					<option value="2">2</option>
-			        					<option value="3">3</option>
-			        					<option value="4">4</option>
-			        					<option value="5">5</option>
-			        				</select>
-			        			</td>
-			        			<td>
-			        				<select style="width:75px" class="movement">
-			        					<option value="lineal">Lineal</option>
-			        					<option value="circular">Circular</option>
-			        					<option value="eliptico">Eliptico</option>
-			        				</select>
-			        			</td>
-			        		</tr>
-			        		<tr class="disabled">
-			        			<td><input type="text" style="width:150px;"></td>
-			        			<td><input type="text" style="width:150px;"></td>
-			        			<td><input type="text" style="width:75px;"></td>
-			        			<td>
-			        				<select style="width:75px;" class="screens">
-			        					<option value="1">1</option>
-			        					<option value="2">2</option>
-			        					<option value="3">3</option>
-			        					<option value="4">4</option>
-			        					<option value="5">5</option>
-			        				</select>
-			        			</td>
-			        			<td>
-			        				<select style="width:75px" class="movement">
-			        					<option value="lineal">Lineal</option>
-			        					<option value="circular">Circular</option>
-			        					<option value="eliptico">Eliptico</option>
-			        				</select>
-			        			</td>
-			        		</tr>
-			        		<tr class="disabled">
-			        			<td><input type="text" style="width:150px;"></td>
-			        			<td><input type="text" style="width:150px;"></td>
-			        			<td><input type="text" style="width:75px;"></td>
-			        			<td>
-			        				<select style="width:75px;" class="screens">
-			        					<option value="1">1</option>
-			        					<option value="2">2</option>
-			        					<option value="3">3</option>
-			        					<option value="4">4</option>
-			        					<option value="5">5</option>
-			        				</select>
-			        			</td>
-			        			<td>
-			        				<select style="width:75px" class="movement">
-			        					<option value="lineal">Lineal</option>
-			        					<option value="circular">Circular</option>
-			        					<option value="eliptico">Eliptico</option>
-			        				</select>
-			        			</td>
-			        		</tr>
-			        		<tr class="disabled">
-			        			<td><input type="text" style="width:150px;"></td>
-			        			<td><input type="text" style="width:150px;"></td>
-			        			<td><input type="text" style="width:75px;"></td>
-			        			<td>
-			        				<select style="width:75px;" class="screens">
-			        					<option value="1">1</option>
-			        					<option value="2">2</option>
-			        					<option value="3">3</option>
-			        					<option value="4">4</option>
-			        					<option value="5">5</option>
-			        				</select>
-			        			</td>
-			        			<td>
-			        				<select style="width:75px" class="movement">
-			        					<option value="lineal">Lineal</option>
-			        					<option value="circular">Circular</option>
-			        					<option value="eliptico">Eliptico</option>
-			        				</select>
-			        			</td>
-			        		</tr>
-			        		<tr class="disabled">
-			        			<td><input type="text" style="width:150px;"></td>
-			        			<td><input type="text" style="width:150px;"></td>
-			        			<td><input type="text" style="width:75px;"></td>
-			        			<td>
-			        				<select style="width:75px;" class="screens">
-			        					<option value="1">1</option>
-			        					<option value="2">2</option>
-			        					<option value="3">3</option>
-			        					<option value="4">4</option>
-			        					<option value="5">5</option>
-			        				</select>
-			        			</td>
-			        			<td>
-			        				<select style="width:75px" class="movement">
-			        					<option value="lineal">Lineal</option>
-			        					<option value="circular">Circular</option>
-			        					<option value="eliptico">Eliptico</option>
-			        				</select>
-			        			</td>
-			        		</tr>
-		        		</tbody>
-	        		</table>
+	        		
+		        		<table style="margin-bottom:10px;">
+		        			<tr>
+		        				<td class="label_m" style="width:175px;">
+		        					<label>Shakers to use:</label>
+		        				</td>
+		        				<td>
+		        					<select style="width:50px;" class="shaker_touse">
+		        						<option value="1">1</option>
+		        						<option value="2">2</option>
+		        						<option value="3">3</option>
+		        						<option value="4">4</option>
+		        						<option value="5">5</option>
+		        					</select>
+		        				</td>
+		        			</tr>
+		        		</table>
+		        		<table id="shakers_table">
+			        		<thead>
+				        		<tr>
+				        			<td class="label_m"><label>Maker:</label></td>
+				        			<td class="label_m"><label>Model:</label></td>
+				        			<td class="label_m"><label>Nominal Flow</label></td>
+				        			<td class="label_m"><label>Screens:</label></td>
+				        			<td class="label_m"><label>Movement:</label></td>
+				        		</tr>
+				        		<tr>
+				        			<td class="label_m"></td>
+				        			<td class="label_m"></td>
+				        			<td class="label_m">gpm</td>
+				        			<td class="label_m"></td>
+				        			<td class="label_m"></td>
+				        		</tr>
+				        	</thead>
+				        	<tbody>
+				        		<tr>
+				        			<td><input type="text" style="width:150px;" class="maker"></td>
+				        			<td><input type="text" style="width:150px;" class="model"></td>
+				        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
+				        			<td>
+				        				<select style="width:75px;" class="screens" class="screens">
+				        					<option value="1">1</option>
+				        					<option value="2">2</option>
+				        					<option value="3">3</option>
+				        					<option value="4">4</option>
+				        					<option value="5">5</option>
+				        				</select>
+				        			</td>
+				        			<td>
+				        				<select style="width:75px" class="movement">
+				        					<option value="lineal">Lineal</option>
+				        					<option value="circular">Circular</option>
+				        					<option value="eliptico">Eliptico</option>
+				        				</select>
+				        			</td>
+				        		</tr>
+				        		<tr class="disabled">
+				        			<td><input type="text" style="width:150px;" class="maker"></td>
+				        			<td><input type="text" style="width:150px;" class="model"></td>
+				        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
+				        			<td>
+				        				<select style="width:75px;" class="screens" class="screens">
+				        					<option value="1">1</option>
+				        					<option value="2">2</option>
+				        					<option value="3">3</option>
+				        					<option value="4">4</option>
+				        					<option value="5">5</option>
+				        				</select>
+				        			</td>
+				        			<td>
+				        				<select style="width:75px" class="movement">
+				        					<option value="lineal">Lineal</option>
+				        					<option value="circular">Circular</option>
+				        					<option value="eliptico">Eliptico</option>
+				        				</select>
+				        			</td>
+				        		</tr>
+				        		<tr class="disabled">
+				        			<td><input type="text" style="width:150px;" class="maker"></td>
+				        			<td><input type="text" style="width:150px;" class="model"></td>
+				        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
+				        			<td>
+				        				<select style="width:75px;" class="screens" class="screens">
+				        					<option value="1">1</option>
+				        					<option value="2">2</option>
+				        					<option value="3">3</option>
+				        					<option value="4">4</option>
+				        					<option value="5">5</option>
+				        				</select>
+				        			</td>
+				        			<td>
+				        				<select style="width:75px" class="movement">
+				        					<option value="lineal">Lineal</option>
+				        					<option value="circular">Circular</option>
+				        					<option value="eliptico">Eliptico</option>
+				        				</select>
+				        			</td>
+				        		</tr>
+				        		<tr class="disabled">
+				        			<td><input type="text" style="width:150px;" class="maker"></td>
+				        			<td><input type="text" style="width:150px;" class="model"></td>
+				        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
+				        			<td>
+				        				<select style="width:75px;" class="screens" class="screens">
+				        					<option value="1">1</option>
+				        					<option value="2">2</option>
+				        					<option value="3">3</option>
+				        					<option value="4">4</option>
+				        					<option value="5">5</option>
+				        				</select>
+				        			</td>
+				        			<td>
+				        				<select style="width:75px" class="movement">
+				        					<option value="lineal">Lineal</option>
+				        					<option value="circular">Circular</option>
+				        					<option value="eliptico">Eliptico</option>
+				        				</select>
+				        			</td>
+				        		</tr>
+				        		<tr class="disabled">
+				        			<td><input type="text" style="width:150px;" class="maker"></td>
+				        			<td><input type="text" style="width:150px;" class="model"></td>
+				        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
+				        			<td>
+				        				<select style="width:75px;" class="screens" class="screens">
+				        					<option value="1">1</option>
+				        					<option value="2">2</option>
+				        					<option value="3">3</option>
+				        					<option value="4">4</option>
+				        					<option value="5">5</option>
+				        				</select>
+				        			</td>
+				        			<td>
+				        				<select style="width:75px" class="movement">
+				        					<option value="lineal">Lineal</option>
+				        					<option value="circular">Circular</option>
+				        					<option value="eliptico">Eliptico</option>
+				        				</select>
+				        			</td>
+				        		</tr>
+			        		</tbody>
+		        		</table>
+		        	
 	        	</fieldset>	
 	        	<fieldset>
 	        		<legend>Mud Cleaner</legend>

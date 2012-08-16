@@ -17,7 +17,7 @@
 		        			<td class="label_m"><label>Nominal Flow</label></td>
 		        			<td class="label_m"><label>Movement:</label></td>
 		        			<td class="label_m" style="text-align:center;"><label>Screens:</label></td>
-		        			<td class="label_m"><label>Hours:</label></td>
+		        			<td class="label_m"><label>Operational<br />Hours:</label></td>
 		        		</tr>
 		        		<tr>
 		        			<td class="label_m"></td>
@@ -54,7 +54,7 @@
 		        			<td class="label_m"><label>Nominal Flow</label></td>
 		        			<td class="label_m"><label>Movement:</label></td>
 		        			<td class="label_m" style="text-align:center;"><label>Screens:</label></td>
-		        			<td class="label_m"><label>Hours:</label></td>
+		        			<td class="label_m"><label>Operational<br />Hours:</label></td>
 		        		</tr>
 		        		<tr>
 		        			<td class="label_m"></td>
@@ -109,7 +109,7 @@
         				<td class="label_m"><label>Pump Type:</label></td>
         				<td class="label_m"><label>Flow:</label></td>
         				<td class="label_m"><label>Presure:</label></td>
-        				<td class="label_m"><label>Hours:</label></td>
+        				<td class="label_m"><label>Operational<br />Hours:</label></td>
         			</tr>
         			<tr>
         				<td class="label_m" style="width:100px;"><label></label></td>
@@ -163,7 +163,7 @@
 	        			<td class="label_m"><label>Model:</label></td>
 	        			<td class="label_m"><label>Movement:</label></td>
 	        			<td class="label_m"><label>Screens:</label></td>
-	        			<td class="label_m"><label>Hours:</label></td>
+	        			<td class="label_m"><label>Operational<br />Hours:</label></td>
 	        		</tr>	
 	        		<tr>
 	        			<td><label>Shaker</label></td>
@@ -196,7 +196,7 @@
         				<td class="label_m"><label>Overflow:</label></td>
         				<td class="label_m"><label>Underflow:</label></td>
         				<td class="label_m"><label>Feet rate:</label></td>
-        				<td class="label_m"><label>Hours:</label></td>
+        				<td class="label_m"><label>Operational<br />Hours:</label></td>
         			</tr>
         			<tr>
         				<td class="label_m"></td>
@@ -261,7 +261,7 @@
         				<td class="label_m"><label>Overflow:</label></td>
         				<td class="label_m"><label>Underflow:</label></td>
         				<td class="label_m"><label>Feet rate:</label></td>
-        				<td class="label_m"><label>Hours:</label></td>
+        				<td class="label_m"><label>Operational<br />Hours:</label></td>
         			</tr>
         			<tr>
         				<td class="label_m"></td>

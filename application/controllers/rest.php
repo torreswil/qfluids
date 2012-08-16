@@ -4,6 +4,9 @@ class Rest extends CI_Controller {
 	public function __construct(){
 	    parent::__construct();
 	    $this->load->model('Api');
+	    if(isset($_POST)){
+	    	$this->data_input = file_get_contents("php://input");
+	    }
 	}
 
 	public function index(){
@@ -108,5 +111,12 @@ class Rest extends CI_Controller {
 
 	public function insert_casing(){
 		echo json_encode($this->Api->create('casing',$_POST));
+	}
+
+
+	//CONFIG SAVING FUNCTIONS
+	public function config_shakers(){
+		$shakers = $this->data_input;
+		echo json_encode($shakers);		
 	}
 }

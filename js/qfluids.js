@@ -1226,6 +1226,28 @@ $(function(){
 
 	$('#btn_save_settings').click(function(e){
 		e.preventDefault();
-		$('#project_settings').hide();
+		
+
+		//1. SAVE SHAKERS
+		var shakers 		= {};
+		shakers.shaker_qty 	= $('.shaker_touse').val();
+		shakers.shakers 	= []; 
+		$('#shakers_table tbody tr').each(function(){
+			if(!$(this).hasClass('disabled')){
+				var this_shaker = {
+					maker 			: $('.maker',this).val(),
+					model 			: $('.model',this).val(),
+					nominal_flow 	: $('.nominal_flow',this).val(),
+					screens 		: $('.screens',this).val(),
+					movement 		: $('.movement',this).val()
+				}
+				shakers.shakers.push(this_shaker);
+			}
+		});
+		
+		var jsonshakers = $.toJSON(shakers);
+		$.post('/rest/config_shakers',jsonshakers,function(r){
+			log(r);
+		},'json')
 	});
 });
