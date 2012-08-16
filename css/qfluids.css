@@ -273,3 +273,7 @@
 #shakers_table .disabled{
 	display: none;
 }
+
+.zrrange_top,.zrrange_btm{
+	display: none;
+}

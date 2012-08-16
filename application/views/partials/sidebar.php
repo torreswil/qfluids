@@ -23,10 +23,9 @@
 	<li class="main_navigation">
 		<h2>Herramientas</h2>
 		<ul class="nav_links">
-			<!--- <li><a href="#project_settings" class="pop_up">Project Settings</a></li> -->
 			<li><a href="#">Historial de Reportes</a></li>
 			<li><a href="#">Requisiciones</a></li>
-			<li><a href="#">Herramienta de Exportación de datos</a></li>
+			<li><a href="#">Registro de personal</a></li>
 		</ul>
 	</li>
 </ul>

@@ -90,16 +90,16 @@
         		<legend>Mud Cleaner</legend>
         		<table>
         			<tr>
-        				<td class="label_m"><label></label></td>
-        				<td class="label_m"><label>Name:</label></td>
-        				<td class="label_m"><label>Type:</label></td>
+        				<td class="label_m" style="width:100px;"><label></label></td>
         				<td class="label_m"><label>Maker:</label></td>
+        				<td class="label_m"><label>Model:</label></td>
+        				<td class="label_m"><label></label></td>
         			</tr>
         			<tr>
-        				<td class="label_m"><label>Mud Cleaner:</label></td>
-        				<td class="label_m"><input type="text" style="width:150px;" disabled="disabled" /></td>
-        				<td class="label_m"><input type="text" style="width:150px;" disabled="disabled" /></td>
-        				<td class="label_m"><input type="text" style="width:150px;" disabled="disabled" /></td>
+        				<td class="label_m"><label></label></td>
+        				<td class="label_m"><input type="text" style="width:150px;" /></td>
+        				<td class="label_m"><input type="text" style="width:150px;" /></td>
+        				<td class="label_m"></td>
         			</tr>
         		</table>
         		<table style="margin-top:20px;">
