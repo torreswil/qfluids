@@ -15,7 +15,7 @@
 						<td width="25"></td>
 						<td>
 							<strong>CURRENT DATE:</strong><br />
-							<input type="text" style="width:100px;" disabled="disabled" id="current_date" />
+							<span style="text-transform:uppercase;color:#259271;font-weight:bold;display:block;float:left;height:20px;width:105px;" id="current_date"></span>
 						</td>
 						<td width="25"></td>
 						<td><strong>Report#:</strong><br /><span style="text-transform:uppercase;color:#259271;font-weight:bold;">0001</span></td>

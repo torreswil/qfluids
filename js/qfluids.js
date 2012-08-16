@@ -11,11 +11,11 @@ $(function(){
 	$('#spud_data').change(function(){
 		if($(this).val() !== ''){
 			$('.sidebar').show();
-			$('#current_date').val($(this).val());
+			$('#current_date').html($(this).val());
 			$('#start_message').html('Select a data input form from the sidebar to continue.');
 		}else{
 			$('.sidebar').hide();
-			$('#current_date').val('');
+			$('#current_date').html('');
 			$('#start_message').html('Pick a spud date to start.');
 		}
 	});
