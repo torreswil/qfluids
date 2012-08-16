@@ -34,7 +34,7 @@ html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10
 
 html, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
-body { margin: 0; font-size: 1em; line-height: 1.4; overflow-y: scroll; }
+body { margin: 0; font-size: 1em; line-height: 1.4; }
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -219,7 +219,8 @@ td { vertical-align: top; }
    ========================================================================== */
 	body{
 		font-family: 'Open Sans', sans-serif;
-		background-image: url('/img/square_bg.png');
+		/*background-image: url('/img/square_bg.png');*/
+		background-image: url('http://subtlepatterns.com/patterns/gplaypattern.png');
 		background-attachment: fixed;
 		background-color: #fff;
 		font-size: 13px;

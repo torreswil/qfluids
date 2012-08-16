@@ -19,7 +19,7 @@
 				</thead>
 				<tbody id="project_list_tbody">
 					<?php foreach ($projects as $project) { ?>
-						<tr>
+						<tr id="project_<?= $project['id'] ?>">
 							<td><?= $project['operator'] ?></td>
 							<td><?= $project['well_name'] ?></td>
 							<td><?= $project['field'] ?></td>

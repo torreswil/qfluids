@@ -5,7 +5,7 @@ window.resizeTo(screen.width,screen.height);
 $(document).ready(function(){
 
 	$('#login_btn').click(function(){
-		window.location = '/main/projects';
+		window.location = '/main/projects/';
 	});
 
 	$('#btn_new_project').click(function(e){
@@ -20,7 +20,10 @@ $(document).ready(function(){
 
 	$('#project_list_tbody tr').click(function(e){
 		e.preventDefault();
-		window.location = '/main/qfluids';
+		var id = $(this).attr('id');
+		id = id.split('project_');
+		id = id[1];
+		window.location = '/main/qfluids/'+id;
 	});
 
 	$('#btn_cp_next').click(function(e){
@@ -38,7 +41,7 @@ $(document).ready(function(){
 			var data = $('#create_project').serialize();
 			$.post('/main/projects',data,function(r){
 				if(parseInt(r)){
-					location.reload();
+					window.location = '/main/qfluids/'+r;
 				}else{
 					alert('There was an error in the saving routine.\nPlease inform the development team for further support.');
 				}

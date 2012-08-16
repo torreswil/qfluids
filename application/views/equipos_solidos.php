@@ -1,5 +1,5 @@
 <div class="this_panel" id="equipos_solidos">
-	<h2>Solids Equipment</h2>
+	<h2>Control Solids Equipment</h2>
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">
 	      <li><a href="#">Shakers</a></li>
@@ -9,11 +9,12 @@
         <div class="simpleTabsContent">
         	<!-- SHAKERS -->
         	<fieldset>
+        		<legend>Shaker 1</legend>
 	        	<table>
 		        		<tr>
 		        			<td class="label_m"><label>Maker:</label></td>
 		        			<td class="label_m"><label>Model:</label></td>
-		        			<td class="label_m"><label>Max. Flow</label></td>
+		        			<td class="label_m"><label>Nominal Flow</label></td>
 		        			<td class="label_m"><label>Movement:</label></td>
 		        			<td class="label_m" style="text-align:center;"><label>Screens:</label></td>
 		        			<td class="label_m"><label>Hours:</label></td>
@@ -42,11 +43,15 @@
 		        			<td><input type="text" style="width:75px;" /></td>
 		        		</tr>
 		        </table>
-		        <table>
+	    	</fieldset>
+
+	    	<fieldset>
+        		<legend>Shaker 2</legend>
+	        	<table>
 		        		<tr>
 		        			<td class="label_m"><label>Maker:</label></td>
 		        			<td class="label_m"><label>Model:</label></td>
-		        			<td class="label_m"><label>Max. Flow</label></td>
+		        			<td class="label_m"><label>Nominal Flow</label></td>
 		        			<td class="label_m"><label>Movement:</label></td>
 		        			<td class="label_m" style="text-align:center;"><label>Screens:</label></td>
 		        			<td class="label_m"><label>Hours:</label></td>
@@ -57,7 +62,7 @@
 		        			<td class="label_m">gpm</td>
 		        			<td class="label_m"></td>
 		        			<td class="label_m"></td>
-		        		</tr>		
+		        		</tr>
 		        		<tr>
 		        			<td><input type="text" style="width:150px;" disabled="disabled" value="Panasonic"></td>
 		        			<td><input type="text" style="width:150px;" disabled="disabled" value="KXP-1150i"></td>
@@ -74,107 +79,8 @@
 		        			</td>
 		        			<td><input type="text" style="width:75px;" /></td>
 		        		</tr>
-		        </table>		
-		        <table>
-		        		<tr>
-		        			<td class="label_m"><label>Maker:</label></td>
-		        			<td class="label_m"><label>Model:</label></td>
-		        			<td class="label_m"><label>Max. Flow</label></td>
-		        			<td class="label_m"><label>Movement:</label></td>
-		        			<td class="label_m" style="text-align:center;"><label>Screens:</label></td>
-		        			<td class="label_m"><label>Hours:</label></td>
-		        		</tr>
-		        		<tr>
-		        			<td class="label_m"></td>
-		        			<td class="label_m"></td>
-		        			<td class="label_m">gpm</td>
-		        			<td class="label_m"></td>
-		        			<td class="label_m"></td>
-		        		</tr>		
-		        		<tr>
-		        			<td><input type="text" style="width:150px;" disabled="disabled" value="Panasonic"></td>
-		        			<td><input type="text" style="width:150px;" disabled="disabled" value="KXP-1150i"></td>
-		        			<td><input type="text" style="width:75px;" disabled="disabled" value="100" /></td>
-		        			<td>
-		        				<input type="text" style="width:75px;" disabled="disabled" value="Eliptic" />
-		        			</td>
-		        			<td style="padding-bottom:20px;">
-		        				<table>
-		        					<tr><td class="label_m"><label>1:</label><input type="text" style="width:75px;" /></td></tr>
-		        					<tr><td class="label_m"><label>2:</label><input type="text" style="width:75px;" /></td></tr>
-		        					<tr><td class="label_m"><label>3:</label><input type="text" style="width:75px;" /></td></tr>
-		        				</table>
-		        			</td>
-		        			<td><input type="text" style="width:75px;" /></td>
-		        		</tr>
-		        </table>		
-		        <table>
-		        		<tr>
-		        			<td class="label_m"><label>Maker:</label></td>
-		        			<td class="label_m"><label>Model:</label></td>
-		        			<td class="label_m"><label>Max. Flow</label></td>
-		        			<td class="label_m"><label>Movement:</label></td>
-		        			<td class="label_m" style="text-align:center;"><label>Screens:</label></td>
-		        			<td class="label_m"><label>Hours:</label></td>
-		        		</tr>
-		        		<tr>
-		        			<td class="label_m"></td>
-		        			<td class="label_m"></td>
-		        			<td class="label_m">gpm</td>
-		        			<td class="label_m"></td>
-		        			<td class="label_m"></td>
-		        		</tr>		
-		        		<tr>
-		        			<td><input type="text" style="width:150px;" disabled="disabled" value="Panasonic"></td>
-		        			<td><input type="text" style="width:150px;" disabled="disabled" value="KXP-1150i"></td>
-		        			<td><input type="text" style="width:75px;" disabled="disabled" value="100" /></td>
-		        			<td>
-		        				<input type="text" style="width:75px;" disabled="disabled" value="Eliptic" />
-		        			</td>
-		        			<td style="padding-bottom:20px;">
-		        				<table>
-		        					<tr><td class="label_m"><label>1:</label><input type="text" style="width:75px;" /></td></tr>
-		        					<tr><td class="label_m"><label>2:</label><input type="text" style="width:75px;" /></td></tr>
-		        					<tr><td class="label_m"><label>3:</label><input type="text" style="width:75px;" /></td></tr>
-		        				</table>
-		        			</td>
-		        			<td><input type="text" style="width:75px;" /></td>
-		        		</tr>
-		        	</table>
-		        	<table>
-		        		<tr>
-		        			<td class="label_m"><label>Maker:</label></td>
-		        			<td class="label_m"><label>Model:</label></td>
-		        			<td class="label_m"><label>Max. Flow</label></td>
-		        			<td class="label_m"><label>Movement:</label></td>
-		        			<td class="label_m" style="text-align:center;"><label>Screens:</label></td>
-		        			<td class="label_m"><label>Hours:</label></td>
-		        		</tr>
-		        		<tr>
-		        			<td class="label_m"></td>
-		        			<td class="label_m"></td>
-		        			<td class="label_m">gpm</td>
-		        			<td class="label_m"></td>
-		        			<td class="label_m"></td>
-		        		</tr>	
-		        		<tr>
-		        			<td><input type="text" style="width:150px;" disabled="disabled" value="Panasonic"></td>
-		        			<td><input type="text" style="width:150px;" disabled="disabled" value="KXP-1150i"></td>
-		        			<td><input type="text" style="width:75px;" disabled="disabled" value="100" /></td>
-		        			<td>
-		        				<input type="text" style="width:75px;" disabled="disabled" value="Eliptic" />
-		        			</td>
-		        			<td style="padding-bottom:20px;">
-		        				<table>
-		        					<tr><td class="label_m"><label>1:</label><input type="text" style="width:75px;" /></td></tr>
-		        					<tr><td class="label_m"><label>2:</label><input type="text" style="width:75px;" /></td></tr>
-		        					<tr><td class="label_m"><label>3:</label><input type="text" style="width:75px;" /></td></tr>
-		        				</table>
-		        			</td>
-		        			<td><input type="text" style="width:75px;" /></td>
-		        		</tr>
-	        		</table>
-	        </fieldset>
+		        </table>
+	    	</fieldset>
         </div>
 
 

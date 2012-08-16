@@ -37,14 +37,25 @@ class Main extends CI_Controller {
 		}
 	}
 
-	public function qfluids(){
-		$this->load->model('Api');
-		$data['lista_casing']			= $this->Api->get_distinct_where('casing','oddeci,odfrac');
-		$data['lista_lodos']			= $this->Api->get('lodos');
-		$data['lista_brocas'] 			= $this->Api->get('brocas');
-		$data['lista_bombas'] 			= $this->Api->get_distinct_where('bombas','maker');
-		$data['main_content'] 			= 'qfluids';
-		$this->load->view('partials/basic',$data);	
+	public function qfluids($project_id = ''){
+		if($project_id == '' || !is_numeric($project_id)){
+			redirect('/');
+		}else{
+			if(count($this->Api->get_where('projects',array('id'=>$project_id))) == 1){
+				$project_data 	= $this->Api->get_where('projects',array('id'=>$project_id));
+				$project_data	= $project_data[0]; 
+				$this->session->set_userdata(array('project' => $project_data));
+				$data['lista_casing']			= $this->Api->get_distinct_where('casing','oddeci,odfrac');
+				$data['lista_lodos']			= $this->Api->get('lodos');
+				$data['lista_brocas'] 			= $this->Api->get('brocas');
+				$data['lista_bombas'] 			= $this->Api->get_distinct_where('bombas','maker');
+				$data['main_content'] 			= 'qfluids';
+				$data['project']				= $project_data;
+				$this->load->view('partials/basic',$data);
+			}else{
+				redirect('/');
+			}
+		}	
 	}
 
 	public function styles(){
