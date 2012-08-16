@@ -21,11 +21,11 @@
 		<input type="button" value="Save Data & Print Report" />
 	</li>
 	<li class="main_navigation">
-		<h2>Herramientas</h2>
+		<h2>Tools</h2>
 		<ul class="nav_links">
-			<li><a href="#">Historial de Reportes</a></li>
-			<li><a href="#">Requisiciones</a></li>
-			<li><a href="#">Registro de personal</a></li>
+			<li><a href="#">Report History</a></li>
+			<li><a href="#">Requisitions</a></li>
+			<li><a href="#">Personal Registration Tool</a></li>
 		</ul>
 	</li>
 </ul>

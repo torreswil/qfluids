@@ -1223,4 +1223,9 @@ $(function(){
 			}
 		});
 	});
+
+	$('#btn_save_settings').click(function(e){
+		e.preventDefault();
+		$('#project_settings').hide();
+	});
 });

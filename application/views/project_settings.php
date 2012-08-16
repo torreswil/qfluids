@@ -452,7 +452,7 @@
 	        	mud properties	
 	        </div>   
 		</div>
-		<input type="button" value="Save Settings" style="margin-top:20px;margin-left:815px;">
+		<input type="button" value="Save Settings" style="margin-top:20px;margin-left:815px;" id="btn_save_settings">
 	</div>
 </div>
 <?php // <div id="name_list"></div> ?>
