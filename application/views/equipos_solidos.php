@@ -8,79 +8,50 @@
 	    </ul>
         <div class="simpleTabsContent">
         	<!-- SHAKERS -->
-        	<fieldset>
-        		<legend>Shaker 1</legend>
-	        	<table>
-		        		<tr>
-		        			<td class="label_m"><label>Maker:</label></td>
-		        			<td class="label_m"><label>Model:</label></td>
-		        			<td class="label_m"><label>Nominal Flow</label></td>
-		        			<td class="label_m"><label>Movement:</label></td>
-		        			<td class="label_m" style="text-align:center;"><label>Screens:</label></td>
-		        			<td class="label_m"><label>Operational<br />Hours:</label></td>
-		        		</tr>
-		        		<tr>
-		        			<td class="label_m"></td>
-		        			<td class="label_m"></td>
-		        			<td class="label_m">gpm</td>
-		        			<td class="label_m"></td>
-		        			<td class="label_m"></td>
-		        		</tr>
-		        		<tr>
-		        			<td><input type="text" style="width:150px;" disabled="disabled" value="Panasonic"></td>
-		        			<td><input type="text" style="width:150px;" disabled="disabled" value="KXP-1150i"></td>
-		        			<td><input type="text" style="width:75px;" disabled="disabled" value="100" /></td>
-		        			<td>
-		        				<input type="text" style="width:75px;" disabled="disabled" value="Eliptic" />
-		        			</td>
-		        			<td style="padding-bottom:20px;">
-		        				<table>
-		        					<tr><td class="label_m"><label>1:</label><input type="text" style="width:75px;" /></td></tr>
-		        					<tr><td class="label_m"><label>2:</label><input type="text" style="width:75px;" /></td></tr>
-		        					<tr><td class="label_m"><label>3:</label><input type="text" style="width:75px;" /></td></tr>
-		        				</table>
-		        			</td>
-		        			<td><input type="text" style="width:75px;" /></td>
-		        		</tr>
-		        </table>
-	    	</fieldset>
-
-	    	<fieldset>
-        		<legend>Shaker 2</legend>
-	        	<table>
-		        		<tr>
-		        			<td class="label_m"><label>Maker:</label></td>
-		        			<td class="label_m"><label>Model:</label></td>
-		        			<td class="label_m"><label>Nominal Flow</label></td>
-		        			<td class="label_m"><label>Movement:</label></td>
-		        			<td class="label_m" style="text-align:center;"><label>Screens:</label></td>
-		        			<td class="label_m"><label>Operational<br />Hours:</label></td>
-		        		</tr>
-		        		<tr>
-		        			<td class="label_m"></td>
-		        			<td class="label_m"></td>
-		        			<td class="label_m">gpm</td>
-		        			<td class="label_m"></td>
-		        			<td class="label_m"></td>
-		        		</tr>
-		        		<tr>
-		        			<td><input type="text" style="width:150px;" disabled="disabled" value="Panasonic"></td>
-		        			<td><input type="text" style="width:150px;" disabled="disabled" value="KXP-1150i"></td>
-		        			<td><input type="text" style="width:75px;" disabled="disabled" value="100" /></td>
-		        			<td>
-		        				<input type="text" style="width:75px;" disabled="disabled" value="Eliptic" />
-		        			</td>
-		        			<td style="padding-bottom:20px;">
-		        				<table>
-		        					<tr><td class="label_m"><label>1:</label><input type="text" style="width:75px;" /></td></tr>
-		        					<tr><td class="label_m"><label>2:</label><input type="text" style="width:75px;" /></td></tr>
-		        					<tr><td class="label_m"><label>3:</label><input type="text" style="width:75px;" /></td></tr>
-		        				</table>
-		        			</td>
-		        			<td><input type="text" style="width:75px;" /></td>
-		        		</tr>
-		        </table>
-	    	</fieldset>
+            <?php 
+                $shakers_count = 0;
+                foreach ($shakers as $shaker){ 
+                    $shakers_count++;
+            ?>
+            	<fieldset>
+            		<legend>Shaker <?= $shakers_count ?></legend>
+    	        	<table>
+    		        		<tr>
+    		        			<td class="label_m"><label>Maker:</label></td>
+    		        			<td class="label_m"><label>Model:</label></td>
+    		        			<td class="label_m"><label>Nominal Flow</label></td>
+    		        			<td class="label_m"><label>Movement:</label></td>
+    		        			<td class="label_m" style="text-align:center;"><label>Screens:</label></td>
+    		        			<td class="label_m"><label>Operational<br />Hours:</label></td>
+    		        		</tr>
+    		        		<tr>
+    		        			<td class="label_m"></td>
+    		        			<td class="label_m"></td>
+    		        			<td class="label_m">gpm</td>
+    		        			<td class="label_m"></td>
+    		        			<td class="label_m"></td>
+    		        		</tr>
+    		        		<tr>
+    		        			<td><input type="text" style="width:150px;" disabled="disabled" value="<?= $shaker['maker'] ?>"></td>
+    		        			<td><input type="text" style="width:150px;" disabled="disabled" value="<?= $shaker['model'] ?>"></td>
+    		        			<td><input type="text" style="width:75px;" disabled="disabled" value="<?= $shaker['nominal_flow'] ?>" /></td>
+    		        			<td>
+    		        				<input type="text" style="width:75px;" disabled="disabled" value="<?= strtoupper($shaker['movement']) ?>" />
+    		        			</td>
+    		        			<td style="padding-bottom:20px;">
+    		        				<table>
+                                        <?php $screens_acum = 0 ?>
+                                        <?php while($screens_acum < $shaker['screens']){ ?>
+                                            <?php $screens_acum++; ?>
+        		        					<tr><td class="label_m"><label><?= $screens_acum ?>:</label><input type="text" style="width:75px;" /></td></tr>
+    		        				    <?php } ?>
+                                    </table>
+    		        			</td>
+    		        			<td><input type="text" style="width:75px;" /></td>
+    		        		</tr>
+    		        </table>
+    	    	</fieldset>
+            <?php } ?>
         </div>
 
 

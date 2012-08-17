@@ -80,6 +80,16 @@
 	    	$this->db->where('id',$id)->update($table,$data);
 	    }
 
+	    /*
+		* delete_where 		: returns void
+		* @table[string] 	: Name of the table/object you want to fetch.
+		* @condition[array]	: Parameters to filter with.
+	    */
+	    public function delete_where($table,$condition = array()){
+	    	$data = array('active' => 0);
+	    	$this->db->where($condition)->update($table,$data);	
+	    }
+
 	}
 
 ?>

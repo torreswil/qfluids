@@ -42,13 +42,22 @@ class Main extends CI_Controller {
 			redirect('/');
 		}else{
 			if(count($this->Api->get_where('projects',array('id'=>$project_id))) == 1){
+				//INICIALIZACION DE LA SESION
 				$project_data 	= $this->Api->get_where('projects',array('id'=>$project_id));
 				$project_data	= $project_data[0]; 
 				$this->session->set_userdata(array('project' => $project_data));
+				
+				//CATALOGOS DE HERRAMIENTAS
 				$data['lista_casing']			= $this->Api->get_distinct_where('casing','oddeci,odfrac');
 				$data['lista_lodos']			= $this->Api->get('lodos');
 				$data['lista_brocas'] 			= $this->Api->get('brocas');
 				$data['lista_bombas'] 			= $this->Api->get_distinct_where('bombas','maker');
+				
+				//CONFIGURACION DEL PROYECTO
+				$data['shakers']				= $this->Api->get_where('project_shakers',array('active'=>1,'project'=>$project_data['id']));
+
+
+				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';
 				$data['project']				= $project_data;
 				$this->load->view('partials/basic',$data);

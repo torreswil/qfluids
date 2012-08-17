@@ -4,9 +4,17 @@ class Rest extends CI_Controller {
 	public function __construct(){
 	    parent::__construct();
 	    $this->load->model('Api');
+	    
+	    //store raw input data in a object property
 	    if(isset($_POST)){
 	    	$this->data_input = file_get_contents("php://input");
 	    }
+
+	    //store the project id to all methods
+    	$project_id = $this->session->userdata('project');
+		$this->project_id = $project_id['id'];
+	   
+	    
 	}
 
 	public function index(){
@@ -116,7 +124,20 @@ class Rest extends CI_Controller {
 
 	//CONFIG SAVING FUNCTIONS
 	public function config_shakers(){
-		$shakers = $this->data_input;
-		echo json_encode($shakers);		
+		$shakers = json_decode($this->data_input);
+
+		//1. UPDATE THE SHAKERS QTY IN THE PROJECTS TABLE
+		$this->Api->update('projects',array('shaker_qty'=>$shakers->shaker_qty),$this->project_id);
+		
+		//2. REMOVE ALL PREVIOUS SHAKER INFORMATION IN THE PROJECT_SHAKERS TABLE
+		$this->Api->delete_where('project_shakers',array('project'=>$this->project_id));
+		
+		//3. INSERT NEW SHAKER INFORMATION
+		foreach ($shakers->shakers as &$shaker) {
+			$shaker->project = $this->project_id;
+			$this->Api->create('project_shakers',$shaker);
+		}
+
+		echo json_encode(true);
 	}
 }

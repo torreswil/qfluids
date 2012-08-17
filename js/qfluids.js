@@ -1217,9 +1217,6 @@ $(function(){
 			}else{
 				$(this).addClass('disabled');
 				$('input, select',this).attr('disabled','disabled');
-				$('input',this).val('');
-				$('select.screens',this).val(1);
-				$('select.movement',this).val('lineal');
 			}
 		});
 	});
@@ -1227,27 +1224,58 @@ $(function(){
 	$('#btn_save_settings').click(function(e){
 		e.preventDefault();
 		
-
-		//1. SAVE SHAKERS
-		var shakers 		= {};
-		shakers.shaker_qty 	= $('.shaker_touse').val();
-		shakers.shakers 	= []; 
+		//VALIDATIONS
+		var error_qty = 0;
+		//===============================================================
+		//1. VALIDATE SHAKERS
 		$('#shakers_table tbody tr').each(function(){
 			if(!$(this).hasClass('disabled')){
-				var this_shaker = {
-					maker 			: $('.maker',this).val(),
-					model 			: $('.model',this).val(),
-					nominal_flow 	: $('.nominal_flow',this).val(),
-					screens 		: $('.screens',this).val(),
-					movement 		: $('.movement',this).val()
-				}
-				shakers.shakers.push(this_shaker);
-			}
+				$('input, select',this).each(function(){
+					if($(this).val() == ''){
+						error_qty = error_qty + 1;
+					}
+				});	
+			}	
 		});
-		
-		var jsonshakers = $.toJSON(shakers);
-		$.post('/rest/config_shakers',jsonshakers,function(r){
-			log(r);
-		},'json')
+
+		if(error_qty > 0){
+			alert('Some required fields are empty.\nPlease verify and try again');
+		}else{
+
+			//SAVE ROUTINES
+			//===============================================================
+			//1. SAVE SHAKERS
+			var shakers 		= {};
+			shakers.shaker_qty 	= $('.shaker_touse').val();
+			shakers.shakers 	= []; 
+			$('#shakers_table tbody tr').each(function(){
+				if(!$(this).hasClass('disabled')){
+					var this_shaker = {
+						maker 			: $('.maker',this).val(),
+						model 			: $('.model',this).val(),
+						nominal_flow 	: $('.nominal_flow',this).val(),
+						screens 		: $('.screens',this).val(),
+						movement 		: $('.movement',this).val()
+					}
+					shakers.shakers.push(this_shaker);
+				}
+			});
+			
+			var jsonshakers = $.toJSON(shakers);
+			$.post('/rest/config_shakers',jsonshakers,function(r){
+				if(r == true){
+					alert('shakers saving proccess complete');
+					location.reload();
+				}
+			},'json');
+
+		}
 	});
+});
+
+
+//VENENOS TEMPORALES
+$('#link_temporal_ocultar_config').click(function(e){
+	e.preventDefault();
+	$('#project_settings').hide();
 });

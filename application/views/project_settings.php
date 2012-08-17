@@ -163,11 +163,11 @@
 		        				</td>
 		        				<td>
 		        					<select style="width:50px;" class="shaker_touse">
-		        						<option value="1">1</option>
-		        						<option value="2">2</option>
-		        						<option value="3">3</option>
-		        						<option value="4">4</option>
-		        						<option value="5">5</option>
+		        						<option value="1" <?php count($shakers) == 1? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>  >1</option>
+		        						<option value="2" <?php count($shakers) == 2? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>  >2</option>
+		        						<option value="3" <?php count($shakers) == 3? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>  >3</option>
+		        						<option value="4" <?php count($shakers) == 4? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>  >4</option>
+		        						<option value="5" <?php count($shakers) == 5? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>  >5</option>
 		        					</select>
 		        				</td>
 		        			</tr>
@@ -190,111 +190,64 @@
 				        		</tr>
 				        	</thead>
 				        	<tbody>
-				        		<tr>
-				        			<td><input type="text" style="width:150px;" class="maker"></td>
-				        			<td><input type="text" style="width:150px;" class="model"></td>
-				        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
-				        			<td>
-				        				<select style="width:75px;" class="screens" class="screens">
-				        					<option value="1">1</option>
-				        					<option value="2">2</option>
-				        					<option value="3">3</option>
-				        					<option value="4">4</option>
-				        					<option value="5">5</option>
-				        				</select>
-				        			</td>
-				        			<td>
-				        				<select style="width:75px" class="movement">
-				        					<option value="lineal">Lineal</option>
-				        					<option value="circular">Circular</option>
-				        					<option value="eliptico">Eliptico</option>
-				        				</select>
-				        			</td>
-				        		</tr>
-				        		<tr class="disabled">
-				        			<td><input type="text" style="width:150px;" class="maker"></td>
-				        			<td><input type="text" style="width:150px;" class="model"></td>
-				        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
-				        			<td>
-				        				<select style="width:75px;" class="screens" class="screens">
-				        					<option value="1">1</option>
-				        					<option value="2">2</option>
-				        					<option value="3">3</option>
-				        					<option value="4">4</option>
-				        					<option value="5">5</option>
-				        				</select>
-				        			</td>
-				        			<td>
-				        				<select style="width:75px" class="movement">
-				        					<option value="lineal">Lineal</option>
-				        					<option value="circular">Circular</option>
-				        					<option value="eliptico">Eliptico</option>
-				        				</select>
-				        			</td>
-				        		</tr>
-				        		<tr class="disabled">
-				        			<td><input type="text" style="width:150px;" class="maker"></td>
-				        			<td><input type="text" style="width:150px;" class="model"></td>
-				        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
-				        			<td>
-				        				<select style="width:75px;" class="screens" class="screens">
-				        					<option value="1">1</option>
-				        					<option value="2">2</option>
-				        					<option value="3">3</option>
-				        					<option value="4">4</option>
-				        					<option value="5">5</option>
-				        				</select>
-				        			</td>
-				        			<td>
-				        				<select style="width:75px" class="movement">
-				        					<option value="lineal">Lineal</option>
-				        					<option value="circular">Circular</option>
-				        					<option value="eliptico">Eliptico</option>
-				        				</select>
-				        			</td>
-				        		</tr>
-				        		<tr class="disabled">
-				        			<td><input type="text" style="width:150px;" class="maker"></td>
-				        			<td><input type="text" style="width:150px;" class="model"></td>
-				        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
-				        			<td>
-				        				<select style="width:75px;" class="screens" class="screens">
-				        					<option value="1">1</option>
-				        					<option value="2">2</option>
-				        					<option value="3">3</option>
-				        					<option value="4">4</option>
-				        					<option value="5">5</option>
-				        				</select>
-				        			</td>
-				        			<td>
-				        				<select style="width:75px" class="movement">
-				        					<option value="lineal">Lineal</option>
-				        					<option value="circular">Circular</option>
-				        					<option value="eliptico">Eliptico</option>
-				        				</select>
-				        			</td>
-				        		</tr>
-				        		<tr class="disabled">
-				        			<td><input type="text" style="width:150px;" class="maker"></td>
-				        			<td><input type="text" style="width:150px;" class="model"></td>
-				        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
-				        			<td>
-				        				<select style="width:75px;" class="screens" class="screens">
-				        					<option value="1">1</option>
-				        					<option value="2">2</option>
-				        					<option value="3">3</option>
-				        					<option value="4">4</option>
-				        					<option value="5">5</option>
-				        				</select>
-				        			</td>
-				        			<td>
-				        				<select style="width:75px" class="movement">
-				        					<option value="lineal">Lineal</option>
-				        					<option value="circular">Circular</option>
-				        					<option value="eliptico">Eliptico</option>
-				        				</select>
-				        			</td>
-				        		</tr>
+				        		<?php 
+				        			$shakers_qty = count($shakers);
+				        			$empty_shakers_cfg_rows = 5 - $shakers_qty;
+
+				        			foreach ($shakers  as $shaker) {
+					        	?>
+						        		<tr>
+						        			<td><input type="text" style="width:150px;" class="maker" value="<?= $shaker['maker'] ?>"></td>
+						        			<td><input type="text" style="width:150px;" class="model" value="<?= $shaker['model'] ?>"></td>
+						        			<td><input type="text" style="width:75px;" class="nominal_flow" value="<?= $shaker['nominal_flow'] ?>"></td>
+						        			<td>
+						        				<select style="width:75px;" class="screens" class="screens">
+						        					<?php for($i = 1; $i <= 5; $i++){ 
+						        						if($i == $shaker['screens']){
+						        							$selected = 'selected="selected"';
+						        						}else{
+						        							$selected = '';
+						        						}
+						        					?>
+							        					<option value="<?= $i ?>" <?= $selected ?> ><?= $i ?></option>
+						        					<?php } ?>
+						        				</select>
+						        			</td>
+						        			<td>
+						        				<select style="width:75px" class="movement">
+						        					<option value="lineal" 		<?php $shaker['movement'] == 'lineal'	? $selected = 'selected="selected"' : $selected = '';  ?> <?= $selected ?> >Lineal</option>
+						        					<option value="circular" 	<?php $shaker['movement'] == 'circular'	? $selected = 'selected="selected"' : $selected = '';  ?> <?= $selected ?> >Circular</option>
+						        					<option value="eliptico" 	<?php $shaker['movement'] == 'eliptico'	? $selected = 'selected="selected"' : $selected = '';  ?> <?= $selected ?> >Eliptico</option>
+						        				</select>
+						        			</td>
+						        		</tr>
+					        	<?php
+				        			}
+				        		?>
+
+				        		<?php for($i = 1; $i <= $empty_shakers_cfg_rows; $i++){ ?> 
+									<tr class="disabled">
+					        			<td><input type="text" style="width:150px;" class="maker"></td>
+					        			<td><input type="text" style="width:150px;" class="model"></td>
+					        			<td><input type="text" style="width:75px;" class="nominal_flow"></td>
+					        			<td>
+					        				<select style="width:75px;" class="screens" class="screens">
+					        					<option value="1">1</option>
+					        					<option value="2">2</option>
+					        					<option value="3">3</option>
+					        					<option value="4">4</option>
+					        					<option value="5">5</option>
+					        				</select>
+					        			</td>
+					        			<td>
+					        				<select style="width:75px" class="movement">
+					        					<option value="lineal">Lineal</option>
+					        					<option value="circular">Circular</option>
+					        					<option value="eliptico">Eliptico</option>
+					        				</select>
+					        			</td>
+					        		</tr>
+				        		<?php }?>
 			        		</tbody>
 		        		</table>
 		        	
@@ -455,6 +408,7 @@
 	        </div>   
 		</div>
 		<input type="button" value="Save Settings" style="margin-top:20px;margin-left:815px;" id="btn_save_settings">
+		<a href="#" id="link_temporal_ocultar_config">ocultar [eliminar a futuro, solo para debug]</a>
 	</div>
 </div>
 <?php // <div id="name_list"></div> ?>
