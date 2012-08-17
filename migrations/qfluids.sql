@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-08-15 16:42:23
+Date: 2012-08-17 14:59:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -657,6 +657,35 @@ INSERT INTO `lodos` VALUES ('9', 'Q - Vert');
 INSERT INTO `lodos` VALUES ('10', 'Q - NK');
 
 -- ----------------------------
+-- Table structure for `project_shakers`
+-- ----------------------------
+DROP TABLE IF EXISTS `project_shakers`;
+CREATE TABLE `project_shakers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project` int(11) DEFAULT NULL,
+  `maker` varchar(255) DEFAULT NULL,
+  `model` varchar(255) DEFAULT NULL,
+  `nominal_flow` float DEFAULT NULL,
+  `movement` varchar(255) DEFAULT NULL,
+  `screens` int(11) DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of project_shakers
+-- ----------------------------
+INSERT INTO `project_shakers` VALUES ('1', '1', 'lalal', 'lalala', '1', 'eliptico', '2', '0');
+INSERT INTO `project_shakers` VALUES ('2', '1', 'PANASONIC', 'KXP1150', '1', 'circular', '3', '0');
+INSERT INTO `project_shakers` VALUES ('3', '1', 'SALAMANDRA', '567654', '1', 'eliptico', '5', '0');
+INSERT INTO `project_shakers` VALUES ('4', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
+INSERT INTO `project_shakers` VALUES ('5', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
+INSERT INTO `project_shakers` VALUES ('6', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
+INSERT INTO `project_shakers` VALUES ('7', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '1');
+INSERT INTO `project_shakers` VALUES ('8', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '1');
+INSERT INTO `project_shakers` VALUES ('9', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '1');
+
+-- ----------------------------
 -- Table structure for `projects`
 -- ----------------------------
 DROP TABLE IF EXISTS `projects`;
@@ -673,15 +702,24 @@ CREATE TABLE `projects` (
   `universal_identifier` int(11) DEFAULT NULL,
   `creation_timestamp` datetime DEFAULT NULL,
   `spud_date` date DEFAULT NULL,
+  `configured` int(11) DEFAULT '0',
+  `shaker_qty` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of projects
 -- ----------------------------
-INSERT INTO `projects` VALUES ('1', '2012-08-15 15:59:13', 'ORITO', 'PETROMINERALES', 'PEGASO 1', 'ORITO', '2225', 'ORITO', '1', '1', '2012-08-15 15:59:13', null);
-INSERT INTO `projects` VALUES ('2', '2012-08-15 16:02:49', 'PETROLEA 235', 'ECOPETROL', 'NABORS16', 'TIBU', '44444', 'PETROLEA', '1', '1', '2012-08-15 16:02:49', null);
-INSERT INTO `projects` VALUES ('3', '2012-08-15 16:04:43', 'PETROLEA 2', 'ECOPETROL', 'PEGASO3', 'PIEDECUESTA', '2134', 'PIEDECUESTA', '1', '1', '2012-08-15 16:04:43', null);
+INSERT INTO `projects` VALUES ('1', '2012-08-15 15:59:13', 'ORITO', 'PETROMINERALES', 'PEGASO 1', 'ORITO', '2225', 'ORITO', '1', '1', '2012-08-15 15:59:13', null, '1', '3');
+INSERT INTO `projects` VALUES ('2', '2012-08-15 16:02:49', 'PETROLEA 235', 'ECOPETROL', 'NABORS16', 'TIBU', '44444', 'PETROLEA', '1', '1', '2012-08-15 16:02:49', null, '0', null);
+INSERT INTO `projects` VALUES ('3', '2012-08-15 16:04:43', 'PETROLEA 2', 'ECOPETROL', 'PEGASO3', 'PIEDECUESTA', '2134', 'PIEDECUESTA', '1', '1', '2012-08-15 16:04:43', null, '0', null);
+INSERT INTO `projects` VALUES ('4', '2012-08-16 08:35:20', 'CERETE22', 'PETROMINERALES', 'PEGASO22', 'CERETE', '22222', 'CORDOBA', '1', '1', '2012-08-16 08:35:20', null, '1', null);
+INSERT INTO `projects` VALUES ('5', '2012-08-16 09:00:48', 'w', 'w', 'w', 'w', 'w', 'w', '1', '1', '2012-08-16 09:00:48', null, '0', null);
+INSERT INTO `projects` VALUES ('6', '2012-08-16 09:44:35', 'cesar 1', 'canacol', 'oscar drilling 1', 'yopal', '111', 'oscarin', '1', '1', '2012-08-16 09:44:35', null, '0', null);
+INSERT INTO `projects` VALUES ('7', '2012-08-16 09:44:35', 'cesar 1', 'canacol', 'oscar drilling 1', 'yopal', '111', 'oscarin', '1', '1', '2012-08-16 09:44:35', null, '0', null);
+INSERT INTO `projects` VALUES ('8', '2012-08-16 09:44:36', 'cesar 1', 'canacol', 'oscar drilling 1', 'yopal', '111', 'oscarin', '1', '1', '2012-08-16 09:44:36', null, '0', null);
+INSERT INTO `projects` VALUES ('9', '2012-08-16 09:44:37', 'cesar 1', 'canacol', 'oscar drilling 1', 'yopal', '111', 'oscarin', '1', '1', '2012-08-16 09:44:37', null, '0', null);
+INSERT INTO `projects` VALUES ('10', '2012-08-16 09:44:37', 'cesar 1', 'canacol', 'oscar drilling 1', 'yopal', '111', 'oscarin', '1', '1', '2012-08-16 09:44:37', null, '0', null);
 
 -- ----------------------------
 -- Table structure for `projects_enginers`
@@ -717,6 +755,21 @@ CREATE TABLE `reports` (
 -- Records of reports
 -- ----------------------------
 INSERT INTO `reports` VALUES ('1', '1', '2012-08-10');
+
+-- ----------------------------
+-- Table structure for `reports_geometriahueco`
+-- ----------------------------
+DROP TABLE IF EXISTS `reports_geometriahueco`;
+CREATE TABLE `reports_geometriahueco` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zhole` float DEFAULT NULL,
+  `palabra` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of reports_geometriahueco
+-- ----------------------------
 
 -- ----------------------------
 -- View structure for `vista_brocas`
