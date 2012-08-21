@@ -15,6 +15,7 @@
 		      <li><a href="#">Control Solids Eq.</a></li>
 		      <li><a href="#">Tanks</a></li>
 		      <li><a href="#">Mud Properties</a></li>
+		      <li><a href="#">Enginers</a></li>
 		    </ul>
 	        <div class="simpleTabsContent">
 	        	<fieldset>
@@ -405,6 +406,9 @@
 	        </div> 
 	        <div class="simpleTabsContent">
 	        	mud properties	
+	        </div> 
+	        <div class="simpleTabsContent">
+	        	enginers	
 	        </div>   
 		</div>
 		<input type="button" value="Save Settings" style="margin-top:20px;margin-left:815px;" id="btn_save_settings">

@@ -78,4 +78,5 @@
 	<?php $this->load->view('select_mud_overlay'); ?>
 	<?php $this->load->view('menu_overlay'); ?>
 	<?php $this->load->view('project_settings'); ?>
+	<?php $this->load->view('personal_registration_tool'); ?>
 </div>

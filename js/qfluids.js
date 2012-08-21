@@ -1195,6 +1195,31 @@ $(function(){
 	$('#ds_math input').attr('disabled','disabled').css('width',70);
 
 
+	/* PERSONAL REGISTRATION TOOL */
+
+	//open the overlay
+	$('.show_register_dialog').click(function(e){
+		e.preventDefault();
+		$('#registration_overlay input[name="date"]').val(new Date().toISOString().slice(0, 10));
+		$('#registration_overlay').show();
+	});
+
+	//close the overlay on cancel
+	$('#registration_overlay .close_link').click(function(e){
+		e.preventDefault();
+		$('#registration_form input').val('');
+		$('#registration_form select').val('');
+		$('#registration_overlay').hide();
+	});
+
+	//Register button
+	$('#register_btn').click(function(e){
+		e.preventDefault();
+		var error_qty = 0;
+		
+	});
+
+
 	/* CONFIG PANEL */
 
 	//change the rig name

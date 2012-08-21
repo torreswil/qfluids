@@ -18,8 +18,7 @@
 	<div class="bottom_tools">
 		<h3>Otras Tareas:</h3>
 		<ul>
-			<li><a href="#">Registro de Ingreso</a></li>
-			<li><a href="#">Herramienta de Importación de datos</a></li>
+			<li><a href="#" class="">Herramienta de Importación de datos</a></li>
 		</ul>
 	</div>
 </div>

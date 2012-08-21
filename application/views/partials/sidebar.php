@@ -25,7 +25,7 @@
 		<ul class="nav_links">
 			<li><a href="#">Report History</a></li>
 			<li><a href="#">Requisitions</a></li>
-			<li><a href="#">Personal Registration Tool</a></li>
+			<li><a href="#" class="show_register_dialog pop_up">Personal Registration Tool</a></li>
 		</ul>
 	</li>
 </ul>
