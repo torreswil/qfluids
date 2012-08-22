@@ -1265,6 +1265,27 @@ $(function(){
 	});
 
 
+	//create a new enginer
+	$('#form_new_enginer a').click(function(e){
+		e.preventDefault();
+		var eqty = 0;
+		$('#form_new_enginer input').each(function(){
+			if($(this).val() == ''){
+				eqty = eqty + 1;
+			}
+		});
+
+		if(eqty > 0){
+			alert('Some fields are empty, please verify and try again.');
+		}else{
+			var data = $('#form_new_enginer').serialize();
+			$.post('/rest/new_enginer',data,function(r){
+				
+			},'json');	
+		}
+	});	
+
+
 	/* CONFIG PANEL */
 
 	//change the rig name

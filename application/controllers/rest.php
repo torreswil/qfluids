@@ -156,6 +156,15 @@ class Rest extends CI_Controller {
 		}
 	}
 
+	public function new_enginer(){
+		if(count($_POST) > 0){
+			$match = $this->Api->get_where('enginers',array('identification' => $_POST['identification'], 'project' => $_POST['project']));
+			if(count($match) > 0){
+				
+			}
+		}
+	}
+
 	//CONFIG SAVING FUNCTIONS
 	public function config_shakers(){
 		$shakers = json_decode($this->data_input);

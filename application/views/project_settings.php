@@ -414,7 +414,7 @@
 	        		<table>
 	        			<tr>
 	        				<td class="label_m" style="width:354px;">
-	        					<label>Maximun number of enginers to cover:</label>
+	        					<label>Maximun number of enginers to charge:</label>
 	        				</td>
 	        				<td>
 	        					<select style="width:163px;">
@@ -427,7 +427,7 @@
 	        				<td class="label_m"><a href="">Save</a></td>
 	        			</tr>
 	        			<tr>
-	        				<td class="label_m"><label>Tarifa por día</label></td>
+	        				<td class="label_m"><label>Daily rate:</label></td>
 	        				<td><input type="text" /></td>
 	        			</tr>
 	        		</table>
@@ -444,12 +444,17 @@
 		        			</tr>
 	        			</thead>
 	        			<tbody>
-	        				<tr>
-			        			<td><input type="text" /></td>
-			        			<td><input type="text" /></td>
-			        			<td><input type="text" /></td>
-			        			<td class="label_m"><a href="">Create</a></td>
-			        		</tr>	
+	        				<form id="form_new_enginer">
+		        				<tr>
+				        			<td><input type="text" name="name" /></td>
+				        			<td><input type="text" name="lastname" /></td>
+				        			<td><input type="text" name="identification" /></td>
+				        			<td class="label_m">
+				        				<a href="#create_enginer">Create</a>
+				        				<input type="hidden" name="project" value="<?= $project['id'] ?>" />
+				        			</td>
+				        		</tr>
+			        		</form>
 	        			</tbody>
 	        		</table>
 	        	</fieldset>
