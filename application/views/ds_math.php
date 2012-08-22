@@ -2,6 +2,7 @@
     <div class="hp_content" id="ds_math">
         <div class="title">
             <h2>Drill String Math</h2>
+            <a href="#close" style="display: block;float: right;margin-right: 20px;margin-top: 10px;">Close</a>
         </div>
         <div class="realcontent">
             <fieldset>

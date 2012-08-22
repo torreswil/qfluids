@@ -55,6 +55,12 @@ $(function(){
         }
     });
 
+    //BOTON DE CERRAR UN HIDDEN_PANEL
+    $('.this_hidden_panel .title a').click(function(e){
+    	e.preventDefault();
+    	$('.this_hidden_panel').fadeOut('fast');
+    });
+
 	//CLICK EN UN ENLACE DE LA BARRA LATERAL
 	$('.nav_links a').click(function(e){
 		e.preventDefault();

@@ -414,10 +414,10 @@
 	        		<table>
 	        			<tr>
 	        				<td class="label_m" style="width:354px;">
-	        					<label>Maximun number of enginers to report:</label>
+	        					<label>Maximun number of enginers to cover:</label>
 	        				</td>
 	        				<td>
-	        					<select style="width:154px;">
+	        					<select style="width:163px;">
 	        						<option value="1">1</option>
 	        						<option value="2">2</option>
 	        						<option value="3">3</option>
@@ -425,6 +425,10 @@
 	        					</select>
 	        				</td>
 	        				<td class="label_m"><a href="">Save</a></td>
+	        			</tr>
+	        			<tr>
+	        				<td class="label_m"><label>Tarifa por día</label></td>
+	        				<td><input type="text" /></td>
 	        			</tr>
 	        		</table>
 	        	</fieldset>
