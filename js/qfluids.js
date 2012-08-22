@@ -1217,6 +1217,45 @@ $(function(){
 		e.preventDefault();
 		var error_qty = 0;
 		
+		$('#registration_form input').each(function(){
+			if($(this).val() == ''){
+				error_qty = error_qty + 1;
+			}
+		});
+
+		$('#registration_form select').each(function(){
+			if($(this).val() == ''){
+				error_qty = error_qty + 1;
+			}
+		});
+
+		if(error_qty > 0){
+			alert('Some fields are empty. Please verify and try again.');
+		}else{
+			var data = {
+				project 		: $('#registration_form input[name="project"]').val(),
+				report			: $('#registration_form input[name="report"]').val(),
+				identification	: $('#registration_form input[name="identification"]').val(),
+				period			: $('#registration_form select[name="period"]').val()
+			};
+
+			$.post('/rest/register_enginer',data,function(r){
+				if(r.message == 'no_eginer'){
+					alert('There is no enginer with this identification working on the project.');
+					$('#registration_form input').val('');
+					$('#registration_form select').val('');
+				}else if(r.message == 'already_registered'){
+					alert(r.enginer + ' is already registered in this workperiod.');
+					$('#registration_form input[name="identification"]').val('');
+					$('#registration_form select').val('');
+				}else if(r.message == 'success'){
+					alert(r.enginer + ' has been sucessfully registered on ' + r.timestamp);
+					$('#registration_form input[name="identification"]').val('');
+					$('#registration_form select').val('');
+					$('#registration_overlay').hide();
+				}
+			},'json');
+		}
 	});
 
 

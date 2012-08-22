@@ -408,7 +408,74 @@
 	        	mud properties	
 	        </div> 
 	        <div class="simpleTabsContent">
-	        	enginers	
+	        	<!-- ENGINERS -->
+	        	<fieldset>
+	        		<legend>Report</legend>
+	        		<table>
+	        			<tr>
+	        				<td class="label_m" style="width:354px;">
+	        					<label>Maximun number of enginers to report:</label>
+	        				</td>
+	        				<td>
+	        					<select style="width:154px;">
+	        						<option value="1">1</option>
+	        						<option value="2">2</option>
+	        						<option value="3">3</option>
+	        						<option value="4">4</option>
+	        					</select>
+	        				</td>
+	        				<td class="label_m"><a href="">Save</a></td>
+	        			</tr>
+	        		</table>
+	        	</fieldset>
+	        	<fieldset>
+	        		<legend>New Enginer</legend>
+	        		<table>
+	        			<thead>
+	        				<tr>
+		        				<td class="label_m"><label>First:</label></td>
+		        				<td class="label_m"><label>Last:</label></td>
+		        				<td class="label_m"><label>Identification:</label></td>
+		        				<td></td>
+		        			</tr>
+	        			</thead>
+	        			<tbody>
+	        				<tr>
+			        			<td><input type="text" /></td>
+			        			<td><input type="text" /></td>
+			        			<td><input type="text" /></td>
+			        			<td class="label_m"><a href="">Create</a></td>
+			        		</tr>	
+	        			</tbody>
+	        		</table>
+	        	</fieldset>
+
+	        	<fieldset>
+	        		<legend>Current Enginers</legend>
+		        	<table>
+		        		<thead>
+		        			<tr>
+		        				<td class="label_m"><label>First:</label></td>
+		        				<td class="label_m"><label>Last:</label></td>
+		        				<td class="label_m"><label>Identification:</label></td>
+		        				<td></td>
+		        			</tr>
+		        		</thead>
+			        	<tbody>
+				        	<?php foreach ($enginers as $enginer) {
+				        		?>
+					        		<tr>
+					        			<td><input type="text" value="<?= $enginer['name'] ?>" /></td>
+					        			<td><input type="text" value="<?= $enginer['lastname'] ?>" /></td>
+					        			<td><input type="text" value="<?= $enginer['identification'] ?>" disabled="disabled" /></td>
+					        			<td class="label_m"><a href="#remove">Update</a></td>
+					        		</tr>
+				        		<?php
+				        	}
+				        	?>
+			        	</tbody>
+		        	</table>
+	        	</fieldset>	
 	        </div>   
 		</div>
 		<input type="button" value="Save Settings" style="margin-top:20px;margin-left:815px;" id="btn_save_settings">

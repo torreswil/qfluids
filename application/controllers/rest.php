@@ -122,6 +122,40 @@ class Rest extends CI_Controller {
 	}
 
 
+	//PERSONAL REGISTRATION FUNCTIONS
+	public function register_enginer(){
+		//1. verify the enginer exists and get its ID
+		$enginer = $this->Api->get_where('enginers',array('identification'=>$_POST['identification'],'project'=>$_POST['project']));
+		if(count($enginer) == 1){
+			$data = array(
+				'enginer' 	=> $enginer[0]['id'],
+				'report' 	=> $_POST['report'],
+				'period'	=> $_POST['period'],
+				'timestamp'	=> date('Y-m-d H:i:s')
+			);
+
+			$match = $this->Api->get_where('reports_enginers',array('enginer'=>$data['enginer'],'report'=>$_POST['report'],'period'=>$_POST['period']));
+			if(count($match) > 0 ){
+				$response = array(
+					'enginer'	=> $enginer[0]['name'].' '.$enginer[0]['lastname'],
+					'message'	=> 'already_registered',
+					'timestamp' => ''
+				);
+			}else{
+				$this->Api->create('reports_enginers',$data);
+				$response = array(
+					'enginer'	=> $enginer[0]['name'].' '.$enginer[0]['lastname'],
+					'message'	=> 'success',
+					'timestamp' => $data['timestamp']
+				);	
+			}
+
+			echo json_encode($response);
+		}else{
+			echo json_encode(array('message'=>'no_enginer'));
+		}
+	}
+
 	//CONFIG SAVING FUNCTIONS
 	public function config_shakers(){
 		$shakers = json_decode($this->data_input);

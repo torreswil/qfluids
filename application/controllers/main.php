@@ -55,7 +55,7 @@ class Main extends CI_Controller {
 				
 				//CONFIGURACION DEL PROYECTO
 				$data['shakers']				= $this->Api->get_where('project_shakers',array('active'=>1,'project'=>$project_data['id']));
-
+				$data['enginers']				= $this->Api->get_where('enginers',array('project'=>$project_data['id']));
 
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';
