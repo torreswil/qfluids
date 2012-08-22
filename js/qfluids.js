@@ -1246,9 +1246,9 @@ $(function(){
 			};
 
 			$.post('/rest/register_enginer',data,function(r){
-				if(r.message == 'no_eginer'){
+				if(r.message == 'no_enginer'){
 					alert('There is no enginer with this identification working on the project.');
-					$('#registration_form input').val('');
+					$('#registration_form input[name="identification"]').val('');
 					$('#registration_form select').val('');
 				}else if(r.message == 'already_registered'){
 					alert(r.enginer + ' is already registered in this workperiod.');
