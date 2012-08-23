@@ -1255,10 +1255,17 @@ $(function(){
 					$('#registration_form input[name="identification"]').val('');
 					$('#registration_form select').val('');
 				}else if(r.message == 'success'){
+					if(parseFloat(r.enginers_today) > fval('maximun_enginers')){
+						$('#zenginers_today').val($('#maximun_enginers').val());
+					}else{
+						$('#zenginers_today').val(r.enginers_today);
+					}
+					
 					alert(r.enginer + ' has been sucessfully registered on ' + r.timestamp);
 					$('#registration_form input[name="identification"]').val('');
 					$('#registration_form select').val('');
 					$('#registration_overlay').hide();
+					correr_calculos();
 				}
 			},'json');
 		}
@@ -1280,10 +1287,56 @@ $(function(){
 		}else{
 			var data = $('#form_new_enginer').serialize();
 			$.post('/rest/new_enginer',data,function(r){
-				
+				if(r.message == 'already_created'){
+					alert('This enginer is already created');
+				}else{
+					var enginers_html = '';
+					$(r.enginers).each(function(){
+						enginers_html = enginers_html +'<form id="edit_enginer_'+ this.id +'">';	
+			        	enginers_html = enginers_html +	'<tr>';
+			        	enginers_html = enginers_html +		'<td><input name="name" type="text" value="'+ this.name +'" /></td>';
+			        	enginers_html = enginers_html +		'<td><input name="lastname" type="text" value="'+ this.lastname +'" /></td>';
+			        	enginers_html = enginers_html +		'<td><input name="identification" type="text" value="'+ this.identification +'" disabled="disabled" /></td>';
+			        	enginers_html = enginers_html +		'<td class="label_m">';
+			        	enginers_html = enginers_html +			'<a href="#update" id="link_update_enginer_'+ this.id +'">Update</a>';
+			        	enginers_html = enginers_html +			'<input type="hidden" name="id" value="'+ this.id +'" />';
+			        	enginers_html = enginers_html +		'</td>';
+			        	enginers_html = enginers_html +	'</tr>';
+			        	enginers_html = enginers_html +'</form>';
+					});
+					$('#form_new_enginer input').val('');
+					$('#tbody_enginer_list').html(enginers_html);		
+				}
 			},'json');	
 		}
 	});	
+
+
+	//update an enginer
+	$('#tbody_enginer_list a').live('click',function(e){
+		e.preventDefault();
+		var id = $(this).attr('id');
+		id = id.split('link_update_enginer_');
+		id = id[1];
+
+		var eqty = 0;
+		$('#edit_enginer_'+id+' input').each(function(){
+			if($(this).val() == ''){
+				eqty = eqty + 1;
+			}
+		});
+
+		if(eqty > 0){
+			alert('Some fields are empty. Please verify and try again.');
+		}else{
+			var data = $('#edit_enginer_'+id).serialize();
+			$.post('/rest/update_enginer',data,function(r){
+				if(r.message == 'updated'){
+					alert('Enginer updated.');
+				}
+			},'json');	
+		}
+	})
 
 
 	/* CONFIG PANEL */

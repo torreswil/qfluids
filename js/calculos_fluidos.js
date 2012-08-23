@@ -64,6 +64,20 @@ function log10(val) {
 
 function calculos_raw(){
 
+	//CALCULOS PERSONAL
+	//***********************************************
+	var zenginers_cost_today = 0;
+
+	if(fval('zenginers_today') > fval('maximun_enginers')){
+		zenginers_cost_today = fval('enginer_cost') * fval('maximun_enginers');	
+	}else{
+		zenginers_cost_today = fval('enginer_cost') * fval('zenginers_today');	
+	}
+	
+	
+	completar_campo_val('zenginers_cost_today',zenginers_cost_today);
+
+
 	//CALCULOS 'BROCA'
 	//************************************************	
 	//jets_string

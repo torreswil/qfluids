@@ -411,40 +411,43 @@
 	        	<!-- ENGINERS -->
 	        	<fieldset>
 	        		<legend>Report</legend>
-	        		<table>
-	        			<tr>
-	        				<td class="label_m" style="width:354px;">
-	        					<label>Maximun number of enginers to charge:</label>
-	        				</td>
-	        				<td>
-	        					<select style="width:163px;">
-	        						<option value="1">1</option>
-	        						<option value="2">2</option>
-	        						<option value="3">3</option>
-	        						<option value="4">4</option>
-	        					</select>
-	        				</td>
-	        				<td class="label_m"><a href="">Save</a></td>
-	        			</tr>
-	        			<tr>
-	        				<td class="label_m"><label>Daily rate:</label></td>
-	        				<td><input type="text" /></td>
-	        			</tr>
-	        		</table>
+	        		<form id="enginer_configuration">
+		        		<table>
+		        			<tr>
+		        				<td class="label_m" style="width:354px;">
+		        					<label>Maximun number of enginers to charge:</label>
+		        				</td>
+		        				<td>
+		        					<select style="width:163px;" name="maximun_enginers" id="maximun_enginers">
+		        						<option value="1" <?php $project['maximun_enginers'] == '1'? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>>1</option>
+		        						<option value="2" <?php $project['maximun_enginers'] == '2'? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>>2</option>
+		        						<option value="3" <?php $project['maximun_enginers'] == '3'? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>>3</option>
+		        						<option value="4" <?php $project['maximun_enginers'] == '4'? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>>4</option>
+		        					</select>
+		        				</td>
+		        				<td class="label_m"><!-- <a href="">Save</a> --></td>
+		        			</tr>
+		        			<tr>
+		        				<td class="label_m"><label>Daily rate:</label></td>
+		        				<td><input type="text" value="<?= $project['enginer_cost'] ?>" name="enginer_cost" id="enginer_cost" /></td>
+		        				<td></td>
+		        			</tr>
+		        		</table>
+	        		</form>
 	        	</fieldset>
 	        	<fieldset>
 	        		<legend>New Enginer</legend>
-	        		<table>
-	        			<thead>
-	        				<tr>
-		        				<td class="label_m"><label>First:</label></td>
-		        				<td class="label_m"><label>Last:</label></td>
-		        				<td class="label_m"><label>Identification:</label></td>
-		        				<td></td>
-		        			</tr>
-	        			</thead>
-	        			<tbody>
-	        				<form id="form_new_enginer">
+	        		<form id="form_new_enginer">
+		        		<table>
+		        			<thead>
+		        				<tr>
+			        				<td class="label_m"><label>First:</label></td>
+			        				<td class="label_m"><label>Last:</label></td>
+			        				<td class="label_m"><label>Identification:</label></td>
+			        				<td></td>
+			        			</tr>
+		        			</thead>
+		        			<tbody>
 		        				<tr>
 				        			<td><input type="text" name="name" /></td>
 				        			<td><input type="text" name="lastname" /></td>
@@ -454,9 +457,9 @@
 				        				<input type="hidden" name="project" value="<?= $project['id'] ?>" />
 				        			</td>
 				        		</tr>
-			        		</form>
-	        			</tbody>
-	        		</table>
+		        			</tbody>
+		        		</table>
+	        		</form>
 	        	</fieldset>
 
 	        	<fieldset>
@@ -470,15 +473,20 @@
 		        				<td></td>
 		        			</tr>
 		        		</thead>
-			        	<tbody>
+			        	<tbody id="tbody_enginer_list">
 				        	<?php foreach ($enginers as $enginer) {
 				        		?>
-					        		<tr>
-					        			<td><input type="text" value="<?= $enginer['name'] ?>" /></td>
-					        			<td><input type="text" value="<?= $enginer['lastname'] ?>" /></td>
-					        			<td><input type="text" value="<?= $enginer['identification'] ?>" disabled="disabled" /></td>
-					        			<td class="label_m"><a href="#remove">Update</a></td>
-					        		</tr>
+						        	<form id="edit_enginer_<?= $enginer['id'] ?>">	
+						        		<tr>
+						        			<td><input name="name" type="text" value="<?= $enginer['name'] ?>" /></td>
+						        			<td><input name="lastname" type="text" value="<?= $enginer['lastname'] ?>" /></td>
+						        			<td><input name="identification" type="text" value="<?= $enginer['identification'] ?>" disabled="disabled" /></td>
+						        			<td class="label_m">
+						        				<a href="#update" id="link_update_enginer_<?= $enginer['id'] ?>">Update</a>
+						        				<input type="hidden" value="<?= $enginer['id'] ?>" name="id" />
+						        			</td>
+						        		</tr>
+						        	</form>
 				        		<?php
 				        	}
 				        	?>

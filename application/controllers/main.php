@@ -60,6 +60,8 @@ class Main extends CI_Controller {
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';
 				$data['project']				= $project_data;
+				$data['enginers_today']			= count($this->Api->get_distinct_where('reports_enginers','enginer',array('report'=>1)));
+
 				$this->load->view('partials/basic',$data);
 			}else{
 				redirect('/');

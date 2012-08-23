@@ -144,9 +144,10 @@ class Rest extends CI_Controller {
 			}else{
 				$this->Api->create('reports_enginers',$data);
 				$response = array(
-					'enginer'	=> $enginer[0]['name'].' '.$enginer[0]['lastname'],
-					'message'	=> 'success',
-					'timestamp' => $data['timestamp']
+					'enginer'			=> $enginer[0]['name'].' '.$enginer[0]['lastname'],
+					'message'			=> 'success',
+					'timestamp' 		=> $data['timestamp'],
+					'enginers_today' 	=> count($this->Api->get_distinct_where('reports_enginers','enginer',array('report'=>$_POST['report'])))
 				);	
 			}
 
@@ -160,8 +161,21 @@ class Rest extends CI_Controller {
 		if(count($_POST) > 0){
 			$match = $this->Api->get_where('enginers',array('identification' => $_POST['identification'], 'project' => $_POST['project']));
 			if(count($match) > 0){
-				
+				$response = array('message'=>'already_created');
+			}else{
+				$this->Api->create('enginers',$_POST);
+				$enginers = $this->Api->get_where('enginers',array('project' => $_POST['project']));
+				$response = array('message'=>'success','enginers'=>$enginers);
 			}
+
+			echo json_encode($response);
+		}
+	}
+
+	public function update_enginer(){
+		if(count($_POST) > 0){
+			$this->Api->update('enginers',$_POST,$_POST['id']);
+			echo json_encode(array('message'=>'updated'));
 		}
 	}
 
