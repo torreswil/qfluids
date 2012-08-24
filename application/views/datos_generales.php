@@ -4,7 +4,6 @@
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Qmax</a></li>
 	      	<li><a href="#">Third Party</a></li>
-	      	<li><a href="#">Enginers Report</a></li>
 	    </ul>
 	  
 		<!-- Qmax -->
@@ -21,47 +20,38 @@
 					<tr>	
 						<td class="label_m"><label>Costo ingeniería acumulado</label></td><td><input type="text" disabled="disabled" style="width:165px;" /></td>
 					</tr>
-				</table>
-			</fieldset>	
-			<fieldset>
-				<legend>Comentarios</legend>
-				<table style="float:left;width:100%;">
 					<tr>
+						<td>Ing. Fluidos 1</td>
 						<td>
-							<textarea style="width:100%;heigth:150px;"></textarea>
+							<select>
+								<?php foreach ($enginers as $enginer) { ?>
+					        		<option <?= $enginer['id'] ?> ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
+					        	<?php } ?>	
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Ing. Fluidos 2</td>
+						<td>
+							<select>
+								<?php foreach ($enginers as $enginer) { ?>
+					        		<option <?= $enginer['id'] ?> ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
+					        	<?php } ?>	
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Ing. Fluidos 2</td>
+						<td>
+							<select>
+								<?php foreach ($enginers as $enginer) { ?>
+					        		<option <?= $enginer['id'] ?> ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
+					        	<?php } ?>	
+							</select>
 						</td>
 					</tr>
 				</table>
 			</fieldset>
-	    </div>
-
-	    <!--third party -->
-	    <div class="simpleTabsContent" style="height:329px;">
-	    	<fieldset>
-				<legend>Personal</legend>
-				<table style="float:left;">
-					<tr>
-						<td class="label_m"><label>Ing. Fluidos 1:</label></td><td><input type="text" style="width:165px;" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Ing. Fluidos 2:</label></td><td><input type="text" style="width:165px;" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Ing. CO-MAN:</label></td><td><input type="text" style="width:165px;" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Ing. CO-MAN:</label></td><td><input type="text" style="width:165px;" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Pusher:</label></td><td><input type="text" style="width:165px;" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Charla Diaria:</label></td><td><input type="text" style="width:165px;" /></td>
-					</tr>
-				</table>
-			</fieldset>
-		</div>
-		<div class="simpleTabsContent">
 			<fieldset>
 				<legend>Personal Report</legend>
 				<table class="datatable">
@@ -82,6 +72,37 @@
 			        	<?php } ?>
 		        	</tbody>
 	        	</table>
+			</fieldset>	
+			<fieldset>
+				<legend>Comentarios</legend>
+				<table style="float:left;width:100%;">
+					<tr>
+						<td>
+							<textarea style="width:100%;heigth:150px;"></textarea>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+	    </div>
+
+	    <!--third party -->
+	    <div class="simpleTabsContent">
+	    	<fieldset>
+				<legend>Personal</legend>
+				<table style="float:left;">
+					<tr>
+						<td class="label_m"><label>Ing. CO-MAN:</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Ing. CO-MAN:</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Pusher:</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Charla Diaria:</label></td><td><input type="text" style="width:165px;" /></td>
+					</tr>
+				</table>
 			</fieldset>
 		</div>
 	</div>

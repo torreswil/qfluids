@@ -7,86 +7,92 @@
 ?>
 <div class="options_panel" id="project_settings" style="<?= $settings_style ?>">
 	<div class="op_content">
-		<h2>Project Settings</h2>
-		<div class="simpleTabs">
-			<ul class="simpleTabsNavigation">
-		      <li><a href="#">General</a></li>
-		      <li><a href="#">Rig</a></li>
-		      <li><a href="#">Control Solids Eq.</a></li>
-		      <li><a href="#">Tanks</a></li>
-		      <li><a href="#">Mud Properties</a></li>
-		      <li><a href="#">Enginers</a></li>
-		    </ul>
-	        <div class="simpleTabsContent">
-	        	<fieldset>
-		        	<table>
-						<tr>
-							<td class="label_m" style="width:175px;"><label>Well Name*:</label></td>
-							<td><input type="text" style="width:150px;" value="<?= $project['well_name'] ?>" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Operator*:</label></td>
-							<td><input type="text" style="width:150px;" value="<?= $project['operator'] ?>" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>RIG*:</label></td>
-							<td><input type="text" style="width:150px;" value="<?= $project['rig'] ?>" class="rigname_source" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Location*:</label></td>
-							<td><input type="text" style="width:150px;" value="<?= $project['geozone'] ?>" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Contract Number:</label></td>
-							<td><input type="text" style="width:150px;" value="<?= $project['contract_number'] ?>" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Field:</label></td>
-							<td><input type="text" style="width:150px;" value="<?= $project['field'] ?>" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Operator Logo*:</label></td>
-							<td><input type="text" style="width:150px;" placeholder="Click to select..." /></td>
-						</tr>	
-					</table>
-				</fieldset>
-	        </div>
-	        <div class="simpleTabsContent">
-	        	<fieldset>
-	        		<table>
-						<tr>
-							<td class="label_m"><label>Rig Name:</label></td>
-							<td><input type="text" style="width:150px;" disabled="disabled" value="<?= $project['rig'] ?>" class="rigname" /></td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Rig Capacity:</label></td>
-							<td><input type="text" style="width:150px;" />hp</td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Stand Lenght:</label></td>
-							<td>
-								<select style="width:164px;">
-									<option value="">Select...</option>
-									<option value="single">Single</option>
-									<option value="double">Double</option>
-									<option value="triple">Triple</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td class="label_m"><label>Power Unit:</label></td>
-							<td>
-								<select style="width:164px;">
-									<option value="">Select...</option>
-									<option value="kelly">Kelly</option>
-									<option value="top_drive">Top Drive</option>
-									<option value="power_swivel">Power Swivel</option>
-								</select>
-							</td>
-						</tr>
-					</table>
-	        	</fieldset>
-	        	<fieldset>
+		<div class="options_sidebar">
+			<h1>Qmud Plan</h1>
+			<ul>
+				<li><a href="#general">General</a></li>
+				<li><a href="#rig">Rig</a></li>
+				<li><a href="#cse">Control Solids Eq.</a></li>
+				<li><a href="#tanks">Tanks</a></li>
+				<li><a href="#mudproperties">Mud properties</a></li>
+				<li><a href="#enginers">Enginers</a></li>
+			</ul>
+			<input type="button" value="Close & Reload">
+		</div>
+		<div class="content">
+			<div class="config_panel" id="general" style="display:block;">
+	        	<h2>General Settings</h2>
+	        	<table>
+					<tr>
+						<td class="label_m" style="width:175px;"><label>Well Name*:</label></td>
+						<td><input type="text" style="width:150px;" value="<?= $project['well_name'] ?>" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Operator*:</label></td>
+						<td><input type="text" style="width:150px;" value="<?= $project['operator'] ?>" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>RIG*:</label></td>
+						<td><input type="text" style="width:150px;" value="<?= $project['rig'] ?>" class="rigname_source" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Location*:</label></td>
+						<td><input type="text" style="width:150px;" value="<?= $project['geozone'] ?>" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Contract Number:</label></td>
+						<td><input type="text" style="width:150px;" value="<?= $project['contract_number'] ?>" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Field:</label></td>
+						<td><input type="text" style="width:150px;" value="<?= $project['field'] ?>" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Operator Logo*:</label></td>
+						<td><input type="text" style="width:150px;" placeholder="Click to select..." /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="button" value="Update Settings" style="margin-top:20px;"></td>
+					</tr>	
+				</table>
+				
+			</div>
+			<div class="config_panel" id="rig">
+				<h2>Rig Settings</h2>
+				<table>
+					<tr>
+						<td class="label_m"><label>Rig Name:</label></td>
+						<td><input type="text" style="width:150px;" disabled="disabled" value="<?= $project['rig'] ?>" class="rigname" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Rig Capacity:</label></td>
+						<td><input type="text" style="width:150px;" />hp</td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Stand Lenght:</label></td>
+						<td>
+							<select style="width:164px;">
+								<option value="">Select...</option>
+								<option value="single">Single</option>
+								<option value="double">Double</option>
+								<option value="triple">Triple</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Power Unit:</label></td>
+						<td>
+							<select style="width:164px;">
+								<option value="">Select...</option>
+								<option value="kelly">Kelly</option>
+								<option value="top_drive">Top Drive</option>
+								<option value="power_swivel">Power Swivel</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<fieldset>
 	        		<legend>System BOPs</legend>
 	        		<fieldset style="float:left; width:410px;">
 		        		<legend>Anular</legend>
@@ -151,9 +157,10 @@
 		        			</tr>
 		        		</table>
 		        	</fieldset>
-	        	</fieldset>
-	        </div>
-	        <div class="simpleTabsContent">
+		        	<input type="button" value="Update Rig Settings">
+			</div>
+			<div class="config_panel" id="cse">
+				<h2>Control Solids Equipment Settings</h2>
 	        	<fieldset>
 	        		<legend>Shakers</legend>
 	        		
@@ -400,15 +407,17 @@
 	        			</tr>
 	        		</table>
 	        	</fieldset>
-	        </div> 
-	        <div class="simpleTabsContent">
-	        	Tanks		
-	        </div> 
-	        <div class="simpleTabsContent">
-	        	mud properties	
-	        </div> 
-	        <div class="simpleTabsContent">
-	        	<!-- ENGINERS -->
+
+	        	<input type="button" value="Update Equipment" style="margin-top:20px;margin-left:815px;" id="btn_save_settings">
+			</div>
+			<div class="config_panel" id="tanks">
+				<h2>Tanks</h2>
+			</div>
+			<div class="config_panel" id="mudproperties">
+				<h2>Mud Properties</h2>
+			</div>
+			<div class="config_panel" id="enginers">
+				<h2>Enginers</h2>
 	        	<fieldset>
 	        		<legend>Report</legend>
 	        		<form id="enginer_configuration">
@@ -425,15 +434,18 @@
 		        						<option value="4" <?php $project['maximun_enginers'] == '4'? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>>4</option>
 		        					</select>
 		        				</td>
-		        				<td class="label_m"><!-- <a href="">Save</a> --></td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m"><label>Daily rate:</label></td>
 		        				<td><input type="text" value="<?= $project['enginer_cost'] ?>" name="enginer_cost" id="enginer_cost" /></td>
+		        			</tr>
+		        			<tr>
 		        				<td></td>
+		        				<td><input type="button" value="Save" /></td>
 		        			</tr>
 		        		</table>
 	        		</form>
+	        		
 	        	</fieldset>
 	        	<fieldset>
 	        		<legend>New Enginer</legend>
@@ -493,10 +505,11 @@
 			        	</tbody>
 		        	</table>
 	        	</fieldset>	
-	        </div>   
+			</div>
 		</div>
-		<input type="button" value="Save Settings" style="margin-top:20px;margin-left:815px;" id="btn_save_settings">
-		<a href="#" id="link_temporal_ocultar_config">ocultar [eliminar a futuro, solo para debug]</a>
+
+		
+		<a href="#" id="link_temporal_ocultar_config">ocultar</a>
 	</div>
 </div>
 <?php // <div id="name_list"></div> ?>

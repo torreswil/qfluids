@@ -1341,6 +1341,14 @@ $(function(){
 
 	/* CONFIG PANEL */
 
+	//navigation
+	$('.options_sidebar a').click(function(e){
+		e.preventDefault();
+		var target = $(this).attr('href');
+		$('.config_panel').hide();
+		$(target+'.config_panel').show();
+	});
+
 	//change the rig name
 	$('.rigname_source').keyup(function(){
 		$('.rigname').val($(this).val());

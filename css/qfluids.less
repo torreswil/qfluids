@@ -254,21 +254,57 @@
 
 .options_panel{
 	position:absolute;
-    background-image:url('/img/overlay_bg.png');
     top:0;
     right:0;
-    bottom:0;
     left:0;
+    height: 100%;
     z-index:999;
     float: left;
+    background-color: #fff;
+
+    .op_content{
+		background-color: #fff;
+		width:930px;
+		margin:20px auto 0 20px;
+
+		.options_sidebar{
+			float:left;
+			width:250px - 20px;
+			text-align: left;
+			margin-right: 20px;
+
+			h1{
+				font-size:18px;
+			}
+
+			ul{
+				list-style: none;
+				margin: 20px 0 20px 0;
+				padding: 0;
+
+				li{
+					margin-top: 5px;
+				}
+			}
+		}
+
+		.content{
+			width: 930px - 250px;
+			float: left;
+
+			.config_panel{
+				display: none;
+
+				h2{
+					font-size: 18px;
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+
 }
 
-.options_panel .op_content{
-	background-color: #fff;
-	width:930px;
-	margin:50px auto 0 auto;
-	padding:20px;
-}
 
 #shakers_table .disabled{
 	display: none;
@@ -310,5 +346,5 @@
 
 .datatable tbody tr:nth-of-type(odd){
   background-color:#fff;
-  
+
 }
