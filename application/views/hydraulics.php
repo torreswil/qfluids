@@ -53,10 +53,10 @@
 <fieldset>
     <table>
         <tr>
-            <td class="label_m"><label></label></td>
-            <td class="label_m"><label></label></td>
-            <td class="label_m"><label></label></td>
-            <td class="label_m"><label></label></td>
+            <td class="label_m"><label>Annular</label> (ft/sec)</td>
+            <td class="label_m"><label>Velocity</label></td>
+            <td class="label_m"><label>Critical</label></td>
+            <td class="label_m"><label>Q<sub>c</sub></label>(gpm)</td>
         </tr>
         <tr>
             <td></td>
