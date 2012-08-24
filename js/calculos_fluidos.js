@@ -1394,7 +1394,7 @@ function calculos_raw(){
 	//totalanulbin
 	var totalanulbin = 0;
 	$('.zabinghloss').each(function(){
-		if($(this).val() !== '' && $(this).val() !== 'NaN' && $(this).val() !== NaN){
+		if(!isNaN($(this).val()) && isFinite($(this).val())){
 			totalanulbin = totalanulbin + parseFloat($(this).val());
 		}
 	});
@@ -1404,7 +1404,7 @@ function calculos_raw(){
 	//totalstringpow
 	totalstringpow = 0;
 	$('.powerlossbha').each(function(){
-		if($(this).val() !== 'NaN' && $(this).val() !== ''){
+		if(!isNaN($(this).val()) && isFinite($(this).val())){
 			totalstringpow = totalstringpow + parseFloat($(this).val());
 		}
 	});
@@ -1414,7 +1414,7 @@ function calculos_raw(){
 	//totalstringbing
 	totalstringbing = 0;
 	$('.zbinglossbha').each(function(){
-		if($(this).val() !== 'NaN' && $(this).val() !== ''){
+		if(!isNaN($(this).val()) && isFinite($(this).val())){
 			totalstringbing = totalstringbing + parseFloat($(this).val());
 		}
 	});

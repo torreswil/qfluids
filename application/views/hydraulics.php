@@ -46,8 +46,43 @@
             <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="totallossesbin" name="totallossesbin" /></td>
             <td class="label_m" style="padding-left:20px;">Show the <a href="#as_panel">Anular Section Math</a></td>
         </tr>
+    </table> 
+</fieldset>
+
+
+<fieldset>
+    <table>
+        <tr>
+            <td class="label_m"><label></label></td>
+            <td class="label_m"><label></label></td>
+            <td class="label_m"><label></label></td>
+            <td class="label_m"><label></label></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+        </tr>
     </table>
-    
 </fieldset>
 
 <fieldset>
