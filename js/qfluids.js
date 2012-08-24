@@ -954,11 +954,10 @@ $(function(){
 	//DRILL STRING: ADD ANOTHER
 	$('#add_another_drill').click(function(e){
 		e.preventDefault();
-		var cantidad_vacios 	= 0;
 		var cantidad_completos 	= 0;
 		$('.select_drill_string').each(function(){
 			if($(this).val() == ''){
-				cantidad_vacios = cantidad_vacios + 1;
+				var cantidad_vacios = 1;
 			}else{
 				cantidad_completos = cantidad_completos + 1;
 			}
@@ -969,7 +968,7 @@ $(function(){
 		first_id = first_id[1];
 
 		if(cantidad_vacios > 0){
-			return false;
+			alert('To add another drill string, please make sure the last one is not empty.');
 		}else if(cantidad_completos == 9){
 			alert('You can have maximum 9 Drill String tools in your system.');
 		}else{
