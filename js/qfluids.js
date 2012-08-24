@@ -972,6 +972,7 @@ $(function(){
 		if(typeof cantidad_vacios !== 'undefined'){
 			if(cantidad_vacios > 0){
 				alert('To add another drill string, please make sure the last one is not empty.');
+				$('#add_another_drill').show();
 			}else if(cantidad_completos == 9){
 				alert('You can have maximum 9 Drill String tools in your system.');
 			}else{
