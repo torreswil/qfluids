@@ -1375,7 +1375,7 @@ function calculos_raw(){
 	//capanultotal
 	var capanultotal = 0;
 	$('.capanul').each(function(){
-		if($(this).val() !== '' && $(this).val() !== 'NaN'){
+		if(!isNaN($(this).val()) && isFinite($(this).val())){
 			capanultotal = capanultotal + parseFloat($(this).val());
 		}
 	});
@@ -1384,7 +1384,7 @@ function calculos_raw(){
 	//totalanulpow
 	var totalanulpow = 0;
 	$('.zapowerloss').each(function(){
-		if($(this).val() !== '' && $(this).val() !== 'NaN' && $(this).val() !== NaN){
+		if(!isNaN($(this).val()) && isFinite($(this).val())){
 			totalanulpow = totalanulpow + parseFloat($(this).val());
 		}	
 	});

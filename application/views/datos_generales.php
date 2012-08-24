@@ -7,7 +7,7 @@
 	    </ul>
 	  
 		<!-- Qmax -->
-	    <div class="simpleTabsContent" style="height:329px;">
+	    <div class="simpleTabsContent" style="height:440px;">
 	    	<fieldset>
 				<table style="float:left;">
 					<tr>
@@ -21,31 +21,34 @@
 						<td class="label_m"><label>Costo ingeniería acumulado</label></td><td><input type="text" disabled="disabled" style="width:165px;" /></td>
 					</tr>
 					<tr>
-						<td>Ing. Fluidos 1</td>
+						<td class="label_m"><label>Ing. Fluidos 1:</label></td>
 						<td>
-							<select>
+							<select style="width:179px;">
+								<option>Please select...</option>
 								<?php foreach ($enginers as $enginer) { ?>
-					        		<option <?= $enginer['id'] ?> ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
+					        		<option value="<?= $enginer['id'] ?>" ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
 					        	<?php } ?>	
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<td>Ing. Fluidos 2</td>
+						<td class="label_m"><label>Ing. Fluidos 2:</label></td>
 						<td>
-							<select>
+							<select style="width:179px;">
+								<option>Please select...</option>
 								<?php foreach ($enginers as $enginer) { ?>
-					        		<option <?= $enginer['id'] ?> ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
+					        		<option value="<?= $enginer['id'] ?>" ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
 					        	<?php } ?>	
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<td>Ing. Fluidos 2</td>
+						<td class="label_m"><label>Ing. Fluidos 2:</label></td>
 						<td>
-							<select>
+							<select style="width:179px;">
+								<option>Please select...</option>
 								<?php foreach ($enginers as $enginer) { ?>
-					        		<option <?= $enginer['id'] ?> ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
+					        		<option value="<?= $enginer['id'] ?>" ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
 					        	<?php } ?>	
 							</select>
 						</td>
@@ -53,7 +56,7 @@
 				</table>
 			</fieldset>
 			<fieldset>
-				<legend>Personal Report</legend>
+				<legend>Enginers</legend>
 				<table class="datatable">
 	        		<thead>
 	        			<tr>
