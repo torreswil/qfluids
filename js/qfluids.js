@@ -954,6 +954,7 @@ $(function(){
 	//DRILL STRING: ADD ANOTHER
 	$('#add_another_drill').click(function(e){
 		e.preventDefault();
+		$(this).hide();
 		var cantidad_completos 	= 0;
 		var cantidad_vacios 	= 0;
 		$('.select_drill_string').each(function(){
@@ -1002,6 +1003,8 @@ $(function(){
 	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="zbinghamflujobha_'+new_id+'" name="zbinghamflujobha_'+new_id+'" style="width:70px;"></td>';
 	                ds_group_preppend = ds_group_preppend +		'</tr>';
 	                $('#bingham_group').prepend(ds_group_preppend);
+
+	                $('#add_another_drill').show();
 				});
 			}
 		}
