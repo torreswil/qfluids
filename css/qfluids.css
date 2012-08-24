@@ -277,3 +277,38 @@
 .zrrange_top,.zrrange_btm{
 	display: none;
 }
+
+.datatable{
+	border:1px solid #eee;
+}
+
+.datatable thead{
+	color: #fff;
+	background-color: #259271;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.datatable thead td{
+	padding:5px 5px;
+}
+
+.datatable tbody td{
+	padding:5px 5px;
+	border-top:1px solid #eee;
+	border-right: 1px solid #eee;
+	text-transform: uppercase;
+}
+
+.datatable tbody tr{
+	cursor: pointer;
+}
+
+.datatable tbody tr:nth-of-type(even){
+  background-color:#E7F5EF;
+}
+
+.datatable tbody tr:nth-of-type(odd){
+  background-color:#fff;
+  
+}

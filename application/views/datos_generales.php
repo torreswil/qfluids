@@ -4,6 +4,7 @@
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Qmax</a></li>
 	      	<li><a href="#">Third Party</a></li>
+	      	<li><a href="#">Enginers Report</a></li>
 	    </ul>
 	  
 		<!-- Qmax -->
@@ -58,6 +59,29 @@
 						<td class="label_m"><label>Charla Diaria:</label></td><td><input type="text" style="width:165px;" /></td>
 					</tr>
 				</table>
+			</fieldset>
+		</div>
+		<div class="simpleTabsContent">
+			<fieldset>
+				<legend>Personal Report</legend>
+				<table class="datatable">
+	        		<thead>
+	        			<tr>
+	        				<td class="label_m">Id</td>
+	        				<td class="label_m">Name</td>
+	        				<td></td>
+	        			</tr>
+	        		</thead>
+		        	<tbody id="tbody_enginer_report">
+			        	<?php foreach ($enginers as $enginer) { ?>
+			        		<tr id="enginer_report_<?= $enginer['id'] ?>">
+			        			<td><?= $enginer['identification'] ?></td>
+			        			<td><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></td>
+			        			<td><a target="_blank" href="/main/enginer/<?= $enginer['id'] ?>">View Report</a></td>
+			        		</tr>
+			        	<?php } ?>
+		        	</tbody>
+	        	</table>
 			</fieldset>
 		</div>
 	</div>

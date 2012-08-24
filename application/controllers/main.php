@@ -69,6 +69,19 @@ class Main extends CI_Controller {
 		}	
 	}
 
+	public function enginer($id){
+		if($id == '' || !is_numeric($id)){
+			redirect('/');
+		}else{
+			$data 								= array();
+			$data['enginer'] 					= $this->Api->get_where('enginers',array('id'=>$id));
+			$data['enginer']					= $data['enginer'][0];
+			$data['periods']					= $this->Api->get_where('reports_enginers',array('enginer'=>$id));
+			$data['main_content'] 				= 'enginer_report';
+			$this->load->view('partials/basic',$data);
+		}
+	}
+
 	public function styles(){
 		$this->load->view('styles');	
 	}
