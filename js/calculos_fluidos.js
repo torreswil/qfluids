@@ -705,22 +705,22 @@ function calculos_raw(){
 
         as_math_power_content = as_math_power_content +	'<tr class="group'+zascount+'">';
         as_math_power_content = as_math_power_content +		'<td class="label_m"><label></label></td>';
-        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:50px;" class="reyanular" id="reyanular_'+zascount+'" name="reyanular_'+zascount+'" /></td>';
-        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:50px;" id="faclamianular_'+zascount+'" name="faclamianular_'+zascount+'" class="faclamianular"></td>';
-        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:50px;" class="faclamiturb" id="faclamiturb_'+zascount+'" name="faclamiturb_'+zascount+'" /></td>';
-        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:50px;" class="ppowerlam" id="ppowerlam_'+zascount+'" name="ppowerlam_'+zascount+'"></td>';
-        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:50px;" class="ppowerturb" id="ppowerturb_'+zascount+'" name="ppowerturb_'+zascount+'"></td>';
-        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:50px;" class="ztipoflujoanularp" id="ztipoflujoanularp_'+zascount+'" name="ztipoflujoanularp_'+zascount+'" /></td>';
+        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:100px;" class="reyanular" id="reyanular_'+zascount+'" name="reyanular_'+zascount+'" /></td>';
+        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:100px;" id="faclamianular_'+zascount+'" name="faclamianular_'+zascount+'" class="faclamianular"></td>';
+        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:100px;" class="faclamiturb" id="faclamiturb_'+zascount+'" name="faclamiturb_'+zascount+'" /></td>';
+        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:100px;" class="ppowerlam" id="ppowerlam_'+zascount+'" name="ppowerlam_'+zascount+'"></td>';
+        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:100px;" class="ppowerturb" id="ppowerturb_'+zascount+'" name="ppowerturb_'+zascount+'"></td>';
+        as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:100px;" class="ztipoflujoanularp" id="ztipoflujoanularp_'+zascount+'" name="ztipoflujoanularp_'+zascount+'" /></td>';
         as_math_power_content = as_math_power_content +	'</tr>';
 
         as_math_bingham_content = as_math_bingham_content + '<tr class="group_'+zascount+'">';
         as_math_bingham_content = as_math_bingham_content +     '<td class="label_m"><label></label></td>';
-        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:50px;" id="velanular_'+zascount+'" class="velanular" name="velanular_'+zascount+'"></td>';
-        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:50px;" class="velcritanul" id="velcritanul_'+zascount+'" name="velcritanul_'+zascount+'" /></td>';
-        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:50px;" class="qcritico" id="qcritico_'+zascount+'" name="qcritico_'+zascount+'" /></td>';
-        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:50px;" class="pbinlam" id="pbinlam_'+zascount+'" name="pbinlam_'+zascount+'" /></td>';
-        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:50px;" class="pbintur" id="pbintur_'+zascount+'" name="pbintur_'+zascount+'" /></td>';
-        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:50px;" class="ztipoflujoanularb" id="ztipoflujoanularb_'+zascount+'" name="ztipoflujoanularb_'+zascount+'" /></td>';
+        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:100px;" id="velanular_'+zascount+'" class="velanular" name="velanular_'+zascount+'"></td>';
+        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:100px;" class="velcritanul" id="velcritanul_'+zascount+'" name="velcritanul_'+zascount+'" /></td>';
+        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:100px;" class="qcritico" id="qcritico_'+zascount+'" name="qcritico_'+zascount+'" /></td>';
+        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:100px;" class="pbinlam" id="pbinlam_'+zascount+'" name="pbinlam_'+zascount+'" /></td>';
+        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:100px;" class="pbintur" id="pbintur_'+zascount+'" name="pbintur_'+zascount+'" /></td>';
+        as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:100px;" class="ztipoflujoanularb" id="ztipoflujoanularb_'+zascount+'" name="ztipoflujoanularb_'+zascount+'" /></td>';
         as_math_bingham_content = as_math_bingham_content + '</tr>';
 	});
 	$('#hidraulics_table_content').html(hidraulics_table);

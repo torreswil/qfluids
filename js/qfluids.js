@@ -984,12 +984,12 @@ $(function(){
 					var ds_group_preppend = '';
 					ds_group_preppend = ds_group_preppend +		'<tr id="ds_group_'+new_id+'">';
 	                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';     
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:70px;"></td>';
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:70px;"></td>';
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:70px;"></td>';
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpl_'+new_id+'" id="ptpl_'+new_id+'" style="width:70px;"></td>';
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpt_'+new_id+'" id="ptpt_'+new_id+'" style="width:70px;"></td>';
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="laminarlabelbha_'+new_id+'" id="laminarlabelbha_'+new_id+'" style="width:70px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:100px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:100px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:100px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpl_'+new_id+'" id="ptpl_'+new_id+'" style="width:100px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpt_'+new_id+'" id="ptpt_'+new_id+'" style="width:100px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="laminarlabelbha_'+new_id+'" id="laminarlabelbha_'+new_id+'" style="width:100px;"></td>';
 	                ds_group_preppend = ds_group_preppend +		'</tr>';
 	                $('#ds_group').prepend(ds_group_preppend);
 
@@ -997,11 +997,11 @@ $(function(){
 					var ds_group_preppend = '';
 					ds_group_preppend = ds_group_preppend +		'<tr id="bingham_'+new_id+'">';
 	                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:70px;"></td>';
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="velcritbha_'+new_id+'" name="velcritbha_'+new_id+'" style="width:70px;"></td>';
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptblbha_'+new_id+'" name="ptblbha_'+new_id+'" style="width:70px;"></td>';
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptbtbha_'+new_id+'" name="ptbtbha_'+new_id+'" style="width:70px;"></td>';
-	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="zbinghamflujobha_'+new_id+'" name="zbinghamflujobha_'+new_id+'" style="width:70px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:100px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="velcritbha_'+new_id+'" name="velcritbha_'+new_id+'" style="width:100px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptblbha_'+new_id+'" name="ptblbha_'+new_id+'" style="width:100px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptbtbha_'+new_id+'" name="ptbtbha_'+new_id+'" style="width:100px;"></td>';
+	                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="zbinghamflujobha_'+new_id+'" name="zbinghamflujobha_'+new_id+'" style="width:100px;"></td>';
 	                ds_group_preppend = ds_group_preppend +		'</tr>';
 	                $('#bingham_group').prepend(ds_group_preppend);
 
@@ -1205,7 +1205,7 @@ $(function(){
 	});
 
 	
-	$('#ds_math input').attr('disabled','disabled').css('width',70);
+	$('#ds_math input').attr('disabled','disabled');
 
 
 	/* PERSONAL REGISTRATION TOOL */

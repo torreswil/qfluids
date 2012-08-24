@@ -9,15 +9,15 @@
                 <legend>Power Law</legend>
                 <table>
                     <tr>
-                        <td class="label_m"><label>&#216;100</label></td><td><input type="text" disabled="disabled" value="0" id="t_100" name="t_100"></td>
-                        <td class="label_m"><label style="text-transform:lowercase">n<sub>a</sub></label></td><td><input type="text" disabled="disabled" value="0" id="npa" name="npa"></td>
-                        <td class="label_m"><label style="text-transform:lowercase">a</label></td><td><input type="text" disabled="disabled" value="0" id="apa" name="apa"></td>
-                        <td class="label_m"><label>N<sub>R<span style="text-transform:lowercase;">ec</span></sub></label></td><td><input type="text" disabled="disabled" value="0" id="reycritanular" name="reycritanular"></td>
+                        <td class="label_m"><label>&#216;100</label></td><td><input type="text" style="width:70px;" disabled="disabled" value="0" id="t_100" name="t_100"></td>
+                        <td class="label_m"><label style="text-transform:lowercase">n<sub>a</sub></label></td><td><input type="text" style="width:70px;" disabled="disabled" value="0" id="npa" name="npa"></td>
+                        <td class="label_m"><label style="text-transform:lowercase">a</label></td><td><input type="text" style="width:70px;" disabled="disabled" value="0" id="apa" name="apa"></td>
+                        <td class="label_m"><label>N<sub>R<span style="text-transform:lowercase;">ec</span></sub></label></td><td><input type="text" style="width:70px;" disabled="disabled" value="0" id="reycritanular" name="reycritanular"></td>
                     </tr>
                     <tr>
-                        <td class="label_m"><label>&#216;3</label></td><td><input type="text" disabled="disabled" value="0" id="t_3" name="t_3"></td>
-                        <td class="label_m"><label style="text-transform:lowercase;">k<sub>a</sub></label></td><td><input type="text" disabled="disabled" value="0" id="kpa"name="kpa"></td>
-                        <td class="label_m"><label style="text-transform:lowercase;">b</label></td><td><input type="text" disabled="disabled" value="0" id="bpb" name="bpb"></td>
+                        <td class="label_m"><label>&#216;3</label></td><td><input type="text" style="width:70px;" disabled="disabled" value="0" id="t_3" name="t_3"></td>
+                        <td class="label_m"><label style="text-transform:lowercase;">k<sub>a</sub></label></td><td><input type="text" style="width:70px;" disabled="disabled" value="0" id="kpa"name="kpa"></td>
+                        <td class="label_m"><label style="text-transform:lowercase;">b</label></td><td><input type="text" style="width:70px;" disabled="disabled" value="0" id="bpb" name="bpb"></td>
                         <td></td><td></td>
                     </tr>
                 </table>
