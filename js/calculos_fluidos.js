@@ -1521,15 +1521,15 @@ function calculos_raw(){
 		//yep
 		if(name == 'CSG - DP' || name == 'OH - DP'){
 			if(name == 'CSG - DP'){
-				var zcdpvel 		= fval('velanular_'+id); 	//CSG - DP
-				var zcdpvelcrit 	= fval('velcritanul_'+id); 	//CSG - DP
-				var zcdpqc 			= fval('qcritico_'+id); 	//CSG - DP	
+				zcdpvel 		= fval('velanular_'+id); 	//CSG - DP
+				zcdpvelcrit 	= fval('velcritanul_'+id); 	//CSG - DP
+				zcdpqc 			= fval('qcritico_'+id); 	//CSG - DP	
 			}
 
 			if(name == 'OH - DP'){
-				var zdpohvel		= fval('velanular_'+id); 	//OH - DP
-				var zdpohvelcrit 	= fval('velcritanul_'+id); 	//OH - DP
-				var zdpohqc			= fval('qcritico_'+id); 	//OH - DP
+				zdpohvel		= fval('velanular_'+id); 	//OH - DP
+				zdpohvelcrit 	= fval('velcritanul_'+id); 	//OH - DP
+				zdpohqc			= fval('qcritico_'+id); 	//OH - DP
 			}
 
 		//nope
