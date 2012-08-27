@@ -79,13 +79,13 @@
         <tr>
             <td class="label_m"><label>DC/OH:</label></td>
             <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhavel_1" name="zbhavel_1" /></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhavel_1" name="zbhavel_1" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhavelcrit_1" name="zbhavelcrit_1" /></td>
             <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhagc_1"  name="zbhagc_1"  /></td>
         </tr>
         <tr>
             <td class="label_m"><label>DC/OH:</label></td>
             <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhavel_2" name="zbhavel_2" /></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhavel_2" name="zbhavel_2" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhavelcrit_2" name="zbhavelcrit_2" /></td>
             <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhagc_2"  name="zbhagc_2"  /></td>
         </tr> 
     </table>
