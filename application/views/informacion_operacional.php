@@ -94,7 +94,7 @@
 								</tr>
 								<tr>
 									<td class="label_m"><label>% PD <sub>BIT</sub>:</label></td>
-									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" /></td>
+									<td><input type="text" disabled="disabled" style="margin-right:5px;width:55px;" id="bitxcien" name="bitxcien" /> %</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>HHP <sub>BIT</sub>:</label></td>

@@ -233,15 +233,21 @@ $(function(){
 
 	//CUADRO DE DIALOGO SELECCION DE CASING
 	//*************************************************************************************************************************
-	$('.pick_casing').focus(function(){
-		if($(this).val() !== ''){
-			$('#select_casing_overlay').show();
-			$(this).attr('disabled','disabled');
-			var casing_id = $(this).attr('id');
-			casing_id = casing_id.split('picker_');
-			casing_id = casing_id[1];
-			$('#casing_number').val(casing_id);
+	$('.pick_casing').click(function(){
+		if(fval('md') <= 0){
+			alert('To place Casign, first verify the open hole is greater than 0');
 		}
+	});	
+
+	$('.pick_casing').focus(function(){
+			if($(this).val() !== ''){
+				$('#select_casing_overlay').show();
+				$(this).attr('disabled','disabled');
+				var casing_id = $(this).attr('id');
+				casing_id = casing_id.split('picker_');
+				casing_id = casing_id[1];
+				$('#casing_number').val(casing_id);
+			}	
 	});
 
 	$('#pickcasing_type').change(function(){

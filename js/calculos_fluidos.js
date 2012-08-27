@@ -408,6 +408,7 @@ function calculos_raw(){
 	var zwashout = 0;
 	zwashout = 100 * (openhole - zhole) / zhole;
 	completar_campo_val('zwashout',zwashout.toFixed(2));
+	completar_campo_val('zwout',zwashout.toFixed(2));
 
 	//longhoyo
 	var longhoyo = 0;
@@ -1591,4 +1592,32 @@ function calculos_raw(){
 	completar_campo_val('zbhavel_2',zbhavel_2);
 	completar_campo_val('zbhavelcrit_2',zbhavelcrit_2);
 	completar_campo_val('zbhagc_2',zbhagc_2);
+
+
+	//bouyancy
+	var bouyancy = 0;
+	bouyancy = 1 - 0.01528117 * mw;
+	completar_campo_val('bouyancy',bouyancy.toFixed(3));
+
+	
+	//hreporttoshow
+	var hreporttoshow 	= $("input[name='hreporttoshow']:checked").val();
+
+	//ecd
+	var ecd 			= 0;
+	if(hreporttoshow == 'powerlaw'){
+		ecd = (totalanulpow / (0.052 * fval('md') ) ) + mw;	
+	}else if(hreporttoshow == 'bingham'){
+		ecd = (totalanulbin / (0.052 * fval('md') )) + mw;
+	}
+	completar_campo_val('ecd',ecd.toFixed(1));
+
+	//bitxcien
+	var bitxcien = 0;
+	if(hreporttoshow == 'powerlaw'){
+		bitxcien = (pdbit/ totalanulpow) * 100;
+	}else if(hreporttoshow == 'bingham'){
+		bitxcien = (pdbit / totalanulpow) * 100
+	}
+	completar_campo_val('bitxcien',bitxcien);
 }

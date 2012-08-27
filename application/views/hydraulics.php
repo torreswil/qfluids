@@ -93,15 +93,15 @@
     <table style="float:left;margin-left:90px;margin-top:35px;">
         <tr>
             <td class="label_m"><label>Bouyancy:</label></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px" id="bouyancy" name="bouyancy" /></td>
         </tr>
         <tr>
             <td class="label_m"><label>ECD:</label> (ppg)</td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px" id="ecd" name="ecd" /></td>
         </tr>
         <tr>
-            <td class="label_m"><label>W/OUT:</label></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px" /></td>
+            <td class="label_m"><label>% W/OUT:</label></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px" id="zwout" name="zwout" /></td>
         </tr>
     </table>
 </fieldset>
