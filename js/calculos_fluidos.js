@@ -727,8 +727,8 @@ function calculos_raw(){
         hidraulics_table = hidraulics_table + '    <td><input type="text" disabled="disabled" id="zregime_'+zascount+'" name="zregime_'+zascount+'" class="zregime" style="margin-right: 0px; width: 70px;"/></td>';
         hidraulics_table = hidraulics_table + '</tr>';
 
-        as_math_power_content = as_math_power_content +	'<tr class="group'+zascount+'">';
-        as_math_power_content = as_math_power_content +		'<td class="label_m"><label>'+this.name+'</label></td>';
+        as_math_power_content = as_math_power_content +	'<tr class="group_'+zascount+'">';
+        as_math_power_content = as_math_power_content +		'<td class="label_m"><label id="anular_section_power_'+zascount+'">'+this.name+'</label></td>';
         as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:100px;" class="reyanular" id="reyanular_'+zascount+'" name="reyanular_'+zascount+'" /></td>';
         as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:100px;" id="faclamianular_'+zascount+'" name="faclamianular_'+zascount+'" class="faclamianular"></td>';
         as_math_power_content = as_math_power_content +	    '<td><input disabled="disabled" type="text" style="width:100px;" class="faclamiturb" id="faclamiturb_'+zascount+'" name="faclamiturb_'+zascount+'" /></td>';
@@ -738,7 +738,7 @@ function calculos_raw(){
         as_math_power_content = as_math_power_content +	'</tr>';
 
         as_math_bingham_content = as_math_bingham_content + '<tr class="group_'+zascount+'">';
-        as_math_bingham_content = as_math_bingham_content +     '<td class="label_m"><label>'+this.name+'</label></td>';
+        as_math_bingham_content = as_math_bingham_content +     '<td class="label_m"><label id="anular_section_bingham_'+zascount+'">'+this.name+'</label></td>';
         as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:100px;" id="velanular_'+zascount+'" class="velanular" name="velanular_'+zascount+'"></td>';
         as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:100px;" class="velcritanul" id="velcritanul_'+zascount+'" name="velcritanul_'+zascount+'" /></td>';
         as_math_bingham_content = as_math_bingham_content +     '<td><input disabled="disabled" type="text" style="width:100px;" class="qcritico" id="qcritico_'+zascount+'" name="qcritico_'+zascount+'" /></td>';
@@ -1480,9 +1480,117 @@ function calculos_raw(){
 	completar_campo_val('totallossesbin',totallossesbin.toFixed(2));
 
 
+	//alerta de longitudes negativas
 	if(fval('bitdepth') > fval('md')){
 		$('#geometria_pozo .warning').show();
 	}else{
 		$('#geometria_pozo .warning').hide();	
 	}
+
+
+	//resumen de velocidades y caudales hidraulica anular
+	var zcdpvel 		= 0; //CSG - DP
+	var zcdpvelcrit 	= 0; //CSG - DP
+	var zcdpqc 			= 0; //CSG - DP
+
+	var zdpohvel		= 0; //OH - DP
+	var zdpohvelcrit 	= 0; //OH - DP
+	var zdpohqc			= 0; //OH - DP
+
+	var zbhavel_1 		= 0; // BHA
+	var zbhavelcrit_1   = 0; // BHA
+	var zbhagc_1		= 0; // BHA
+
+	var zbhavel_2 		= 0; // BHA
+	var zbhavelcrit_2 	= 0; // BHA
+	var zbhagc_2 		= 0; // BHA
+
+
+	var critica_1 	= 0;
+	var id_menor 	= 0;
+	
+	$('#as_math_bingham_content label').each(function(){
+		var name 		= $(this).html();
+		var id 			= $(this).attr('id');
+		id 				= id.split('anular_section_bingham_');
+		id 				= id[1];
+
+		
+		//is drill pipe?
+
+		//yep
+		if(name.search('- DP') !== -1){
+			if(name == 'CSG - DP'){
+				var zcdpvel 		= fval('velanular_'+id); 	//CSG - DP
+				var zcdpvelcrit 	= fval('velcritanul_'+id); 	//CSG - DP
+				var zcdpqc 			= fval('qcritico_'+id); 	//CSG - DP	
+			}
+
+			if(name == 'OH - DP'){
+				var zdpohvel		= fval('velanular_'+id); 	//OH - DP
+				var zdpohvelcrit 	= fval('velcritanul_'+id); 	//OH - DP
+				var zdpohqc			= fval('qcritico_'+id); 	//OH - DP
+			}
+
+		//nope
+		}else{ 
+			if(name !== 'CSG - DP' && name !== 'OH - DP'){
+				if(critica_1 == 0){
+					critica_1 		= fval('velcritanul_'+id);
+					id_menor 		= id;
+				}else{
+					if(fval('velcritanul_'+id) < critica_1){
+						critica_1 	= fval('velcritanul_'+id);
+						id_menor 	= id;
+					}
+				}
+			} 
+		}
+	});
+
+	zbhavel_1 		= fval('velanular_' + id_menor);
+	zbhavelcrit_1	= fval('velcritanul_' + id_menor);
+	zbhagc_1 		= fval('qcritico_' + id_menor);
+
+	
+	var id_penultimo_menor 	= 0;
+	var critica_2 			= 0;
+	$('#as_math_bingham_content label').each(function(){
+		var name 		= $(this).html();
+		var id 			= $(this).attr('id');
+		id 				= id.split('anular_section_bingham_');
+		id 				= id[1];
+
+		if(name !== 'CSG - DP' && name !== 'OH - DP' && id !== id_menor){
+			if(critica_2 == 0){
+				critica_2 			= fval('velcritanul_'+id);
+				id_penultimo_menor 	= id;
+			}else{
+				if(fval('velcritanul_'+id) < critica_2){
+					critica_2 			= fval('velcritanul_'+id);
+					id_penultimo_menor 	= id;
+				}
+			}
+		}
+	});
+
+	zbhavel_2 		= fval('velanular_' + id_penultimo_menor);
+	zbhavelcrit_2	= fval('velcritanul_' + id_penultimo_menor);
+	zbhagc_2 		= fval('qcritico_' + id_penultimo_menor);
+
+	completar_campo_val('zcdpvel',zcdpvel);
+	completar_campo_val('zcdpvelcrit',zcdpvelcrit);
+	completar_campo_val('zcdpqc',zcdpqc);
+
+	completar_campo_val('zdpohvel',zdpohvel);
+	completar_campo_val('zdpohvelcrit',zdpohvelcrit);
+	completar_campo_val('zdpohqc',zdpohqc);
+
+	completar_campo_val('zbhavel_1',zbhavel_1);
+	completar_campo_val('zbhavelcrit_1',zbhavelcrit_1);
+	completar_campo_val('zbhagc_1',zbhagc_1);
+
+	completar_campo_val('zbhavel_2',zbhavel_2);
+	completar_campo_val('zbhavelcrit_2',zbhavelcrit_2);
+	completar_campo_val('zbhagc_2',zbhagc_2);
 }

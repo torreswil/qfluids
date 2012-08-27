@@ -66,42 +66,42 @@
         </tr>
         <tr>
             <td class="label_m"><label>Casing/DP:</label></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zcdpvel" name="zcdpvel" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zcdpvelcrit" name="zcdpvelcrit" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zcdpqc" name="zcdpqc" /></td>
         </tr>
         <tr>
             <td class="label_m"><label>DP/OH:</label></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zdpohvel" name="zdpohvel" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zdpohvelcrit" name="zdpohvelcrit" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zdpohqc" name="zdpohqc" /></td>
         </tr>
         <tr>
             <td class="label_m"><label>DC/OH:</label></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhavel_1" name="zbhavel_1" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhavel_1" name="zbhavel_1" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhagc_1"  name="zbhagc_1"  /></td>
         </tr>
         <tr>
             <td class="label_m"><label>DC/OH:</label></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhavel_2" name="zbhavel_2" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhavel_2" name="zbhavel_2" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" id="zbhagc_2"  name="zbhagc_2"  /></td>
         </tr> 
     </table>
 
-    <table style="float:left;margin-left:100px;margin-top:35px;">
+    <table style="float:left;margin-left:90px;margin-top:35px;">
         <tr>
             <td class="label_m"><label>Bouyancy:</label></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:60px" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px" /></td>
         </tr>
         <tr>
             <td class="label_m"><label>ECD:</label> (ppg)</td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:60px" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px" /></td>
         </tr>
         <tr>
             <td class="label_m"><label>W/OUT:</label></td>
-            <td class="label_m"><input type="text" disabled="disabled" style="width:60px" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px" /></td>
         </tr>
     </table>
 </fieldset>
