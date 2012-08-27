@@ -116,7 +116,7 @@
                 <td class="label_m" style="text-align:center;"><label>OD STRN.</label></td>
                 <td class="label_m" style="text-align:center;"><label>LENGTH</label></td>
                 <td class="label_m" style="text-align:center;"><label>AN.CAP.</label></td>
-                <td class="label_m" style="text-align:center;"><label>AN. VELOCITY</label></td>
+                <td class="label_m" style="text-align:center;"><label>VEL.CRITICAL</label></td>
                 <td class="label_m" style="text-align:center;" colspan="2"><label>PRESSURE LOSSES</label></td>
                 <td class="label_m" style="text-align:center;"><label>REGIME</label></td>
             </tr>

@@ -1208,7 +1208,6 @@ function calculos_raw(){
 		var velanular = 0;
 		velanular =  0.408 * qgaltotal / (power('idhole_'+id, 2) - power('odstring_'+id,2));
 		completar_campo_val('velanular_'+id,velanular.toFixed(2));
-		completar_campo_val('zasvel_'+id,velanular.toFixed(2));
 	});
 
 	//t_100
@@ -1315,6 +1314,7 @@ function calculos_raw(){
 		var raiz = Math.sqrt(Math.pow(pv,2) + 9.256 * Math.pow((fval('idhole_'+id) - fval('odstring_'+id)),2) * yp * mw);
 		velcritanul = (1.078 * pv + 1.078 * raiz) / (mw * (fval('idhole_'+ id) - fval('odstring_'+id)));
 		completar_campo_val('velcritanul_'+id,velcritanul.toFixed(2));
+		completar_campo_val('zasvel_'+id,velcritanul.toFixed(2));
 	});
 
 
@@ -1519,7 +1519,7 @@ function calculos_raw(){
 		//is drill pipe?
 
 		//yep
-		if(name.search('- DP') !== -1){
+		if(name == 'CSG - DP' || name == 'OH - DP'){
 			if(name == 'CSG - DP'){
 				var zcdpvel 		= fval('velanular_'+id); 	//CSG - DP
 				var zcdpvelcrit 	= fval('velcritanul_'+id); 	//CSG - DP
@@ -1534,17 +1534,15 @@ function calculos_raw(){
 
 		//nope
 		}else{ 
-			if(name !== 'CSG - DP' && name !== 'OH - DP'){
-				if(critica_1 == 0){
-					critica_1 		= fval('velcritanul_'+id);
-					id_menor 		= id;
-				}else{
-					if(fval('velcritanul_'+id) < critica_1){
-						critica_1 	= fval('velcritanul_'+id);
-						id_menor 	= id;
-					}
+			if(critica_1 == 0){
+				critica_1 		= fval('velcritanul_'+id);
+				id_menor 		= id;
+			}else{
+				if(fval('velcritanul_'+id) < critica_1){
+					critica_1 	= fval('velcritanul_'+id);
+					id_menor 	= id;
 				}
-			} 
+			}
 		}
 	});
 
