@@ -51,36 +51,57 @@
 
 
 <fieldset>
-    <table>
+    <table style="float:left;">
         <tr>
-            <td class="label_m"><label>Annular</label> (ft/sec)</td>
-            <td class="label_m"><label>Velocity</label></td>
-            <td class="label_m"><label>Critical</label></td>
-            <td class="label_m"><label>Q<sub>c</sub></label>(gpm)</td>
+            <td class="label_m" style="width:125px;"><label>Velocity</label></td>
+            <td class="label_m"><label>ANULAR</label></td>
+            <td class="label_m"><label>CRITICAL</label></td>
+            <td class="label_m"><label>Q<sub>c</sub></label></td>
         </tr>
         <tr>
-            <td></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
+            <td class="label_m"></td>
+            <td class="label_m">ft/sec</td>
+            <td class="label_m">ft/sec</td>
+            <td class="label_m">gpm</td>
         </tr>
         <tr>
-            <td></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
+            <td class="label_m"><label>Casing/DP:</label></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
         </tr>
         <tr>
-            <td></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
+            <td class="label_m"><label>DP/OH:</label></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
         </tr>
         <tr>
-            <td></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
+            <td class="label_m"><label>DC/OH:</label></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+        </tr>
+        <tr>
+            <td class="label_m"><label>DC/OH:</label></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:70px;margin-right:0;" /></td>
+        </tr> 
+    </table>
+
+    <table style="float:left;margin-left:100px;margin-top:35px;">
+        <tr>
+            <td class="label_m"><label>Bouyancy:</label></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:60px" /></td>
+        </tr>
+        <tr>
+            <td class="label_m"><label>ECD:</label> (ppg)</td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:60px" /></td>
+        </tr>
+        <tr>
+            <td class="label_m"><label>W/OUT:</label></td>
+            <td class="label_m"><input type="text" disabled="disabled" style="width:60px" /></td>
         </tr>
     </table>
 </fieldset>
