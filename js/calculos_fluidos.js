@@ -34,7 +34,11 @@ function power(selector,exponente){
 }
 
 function fval(selector){
-	return parseFloat($('#'+selector).val());
+	if(!isNaN($('#'+selector).val()) && isFinite($('#'+selector).val())){
+		return parseFloat($('#'+selector).val());
+	}else{
+		return 0;
+	}
 }
 
 function ival(selector){
@@ -484,6 +488,24 @@ function calculos_raw(){
 	volholeempty = volhole + volcsgt;
 	completar_campo_val('volholeempty',volholeempty.toFixed(2));
 
+
+	//validar que en la tabla del drill string el id no sea mayor que el od
+	$('.select_drill_string').each(function(){
+		var id_raw = $(this).attr('id');
+		var id = id_raw.split('select_drill_string_');
+		id = id[1];
+
+		var odbha = fval('odbha_'+id);
+		var idbha = fval('idbha_'+id);
+
+		if(idbha >= odbha){
+			$('#idbha_'+id).addClass('input_error').attr('title','The ID can not be equal or grater than the OD');
+		}else{
+			$('#idbha_'+id).removeClass('input_error').removeAttr('title');	
+		}
+
+
+	});
 
 	//TABLA DE DATOS DE LA SECCION ANULAR
 	var zdstop = 0
