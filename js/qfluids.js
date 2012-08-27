@@ -969,61 +969,80 @@ $(function(){
 	$('#add_another_drill').click(function(e){
 		e.preventDefault();
 		if($('.drill_string_pieces .input_error').length == 0){
-			$(this).hide();
-			var cantidad_completos 	= 0;
-			var cantidad_vacios 	= 0;
-			$('.select_drill_string').each(function(){
-				if($(this).val() == ''){
-					cantidad_vacios = 1;
-				}else{
-					cantidad_completos 	= cantidad_completos + 1;
+			var eqty = 0;
+			$('.drill_string_pieces').each(function(){
+				if($('.odbha',this).val() == '' || parseFloat($('.odbha',this).val()) == 0){
+					eqty = eqty + 1;
+				}
+
+				if($('.idbha',this).val() == '' || parseFloat($('.idbha',this).val()) == 0){
+					eqty = eqty + 1;
+				}
+
+				if($('.longbha',this).val() == '' || parseFloat($('.longbha',this).val()) == 0){
+					eqty = eqty + 1;
 				}
 			});
 
-			var first_id = $('.select_drill_string').filter(':first').attr('id');
-			first_id = first_id.split('select_drill_string_');
-			first_id = first_id[1];
+			if(eqty == 0){
+				$(this).hide();
+				var cantidad_completos 	= 0;
+				var cantidad_vacios 	= 0;
+				$('.select_drill_string').each(function(){
+					if($(this).val() == ''){
+						cantidad_vacios = 1;
+					}else{
+						cantidad_completos 	= cantidad_completos + 1;
+					}
+				});
 
-			if(typeof cantidad_vacios !== 'undefined'){
-				if(cantidad_vacios > 0){
-					alert('To add another drill string, please make sure the last one is not empty.');
-					$('#add_another_drill').show();
-				}else if(cantidad_completos == 9){
-					alert('You can have maximum 9 Drill String tools in your system.');
-				}else{
-					$.post('/rest/new_drill_string_row',{'drillstring_qty' : first_id},function(r){
-						$('.drill_string_pieces').prepend(r);
-						var new_id = parseInt(first_id) + 1;
+				var first_id = $('.select_drill_string').filter(':first').attr('id');
+				first_id = first_id.split('select_drill_string_');
+				first_id = first_id[1];
 
-						//prepend a new row in the dsmath_tab:exponents table
-						var ds_group_preppend = '';
-						ds_group_preppend = ds_group_preppend +		'<tr id="ds_group_'+new_id+'">';
-		                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';     
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpl_'+new_id+'" id="ptpl_'+new_id+'" style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpt_'+new_id+'" id="ptpt_'+new_id+'" style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="laminarlabelbha_'+new_id+'" id="laminarlabelbha_'+new_id+'" style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +		'</tr>';
-		                $('#ds_group').prepend(ds_group_preppend);
+				if(typeof cantidad_vacios !== 'undefined'){
+					if(cantidad_vacios > 0){
+						alert('To add another drill string, please make sure the last one is not empty.');
+						$('#add_another_drill').show();
+					}else if(cantidad_completos == 9){
+						alert('You can have maximum 9 Drill String tools in your system.');
+					}else{
+						$.post('/rest/new_drill_string_row',{'drillstring_qty' : first_id},function(r){
+							$('.drill_string_pieces').prepend(r);
+							var new_id = parseInt(first_id) + 1;
 
-		                //prepend a new row in the dsmath_tab:bingham table
-						var ds_group_preppend = '';
-						ds_group_preppend = ds_group_preppend +		'<tr id="bingham_'+new_id+'">';
-		                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="velcritbha_'+new_id+'" name="velcritbha_'+new_id+'" style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptblbha_'+new_id+'" name="ptblbha_'+new_id+'" style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptbtbha_'+new_id+'" name="ptbtbha_'+new_id+'" style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="zbinghamflujobha_'+new_id+'" name="zbinghamflujobha_'+new_id+'" style="width:100px;"></td>';
-		                ds_group_preppend = ds_group_preppend +		'</tr>';
-		                $('#bingham_group').prepend(ds_group_preppend);
+							//prepend a new row in the dsmath_tab:exponents table
+							var ds_group_preppend = '';
+							ds_group_preppend = ds_group_preppend +		'<tr id="ds_group_'+new_id+'">';
+			                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';     
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpl_'+new_id+'" id="ptpl_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpt_'+new_id+'" id="ptpt_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="laminarlabelbha_'+new_id+'" id="laminarlabelbha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +		'</tr>';
+			                $('#ds_group').prepend(ds_group_preppend);
 
-		                $('#add_another_drill').show();
-					});
+			                //prepend a new row in the dsmath_tab:bingham table
+							var ds_group_preppend = '';
+							ds_group_preppend = ds_group_preppend +		'<tr id="bingham_'+new_id+'">';
+			                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="velcritbha_'+new_id+'" name="velcritbha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptblbha_'+new_id+'" name="ptblbha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptbtbha_'+new_id+'" name="ptbtbha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="zbinghamflujobha_'+new_id+'" name="zbinghamflujobha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +		'</tr>';
+			                $('#bingham_group').prepend(ds_group_preppend);
+
+			                $('#add_another_drill').show();
+						});
+					}
 				}
-			}
+			}else{
+				alert('Some fields are empty. Please verify and try again.');
+			}		
 		}
 	});
 
