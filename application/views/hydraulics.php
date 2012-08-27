@@ -95,7 +95,9 @@
                 <td class="label_m" style="text-align:center;"><label>OD STRN.</label></td>
                 <td class="label_m" style="text-align:center;"><label>LENGTH</label></td>
                 <td class="label_m" style="text-align:center;"><label>AN.CAP.</label></td>
+                <td class="label_m" style="text-align:center;"><label>AN. VELOCITY</label></td>
                 <td class="label_m" style="text-align:center;" colspan="2"><label>PRESSURE LOSSES</label></td>
+                <td class="label_m" style="text-align:center;"><label>REGIME</label></td>
             </tr>
             <tr>
                 <td></td>
@@ -103,8 +105,10 @@
                 <td style="text-align:center;">in</td>
                 <td style="text-align:center;">ft</td>
                 <td style="text-align:center;">bbl</td>
+                <td style="text-align:center;">ft/s</td>
                 <td style="text-align:center;">Power</td>
                 <td style="text-align:center;">Bingh</td>
+                <td style="text-align:center;"></td>
             </tr>
         </thead>
         <tbody id="hidraulics_table_content">
@@ -116,8 +120,10 @@
                 <td></td>
                 <td style="vertical-align:middle;text-align:right;"><label>Total:</label></td>
                 <td><input type="text" id="capanultotal" name="capanultotal" style="margin-right: 0px; width: 70px;" disabled="disabled" /></td>
+                <td></td>
                 <td><input type="text" id="totalanulpow" name="totalanulpow" style="margin-right: 0px; width: 70px;" disabled="disabled" /></td>
                 <td><input type="text" id="totalanulbin" name="totalanulbin" style="margin-right: 0px; width: 70px;" disabled="disabled" /></td>
+                <td></td>
             </tr>
         </tfooter>
     </table>

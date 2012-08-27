@@ -38,7 +38,7 @@
 						<td class="label_m"  style="text-align: center"><label>TOP: </td>	
 						<td class="label_m"  style="text-align: center"><label>BOTTOM: </td>
 						<td class="label_m"  style="text-align: center"><label>CAPAC.:</td>
-						<td class="label_m"  style="text-align: left"><label>LENGTH:</td>														
+						<td class="label_m"  style="text-align: center"><label>LENGTH:</td>														
 						<td></td>
 					</tr>
 					<tr>
@@ -53,7 +53,7 @@
 							<span style="text-transform:lowercase;">ft</span></td>
 						<td class="label_m" style="text-align: center">
 							<span style="text-transform:lowercase;">bbl</span></td>
-						<td class="label_m" style="text-align: left">
+						<td class="label_m" style="text-align: center">
 							<span style="text-transform:lowercase;">ft</span></td>														
 						<td></td>
 					</tr>

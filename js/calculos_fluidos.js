@@ -625,7 +625,7 @@ function calculos_raw(){
 		var ohbtm 	= fval('md');
 		var ohtop 	= ohbtm - fval('longhoyo');
 		var ohname	= 'OH';
-		var ohid	= fval('zhole');
+		var ohid	= fval('openhole');
 
 		if(ohbtm + ohtop !== 0){
 			if(zdstop == ohtop && zdsbtm == ohbtm){
@@ -699,8 +699,10 @@ function calculos_raw(){
         hidraulics_table = hidraulics_table + '    <td><input type="text" id="odstring_'+zascount+'" name="odstring_'+zascount+'" class="odstring" style="margin-right: 0px; width: 70px;" value="'+this.odstring+'" disabled="disabled"/></td>';
         hidraulics_table = hidraulics_table + '    <td><input type="text" id="longanular_'+zascount+'" name="longanular_'+zascount+'" class="longanular" style="margin-right: 0px; width: 70px;" value="'+this.len+'" disabled="disabled" /></td>';
         hidraulics_table = hidraulics_table + '    <td><input type="text" disabled="disabled" id="capanul_'+zascount+'" name="capanul_'+zascount+'" class="capanul" style="margin-right: 0px; width: 70px;"/></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" disabled="disabled" id="zasvel_'+zascount+'" name="zasvel_'+zascount+'" class="zasvel" style="margin-right: 0px; width: 70px;"/></td>';
         hidraulics_table = hidraulics_table + '    <td><input type="text" id="zapowerloss_'+zascount+'" name="zapowerloss_'+zascount+'" class="zapowerloss" style="margin-right: 0px; width: 70px;" disabled="disabled" /></td>';
         hidraulics_table = hidraulics_table + '    <td><input type="text" id="zabinghloss_'+zascount+'" name="zabinghloss_'+zascount+'" class="zabinghloss" style="margin-right: 0px; width: 70px;" disabled="disabled" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" disabled="disabled" id="zregime_'+zascount+'" name="zregime_'+zascount+'" class="zregime" style="margin-right: 0px; width: 70px;"/></td>';
         hidraulics_table = hidraulics_table + '</tr>';
 
         as_math_power_content = as_math_power_content +	'<tr class="group'+zascount+'">';
@@ -1184,6 +1186,7 @@ function calculos_raw(){
 		var velanular = 0;
 		velanular =  0.408 * qgaltotal / (power('idhole_'+id, 2) - power('odstring_'+id,2));
 		completar_campo_val('velanular_'+id,velanular.toFixed(2));
+		completar_campo_val('zasvel_'+id,velanular.toFixed(2));
 	});
 
 	//t_100
@@ -1357,7 +1360,8 @@ function calculos_raw(){
 			ztipoflujoanularb = 'LAMINAR';
 			completar_campo_val('zabinghloss_'+id,fval('pbinlam_'+id));
 		}
-		completar_campo_val('ztipoflujoanularb_'+id,ztipoflujoanularb);	
+		completar_campo_val('ztipoflujoanularb_'+id,ztipoflujoanularb);
+		completar_campo_val('zregime_'+id,ztipoflujoanularb);		
 	});
 
 	

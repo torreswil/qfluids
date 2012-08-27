@@ -333,6 +333,9 @@ $(function(){
 							});
 							$('.casingclear','#casing_tool_'+new_casing).show();
 							$('#casing_tool_'+target).addClass('active');
+							if(new_casing == 8){
+								$('#casing_tool_7 .casingclear').show();
+							}
 							hide_casing_overlay();	
 						}
 							
@@ -354,6 +357,9 @@ $(function(){
 						});
 						$('.casingclear','#casing_tool_'+new_casing).show();
 						$('#casing_tool_'+target).addClass('active');
+						if(new_casing == 8){
+							$('#casing_tool_7 .casingclear').show();
+						}
 						hide_casing_overlay();	
 					}
 				}
@@ -397,6 +403,9 @@ $(function(){
 								});
 								$('.casingclear','#casing_tool_'+new_casing).show();
 								$('#casing_tool_'+target).addClass('active');
+								if(new_casing == 8){
+									$('#casing_tool_7 .casingclear').show();
+								}
 								hide_casing_overlay();	
 							}
 						}
@@ -411,14 +420,19 @@ $(function(){
 							$('#casing_tool_'+target+' .id').val($('#createcasing_id').val());
 							$('#casing_tool_'+target+' .top').val($('#createcasing_top').val());
 							$('#casing_tool_'+target+' .bottom').val($('#createcasing_bottom').val());
-							$('#casing_tool_' + parseInt(target) + 1).show();
+							
+
 							$('#casing_tool_'+new_casing).show();
 							$('.casingclear').each(function(){
-								$(this).hide();
+								$(this).hide();	
 							});
-							$('.casingclear','#casing_tool_'+new_casing).show();
+
+							$('.casingclear','#casing_tool_' + new_casing).show();
 							$('#casing_tool_'+target).addClass('active');
-							
+
+							if(new_casing == 8){
+								$('#casing_tool_7 .casingclear').show();
+							}
 							hide_casing_overlay();	
 						}
 					}	
