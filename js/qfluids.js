@@ -1,7 +1,7 @@
 $(function(){
 	//show the sidebar only if the spud_date is defined
 	if($('#spud_data').val() !== ''){
-		$('.sidebar').show();
+		$('.sidebar ul').show();
 	}
 
 	$('#spud_data').datepicker({
@@ -10,11 +10,11 @@ $(function(){
 
 	$('#spud_data').change(function(){
 		if($(this).val() !== ''){
-			$('.sidebar').show();
+			$('.sidebar ul').show();
 			$('#current_date').html($(this).val());
 			$('#start_message').html('Select a data input form from the sidebar to continue.');
 		}else{
-			$('.sidebar').hide();
+			$('.sidebar ul').hide();
 			$('#current_date').html('');
 			$('#start_message').html('Pick a spud date to start.');
 		}
@@ -43,7 +43,7 @@ $(function(){
 	$('#pressure_loss_fieldset a').click(function(e){
 		e.preventDefault();
 		var target = $(this).attr('href');
-		$(target).fadeIn('fast');
+		$(target).show();
 	});
 
 	//CLICK PARA OCULTAR UN OVERLAY
@@ -51,7 +51,7 @@ $(function(){
         if (e.target.id == "as_math" || $(e.target).parents("#as_math").size() || e.target.id == "ds_math" || $(e.target).parents("#ds_math").size()) { 
         	log('math clicked');    
         }else {
-        	$('.this_hidden_panel').fadeOut('fast');	
+        	$('.this_hidden_panel').hide();	
         }
     });
 

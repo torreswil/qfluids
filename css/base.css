@@ -1,3 +1,124 @@
+@font-face {
+    font-family: 'OpenSansLight';
+    src: url('/fonts/OpenSans-Light-webfont.eot');
+    src: url('/fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/OpenSans-Light-webfont.woff') format('woff'),
+         url('/fonts/OpenSans-Light-webfont.ttf') format('truetype'),
+         url('/fonts/OpenSans-Light-webfont.svg#OpenSansLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansLightItalic';
+    src: url('/fonts/OpenSans-LightItalic-webfont.eot');
+    src: url('/fonts/OpenSans-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/OpenSans-LightItalic-webfont.woff') format('woff'),
+         url('/fonts/OpenSans-LightItalic-webfont.ttf') format('truetype'),
+         url('/fonts/OpenSans-LightItalic-webfont.svg#OpenSansLightItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('/fonts/OpenSans-Regular-webfont.eot');
+    src: url('/fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('/fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('/fonts/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansItalic';
+    src: url('/fonts/OpenSans-Italic-webfont.eot');
+    src: url('/fonts/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/OpenSans-Italic-webfont.woff') format('woff'),
+         url('/fonts/OpenSans-Italic-webfont.ttf') format('truetype'),
+         url('/fonts/OpenSans-Italic-webfont.svg#OpenSansItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansSemibold';
+    src: url('/fonts/OpenSans-Semibold-webfont.eot');
+    src: url('/fonts/OpenSans-Semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/OpenSans-Semibold-webfont.woff') format('woff'),
+         url('/fonts/OpenSans-Semibold-webfont.ttf') format('truetype'),
+         url('/fonts/OpenSans-Semibold-webfont.svg#OpenSansSemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansSemiboldItalic';
+    src: url('OpenSans-SemiboldItalic-webfont.eot');
+    src: url('OpenSans-SemiboldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('OpenSans-SemiboldItalic-webfont.woff') format('woff'),
+         url('OpenSans-SemiboldItalic-webfont.ttf') format('truetype'),
+         url('OpenSans-SemiboldItalic-webfont.svg#OpenSansSemiboldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansBold';
+    src: url('OpenSans-Bold-webfont.eot');
+    src: url('OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('OpenSans-Bold-webfont.woff') format('woff'),
+         url('OpenSans-Bold-webfont.ttf') format('truetype'),
+         url('OpenSans-Bold-webfont.svg#OpenSansBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansBoldItalic';
+    src: url('OpenSans-BoldItalic-webfont.eot');
+    src: url('OpenSans-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('OpenSans-BoldItalic-webfont.woff') format('woff'),
+         url('OpenSans-BoldItalic-webfont.ttf') format('truetype'),
+         url('OpenSans-BoldItalic-webfont.svg#OpenSansBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansExtrabold';
+    src: url('OpenSans-ExtraBold-webfont.eot');
+    src: url('OpenSans-ExtraBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('OpenSans-ExtraBold-webfont.woff') format('woff'),
+         url('OpenSans-ExtraBold-webfont.ttf') format('truetype'),
+         url('OpenSans-ExtraBold-webfont.svg#OpenSansExtrabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansExtraboldItalic';
+    src: url('OpenSans-ExtraBoldItalic-webfont.eot');
+    src: url('OpenSans-ExtraBoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('OpenSans-ExtraBoldItalic-webfont.woff') format('woff'),
+         url('OpenSans-ExtraBoldItalic-webfont.ttf') format('truetype'),
+         url('OpenSans-ExtraBoldItalic-webfont.svg#OpenSansExtraboldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 /*
  * HTML5 Boilerplate
  *
@@ -219,13 +340,10 @@ td { vertical-align: top; }
    ========================================================================== */
 	body{
 		font-family: 'Open Sans', sans-serif;
-		/*background-image: url('/img/square_bg.png');*/
-		background-image: url('/img/gplaypattern.png');
 		background-attachment: fixed;
 		background-color: #fff;
 		font-size: 13px;
-		color: #444;
-		min-width: 1200px;
+		color: #222;
 	}
 
 	h1,h2,h3,h4{
@@ -234,14 +352,14 @@ td { vertical-align: top; }
 	}
 
 	a,a:visited{
-		color:#259271;
+		color:#126712;
 		font-weight:bold;
 		text-decoration:none;
 	}
 
 	a:hover{
 		text-decoration:underline;
-		color: #02AF88;
+		color: #126712;
 	}
 
    	/* CUSTOM FORM CONTROLS */
@@ -274,7 +392,7 @@ td { vertical-align: top; }
 		font-size:13px;
 		cursor: pointer;
 		border: none;
-		background-color:#259271;
+		background-color:#126712;
 		text-align: right;
 		color: #fff;
 		padding: 7px 15px;
@@ -287,12 +405,12 @@ td { vertical-align: top; }
 
 	input[type="button"]:hover,input[type="submit"]:hover{
 		box-shadow: none;
-	    background-color:#02AF88;
+	    background-color:#278A27;
 	}
 
 	input[type="button"]:active,input[type="submit"]:active{
 		box-shadow: inset 0 0 3px #333;
-	    background-color:#02684E;
+	    background-color:#1F421F;
 	}
 
 	select{
@@ -367,7 +485,7 @@ td { vertical-align: top; }
 
 	label{
 		font-weight: bold;
-		color: #555;
+		color: #333;
 		margin-right:5px;
 		text-transform: uppercase;
 	}
@@ -417,7 +535,7 @@ td { vertical-align: top; }
 	}
 
 	.emphasis{
-		color:#259271;
+		color:#126712;
 	}
 
 	.project_selector{
@@ -446,7 +564,7 @@ td { vertical-align: top; }
 	}
 	
 	.project_selector thead td{
-	    background-color:#259271;
+	    background-color:#126712;
 	    color:#fff;
 	    padding:5px;
 	}
@@ -467,7 +585,7 @@ td { vertical-align: top; }
 	
 	.project_selector h1{
 	    float:left;
-	    color:#259271;
+	    color:#126712;
 	}
 
 	.filter_section{
@@ -481,10 +599,10 @@ td { vertical-align: top; }
 	ul.simpleTabsNavigation { margin:-20px 10px 0 10px; padding:0; text-align:left; position: fixed; }
 	ul.simpleTabsNavigation li { list-style:none; display:inline; margin:0; padding:0; }
 	/*ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#F0F0F0; font-size:14px; text-decoration:none; color:#666;} */
-	ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#259271; font-size:14px; text-decoration:none; color:#FFF;}
-	ul.simpleTabsNavigation li a:hover { background-color:#259271; }
-	ul.simpleTabsNavigation li a.current { background:#fff; color:#259271; border-bottom:1px solid #fff; }
-	div.simpleTabsContent { border:1px solid #E0E0E0; padding:5px 15px 15px; margin-top:3px; display:none; background-color: #fff; overflow:auto; height: 379px; }
+	ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#126712; font-size:14px; text-decoration:none; color:#FFF;}
+	ul.simpleTabsNavigation li a:hover { background-color:#126712; }
+	ul.simpleTabsNavigation li a.current { background:#fff; color:#126712; border-bottom:1px solid #fff; }
+	div.simpleTabsContent { border:1px solid #E0E0E0; padding:5px 15px 15px; margin-top:3px; display:none; background-color: #fff; overflow:auto; height: 379px; border-bottom:none; }
 	div.simpleTabsContent.currentTab { display:block; }
 
 	::-webkit-scrollbar {-webkit-appearance: none; width: 8px; height: 8px;}

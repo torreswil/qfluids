@@ -1,6 +1,6 @@
 <div class="this_panel" id="geometria_pozo">
 	<h2>Hole Geometry</h2>
-	<fieldset>
+	<fieldset class="top_ribbon">
 		<table style="float:left;">
 			<tr>
 				<td class="label_m">

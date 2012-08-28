@@ -9,41 +9,42 @@
 				<table style="float:left;">
 					<tr>
 						<td>
-							<strong>SPUD DAY:</strong><br />
-							<input type="text" style="width:100px;" id="spud_data" value="<?= $project['spud_date'] ?>">
+							<strong>SPUD DAY:</strong> 
 						</td>
+						<td><input type="text" style="width:100px;margin-left:5px;" id="spud_data" value="<?= $project['spud_date'] ?>"></td>
 						<td width="25"></td>
 						<td>
-							<strong>CURRENT DATE:</strong><br />
-							<span style="text-transform:uppercase;color:#259271;font-weight:bold;display:block;float:left;height:20px;width:105px;" id="current_date"></span>
+							<strong style="float:left;">CURRENT DATE:</strong>
 						</td>
+						<td><span style="margin-left:5px; text-transform:uppercase;color:#fff;font-weight:bold;float:left;width:90px;" id="current_date"></span></td>
 						<td width="25"></td>
-						<td><strong>Report#:</strong><br /><span style="text-transform:uppercase;color:#259271;font-weight:bold;">0001</span></td>
-						<td width="25"></td>
-						<td>
-							<strong>Operadora:</strong><br />
-							<span style="text-transform:uppercase;color:#259271;font-weight:bold;"><?= $project['operator'] ?></span>
-						</td>
+						<td><strong>Report#:</strong></td>
+						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;font-weight:bold;">0001</span></td> 
 						<td width="25"></td>
 						<td>
-							<strong>Well:</strong><br />
-							<span style="text-transform:uppercase;color:#259271;font-weight:bold;"><?= $project['well_name'] ?></span>
+							<strong>Operadora:</strong>
 						</td>
+						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;font-weight:bold;"><?= $project['operator'] ?></span></td>
 						<td width="25"></td>
 						<td>
-							<strong>Rig:</strong><br />
-							<span style="text-transform:uppercase;color:#259271;font-weight:bold;"><?= $project['rig'] ?></span>
+							<strong>Well:</strong>
 						</td>
+						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;font-weight:bold;"><?= $project['well_name'] ?></span></td>
+						<td width="25"></td>
+						<td>
+							<strong>Rig:</strong> 
+						</td>
+						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;font-weight:bold;"><?= $project['rig'] ?></span></td>
 					</tr>
 				</table>
-				<div style="display:block;float:right;margin-top:6px;">
+				<div style="display:none;float:right;margin-top:6px;">
 					<input type="button" value="MENU" id="menu_btn" />
 				</div>	
 			</div>
 		</div>
 		
 		<div class="this_panel" id="welcome_panel" style="display:block;">
-			<p style="font-size:16px;" id="start_message">
+			<p id="start_message">
 				<?php if($project['spud_date'] == ''){
 					echo 'Pick a spud date to start.';
 				}else{

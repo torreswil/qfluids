@@ -1,6 +1,6 @@
 <div class="this_panel" id="propiedades_fluido">
 	<h2>Mud Properties</h2>
-	<fieldset>
+	<fieldset class="top_ribbon">
 		<table>
 			<tr>
 				<td class="label_m">

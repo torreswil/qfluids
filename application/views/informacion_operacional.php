@@ -1,6 +1,6 @@
 <div class="this_panel" id="informacion_operacional">
 	<h2>Operational Info</h2>
-	<fieldset>
+	<fieldset class="top_ribbon">
 		<table>
 			<tr>
 				<td class="label_m"><label class="emphasis">Activity:</label></td>

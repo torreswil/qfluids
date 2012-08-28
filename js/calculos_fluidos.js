@@ -1619,9 +1619,9 @@ function calculos_raw(){
 	//bitxcien
 	var bitxcien = 0;
 	if(hreporttoshow == 'powerlaw'){
-		bitxcien = (pdbit/ totalanulpow) * 100;
+		bitxcien = (pdbit/ totallossespow) * 100;
 	}else if(hreporttoshow == 'bingham'){
-		bitxcien = (pdbit / totalanulpow) * 100
+		bitxcien = (pdbit / totallossesbin) * 100;
 	}
 	completar_campo_val('bitxcien',bitxcien);
 }
