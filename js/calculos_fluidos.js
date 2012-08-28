@@ -9,6 +9,10 @@ $(function(){
 	$('#qfluids_form input[type="button"]').live('click',function(){
 		correr_calculos();
 	});
+	$('#qfluids_form input[type="radio"]').live('change',function(){
+		correr_calculos();
+		log('change');
+	});
 });
 
 //*******************************************************************************
