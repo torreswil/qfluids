@@ -9,54 +9,47 @@
 		<!-- Qmax -->
 	    <div class="simpleTabsContent">
 	    	<fieldset>
-				<table style="float:left;">
+				<table style="float:left;margin-right:20px;">	
 					<tr>
-						<td class="label_m"><label>Costo Ingeniería [hoy]</label></td><td><input type="text" style="width:165px;" disabled="disabled" name="zenginers_cost_today" id="zenginers_cost_today" /></td>
+						<td></td>
+						<td class="label_m"><label>Enginer:</label></td>
+						<td class="label_m"><label>Cost:</label></td>
+					</tr>
+					<?php for($i = 1; $i <= $project['maximun_enginers']; $i++){ ?>
+						<tr>
+							<td class="label_m"><label>Fluids Enginer <?= $i?>:</label></td>
+							<td>
+								<select style="width:179px;">
+									<option>Please select...</option>
+									<?php foreach ($enginers as $enginer) { ?>
+						        		<option value="<?= $enginer['id'] ?>" ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
+						        	<?php } ?>	
+								</select>
+							</td>
+							<td>
+								<input type="text" class="this_enginer_cost" id="cost_enginer_<?= $i ?>" style="width:100px;" value="0" />
+							</td>
+						</tr>
+					<?php } ?>
+				</table>
+				<table style="float:left;margin-top:20px;">
+					<tr>
+						<td class="label_m"><label>Enginering cost [today]:</label></td>
+						<td><input type="text" style="width:100px;" disabled="disabled" name="zenginers_cost_today" id="zenginers_cost_today" /></td>
 					</tr>
 					<tr>
 						<?php $enginers_today > $project['maximun_enginers'] ? $tocover = $project['maximun_enginers'] : $tocover = $enginers_today; ?>
-						<td class="label_m"><label># Ingenieros a reportar</label></td><td><input type="text" style="width:165px;" disabled="disabled" name="zenginers_today" id="zenginers_today" value="<?= $tocover ?>" /></td>
+						<td class="label_m"><label>Engineres to report [today]:</label></td>
+						<td><input type="text" style="width:100px;" disabled="disabled" name="zenginers_today" id="zenginers_today" value="<?= $tocover ?>" /></td>
 					</tr>
 					<tr>	
-						<td class="label_m"><label>Costo ingeniería acumulado</label></td><td><input type="text" disabled="disabled" style="width:165px;" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Ing. Fluidos 1:</label></td>
-						<td>
-							<select style="width:179px;">
-								<option>Please select...</option>
-								<?php foreach ($enginers as $enginer) { ?>
-					        		<option value="<?= $enginer['id'] ?>" ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
-					        	<?php } ?>	
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Ing. Fluidos 2:</label></td>
-						<td>
-							<select style="width:179px;">
-								<option>Please select...</option>
-								<?php foreach ($enginers as $enginer) { ?>
-					        		<option value="<?= $enginer['id'] ?>" ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
-					        	<?php } ?>	
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Ing. Fluidos 2:</label></td>
-						<td>
-							<select style="width:179px;">
-								<option>Please select...</option>
-								<?php foreach ($enginers as $enginer) { ?>
-					        		<option value="<?= $enginer['id'] ?>" ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
-					        	<?php } ?>	
-							</select>
-						</td>
+						<td class="label_m"><label>Enginering cost [accumulated]:</label></td>
+						<td><input type="text" disabled="disabled" style="width:100px;" /></td>
 					</tr>
 				</table>
 			</fieldset>
 			<fieldset>
-				<legend>Enginers</legend>
+				<legend>Enginer Report</legend>
 				<table class="datatable">
 	        		<thead>
 	        			<tr>

@@ -17,8 +17,9 @@
 				<li><a href="#mudproperties">Mud properties</a></li>
 				<li><a href="#enginers">Personal</a></li>
 			</ul>
-			<input type="button" value="Apply & Reload">
-			<a href="#cancel" id="link_cancel_settings">Cancel</a>
+			<p>No olvidar: este boton debe ser siempre cancelar a menos que se haga un cambio en la configuración (se convierte en reload project).</p>
+			<input type="button" value="Reload Project & Close">
+			<a href="#cancel" id="link_cancel_settings" style="display:block;float:left;width:100%;margin-top:15px;">Cancel</a>
 		</div>
 		<div class="content">
 			<div class="config_panel" id="general" style="display:block;">
