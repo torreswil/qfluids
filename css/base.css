@@ -353,7 +353,7 @@ td { vertical-align: top; }
 
 	a,a:visited{
 		color:#039a7b;
-		font-weight:bold;
+		font-family: 'OpenSansSemibold', Arial, sans-serif;
 		text-decoration:none;
 	}
 

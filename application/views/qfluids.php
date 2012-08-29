@@ -16,25 +16,25 @@
 						<td>
 							<strong style="float:left;">CURRENT DATE:</strong>
 						</td>
-						<td><span style="margin-left:5px; text-transform:uppercase;color:#fff;font-weight:bold;float:left;width:90px;" id="current_date"></span></td>
+						<td><span style="margin-left:5px; text-transform:uppercase;color:#fff;float:left;width:90px;" id="current_date"></span></td>
 						<td width="25"></td>
 						<td><strong>Report#:</strong></td>
-						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;font-weight:bold;">0001</span></td> 
+						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;">0001</span></td> 
 						<td width="25"></td>
 						<td>
 							<strong>Operadora:</strong>
 						</td>
-						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;font-weight:bold;"><?= $project['operator'] ?></span></td>
+						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;"><?= $project['operator'] ?></span></td>
 						<td width="25"></td>
 						<td>
 							<strong>Well:</strong>
 						</td>
-						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;font-weight:bold;"><?= $project['well_name'] ?></span></td>
+						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;"><?= $project['well_name'] ?></span></td>
 						<td width="25"></td>
 						<td>
 							<strong>Rig:</strong> 
 						</td>
-						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;font-weight:bold;"><?= $project['rig'] ?></span></td>
+						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;"><?= $project['rig'] ?></span></td>
 					</tr>
 				</table>
 				<div style="display:none;float:right;margin-top:6px;">
