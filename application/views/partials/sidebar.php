@@ -23,7 +23,7 @@
 		</ul>
 	</li>
 </ul>
-
+<input type="button" value="MENU" id="menu_btn" />
 <div id="qmax_logo">
 	<img src="/img/qmax_logo.png" />
 </div>
