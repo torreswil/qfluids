@@ -66,12 +66,14 @@ $(function(){
 		e.preventDefault();
 		var target = $(this).attr('href');
 		
-		if($(this).hasClass('pop_up')){
 
-		}else{
+		if(!$(this).hasClass('pop_up')){
 			$('.this_panel').hide();
 			$(target).show();
-			correr_calculos();	
+			correr_calculos();
+
+			$('.nav_links a').removeClass('active');
+			$(this).addClass('active');
 		}
 		
 

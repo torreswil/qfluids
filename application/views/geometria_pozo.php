@@ -1,4 +1,4 @@
-<div class="this_panel" id="geometria_pozo">
+<div class="this_panel plusribbon" id="geometria_pozo">
 	<h2>Hole Geometry</h2>
 	<fieldset class="top_ribbon">
 		<table style="float:left;">
@@ -27,7 +27,7 @@
 	      <li><a href="#">Drill String</a></li>
 	      <li><a href="#">Hydraulics</a></li>
 	    </ul>
-	    <div class="simpleTabsContent" style="height:315px;">
+	    <div class="simpleTabsContent">
 			<!-- CASING -->
 			<fieldset>
 				<table id="casing_table">
@@ -195,7 +195,7 @@
 				</table>
 			</fieldset>
         </div>
-	    <div class="simpleTabsContent" style="height:315px;">
+	    <div class="simpleTabsContent">
 	    		<!-- HOLE -->
 				<fieldset>
 					<table style="float:left;">
@@ -279,7 +279,7 @@
 				</fieldset>
 			
 	    </div>
-        <div class="simpleTabsContent" style="height:315px;">
+        <div class="simpleTabsContent">
         		<!-- DRILL STRING -->
 				<table>
 					<tr>

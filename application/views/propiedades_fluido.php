@@ -1,4 +1,4 @@
-<div class="this_panel" id="propiedades_fluido">
+<div class="this_panel plusribbon" id="propiedades_fluido">
 	<h2>Mud Properties</h2>
 	<fieldset class="top_ribbon">
 		<table>
@@ -18,7 +18,7 @@
 	      <li><a href="#">Rheology</a></li>
 	      <li><a href="#">Solids math</a></li>
 	    </ul>
-	    <div class="simpleTabsContent" style="height:315px;">
+	    <div class="simpleTabsContent">
 			<fieldset>
 				<table>
 					<tr>
@@ -276,7 +276,7 @@
 				</table>
 			</fieldset>    
 	    </div>
-	    <div class="simpleTabsContent" style="height:315px;">
+	    <div class="simpleTabsContent">
 			<table style="width:100%;">
 				<tr>
 					<td style="width:380px;">
@@ -445,7 +445,7 @@
 				</tr>
 			</table>
 	    </div>
-	    <div class="simpleTabsContent" style="height:315px;">
+	    <div class="simpleTabsContent">
 	    	<table style="width:100%;">
 				<tr>
 					<td style="width:400px;">

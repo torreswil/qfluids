@@ -7,7 +7,7 @@
 	    </ul>
 	  
 		<!-- Qmax -->
-	    <div class="simpleTabsContent" style="height:440px;">
+	    <div class="simpleTabsContent">
 	    	<fieldset>
 				<table style="float:left;">
 					<tr>

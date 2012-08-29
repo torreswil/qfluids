@@ -1,4 +1,4 @@
-<div class="this_panel" id="informacion_operacional">
+<div class="this_panel plusribbon" id="informacion_operacional">
 	<h2>Operational Info</h2>
 	<fieldset class="top_ribbon">
 		<table>
@@ -18,7 +18,7 @@
 	      	<li><a href="#">Drilling Parameters</a></li>
 	      	<li><a href="#">Survey</a></li>
 	    </ul>
-	    <div class="simpleTabsContent" style="height:315px;">
+	    <div class="simpleTabsContent">
 	    	<table style="width:100%;">
 				<tr>
 					<td style="width:50%;">
@@ -110,7 +110,7 @@
 				</tr>
 			</table>
 	    </div>
-	    <div class="simpleTabsContent" style="height:315px;">
+	    <div class="simpleTabsContent">
 	    	<table>
 	    		<tr>
 	    			<td style="width:50%">
@@ -274,7 +274,7 @@
 	    		</tr>
 	    	</table>
 	    </div>
-	    <div class="simpleTabsContent" style="height:315px;">
+	    <div class="simpleTabsContent">
 	    	<table>
 	    		<tr>
 	    			<td class="label_m"><label>Activity</label></td>
@@ -524,7 +524,7 @@
 	    		</tr>
 	    	</table>	
 	    </div>
-	    <div class="simpleTabsContent" style="height:315px;">
+	    <div class="simpleTabsContent">
 	    	<table>
 	    		<tr>
 	    			<td style="width:450px;">
@@ -582,7 +582,7 @@
 	    		</tr>
 	    	</table>
 	    </div>
-	    <div class="simpleTabsContent" style="height:315px;">
+	    <div class="simpleTabsContent">
 	    	<fieldset>
 					<table style="float:left;">
 						<tr>

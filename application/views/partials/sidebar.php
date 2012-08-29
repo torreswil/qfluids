@@ -23,3 +23,7 @@
 		</ul>
 	</li>
 </ul>
+
+<div id="qmax_logo">
+	<img src="/img/qmax_logo.png" />
+</div>

@@ -15,25 +15,40 @@
 			right 		: 0;
 			bottom 		: 0;
 			left 		: 0;
-			background-image: url('/img/green_dots.png');
+			//background-image: url('/img/green_dots.png');
+			background-image: url('http://subtlepatterns.com/patterns/tasky_pattern.png');
 			background-repeat: repeat;
-			box-shadow: inset 0 0 20px #000;
+			box-shadow: inset 0 0 10px #000;
 			font-family: 'OpenSansRegular', Arial, sans-serif;
 
+			#qmax_logo{
+				background-color: #fff;
+				padding: 10px;
+				position: absolute;
+				bottom: 24px;
+				right: 24px;
+				box-shadow: 0 0 10px #000;
+				border-radius: 0.2em;
+				img{
+					width: 100px;
+				}
+			}
+
 			.app_logo{
-				float: left;
+				float: right;
 				height:35px - 12px;
-				margin-left: 12px;
+				margin-right: 24px;
 				margin-top: 12px;
+				text-align: right;
 			}
 
 			h2{
-				font-size: 16px;
+				font-size: 12px;
 				color:#c90;
 				font-weight: normal;
 				float: left;
 				display: block;
-				width: 215px - 12px;
+				width: 215px - 24px;
 				margin-bottom:15px;
 				margin-top:12px;
 			}
@@ -43,13 +58,14 @@
 				margin:0;
 				padding:0 0 0 0;
 				float: left;
-				width: 215px - 12px;
-				margin-left: 12px;
+				width: 215px - 24px;
+				margin-right: 24px;
 				display: none;
+				text-align: right;
 
 				li{
 					display: block;
-					width:215px - 12px;
+					width:215px - 24px;
 					margin-bottom:10px;
 
 					ul{
@@ -58,6 +74,13 @@
 
 					a{
 						color:#fff;
+						&:hover{
+							text-decoration: none;
+						}
+					}
+
+					a.active{
+						color:#c90;
 					}
 				}
 			}
@@ -79,17 +102,20 @@
 				right: 0px;
 				left: 0px;
 				height: 38px;
-				background-image: url('/img/green_dots.png');
+				//background-image: url('/img/green_dots.png');
+				background-image: url('http://subtlepatterns.com/patterns/tasky_pattern.png');
 				font-family: 'OpenSansRegular', Arial, sans-serif;
 
 				#project_info{
 					float: left;
 					margin: 7px 12px 0 7px;
+					width: 994px;
 				}
 
 				#project_info strong{
 					text-transform: uppercase;
 					color:#c90;
+					font-weight: normal;
 				}
 
 				#project_info td{
@@ -109,9 +135,11 @@
 				float: left;
 				margin-top: 38px;
 				width: 100%;
+				font-family: 'OpenSansRegular', Arial, sans-serif;
 
 				#start_message{
-					font-size:16px;font-family: 'OpenSansSemibold', Arial, sans-serif;
+					font-size:16px;
+					font-family: 'OpenSansSemibold', Arial, sans-serif;
 					width: 400px;
 					margin: 0 auto;
 					padding:20px;
@@ -125,18 +153,19 @@
 					color:#fff;
 					margin-bottom: 20px;
 					font-family: 'OpenSansRegular', Arial, sans-serif;
-					background-color: #126712;
+					background-color: #039a7b;
 					height: 31px;
 					padding: 7px 0 0 7px;
 				}
 
 				.top_ribbon{
-					background-color: #004623;
-					color:#fff;
+					background-color: #f3f3f3;
+					color:#363232;
+					border:1px solid #ddd;
 					margin:10px;
 
 					label{
-						color:#fff;
+						color:#363232;
 					}
 				}
 
@@ -187,12 +216,12 @@
 			width:365px;
 		    float: left;
 		    padding:20px;
-		    border:2px solid #126712;
-		    box-shadow: 0 0 25px 5px #555;
+		    border:1px solid #ccc;
+		    box-shadow: 0 0 25px 5px #999;
 		
 
 			h5{
-				color:#126712;
+				color:#039a7b;
 				font-size: 18px;
 				margin: 0 0 20px 0;
 			}
@@ -252,7 +281,7 @@
 	background-color: #fff;
 	width: 900px;
 	overflow: auto;
-	border:2px solid #126712;
+	border:1px solid #999;
 	box-shadow: 0 0 25px 5px #555;
 	padding-bottom: 20px;
 	margin: 0 auto;
@@ -269,7 +298,7 @@
 		display: block;
 		float: left;
 		margin:0 0 0 20px;
-		color:#126712;
+		color:#039a7b;
 	}
 
 	.realcontent{

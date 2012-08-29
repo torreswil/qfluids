@@ -352,14 +352,14 @@ td { vertical-align: top; }
 	}
 
 	a,a:visited{
-		color:#126712;
+		color:#039a7b;
 		font-weight:bold;
 		text-decoration:none;
 	}
 
 	a:hover{
 		text-decoration:underline;
-		color: #126712;
+		color: #039a7b;
 	}
 
    	/* CUSTOM FORM CONTROLS */
@@ -392,7 +392,7 @@ td { vertical-align: top; }
 		font-size:13px;
 		cursor: pointer;
 		border: none;
-		background-color:#126712;
+		background-color:#039a7b;
 		text-align: right;
 		color: #fff;
 		padding: 7px 15px;
@@ -405,12 +405,12 @@ td { vertical-align: top; }
 
 	input[type="button"]:hover,input[type="submit"]:hover{
 		box-shadow: none;
-	    background-color:#278A27;
+	    background-color:#09CCA4;
 	}
 
 	input[type="button"]:active,input[type="submit"]:active{
 		box-shadow: inset 0 0 3px #333;
-	    background-color:#1F421F;
+	    background-color:#0A3A30;
 	}
 
 	select{
@@ -454,7 +454,7 @@ td { vertical-align: top; }
 	}
 
 	fieldset{
-	    border:1px solid #ddd;
+	    border:1px solid #f1f1f1;
 	    padding:10px;
 	    background-color: #fff;
 	    margin-top: 10px;
@@ -466,7 +466,7 @@ td { vertical-align: top; }
 	
 	legend{
 	    padding:4px;
-	    font-weight: bold;
+	    font-family: 'OpenSansSemibold', Arial, sans-serif;
 	    display: block;
 	    background-color: #fff;
 	    text-transform: uppercase;
@@ -484,10 +484,10 @@ td { vertical-align: top; }
 	}
 
 	label{
-		font-weight: bold;
 		color: #333;
 		margin-right:5px;
 		text-transform: uppercase;
+		font-family: 'OpenSansSemibold', Arial, sans-serif;
 	}
 
 	/* PANTALLA DE LOGIN */
@@ -535,7 +535,7 @@ td { vertical-align: top; }
 	}
 
 	.emphasis{
-		color:#126712;
+		color:#039a7b;;
 	}
 
 	.project_selector{
@@ -564,7 +564,7 @@ td { vertical-align: top; }
 	}
 	
 	.project_selector thead td{
-	    background-color:#126712;
+	    background-color:#039a7b;
 	    color:#fff;
 	    padding:5px;
 	}
@@ -585,7 +585,7 @@ td { vertical-align: top; }
 	
 	.project_selector h1{
 	    float:left;
-	    color:#126712;
+	    color:#039a7b;
 	}
 
 	.filter_section{
@@ -596,13 +596,31 @@ td { vertical-align: top; }
 
 	/*SIMPLETABS*/
 	div.simpleTabs { padding:20px 0 0 0; margin-top:20px; }
-	ul.simpleTabsNavigation { margin:-20px 10px 0 10px; padding:0; text-align:left; position: fixed; }
+	ul.simpleTabsNavigation { margin:-20px 10px 0 10px; padding:0; text-align:left; position: fixed; z-index: 2; }
 	ul.simpleTabsNavigation li { list-style:none; display:inline; margin:0; padding:0; }
 	/*ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#F0F0F0; font-size:14px; text-decoration:none; color:#666;} */
-	ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#126712; font-size:14px; text-decoration:none; color:#FFF;}
-	ul.simpleTabsNavigation li a:hover { background-color:#126712; }
-	ul.simpleTabsNavigation li a.current { background:#fff; color:#126712; border-bottom:1px solid #fff; }
-	div.simpleTabsContent { border:1px solid #E0E0E0; padding:5px 15px 15px; margin-top:3px; display:none; background-color: #fff; overflow:auto; height: 379px; border-bottom:none; }
+	ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#039a7b; font-size:14px; text-decoration:none; color:#FFF;}
+	ul.simpleTabsNavigation li a:hover { background-color:#039a7b; }
+	ul.simpleTabsNavigation li a.current { background:#fff; color:#039a7b; border-bottom:1px solid #fff; }
+	
+	div.simpleTabsContent { 
+		border:1px solid #E0E0E0; 
+		padding:5px 15px 15px; 
+		margin-top:5px; 
+		display:none; 
+		background-color: #fff; 
+		overflow:auto; 
+		border-bottom:none;
+		position: absolute;
+		bottom: 0;
+		top:116px;
+		right: 0;
+		left: 0; 
+	}
+
+	.plusribbon div.simpleTabsContent {
+		top:182px;
+	}
 	div.simpleTabsContent.currentTab { display:block; }
 
 	::-webkit-scrollbar {-webkit-appearance: none; width: 8px; height: 8px;}
