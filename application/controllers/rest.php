@@ -125,7 +125,7 @@ class Rest extends CI_Controller {
 	//PERSONAL REGISTRATION FUNCTIONS
 	public function register_enginer(){
 		//1. verify the enginer exists and get its ID
-		$enginer = $this->Api->get_where('enginers',array('identification'=>$_POST['identification'],'project'=>$_POST['project']));
+		$enginer = $this->Api->get_where('enginers',array('identification'=>$_POST['identification'],'project'=>$_POST['project'],'active'=>1));
 		if(count($enginer) == 1){
 			$data = array(
 				'enginer' 	=> $enginer[0]['id'],
@@ -159,12 +159,12 @@ class Rest extends CI_Controller {
 
 	public function new_enginer(){
 		if(count($_POST) > 0){
-			$match = $this->Api->get_where('enginers',array('identification' => $_POST['identification'], 'project' => $_POST['project']));
+			$match = $this->Api->get_where('enginers',array('identification' => $_POST['identification'], 'project' => $_POST['project'], 'active' => 1));
 			if(count($match) > 0){
 				$response = array('message'=>'already_created');
 			}else{
 				$this->Api->create('enginers',$_POST);
-				$enginers = $this->Api->get_where('enginers',array('project' => $_POST['project']));
+				$enginers = $this->Api->get_where('enginers',array('project' => $_POST['project'], 'active' => 1));
 				$response = array('message'=>'success','enginers'=>$enginers);
 			}
 
@@ -172,10 +172,17 @@ class Rest extends CI_Controller {
 		}
 	}
 
-	public function update_enginer(){
+	public function save_project_settings(){
 		if(count($_POST) > 0){
-			$this->Api->update('enginers',$_POST,$_POST['id']);
-			echo json_encode(array('message'=>'updated'));
+			$this->Api->update('projects',$_POST,$this->project_id);
+			echo json_encode(array('message'=>'project_updated'));
+		}	
+	}
+
+	public function remove_enginer(){
+		if(count($_POST) > 0){
+			$this->Api->delete('enginers',$_POST['id']);
+			echo json_encode(array('message'=>'deactivated'));
 		}
 	}
 

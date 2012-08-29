@@ -1339,20 +1339,17 @@ $(function(){
 					alert('This enginer is already created');
 				}else{
 					var enginers_html = '';
-					$(r.enginers).each(function(){
-						enginers_html = enginers_html +'<form id="edit_enginer_'+ this.id +'">';	
-			        	enginers_html = enginers_html +	'<tr>';
-			        	enginers_html = enginers_html +		'<td><input name="name" type="text" value="'+ this.name +'" /></td>';
-			        	enginers_html = enginers_html +		'<td><input name="lastname" type="text" value="'+ this.lastname +'" /></td>';
+					$(r.enginers).each(function(){	
+			        	enginers_html = enginers_html +	'<tr id="this_enginer_'+ this.id +'">';
+			        	enginers_html = enginers_html +		'<td><input name="name" type="text" value="'+ this.name +'" disabled="disabled" /></td>';
+			        	enginers_html = enginers_html +		'<td><input name="lastname" type="text" value="'+ this.lastname +'" disabled="disabled" /></td>';
 			        	enginers_html = enginers_html +		'<td><input name="identification" type="text" value="'+ this.identification +'" disabled="disabled" /></td>';
-			        	enginers_html = enginers_html +		'<td class="label_m">';
-			        	enginers_html = enginers_html +			'<a href="#update" id="link_update_enginer_'+ this.id +'">Update</a>';
-			        	enginers_html = enginers_html +			'<input type="hidden" name="id" value="'+ this.id +'" />';
-			        	enginers_html = enginers_html +		'</td>';
+			        	enginers_html = enginers_html +		'<td><a href="#delete_enginer" id="delete_enginer_'+ this.id +'" class="remove_enginer">Remove</a></td>';
 			        	enginers_html = enginers_html +	'</tr>';
-			        	enginers_html = enginers_html +'</form>';
 					});
-					$('#form_new_enginer input').val('');
+					$('#form_new_enginer input[name="name"]').val('');
+					$('#form_new_enginer input[name="lastname"]').val('');
+					$('#form_new_enginer input[name="identification"]').val('');
 					$('#tbody_enginer_list').html(enginers_html);		
 				}
 			},'json');	
@@ -1360,31 +1357,39 @@ $(function(){
 	});	
 
 
-	//update an enginer
-	$('#tbody_enginer_list a').live('click',function(e){
+	//remove an enginer
+	$('.remove_enginer').live('click',function(e){
 		e.preventDefault();
 		var id = $(this).attr('id');
-		id = id.split('link_update_enginer_');
+		id = id.split('delete_enginer_');
 		id = id[1];
 
-		var eqty = 0;
-		$('#edit_enginer_'+id+' input').each(function(){
-			if($(this).val() == ''){
-				eqty = eqty + 1;
-			}
-		});
+		var data = {'id':id};
 
-		if(eqty > 0){
-			alert('Some fields are empty. Please verify and try again.');
-		}else{
-			var data = $('#edit_enginer_'+id).serialize();
-			$.post('/rest/update_enginer',data,function(r){
-				if(r.message == 'updated'){
-					alert('Enginer updated.');
+		$.post('/rest/remove_enginer',data,function(r){
+			if(r.message == 'deactivated'){
+				$('#this_enginer_'+id).remove();
+			}
+		},'json');
+	});
+
+	//save enginer settings
+	$('#save_enginer_settings').click(function(e){
+		e.preventDefault();
+		var maximun_enginers = $('#maximun_enginers').val();
+		if(!isNaN(maximun_enginers)){
+			var data = {'maximun_enginers':maximun_enginers};
+			$.post('/rest/save_project_settings',data,function(r){
+				if(r.message == 'project_updated'){
+					alert('Enginer settings saved');
+				}else{
+					alert('An error has ocurred. Please try again, or ask the system administrator for help.');
 				}
-			},'json');	
+			},'json');
+		}else{
+			alert('Some fields are wrong. Please verify and try again');
 		}
-	})
+	});
 
 
 	/* CONFIG PANEL */
@@ -1471,11 +1476,9 @@ $(function(){
 
 		}
 	});
-});
-
-
-//VENENOS TEMPORALES
-$('#link_temporal_ocultar_config').click(function(e){
-	e.preventDefault();
-	$('#project_settings').hide();
+	//cancelar el cudro de configuracion
+	$('#link_cancel_settings').click(function(e){
+		e.preventDefault();
+		$('#project_settings').hide();
+	});
 });

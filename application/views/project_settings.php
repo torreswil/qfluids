@@ -15,9 +15,10 @@
 				<li><a href="#cse">Control Solids Eq.</a></li>
 				<li><a href="#tanks">Tanks</a></li>
 				<li><a href="#mudproperties">Mud properties</a></li>
-				<li><a href="#enginers">Enginers</a></li>
+				<li><a href="#enginers">Personal</a></li>
 			</ul>
-			<input type="button" value="Close & Reload">
+			<input type="button" value="Apply & Reload">
+			<a href="#cancel" id="link_cancel_settings">Cancel</a>
 		</div>
 		<div class="content">
 			<div class="config_panel" id="general" style="display:block;">
@@ -417,7 +418,7 @@
 				<h2>Mud Properties</h2>
 			</div>
 			<div class="config_panel" id="enginers">
-				<h2>Enginers</h2>
+				<h2>Personal Settings</h2>
 	        	<fieldset>
 	        		<legend>Report</legend>
 	        		<form id="enginer_configuration">
@@ -434,14 +435,6 @@
 		        						<option value="4" <?php $project['maximun_enginers'] == '4'? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>>4</option>
 		        					</select>
 		        				</td>
-		        			</tr>
-		        			<tr>
-		        				<td class="label_m"><label>Daily rate:</label></td>
-		        				<td><input type="text" value="<?= $project['enginer_cost'] ?>" name="enginer_cost" id="enginer_cost" /></td>
-		        			</tr>
-		        			<tr>
-		        				<td></td>
-		        				<td><input type="button" value="Save" /></td>
 		        			</tr>
 		        		</table>
 	        		</form>
@@ -482,34 +475,25 @@
 		        				<td class="label_m"><label>First:</label></td>
 		        				<td class="label_m"><label>Last:</label></td>
 		        				<td class="label_m"><label>Identification:</label></td>
-		        				<td></td>
 		        			</tr>
 		        		</thead>
 			        	<tbody id="tbody_enginer_list">
 				        	<?php foreach ($enginers as $enginer) {
 				        		?>
-						        	<form id="edit_enginer_<?= $enginer['id'] ?>">	
-						        		<tr>
-						        			<td><input name="name" type="text" value="<?= $enginer['name'] ?>" /></td>
-						        			<td><input name="lastname" type="text" value="<?= $enginer['lastname'] ?>" /></td>
-						        			<td><input name="identification" type="text" value="<?= $enginer['identification'] ?>" disabled="disabled" /></td>
-						        			<td class="label_m">
-						        				<a href="#update" id="link_update_enginer_<?= $enginer['id'] ?>">Update</a>
-						        				<input type="hidden" value="<?= $enginer['id'] ?>" name="id" />
-						        			</td>
-						        		</tr>
-						        	</form>
+					        		<tr id="this_enginer_<?= $enginer['id'] ?>">
+					        			<td><input name="name" type="text" value="<?= $enginer['name'] ?>" disabled="disabled" /></td>
+					        			<td><input name="lastname" type="text" value="<?= $enginer['lastname'] ?>" disabled="disabled" /></td>
+					        			<td><input name="identification" type="text" value="<?= $enginer['identification'] ?>" disabled="disabled" /></td>
+					        			<td><a href="#delete_enginer" id="delete_enginer_<?= $enginer['id'] ?>" class="remove_enginer">Remove</a></td>
+					        		</tr>
 				        		<?php
 				        	}
 				        	?>
 			        	</tbody>
 		        	</table>
 	        	</fieldset>	
+	        	<input type="button" value="Update Settings" style="margin-top:20px;" id="save_enginer_settings" />
 			</div>
 		</div>
-
-		
-		<a href="#" id="link_temporal_ocultar_config">ocultar</a>
 	</div>
 </div>
-<?php // <div id="name_list"></div> ?>
