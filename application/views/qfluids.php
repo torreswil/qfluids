@@ -37,7 +37,7 @@
 						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;"><?= $project['rig'] ?></span></td>
 					</tr>
 				</table>
-				<div style="display:none;float:right;margin-top:6px;">
+				<div style="float:right;margin-top:6px;">
 					<input type="button" value="MENU" id="menu_btn" />
 				</div>	
 			</div>
