@@ -68,6 +68,10 @@
 				margin-top:12px;
 			}
 
+			.navigation_wrapper{
+				display: none;
+			}
+
 			ul{
 				list-style:none;
 				margin:0;
@@ -75,7 +79,6 @@
 				float: left;
 				width: 215px - 24px;
 				margin-right: 24px;
-				display: none;
 				text-align: right;
 
 				li{
@@ -162,8 +165,8 @@
 					width: 400px;
 					margin: 0 auto;
 					padding:20px;
-					background-color: #F5FFF7;
-					border: 1px solid #B0F1A7;
+					background-color: #fff;
+					border: 1px solid #ececec;
 					box-shadow: 0 0 15px 5px #eee;
 				}
 
@@ -349,14 +352,15 @@
 	position:absolute;
     top:0;
     right:0;
-    left:0;
+    left:50px;
     height: 100%;
     z-index:999;
     float: left;
     background-color: #fff;
+    background-image: url('/img/square_bg.png');
+    box-shadow: 0 0 25px 5px #000;
 
     .op_content{
-		background-color: #fff;
 		width:930px;
 		margin:20px auto 0 20px;
 

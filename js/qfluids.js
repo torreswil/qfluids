@@ -1,7 +1,7 @@
 $(function(){
 	//show the sidebar only if the spud_date is defined
 	if($('#spud_data').val() !== ''){
-		$('.sidebar ul').show();
+		$('.navigation_wrapper').slideDown('fast');
 	}
 
 	$('#spud_data').datepicker({
@@ -10,11 +10,11 @@ $(function(){
 
 	$('#spud_data').change(function(){
 		if($(this).val() !== ''){
-			$('.sidebar ul').show();
+			$('.navigation_wrapper').slideDown('fast');
 			$('#current_date').html($(this).val());
 			$('#start_message').html('Select a data input form from the sidebar to continue.');
 		}else{
-			$('.sidebar ul').hide();
+			$('.navigation_wrapper').hide();
 			$('#current_date').html('');
 			$('#start_message').html('Pick a spud date to start.');
 		}
