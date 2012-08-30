@@ -2,7 +2,9 @@
 	<div class="sidebar">
 		<?php $this->load->view('partials/sidebar'); ?>
 	</div>
-	
+	<div class="toolbar">
+		lalala
+	</div>
 	<div class="panels">
 		<div class="project_info_wrapper">
 			<div id="project_info">
@@ -11,30 +13,30 @@
 						<td>
 							<strong>SPUD DAY:</strong> 
 						</td>
-						<td><input type="text" style="width:100px;margin-left:5px;" id="spud_data" value="<?= $project['spud_date'] ?>"></td>
+						<td><input type="text" style="width:100px;margin-left:5px;" id="spud_data" value="<?= $project['spud_date'] ?>" class="datepicker"></td>
 						<td width="25"></td>
 						<td>
 							<strong style="float:left;">CURRENT DATE:</strong>
 						</td>
-						<td><span style="margin-left:5px; text-transform:uppercase;color:#fff;float:left;width:90px;" id="current_date"></span></td>
+						<td><span style="margin-left:5px; text-transform:uppercase;float:left;width:90px;" id="current_date"></span></td>
 						<td width="25"></td>
 						<td><strong>Report#:</strong></td>
-						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;">0001</span></td> 
+						<td><span style="margin-left:5px;text-transform:uppercase;">0001</span></td> 
 						<td width="25"></td>
 						<td>
 							<strong>Operadora:</strong>
 						</td>
-						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;"><?= $project['operator'] ?></span></td>
+						<td><span style="margin-left:5px;text-transform:uppercase;"><?= $project['operator'] ?></span></td>
 						<td width="25"></td>
 						<td>
 							<strong>Well:</strong>
 						</td>
-						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;"><?= $project['well_name'] ?></span></td>
+						<td><span style="margin-left:5px;text-transform:uppercase;"><?= $project['well_name'] ?></span></td>
 						<td width="25"></td>
 						<td>
 							<strong>Rig:</strong> 
 						</td>
-						<td><span style="margin-left:5px;text-transform:uppercase;color:#fff;"><?= $project['rig'] ?></span></td>
+						<td><span style="margin-left:5px;text-transform:uppercase;"><?= $project['rig'] ?></span></td>
 					</tr>
 				</table>
 			</div>

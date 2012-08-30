@@ -4,7 +4,7 @@ $(function(){
 		$('.navigation_wrapper').slideDown('fast');
 	}
 
-	$('#spud_data').datepicker({
+	$('.datepicker').datepicker({
 		'dateFormat': 'yy-mm-dd'
 	});
 
@@ -35,8 +35,10 @@ $(function(){
 	$('.menu_option').click(function(e){
 		e.preventDefault();
 		var target = $(this).attr('href');
-		$('#menu_overlay').hide();
-		$(target).show();
+		$('#menu_overlay').fadeOut('normal',function(){
+			$(target).slideDown('normal');	
+		});
+		
 	});
 
 	//mostrar la hidraulica
@@ -1338,12 +1340,14 @@ $(function(){
 			        	enginers_html = enginers_html +		'<td><input name="name" type="text" value="'+ this.name +'" disabled="disabled" /></td>';
 			        	enginers_html = enginers_html +		'<td><input name="lastname" type="text" value="'+ this.lastname +'" disabled="disabled" /></td>';
 			        	enginers_html = enginers_html +		'<td><input name="identification" type="text" value="'+ this.identification +'" disabled="disabled" /></td>';
+			        	enginers_html = enginers_html +		'<td><input name="rate" type="text" value="'+ this.rate +'" disabled="disabled" /></td>';
 			        	enginers_html = enginers_html +		'<td><a href="#delete_enginer" id="delete_enginer_'+ this.id +'" class="remove_enginer">Remove</a></td>';
 			        	enginers_html = enginers_html +	'</tr>';
 					});
 					$('#form_new_enginer input[name="name"]').val('');
 					$('#form_new_enginer input[name="lastname"]').val('');
 					$('#form_new_enginer input[name="identification"]').val('');
+					$('#form_new_enginer input[name="rate"]').val('');
 					$('#tbody_enginer_list').html(enginers_html);		
 				}
 			},'json');	
@@ -1473,6 +1477,6 @@ $(function(){
 	//cancelar el cudro de configuracion
 	$('#link_cancel_settings').click(function(e){
 		e.preventDefault();
-		$('#project_settings').hide();
+		$('#project_settings').slideUp();
 	});
 });

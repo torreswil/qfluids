@@ -410,7 +410,7 @@
 	        		</table>
 	        	</fieldset>
 
-	        	<input type="button" value="Update Equipment" style="margin-top:20px;margin-left:815px;" id="btn_save_settings">
+	        	<input type="button" value="Update Equipment" id="btn_save_settings">
 			</div>
 			<div class="config_panel" id="tanks">
 				<h2>Tanks</h2>
@@ -429,7 +429,7 @@
 		        					<label>Maximun number of enginers to charge:</label>
 		        				</td>
 		        				<td>
-		        					<select style="width:163px;" name="maximun_enginers" id="maximun_enginers">
+		        					<select style="width:157px;" name="maximun_enginers" id="maximun_enginers">
 		        						<option value="1" <?php $project['maximun_enginers'] == '1'? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>>1</option>
 		        						<option value="2" <?php $project['maximun_enginers'] == '2'? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>>2</option>
 		        						<option value="3" <?php $project['maximun_enginers'] == '3'? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>>3</option>
@@ -450,6 +450,7 @@
 			        				<td class="label_m"><label>First:</label></td>
 			        				<td class="label_m"><label>Last:</label></td>
 			        				<td class="label_m"><label>Identification:</label></td>
+			        				<td class="label_m"><label>Daily Rate:</label></td>
 			        				<td></td>
 			        			</tr>
 		        			</thead>
@@ -458,6 +459,7 @@
 				        			<td><input type="text" name="name" /></td>
 				        			<td><input type="text" name="lastname" /></td>
 				        			<td><input type="text" name="identification" /></td>
+				        			<td><input type="text" name="rate" /></td>
 				        			<td class="label_m">
 				        				<a href="#create_enginer">Create</a>
 				        				<input type="hidden" name="project" value="<?= $project['id'] ?>" />
@@ -476,6 +478,7 @@
 		        				<td class="label_m"><label>First:</label></td>
 		        				<td class="label_m"><label>Last:</label></td>
 		        				<td class="label_m"><label>Identification:</label></td>
+		        				<td class="label_m"><label>Daily Rate:</label></td>
 		        			</tr>
 		        		</thead>
 			        	<tbody id="tbody_enginer_list">
@@ -485,6 +488,7 @@
 					        			<td><input name="name" type="text" value="<?= $enginer['name'] ?>" disabled="disabled" /></td>
 					        			<td><input name="lastname" type="text" value="<?= $enginer['lastname'] ?>" disabled="disabled" /></td>
 					        			<td><input name="identification" type="text" value="<?= $enginer['identification'] ?>" disabled="disabled" /></td>
+					        			<td><input name="rate" type="text" value="<?= $enginer['rate'] ?>" disabled="disabled" /></td>
 					        			<td><a href="#delete_enginer" id="delete_enginer_<?= $enginer['id'] ?>" class="remove_enginer">Remove</a></td>
 					        		</tr>
 				        		<?php

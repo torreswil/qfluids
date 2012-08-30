@@ -1,28 +1,24 @@
 <!-- FORMULARIO REGISTRO DE PERSONAL -->
 <div class="overlay_wrapper" id="registration_overlay">
 	<div class="overlay_dialog_wrapper">
-		<div class="overlay_dialog">
+		<div class="overlay_dialog" style="width:320px;">
 			<h5>Report your work hours:</h5>
 			<form id="registration_form">
 				<table style="margin-bottom:20px;">
 					<tr>
-						<td class="label_m"><label>Report Date:</label></td>
+						<td class="label_m"><label>Date:</label></td>
 						<td>
-							<input name="date" type="text" disabled="disabled" value="" />
+							<input name="date" type="text" value="" class="datepicker" value="<?= date('yy-mm-ddd'); ?>" style="width:120px;margin-right:0;" />
 						</td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Identification:</label></td>
-						<td><input type="text" name="identification" /></td>
+						<td><input type="text" name="identification" style="width:120px;;margin-right:0;" /></td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>Work Period:</label></td>
+						<td class="label_m" style="width:180px;"><label>Charge to operator?:</label></td>
 						<td>
-							<select style="width:163px;" name="period">
-								<option value="">Select...</option>
-								<option value="1">06:00 - 17:59</option>
-								<option value="2">18:00 - 23:59</option>
-							</select>
+							<input type="checkbox" checked="checked" value="1"> YES
 						</td>
 					</tr>
 				</table>
