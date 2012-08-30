@@ -19,15 +19,15 @@
 						<tr>
 							<td class="label_m"><label>Fluids Enginer <?= $i?>:</label></td>
 							<td>
-								<select style="width:179px;">
-									<option>Please select...</option>
+								<select style="width:179px;" class="this_enginer" id="this_enginer_<?= $i ?>">
+									<option value="">Please select...</option>
 									<?php foreach ($enginers as $enginer) { ?>
 						        		<option value="<?= $enginer['id'] ?>" ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
 						        	<?php } ?>	
 								</select>
 							</td>
 							<td>
-								<input type="text" class="this_enginer_cost" id="cost_enginer_<?= $i ?>" style="width:100px;" value="0" />
+								<input type="text" class="this_enginer_cost" id="this_enginer_cost_<?= $i ?>" style="width:100px;" value="0" />
 							</td>
 						</tr>
 					<?php } ?>

@@ -1302,13 +1302,7 @@ $(function(){
 					alert(r.enginer + ' is already registered in this workperiod.');
 					$('#registration_form input[name="identification"]').val('');
 					$('#registration_form select').val('');
-				}else if(r.message == 'success'){
-					if(parseFloat(r.enginers_today) > fval('maximun_enginers')){
-						$('#zenginers_today').val($('#maximun_enginers').val());
-					}else{
-						$('#zenginers_today').val(r.enginers_today);
-					}
-					
+				}else if(r.message == 'success'){	
 					alert(r.enginer + ' has been sucessfully registered on ' + r.timestamp);
 					$('#registration_form input[name="identification"]').val('');
 					$('#registration_form select').val('');

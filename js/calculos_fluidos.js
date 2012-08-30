@@ -74,15 +74,24 @@ function calculos_raw(){
 
 	//CALCULOS PERSONAL
 	//***********************************************
+	
+	//zenginers_today - zenginers_cost_today
+	var zenginers_today = 0;
 	var zenginers_cost_today = 0;
 
-	if(fval('zenginers_today') > fval('maximun_enginers')){
-		zenginers_cost_today = fval('enginer_cost') * fval('maximun_enginers');	
-	}else{
-		zenginers_cost_today = fval('enginer_cost') * fval('zenginers_today');	
-	}
-	
-	
+	$('.this_enginer').each(function(){
+		if($(this).val() !== ''){
+			var id = $(this).attr('id');
+			id = id.split('this_enginer_');
+			id = id[1];
+
+			zenginers_today 		= zenginers_today + 1;
+			zenginers_cost_today 	= zenginers_cost_today + fval('this_enginer_cost_'+id); 
+		}
+	});
+
+
+	completar_campo_val('zenginers_today',zenginers_today);
 	completar_campo_val('zenginers_cost_today',zenginers_cost_today);
 
 
