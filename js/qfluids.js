@@ -1290,10 +1290,15 @@ $(function(){
 		}else{
 			var data = {
 				project 		: $('#registration_form input[name="project"]').val(),
-				report			: $('#registration_form input[name="report"]').val(),
 				identification	: $('#registration_form input[name="identification"]').val(),
-				period			: $('#registration_form select[name="period"]').val()
+				date			: $('#registration_form input[name="date"]').val()
 			};
+
+			if($('#registration_form input[name="cover"]:checked').length == 1){
+				data.cover = 1
+			}else{
+				data.cover = 0	
+			}
 
 			$.post('/rest/register_enginer',data,function(r){
 				if(r.message == 'no_enginer'){
@@ -1301,7 +1306,7 @@ $(function(){
 					$('#registration_form input[name="identification"]').val('');
 					$('#registration_form select').val('');
 				}else if(r.message == 'already_registered'){
-					alert(r.enginer + ' is already registered in this workperiod.');
+					alert(r.enginer + ' is already registered in this date.');
 					$('#registration_form input[name="identification"]').val('');
 					$('#registration_form select').val('');
 				}else if(r.message == 'success'){	

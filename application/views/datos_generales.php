@@ -27,7 +27,7 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" class="this_enginer_cost" id="this_enginer_cost_<?= $i ?>" style="width:100px;" value="0" />
+								<input type="text" class="this_enginer_cost" id="this_enginer_cost_<?= $i ?>" style="width:100px;" value="0" disabled="disabled" />
 							</td>
 						</tr>
 					<?php } ?>
@@ -38,9 +38,8 @@
 						<td><input type="text" style="width:100px;" disabled="disabled" name="zenginers_cost_today" id="zenginers_cost_today" /></td>
 					</tr>
 					<tr>
-						<?php $enginers_today > $project['maximun_enginers'] ? $tocover = $project['maximun_enginers'] : $tocover = $enginers_today; ?>
 						<td class="label_m"><label>Engineres to report [today]:</label></td>
-						<td><input type="text" style="width:100px;" disabled="disabled" name="zenginers_today" id="zenginers_today" value="<?= $tocover ?>" /></td>
+						<td><input type="text" style="width:100px;" disabled="disabled" name="zenginers_today" id="zenginers_today" value="0" /></td>
 					</tr>
 					<tr>	
 						<td class="label_m"><label>Enginering cost [accumulated]:</label></td>

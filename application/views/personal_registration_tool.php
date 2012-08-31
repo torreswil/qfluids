@@ -18,7 +18,7 @@
 					<tr>
 						<td class="label_m" style="width:180px;"><label>Charge to operator?:</label></td>
 						<td>
-							<input type="checkbox" checked="checked" value="1"> YES
+							<input type="checkbox" checked="checked" name="cover" value="1" /> YES
 						</td>
 					</tr>
 				</table>

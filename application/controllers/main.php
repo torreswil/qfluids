@@ -27,7 +27,7 @@ class Main extends CI_Controller {
 			unset($_POST['method']);
 			$_POST['creation_timestamp'] 	= date('Y-m-d H:i:s');
 			$_POST['last_modified'] 		= date('Y-m-d H:i:s');;
-			$id = $this->Api->create('projects',$_POST);
+			$id 							= $this->Api->create('projects',$_POST);
 			echo json_encode($id);
 		}else{
 			$data['main_content'] 	= 'projects';
@@ -60,7 +60,6 @@ class Main extends CI_Controller {
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';
 				$data['project']				= $project_data;
-				$data['enginers_today']			= count($this->Api->get_distinct_where('reports_enginers','enginer',array('report'=>1)));
 
 				$this->load->view('partials/basic',$data);
 			}else{

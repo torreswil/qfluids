@@ -78,21 +78,25 @@ function calculos_raw(){
 	//zenginers_today - zenginers_cost_today
 	var zenginers_today = 0;
 	var zenginers_cost_today = 0;
+	$('.this_enginer').change(function(){
+		$('.this_enginer').each(function(){
+			if($(this).val() !== ''){
+				var id = $(this).attr('id');
+				id = id.split('this_enginer_');
+				id = id[1];
 
-	$('.this_enginer').each(function(){
-		if($(this).val() !== ''){
-			var id = $(this).attr('id');
-			id = id.split('this_enginer_');
-			id = id[1];
+				$('#this_enginer_cost_'+id).val($('#this_enginer_'+id+' input[name="rate"]').val());
 
-			zenginers_today 		= zenginers_today + 1;
-			zenginers_cost_today 	= zenginers_cost_today + fval('this_enginer_cost_'+id); 
-		}
+				zenginers_today 		= zenginers_today + 1;
+				zenginers_cost_today 	= zenginers_cost_today + fval('this_enginer_cost_'+id); 
+				
+				completar_campo_val('zenginers_today',zenginers_today);
+				completar_campo_val('zenginers_cost_today',zenginers_cost_today);
+			}else{
+				$('#this_enginer_cost_'+id).val(0);				
+			}
+		});	
 	});
-
-
-	completar_campo_val('zenginers_today',zenginers_today);
-	completar_campo_val('zenginers_cost_today',zenginers_cost_today);
 
 
 	//CALCULOS 'BROCA'

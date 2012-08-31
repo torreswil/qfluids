@@ -129,12 +129,12 @@ class Rest extends CI_Controller {
 		if(count($enginer) == 1){
 			$data = array(
 				'enginer' 	=> $enginer[0]['id'],
-				'report' 	=> $_POST['report'],
-				'period'	=> $_POST['period'],
-				'timestamp'	=> date('Y-m-d H:i:s')
+				'project' 	=> $_POST['project'],
+				'cover'		=> $_POST['cover'],
+				'date'		=> $_POST['date']
 			);
 
-			$match = $this->Api->get_where('reports_enginers',array('enginer'=>$data['enginer'],'report'=>$_POST['report'],'period'=>$_POST['period']));
+			$match = $this->Api->get_where('reports_enginers',array('enginer'=>$data['enginer'],'project'=>$_POST['project'],'date' => $_POST['date']));
 			if(count($match) > 0 ){
 				$response = array(
 					'enginer'	=> $enginer[0]['name'].' '.$enginer[0]['lastname'],
@@ -146,8 +146,8 @@ class Rest extends CI_Controller {
 				$response = array(
 					'enginer'			=> $enginer[0]['name'].' '.$enginer[0]['lastname'],
 					'message'			=> 'success',
-					'timestamp' 		=> $data['timestamp'],
-					'enginers_today' 	=> count($this->Api->get_distinct_where('reports_enginers','enginer',array('report'=>$_POST['report'])))
+					'timestamp' 		=> $_POST['date'],
+					'enginers_today' 	=> count($this->Api->get_distinct_where('reports_enginers','enginer',array('project'=>$_POST['project'])))
 				);	
 			}
 
