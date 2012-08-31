@@ -1,4 +1,4 @@
-<div class="app_logo" style="display:none;">
+<div class="app_logo">
 	<img src="/img/qmud_plan.png">
 </div>
 <div class="navigation_wrapper">
@@ -25,7 +25,6 @@
 		</li>
 	</ul>
 </div>
-<input type="button" value="MENU" id="menu_btn" />
-<div id="qmax_logo" style="display:none;">
+<div id="qmax_logo">
 	<img src="/img/qmax_logo.png" />
 </div>

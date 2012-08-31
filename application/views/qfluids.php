@@ -3,7 +3,15 @@
 		<?php $this->load->view('partials/sidebar'); ?>
 	</div>
 	<div class="toolbar">
-		lalala
+		<ul class="file_menu">
+			<li><a href="#new_report" title="New report"><img src="/img/icons/icon_add.png" /></a></li>
+			<li><a href="#save_report" title="Save Report"><img src="/img/icons/icon_checkmark.png" /></a></li>
+			<li><a href="#print_and_send" title="Print and Send"><img src="/img/icons/icon_paper_plane.png" /></a></li>
+			<li><a href="#search_reports" title="Search Report Archive"><img src="/img/icons/icon_magnify_glass.png" /></a></li>
+		</ul>
+		<ul class="settings_menu">
+			<li><a href="#menu" title="Menu" id="menu_btn"><img src="/img/icons/icon_list_bullets.png" /></a></li>
+		</ul>
 	</div>
 	<div class="panels">
 		<div class="project_info_wrapper">
