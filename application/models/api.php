@@ -71,6 +71,16 @@
 	    }
 
 	    /*
+		* update 			: returns void
+		* @table[string] 	: Name of the table/object you want to fetch.
+		* @data[array]		: Associative array containing the data to insert.
+		* @condition[array] : condition to get updatable records 
+	    */
+	    public function update_where($table,$data,$condition){
+	    	$this->db->where($condition)->update($table,$data);	
+	    }
+
+	    /*
 		* delete 			: returns void
 		* @table[string] 	: Name of the table/object you want to fetch.
 		* @id[int] 			: id of the object to deactive 

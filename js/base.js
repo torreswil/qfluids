@@ -26,6 +26,7 @@ $(document).ready(function(){
 		window.location = '/main/qfluids/'+id;
 	});
 
+
 	$('#btn_cp_next').click(function(e){
 		e.preventDefault();
 		var eqyt = 0;
@@ -48,6 +49,54 @@ $(document).ready(function(){
 			},'json');
 		}
 	});
+
+
+	if($('#upload_activation_file').length > 0){
+		new AjaxUpload('upload_activation_file', {
+			// Location of the server-side upload script
+			// NOTE: You are not allowed to upload files to another domain
+			action: '/rest/upload_activation_file',
+			// File upload name
+			name: 'userfile',
+			// Submit file after selection
+			autoSubmit: true,
+			// The type of data that you're expecting back from the server.
+			// HTML (text) and XML are detected automatically.
+			// Useful when you are using JSON data as a response, set to "json" in that case.
+			// Also set server response type to text/html, otherwise it will not work in IE6
+			responseType: 'json',
+			// Fired after the file is selected
+			// Useful when autoSubmit is disabled
+			// You can return false to cancel upload
+			// @param file basename of uploaded file
+			// @param extension of that file
+			onChange: function(file, extension){
+				if(extension !== 'qfl'){
+					alert('The file is invalid. Please provide a valid activation file.');
+					return false;
+				}
+			},
+			// Fired before the file is uploaded
+			// You can return false to cancel upload
+			// @param file basename of uploaded file
+			// @param extension of that file
+			onSubmit: function(file, extension) {},
+			// Fired when file upload is completed
+			// WARNING! DO NOT USE "FALSE" STRING AS A RESPONSE!
+			// @param file basename of uploaded file
+			// @param response server response
+			onComplete: function(file, response) {
+				log(response);
+				if(response.message == 'already_used'){
+					alert('This activation file is already in use.\nPlease ask an administrator for a new one.');
+				}else if(response.message == 'sucess'){
+					$('#key_td a').remove();
+					$('#key_td').prepend('Key sucessfully imported.');
+					$('#key_td input').val(response.transactional_id);
+				}
+			}
+		});
+	}
 
 });
 

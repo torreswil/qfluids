@@ -21,6 +21,73 @@ class Rest extends CI_Controller {
 		redirect('/main/login');
 	}
 
+	//PROJECT CREATION FUNCTIONS
+	public function upload_activation_file(){
+		$config 					= array();
+		$config['upload_path']      = './project_keys/imported';
+		$config['allowed_types']    = 'qfl';
+  		$this->load->library('upload', $config);
+
+  		
+		if($this->upload->do_upload()){                      
+            $filedata 			= $this->upload->data();
+            $data 				= json_decode(read_file($filedata['full_path']));
+            $transactional_id 	= $data->transactional_id;
+
+            $response 			= array();
+            if(count($this->Api->get_where('projects',array('transactional_id'=>$transactional_id))) > 0){
+            	$response['message']			= 'already_used';
+            }else{
+            	$response['message']			= 'sucess';
+            	$response['transactional_id'] 	= $transactional_id;
+            }
+
+            echo json_encode($response);
+        }else{
+        	print_r($this->upload->data());
+            echo $this->upload->display_errors();
+        }
+        
+	}
+
+	//FIRST REPORT
+	public function first_report(){
+		$this->Api->update_where('projects',array('spud_date'=>$_POST['spud_date']),array('transactional_id' =>$_POST['transactional_id']));
+		$project = $this->Api->get_where('projects',array('transactional_id'=>$_POST['transactional_id']));
+		$project = $project[0];
+
+		$report = array();
+		$report['transactional_id'] 		= $_POST['transactional_id'].'_qflrpt_'.'1';
+		$report['project_transactional_id'] = $_POST['transactional_id'];
+		$report['date'] 					= $_POST['spud_date'];
+		$report['number'] 					= 1;
+
+		$this->Api->create('reports',$report);
+
+		$report['message'] 					= 'sucess';
+		$report['number'] 					= '0001';
+		echo json_encode($report);
+	}
+
+	public function new_report(){
+		$number 							= $_POST['number'] + 1;
+		$date 								= date_create($_POST['date']);
+		$date 								= date_add($date,date_interval_create_from_date_string('1 day'));
+		$date 								= date_format($date,'Y-m-d');
+		
+		$report 							= array();
+		$report['transactional_id'] 		= $_POST['project_transactional_id'].'_qflrpt_'.$number;
+		$report['project_transactional_id'] = $_POST['project_transactional_id'];
+		$report['date'] 					= $date;
+		$report['number'] 					= $number;
+
+		$this->Api->create('reports',$report);
+
+		$report['message'] 					= 'sucess';
+		$report['number'] 					= str_pad($number, 4, "0", STR_PAD_LEFT);
+		echo json_encode($report);
+	}
+
 	//BIT FUNCTIONS
 	public function listar_brocas(){
 		echo json_encode($this->Api->get('brocas'));

@@ -1,5 +1,5 @@
 <?php 
-	if($project['configured'] == 0){
+	if($project['last_report'] == 0){
 		$settings_style	='display:block;';
 	}else{
 		$settings_style	='display:none;';

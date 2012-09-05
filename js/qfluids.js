@@ -10,9 +10,11 @@ $(function(){
 
 	$('#spud_data').change(function(){
 		if($(this).val() !== ''){
+			/*
 			$('.navigation_wrapper').slideDown('fast');
 			$('#current_date').html($(this).val());
 			$('#start_message').html('Select a data input form from the sidebar to continue.');
+			*/
 		}else{
 			$('.navigation_wrapper').hide();
 			$('#current_date').html('');
@@ -1483,5 +1485,66 @@ $(function(){
 	$('#link_cancel_settings').click(function(e){
 		e.preventDefault();
 		$('#project_settings').slideUp();
+	});
+
+
+
+	//SAVE ROUTINE
+	$('#btn_save_report').click(function(e){
+		e.preventDefault();
+
+		//day 0
+		if(parseInt($('#master_report_count').val()) == 0){
+			
+			if($('#spud_data').val() == ''){
+				alert('To create the first report, please make sure the spud date is not empty');
+			}else{
+				var data = {
+					'spud_date' 		: $('#spud_data').val(),
+					'transactional_id'	: $('#transactional_id').val()
+				};	
+
+				$.post('/rest/first_report',data,function(r){
+					if(r.message == 'sucess'){
+						$('#spud_data').attr('disabled','disabled');
+						$('#master_report_count').val(1);
+						$('#current_report').val(1);
+						$('#current_report_str').html(r.number);
+						$('#current_date').html(r.date);
+						$('.navigation_wrapper').slideDown('fast',function(){
+							$('.file_menu li').show();
+						});
+						$('#start_message').html('Select a data input form from the sidebar to continue.');	
+					}
+				},'json');
+			}
+		
+		//day 0+
+		}else{
+			//validate_data();
+			alert('saving function trigger');
+		}
+	});
+
+	$('#btn_new_report').click(function(e){
+		e.preventDefault();
+		var data = {
+			'number'					: $('#current_report').val(),
+			'date'						: $('#current_date').html(),
+			'project_transactional_id'	: $('#transactional_id').val()
+		};
+
+		$.post('/rest/new_report',data,function(r){
+			if(r.message == 'sucess'){
+				location.reload();
+			}else{
+				alert('An error has ocourred. Please try again');
+			}
+		},'json');
+	});
+
+	$('#btn_search_report').click(function(e){
+		e.preventDefault();
+		
 	});
 });

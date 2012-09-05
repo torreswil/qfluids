@@ -13,13 +13,6 @@ class Main extends CI_Controller {
 	public function login(){
 		$data['main_content'] = 'login';
 		$this->load->view('partials/basic',$data);
-		$system_config = $this->Api->get('config');
-		foreach ($system_config as $config) {
-			if($config['key'] == 'global_id'){
-				$global_id = $config['value'];
-			}
-		}
-		$this->session->set_userdata('global_id', $global_id);
 	}
 
 	public function projects(){
@@ -31,7 +24,6 @@ class Main extends CI_Controller {
 			echo json_encode($id);
 		}else{
 			$data['main_content'] 	= 'projects';
-			$data['global_id']		= $this->session->userdata('global_id');
 			$data['projects']		= $this->Api->get('projects',array('last_modified','desc'));
 			$this->load->view('partials/basic',$data);
 		}
@@ -43,10 +35,19 @@ class Main extends CI_Controller {
 		}else{
 			if(count($this->Api->get_where('projects',array('id'=>$project_id))) == 1){
 				//INICIALIZACION DE LA SESION
-				$project_data 	= $this->Api->get_where('projects',array('id'=>$project_id));
-				$project_data	= $project_data[0]; 
-				$this->session->set_userdata(array('project' => $project_data));
+				$project_data 						= $this->Api->get_where('projects',array('id'=>$project_id));
+				$project_data						= $project_data[0];
 				
+				$this->session->set_userdata(array('project' => $project_data));
+
+				$project_data['last_report'] 		= count($this->Api->get_where('reports',array('project_transactional_id'=>$project_data['transactional_id'])));
+				
+				if($project_data['last_report'] > 0){
+					$project_data['last_report_meta'] 	= $this->Api->get_where('reports',array('project_transactional_id'=>$project_data['transactional_id']));
+					$project_data['last_report_meta'] 	= $project_data['last_report_meta'][$project_data['last_report'] - 1];	
+				}
+				
+
 				//CATALOGOS DE HERRAMIENTAS
 				$data['lista_casing']			= $this->Api->get_distinct_where('casing','oddeci,odfrac');
 				$data['lista_lodos']			= $this->Api->get('lodos');
@@ -56,6 +57,14 @@ class Main extends CI_Controller {
 				//CONFIGURACION DEL PROYECTO
 				$data['shakers']				= $this->Api->get_where('project_shakers',array('active'=>1,'project'=>$project_data['id']));
 				$data['enginers']				= $this->Api->get_where('enginers',array('project'=>$project_data['id'],'active'=>1));
+
+				//PERSONAL
+				$data['costoing_acumulado']		= 0;
+				$turnos_facturables				= $this->Api->get_where('reports_enginers',array('project'=>$project_data['id'],'cover'=>1));
+				foreach ($turnos_facturables as $turno) {
+					$ingeniero 					= $this->Api->get_where('enginers',array('id'=>$turno['enginer']));
+					$data['costoing_acumulado'] = $data['costoing_acumulado'] + $ingeniero[0]['rate'];
+				}
 
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';

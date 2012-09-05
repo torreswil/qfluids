@@ -43,7 +43,7 @@
 					</tr>
 					<tr>	
 						<td class="label_m"><label>Enginering cost [accumulated]:</label></td>
-						<td><input type="text" disabled="disabled" style="width:100px;" /></td>
+						<td><input type="text" disabled="disabled" style="width:100px;" name="costoing_acumulado" id="costoing_acumulado" value="<?= $costoing_acumulado; ?>" /></td>
 					</tr>
 				</table>
 			</fieldset>

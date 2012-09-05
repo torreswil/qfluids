@@ -19,6 +19,7 @@ $mimes = array(	'hqx'	=>	'application/mac-binhex40',
 				'class'	=>	'application/octet-stream',
 				'psd'	=>	'application/x-photoshop',
 				'so'	=>	'application/octet-stream',
+				'qfl'	=>	'text/plain',
 				'sea'	=>	'application/octet-stream',
 				'dll'	=>	'application/octet-stream',
 				'oda'	=>	'application/oda',
@@ -98,7 +99,7 @@ $mimes = array(	'hqx'	=>	'application/mac-binhex40',
 				'word'	=>	array('application/msword', 'application/octet-stream'),
 				'xl'	=>	'application/excel',
 				'eml'	=>	'message/rfc822',
-				'json' => array('application/json', 'text/json')
+				'json' 	=> array('application/json', 'text/json')
 			);
 
 

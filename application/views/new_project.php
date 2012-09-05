@@ -8,6 +8,13 @@
 					<form id="create_project">
 						<table>
 							<tr>
+								<td class="label_m"><label>Activation File:</label></td>
+								<td id="key_td">
+									<a href="#upload" id="upload_activation_file">Load an activation file...</a>
+									<input type="hidden" name="transactional_id" class="required" />
+								</td>
+							</tr>
+							<tr>
 								<td class="label_m" style="width:175px;"><label>Well Name:</label></td>
 								<td><input type="text" name="well_name" class="required" /></td>
 							</tr>
@@ -32,7 +39,6 @@
 								<td><input type="text" name="field" class="required" /></td>
 							</tr>	
 						</table>
-						<input type="hidden" name="universal_identifier" value="<?= $global_id; ?>">
 						<input type="hidden" name="method" value="new_project">
 					</form>
 				</div>
