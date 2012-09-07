@@ -718,6 +718,16 @@ function calculos_raw(){
 				if(oh_match.len > 0){
 					astable.push(oh_match);
 				}
+			}else if(zdstop < ohtop && zdsbtm == ohbtm){
+				var oh_match = {
+					'name'		: ohname+' - '+tool_name,
+					'idhole'	: ohid,
+					'odstring'	: dsod,
+					'len'		: fval('longhoyo')
+				}
+				if(oh_match.len > 0){
+					astable.push(oh_match);
+				}
 			}
 		}
 		

@@ -14,7 +14,6 @@
     						<option value="2" <?php count($shakers) == 2? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>  >2</option>
     						<option value="3" <?php count($shakers) == 3? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>  >3</option>
     						<option value="4" <?php count($shakers) == 4? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>  >4</option>
-    						<option value="5" <?php count($shakers) == 5? $selected = 'selected="selected"' : $selected = ''; ?> <?= $selected ?>  >5</option>
     					</select>
     				</td>
     			</tr>
