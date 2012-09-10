@@ -271,4 +271,28 @@ class Rest extends CI_Controller {
 
 		echo json_encode(true);
 	}
+
+	public function config_mudcleaner(){
+		$mud_cleaner = json_decode($this->data_input);
+
+		//1. REMOVE ALL THE PREVIOUS MUD CLEANER INFORMATION FOR THIS PROJECT
+		$this->Api->delete_where('project_mudcleaner',array('project'=>$this->project_id));
+
+
+		//2. INSERT NEW MUD CLEANER INFORMATION
+		$mud_cleaner->project = $this->project_id;
+		$this->Api->create('project_mudcleaner',$mud_cleaner);
+
+		echo json_encode(true);
+	}
+
+	public function config_centrifugues(){
+		$centrifugues = json_decode($this->data_input);
+		$this->Api->delete_where('project_centrifugues',array('project'=>$this->project_id));
+		foreach ($centrifugues->centrifuges as &$centrifugue) {
+			$centrifugue->project = $this->project_id;
+			$this->Api->create('project_centrifugues',$centrifugue);
+		}
+		echo json_encode(true);
+	}
 }

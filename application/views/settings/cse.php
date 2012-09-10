@@ -100,7 +100,7 @@
 	</fieldset>	
 	<fieldset>
 		<legend>Mud Cleaner</legend>
-		<table>
+		<table id="mudcleaner_table">
 			<tr>
 				<td class="label_m"><label></label></td>
 				<td class="label_m"><label>Maker:</label></td>
@@ -109,8 +109,8 @@
 			</tr>
 			<tr>
 				<td class="label_m"><label></label></td>
-				<td class="label_m"><input type="text" style="width:150px;" /></td>
-				<td class="label_m"><input type="text" style="width:150px;" /></td>
+				<td class="label_m"><input name="maker" type="text" style="width:150px;" /></td>
+				<td class="label_m"><input name="model" type="text" style="width:150px;" /></td>
 				<td class="label_m"></td>
 			</tr>
 			<tr>
@@ -127,7 +127,7 @@
 			<tr>
 				<td class="label_m"><label>Desander:</label></td>
 				<td class="label_m">
-					<select style="width:164px;">
+					<select name="desander_cones" style="width:164px;" class="required">
 						<?php 
 							$limit = 26;
 							$count = 0;
@@ -140,10 +140,10 @@
 					</select>
 				</td>
 				<td class="label_m">
-					<input type="text" style="width:150px;">
+					<input name="desander_conediameter" type="text" style="width:150px;" class="required">
 				</td>
 				<td class="label_m">
-					<select style="width:164px;">
+					<select name="desander_pumptype" style="width:164px;" class="required">
 						<option value="6_5">Centrifugue 6x5</option>
 						<option value="5_4">Centrifugue 5x4</option>
 						<option value="4_3">Centrifugue 4x3</option>
@@ -156,7 +156,7 @@
 			<tr>
 				<td class="label_m"><label>Desilter:</label></td>
 				<td class="label_m">
-					<select style="width:164px;">
+					<select name="desilter_cones" style="width:164px;" class="required">
 						<?php 
 							$limit = 26;
 							$count = 0;
@@ -169,10 +169,10 @@
 					</select>
 				</td>
 				<td class="label_m">
-					<input type="text" style="width:150px;">
+					<input name="desilter_conediameter" type="text" style="width:150px;" class="required">
 				</td>
 				<td class="label_m">
-					<select style="width:164px;">
+					<select name="desilter_pumptype" style="width:164px;" class="required">
 						<option value="6_5">Centrifugue 6x5</option>
 						<option value="5_4">Centrifugue 5x4</option>
 						<option value="4_3">Centrifugue 4x3</option>
@@ -195,9 +195,9 @@
 			</tr> 
 			<tr>
 				<td class="label_m"><label>Shaker:</label></td>
-				<td class="label_m"><input type="text" style="width:150px;"></td>
+				<td class="label_m"><input name="shaker_model" type="text" style="width:150px;"></td>
 				<td class="label_m">
-					<select style="width:164px;">
+					<select name="shaker_screens" style="width:164px;" class="required">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -206,7 +206,7 @@
 					</select>
 				</td>
 				<td class="label_m">
-					<select style="width:164px;">
+					<select name="shaker_movement" style="width:164px;" class="required">
 						<option value="lineal">Lineal</option>
 						<option value="circular">Circular</option>
 						<option value="eliptico">Elíptico</option>
@@ -217,34 +217,51 @@
 	</fieldset>
 	<fieldset>
 		<legend>Centrifugues</legend>
-		<table>
-			<tr>
-				<td class="label_m"><label>Maker:</label></td>
-				<td class="label_m"><label>Type:</label></td>
-				<td class="label_m"><label>Max RPM:</label></td>
-			</tr>
-			<tr>
-				<td class="label_m"><input type="text" style="width:150px;" /></td>
-				<td class="label_m">
-					<select style="width:70px;">
-						<option value="lgs">LGS</option>
-						<option value="hgs">HGS</option>
-					</select>
-				</td>
-				<td class="label_m"><input type="text" style="width:60px;" /></td>
-			</tr>
-			<tr>
-				<td class="label_m"><input type="text" style="width:150px;" /></td>
-				<td class="label_m">
-					<select style="width:70px;">
-						<option value="lgs">LGS</option>
-						<option value="hgs">HGS</option>
-					</select>
-				</td>
-				<td class="label_m"><input type="text" style="width:60px;" /></td>
-			</tr>
+		<table id="centrifugues_table">
+			<thead>
+				<tr>
+					<td class="label_m"><label>Maker:</label></td>
+					<td class="label_m"><label>Type:</label></td>
+					<td class="label_m"><label>Variator</label></td>
+					<td class="label_m"><label>Max RPM:</label></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="label_m"><input name="maker" type="text" style="width:150px;" /></td>
+					<td class="label_m">
+						<select name="type" style="width:70px;" class="required">
+							<option value="lgs">LGS</option>
+							<option value="hgs">HGS</option>
+						</select>
+					</td>
+					<td class="label_m">
+						<select name="variator" style="width:70px;" class="required">
+							<option value="1">Yes</option>
+							<option value="0" selected="selected">No</option>
+						</select>
+					</td>
+					<td class="label_m"><input name="maxrpm" type="text" style="width:60px;" /></td>
+				</tr>
+				<tr>
+					<td class="label_m"><input name="maker" type="text" style="width:150px;" /></td>
+					<td class="label_m">
+						<select name="type" style="width:70px;" class="required">
+							<option value="lgs">LGS</option>
+							<option value="hgs">HGS</option>
+						</select>
+					</td>
+					<td class="label_m">
+						<select name="variator" style="width:70px;" class="required">
+							<option value="1">Yes</option>
+							<option value="0" selected="selected">No</option>
+						</select>
+					</td>
+					<td class="label_m"><input name="maxrpm" type="text" style="width:60px;" /></td>
+				</tr>
+			</tbody>
 		</table>
 	</fieldset>
 
-	<input type="button" value="Update Equipment" id="btn_save_settings">
+	<input type="button" value="Update Equipment" id="btn_save_cse" style="margin-top:20px;">
 </div>

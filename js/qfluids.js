@@ -1431,7 +1431,7 @@ $(function(){
 		});
 	});
 
-	$('#btn_save_settings').click(function(e){
+	$('#btn_save_cse').click(function(e){
 		e.preventDefault();
 		
 		//VALIDATIONS
@@ -1448,13 +1448,29 @@ $(function(){
 			}	
 		});
 
+		//2. VALIDATE MUD CLEANER
+		$('#mudcleaner_table .required').each(function(){
+			if($(this).val() == ''){
+				error_qty = error_qty + 1;
+			}
+		});
+
+
+		//2. VALIDATE CENTRIFUGUES
+		$('#centrifugues_table .required').each(function(){
+			if($(this).val() == ''){
+				error_qty = error_qty + 1;
+			}
+		});
+
 		if(error_qty > 0){
 			alert('Some required fields are empty.\nPlease verify and try again');
 		}else{
 
 			//SAVE ROUTINES
 			//===============================================================
-			//1. SAVE SHAKERS
+			
+			//SHAKERS
 			var shakers 		= {};
 			shakers.shaker_qty 	= $('.shaker_touse').val();
 			shakers.shakers 	= []; 
@@ -1470,21 +1486,68 @@ $(function(){
 					shakers.shakers.push(this_shaker);
 				}
 			});
-			
-			var jsonshakers = $.toJSON(shakers);
+
+			//MUD CLEANER
+			var mud_cleaner 					= {};
+			mud_cleaner.maker 					= $('#mudcleaner_table input[name="maker"]').val(); 
+			mud_cleaner.model 					= $('#mudcleaner_table input[name="model"]').val();
+			mud_cleaner.desander_cones 			= $('#mudcleaner_table select[name="desander_cones"]').val();
+			mud_cleaner.desander_conediameter 	= $('#mudcleaner_table input[name="desander_conediameter"]').val();
+			mud_cleaner.desander_pumptype 		= $('#mudcleaner_table select[name="desander_pumptype"]').val();
+			mud_cleaner.desilter_cones 			= $('#mudcleaner_table select[name="desilter_cones"]').val();
+			mud_cleaner.desilter_conediameter 	= $('#mudcleaner_table input[name="desilter_conediameter"]').val();
+			mud_cleaner.desilter_pumptype 		= $('#mudcleaner_table select[name="desilter_pumptype"]').val();
+			mud_cleaner.shaker_model 			= $('#mudcleaner_table input[name="shaker_model"]').val();
+			mud_cleaner.shaker_screens 			= $('#mudcleaner_table select[name="shaker_screens"]').val();
+			mud_cleaner.shaker_movement 		= $('#mudcleaner_table select[name="shaker_movement"]').val();
+
+
+			//CENTRIFUGUES
+			var centrifuges 		= {};
+			centrifuges.centrifuges = [];
+			centrifuges.qty 		= 0;
+			$('#centrifugues_table tbody tr').each(function(){
+				centrifuges.qty = centrifuges.qty + 1;
+				var this_centrifugue 		= {
+					maker 		: $('input[name="maker"]',this).val(),
+					type 		: $('select[name="type"]',this).val(),
+					variator	: $('select[name="variator"]',this).val(),
+					maxrpm 		: $('input[name="maxrpm"]',this).val()
+				}
+				centrifuges.centrifuges.push(this_centrifugue);
+
+			});
+
+			var jsonshakers 		= $.toJSON(shakers);
+			var jsonmudcleaner 		= $.toJSON(mud_cleaner);
+			var jsoncentrifuges 	= $.toJSON(centrifuges);
+
 			$.post('/rest/config_shakers',jsonshakers,function(r){
 				if(r == true){
-					alert('shakers saving proccess complete');
-					location.reload();
+					log('Shakers saved, saving mud cleaner...');
+					$.post('/rest/config_mudcleaner',jsonmudcleaner,function(r){
+						if(r == true){
+							log('Mud cleaner saved, saving centrifugues...');
+							$.post('/rest/config_centrifugues',jsoncentrifuges,function(r){
+								log('Centrifugues saved, process complete.');
+								$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+							},'json');
+						}
+					},'json');
 				}
 			},'json');
 
 		}
 	});
+
 	//cancelar el cudro de configuracion
-	$('#link_cancel_settings').click(function(e){
+	$('#close_settings_btn').click(function(e){
 		e.preventDefault();
-		$('#project_settings').slideUp();
+		if($(this).hasClass('just_close')){
+			$('#project_settings').slideUp();
+		}else{
+			location.reload();
+		}
 	});
 
 
