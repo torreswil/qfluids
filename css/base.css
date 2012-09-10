@@ -352,14 +352,14 @@ td { vertical-align: top; }
 	}
 
 	a,a:visited{
-		color:#574C38;
+		color:#384939;
 		font-family: 'OpenSansSemibold', Arial, sans-serif;
 		text-decoration:none;
 	}
 
 	a:hover{
 		text-decoration:underline;
-		color: #574C38;
+		color: #384939;
 	}
 
    	/* CUSTOM FORM CONTROLS */
@@ -392,7 +392,7 @@ td { vertical-align: top; }
 		font-size:13px;
 		cursor: pointer;
 		border: none;
-		background-color:#574C38; 
+		background-color:#384939; 
 		text-align: right;
 		color: #fff;
 		padding: 7px 15px;
@@ -405,12 +405,12 @@ td { vertical-align: top; }
 
 	input[type="button"]:hover,input[type="submit"]:hover{
 		box-shadow: none;
-	    background-color:#756549;
+	    background-color:#6F8B5D;
 	}
 
 	input[type="button"]:active,input[type="submit"]:active{
 		box-shadow: inset 0 0 3px #333;
-	    background-color:#2B2722;
+	    background-color:#6F8B5D;
 	}
 
 	select{
@@ -535,7 +535,7 @@ td { vertical-align: top; }
 	}
 
 	.emphasis{
-		color:#574C38;;
+		color:#384939;;
 	}
 
 	.project_selector{
@@ -564,7 +564,7 @@ td { vertical-align: top; }
 	}
 	
 	.project_selector thead td{
-	    background-color:#574C38;
+	    background-color:#384939;
 	    color:#fff;
 	    padding:5px;
 	}
@@ -585,7 +585,7 @@ td { vertical-align: top; }
 	
 	.project_selector h1{
 	    float:left;
-	    color:#574C38;
+	    color:#384939;
 	}
 
 	.filter_section{
@@ -599,9 +599,9 @@ td { vertical-align: top; }
 	ul.simpleTabsNavigation { margin:-20px 10px 0 10px; padding:0; text-align:left; position: fixed; z-index: 1; }
 	ul.simpleTabsNavigation li { list-style:none; display:inline; margin:0; padding:0; }
 	/*ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#F0F0F0; font-size:14px; text-decoration:none; color:#666;} */
-	ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#574C38; font-size:14px; text-decoration:none; color:#FFF;}
-	ul.simpleTabsNavigation li a:hover { background-color:#574C38; }
-	ul.simpleTabsNavigation li a.current { background:#fff; color:#574C38; border-bottom:1px solid #fff; }
+	ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#384939; font-size:14px; text-decoration:none; color:#FFF;}
+	ul.simpleTabsNavigation li a:hover { background-color:#384939; }
+	ul.simpleTabsNavigation li a.current { background:#fff; color:#384939; border-bottom:1px solid #fff; }
 	
 	div.simpleTabsContent { 
 		border:1px solid #E0E0E0; 
