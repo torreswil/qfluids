@@ -52,12 +52,16 @@
     		        </table>
     	    	</fieldset>
             <?php } ?>
+            <?php if($shakers_count == 0){ ?>
+                <p>The shakers settings are not defined. To configure the shakers, go to Menu, Project Settings, and open the 'Control Solids Equipement' tab.</p>
+            <?php } ?>
         </div>
 
 
         <div class="simpleTabsContent">
         	<!-- MUD CLEANER -->
-        	<fieldset>
+            <?php if(count($mudcleaner) > 0){ ?>
+            <fieldset>
         		<legend>Mud Cleaner</legend>
         		<table>
         			<tr>
@@ -68,8 +72,8 @@
         			</tr>
         			<tr>
         				<td class="label_m"><label></label></td>
-        				<td class="label_m"><input type="text" style="width:150px;" /></td>
-        				<td class="label_m"><input type="text" style="width:150px;" /></td>
+        				<td class="label_m"><input type="text" style="width:150px;" value="<?= $mudcleaner['maker'] ?>" /></td>
+        				<td class="label_m"><input type="text" style="width:150px;" value="<?= $mudcleaner['model'] ?>" /></td>
         				<td class="label_m"></td>
         			</tr>
         		</table>
@@ -93,10 +97,12 @@
         			<tr>
         				<td class="label_m"><label>Desander:</label></td>
         				<td class="label_m">
-        					<input type="text" style="width:100px;" disabled="disabled" value="2 * 5&#34;">
+                            <?php $desander_cd = $mudcleaner['desander_cones'].' * '.$mudcleaner['desander_conediameter']; ?>
+        					<input type="text" style="width:100px;" disabled="disabled" value="<?php echo $desander_cd.' in'; ?>">
         				</td>
         				<td class="label_m">
-        					<input type="text" style="width:120px;" disabled="disabled">
+                            <?php $mudcleaner['desander_pumptype'] = 'Centrifuge '.str_replace('_','x',$mudcleaner['desander_pumptype']); ?>
+        					<input type="text" style="width:120px;" disabled="disabled" value="<?= $mudcleaner['desander_pumptype']; ?>" />
         				</td>
         				<td class="label_m">
         					<input type="text" style="width:75px;">
@@ -111,10 +117,12 @@
         			<tr>
         				<td class="label_m"><label>Desilter:</label></td>
         				<td class="label_m">
-        					<input type="text" style="width:100px;" disabled="disabled" value="2 * 5&#34;">
+                            <?php $desilter_cd = $mudcleaner['desilter_cones'].' * '.$mudcleaner['desilter_conediameter']; ?>
+        					<input type="text" style="width:100px;" disabled="disabled" value="<?php echo $desilter_cd.' in'; ?>" >
         				</td>
         				<td class="label_m">
-        					<input type="text" style="width:120px;" disabled="disabled">
+                            <?php $mudcleaner['desilter_pumptype'] = 'Centrifuge '.str_replace('_','x',$mudcleaner['desilter_pumptype']); ?>
+        					<input type="text" style="width:120px;" disabled="disabled" value="<?= $mudcleaner['desilter_pumptype']; ?>" />
         				</td>
         				<td class="label_m">
         					<input type="text" style="width:75px;">
@@ -145,147 +153,94 @@
 	        			</td>
 	        			<td style="padding-bottom:20px;">
 	        				<table>
-	        					<tr><td class="label_m"><label>1:</label><input type="text" style="width:55px;" /></td></tr>
-	        					<tr><td class="label_m"><label>2:</label><input type="text" style="width:55px;" /></td></tr>
-	        					<tr><td class="label_m"><label>3:</label><input type="text" style="width:55px;" /></td></tr>
-	        				</table>
+                                <?php for($i = $mudcleaner['shaker_screens']; $i > 0; $i--){ ?>
+                                    <tr><td class="label_m"><label><?= $i; ?>:</label><input type="text" style="width:55px;" /></td></tr>
+                                <?php } ?>
+                            </table>
 	        			</td>
 	        			<td><input type="text" style="width:75px;" /></td>
 	        		</tr>
         		</table>
         	</fieldset>
+            <?php }else{ ?>
+                 <p>The mud cleaner settings are not defined. To configure the mud cleaner, go to Menu, Project Settings, and open the 'Control Solids Equipement' tab.</p>          
+            <?php } ?>
         </div>
         <div class="simpleTabsContent">
-        	<fieldset>
-        		<legend>Centrifuge 1</legend>
-        		<table>
-        			<tr>
-        				<td class="label_m"><label>Name:</label></td>
-        				<td class="label_m"><label>Type:</label></td>
-        				<td class="label_m"><label>Max RPM:</label></td>
-        				<td class="label_m"><label>Speed:</label></td>
-        				<td class="label_m"><label>Overflow:</label></td>
-        				<td class="label_m"><label>Underflow:</label></td>
-        				<td class="label_m"><label>Feet rate:</label></td>
-        				<td class="label_m"><label>Operational<br />Hours:</label></td>
-        			</tr>
-        			<tr>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        				<td class="label_m">ppg</td>
-        				<td class="label_m">ppg</td>
-        				<td class="label_m">gpm</td>
-        				<td class="label_m"></td>
-        			</tr>
-        			<tr>
-        				<td class="label_m"><input type="text" style="width:150px;" disabled="disabled" /></td>
-        				<td class="label_m"><input type="text" style="width:75px;" disabled="disabled" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" disabled="disabled" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" /></td>
-        			</tr>
-        		</table>
-        		<p><a href="" id="show_cp_1">Show Centrifuge Properties</a></p>
-        		<table id="centrifuge_1_properties" style="display:none;">
-        			<tr>
-        				<td class="label_m"><label>Bowl Diam.:</label></td>
-        				<td class="label_m"><label>Bowl Pulley.<br />Diam.:</label></td>
-        				<td class="label_m"><label>Motor Pulley.<br />Diam.:</label></td>
-        				<td class="label_m"><label>Motor RPM:</label></td>
-        				<td class="label_m"><label>Speed RPM:</label></td>
-        				<td class="label_m"><label>G force:</label></td>
-        				<td class="label_m"><label>Type:</label></td>
-        			</tr>
-        			<tr>
-        				<td class="label_m">in.</td>
-        				<td class="label_m">in.</td>
-        				<td class="label_m">in.</td>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        			</tr>
-        			<tr>
-        				<td class="label_m"><input type="text" style="width:85px;" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
-        			</tr>
-        		</table>
-        	</fieldset>
-        	<fieldset>
-        		<legend>Centrifuge 2</legend>
-        		<table>
-        			<tr>
-        				<td class="label_m"><label>Name:</label></td>
-        				<td class="label_m"><label>Type:</label></td>
-        				<td class="label_m"><label>Max RPM:</label></td>
-        				<td class="label_m"><label>Speed:</label></td>
-        				<td class="label_m"><label>Overflow:</label></td>
-        				<td class="label_m"><label>Underflow:</label></td>
-        				<td class="label_m"><label>Feet rate:</label></td>
-        				<td class="label_m"><label>Operational<br />Hours:</label></td>
-        			</tr>
-        			<tr>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        				<td class="label_m">ppg</td>
-        				<td class="label_m">ppg</td>
-        				<td class="label_m">gpm</td>
-        				<td class="label_m"></td>
-        			</tr>
-        			<tr>
-        				<td class="label_m"><input type="text" style="width:150px;" disabled="disabled" /></td>
-        				<td class="label_m"><input type="text" style="width:75px;" disabled="disabled" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" disabled="disabled" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" /></td>
-        				<td class="label_m"><input type="text" style="width:60px;" /></td>
-        			</tr>
-        		</table>
-        		<p><a href="#" id="show_cp_2">Show centrifuge properties</a></p>
-        		<table style="display:none;" id="centrifuge_2_properties">
-        			<tr>
-        				<td class="label_m"><label>Bowl Diam.:</label></td>
-        				<td class="label_m"><label>Bowl Pulley.<br />Diam.:</label></td>
-        				<td class="label_m"><label>Motor Pulley.<br />Diam.:</label></td>
-        				<td class="label_m"><label>Motor RPM:</label></td>
-        				<td class="label_m"><label>Speed RPM:</label></td>
-        				<td class="label_m"><label>G force:</label></td>
-        				<td class="label_m"><label>Type:</label></td>
-        			</tr>
-        			<tr>
-        				<td class="label_m">in.</td>
-        				<td class="label_m">in.</td>
-        				<td class="label_m">in.</td>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        				<td class="label_m"></td>
-        			</tr>
-        			<tr>
-        				<td class="label_m"><input type="text" style="width:85px;" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
-        				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
-        			</tr>
-        		</table>
-        	</fieldset>
+        	<?php 
+                $count = 0;
+                foreach ($centrifugues as $centrifugue) {
+                    $count++;
+            ?>
+                <fieldset>
+            		<legend>Centrifuge <?= $count; ?></legend>
+            		<table>
+            			<tr>
+            				<td class="label_m"><label>Name:</label></td>
+            				<td class="label_m"><label>Type:</label></td>
+            				<td class="label_m"><label>Max RPM:</label></td>
+            				<td class="label_m"><label>Speed:</label></td>
+            				<td class="label_m"><label>Overflow:</label></td>
+            				<td class="label_m"><label>Underflow:</label></td>
+            				<td class="label_m"><label>Feet rate:</label></td>
+            				<td class="label_m"><label>Operational<br />Hours:</label></td>
+            			</tr>
+            			<tr>
+            				<td class="label_m"></td>
+            				<td class="label_m"></td>
+            				<td class="label_m"></td>
+            				<td class="label_m"></td>
+            				<td class="label_m">ppg</td>
+            				<td class="label_m">ppg</td>
+            				<td class="label_m">gpm</td>
+            				<td class="label_m"></td>
+            			</tr>
+            			<tr>
+            				<td class="label_m"><input type="text" style="width:150px;" disabled="disabled" value="<?= $centrifugue['maker']; ?>" /></td>
+            				<td class="label_m"><input type="text" style="width:75px;"  disabled="disabled" value="<?= $centrifugue['type']; ?>" /></td>
+            				<td class="label_m"><input type="text" style="width:60px;"  disabled="disabled" value="<?= $centrifugue['maxrpm']; ?>" /></td>
+            				<td class="label_m"><input type="text" style="width:60px;" /></td>
+            				<td class="label_m"><input type="text" style="width:60px;" /></td>
+            				<td class="label_m"><input type="text" style="width:60px;" /></td>
+            				<td class="label_m"><input type="text" style="width:60px;" /></td>
+            				<td class="label_m"><input type="text" style="width:60px;" /></td>
+            			</tr>
+            		</table>
+            		<p><a href="" id="show_cp_<?= $count; ?>">Show Centrifuge Properties</a></p>
+            		<table id="centrifuge_<?= $count; ?>_properties" style="display:none;">
+            			<tr>
+            				<td class="label_m"><label>Bowl Diam.:</label></td>
+            				<td class="label_m"><label>Bowl Pulley.<br />Diam.:</label></td>
+            				<td class="label_m"><label>Motor Pulley.<br />Diam.:</label></td>
+            				<td class="label_m"><label>Motor RPM:</label></td>
+            				<td class="label_m"><label>Speed RPM:</label></td>
+            				<td class="label_m"><label>G force:</label></td>
+            				<td class="label_m"><label>Type:</label></td>
+            			</tr>
+            			<tr>
+            				<td class="label_m">in.</td>
+            				<td class="label_m">in.</td>
+            				<td class="label_m">in.</td>
+            				<td class="label_m"></td>
+            				<td class="label_m"></td>
+            				<td class="label_m"></td>
+            				<td class="label_m"></td>
+            			</tr>
+            			<tr>
+            				<td class="label_m"><input type="text" style="width:85px;" /></td>
+            				<td class="label_m"><input type="text" style="width:85px;" /></td>
+            				<td class="label_m"><input type="text" style="width:85px;" /></td>
+            				<td class="label_m"><input type="text" style="width:85px;" /></td>
+            				<td class="label_m"><input type="text" style="width:85px;" /></td>
+            				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
+            				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
+            			</tr>
+            		</table>
+            	</fieldset>
+        	<?php } ?>
+            <?php if($count == 0){ ?>
+                 <p>The centrifugues settings are not defined. To configure the centrifugues, go to Menu, Project Settings, and open the 'Control Solids Equipement' tab.</p>          
+            <?php } ?>
         </div>
     </div>
 </div>

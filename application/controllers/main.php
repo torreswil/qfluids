@@ -56,6 +56,9 @@ class Main extends CI_Controller {
 				
 				//CONFIGURACION DEL PROYECTO
 				$data['shakers']				= $this->Api->get_where('project_shakers',array('active'=>1,'project'=>$project_data['id']));
+				$data['mudcleaner']				= $this->Api->get_where('project_mudcleaner',array('active'=>1,'project'=>$project_data['id']));
+				if(count($data['mudcleaner']) > 0){$data['mudcleaner'] = $data['mudcleaner'][0];}
+				$data['centrifugues'] 			= $this->Api->get_where('project_centrifugues',array('active'=>1,'project'=>$project_data['id']));
 				$data['enginers']				= $this->Api->get_where('enginers',array('project'=>$project_data['id'],'active'=>1));
 
 				//PERSONAL
@@ -65,6 +68,7 @@ class Main extends CI_Controller {
 					$ingeniero 					= $this->Api->get_where('enginers',array('id'=>$turno['enginer']));
 					$data['costoing_acumulado'] = $data['costoing_acumulado'] + $ingeniero[0]['rate'];
 				}
+
 
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';

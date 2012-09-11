@@ -1417,6 +1417,11 @@ $(function(){
 
 	//shakers to use
 	$('.shaker_touse').change(function(e){
+
+		if(parseInt($(this).val()) > 0){
+			$('#shakers_table').show();
+		}
+
 		var enabled_fields = $(this).val();
 
 		$('#shakers_table tbody tr').each(function(i){
