@@ -233,7 +233,7 @@
             				<?php if($centrifuge['variator'] !== 1){?><td class="label_m"><input type="text" style="width:85px;" /></td></td><?php } ?>
                             <?php if($centrifuge['variator'] !== 0){ $disabled = 'disabled="disabled"'; }else{ $disabled = ''; } ?>
                             <td class="label_m"><input type="text" style="width:85px;" <?= $disabled ?> /></td>
-            				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
+            				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td> 
             				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
             			</tr>
             		</table>
