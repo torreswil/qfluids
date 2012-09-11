@@ -212,7 +212,7 @@
             				<td class="label_m"><label>Bowl Diam.:</label></td>
             				<td class="label_m"><label>Bowl Pulley.<br />Diam.:</label></td>
             				<td class="label_m"><label>Motor Pulley.<br />Diam.:</label></td>
-            				<td class="label_m"><label>Motor RPM:</label></td>
+            				<?php if($centrifuge['variator'] !== 1){?><td class="label_m"><label>Motor RPM:</label></td><?php } ?>
             				<td class="label_m"><label>Speed RPM:</label></td>
             				<td class="label_m"><label>G force:</label></td>
             				<td class="label_m"><label>Type:</label></td>
@@ -221,7 +221,7 @@
             				<td class="label_m">in.</td>
             				<td class="label_m">in.</td>
             				<td class="label_m">in.</td>
-            				<td class="label_m"></td>
+            				<?php if($centrifuge['variator'] !== 1){?><td class="label_m"></td><?php } ?>
             				<td class="label_m"></td>
             				<td class="label_m"></td>
             				<td class="label_m"></td>
@@ -230,8 +230,10 @@
             				<td class="label_m"><input type="text" style="width:85px;" /></td>
             				<td class="label_m"><input type="text" style="width:85px;" /></td>
             				<td class="label_m"><input type="text" style="width:85px;" /></td>
-            				<td class="label_m"><input type="text" style="width:85px;" /></td>
-            				<td class="label_m"><input type="text" style="width:85px;" /></td>
+            				<?php if($centrifuge['variator'] !== 1){?><td class="label_m"><input type="text" style="width:85px;" /></td></td><?php } ?>
+            				
+                            <?php if($centrifuge['variator'] !== 0){ $disabled = 'disabled="disabled"' }else{ $disabled = ''; } ?>
+                            <td class="label_m"><input type="text" style="width:85px;" <?= $disabled ?> /></td>
             				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
             				<td class="label_m"><input type="text" style="width:85px;" disabled="disabled" /></td>
             			</tr>
