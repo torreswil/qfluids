@@ -19,7 +19,7 @@
     				</td>
     			</tr>
     		</table>
-    		<?php if(count($shakers) == 0){$display_st = 'style="display:none;"';} ?>
+    		<?php if(count($shakers) == 0){$display_st = 'style="display:none;"';}else{$display_st = '';} ?>
     		<table id="shakers_table" <?= $display_st; ?> >
         		<thead>
 	        		<tr>

@@ -59,11 +59,11 @@ class Main extends CI_Controller {
 				$data['mudcleaner']				= $this->Api->get_where('project_mudcleaner',array('active'=>1,'project'=>$project_data['id']));
 				if(count($data['mudcleaner']) > 0){$data['mudcleaner'] = $data['mudcleaner'][0];}
 				$data['centrifugues'] 			= $this->Api->get_where('project_centrifugues',array('active'=>1,'project'=>$project_data['id']));
-				$data['enginers']				= $this->Api->get_where('enginers',array('project'=>$project_data['id'],'active'=>1));
+				$data['personal']				= $this->Api->get_where('vista_personal',array('project'=>$project_data['id'],'active'=>1));
 
 				//PERSONAL
 				$data['costoing_acumulado']		= 0;
-				$turnos_facturables				= $this->Api->get_where('reports_enginers',array('project'=>$project_data['id'],'cover'=>1));
+				$turnos_facturables				= $this->Api->get_where('personal_report',array('project'=>$project_data['id'],'cover'=>1));
 				foreach ($turnos_facturables as $turno) {
 					$ingeniero 					= $this->Api->get_where('enginers',array('id'=>$turno['enginer']));
 					$data['costoing_acumulado'] = $data['costoing_acumulado'] + $ingeniero[0]['rate'];
