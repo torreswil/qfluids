@@ -24,7 +24,7 @@
 		        		
 		        	</fieldset>
 		        	<fieldset>
-		        		<legend>New Enginer</legend>
+		        		<legend>Create and Remove enginers</legend>
 		        		<form id="form_new_enginer">
 			        		<table>
 			        			<thead>
@@ -32,16 +32,25 @@
 				        				<td class="label_m"><label>First:</label></td>
 				        				<td class="label_m"><label>Last:</label></td>
 				        				<td class="label_m"><label>Identification:</label></td>
+				        				<td class="label_m"><label>Category:</label></td>
 				        				<td class="label_m"><label>Daily Rate:</label></td>
 				        				<td></td>
 				        			</tr>
 			        			</thead>
 			        			<tbody>
 			        				<tr>
-					        			<td><input type="text" name="name" /></td>
-					        			<td><input type="text" name="lastname" /></td>
-					        			<td><input type="text" name="identification" /></td>
-					        			<td><input type="text" name="rate" /></td>
+					        			<td><input type="text" name="name" style="width:110px;" /></td>
+					        			<td><input type="text" name="lastname" style="width:110px;" /></td>
+					        			<td><input type="text" name="identification" style="width:110px;" /></td>
+					        			<td>
+					        				<select style="width:110px;" name="category">
+					        					<option value="">Select...</option>
+					        					<?php foreach ($engineering_categories as $category) { ?>
+					        						<option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+					        					<?php } ?>
+					        				</select>
+					        			</td>
+					        			<td><input type="text" name="rate" style="width:110px;" /></td>
 					        			<td class="label_m">
 					        				<a href="#create_enginer">Create</a>
 					        				<input type="hidden" name="project" value="<?= $project['id'] ?>" />
@@ -50,6 +59,7 @@
 			        			</tbody>
 			        		</table>
 		        		</form>
+		        		<table id="current_enginers_list"></table>
 		        	</fieldset>	
 	        	</fieldset>
 	        	<input type="button" value="Update Settings" style="margin-top:20px;" id="save_enginer_settings" />

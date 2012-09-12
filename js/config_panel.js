@@ -220,11 +220,37 @@ $(function(){
 	// 6. PERSONAL
 	/*==========================================================================================================*/
 	
+	//when opening the personal settings panel...
+	$('#personal_settings_link').click(function(e){
+		e.preventDefault();
+		load_personal();
+	})
+
+
+	//sugest a price for the enginer daily rate based on the category
+	$('#form_new_enginer select').change(function(){
+		if($(this).val() !== ''){
+			var data = {'id':$(this).val()};
+			$.post('/rest/get_category_info',data,function(r){
+				$('#form_new_enginer input[name="rate"]').val(r.default_rate);
+			},'json');
+		}else{
+			$('#form_new_enginer input[name="rate"]').val('');
+		}
+	});
+
+
 	//create a new enginer
 	$('#form_new_enginer a').click(function(e){
 		e.preventDefault();
 		var eqty = 0;
 		$('#form_new_enginer input').each(function(){
+			if($(this).val() == ''){
+				eqty = eqty + 1;
+			}
+		});
+
+		$('#form_new_enginer select').each(function(){
 			if($(this).val() == ''){
 				eqty = eqty + 1;
 			}
@@ -238,21 +264,7 @@ $(function(){
 				if(r.message == 'already_created'){
 					alert('This enginer is already created');
 				}else{
-					var enginers_html = '';
-					$(r.enginers).each(function(){	
-			        	enginers_html = enginers_html +	'<tr id="this_enginer_'+ this.id +'">';
-			        	enginers_html = enginers_html +		'<td><input name="name" type="text" value="'+ this.name +'" disabled="disabled" /></td>';
-			        	enginers_html = enginers_html +		'<td><input name="lastname" type="text" value="'+ this.lastname +'" disabled="disabled" /></td>';
-			        	enginers_html = enginers_html +		'<td><input name="identification" type="text" value="'+ this.identification +'" disabled="disabled" /></td>';
-			        	enginers_html = enginers_html +		'<td><input name="rate" type="text" value="'+ this.rate +'" disabled="disabled" /></td>';
-			        	enginers_html = enginers_html +		'<td><a href="#delete_enginer" id="delete_enginer_'+ this.id +'" class="remove_enginer">Remove</a></td>';
-			        	enginers_html = enginers_html +	'</tr>';
-					});
-					$('#form_new_enginer input[name="name"]').val('');
-					$('#form_new_enginer input[name="lastname"]').val('');
-					$('#form_new_enginer input[name="identification"]').val('');
-					$('#form_new_enginer input[name="rate"]').val('');
-					$('#tbody_enginer_list').html(enginers_html);		
+					load_personal();			
 				}
 			},'json');	
 		}
@@ -292,6 +304,23 @@ $(function(){
 			alert('Some fields are wrong. Please verify and try again');
 		}
 	});
+
+	function load_personal(){
+		//load enginers
+		var enginers_data = {
+			project 	:$('#project_id').val(),
+			type 		:'enginer', 
+			active		: 1
+		};
+
+		$.post('/rest/load_personal',enginers_data,function(r){
+			$('#current_enginers_list').html(r);
+		});
+
+		//load operators
+
+		//load yard workers	
+	}
 
 });
 /****** THE END ******/

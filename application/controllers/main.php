@@ -60,7 +60,7 @@ class Main extends CI_Controller {
 				if(count($data['mudcleaner']) > 0){$data['mudcleaner'] = $data['mudcleaner'][0];}
 				$data['centrifugues'] 			= $this->Api->get_where('project_centrifugues',array('active'=>1,'project'=>$project_data['id']));
 				$data['personal']				= $this->Api->get_where('vista_personal',array('project'=>$project_data['id'],'active'=>1));
-
+				$data['engineering_categories'] = $this->Api->get_where('personal_categories',array('type'=>'enginer')); 
 
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';

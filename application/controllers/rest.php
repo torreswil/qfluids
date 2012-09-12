@@ -264,6 +264,25 @@ class Rest extends CI_Controller {
 		}
 	}
 
+	public function get_category_info(){
+		if(count($_POST) > 0){
+			$cat_info = $this->Api->get_where('personal_categories',$_POST);
+			$cat_info = $cat_info[0];
+			echo json_encode($cat_info); 
+		}
+	}
+
+	public function load_personal(){
+		if(count($_POST) > 0){
+			$personal = $this->Api->get_where('vista_personal',$_POST);
+			if($_POST['type'] == 'enginer'){
+				foreach ($personal as $persona) {
+					echo '<tr><td><input type="text" style="width:110px;" disabled="" value="'.$persona['name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['lastname'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['identification'].'" /></td><td><input type="text" style="width:96px;margin-right:5px;" disabled="" value="'.$persona['category_name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['rate'].'" /></td><td><a href="#remove_enginer" class="remove_enginer_link" id="rm_enginer_'.$persona['id'].'">Remove</a></td></tr>';
+				}
+			}			
+		}
+	}
+
 	/*==========================================================================================================*/
 	// CONFIG PANEL METHODS
 	/*==========================================================================================================*/

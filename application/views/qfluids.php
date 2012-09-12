@@ -53,6 +53,7 @@
 							<input type="hidden" id="transactional_id" value="<?= $project['transactional_id'] ?>" />
 							<input type="hidden" id="master_report_count" value="<?= $project['last_report'] ?>" />
 							<input type="hidden" id="current_report" value="<?= $project['last_report'] ?>" />
+							<input type="hidden" id="project_id" value="<?= $project['id'] ?>" />
 							<!-- VERY IMPORTANT -->
 
 							<span id="current_report_str" style="margin-left:5px;text-transform:uppercase;"><?= str_pad($project['last_report'], 4, "0", STR_PAD_LEFT); ?></span>
