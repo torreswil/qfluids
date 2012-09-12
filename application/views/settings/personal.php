@@ -62,5 +62,62 @@
 		        		<table id="current_enginers_list"></table>
 		        	</fieldset>	
 	        	</fieldset>
+	        	<fieldset>
+	        		<legend>Create and Remove Operators</legend>
+	        		<form id="form_new_operator">
+		        		<table>
+		        			<thead>
+		        				<tr>
+			        				<td class="label_m"><label>First:</label></td>
+			        				<td class="label_m"><label>Last:</label></td>
+			        				<td class="label_m"><label>Identification:</label></td>
+			        				<td></td>
+			        			</tr>
+		        			</thead>
+		        			<tbody>
+		        				<tr>
+				        			<td><input type="text" name="name" style="width:110px;" /></td>
+				        			<td><input type="text" name="lastname" style="width:110px;" /></td>
+				        			<td><input type="text" name="identification" style="width:110px;" /></td>
+				        			<td class="label_m">
+				        				<a href="#create_operator">Create</a>
+				        				<input type="hidden" name="project" value="<?= $project['id'] ?>" />
+				        				<input type="hidden" name="category" value="4" />
+				        			</td>
+				        		</tr>
+		        			</tbody>
+		        		</table>
+	        		</form>
+	        		<table id="current_operators_list"></table>
+	        	</fieldset>
+	        	<fieldset>
+	        		<legend>Create and Remove Yard Workers</legend>
+	        		<form id="form_new_yardworker">
+		        		<table>
+		        			<thead>
+		        				<tr>
+			        				<td class="label_m"><label>First:</label></td>
+			        				<td class="label_m"><label>Last:</label></td>
+			        				<td class="label_m"><label>Identification:</label></td>
+			        				<td></td>
+			        			</tr>
+		        			</thead>
+		        			<tbody>
+		        				<tr>
+				        			<td><input type="text" name="name" style="width:110px;" /></td>
+				        			<td><input type="text" name="lastname" style="width:110px;" /></td>
+				        			<td><input type="text" name="identification" style="width:110px;" /></td>
+				        			<td class="label_m">
+				        				<a href="#create_yardworker">Create</a>
+				        				<input type="hidden" name="project" value="<?= $project['id'] ?>" />
+				        				<input type="hidden" name="category" value="5" />
+				        			</td>
+				        		</tr>
+		        			</tbody>
+		        		</table>
+	        		</form>
+	        		<table id="current_yardworkers_list"></table>
+	        	</fieldset>
+
 	        	<input type="button" value="Update Settings" style="margin-top:20px;" id="save_enginer_settings" />
 			</div>
