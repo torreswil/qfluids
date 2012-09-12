@@ -6,22 +6,22 @@ class Rest extends CI_Controller {
 	    $this->load->model('Api');
 	    
 	    //store raw input data in a object property
-	    if(isset($_POST)){
-	    	$this->data_input = file_get_contents("php://input");
-	    }
+	    if(isset($_POST)){$this->data_input = file_get_contents("php://input");}
 
 	    //store the project id to all methods
     	$project_id = $this->session->userdata('project');
 		$this->project_id = $project_id['id'];
-	   
-	    
 	}
 
 	public function index(){
 		redirect('/main/login');
 	}
 
-	//PROJECT CREATION FUNCTIONS
+
+	/*==========================================================================================================*/
+	// PROJECT METHODS
+	/*==========================================================================================================*/
+
 	public function upload_activation_file(){
 		$config 					= array();
 		$config['upload_path']      = './project_keys/imported';
@@ -50,7 +50,6 @@ class Rest extends CI_Controller {
         
 	}
 
-	//FIRST REPORT
 	public function first_report(){
 		$this->Api->update_where('projects',array('spud_date'=>$_POST['spud_date']),array('transactional_id' =>$_POST['transactional_id']));
 		$project = $this->Api->get_where('projects',array('transactional_id'=>$_POST['transactional_id']));
@@ -86,7 +85,19 @@ class Rest extends CI_Controller {
 		$report['message'] 					= 'sucess';
 		$report['number'] 					= str_pad($number, 4, "0", STR_PAD_LEFT);
 		echo json_encode($report);
+	}	
+
+	public function save_project_settings(){
+		if(count($_POST) > 0){
+			$this->Api->update('projects',$_POST,$this->project_id);
+			echo json_encode(array('message'=>'project_updated'));
+		}	
 	}
+
+
+	/*==========================================================================================================*/
+	// TOOL CATALOGS METHODS
+	/*==========================================================================================================*/
 
 	//BIT FUNCTIONS
 	public function listar_brocas(){
@@ -188,11 +199,13 @@ class Rest extends CI_Controller {
 		echo json_encode($this->Api->create('casing',$_POST));
 	}
 
+	/*==========================================================================================================*/
+	// PERSONAL METHODS
+	/*==========================================================================================================*/
 
-	//PERSONAL REGISTRATION FUNCTIONS
 	public function register_enginer(){
 		//1. verify the enginer exists and get its ID
-		$enginer = $this->Api->get_where('enginers',array('identification'=>$_POST['identification'],'project'=>$_POST['project'],'active'=>1));
+		$enginer = $this->Api->get_where('vista_personal',array('identification'=>$_POST['identification'],'project'=>$_POST['project'],'active'=>1,'type'=>'enginer'));
 		if(count($enginer) == 1){
 			$data = array(
 				'enginer' 	=> $enginer[0]['id'],
@@ -201,7 +214,8 @@ class Rest extends CI_Controller {
 				'date'		=> $_POST['date']
 			);
 
-			$match = $this->Api->get_where('reports_enginers',array('enginer'=>$data['enginer'],'project'=>$_POST['project'],'date' => $_POST['date']));
+			//2. verify the enginer is not registered yet
+			$match = $this->Api->get_where('personal_report_enginers',array('enginer'=>$data['enginer'],'project'=>$_POST['project'],'date' => $_POST['date']));
 			if(count($match) > 0 ){
 				$response = array(
 					'enginer'	=> $enginer[0]['name'].' '.$enginer[0]['lastname'],
@@ -209,15 +223,18 @@ class Rest extends CI_Controller {
 					'timestamp' => ''
 				);
 			}else{
-				$this->Api->create('reports_enginers',$data);
+
+				//3. register the enginer if not registered yet
+				$this->Api->create('personal_report_enginers',$data);
 				$response = array(
 					'enginer'			=> $enginer[0]['name'].' '.$enginer[0]['lastname'],
 					'message'			=> 'success',
 					'timestamp' 		=> $_POST['date'],
-					'enginers_today' 	=> count($this->Api->get_distinct_where('reports_enginers','enginer',array('project'=>$_POST['project'])))
+					'enginers_today' 	=> count($this->Api->get_distinct_where('personal_report_enginers','enginer',array('project'=>$_POST['project'])))
 				);	
 			}
 
+			//4. print the response back
 			echo json_encode($response);
 		}else{
 			echo json_encode(array('message'=>'no_enginer'));
@@ -226,12 +243,13 @@ class Rest extends CI_Controller {
 
 	public function new_enginer(){
 		if(count($_POST) > 0){
-			$match = $this->Api->get_where('enginers',array('identification' => $_POST['identification'], 'project' => $_POST['project'], 'active' => 1));
+			//1. verify the enginer does not exists
+			$match = $this->Api->get_where('vista_personal',array('identification' => $_POST['identification'], 'project' => $_POST['project'], 'active' => 1));
 			if(count($match) > 0){
 				$response = array('message'=>'already_created');
 			}else{
-				$this->Api->create('enginers',$_POST);
-				$enginers = $this->Api->get_where('enginers',array('project' => $_POST['project'], 'active' => 1));
+				$this->Api->create('personal',$_POST);
+				$enginers = $this->Api->get_where('vista_personal',array('project' => $_POST['project'], 'active' => 1,'type'=>'enginer'));
 				$response = array('message'=>'success','enginers'=>$enginers);
 			}
 
@@ -239,21 +257,17 @@ class Rest extends CI_Controller {
 		}
 	}
 
-	public function save_project_settings(){
-		if(count($_POST) > 0){
-			$this->Api->update('projects',$_POST,$this->project_id);
-			echo json_encode(array('message'=>'project_updated'));
-		}	
-	}
-
 	public function remove_enginer(){
 		if(count($_POST) > 0){
-			$this->Api->delete('enginers',$_POST['id']);
+			$this->Api->delete('personal',$_POST['id']);
 			echo json_encode(array('message'=>'deactivated'));
 		}
 	}
 
-	//CONFIG SAVING FUNCTIONS
+	/*==========================================================================================================*/
+	// CONFIG PANEL METHODS
+	/*==========================================================================================================*/
+
 	public function config_shakers(){
 		$shakers = json_decode($this->data_input);
 
@@ -295,4 +309,6 @@ class Rest extends CI_Controller {
 		}
 		echo json_encode(true);
 	}
+
 }
+/****** THE END ******/
