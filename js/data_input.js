@@ -1,48 +1,39 @@
+/* Qfluids - Data Input Module */
+/* jose.paternina@desarrollo22.com */
+/* Creado por Desarrollo 22 para Qmax Colombia LTDA */
+/* Copyright - 2012 */
+
 $(function(){
+
+	/*==========================================================================================================*/
+	// NAVIGATION
+	/*==========================================================================================================*/
+	
 	//show the sidebar only if the spud_date is defined
 	if($('#spud_data').val() !== ''){
 		$('.navigation_wrapper').slideDown('fast');
 	}
 
-	$('.datepicker').datepicker({
-		'dateFormat': 'yy-mm-dd'
-	});
-
-	$('#spud_data').change(function(){
-		if($(this).val() !== ''){
-			/*
-			$('.navigation_wrapper').slideDown('fast');
-			$('#current_date').html($(this).val());
-			$('#start_message').html('Select a data input form from the sidebar to continue.');
-			*/
-		}else{
-			$('.navigation_wrapper').hide();
-			$('#current_date').html('');
-			$('#start_message').html('Pick a spud date to start.');
-		}
-	});
-
-	//click en el boton menu
-	$('#menu_btn').click(function(e){
-		e.preventDefault();
-		$('#menu_overlay').show();
-	});
-
-	$('#menu_overlay .close_link').click(function(e){
-		e.preventDefault();
-		$('#menu_overlay').hide();
-	});
-
-	//click en un enlace del menu
-	$('.menu_option').click(function(e){
+	//CLICK EN UN ENLACE DE LA BARRA LATERAL
+	$('.nav_links a').click(function(e){
 		e.preventDefault();
 		var target = $(this).attr('href');
-		$('#menu_overlay').fadeOut('normal',function(){
-			$(target).slideDown('normal');	
-		});
+		
+		if(!$(this).hasClass('pop_up')){
+			$('.this_panel').hide();
+			$(target).show();
+			correr_calculos();
+
+			$('.nav_links a').removeClass('active');
+			$(this).addClass('active');
+		}
 		
 	});
 
+	/*==========================================================================================================*/
+	// 1. HOLE GEOMETRY
+	/*==========================================================================================================*/
+	
 	//mostrar la hidraulica
 	$('#pressure_loss_fieldset a').click(function(e){
 		e.preventDefault();
@@ -65,180 +56,7 @@ $(function(){
     	$('.this_hidden_panel').fadeOut('fast');
     });
 
-	//CLICK EN UN ENLACE DE LA BARRA LATERAL
-	$('.nav_links a').click(function(e){
-		e.preventDefault();
-		var target = $(this).attr('href');
-		
-
-		if(!$(this).hasClass('pop_up')){
-			$('.this_panel').hide();
-			$(target).show();
-			correr_calculos();
-
-			$('.nav_links a').removeClass('active');
-			$(this).addClass('active');
-		}
-		
-
-	});
-
-	//CUADRO DE DIALOGO 'SELECCION DE BROCA'
-	//**********************************************************************************************************************************************************
-	$('.pick_bit').focus(function(){
-		$('#select_bit_overlay').show();
-		$(this).attr('disabled','disabled');
-	});
-
-	$('#bit_overlay_listabrocas').change(function(){
-		var no_option = '<option value="" selected="selected">Select...</option>';
-		if($(this).val() == ''){
-			$('#bit_overlay_listaods,#bit_overlay_listamodelos').html(no_option);
-		}else{
-			var data = 'id_broca=' + $(this).val();
-			$.post('/rest/listar_diametros_broca',data,function(r){
-				var append_string = no_option;
-				$(r).each(function(){
-					append_string = append_string + '<option value="' + this.odddeci + '">' + this.odfracc + ' ' + this.unit_oddfracc + '</option>';
-				});
-
-				$('#bit_overlay_listaods').html(append_string);
-
-			},'json');
-		}
-	});
-
-	$('#bit_overlay_listaods').change(function(){
-		var no_option = '<option value="" selected="selected">Select...</option>';
-		if($(this).val() == ''){
-			$('#bit_overlay_listamodelos').html(no_option);
-		}else{
-			var data = 'id_broca=' + $('#bit_overlay_listabrocas').val() + '&odddeci=' + $(this).val();
-			$.post('/rest/listar_modelos_broca',data,function(r){
-				var append_string = no_option;
-				$(r).each(function(){
-					append_string = append_string + '<option value="' + this.id + '">' + this.nombre_modelo + '</option>';
-				});
-				$('#bit_overlay_listamodelos').html(append_string);
-
-			},'json');
-		}
-	});
-
-	$('#checkbox_bit_not_found').change(function(){
-		if($(this).attr('checked') == 'checked'){
-			$('#table_bit_picker select,#table_bit_picker input').attr('disabled','disabled');
-			$('#table_bit_creator select,#table_bit_creator input').removeAttr('disabled');
-			$('#table_bit_creator').show();
-		}else{
-			$('#table_bit_picker select,#table_bit_picker input').removeAttr('disabled');
-			$('#table_bit_creator select,#table_bit_creator input').attr('disabled','disabled');
-			$('#table_bit_creator').hide();
-		}
-	});
-
-	$('#select_bit_overlay .cancel_link a').click(function(e){
-		e.preventDefault();
-		var no_option = '<option value="" selected="selected">Select...</option>';
-		$('#bit_overlay_listaods,#bit_overlay_listamodelos').html(no_option);
-		$('#select_bit_overlay').hide();
-		$('.pick_bit').removeAttr('disabled');
-		$('.jets_number').focus();
-	});
-
-	$('#btn_bit_selected').click(function(e){
-		e.preventDefault();
-		
-		//CREATE A NEW BIT
-		if($('#checkbox_bit_not_found:checked').length == 1){
-			var od 		= $('#new_bit_form input[name=odfracc]').val();
-			od 			= od.split(' ');
-			if(od.length !== 2){
-				if(parseInt($('#new_bit_form input[name=odfracc]').val()) == NaN){
-					alert('Existe un error en la sintaxis del OD, por favor verifique e intente de nuevo.');	
-				}else{
-					$('#new_bit_form input[name=odddeci]').val($('#new_bit_form input[name=odfracc]').val());
-				}	
-			}else{
-				var int_part 	= od[0];
-				var real_part 	= od[1];
-				var real_part	= real_part.split('/');
-				if(real_part.length !== 2){
-					alert('Existe un error en la sintaxis del OD, por favor verifique e intente de nuevo.');	
-				}else{
-					if(real_part[1].length > 0){
-				        var decimal_part 	= parseInt(real_part[0])/parseInt(real_part[1]);
-    					var decimal_od 		= parseInt(int_part) + decimal_part;
-    					$('#new_bit_form input[name=odddeci]').val(decimal_od);    
-					}else{
-					    alert('Existe un error en la sintaxis del OD, por favor verifique e intente de nuevo.');   
-					}
-				}
-			}
-
-			
-			var error_qty = 0;
-			$('#new_bit_form .required').each(function(){
-				if($(this).val() == ''){
-					error_qty = error_qty + 1;
-				}
-			});
-
-			if(error_qty > 0){
-				alert('Hay campos incompletos en el formulario de creación de brocas.\nPor favor verifique e intente de nuevo.');
-			}else{
-				var data = $('#new_bit_form').serialize();
-				$.post('/rest/insertar_broca',data,function(r){
-					var bit_type = parseInt($('#bit_overlay_listabrocas_new').val());
-					if(bit_type == 1){
-						var bit_type_label = 'PDC';
-					}else if(bit_type == 2){
-						var bit_type_label = 'TRI-CONE';
-					}else if(bit_type == 3){
-						var bit_type_label = 'BI-CENTRIC';
-					}
-					$('#broca_bit_type').val(bit_type_label);
-					$('#broca_bit_diameter').html($('#odfracc_new').val()+' in');
-					$('#broca_bit_model').html($('#nombre_modelo_new').val());
-					$('#broca_bit_oddeci').val($('#new_bit_form input[name=odddeci]').val());
-					$('#broca_bit_model_id').val(r);
-					hide_bit_overlay();
-				},'json');	
-			}
-
-		//SELECT A BIT FROM THE DROPDOWN SYSTEM
-		}else if($('#checkbox_bit_not_found:checked').length == 0){
-			var data = 'id=' + $('#bit_overlay_listamodelos').val();
-			$.post('/rest/listar_detalle_brocas',data,function(r){
-				$('#broca_bit_type').val(r[0].nombre_broca);
-				$('#broca_bit_diameter').html(r[0].odfracc+' in');
-				$('#broca_bit_model').html(r[0].nombre_modelo);
-				$('#broca_bit_oddeci').val(r[0].odddeci);
-				$('#broca_bit_model_id').val(r[0].id);
-				hide_bit_overlay();
-			},'json');
-
-		}
-	});
-
-	function hide_bit_overlay(){
-		var no_option = '<option value="" selected="selected">Select...</option>';
-		$('#bit_overlay_listaods,#bit_overlay_listamodelos').html(no_option);
-		$('#bit_overlay_listabrocas,#bit_overlay_listabrocas_new').val('');
-		$('#odfracc_new,#nombre_modelo_new,#new_bit_form input[name=odddeci],#new_bit_form input[name=length]').val('');
-		$('#checkbox_bit_not_found:checked').removeAttr('checked');
-		$('#table_bit_picker select,#table_bit_picker input').removeAttr('disabled');
-		$('#table_bit_creator select,#table_bit_creator input').attr('disabled','disabled');
-		$('#table_bit_creator').hide();
-		$('#select_bit_overlay').hide();
-		$('.pick_bit').removeAttr('disabled');
-		$('#j_1').focus();
-		correr_calculos();	
-	}
-
-
 	//CUADRO DE DIALOGO SELECCION DE CASING
-	//*************************************************************************************************************************
 	$('.pick_casing').click(function(){
 		if(fval('md') <= 0){
 			alert('To place Casign, first verify the open hole is greater than 0');
@@ -466,23 +284,17 @@ $(function(){
 		$('#table_createcasing').hide();
 		$('#checkbox_casing_not_found').removeAttr('checked');
 		$('#table_pickcasing select,#table_pickcasing input').removeAttr('disabled');
-		
 		correr_calculos();
 	}
 
 	// HERRAMIENTA DE AGREGAR Y ELIMINAR CASING
-
 	$('#casing_tool_1').show();
 
 	$('a.casingclear').click(function(e){
 		e.preventDefault();
-	
 		var target = $(this).attr('href');
 		target = target.split('#casingclear_');
 		target = target[1];
-
-		//$('#casing_tool_'+target+' .pick_casing').val('Select...');
-		//$('#casing_tool_'+target+' .od,#casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom').val(0);
 		
 		if($(this).parents('.casing_tool_row').attr('id') !== 'casing_tool_1'){
 			$('#casing_tool_'+target).hide().removeClass('active');
@@ -496,8 +308,133 @@ $(function(){
 		correr_calculos();
 	});
 
+
+
+	//DRILL STRING: ADD ANOTHER
+	$('#add_another_drill').click(function(e){
+		e.preventDefault();
+		if($('.drill_string_pieces .input_error').length == 0){
+			var eqty = 0;
+			$('.drill_string_pieces').each(function(){
+				if($('.odbha',this).val() == '' || parseFloat($('.odbha',this).val()) == 0){
+					eqty = eqty + 1;
+				}
+
+				if($('.idbha',this).val() == '' || parseFloat($('.idbha',this).val()) == 0){
+					eqty = eqty + 1;
+				}
+
+				if($('.longbha',this).val() == '' || parseFloat($('.longbha',this).val()) == 0){
+					eqty = eqty + 1;
+				}
+			});
+
+			if(eqty == 0){
+				$(this).hide();
+				var cantidad_completos 	= 0;
+				var cantidad_vacios 	= 0;
+				$('.select_drill_string').each(function(){
+					if($(this).val() == ''){
+						cantidad_vacios = 1;
+					}else{
+						cantidad_completos 	= cantidad_completos + 1;
+					}
+				});
+
+				var first_id = $('.select_drill_string').filter(':first').attr('id');
+				first_id = first_id.split('select_drill_string_');
+				first_id = first_id[1];
+
+				if(typeof cantidad_vacios !== 'undefined'){
+					if(cantidad_vacios > 0){
+						alert('To add another drill string, please make sure the last one is not empty.');
+						$('#add_another_drill').show();
+					}else if(cantidad_completos == 9){
+						alert('You can have maximum 9 Drill String tools in your system.');
+					}else{
+						$.post('/rest/new_drill_string_row',{'drillstring_qty' : first_id},function(r){
+							$('.drill_string_pieces').prepend(r);
+							var new_id = parseInt(first_id) + 1;
+
+							//prepend a new row in the dsmath_tab:exponents table
+							var ds_group_preppend = '';
+							ds_group_preppend = ds_group_preppend +		'<tr id="ds_group_'+new_id+'">';
+			                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';     
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpl_'+new_id+'" id="ptpl_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpt_'+new_id+'" id="ptpt_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="laminarlabelbha_'+new_id+'" id="laminarlabelbha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +		'</tr>';
+			                $('#ds_group').prepend(ds_group_preppend);
+
+			                //prepend a new row in the dsmath_tab:bingham table
+							var ds_group_preppend = '';
+							ds_group_preppend = ds_group_preppend +		'<tr id="bingham_'+new_id+'">';
+			                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="velcritbha_'+new_id+'" name="velcritbha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptblbha_'+new_id+'" name="ptblbha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptbtbha_'+new_id+'" name="ptbtbha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="zbinghamflujobha_'+new_id+'" name="zbinghamflujobha_'+new_id+'" style="width:100px;"></td>';
+			                ds_group_preppend = ds_group_preppend +		'</tr>';
+			                $('#bingham_group').prepend(ds_group_preppend);
+
+			                $('#add_another_drill').show();
+						});
+					}
+				}
+			}else{
+				alert('Some fields are empty. Please verify and try again.');
+			}		
+		}
+	});
+
+	//DRILL STRING: REMOVE
+	$('.remove_ds').live('click',function(e){
+		if(confirm('Are you sure you want to delete this item?\nThis action can\'t be undone.')){
+			e.preventDefault();
+			var href 	= $(this).attr('href');
+			var id 		= href.split('_');
+			id 			= id[1];
+
+			if($('.select_drill_string').length > 1){
+				$('#row_select_drill_string_' + id + ', #ds_group_' + id + ', #bingham_' + id).remove();	
+			}else{
+				$('.row_select_drill_string select,.row_select_drill_string input, #ds_group input').val(0);		
+			}
+			
+			correr_calculos();	
+		}else{
+			return false;
+		}
+	});
+
+	// POPULAR EL NOMBRE DE LA HERRAMIENTA A LAS TABLAS DE LA HIDRAULICA
+	$('.select_drill_string').live('change',function(){
+		var id = $(this).attr('id');
+		id = id.split('select_drill_string_');
+		id = id[1];
+
+		if($(this).val() !== ''){
+			$('#bingham_'+id+' label').html($(this).val());	
+		}
+
+		if($(this).val() !== ''){
+			$('#bingham_'+id+' label,#ds_group_'+id+' label').html($(this).val());	
+		}
+		
+	});
+
+	$('#ds_math input').attr('disabled','disabled');
+
+
+	/*==========================================================================================================*/
+	// 2. OPERATIONAL INFO
+	/*==========================================================================================================*/
+	
 	//CUADRO DE DIALOGO SELECCION DE BOMBAS
-	//**************************************************************************************************************************
 	$('.pick_pump').focus(function(e){
 		e.preventDefault();
 		$(this).attr('disabled','disabled');
@@ -976,112 +913,164 @@ $(function(){
 	});
 
 
-	//*********************************************************************************************************************************************
-	//DRILL STRING: ADD ANOTHER
-	$('#add_another_drill').click(function(e){
+
+	//CUADRO DE DIALOGO 'SELECCION DE BROCA'
+	$('.pick_bit').focus(function(){
+		$('#select_bit_overlay').show();
+		$(this).attr('disabled','disabled');
+	});
+
+	$('#bit_overlay_listabrocas').change(function(){
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		if($(this).val() == ''){
+			$('#bit_overlay_listaods,#bit_overlay_listamodelos').html(no_option);
+		}else{
+			var data = 'id_broca=' + $(this).val();
+			$.post('/rest/listar_diametros_broca',data,function(r){
+				var append_string = no_option;
+				$(r).each(function(){
+					append_string = append_string + '<option value="' + this.odddeci + '">' + this.odfracc + ' ' + this.unit_oddfracc + '</option>';
+				});
+
+				$('#bit_overlay_listaods').html(append_string);
+
+			},'json');
+		}
+	});
+
+	$('#bit_overlay_listaods').change(function(){
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		if($(this).val() == ''){
+			$('#bit_overlay_listamodelos').html(no_option);
+		}else{
+			var data = 'id_broca=' + $('#bit_overlay_listabrocas').val() + '&odddeci=' + $(this).val();
+			$.post('/rest/listar_modelos_broca',data,function(r){
+				var append_string = no_option;
+				$(r).each(function(){
+					append_string = append_string + '<option value="' + this.id + '">' + this.nombre_modelo + '</option>';
+				});
+				$('#bit_overlay_listamodelos').html(append_string);
+
+			},'json');
+		}
+	});
+
+	$('#checkbox_bit_not_found').change(function(){
+		if($(this).attr('checked') == 'checked'){
+			$('#table_bit_picker select,#table_bit_picker input').attr('disabled','disabled');
+			$('#table_bit_creator select,#table_bit_creator input').removeAttr('disabled');
+			$('#table_bit_creator').show();
+		}else{
+			$('#table_bit_picker select,#table_bit_picker input').removeAttr('disabled');
+			$('#table_bit_creator select,#table_bit_creator input').attr('disabled','disabled');
+			$('#table_bit_creator').hide();
+		}
+	});
+
+	$('#select_bit_overlay .cancel_link a').click(function(e){
 		e.preventDefault();
-		if($('.drill_string_pieces .input_error').length == 0){
-			var eqty = 0;
-			$('.drill_string_pieces').each(function(){
-				if($('.odbha',this).val() == '' || parseFloat($('.odbha',this).val()) == 0){
-					eqty = eqty + 1;
-				}
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		$('#bit_overlay_listaods,#bit_overlay_listamodelos').html(no_option);
+		$('#select_bit_overlay').hide();
+		$('.pick_bit').removeAttr('disabled');
+		$('.jets_number').focus();
+	});
 
-				if($('.idbha',this).val() == '' || parseFloat($('.idbha',this).val()) == 0){
-					eqty = eqty + 1;
+	$('#btn_bit_selected').click(function(e){
+		e.preventDefault();
+		
+		//CREATE A NEW BIT
+		if($('#checkbox_bit_not_found:checked').length == 1){
+			var od 		= $('#new_bit_form input[name=odfracc]').val();
+			od 			= od.split(' ');
+			if(od.length !== 2){
+				if(parseInt($('#new_bit_form input[name=odfracc]').val()) == NaN){
+					alert('Existe un error en la sintaxis del OD, por favor verifique e intente de nuevo.');	
+				}else{
+					$('#new_bit_form input[name=odddeci]').val($('#new_bit_form input[name=odfracc]').val());
+				}	
+			}else{
+				var int_part 	= od[0];
+				var real_part 	= od[1];
+				var real_part	= real_part.split('/');
+				if(real_part.length !== 2){
+					alert('Existe un error en la sintaxis del OD, por favor verifique e intente de nuevo.');	
+				}else{
+					if(real_part[1].length > 0){
+				        var decimal_part 	= parseInt(real_part[0])/parseInt(real_part[1]);
+    					var decimal_od 		= parseInt(int_part) + decimal_part;
+    					$('#new_bit_form input[name=odddeci]').val(decimal_od);    
+					}else{
+					    alert('Existe un error en la sintaxis del OD, por favor verifique e intente de nuevo.');   
+					}
 				}
+			}
 
-				if($('.longbha',this).val() == '' || parseFloat($('.longbha',this).val()) == 0){
-					eqty = eqty + 1;
+			
+			var error_qty = 0;
+			$('#new_bit_form .required').each(function(){
+				if($(this).val() == ''){
+					error_qty = error_qty + 1;
 				}
 			});
 
-			if(eqty == 0){
-				$(this).hide();
-				var cantidad_completos 	= 0;
-				var cantidad_vacios 	= 0;
-				$('.select_drill_string').each(function(){
-					if($(this).val() == ''){
-						cantidad_vacios = 1;
-					}else{
-						cantidad_completos 	= cantidad_completos + 1;
-					}
-				});
-
-				var first_id = $('.select_drill_string').filter(':first').attr('id');
-				first_id = first_id.split('select_drill_string_');
-				first_id = first_id[1];
-
-				if(typeof cantidad_vacios !== 'undefined'){
-					if(cantidad_vacios > 0){
-						alert('To add another drill string, please make sure the last one is not empty.');
-						$('#add_another_drill').show();
-					}else if(cantidad_completos == 9){
-						alert('You can have maximum 9 Drill String tools in your system.');
-					}else{
-						$.post('/rest/new_drill_string_row',{'drillstring_qty' : first_id},function(r){
-							$('.drill_string_pieces').prepend(r);
-							var new_id = parseInt(first_id) + 1;
-
-							//prepend a new row in the dsmath_tab:exponents table
-							var ds_group_preppend = '';
-							ds_group_preppend = ds_group_preppend +		'<tr id="ds_group_'+new_id+'">';
-			                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';     
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="retbha_'+new_id+'" id="retbha_'+new_id+'" style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_lami_'+new_id+'" id="fft_bha_lami_'+new_id+'" style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="fft_bha_tur_'+new_id+'" id="fft_bha_tur_'+new_id+'" style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpl_'+new_id+'" id="ptpl_'+new_id+'" style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="ptpt_'+new_id+'" id="ptpt_'+new_id+'" style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="laminarlabelbha_'+new_id+'" id="laminarlabelbha_'+new_id+'" style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +		'</tr>';
-			                $('#ds_group').prepend(ds_group_preppend);
-
-			                //prepend a new row in the dsmath_tab:bingham table
-							var ds_group_preppend = '';
-							ds_group_preppend = ds_group_preppend +		'<tr id="bingham_'+new_id+'">';
-			                ds_group_preppend = ds_group_preppend +			'<td class="label_m"><label>ds_'+new_id+'</label></td>';
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" name="veltubbha_'+new_id+'" id="veltubbha_'+new_id+'"  style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="velcritbha_'+new_id+'" name="velcritbha_'+new_id+'" style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptblbha_'+new_id+'" name="ptblbha_'+new_id+'" style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="ptbtbha_'+new_id+'" name="ptbtbha_'+new_id+'" style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +			'<td><input type="text" disabled="disabled" id="zbinghamflujobha_'+new_id+'" name="zbinghamflujobha_'+new_id+'" style="width:100px;"></td>';
-			                ds_group_preppend = ds_group_preppend +		'</tr>';
-			                $('#bingham_group').prepend(ds_group_preppend);
-
-			                $('#add_another_drill').show();
-						});
-					}
-				}
+			if(error_qty > 0){
+				alert('Hay campos incompletos en el formulario de creación de brocas.\nPor favor verifique e intente de nuevo.');
 			}else{
-				alert('Some fields are empty. Please verify and try again.');
-			}		
-		}
-	});
-
-	//DRILL STRING: REMOVE
-	$('.remove_ds').live('click',function(e){
-		if(confirm('Are you sure you want to delete this item?\nThis action can\'t be undone.')){
-			e.preventDefault();
-			var href 	= $(this).attr('href');
-			var id 		= href.split('_');
-			id 			= id[1];
-
-			if($('.select_drill_string').length > 1){
-				$('#row_select_drill_string_' + id + ', #ds_group_' + id + ', #bingham_' + id).remove();	
-			}else{
-				$('.row_select_drill_string select,.row_select_drill_string input, #ds_group input').val(0);		
+				var data = $('#new_bit_form').serialize();
+				$.post('/rest/insertar_broca',data,function(r){
+					var bit_type = parseInt($('#bit_overlay_listabrocas_new').val());
+					if(bit_type == 1){
+						var bit_type_label = 'PDC';
+					}else if(bit_type == 2){
+						var bit_type_label = 'TRI-CONE';
+					}else if(bit_type == 3){
+						var bit_type_label = 'BI-CENTRIC';
+					}
+					$('#broca_bit_type').val(bit_type_label);
+					$('#broca_bit_diameter').html($('#odfracc_new').val()+' in');
+					$('#broca_bit_model').html($('#nombre_modelo_new').val());
+					$('#broca_bit_oddeci').val($('#new_bit_form input[name=odddeci]').val());
+					$('#broca_bit_model_id').val(r);
+					hide_bit_overlay();
+				},'json');	
 			}
-			
-			correr_calculos();	
-		}else{
-			return false;
+
+		//SELECT A BIT FROM THE DROPDOWN SYSTEM
+		}else if($('#checkbox_bit_not_found:checked').length == 0){
+			var data = 'id=' + $('#bit_overlay_listamodelos').val();
+			$.post('/rest/listar_detalle_brocas',data,function(r){
+				$('#broca_bit_type').val(r[0].nombre_broca);
+				$('#broca_bit_diameter').html(r[0].odfracc+' in');
+				$('#broca_bit_model').html(r[0].nombre_modelo);
+				$('#broca_bit_oddeci').val(r[0].odddeci);
+				$('#broca_bit_model_id').val(r[0].id);
+				hide_bit_overlay();
+			},'json');
+
 		}
 	});
 
-	//********************************************************************************************************************************************
-	// MUD TYPE PICKER
-	//********************************************************************************************************************************************
+	function hide_bit_overlay(){
+		var no_option = '<option value="" selected="selected">Select...</option>';
+		$('#bit_overlay_listaods,#bit_overlay_listamodelos').html(no_option);
+		$('#bit_overlay_listabrocas,#bit_overlay_listabrocas_new').val('');
+		$('#odfracc_new,#nombre_modelo_new,#new_bit_form input[name=odddeci],#new_bit_form input[name=length]').val('');
+		$('#checkbox_bit_not_found:checked').removeAttr('checked');
+		$('#table_bit_picker select,#table_bit_picker input').removeAttr('disabled');
+		$('#table_bit_creator select,#table_bit_creator input').attr('disabled','disabled');
+		$('#table_bit_creator').hide();
+		$('#select_bit_overlay').hide();
+		$('.pick_bit').removeAttr('disabled');
+		$('#j_1').focus();
+		correr_calculos();	
+	}	
 
+	/*==========================================================================================================*/
+	// 3. MUD PROPERTIES
+	/*==========================================================================================================*/
+	
+	// MUD TYPE PICKER
 	$('.pick_mud').focus(function(e){
 		e.preventDefault();
 		$('#select_mud_overlay').show();
@@ -1150,11 +1139,7 @@ $(function(){
 
 	});
 
-
-
-
-	//********************************************************************************************************************************************
-	//clocks
+		//clocks
 	$('.clock_1,.clock_2,.clock_3').change(function(){
 		var this_class = $(this).attr('class');
 		var new_hour = $(this).val();
@@ -1183,50 +1168,11 @@ $(function(){
 		}
 	});
 
-	// POPULAR EL NOMBRE DE LA HERRAMIENTA A LAS TABLAS DE LA HIDRAULICA
-	$('.select_drill_string').live('change',function(){
-		var id = $(this).attr('id');
-		id = id.split('select_drill_string_');
-		id = id[1];
-
-		if($(this).val() !== ''){
-			$('#bingham_'+id+' label').html($(this).val());	
-		}
-
-		if($(this).val() !== ''){
-			$('#bingham_'+id+' label,#ds_group_'+id+' label').html($(this).val());	
-		}
-		
-	});
-
-
-	//OCULTAR Y MOSTRAR LAS RAMS EN LA CONFIGURACION DEL PROYECTO
-	$('.cb_piperam').change(function(){
-		if($('.cb_piperam:checked').length == 1){
-			$('.pipe_ram').show();
-		}else{
-			$('.pipe_ram').hide();
-		}
-	});
-
-	$('.cb_blindram').change(function(){
-		if($('.cb_blindram:checked').length == 1){
-			$('.blindram').show();
-		}else{
-			$('.blindram').hide();
-		}
-	});
-
-	$('.cb_shearram').change(function(){
-		if($('.cb_shearram:checked').length == 1){
-			$('.shearram').show();
-		}else{
-			$('.shearram').hide();
-		}
-	});
-
-
-	//EQUIPOS DE SOLIDOS - CENTRIFUGAS
+	/*==========================================================================================================*/
+	// 4. CONTROL SOLIDS EQUIPEMENT
+	/*==========================================================================================================*/
+	
+	//CENTRIFUGAS
 	$('#show_cp_1').click(function(e){
 		e.preventDefault();
 		if($(this).hasClass('open')){
@@ -1249,12 +1195,25 @@ $(function(){
 		}
 	});
 
+	/*==========================================================================================================*/
+	// 5. PERSONAL
+	/*==========================================================================================================*/
+	/*==========================================================================================================*/
+	// 6. INVENTARY
+	/*==========================================================================================================*/
+	/*==========================================================================================================*/
+	// 7. VOLUMES
+	/*==========================================================================================================*/
+	/*==========================================================================================================*/
+	// 8. REPORT HISTORY
+	/*==========================================================================================================*/
+	/*==========================================================================================================*/
+	// 9. REQUISITIONS
+	/*==========================================================================================================*/
+	/*==========================================================================================================*/
+	// 1O. PERSONAL REGISTRATION TOOL
+	/*==========================================================================================================*/
 	
-	$('#ds_math input').attr('disabled','disabled');
-
-
-	/* PERSONAL REGISTRATION TOOL */
-
 	//open the overlay
 	$('.show_register_dialog').click(function(e){
 		e.preventDefault();
@@ -1321,298 +1280,6 @@ $(function(){
 			},'json');
 		}
 	});
-
-
-	//create a new enginer
-	$('#form_new_enginer a').click(function(e){
-		e.preventDefault();
-		var eqty = 0;
-		$('#form_new_enginer input').each(function(){
-			if($(this).val() == ''){
-				eqty = eqty + 1;
-			}
-		});
-
-		if(eqty > 0){
-			alert('Some fields are empty, please verify and try again.');
-		}else{
-			var data = $('#form_new_enginer').serialize();
-			$.post('/rest/new_enginer',data,function(r){
-				if(r.message == 'already_created'){
-					alert('This enginer is already created');
-				}else{
-					var enginers_html = '';
-					$(r.enginers).each(function(){	
-			        	enginers_html = enginers_html +	'<tr id="this_enginer_'+ this.id +'">';
-			        	enginers_html = enginers_html +		'<td><input name="name" type="text" value="'+ this.name +'" disabled="disabled" /></td>';
-			        	enginers_html = enginers_html +		'<td><input name="lastname" type="text" value="'+ this.lastname +'" disabled="disabled" /></td>';
-			        	enginers_html = enginers_html +		'<td><input name="identification" type="text" value="'+ this.identification +'" disabled="disabled" /></td>';
-			        	enginers_html = enginers_html +		'<td><input name="rate" type="text" value="'+ this.rate +'" disabled="disabled" /></td>';
-			        	enginers_html = enginers_html +		'<td><a href="#delete_enginer" id="delete_enginer_'+ this.id +'" class="remove_enginer">Remove</a></td>';
-			        	enginers_html = enginers_html +	'</tr>';
-					});
-					$('#form_new_enginer input[name="name"]').val('');
-					$('#form_new_enginer input[name="lastname"]').val('');
-					$('#form_new_enginer input[name="identification"]').val('');
-					$('#form_new_enginer input[name="rate"]').val('');
-					$('#tbody_enginer_list').html(enginers_html);		
-				}
-			},'json');	
-		}
-	});	
-
-
-	//remove an enginer
-	$('.remove_enginer').live('click',function(e){
-		e.preventDefault();
-		var id = $(this).attr('id');
-		id = id.split('delete_enginer_');
-		id = id[1];
-
-		var data = {'id':id};
-
-		$.post('/rest/remove_enginer',data,function(r){
-			if(r.message == 'deactivated'){
-				$('#this_enginer_'+id).remove();
-			}
-		},'json');
-	});
-
-	//save enginer settings
-	$('#save_enginer_settings').click(function(e){
-		e.preventDefault();
-		var maximun_enginers = $('#maximun_enginers').val();
-		if(!isNaN(maximun_enginers)){
-			var data = {'maximun_enginers':maximun_enginers};
-			$.post('/rest/save_project_settings',data,function(r){
-				if(r.message == 'project_updated'){
-					alert('Enginer settings saved');
-				}else{
-					alert('An error has ocurred. Please try again, or ask the system administrator for help.');
-				}
-			},'json');
-		}else{
-			alert('Some fields are wrong. Please verify and try again');
-		}
-	});
-
-
-	/* CONFIG PANEL */
-
-	//navigation
-	$('.options_sidebar a').click(function(e){
-		e.preventDefault();
-		var target = $(this).attr('href');
-		$('.config_panel').hide();
-		$(target+'.config_panel').show();
-	});
-
-	//change the rig name
-	$('.rigname_source').keyup(function(){
-		$('.rigname').val($(this).val());
-	});
-
-	//DISABLE DISABLED CONFIG FIELDS
-	$('#project_settings .disabled input, #project_settings .disabled select').attr('disabled','disabled');
-
-	//shakers to use
-	$('.shaker_touse').change(function(e){
-
-		if(parseInt($(this).val()) > 0){
-			$('#shakers_table').show();
-		}
-
-		var enabled_fields = $(this).val();
-
-		$('#shakers_table tbody tr').each(function(i){
-			i = i + 1;
-			if(i <= enabled_fields){
-				$(this).removeClass('disabled');
-				$('input, select',this).removeAttr('disabled');
-			}else{
-				$(this).addClass('disabled');
-				$('input, select',this).attr('disabled','disabled');
-			}
-		});
-	});
-
-	$('#btn_save_cse').click(function(e){
-		e.preventDefault();
-		
-		//VALIDATIONS
-		var error_qty = 0;
-		//===============================================================
-		//1. VALIDATE SHAKERS
-		$('#shakers_table tbody tr').each(function(){
-			if(!$(this).hasClass('disabled')){
-				$('input, select',this).each(function(){
-					if($(this).val() == ''){
-						error_qty = error_qty + 1;
-					}
-				});	
-			}	
-		});
-
-		//2. VALIDATE MUD CLEANER
-		$('#mudcleaner_table .required').each(function(){
-			if($(this).val() == ''){
-				error_qty = error_qty + 1;
-			}
-		});
-
-
-		//2. VALIDATE CENTRIFUGUES
-		$('#centrifugues_table .required').each(function(){
-			if($(this).val() == ''){
-				error_qty = error_qty + 1;
-			}
-		});
-
-		if(error_qty > 0){
-			alert('Some required fields are empty.\nPlease verify and try again');
-		}else{
-
-			//SAVE ROUTINES
-			//===============================================================
-			
-			//SHAKERS
-			var shakers 		= {};
-			shakers.shaker_qty 	= $('.shaker_touse').val();
-			shakers.shakers 	= []; 
-			$('#shakers_table tbody tr').each(function(){
-				if(!$(this).hasClass('disabled')){
-					var this_shaker = {
-						maker 			: $('.maker',this).val(),
-						model 			: $('.model',this).val(),
-						nominal_flow 	: $('.nominal_flow',this).val(),
-						screens 		: $('.screens',this).val(),
-						movement 		: $('.movement',this).val()
-					}
-					shakers.shakers.push(this_shaker);
-				}
-			});
-
-			//MUD CLEANER
-			var mud_cleaner 					= {};
-			mud_cleaner.maker 					= $('#mudcleaner_table input[name="maker"]').val(); 
-			mud_cleaner.model 					= $('#mudcleaner_table input[name="model"]').val();
-			mud_cleaner.desander_cones 			= $('#mudcleaner_table select[name="desander_cones"]').val();
-			mud_cleaner.desander_conediameter 	= $('#mudcleaner_table input[name="desander_conediameter"]').val();
-			mud_cleaner.desander_pumptype 		= $('#mudcleaner_table select[name="desander_pumptype"]').val();
-			mud_cleaner.desilter_cones 			= $('#mudcleaner_table select[name="desilter_cones"]').val();
-			mud_cleaner.desilter_conediameter 	= $('#mudcleaner_table input[name="desilter_conediameter"]').val();
-			mud_cleaner.desilter_pumptype 		= $('#mudcleaner_table select[name="desilter_pumptype"]').val();
-			mud_cleaner.shaker_model 			= $('#mudcleaner_table input[name="shaker_model"]').val();
-			mud_cleaner.shaker_screens 			= $('#mudcleaner_table select[name="shaker_screens"]').val();
-			mud_cleaner.shaker_movement 		= $('#mudcleaner_table select[name="shaker_movement"]').val();
-
-
-			//CENTRIFUGUES
-			var centrifuges 		= {};
-			centrifuges.centrifuges = [];
-			centrifuges.qty 		= 0;
-			$('#centrifugues_table tbody tr').each(function(){
-				centrifuges.qty = centrifuges.qty + 1;
-				var this_centrifugue 		= {
-					maker 		: $('input[name="maker"]',this).val(),
-					type 		: $('select[name="type"]',this).val(),
-					variator	: $('select[name="variator"]',this).val(),
-					maxrpm 		: $('input[name="maxrpm"]',this).val()
-				}
-				centrifuges.centrifuges.push(this_centrifugue);
-
-			});
-
-			var jsonshakers 		= $.toJSON(shakers);
-			var jsonmudcleaner 		= $.toJSON(mud_cleaner);
-			var jsoncentrifuges 	= $.toJSON(centrifuges);
-
-			$.post('/rest/config_shakers',jsonshakers,function(r){
-				if(r == true){
-					log('Shakers saved, saving mud cleaner...');
-					$.post('/rest/config_mudcleaner',jsonmudcleaner,function(r){
-						if(r == true){
-							log('Mud cleaner saved, saving centrifugues...');
-							$.post('/rest/config_centrifugues',jsoncentrifuges,function(r){
-								log('Centrifugues saved, process complete.');
-								$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
-							},'json');
-						}
-					},'json');
-				}
-			},'json');
-
-		}
-	});
-
-	//cancelar el cudro de configuracion
-	$('#close_settings_btn').click(function(e){
-		e.preventDefault();
-		if($(this).hasClass('just_close')){
-			$('#project_settings').slideUp();
-		}else{
-			location.reload();
-		}
-	});
-
-
-
-	//SAVE ROUTINE
-	$('#btn_save_report').click(function(e){
-		e.preventDefault();
-
-		//day 0
-		if(parseInt($('#master_report_count').val()) == 0){
-			
-			if($('#spud_data').val() == ''){
-				alert('To create the first report, please make sure the spud date is not empty');
-			}else{
-				var data = {
-					'spud_date' 		: $('#spud_data').val(),
-					'transactional_id'	: $('#transactional_id').val()
-				};	
-
-				$.post('/rest/first_report',data,function(r){
-					if(r.message == 'sucess'){
-						$('#spud_data').attr('disabled','disabled');
-						$('#master_report_count').val(1);
-						$('#current_report').val(1);
-						$('#current_report_str').html(r.number);
-						$('#current_date').html(r.date);
-						$('.navigation_wrapper').slideDown('fast',function(){
-							$('.file_menu li').show();
-						});
-						$('#start_message').html('Select a data input form from the sidebar to continue.');	
-					}
-				},'json');
-			}
-		
-		//day 0+
-		}else{
-			//validate_data();
-			alert('saving function trigger');
-		}
-	});
-
-	$('#btn_new_report').click(function(e){
-		e.preventDefault();
-		var data = {
-			'number'					: $('#current_report').val(),
-			'date'						: $('#current_date').html(),
-			'project_transactional_id'	: $('#transactional_id').val()
-		};
-
-		$.post('/rest/new_report',data,function(r){
-			if(r.message == 'sucess'){
-				location.reload();
-			}else{
-				alert('An error has ocourred. Please try again');
-			}
-		},'json');
-	});
-
-	$('#btn_search_report').click(function(e){
-		e.preventDefault();
-		
-	});
+	
 });
+/****** THE END ******/

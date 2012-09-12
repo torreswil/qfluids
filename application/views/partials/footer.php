@@ -5,7 +5,9 @@
   <script src="/js/plugins.js"></script>
   <script src="/js/libs/simpletabs_1.3.packed.js"></script>
   <script src="/js/base.js"></script>
-  <script src="/js/qfluids.js"></script>
+  <script src="/js/menu.js"></script>
+  <script src="/js/data_input.js"></script>
+  <script src="/js/config_panel.js"></script>
   <script src="/js/calculos_fluidos.js"></script>
 
   <script>

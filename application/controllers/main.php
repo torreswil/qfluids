@@ -61,14 +61,6 @@ class Main extends CI_Controller {
 				$data['centrifugues'] 			= $this->Api->get_where('project_centrifugues',array('active'=>1,'project'=>$project_data['id']));
 				$data['personal']				= $this->Api->get_where('vista_personal',array('project'=>$project_data['id'],'active'=>1));
 
-				//PERSONAL
-				$data['costoing_acumulado']		= 0;
-				$turnos_facturables				= $this->Api->get_where('personal_report',array('project'=>$project_data['id'],'cover'=>1));
-				foreach ($turnos_facturables as $turno) {
-					$ingeniero 					= $this->Api->get_where('enginers',array('id'=>$turno['enginer']));
-					$data['costoing_acumulado'] = $data['costoing_acumulado'] + $ingeniero[0]['rate'];
-				}
-
 
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';
@@ -86,7 +78,7 @@ class Main extends CI_Controller {
 			redirect('/');
 		}else{
 			$data 								= array();
-			$data['enginer'] 					= $this->Api->get_where('enginers',array('id'=>$id));
+			$data['enginer'] 					= $this->Api->get_where('personal',array('id'=>$id));
 			$data['enginer']					= $data['enginer'][0];
 			$data['periods']					= $this->Api->get_where('reports_enginers',array('enginer'=>$id));
 			$data['main_content'] 				= 'enginer_report';

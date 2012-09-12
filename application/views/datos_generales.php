@@ -47,37 +47,6 @@
 					</tr>
 				</table>
 			</fieldset>
-			<fieldset>
-				<legend>Enginer Report</legend>
-				<table class="datatable">
-	        		<thead>
-	        			<tr>
-	        				<td class="label_m">Id</td>
-	        				<td class="label_m">Name</td>
-	        				<td></td>
-	        			</tr>
-	        		</thead>
-		        	<tbody id="tbody_enginer_report">
-			        	<?php foreach ($enginers as $enginer) { ?>
-			        		<tr id="enginer_report_<?= $enginer['id'] ?>">
-			        			<td><?= $enginer['identification'] ?></td>
-			        			<td><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></td>
-			        			<td><a target="_blank" href="/main/enginer/<?= $enginer['id'] ?>">View Report</a></td>
-			        		</tr>
-			        	<?php } ?>
-		        	</tbody>
-	        	</table>
-			</fieldset>	
-			<fieldset>
-				<legend>Comentarios</legend>
-				<table style="float:left;width:100%;">
-					<tr>
-						<td>
-							<textarea style="width:100%;heigth:150px;"></textarea>
-						</td>
-					</tr>
-				</table>
-			</fieldset>
 	    </div>
 
 	    <!--third party -->
