@@ -68,6 +68,12 @@ class Main extends CI_Controller {
 				$data['operator_categories'] 	= $this->Api->get_where('personal_categories',array('type'=>'operator')); 
 				$data['yardworker_categories'] 	= $this->Api->get_where('personal_categories',array('type'=>'yard_worker')); 
 
+				//TANQUES
+				$data['tank_names_active']		= $this->Api->get_where('tank_names',array('type'=>'active'));
+				$data['tank_names_reserve']		= $this->Api->get_where('tank_names',array('type'=>'reserve'));
+				$data['tank_types']				= $this->Api->get('tanks_types');
+				$data['tanks'] = '';
+
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';
 				$data['project']				= $project_data;

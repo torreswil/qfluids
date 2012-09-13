@@ -212,6 +212,52 @@ $(function(){
 	// 4. TANKS
 	/*==========================================================================================================*/
 
+	$('#active_type').change(function(){
+		if($(this).val() == ''){
+			$('.tank_type_form_active').hide();
+			$('#btn_create_active_tank').hide();
+		}else if(parseInt($(this).val()) == 1){
+			$('.tank_type_form_active').hide();
+			$('#active_cuadrado').show();
+			$('#btn_create_active_tank').show();
+		}else if(parseInt($(this).val()) == 2){
+			$('.tank_type_form_active').hide();
+			$('#active_semicircular').show();
+			$('#btn_create_active_tank').show();
+		}else if(parseInt($(this).val()) == 3){
+			$('.tank_type_form_active').hide();
+			$('#active_trailer').show();
+			$('#btn_create_active_tank').show();
+		}else if(parseInt($(this).val()) == 4){
+			$('.tank_type_form_active').hide();
+			$('#active_horizontal').show();
+			$('#btn_create_active_tank').show();
+		}
+	});
+
+	$('#reserve_type').change(function(){
+		if($(this).val() == ''){
+			$('.tank_type_form_reserve').hide();
+			$('#btn_create_reserve_tank').hide();
+		}else if(parseInt($(this).val()) == 1){
+			$('.tank_type_form_reserve').hide();
+			$('#reserve_cuadrado').show();
+			$('#btn_create_reserve_tank').show();
+		}else if(parseInt($(this).val()) == 2){
+			$('.tank_type_form_reserve').hide();
+			$('#reserve_semicircular').show();
+			$('#btn_create_reserve_tank').show();
+		}else if(parseInt($(this).val()) == 3){
+			$('.tank_type_form_reserve').hide();
+			$('#reserve_trailer').show();
+			$('#btn_create_reserve_tank').show();
+		}else if(parseInt($(this).val()) == 4){
+			$('.tank_type_form_reserve').hide();
+			$('#reserve_horizontal').show();
+			$('#btn_create_reserve_tank').show();
+		}
+	});
+
 
 	/*==========================================================================================================*/
 	// 5. MUD PROPERTIES
