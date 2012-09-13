@@ -241,23 +241,25 @@ class Rest extends CI_Controller {
 		}
 	}
 
-	public function new_enginer(){
+	public function new_person(){
 		if(count($_POST) > 0){
 			//1. verify the enginer does not exists
 			$match = $this->Api->get_where('vista_personal',array('identification' => $_POST['identification'], 'project' => $_POST['project'], 'active' => 1));
 			if(count($match) > 0){
 				$response = array('message'=>'already_created');
 			}else{
+				$type 		= $_POST['type'];
+				unset($_POST['type']);
 				$this->Api->create('personal',$_POST);
-				$enginers = $this->Api->get_where('vista_personal',array('project' => $_POST['project'], 'active' => 1,'type'=>'enginer'));
-				$response = array('message'=>'success','enginers'=>$enginers);
+				$personal 	= $this->Api->get_where('vista_personal',array('project' => $_POST['project'], 'active' => 1,'type'=>$type));
+				$response 	= array('message'=>'success','enginers'=>$personal);
 			}
 
 			echo json_encode($response);
 		}
 	}
 
-	public function remove_enginer(){
+	public function remove_person(){
 		if(count($_POST) > 0){
 			$this->Api->delete('personal',$_POST['id']);
 			echo json_encode(array('message'=>'deactivated'));
@@ -277,8 +279,12 @@ class Rest extends CI_Controller {
 			$personal = $this->Api->get_where('vista_personal',$_POST);
 			if($_POST['type'] == 'enginer'){
 				foreach ($personal as $persona) {
-					echo '<tr><td><input type="text" style="width:110px;" disabled="" value="'.$persona['name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['lastname'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['identification'].'" /></td><td><input type="text" style="width:96px;margin-right:5px;" disabled="" value="'.$persona['category_name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['rate'].'" /></td><td><a href="#remove_enginer" class="remove_enginer_link" id="rm_enginer_'.$persona['id'].'">Remove</a></td></tr>';
+					echo '<tr id="this_person_'.$persona['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$persona['name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['lastname'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['identification'].'" /></td><td><input type="text" style="width:96px;margin-right:5px;" disabled="" value="'.$persona['category_name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['rate'].'" name="rate" /></td><td><a href="#remove_person" class="remove_person_link" id="rm_person_'.$persona['id'].'">Remove</a></td></tr>';
 				}
+			}else{
+				foreach ($personal as $persona) {
+					echo '<tr id="this_person_'.$persona['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$persona['name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['lastname'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['identification'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['rate'].'" name="rate" /></td><td><a href="#remove_person" class="remove_person_link" id="rm_person_'.$persona['id'].'">Remove</a></td></tr>';
+				}	
 			}			
 		}
 	}

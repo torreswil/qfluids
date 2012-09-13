@@ -11,7 +11,9 @@ $(function(){
 	});
 	$('#qfluids_form input[type="radio"]').live('change',function(){
 		correr_calculos();
-		log('change');
+	});
+	$('#qfluids_form input[type="checkbox"]').live('change',function(){
+		correr_calculos();
 	});
 });
 
@@ -76,27 +78,53 @@ function calculos_raw(){
 	//***********************************************
 	
 	//zenginers_today - zenginers_cost_today
-	var zenginers_today = 0;
-	var zenginers_cost_today = 0;
-	$('.this_enginer').change(function(){
-		$('.this_enginer').each(function(){
-			if($(this).val() !== ''){
-				var id = $(this).attr('id');
-				id = id.split('this_enginer_');
-				id = id[1];
-
-				$('#this_enginer_cost_'+id).val($('#this_enginer_'+id+' input[name="rate"]').val());
-
-				zenginers_today 		= zenginers_today + 1;
-				zenginers_cost_today 	= zenginers_cost_today + fval('this_enginer_cost_'+id); 
-				
-				completar_campo_val('zenginers_today',zenginers_today);
-				completar_campo_val('zenginers_cost_today',zenginers_cost_today);
-			}else{
-				$('#this_enginer_cost_'+id).val(0);				
-			}
-		});	
+	var zenginers_today 		= 0;
+	var zenginers_cost_today 	= 0;
+	
+	$('.this_enginer').each(function(){
+		if($(this).val() !== ''){
+			zenginers_today = zenginers_today + 1;
+		}
 	});
+
+	$('.this_enginer_cost').each(function(){
+		zenginers_cost_today = zenginers_cost_today + parseFloat($(this).val());
+	});
+	
+	completar_campo_val('zenginers_today',zenginers_today);
+	completar_campo_val('zenginers_cost_today',zenginers_cost_today);
+
+
+	//zoperators_cost_today - zoperators_today
+	var zoperators_today 			= 0;
+	var zoperators_cost_today 		= 0;
+
+	$('.operator_checkbox:checked').each(function(){
+		zoperators_today = zoperators_today + 1;
+		var id = $(this).attr('id');
+			id = id.split('operator_checkbox_');
+			id = id[1];
+		zoperators_cost_today = zoperators_cost_today + parseFloat($('#operator_cost_'+id).val());
+	});
+
+	completar_campo_val('zoperators_today',zoperators_today);
+	completar_campo_val('zoperators_cost_today',zoperators_cost_today);
+
+
+	//zoperators_cost_today - zoperators_today
+	var zworkers_today 			= 0;
+	var zworkers_cost_today 		= 0;
+
+	$('.worker_checkbox:checked').each(function(){
+		zworkers_today = zworkers_today + 1;
+		var id = $(this).attr('id');
+			id = id.split('worker_checkbox_');
+			id = id[1];
+		zworkers_cost_today = zworkers_cost_today + parseFloat($('#worker_cost_'+id).val());
+	});
+
+	completar_campo_val('zworkers_today',zworkers_today);
+	completar_campo_val('zworkers_cost_today',zworkers_cost_today);	
 
 
 	//CALCULOS 'BROCA'

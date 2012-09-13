@@ -26,6 +26,8 @@ $(function(){
 		}
 	});
 
+	//load the personal on page load
+	load_personal();
 
 	/*==========================================================================================================*/
 	// 1. GENERAL
@@ -241,16 +243,17 @@ $(function(){
 
 
 	//create a new enginer
-	$('#form_new_enginer a').click(function(e){
+	$('#enginers form a').click(function(e){
 		e.preventDefault();
+		var current_form = $(this).parents('form');
 		var eqty = 0;
-		$('#form_new_enginer input').each(function(){
+		$('input',current_form).each(function(){
 			if($(this).val() == ''){
 				eqty = eqty + 1;
 			}
 		});
 
-		$('#form_new_enginer select').each(function(){
+		$('select',current_form).each(function(){
 			if($(this).val() == ''){
 				eqty = eqty + 1;
 			}
@@ -259,12 +262,14 @@ $(function(){
 		if(eqty > 0){
 			alert('Some fields are empty, please verify and try again.');
 		}else{
-			var data = $('#form_new_enginer').serialize();
-			$.post('/rest/new_enginer',data,function(r){
+			var data = current_form.serialize();
+			$('input[name="name"],input[name="lastname"],input[name="identification"]',current_form).val('');
+			$.post('/rest/new_person',data,function(r){
 				if(r.message == 'already_created'){
 					alert('This enginer is already created');
 				}else{
-					load_personal();			
+					load_personal();
+					$('#close_settings_btn').val('Close & Reload').removeClass('just_close');			
 				}
 			},'json');	
 		}
@@ -272,17 +277,18 @@ $(function(){
 
 
 	//remove an enginer
-	$('.remove_enginer').live('click',function(e){
+	$('.remove_person_link').live('click',function(e){
 		e.preventDefault();
 		var id = $(this).attr('id');
-		id = id.split('delete_enginer_');
+		id = id.split('rm_person_');
 		id = id[1];
 
 		var data = {'id':id};
 
-		$.post('/rest/remove_enginer',data,function(r){
+		$.post('/rest/remove_person',data,function(r){
 			if(r.message == 'deactivated'){
-				$('#this_enginer_'+id).remove();
+				load_personal();
+				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 			}
 		},'json');
 	});
@@ -318,8 +324,26 @@ $(function(){
 		});
 
 		//load operators
+		var operators_data = {
+			project 	:$('#project_id').val(),
+			type 		:'operator', 
+			active		: 1
+		};
 
-		//load yard workers	
+		$.post('/rest/load_personal',operators_data,function(r){
+			$('#current_operators_list').html(r);
+		});
+
+		//load yard workers
+		var yardworker_data = {
+			project 	:$('#project_id').val(),
+			type 		:'yard_worker', 
+			active		: 1
+		};
+
+		$.post('/rest/load_personal',yardworker_data,function(r){
+			$('#current_yardworkers_list').html(r);
+		});	
 	}
 
 });
