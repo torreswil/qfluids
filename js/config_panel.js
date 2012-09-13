@@ -155,7 +155,7 @@ $(function(){
 				}
 			});
 
-			//MUD CLEANER
+			//MUD CLEANER 
 			var mud_cleaner 					= {};
 			mud_cleaner.maker 					= $('#mudcleaner_table input[name="maker"]').val(); 
 			mud_cleaner.model 					= $('#mudcleaner_table input[name="model"]').val();
