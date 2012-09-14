@@ -26,8 +26,9 @@ $(function(){
 		}
 	});
 
-	//load the personal on page load
+	//load asinc data on page load
 	load_personal();
+	load_current_tanks();
 
 	/*==========================================================================================================*/
 	// 1. GENERAL
@@ -266,7 +267,117 @@ $(function(){
 			$('#btn_create_reserve_tank').show();
 			$('.tank_measures_fieldset_reserve').show();
 		}
+
+		var parent_form = $(this).parents('form');
+		$('input',parent_form).removeClass('required');
 	});
+
+	$('.btn_create_tank').click(function(){
+		var parent_form = $(this).parents('form');
+		if(parent_form.attr('id') == 'form_active_tank'){ 
+			var current_tanks_table = $('#current_active_tanks'); 
+		}else if(parent_form.attr('id') == 'form_reserve_tank'){
+			var current_tanks_table = $('#current_reserve_tanks');	
+		}
+
+		var eqty = 0;
+		$('select',parent_form).each(function(){
+			if($(this).val() == ''){
+				eqty = eqty + 1;
+			}
+		});
+
+		if(eqty > 0){
+			alert('Some fields are empty. Please verify and try again.');
+		}else{
+			//get the tank name and verify a tank with the same tankname is no already created
+			var ename 	= 0;
+			var tank_name = $('.name',parent_form).val();
+			$('.tank_name_id',current_tanks_table).each(function(){
+				if($(this).val() == tank_name){
+					ename = 1;
+				}
+			});
+
+			if(ename > 0){
+				alert('This tank is already created');
+			}else{
+				//get the tank type
+				var tank_type = parseInt($('.type',parent_form).val());
+				switch(tank_type){
+					case 1:
+						$('.medidas_cuadrado input',parent_form).addClass('required');
+						break;
+					case 2:
+						$('.medidas_semicircular input',parent_form).addClass('required');
+						break;
+					case 3:
+						$('.medidas_trailer input',parent_form).addClass('required');
+						break;
+					case 4:
+						$('.medidas_cilindro input',parent_form).addClass('required');
+						break;
+				}
+
+				//validate fields are not empty
+				var eqty = 0;
+				$('.required',parent_form).each(function(){
+					if($(this).val() == ''){
+						eqty = eqty + 1;
+					}
+				});
+
+				if(eqty > 0){
+					alert('Some fields are empty, please verify and try again.');
+				}else{
+					//save the tank
+					var data = {}
+					switch(tank_type){
+						case 1:
+							alert('creando cuadrado');
+							break;
+						case 2:
+							alert('creando semicircular');
+							break;
+						case 3:
+							alert('creando trailer');
+							break;
+						case 4:
+							alert('creando cilindro');
+							break;
+					}
+					//reload the tank list
+
+					//upgrade the config panel close button	
+
+					//reset form
+				}
+			}
+		}
+
+	});
+
+	function load_current_tanks(){
+		var active_data = {
+			active  		: 1,
+			project 		: $('#project_id').val(),
+			tank_category 	: 'active' 
+		}
+
+		$.post('/rest/load_current_tanks',active_data,function(r){
+			$('#current_active_tanks').html(r);
+		});
+
+		var reserve_data = {
+			active  		: 1,
+			project 		: $('#project_id').val(),
+			tank_category 	: 'reserve'
+		}
+
+		$.post('/rest/load_current_tanks',reserve_data,function(r){
+			$('#current_reserve_tanks').html(r);
+		});	
+	}
 
 
 	/*==========================================================================================================*/

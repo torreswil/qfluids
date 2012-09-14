@@ -335,5 +335,26 @@ class Rest extends CI_Controller {
 		echo json_encode(true);
 	}
 
+	public function load_current_tanks(){
+		if(count($_POST) > 0){
+			$tanks = $this->Api->get_where('vista_tanks',$_POST);
+			foreach ($tanks as $tank){
+				$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
+				echo '
+					<tr>
+						<td>
+							<input type="text" style="width:110px;" disabled="disabled" value="'.$tank['tank_name'].'" />
+							<input type="hidden" class="tank_name_id" value="'.$tank['name'].'" />
+						</td>
+						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['agitators'].'" /></td>
+						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$has_jets.'" /></td>
+						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['tank_type'].'" /></td>
+						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['voltkaforo'].'" /></td>
+						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['hlibremax'].'" /></td>	
+					</tr>';
+			}
+		}
+	}
+
 }
 /****** THE END ******/
