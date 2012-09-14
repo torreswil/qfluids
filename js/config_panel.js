@@ -216,22 +216,27 @@ $(function(){
 		if($(this).val() == ''){
 			$('.tank_type_form_active').hide();
 			$('#btn_create_active_tank').hide();
+			$('.tank_measures_fieldset_active').hide();
 		}else if(parseInt($(this).val()) == 1){
 			$('.tank_type_form_active').hide();
 			$('#active_cuadrado').show();
 			$('#btn_create_active_tank').show();
+			$('.tank_measures_fieldset_active').show();
 		}else if(parseInt($(this).val()) == 2){
 			$('.tank_type_form_active').hide();
 			$('#active_semicircular').show();
 			$('#btn_create_active_tank').show();
+			$('.tank_measures_fieldset_active').show();
 		}else if(parseInt($(this).val()) == 3){
 			$('.tank_type_form_active').hide();
 			$('#active_trailer').show();
 			$('#btn_create_active_tank').show();
+			$('.tank_measures_fieldset_active').show();
 		}else if(parseInt($(this).val()) == 4){
 			$('.tank_type_form_active').hide();
 			$('#active_horizontal').show();
 			$('#btn_create_active_tank').show();
+			$('.tank_measures_fieldset_active').show();
 		}
 	});
 
@@ -239,22 +244,27 @@ $(function(){
 		if($(this).val() == ''){
 			$('.tank_type_form_reserve').hide();
 			$('#btn_create_reserve_tank').hide();
+			$('.tank_measures_fieldset_reserve').hide();
 		}else if(parseInt($(this).val()) == 1){
 			$('.tank_type_form_reserve').hide();
 			$('#reserve_cuadrado').show();
 			$('#btn_create_reserve_tank').show();
+			$('.tank_measures_fieldset_reserve').show();
 		}else if(parseInt($(this).val()) == 2){
 			$('.tank_type_form_reserve').hide();
 			$('#reserve_semicircular').show();
 			$('#btn_create_reserve_tank').show();
+			$('.tank_measures_fieldset_reserve').show();
 		}else if(parseInt($(this).val()) == 3){
 			$('.tank_type_form_reserve').hide();
 			$('#reserve_trailer').show();
 			$('#btn_create_reserve_tank').show();
+			$('.tank_measures_fieldset_reserve').show();
 		}else if(parseInt($(this).val()) == 4){
 			$('.tank_type_form_reserve').hide();
 			$('#reserve_horizontal').show();
 			$('#btn_create_reserve_tank').show();
+			$('.tank_measures_fieldset_reserve').show();
 		}
 	});
 
