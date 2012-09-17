@@ -33,7 +33,7 @@
 		        				</td>
 		        				<td>
 		        					<select style="width:125px;" class="agitators">
-		        						<option value="0">0</option>
+		        						<option value="0" selected="selected">0</option>
 		        						<option value="1">1</option>
 		        						<option value="2">2</option>
 		        						<option value="3">3</option>
@@ -48,7 +48,7 @@
 		        				<td>
 		        					<select style="width:125px;" class="jets">
 		        						<option value="1">Yes</option>
-		        						<option value="0">No</option>
+		        						<option value="0" selected="selected">No</option>
 		        					</select>
 		        				</td>
 		        				<td class="label_m">

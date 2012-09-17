@@ -350,7 +350,8 @@ class Rest extends CI_Controller {
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$has_jets.'" /></td>
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['tank_type'].'" /></td>
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['voltkaforo'].'" /></td>
-						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['hlibremax'].'" /></td>	
+						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['hlibremax'].'" /></td>
+						<td><href="show_measures_'.$tank['id'].'">View measures</a></td>	
 					</tr>';
 			}
 		}
