@@ -356,5 +356,12 @@ class Rest extends CI_Controller {
 		}
 	}
 
+	public function create_tank(){
+		if(count($_POST) > 0){
+			$this->Api->create('project_tanks',$_POST);
+			echo json_encode(true);
+		}
+	}
+
 }
 /****** THE END ******/

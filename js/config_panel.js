@@ -331,26 +331,66 @@ $(function(){
 					alert('Some fields are empty, please verify and try again.');
 				}else{
 					//save the tank
-					var data = {}
+					var data = {
+						project 	: $('#project_id').val(),
+						type 		: tank_type,
+						name 		: $('.name',parent_form).val(),
+						agitators	: $('.agitators',parent_form).val(),
+						jets 		: $('.jets',parent_form).val(),
+						voltkaforo 	: $('.voltkaforo',parent_form).val(),
+						hlibremax 	: $('.hlibremax',parent_form).val(),
+						active 		: 1
+					}
+
 					switch(tank_type){
 						case 1:
-							alert('creando cuadrado');
+							//alert('creando cuadrado');
+							data.sh_1 = $('.sh_1',parent_form).val();
+							data.sa_1 = $('.sa_1',parent_form).val();
+							data.sl_1 = $('.sl_1',parent_form).val();
 							break;
 						case 2:
-							alert('creando semicircular');
+							//alert('creando semicircular');
+							data.sh_1 = $('.sh_1',parent_form).val();
+							data.sa_1 = $('.sa_1',parent_form).val();
+							data.sl_1 = $('.sl_1',parent_form).val();
+							data.sh_2 = $('.sh_2',parent_form).val();
+							data.sa_2 = $('.sa_2',parent_form).val();
+							data.sl_2 = $('.sl_2',parent_form).val();
 							break;
 						case 3:
-							alert('creando trailer');
+							//alert('creando trailer');
+							data.sh_1 = $('.sh_1',parent_form).val();
+							data.sa_1 = $('.sa_1',parent_form).val();
+							data.sl_1 = $('.sl_1',parent_form).val();
+							data.sh_2 = $('.sh_2',parent_form).val();
+							data.sa_2 = $('.sa_2',parent_form).val();
+							data.sl_2 = $('.sl_2',parent_form).val();
 							break;
 						case 4:
-							alert('creando cilindro');
+							//alert('creando cilindro');
+							data.diametro 	= $('.sl_1',parent_form).val();
+							data.sl_1 		= $('.sl_1',parent_form).val();
 							break;
 					}
-					//reload the tank list
 
-					//upgrade the config panel close button	
+					$.post('/rest/create_tank',data,function(r){
+						if(r == true){
+							//reload the tank list
+							load_current_tanks();
 
-					//reset form
+							//reset form
+							$('input[type="text"]',parent_form).val('');
+							$('.name',parent_form).val('');
+							
+							//upgrade the config panel close button	
+							$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+
+						}
+					},'json');
+
+
+					
 				}
 			}
 		}

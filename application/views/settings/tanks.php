@@ -60,10 +60,10 @@
 		        					</select>
 		        				</td>
 		        				<td>
-		        					<input type="text" disabled="disabled" style="width:110px;margin-right:5px;" class="" />
+		        					<input type="text" disabled="disabled" style="width:110px;margin-right:5px;" class="voltkaforo" />
 		        				</td>
 		        				<td>
-		        					<input type="text" disabled="disabled" style="width:110px;margin-right:5px;" class"" />
+		        					<input type="text" disabled="disabled" style="width:110px;margin-right:5px;" class"hlibremax" />
 		        				</td>
 		        			</tr>
 		        		</table>
@@ -149,7 +149,7 @@
 		        		<table style="display:none;" id="active_horizontal" class="tank_type_form_active medidas_cilindro">
 		        			<tr>
 		        				<td class="label_m"><label>Diameter:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="diameter">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="diametro">in.</td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m"><label>Length:</label></td>
@@ -185,7 +185,7 @@
 	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
 	        <form id="form_reserve_tank">
 	        	<fieldset>
-	        		<legend>Create a reserve tank</legend>
+	        		<legend>Create a reserve tank:</legend>
 	        		<fieldset>
 	        			<legend>Tank Properties</legend>
 		        		<table style="float:left;">
@@ -199,7 +199,7 @@
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m">
-		        					<select style="width:126px;">
+		        					<select style="width:125px;" class="name">
 		        						<option value="">Select...</option>
 		        						<?php foreach($tank_names_reserve as $name){ ?>
 		        							<option value="<?= $name['id'] ?>"><?= $name['name'] ?></option>
@@ -207,7 +207,7 @@
 		        					</select>
 		        				</td>
 		        				<td>
-		        					<select style="width:126px;">
+		        					<select style="width:125px;" class="agitators">
 		        						<option value="0">0</option>
 		        						<option value="1">1</option>
 		        						<option value="2">2</option>
@@ -221,13 +221,13 @@
 		        					</select>
 		        				</td>
 		        				<td>
-		        					<select style="width:126px;">
+		        					<select style="width:125px;" class="jets">
 		        						<option value="1">Yes</option>
 		        						<option value="0">No</option>
 		        					</select>
 		        				</td>
 		        				<td class="label_m">
-		        					<select style="width:120px;" id="reserve_type">
+		        					<select style="width:120px;" id="reserve_type" class="type">
 		        						<option value="">Select...</option>
 		        						<?php foreach($tank_types as $type){ ?>
 		        							<option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
@@ -235,19 +235,19 @@
 		        					</select>
 		        				</td>
 		        				<td>
-		        					<input type="text" disabled="disabled" style="width:110px;margin-right:5px;"/>
+		        					<input type="text" disabled="disabled" style="width:110px;margin-right:5px;" class="voltkaforo" />
 		        				</td>
 		        				<td>
-		        					<input type="text" disabled="disabled" style="width:110px;margin-right:5px;" />
+		        					<input type="text" disabled="disabled" style="width:110px;margin-right:5px;" class"hlibremax" />
 		        				</td>
 		        			</tr>
 		        		</table>
-		        	</fieldset>	
+		        	</fieldset>
 		        	<fieldset class="tank_measures_fieldset_reserve" style="display:none;">
-		        		<legend>Tank measures</legend>
-		        		
+	        			<legend>Tank measures</legend>
+
 		        		<!-- cuadrado -->
-		        		<table style="display:none;" id="reserve_cuadrado" class="tank_type_form_reserve">
+		        		<table style="display:none;" id="reserve_cuadrado" class="tank_type_form_reserve medidas_cuadrado">
 		        			<tr>
 		        				<td class="label_m"><label>Length:</label></td>
 		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1">in.</td>
@@ -264,7 +264,7 @@
 
 
 		        		<!-- semicircular -->
-		        		<table style="display:none;" id="reserve_semicircular" class="tank_type_form_reserve">
+		        		<table style="display:none;" id="reserve_semicircular" class="tank_type_form_reserve medidas_semicircular">
 		        			<tr>
 		        				<td class="label_m" style=""><label>Cube:</label></td>
 		        				<td></td>
@@ -292,7 +292,7 @@
 		        		</table>
 
 		        		<!-- tipo trailer -->
-		        		<table style="display:none;" id="reserve_trailer" class="tank_type_form_reserve">
+		        		<table style="display:none;" id="reserve_trailer" class="tank_type_form_reserve medidas_trailer">
 		        			<tr>
 		        				<td class="label_m" style=""><label>Superior section:</label></td>
 		        				<td></td>
@@ -320,18 +320,17 @@
 		        		</table>
 		        		
 		        		<!-- cilindro horizontal -->
-		        		<table style="display:none;" id="reserve_horizontal" class="tank_type_form_reserve">
+		        		<table style="display:none;" id="reserve_horizontal" class="tank_type_form_reserve medidas_cilindro">
 		        			<tr>
 		        				<td class="label_m"><label>Diameter:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="diameter">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="diametro">in.</td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m"><label>Length:</label></td>
 		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1">in.</td>
 		        			</tr>
 		        		</table>
-		        	</fieldset>	
-
+	        		</fieldset>
 	        		<input type="button" class="btn_create_tank" value="Create tank" style="margin-top:10px;display:none" id="btn_create_reserve_tank" />        		
         		</form>
         	</fieldset>
