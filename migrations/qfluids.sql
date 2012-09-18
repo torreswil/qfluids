@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-08-17 14:59:07
+Date: 2012-09-18 14:50:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -598,41 +598,6 @@ INSERT INTO `casing` VALUES ('200', '4', '4.000', null, null, '5.000', null, nul
 INSERT INTO `casing` VALUES ('201', '2', '2.000', null, null, '5.000', null, null, null);
 
 -- ----------------------------
--- Table structure for `config`
--- ----------------------------
-DROP TABLE IF EXISTS `config`;
-CREATE TABLE `config` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `key` varchar(255) DEFAULT NULL,
-  `value` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of config
--- ----------------------------
-INSERT INTO `config` VALUES ('1', 'global_id', '1');
-
--- ----------------------------
--- Table structure for `enginers`
--- ----------------------------
-DROP TABLE IF EXISTS `enginers`;
-CREATE TABLE `enginers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identification` varchar(255) DEFAULT NULL,
-  `lastname` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `project` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of enginers
--- ----------------------------
-INSERT INTO `enginers` VALUES ('1', '80249560', 'Gomez', 'Oscar', '1');
-INSERT INTO `enginers` VALUES ('2', '1030529971', 'Paternina', 'José', '1');
-
--- ----------------------------
 -- Table structure for `lodos`
 -- ----------------------------
 DROP TABLE IF EXISTS `lodos`;
@@ -657,6 +622,144 @@ INSERT INTO `lodos` VALUES ('9', 'Q - Vert');
 INSERT INTO `lodos` VALUES ('10', 'Q - NK');
 
 -- ----------------------------
+-- Table structure for `personal`
+-- ----------------------------
+DROP TABLE IF EXISTS `personal`;
+CREATE TABLE `personal` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identification` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `project` int(11) DEFAULT NULL,
+  `category` int(11) DEFAULT NULL,
+  `rate` float DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of personal
+-- ----------------------------
+INSERT INTO `personal` VALUES ('1', '1030529971', 'Paternina', 'José', '1', '1', '500', '1');
+INSERT INTO `personal` VALUES ('2', '72302448', 'ANTEQUERA', 'DAVID', '1', '1', '700', '1');
+INSERT INTO `personal` VALUES ('3', '1098629008', 'Fernanda', 'Maria', '1', '1', '200', '0');
+INSERT INTO `personal` VALUES ('4', '12345678', 'GOMEZ', 'OSCAR', '1', '1', '499', '1');
+INSERT INTO `personal` VALUES ('5', '25845942', 'fsasf', 'fafad', '1', '1', '500', '0');
+INSERT INTO `personal` VALUES ('6', '123', 'lalala', 'lalal', '1', '2', '300', '0');
+INSERT INTO `personal` VALUES ('7', '098', 'iui', 'iui', '1', '4', '100', '0');
+INSERT INTO `personal` VALUES ('8', '91525414', 'gutierrez', 'fabian', '1', '4', '200', '0');
+INSERT INTO `personal` VALUES ('9', '13822956', 'gutierrez', 'jairo', '1', '5', '100', '0');
+INSERT INTO `personal` VALUES ('10', '', '', '', '1', '3', '0', '0');
+INSERT INTO `personal` VALUES ('11', '1098629008', 'gutierrez', 'fernanda', '1', '3', '0', '0');
+INSERT INTO `personal` VALUES ('12', '888999', 'gutierrez', 'fabian', '1', '4', '0', '1');
+INSERT INTO `personal` VALUES ('13', '7777888', 'gutierrez', 'jairo', '1', '5', '0', '1');
+INSERT INTO `personal` VALUES ('14', '123', 'perez', 'juan', '1', '4', '100', '1');
+INSERT INTO `personal` VALUES ('15', '234', 'jimenez', 'milagros', '1', '4', '100', '1');
+INSERT INTO `personal` VALUES ('16', '09878', 'PEREZ', 'JUAN', '1', '1', '500', '1');
+INSERT INTO `personal` VALUES ('17', '8888', 'ceceres', 'pedro', '1', '5', '50', '1');
+INSERT INTO `personal` VALUES ('18', '111111', 'aguirre', 'gustavo', '1', '5', '25', '1');
+INSERT INTO `personal` VALUES ('19', '9999999', 'claro', 'carlos', '1', '4', '100', '1');
+INSERT INTO `personal` VALUES ('20', '5654', 'gomez', 'henry', '1', '5', '50', '1');
+
+-- ----------------------------
+-- Table structure for `personal_categories`
+-- ----------------------------
+DROP TABLE IF EXISTS `personal_categories`;
+CREATE TABLE `personal_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `erp_id` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `default_rate` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of personal_categories
+-- ----------------------------
+INSERT INTO `personal_categories` VALUES ('1', null, 'Senior', 'enginer', '500');
+INSERT INTO `personal_categories` VALUES ('2', null, 'Junior', 'enginer', '300');
+INSERT INTO `personal_categories` VALUES ('3', null, 'Training', 'enginer', '0');
+INSERT INTO `personal_categories` VALUES ('4', null, 'Operator', 'operator', '0');
+INSERT INTO `personal_categories` VALUES ('5', null, 'Yard Worker', 'yard_worker', '0');
+
+-- ----------------------------
+-- Table structure for `personal_report_enginers`
+-- ----------------------------
+DROP TABLE IF EXISTS `personal_report_enginers`;
+CREATE TABLE `personal_report_enginers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `enginer` int(11) DEFAULT NULL,
+  `project` int(11) DEFAULT NULL,
+  `cover` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of personal_report_enginers
+-- ----------------------------
+INSERT INTO `personal_report_enginers` VALUES ('1', '1', '1', '1', '2012-09-12');
+
+-- ----------------------------
+-- Table structure for `project_centrifugues`
+-- ----------------------------
+DROP TABLE IF EXISTS `project_centrifugues`;
+CREATE TABLE `project_centrifugues` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project` int(11) DEFAULT NULL,
+  `maker` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `variator` int(11) DEFAULT NULL,
+  `maxrpm` int(11) DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of project_centrifugues
+-- ----------------------------
+INSERT INTO `project_centrifugues` VALUES ('1', '1', 'QMAX', 'lgs', '1', '1000', '0');
+INSERT INTO `project_centrifugues` VALUES ('2', '1', 'DESARROLLO22', 'hgs', '1', '500', '0');
+INSERT INTO `project_centrifugues` VALUES ('3', '1', 'JOSE', 'hgs', '1', '1000', '0');
+INSERT INTO `project_centrifugues` VALUES ('4', '1', 'PATERNINA', 'lgs', '0', '2000', '0');
+INSERT INTO `project_centrifugues` VALUES ('5', '1', 'PANASONIC', 'hgs', '1', '2000', '1');
+INSERT INTO `project_centrifugues` VALUES ('6', '1', 'PANASONIC', 'hgs', '1', '1000', '1');
+
+-- ----------------------------
+-- Table structure for `project_mudcleaner`
+-- ----------------------------
+DROP TABLE IF EXISTS `project_mudcleaner`;
+CREATE TABLE `project_mudcleaner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project` int(11) DEFAULT NULL,
+  `maker` varchar(255) DEFAULT NULL,
+  `model` varchar(255) DEFAULT NULL,
+  `desander_cones` int(11) DEFAULT NULL,
+  `desander_conediameter` float DEFAULT NULL,
+  `desander_pumptype` varchar(255) DEFAULT NULL,
+  `desilter_cones` int(11) DEFAULT NULL,
+  `desilter_conediameter` float DEFAULT NULL,
+  `desilter_pumptype` varchar(255) DEFAULT NULL,
+  `shaker_model` varchar(255) DEFAULT NULL,
+  `shaker_screens` int(11) DEFAULT NULL,
+  `shaker_movement` varchar(255) DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of project_mudcleaner
+-- ----------------------------
+INSERT INTO `project_mudcleaner` VALUES ('1', '1', '', '1150', null, '5.8', null, null, '4.2', null, 'SH01', null, null, '0');
+INSERT INTO `project_mudcleaner` VALUES ('2', '1', '', '333', null, '34.5', null, null, '54.2', null, 'TOSHIBA', null, null, '0');
+INSERT INTO `project_mudcleaner` VALUES ('3', '1', '', 'LALALLA', null, '0', null, null, '0', null, 'QMAX', null, null, '0');
+INSERT INTO `project_mudcleaner` VALUES ('4', '1', '', 'PATERNINA', '1', '5.6', '5_4', '1', '6.1', '6_5', 'JOSEDANIEL', '3', 'circular', '0');
+INSERT INTO `project_mudcleaner` VALUES ('5', '1', '', 'PATERNINA', '16', '3.5', '4_3', '13', '5', '4_3', 'JOSE DANIEL', '2', 'circular', '0');
+INSERT INTO `project_mudcleaner` VALUES ('6', '1', 'JOSE', 'PATERNINA', '5', '3.4', '4_3', '6', '4', '5_5', 'JOSE DANIEL', '4', 'circular', '0');
+INSERT INTO `project_mudcleaner` VALUES ('7', '1', 'DESARROLLO', '22', '1', '3.4', '5_4', '1', '3.4', '4_6', 'LALALAL', '2', 'eliptico', '1');
+
+-- ----------------------------
 -- Table structure for `project_shakers`
 -- ----------------------------
 DROP TABLE IF EXISTS `project_shakers`;
@@ -670,7 +773,7 @@ CREATE TABLE `project_shakers` (
   `screens` int(11) DEFAULT NULL,
   `active` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of project_shakers
@@ -681,9 +784,68 @@ INSERT INTO `project_shakers` VALUES ('3', '1', 'SALAMANDRA', '567654', '1', 'el
 INSERT INTO `project_shakers` VALUES ('4', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
 INSERT INTO `project_shakers` VALUES ('5', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
 INSERT INTO `project_shakers` VALUES ('6', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
-INSERT INTO `project_shakers` VALUES ('7', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '1');
-INSERT INTO `project_shakers` VALUES ('8', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '1');
-INSERT INTO `project_shakers` VALUES ('9', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '1');
+INSERT INTO `project_shakers` VALUES ('7', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
+INSERT INTO `project_shakers` VALUES ('8', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
+INSERT INTO `project_shakers` VALUES ('9', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
+INSERT INTO `project_shakers` VALUES ('10', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
+INSERT INTO `project_shakers` VALUES ('11', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
+INSERT INTO `project_shakers` VALUES ('12', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
+INSERT INTO `project_shakers` VALUES ('13', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
+INSERT INTO `project_shakers` VALUES ('14', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
+INSERT INTO `project_shakers` VALUES ('15', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
+INSERT INTO `project_shakers` VALUES ('16', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
+INSERT INTO `project_shakers` VALUES ('17', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
+INSERT INTO `project_shakers` VALUES ('18', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
+INSERT INTO `project_shakers` VALUES ('19', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
+INSERT INTO `project_shakers` VALUES ('20', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
+INSERT INTO `project_shakers` VALUES ('21', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
+INSERT INTO `project_shakers` VALUES ('22', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
+INSERT INTO `project_shakers` VALUES ('23', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
+INSERT INTO `project_shakers` VALUES ('24', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
+INSERT INTO `project_shakers` VALUES ('25', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
+INSERT INTO `project_shakers` VALUES ('26', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
+INSERT INTO `project_shakers` VALUES ('27', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
+INSERT INTO `project_shakers` VALUES ('28', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
+INSERT INTO `project_shakers` VALUES ('29', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
+INSERT INTO `project_shakers` VALUES ('30', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
+INSERT INTO `project_shakers` VALUES ('31', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '1');
+INSERT INTO `project_shakers` VALUES ('32', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '1');
+INSERT INTO `project_shakers` VALUES ('33', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '1');
+
+-- ----------------------------
+-- Table structure for `project_tanks`
+-- ----------------------------
+DROP TABLE IF EXISTS `project_tanks`;
+CREATE TABLE `project_tanks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project` int(11) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `name` int(11) DEFAULT NULL,
+  `sh_1` float DEFAULT NULL,
+  `sa_1` float DEFAULT NULL,
+  `sl_1` float DEFAULT NULL,
+  `sh_2` float DEFAULT NULL,
+  `sa_2` float DEFAULT NULL,
+  `sl_2` float DEFAULT NULL,
+  `diametro` float DEFAULT NULL,
+  `agitators` int(11) DEFAULT NULL,
+  `jets` int(11) DEFAULT NULL,
+  `voltkaforo` float DEFAULT NULL,
+  `hlibremax` float DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of project_tanks
+-- ----------------------------
+INSERT INTO `project_tanks` VALUES ('1', '1', '1', '1', '100', '50', '50', null, null, null, null, '2', '1', null, null, '1', '1');
+INSERT INTO `project_tanks` VALUES ('2', '1', '1', '2', '10', '10', '20', null, null, null, null, '1', '0', '0', null, '2', '0');
+INSERT INTO `project_tanks` VALUES ('3', '1', '4', '3', null, null, '0', null, null, null, '0', '3', '1', '0', null, '2', '1');
+INSERT INTO `project_tanks` VALUES ('4', '1', '4', '4', null, null, '0', null, null, null, '0', '2', '0', '0', null, '3', '0');
+INSERT INTO `project_tanks` VALUES ('7', '1', '1', '6', '15', '10', '20', null, null, null, null, '3', '0', '0', null, '3', '1');
+INSERT INTO `project_tanks` VALUES ('8', '1', '1', '15', '30', '20', '10', null, null, null, null, '2', '1', '0', null, '1', '1');
 
 -- ----------------------------
 -- Table structure for `projects`
@@ -691,6 +853,7 @@ INSERT INTO `project_shakers` VALUES ('9', '1', 'PANASONIC', 'L35', '3.2', 'line
 DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `transactional_id` varchar(255) NOT NULL,
   `last_modified` datetime DEFAULT NULL,
   `well_name` varchar(255) DEFAULT NULL,
   `operator` varchar(255) DEFAULT NULL,
@@ -704,41 +867,16 @@ CREATE TABLE `projects` (
   `spud_date` date DEFAULT NULL,
   `configured` int(11) DEFAULT '0',
   `shaker_qty` int(11) DEFAULT NULL,
+  `maximun_enginers` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of projects
 -- ----------------------------
-INSERT INTO `projects` VALUES ('1', '2012-08-15 15:59:13', 'ORITO', 'PETROMINERALES', 'PEGASO 1', 'ORITO', '2225', 'ORITO', '1', '1', '2012-08-15 15:59:13', null, '1', '3');
-INSERT INTO `projects` VALUES ('2', '2012-08-15 16:02:49', 'PETROLEA 235', 'ECOPETROL', 'NABORS16', 'TIBU', '44444', 'PETROLEA', '1', '1', '2012-08-15 16:02:49', null, '0', null);
-INSERT INTO `projects` VALUES ('3', '2012-08-15 16:04:43', 'PETROLEA 2', 'ECOPETROL', 'PEGASO3', 'PIEDECUESTA', '2134', 'PIEDECUESTA', '1', '1', '2012-08-15 16:04:43', null, '0', null);
-INSERT INTO `projects` VALUES ('4', '2012-08-16 08:35:20', 'CERETE22', 'PETROMINERALES', 'PEGASO22', 'CERETE', '22222', 'CORDOBA', '1', '1', '2012-08-16 08:35:20', null, '1', null);
-INSERT INTO `projects` VALUES ('5', '2012-08-16 09:00:48', 'w', 'w', 'w', 'w', 'w', 'w', '1', '1', '2012-08-16 09:00:48', null, '0', null);
-INSERT INTO `projects` VALUES ('6', '2012-08-16 09:44:35', 'cesar 1', 'canacol', 'oscar drilling 1', 'yopal', '111', 'oscarin', '1', '1', '2012-08-16 09:44:35', null, '0', null);
-INSERT INTO `projects` VALUES ('7', '2012-08-16 09:44:35', 'cesar 1', 'canacol', 'oscar drilling 1', 'yopal', '111', 'oscarin', '1', '1', '2012-08-16 09:44:35', null, '0', null);
-INSERT INTO `projects` VALUES ('8', '2012-08-16 09:44:36', 'cesar 1', 'canacol', 'oscar drilling 1', 'yopal', '111', 'oscarin', '1', '1', '2012-08-16 09:44:36', null, '0', null);
-INSERT INTO `projects` VALUES ('9', '2012-08-16 09:44:37', 'cesar 1', 'canacol', 'oscar drilling 1', 'yopal', '111', 'oscarin', '1', '1', '2012-08-16 09:44:37', null, '0', null);
-INSERT INTO `projects` VALUES ('10', '2012-08-16 09:44:37', 'cesar 1', 'canacol', 'oscar drilling 1', 'yopal', '111', 'oscarin', '1', '1', '2012-08-16 09:44:37', null, '0', null);
-
--- ----------------------------
--- Table structure for `projects_enginers`
--- ----------------------------
-DROP TABLE IF EXISTS `projects_enginers`;
-CREATE TABLE `projects_enginers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `project` int(11) DEFAULT NULL,
-  `enginer` int(11) DEFAULT NULL,
-  `workin` datetime DEFAULT NULL,
-  `workout` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of projects_enginers
--- ----------------------------
-INSERT INTO `projects_enginers` VALUES ('1', '1', '1', '2012-08-10 14:18:02', null);
-INSERT INTO `projects_enginers` VALUES ('2', '1', '2', '2012-08-10 14:18:59', null);
+INSERT INTO `projects` VALUES ('1', 'FCKGW', '2012-09-05 10:06:37', 'ORITO', 'PETROMINERALES', 'CAMBRIA1', 'ORITO', '0000', 'ORITO', '1', null, '2012-09-05 10:06:37', '2012-09-05', '0', '3', '3');
+INSERT INTO `projects` VALUES ('2', 'YXRKT01', '2012-09-06 09:03:41', 'BOGOTA', 'QMAX', 'PEGASO1', 'BOGOTA', '0002', 'WTC1', '1', null, '2012-09-06 09:03:41', '2012-09-06', '0', null, null);
+INSERT INTO `projects` VALUES ('3', 'QWERTY', '2012-09-11 09:54:30', 'CERETE1', 'DESARROLLO22', 'PEGASO', 'CERETE', '0001', 'CORDOBA', '1', null, '2012-09-11 09:54:30', '2012-09-11', '0', null, null);
 
 -- ----------------------------
 -- Table structure for `reports`
@@ -746,33 +884,110 @@ INSERT INTO `projects_enginers` VALUES ('2', '1', '2', '2012-08-10 14:18:59', nu
 DROP TABLE IF EXISTS `reports`;
 CREATE TABLE `reports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `project` int(11) DEFAULT NULL,
+  `transactional_id` varchar(255) DEFAULT NULL COMMENT 'Este campo esta conformado por el id trasanccional del proyecto + el consecutivo del numero del reporte. Este id es el que va a enganchar la dependencia con las tablas hijas.',
+  `project_transactional_id` varchar(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
+  `number` int(11) DEFAULT NULL,
+  `generated` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of reports
 -- ----------------------------
-INSERT INTO `reports` VALUES ('1', '1', '2012-08-10');
+INSERT INTO `reports` VALUES ('1', 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', '1', '0');
+INSERT INTO `reports` VALUES ('5', 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', '2', '0');
+INSERT INTO `reports` VALUES ('6', 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', '3', '0');
+INSERT INTO `reports` VALUES ('7', 'FCKGW_qflrpt_4', 'FCKGW', '2012-09-08', '4', '0');
+INSERT INTO `reports` VALUES ('8', 'FCKGW_qflrpt_5', 'FCKGW', '2012-09-09', '5', '0');
+INSERT INTO `reports` VALUES ('9', 'FCKGW_qflrpt_6', 'FCKGW', '2012-09-10', '6', '0');
+INSERT INTO `reports` VALUES ('10', 'FCKGW_qflrpt_7', 'FCKGW', '2012-09-11', '7', '0');
+INSERT INTO `reports` VALUES ('11', 'YXRKT01_qflrpt_1', 'YXRKT01', '2012-09-06', '1', '0');
+INSERT INTO `reports` VALUES ('12', 'YXRKT01_qflrpt_2', 'YXRKT01', '2012-09-07', '2', '0');
+INSERT INTO `reports` VALUES ('13', 'YXRKT01_qflrpt_3', 'YXRKT01', '2012-09-08', '3', '0');
+INSERT INTO `reports` VALUES ('14', 'FCKGW_qflrpt_8', 'FCKGW', '2012-09-12', '8', '0');
+INSERT INTO `reports` VALUES ('15', 'QWERTY_qflrpt_1', 'QWERTY', '2012-09-11', '1', '0');
+INSERT INTO `reports` VALUES ('16', 'FCKGW_qflrpt_9', 'FCKGW', '2012-09-13', '9', '0');
 
 -- ----------------------------
--- Table structure for `reports_geometriahueco`
+-- Table structure for `tank_names`
 -- ----------------------------
-DROP TABLE IF EXISTS `reports_geometriahueco`;
-CREATE TABLE `reports_geometriahueco` (
+DROP TABLE IF EXISTS `tank_names`;
+CREATE TABLE `tank_names` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `zhole` float DEFAULT NULL,
-  `palabra` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of reports_geometriahueco
+-- Records of tank_names
 -- ----------------------------
+INSERT INTO `tank_names` VALUES ('1', 'Trip tank', 'active');
+INSERT INTO `tank_names` VALUES ('2', 'Sand trap', 'active');
+INSERT INTO `tank_names` VALUES ('3', 'Return 1', 'active');
+INSERT INTO `tank_names` VALUES ('4', 'Return 2', 'active');
+INSERT INTO `tank_names` VALUES ('5', 'Return 3', 'active');
+INSERT INTO `tank_names` VALUES ('6', 'Intermediate 1', 'active');
+INSERT INTO `tank_names` VALUES ('7', 'Intermediate 2', 'active');
+INSERT INTO `tank_names` VALUES ('8', 'Intermediate 3', 'active');
+INSERT INTO `tank_names` VALUES ('9', 'Suction 1', 'active');
+INSERT INTO `tank_names` VALUES ('10', 'Suction 2', 'active');
+INSERT INTO `tank_names` VALUES ('11', 'Suction 3', 'active');
+INSERT INTO `tank_names` VALUES ('12', 'Pill 1', 'active');
+INSERT INTO `tank_names` VALUES ('13', 'Pill 2', 'active');
+INSERT INTO `tank_names` VALUES ('14', 'Pill 3', 'active');
+INSERT INTO `tank_names` VALUES ('15', 'Reserve 1', 'reserve');
+INSERT INTO `tank_names` VALUES ('16', 'Reserve 2', 'reserve');
+INSERT INTO `tank_names` VALUES ('17', 'Reserve 3', 'reserve');
+INSERT INTO `tank_names` VALUES ('18', 'Reserve 4', 'reserve');
+INSERT INTO `tank_names` VALUES ('19', 'Reserve 5', 'reserve');
+INSERT INTO `tank_names` VALUES ('20', 'Reserve 6', 'reserve');
+INSERT INTO `tank_names` VALUES ('21', 'Sharing tank 1', 'reserve');
+INSERT INTO `tank_names` VALUES ('22', 'Sharing tank 2', 'reserve');
+INSERT INTO `tank_names` VALUES ('23', 'Sharing tank 3', 'reserve');
+INSERT INTO `tank_names` VALUES ('24', 'Sharing tank 4', 'reserve');
+INSERT INTO `tank_names` VALUES ('25', 'Sharing tank 5', 'reserve');
+INSERT INTO `tank_names` VALUES ('26', 'Sharing tank 6', 'reserve');
+INSERT INTO `tank_names` VALUES ('27', 'Frack tank 1', 'reserve');
+INSERT INTO `tank_names` VALUES ('28', 'Frack tank 2', 'reserve');
+INSERT INTO `tank_names` VALUES ('29', 'Frack tank 3', 'reserve');
+INSERT INTO `tank_names` VALUES ('30', 'Frack tank 4', 'reserve');
+INSERT INTO `tank_names` VALUES ('31', 'Frack tank 5', 'reserve');
+INSERT INTO `tank_names` VALUES ('32', 'Frack tank 6', 'reserve');
+
+-- ----------------------------
+-- Table structure for `tanks_types`
+-- ----------------------------
+DROP TABLE IF EXISTS `tanks_types`;
+CREATE TABLE `tanks_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of tanks_types
+-- ----------------------------
+INSERT INTO `tanks_types` VALUES ('1', 'Square');
+INSERT INTO `tanks_types` VALUES ('2', 'Bottom Half Cylinder');
+INSERT INTO `tanks_types` VALUES ('3', 'Trailer');
+INSERT INTO `tanks_types` VALUES ('4', 'Horizontal Cylinder');
 
 -- ----------------------------
 -- View structure for `vista_brocas`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_brocas`;
 CREATE VIEW `vista_brocas` AS select `brocas_modelos`.`id` AS `id`,`brocas_modelos`.`id_broca` AS `id_broca`,`brocas_modelos`.`odfracc` AS `odfracc`,`brocas_modelos`.`unit_oddfracc` AS `unit_oddfracc`,`brocas_modelos`.`odddeci` AS `odddeci`,`brocas_modelos`.`unit_odddeci` AS `unit_odddeci`,`brocas_modelos`.`length` AS `length`,`brocas_modelos`.`unit_length` AS `unit_length`,`brocas_modelos`.`nombre_modelo` AS `nombre_modelo`,`brocas`.`nombre_broca` AS `nombre_broca` from (`brocas` join `brocas_modelos` on((`brocas`.`id` = `brocas_modelos`.`id_broca`))) ;
+
+-- ----------------------------
+-- View structure for `vista_personal`
+-- ----------------------------
+DROP VIEW IF EXISTS `vista_personal`;
+CREATE VIEW `vista_personal` AS select `personal`.`id` AS `id`,`personal`.`identification` AS `identification`,`personal`.`lastname` AS `lastname`,`personal`.`name` AS `name`,`personal`.`project` AS `project`,`personal`.`category` AS `category`,`personal_categories`.`name` AS `category_name`,`personal_categories`.`type` AS `type`,`personal`.`active` AS `active`,`personal`.`rate` AS `rate` from (`personal` join `personal_categories` on((`personal_categories`.`id` = `personal`.`category`))) ;
+
+-- ----------------------------
+-- View structure for `vista_tanks`
+-- ----------------------------
+DROP VIEW IF EXISTS `vista_tanks`;
+CREATE VIEW `vista_tanks` AS select `project_tanks`.`id` AS `id`,`project_tanks`.`project` AS `project`,`project_tanks`.`type` AS `type`,`project_tanks`.`name` AS `name`,`project_tanks`.`sh_1` AS `sh_1`,`project_tanks`.`sa_1` AS `sa_1`,`project_tanks`.`sl_1` AS `sl_1`,`project_tanks`.`sh_2` AS `sh_2`,`project_tanks`.`sa_2` AS `sa_2`,`project_tanks`.`sl_2` AS `sl_2`,`project_tanks`.`diametro` AS `diametro`,`project_tanks`.`agitators` AS `agitators`,`project_tanks`.`jets` AS `jets`,`project_tanks`.`voltkaforo` AS `voltkaforo`,`project_tanks`.`hlibremax` AS `hlibremax`,`project_tanks`.`active` AS `active`,`tank_names`.`name` AS `tank_name`,`tanks_types`.`name` AS `tank_type`,`tank_names`.`type` AS `tank_category`,`project_tanks`.`order` AS `order` from ((`project_tanks` left join `tank_names` on((`tank_names`.`id` = `project_tanks`.`name`))) left join `tanks_types` on((`tanks_types`.`id` = `project_tanks`.`type`))) ;

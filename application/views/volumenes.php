@@ -62,6 +62,8 @@
 	        				<td class="label_m"><label>TANK TYPE:</label></td>
 	        				<td class="label_m" style="text-align:center;"><label>VOL. CAPACITY:</label></td>
 	        				<td class="label_m" style="text-align:center;"><label>MAX HEADROOM:</label></td>
+	        				<td class="label_m" style="text-align:center;"><label>HEADROOM:</label></td>
+	        				<td class="label_m" style="text-align:center;"><label>VOLUME:</label></td>
 						</tr>
 						<tr>
 							<td class="label_m" style="text-align:center;"></td>
@@ -70,6 +72,8 @@
 	        				<td class="label_m" style="text-align:center;"></td>
 	        				<td class="label_m" style="text-align:center;">bbl</td>
 	        				<td class="label_m" style="text-align:center;">in.</td>
+	        				<td class="label_m" style="text-align:center;">in.</td>
+	        				<td class="label_m" style="text-align:center;">bbl</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -84,6 +88,8 @@
 		        				<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_type'] ?>" /></td>
 		        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" /></td>
 		        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" /></td>
+								<td class="label_m"><input type="text" style="margin-right:0;width:90px;" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" /></td>
 							</tr>
 
 						<?php } ?>
@@ -101,6 +107,8 @@
 	        				<td class="label_m"><label>TANK TYPE:</label></td>
 	        				<td class="label_m" style="text-align:center;"><label>VOL. CAPACITY:</label></td>
 	        				<td class="label_m" style="text-align:center;"><label>MAX HEADROOM:</label></td>
+	        				<td class="label_m" style="text-align:center;"><label>HEADROOM:</label></td>
+	        				<td class="label_m" style="text-align:center;"><label>VOLUME:</label></td>
 						</tr>
 						<tr>
 							<td class="label_m" style="text-align:center;"></td>
@@ -109,6 +117,8 @@
 	        				<td class="label_m" style="text-align:center;"></td>
 	        				<td class="label_m" style="text-align:center;">bbl</td>
 	        				<td class="label_m" style="text-align:center;">in.</td>
+	        				<td class="label_m" style="text-align:center;">in.</td>
+	        				<td class="label_m" style="text-align:center;">bbl</td>
 						</tr>
 					</thead>
 					<?php 
@@ -122,177 +132,169 @@
 		        				<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_type'] ?>" /></td>
 		        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" /></td>
 		        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" /></td>
+								<td class="label_m"><input type="text" style="margin-right:0;width:90px;" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" /></td>
 							</tr>
 
 						<?php } ?>
 				</table>
 			</fieldset>
 		</div>
-		<div class="simpleTabsContent"></div>
-		<div class="simpleTabsContent"></div>
+		<div class="simpleTabsContent">
+			<fieldset>
+				<table>
+					<tr>
+						<td></td>
+						<td class="label_m"><label>Active</label></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>STARTING VOL</label></td>
+						<td><input type="text" disabled="disabled"></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>TRANSFERED MUD TO RESERVES</label></td>
+						<td><input type="text" disabled="disabled"></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>RECEIVED MUD TO RESERVES</label></td>
+						<td><input type="text" disabled="disabled"></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>CHEMICAL ADDED</label></td>
+						<td><input type="text" style="margin-right:5px;"> BBL</td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>TOTAL ADDED</label></td>
+						<td><input type="text" disabled="disabled"></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>FINAL VOL</label></td>
+						<td><input type="text" disabled="disabled"></td>
+					</tr>
+				</table>
+			</fieldset>
+			
+			<fieldset style="margin-top:10px;">
+				<table>
+					<tr>
+						<td></td>
+						<td class="label_m"><label>RESERVE 1</label></td>
+						<td class="label_m"><label>RESERVE 2</label></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>STARTING VOL</label></td>
+						<td><input type="text" disabled="disabled" /></td>
+						<td><input type="text" disabled="disabled" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>REC. FROM ACTV. TO RES.</label></td>
+						<td class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
+						<td class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>TRANS. FROM RES. TO ACTV</label></td>
+						<td class="label_m" class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
+						<td class="label_m" class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>CHEMICAL ADDED</label></td>
+						<td><input type="text" disabled="disabled" /></td>
+						<td><input type="text" disabled="disabled" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>WATER ADDED</label></td>
+						<td class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
+						<td class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>TOTAL ADDED</label></td>
+						<td><input type="text" disabled="disabled" /></td>
+						<td><input type="text" disabled="disabled" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>FINAL VOL</label></td>
+						<td><input type="text" disabled="disabled" /></td>
+						<td><input type="text" disabled="disabled" /></td>
+					</tr>
+				</table>	
+			</fieldset>
+			
+			<fieldset style="margin-top:10px;">
+				<table>
+					<tr>
+						<td class="label_m"><label>SECTION MUD MADE</label></td>
+						<td><input type="text"></td>
+						<td class="label_m"><label>CUM. MUD MADE</label></td>
+						<td><input type="text" disabled="disabled"></td>
+					</tr>
+				</table>
+			</fieldset>
+		</div>
+		<div class="simpleTabsContent">
+			<fieldset>
+				<table>
+					<tr>
+						<td class="label_m"><label>SURFACE</label></td>
+						<td><input type="text" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>SHAKERS/CAVINGS</label></td>
+						<td><input type="text" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>MUD CLEANER</label></td>
+						<td><input type="text" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>CENTRIFUGUES</label></td>
+						<td><input type="text" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>DEWATERING</label></td>
+						<td><input type="text" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>BEHIND CASING</label></td>
+						<td><input type="text" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>OTHERS</label></td>
+						<td><input type="text" /></td>
+					</tr>
+					
+				</table>
+			</fieldset>
+			<fieldset style="margin-top:10px;">
+				<table>
+					<tr>
+						<td class="label_m"><label>sub/surface</label></td>
+						<td><input type="text" /></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset style="margin-top:10px;">
+				<table>
+					<tr>
+						<td class="label_m"><label>Daily Surf.losses:</label></td>
+						<td><input type="text" disabled="disabled" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Cum Surf.losse:</label></td>
+						<td><input type="text" disabled="disabled" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Daily Sub/Surf.losse:</label></td>
+						<td><input type="text" disabled="disabled" /></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Cum. Sub/Surf.losse:</label></td>
+						<td><input type="text" disabled="disabled" /></td>
+					</tr>
+				</table>
+			</fieldset>
+		</div>
 		<div class="simpleTabsContent">
 			<table style="width:930px;">
-				<tr>
-					<td >
-						<fieldset>
-							<legend>VOLUMEN ACTIVO</legend>
-							<fieldset>
-								<table>
-									<tr>
-										<td></td>
-										<td class="label_m"><label>Active</label></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>STARTING VOL</label></td>
-										<td><input type="text" disabled="disabled"></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>TRANSFERED MUD TO RESERVES</label></td>
-										<td><input type="text" disabled="disabled"></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>RECEIVED MUD TO RESERVES</label></td>
-										<td><input type="text" disabled="disabled"></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>CHEMICAL ADDED</label></td>
-										<td><input type="text" style="margin-right:5px;"> BBL</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>TOTAL ADDED</label></td>
-										<td><input type="text" disabled="disabled"></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>FINAL VOL</label></td>
-										<td><input type="text" disabled="disabled"></td>
-									</tr>
-								</table>
-							</fieldset>
-							
-							<fieldset style="margin-top:10px;">
-								<table>
-									<tr>
-										<td></td>
-										<td class="label_m"><label>RESERVE 1</label></td>
-										<td class="label_m"><label>RESERVE 2</label></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>STARTING VOL</label></td>
-										<td><input type="text" disabled="disabled" /></td>
-										<td><input type="text" disabled="disabled" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>REC. FROM ACTV. TO RES.</label></td>
-										<td class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
-										<td class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>TRANS. FROM RES. TO ACTV</label></td>
-										<td class="label_m" class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
-										<td class="label_m" class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>CHEMICAL ADDED</label></td>
-										<td><input type="text" disabled="disabled" /></td>
-										<td><input type="text" disabled="disabled" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>WATER ADDED</label></td>
-										<td class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
-										<td class="label_m"><input type="text" style="margin-right:5px;" />BBL</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>TOTAL ADDED</label></td>
-										<td><input type="text" disabled="disabled" /></td>
-										<td><input type="text" disabled="disabled" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>FINAL VOL</label></td>
-										<td><input type="text" disabled="disabled" /></td>
-										<td><input type="text" disabled="disabled" /></td>
-									</tr>
-								</table>	
-							</fieldset>
-							
-							<fieldset style="margin-top:10px;">
-								<table>
-									<tr>
-										<td class="label_m"><label>SECTION MUD MADE</label></td>
-										<td><input type="text"></td>
-										<td class="label_m"><label>CUM. MUD MADE</label></td>
-										<td><input type="text" disabled="disabled"></td>
-									</tr>
-								</table>
-							</fieldset>
-						</fieldset>
-					</td>
-					<td style="width:460px;">
-						<fieldset style="height:495px;">
-							<legend>LOSSES ANALISYS</legend>
-							<fieldset>
-								<table>
-									<tr>
-										<td class="label_m"><label>SURFACE</label></td>
-										<td><input type="text" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>SHAKERS/CAVINGS</label></td>
-										<td><input type="text" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>MUD CLEANER</label></td>
-										<td><input type="text" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>CENTRIFUGUES</label></td>
-										<td><input type="text" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>DEWATERING</label></td>
-										<td><input type="text" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>BEHIND CASING</label></td>
-										<td><input type="text" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>OTHERS</label></td>
-										<td><input type="text" /></td>
-									</tr>
-									
-								</table>
-							</fieldset>
-							<fieldset style="margin-top:10px;">
-								<table>
-									<tr>
-										<td class="label_m"><label>sub/surface</label></td>
-										<td><input type="text" /></td>
-									</tr>
-								</table>
-							</fieldset>
-							<fieldset style="margin-top:10px;">
-								<table>
-									<tr>
-										<td class="label_m"><label>Daily Surf.losses:</label></td>
-										<td><input type="text" disabled="disabled" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>Cum Surf.losse:</label></td>
-										<td><input type="text" disabled="disabled" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>Daily Sub/Surf.losse:</label></td>
-										<td><input type="text" disabled="disabled" /></td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>Cum. Sub/Surf.losse:</label></td>
-										<td><input type="text" disabled="disabled" /></td>
-									</tr>
-								</table>
-							</fieldset>
-						</fieldset>
-					</td>	
-				</tr>
 				<tr>
 					<td colspan='2'>
 						<fieldset>
