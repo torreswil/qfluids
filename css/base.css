@@ -599,7 +599,7 @@ td { vertical-align: top; }
 	ul.simpleTabsNavigation { margin:-20px 10px 0 10px; padding:0; text-align:left; position: fixed; z-index: 1; }
 	ul.simpleTabsNavigation li { list-style:none; display:inline; margin:0; padding:0; }
 	/*ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#F0F0F0; font-size:14px; text-decoration:none; color:#666;} */
-	ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#384939; font-size:14px; text-decoration:none; color:#FFF;}
+	ul.simpleTabsNavigation li a { border:1px solid #E0E0E0; padding:6px 12px; background:#384939; /*background-image: url('/img/tasky_pattern.png');*/ font-size:14px; text-decoration:none; color:#FFF;}
 	ul.simpleTabsNavigation li a:hover { background-color:#384939; }
 	ul.simpleTabsNavigation li a.current { background:#fff; color:#384939; border-bottom:1px solid #fff; }
 	
