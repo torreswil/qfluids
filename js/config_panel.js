@@ -427,7 +427,7 @@ $(function(){
 		}
 
 		//validate there is not repeated order numbers
-
+		//*****
 	});
 
 	function load_current_tanks(){

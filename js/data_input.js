@@ -435,6 +435,7 @@ $(function(){
 	/*==========================================================================================================*/
 	
 	//CUADRO DE DIALOGO SELECCION DE BOMBAS
+	//**************************************************************************************************************************
 	$('.pick_pump').focus(function(e){
 		e.preventDefault();
 		$(this).attr('disabled','disabled');
@@ -700,7 +701,8 @@ $(function(){
 				}
 			});
 
-			
+			log(error_qty);
+
 			if($('#pump_picker_type').val() == 'TRIPLEX'){
 				if(error_qty == 1){
 					var pump_continue = true;
@@ -717,7 +719,11 @@ $(function(){
 				}
 			}
 
+			//bajar los datos al formulario
 			if(pump_continue == true){
+				log('bajando datos...');
+
+				//bajada de datos
 				var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
 				$('#pump_'+pump_number+'_maker').val($('#pump_picker_maker').val());
 				$('#pump_'+pump_number+'_type').val($('#pump_picker_type').val());
@@ -771,7 +777,9 @@ $(function(){
 				$('#select_pump_overlay').hide();
 				$('#pump_'+pump_number+'_maker').removeAttr('disabled');
 
+			//limpiar el formulario
 			}else if(pump_continue == 'clear'){
+				log('limpiando formulario...');
 
 				var pump_number = parseInt($('#select_pump_overlay .current_pump_number').html());
 				$('#pump_'+pump_number+'_maker').val('');
@@ -814,6 +822,7 @@ $(function(){
 				$('#select_pump_overlay').hide();
 				$('#pump_'+pump_number+'_maker').removeAttr('disabled');
 
+			//faltan datos
 			}else{
 				alert('Some fields are empty. Please verify and try again.');
 			}

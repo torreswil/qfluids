@@ -61,9 +61,9 @@ class Main extends CI_Controller {
 				$data['centrifugues'] 			= $this->Api->get_where('project_centrifugues',array('active'=>1,'project'=>$project_data['id']));
 				
 				//PERSONAL
-				$data['enginers']				= $this->Api->get_where('vista_personal',array('project'=>$project_data['id'],'active'=>1,'type'=>'enginer'));
-				$data['operators']				= $this->Api->get_where('vista_personal',array('project'=>$project_data['id'],'active'=>1,'type'=>'operator'));
-				$data['yardworkers']			= $this->Api->get_where('vista_personal',array('project'=>$project_data['id'],'active'=>1,'type'=>'yard_worker'));
+				$data['enginers']				= $this->Api->get_where('vista_personal',array('project'=>$project_data['id'],'active'=>1,'type'=>'enginer'),array('id','asc'));
+				$data['operators']				= $this->Api->get_where('vista_personal',array('project'=>$project_data['id'],'active'=>1,'type'=>'operator'),array('id','desc'));
+				$data['yardworkers']			= $this->Api->get_where('vista_personal',array('project'=>$project_data['id'],'active'=>1,'type'=>'yard_worker'),array('id','desc'));
 				$data['engineering_categories'] = $this->Api->get_where('personal_categories',array('type'=>'enginer'));
 				$data['operator_categories'] 	= $this->Api->get_where('personal_categories',array('type'=>'operator')); 
 				$data['yardworker_categories'] 	= $this->Api->get_where('personal_categories',array('type'=>'yard_worker')); 

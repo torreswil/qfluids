@@ -276,12 +276,14 @@ class Rest extends CI_Controller {
 
 	public function load_personal(){
 		if(count($_POST) > 0){
-			$personal = $this->Api->get_where('vista_personal',$_POST);
+			
 			if($_POST['type'] == 'enginer'){
+				$personal = $this->Api->get_where('vista_personal',$_POST);
 				foreach ($personal as $persona) {
 					echo '<tr id="this_person_'.$persona['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$persona['name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['lastname'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['identification'].'" /></td><td><input type="text" style="width:96px;margin-right:5px;" disabled="" value="'.$persona['category_name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['rate'].'" name="rate" /></td><td><a href="#remove_person" class="remove_person_link" id="rm_person_'.$persona['id'].'"><img src="/img/delete.png" /></a></td></tr>';
 				}
 			}else{
+				$personal = $this->Api->get_where('vista_personal',$_POST,array('id','desc'));
 				foreach ($personal as $persona) {
 					echo '<tr id="this_person_'.$persona['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$persona['name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['lastname'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['identification'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['rate'].'" name="rate" /></td><td><a href="#remove_person" class="remove_person_link" id="rm_person_'.$persona['id'].'"><img src="/img/delete.png" /></a></td></tr>';
 				}	
