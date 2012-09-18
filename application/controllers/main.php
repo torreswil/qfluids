@@ -72,8 +72,8 @@ class Main extends CI_Controller {
 				$data['tank_names_active']		= $this->Api->get_where('tank_names',array('type'=>'active'));
 				$data['tank_names_reserve']		= $this->Api->get_where('tank_names',array('type'=>'reserve'));
 				$data['tank_types']				= $this->Api->get('tanks_types');
-				$data['active_tanks'] 			= $this->Api->get_where('vista_tanks',array('project'=>$project_data['id'],'tank_category'=>'active','active'=>1));
-				$data['reserve_tanks'] 			= $this->Api->get_where('vista_tanks',array('project'=>$project_data['id'],'tank_category'=>'reserve','active'=>1));
+				$data['active_tanks'] 			= $this->Api->get_where('vista_tanks',array('project'=>$project_data['id'],'tank_category'=>'active','active'=>1),array('order','asc'));
+				$data['reserve_tanks'] 			= $this->Api->get_where('vista_tanks',array('project'=>$project_data['id'],'tank_category'=>'reserve','active'=>1),array('order','asc'));
 
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';

@@ -1,5 +1,5 @@
 <div class="this_panel plusribbon" id="volumenes" >
-	<h2>Volúmenes</h2>
+	<h2>Volumes</h2>
 	
 	<fieldset class="top_ribbon">
 		<table style="float:left;" >
@@ -50,7 +50,84 @@
 				</table>
 			</fieldset>
 	    </div>	
-		<div class="simpleTabsContent"></div>
+		<div class="simpleTabsContent">
+			<fieldset>
+				<legend>Active Tanks</legend>
+				<table>
+					<thead>
+						<tr>
+							<td class="label_m"><label>TANK NAME:</label></td>
+	        				<td class="label_m"><label>AGITATORS #:</label></td>
+	        				<td class="label_m"><label>JETS:</label></td>
+	        				<td class="label_m"><label>TANK TYPE:</label></td>
+	        				<td class="label_m" style="text-align:center;"><label>VOL. CAPACITY:</label></td>
+	        				<td class="label_m" style="text-align:center;"><label>MAX HEADROOM:</label></td>
+						</tr>
+						<tr>
+							<td class="label_m" style="text-align:center;"></td>
+	        				<td class="label_m" style="text-align:center;"></td>
+	        				<td class="label_m" style="text-align:center;"></td>
+	        				<td class="label_m" style="text-align:center;"></td>
+	        				<td class="label_m" style="text-align:center;">bbl</td>
+	        				<td class="label_m" style="text-align:center;">in.</td>
+						</tr>
+					</thead>
+					<tbody>
+						<?php 
+							foreach($active_tanks as $tank){ 
+								$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
+						?>
+							<tr>
+								<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_name'] ?>" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:70px;"  disabled="disabled" value="<?= $tank['agitators'] ?>" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:30px;"  disabled="disabled" value="<?= $has_jets ?>" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_type'] ?>" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" /></td>
+							</tr>
+
+						<?php } ?>
+					</tbody>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Reserve Tanks</legend>
+				<table>
+					<thead>
+						<tr>
+							<td class="label_m"><label>TANK NAME:</label></td>
+	        				<td class="label_m"><label>AGITATORS #:</label></td>
+	        				<td class="label_m"><label>JETS:</label></td>
+	        				<td class="label_m"><label>TANK TYPE:</label></td>
+	        				<td class="label_m" style="text-align:center;"><label>VOL. CAPACITY:</label></td>
+	        				<td class="label_m" style="text-align:center;"><label>MAX HEADROOM:</label></td>
+						</tr>
+						<tr>
+							<td class="label_m" style="text-align:center;"></td>
+	        				<td class="label_m" style="text-align:center;"></td>
+	        				<td class="label_m" style="text-align:center;"></td>
+	        				<td class="label_m" style="text-align:center;"></td>
+	        				<td class="label_m" style="text-align:center;">bbl</td>
+	        				<td class="label_m" style="text-align:center;">in.</td>
+						</tr>
+					</thead>
+					<?php 
+							foreach($reserve_tanks as $tank){ 
+								$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
+						?>
+							<tr>
+								<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_name'] ?>" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:70px;"  disabled="disabled" value="<?= $tank['agitators'] ?>" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:30px;"  disabled="disabled" value="<?= $has_jets ?>" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_type'] ?>" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" /></td>
+		        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" /></td>
+							</tr>
+
+						<?php } ?>
+				</table>
+			</fieldset>
+		</div>
 		<div class="simpleTabsContent"></div>
 		<div class="simpleTabsContent"></div>
 		<div class="simpleTabsContent">

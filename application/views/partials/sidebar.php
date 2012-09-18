@@ -12,7 +12,7 @@
 				<li><a href="#equipos_solidos">Control Solids Equipement</a></li>
 				<li><a href="#datos_generales">Personal</a></li>
 				<li><a href="#inventario">Inventario</a></li>
-				<li><a href="#volumenes">Volúmenes</a></li>
+				<li><a href="#volumenes">Volumes</a></li>
 			</ul>
 		</li>
 		<li class="main_navigation">
