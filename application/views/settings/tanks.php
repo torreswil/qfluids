@@ -32,7 +32,7 @@
 		        					</select>
 		        				</td>
 		        				<td>
-		        					<select style="width:125px;" class="agitators">
+		        					<select style="width:85px;" class="agitators">
 		        						<option value="0" selected="selected">0</option>
 		        						<option value="1">1</option>
 		        						<option value="2">2</option>
@@ -46,13 +46,13 @@
 		        					</select>
 		        				</td>
 		        				<td>
-		        					<select style="width:125px;" class="jets">
+		        					<select style="width:55px;" class="jets">
 		        						<option value="1">Yes</option>
 		        						<option value="0" selected="selected">No</option>
 		        					</select>
 		        				</td>
 		        				<td class="label_m">
-		        					<select style="width:120px;" id="active_type" class="type">
+		        					<select style="width:160px;" id="active_type" class="type">
 		        						<option value="">Select...</option>
 		        						<?php foreach($tank_types as $type){ ?>
 		        							<option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
@@ -166,6 +166,8 @@
         		<table>
         			<thead>
 	        			<tr>
+	        				<td></td>
+	        				<td class="label_m"><label>Order</label></td>
 	        				<td class="label_m"><label>TANK NAME:</label></td>
 	        				<td class="label_m"><label>AGITATORS #:</label></td>
 	        				<td class="label_m"><label>JETS:</label></td>
@@ -178,6 +180,7 @@
 
         			</tbody>
         		</table>
+        		<input type="button" value="Update order" class="update_tank_order" id="active_order" />
         	</fieldset>
 	    </div>
 
@@ -207,8 +210,8 @@
 		        					</select>
 		        				</td>
 		        				<td>
-		        					<select style="width:125px;" class="agitators">
-		        						<option value="0">0</option>
+		        					<select style="width:85px;" class="agitators">
+		        						<option value="0" selected="selected">0</option>
 		        						<option value="1">1</option>
 		        						<option value="2">2</option>
 		        						<option value="3">3</option>
@@ -221,13 +224,13 @@
 		        					</select>
 		        				</td>
 		        				<td>
-		        					<select style="width:125px;" class="jets">
+		        					<select style="width:55px;" class="jets">
 		        						<option value="1">Yes</option>
-		        						<option value="0">No</option>
+		        						<option value="0" selected="selected">No</option>
 		        					</select>
 		        				</td>
 		        				<td class="label_m">
-		        					<select style="width:120px;" id="reserve_type" class="type">
+		        					<select style="width:160px;" id="reserve_type" class="type">
 		        						<option value="">Select...</option>
 		        						<?php foreach($tank_types as $type){ ?>
 		        							<option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
@@ -340,6 +343,8 @@
         		<table>
         			<thead>
 	        			<tr>
+	        				<td></td>
+	        				<td class="label_m"><label>Order</label></td>
 	        				<td class="label_m"><label>TANK NAME:</label></td>
 	        				<td class="label_m"><label>AGITATORS #:</label></td>
 	        				<td class="label_m"><label>JETS:</label></td>
@@ -352,6 +357,7 @@
         				
         			</tbody>
         		</table>
+        		<input type="button" value="Update order" class="update_tank_order" id="reserve_order" />
         	</fieldset>	
 	    </div>
 	</div>

@@ -279,11 +279,11 @@ class Rest extends CI_Controller {
 			$personal = $this->Api->get_where('vista_personal',$_POST);
 			if($_POST['type'] == 'enginer'){
 				foreach ($personal as $persona) {
-					echo '<tr id="this_person_'.$persona['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$persona['name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['lastname'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['identification'].'" /></td><td><input type="text" style="width:96px;margin-right:5px;" disabled="" value="'.$persona['category_name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['rate'].'" name="rate" /></td><td><a href="#remove_person" class="remove_person_link" id="rm_person_'.$persona['id'].'">Remove</a></td></tr>';
+					echo '<tr id="this_person_'.$persona['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$persona['name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['lastname'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['identification'].'" /></td><td><input type="text" style="width:96px;margin-right:5px;" disabled="" value="'.$persona['category_name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['rate'].'" name="rate" /></td><td><a href="#remove_person" class="remove_person_link" id="rm_person_'.$persona['id'].'"><img src="/img/delete.png" /></a></td></tr>';
 				}
 			}else{
 				foreach ($personal as $persona) {
-					echo '<tr id="this_person_'.$persona['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$persona['name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['lastname'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['identification'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['rate'].'" name="rate" /></td><td><a href="#remove_person" class="remove_person_link" id="rm_person_'.$persona['id'].'">Remove</a></td></tr>';
+					echo '<tr id="this_person_'.$persona['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$persona['name'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['lastname'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['identification'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$persona['rate'].'" name="rate" /></td><td><a href="#remove_person" class="remove_person_link" id="rm_person_'.$persona['id'].'"><img src="/img/delete.png" /></a></td></tr>';
 				}	
 			}			
 		}
@@ -337,21 +337,37 @@ class Rest extends CI_Controller {
 
 	public function load_current_tanks(){
 		if(count($_POST) > 0){
-			$tanks = $this->Api->get_where('vista_tanks',$_POST);
+			$tanks = $this->Api->get_where('vista_tanks',$_POST,array('order','asc'));
+			$tanks_qty = count($tanks);
+
 			foreach ($tanks as $tank){
 				$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
 				echo '
 					<tr>
+						<td class="label_m" style="padding-right:3px;"><a href="remove_tank_'.$tank['id'].'" class="remove_tank" title="Delete '.$tank['tank_name'].'"><img src="/img/delete.png" /></a></td>
+						<td>
+							<select style="width:50px;" id="tank_order_'.$tank['id'].'">';
+								for($i = 1; $i<= $tanks_qty;$i++){
+									if($i == $tank['order']){
+										$selected = 'selected="selected"';
+									}else{
+										$selected = '';
+									}
+									echo '<option value="'.$i.'" '.$selected.'>'.$i.'</option>';
+								}
+				echo '
+							</select>
+						</td>
 						<td>
 							<input type="text" style="width:110px;" disabled="disabled" value="'.$tank['tank_name'].'" />
 							<input type="hidden" class="tank_name_id" value="'.$tank['name'].'" />
 						</td>
-						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['agitators'].'" /></td>
-						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$has_jets.'" /></td>
+						<td><input type="text" style="width:70px;" disabled="disabled" value="'.$tank['agitators'].'" /></td>
+						<td><input type="text" style="width:30px;" disabled="disabled" value="'.$has_jets.'" /></td>
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['tank_type'].'" /></td>
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['voltkaforo'].'" /></td>
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['hlibremax'].'" /></td>
-						<td><href="show_measures_'.$tank['id'].'">View measures</a></td>	
+						<td><a href="show_measures_'.$tank['id'].'" class="show_measures"><img src="/img/page_white_edit.png" /></a></td>	
 					</tr>';
 			}
 		}
@@ -362,6 +378,35 @@ class Rest extends CI_Controller {
 			$this->Api->create('project_tanks',$_POST);
 			echo json_encode(true);
 		}
+	}
+
+	public function remove_tank(){
+		if(count($_POST) > 0){
+			$this->Api->delete('project_tanks',$_POST['id']);
+			$condition 				= array();
+			$condition['active'] 	= 1;
+			$condition['project'] 	= $this->project_id;
+			
+			
+			$tanks = $this->Api->get_where('project_tanks',$condition,array('order','asc'));
+			$count = 0;
+			
+			foreach ($tanks as &$tank) {
+				$count++;
+				$tank['order'] = $count;
+				$this->Api->update_where('project_tanks',$tank,array('id'=>$tank['id']));
+			}
+
+			echo json_encode(true);	
+		}
+	}
+
+	public function update_tank_order(){
+		$tanks = json_decode($this->data_input);
+		foreach ($tanks as $tank) {
+				$this->Api->update_where('project_tanks',array('order'=>$tank['order']),array('id'=>$tank['id']));
+		}
+		echo json_encode(true);		
 	}
 
 }

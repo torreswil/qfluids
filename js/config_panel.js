@@ -275,9 +275,11 @@ $(function(){
 	$('.btn_create_tank').click(function(){
 		var parent_form = $(this).parents('form');
 		if(parent_form.attr('id') == 'form_active_tank'){ 
-			var current_tanks_table = $('#current_active_tanks'); 
+			var current_tanks_table = $('#current_active_tanks');
+			var current_tanks_qty 	=  $('#current_active_tanks tr').length;
 		}else if(parent_form.attr('id') == 'form_reserve_tank'){
-			var current_tanks_table = $('#current_reserve_tanks');	
+			var current_tanks_table = $('#current_reserve_tanks');
+			var current_tanks_qty 	=  $('#current_reserve_tanks tr').length;	
 		}
 
 		var eqty = 0;
@@ -300,7 +302,7 @@ $(function(){
 			});
 
 			if(ename > 0){
-				alert('This tank is already created');
+				alert('This tank is already created. Please choose a different name and try again.');
 			}else{
 				//get the tank type
 				var tank_type = parseInt($('.type',parent_form).val());
@@ -330,6 +332,7 @@ $(function(){
 				if(eqty > 0){
 					alert('Some fields are empty, please verify and try again.');
 				}else{
+
 					//save the tank
 					var data = {
 						project 	: $('#project_id').val(),
@@ -341,6 +344,8 @@ $(function(){
 						hlibremax 	: $('.hlibremax',parent_form).val(),
 						active 		: 1
 					}
+
+					data.order = current_tanks_qty + 1;
 
 					switch(tank_type){
 						case 1:
@@ -388,12 +393,40 @@ $(function(){
 
 						}
 					},'json');
-
-
-					
 				}
 			}
 		}
+
+	});
+
+	$('.remove_tank').live('click',function(e){
+		e.preventDefault();
+		var id = $(this).attr('href');
+			id = id.split('remove_tank_');
+			id = id[1];
+
+		var sure = confirm('Are you sure to delete this tank?');
+
+		if(sure == true){
+			var data = {id : id};
+			$.post('/rest/remove_tank',data,function(r){
+				if(r == true){
+					load_current_tanks();
+					$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+				}
+			},'json');
+		}
+	});
+
+	$('.update_tank_order').click(function(e){
+		e.preventDefault();
+		if($(this).attr('id') == 'active_order'){
+			var context = $('#current_active_tanks');
+		}else if($(this).attr('id') == 'reserve_order'){
+			var context = $('#current_reserve_tanks');
+		}
+
+		//validate there is not repeated order numbers
 
 	});
 
