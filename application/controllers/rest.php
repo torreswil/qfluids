@@ -99,10 +99,16 @@ class Rest extends CI_Controller {
 	// TOOL CATALOGS METHODS
 	/*==========================================================================================================*/
 
-	//BIT FUNCTIONS
+	//BIT FUNCTIONS        
+        public function load_bits(){
+            $brocas = $this->Api->get_where('brocas', array('active'=>1, 'custom'=>1));                
+            foreach ($brocas as $broca) {
+                    echo '<tr id="this_bit_'.$broca['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$broca['nombre_broca'].'" /></td><td><a href="#remove_bit" class="remove_bit_link" id="rm_bit_'.$broca['id'].'"><img src="/img/delete.png" /></a></td></tr>';
+            }
+	}        
 	public function listar_brocas(){
 		echo json_encode($this->Api->get('brocas'));
-	}
+	}                	        
 	public function listar_diametros_broca(){
 		echo json_encode($this->Api->get_distinct_where('brocas_modelos','odddeci, odfracc, unit_oddfracc',$_POST));
 	}
@@ -114,6 +120,12 @@ class Rest extends CI_Controller {
 	}
 	public function insertar_broca(){
 		echo json_encode($this->Api->create('brocas_modelos',$_POST));
+	}
+        public function remove_bit(){
+		if(count($_POST) > 0){
+			$this->Api->update('brocas', array('active'=>0), $_POST['id']);
+			echo json_encode(array('message'=>'deactivated'));
+		}
 	}
 
 	//DRILL STRING FUNCTIONS

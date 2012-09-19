@@ -2,11 +2,15 @@
 	<h2>Personal Settings</h2>
 	
 	<div class="simpleTabs">
-		<ul class="simpleTabsNavigation">
-			<li><a href="#">Report Settings</a></li>
-			<li><a href="#">Enginers</a></li>
-			<li><a href="#">Operators</a></li>
-	      	<li><a href="#">Yard Workers</a></li>
+            <ul class="simpleTabsNavigation">
+                <li><a href="#">Report Settings</a></li>
+                <li><a href="#">Enginers</a></li>
+                <li><a href="#">Operators</a></li>
+                <li><a href="#">Yard Workers</a></li>
+                <li><a href="#">Bit</a></li>
+                <li><a href="#">Pump</a></li>
+                <li><a href="#">Casing</a></li>
+                <li><a href="#">Mud</a></li>
 	    </ul>
 	  
 	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
@@ -147,6 +151,14 @@
         		<table id="current_yardworkers_list"></table>
         	</fieldset>
 	    </div>
+            
+            <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+        	<fieldset>
+                    <legend>Bits list</legend>                    
+                    <table id="current_bits_list"></table>
+        	</fieldset>
+	    </div>
+            
 	</div>
 
 </div>

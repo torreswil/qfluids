@@ -550,6 +550,22 @@ $(function(){
 			alert('Some fields are wrong. Please verify and try again');
 		}
 	});
+        
+        //remove an bit - IvanMel
+	$('.remove_bit_link').live('click',function(e){
+		e.preventDefault();
+		var id = $(this).attr('id');
+		id = id.split('rm_bit_')[1];
+		
+                var data = {'id':id};
+
+		$.post('/rest/remove_bit',data,function(r){
+			if(r.message == 'deactivated'){
+                            load_personal();
+                            $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+			}
+		},'json');
+	});
 
 	function load_personal(){
 		//load enginers
@@ -584,7 +600,18 @@ $(function(){
 		$.post('/rest/load_personal',yardworker_data,function(r){
 			$('#current_yardworkers_list').html(r);
 		});	
+                
+                //Load bits - IvanMel
+                var bit_data = {
+                    project 	:$('#project_id').val(),
+                    type 		:'bit', 
+                    active		: 1
+                };
+                
+                $.post('/rest/load_bits',bit_data,function(r){
+			$('#current_bits_list').html(r);
+		});
 	}
-
+		
 });
 /****** THE END ******/
