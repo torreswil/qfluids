@@ -430,6 +430,23 @@ $(function(){
 		//*****
 	});
 
+	$('.show_measures').live('click',function(e){
+		e.preventDefault();
+		$('.edit_tank_tr').hide();
+		var id = $(this).attr('href');
+			id = id.split('show_measures_');
+			id = id[1];
+			$('.show_measures').show();
+			$(this).hide();
+			$('#tr_tank_'+id).show();
+	});
+
+	$('.cancel_edit_tank').live('click',function(e){
+		e.preventDefault();
+		$(this).parents('tr').hide();
+		$('.show_measures').show();
+	});
+
 	function load_current_tanks(){
 		var active_data = {
 			active  		: 1,

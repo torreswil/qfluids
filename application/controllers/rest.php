@@ -369,8 +369,111 @@ class Rest extends CI_Controller {
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['tank_type'].'" /></td>
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['voltkaforo'].'" /></td>
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['hlibremax'].'" /></td>
-						<td><a href="show_measures_'.$tank['id'].'" class="show_measures"><img src="/img/page_white_edit.png" /></a></td>	
-					</tr>';
+						<td>
+							<a href="show_measures_'.$tank['id'].'" class="show_measures"><img src="/img/page_white_edit.png" /></a>
+						</td>	
+					</tr>';	
+					
+					if($tank['type'] == 1){
+						?>
+							<tr style="display:none;" id="tr_tank_<?= $tank['id'] ?>" class="edit_tank_tr">
+								<td colspan="9">
+									<!-- cuadrado -->
+					        		<table id="modify_tank_<?= $tank['id'] ?>" style="margin-left:20px;margin-bottom:5px;" class="tank_type_form_reserve medidas_cuadrado">
+					        			<tr>
+					        				<td class="label_m"><label>Length:</label></td>
+					        				<td class="label_m"><label>Width:</label></td>
+					        				<td class="label_m"><label>Heigth:</label></td>
+					        			</tr>
+					        			<tr>
+					        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1" value="<?= $tank['sl_1'] ?>">in.</td>
+					        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1" value="<?= $tank['sa_1'] ?>">in.</td>
+					        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1" value="<?= $tank['sh_1'] ?>">in.</td>
+					        			</tr>
+					        		</table>
+	
+					        		<input type="button" class="cancel_edit_tank" value="Cancel" id="btn_cancel_tank_editing_<?= $tank['id'] ?>" style="margin:0 20px 20px 20px; float:left;" />
+								</td>
+							</tr>
+							
+						<?php
+					}else if($tank['type'] == 2){
+						?>
+						<tr style="display:none;" id="tr_tank_<?= $tank['id'] ?>" class="edit_tank_tr">
+							<td colspan="9">
+								<!-- semicircular -->
+				        		<table id="modify_tank_<?= $tank['id'] ?>" style="margin-left:20px;margin-bottom:5px;" class="tank_type_form_reserve medidas_semicircular">
+				        			<tr>
+				        				<td class="label_m" style=""><label>Cube Length:</label></td>
+				        				<td class="label_m" style="padding-left:20px;"><label>Semicilinder Length:</label></td>
+				        				<td class="label_m" style=""><label>Cube Width:</label></td>
+				        				<td class="label_m" style="padding-left:20px;"><label>Semicilinder Width:</label></td>
+				        				<td class="label_m" style=""><label>Cube Height:</label></td>
+				        				<td class="label_m" style="padding-left:20px;"><label>Semicilinder Height:</label></td>
+				        			</tr>
+				        			<tr>
+				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1" value="<?= $tank['sl_1'] ?>">in.</td>
+				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_2" value="<?= $tank['sl_2'] ?>">in.</td>
+										<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1" value="<?= $tank['sa_1'] ?>">in.</td>
+										<td><input type="text" style="width:50px;margin-right:5px;" class="sa_2" value="<?= $tank['sa_2'] ?>">in.</td>
+				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1" value="<?= $tank['sh_1'] ?>">in.</td>
+										<td><input type="text" style="width:50px;margin-right:5px;" class="sh_2" value="<?= $tank['sh_2'] ?>">in.</td>
+				        			</tr>
+				        		</table>
+
+				        		<input type="button" class="cancel_edit_tank" value="Cancel" id="btn_cancel_tank_editing_<?= $tank['id'] ?>" style="margin:0 20px 20px 20px; float:left;" />
+
+				        	</td>
+				        </tr>
+						<?php
+					}else if($tank['type'] == 3){
+						?>
+						<tr style="display:none;" id="tr_tank_<?= $tank['id'] ?>" class="edit_tank_tr">
+							<td colspan="9">
+							<!-- tipo trailer -->
+			        		<table id="modify_tank_<?= $tank['id'] ?>" style="margin-left:20px;margin-bottom:5px;" class="tank_type_form_reserve medidas_trailer">
+			        			<tr>
+			        				<td class="label_m" style=""><label>Superior length:</label></td>
+			        				<td class="label_m" style="padding-left:20px;"><label>Inferior length:</label></td>
+			        				<td class="label_m" style=""><label>Superior width:</label></td>
+			        				<td class="label_m" style="padding-left:20px;"><label>Inferior width.:</label></td>
+			        				<td class="label_m" style=""><label>Superior height:</label></td>
+			        				<td class="label_m" style="padding-left:20px;"><label>Inferior height:</label></td>
+			        			</tr>
+			        			<tr>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1" value="<?= $tank['sl_1'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_2" value="<?= $tank['sl_2'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1" value="<?= $tank['sa_1'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_2" value="<?= $tank['sa_2'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1" value="<?= $tank['sh_1'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_2" value="<?= $tank['sh_2'] ?>">in.</td>
+			        			</tr>
+			        		</table>
+			        		<input type="button" class="cancel_edit_tank" value="Cancel" id="btn_cancel_tank_editing_<?= $tank['id'] ?>" style="margin:0 20px 20px 20px; float:left;" />
+			        		</td>
+				        </tr>
+						<?php
+					}else if($tank['type'] == 4){
+						?>
+						<tr style="display:none;" id="tr_tank_<?= $tank['id'] ?>" class="edit_tank_tr">
+							<td colspan="9">
+								<!-- cilindro horizontal -->
+				        		<table id="modify_tank_<?= $tank['id'] ?>" style="margin-left:20px;margin-bottom:5px;" class="tank_type_form_reserve medidas_cilindro">
+				        			<tr>
+				        				<td class="label_m"><label>Diameter:</label></td>
+				        				<td class="label_m"><label>Length:</label></td>
+				        			</tr>
+				        			<tr>
+				        				<td><input type="text" style="width:50px;margin-right:5px;" class="diametro" value="<?= $tank['diametro'] ?>">in.</td>
+				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1" value="<?= $tank['sl_1'] ?>">in.</td>
+				        			</tr>
+				        		</table>
+
+				        		<input type="button" class="cancel_edit_tank" value="Cancel" id="btn_cancel_tank_editing_<?= $tank['id'] ?>" style="margin:0 20px 20px 20px; float:left;" />
+				        	</td>
+				        </tr>
+						<?php
+					}
 			}
 		}
 	}

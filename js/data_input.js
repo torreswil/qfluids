@@ -1217,6 +1217,19 @@ $(function(){
 			var enginer 		= $(this).val();
 			var enginer_cost 	= $('#this_person_'+enginer+' input[name="rate"]').val();
 			$('#this_enginer_cost_'+id_this_row).val(enginer_cost);
+
+			eqty = 0;
+			$('.this_enginer').each(function(){
+				if($(this).val() == enginer){
+					eqty = eqty + 1;
+				}
+			});
+
+			if(eqty > 1){
+				alert('This enginer is already selected. Please select a different one.');
+				$(this).val('');
+				return false;
+			}
 		}
 	});
 
