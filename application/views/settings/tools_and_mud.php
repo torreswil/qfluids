@@ -16,6 +16,13 @@
         	</fieldset>
 	    </div>
             
+            <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+        	<fieldset>
+                    <legend>Muds list</legend>                    
+                    <table id="current_muds_list"></table>
+        	</fieldset>
+	    </div>
+            
 	</div>
 
 </div>

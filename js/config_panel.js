@@ -628,6 +628,21 @@ $(function(){
 			}
 		},'json');
 	});
+        
+        $('.remove_mud_link').live('click',function(e){
+		e.preventDefault();
+		var id = $(this).attr('id');
+		id = id.split('rm_mud_')[1];
+		
+                var data = {'id':id};
+
+		$.post('/rest/remove_mud',data,function(r){
+			if(r.message == 'deactivated'){
+                            load_tools_and_mud();
+                            $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+			}
+		},'json');
+	});
 
 	function load_tools_and_mud() {                
                 var bit_data = {
@@ -638,6 +653,17 @@ $(function(){
                 $.post('/rest/load_bits',bit_data,function(r){
 			$('#current_bits_list').html(r);
 		});
+                
+                var mud_data = {                    
+                    active		: 1,
+                    custom              : 1
+                };
+                
+                $.post('/rest/load_muds',mud_data,function(r){
+			$('#current_muds_list').html(r);
+		});
+                
+                
 	}
 });
 /****** THE END ******/
