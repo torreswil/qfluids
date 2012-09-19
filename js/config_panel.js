@@ -276,11 +276,11 @@ $(function(){
 		var parent_form = $(this).parents('form');
 		if(parent_form.attr('id') == 'form_active_tank'){ 
 			var current_tanks_table = $('#current_active_tanks');
-			var current_tanks_qty 	=  $('#current_active_tanks tr').length;
 		}else if(parent_form.attr('id') == 'form_reserve_tank'){
 			var current_tanks_table = $('#current_reserve_tanks');
-			var current_tanks_qty 	=  $('#current_reserve_tanks tr').length;	
 		}
+
+		var current_tanks_qty 	=  $('.this_tank',current_tanks_table).length;
 
 		var eqty = 0;
 		$('select',parent_form).each(function(){
@@ -426,14 +426,46 @@ $(function(){
 			var context = $('#current_reserve_tanks');
 		}
 
+		var eqty = 0;
 		//validate there is not repeated order numbers
-		$('.tank_order').each(function(){
+		$('.tank_order',context).each(function(){
 			var value 	= $(this).val();
 			var matches = 0;
-			$('.tank_order').each(function(){
-				
+			$('.tank_order',context).each(function(){
+				if($(this).val() == value){
+					matches = matches + 1;
+				}
 			});
+			if(matches > 1){
+				eqty = eqty + 1;
+			}
 		});
+
+		if(eqty > 0){
+			alert('There are tanks with the same order number. Please verify and try again.');	
+		}else{
+			var data = [];
+			$('.tank_order').each(function(){
+				var id = $(this).attr('id');
+					id = id.split('tank_order_');
+					id = id[1];
+				var order = $(this).val();
+				this_tank = {
+					'id'	: id,
+					'order'	: order
+				}
+
+				data.push(this_tank);
+			});
+
+			$.post('/rest/update_tank_order',$.toJSON(data),function(r){
+				if(r == true){
+					load_current_tanks();
+					$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+					alert('Order updated.');	
+				}
+			},'json');
+		}
 	});
 
 	$('.show_measures').live('click',function(e){
@@ -574,7 +606,7 @@ $(function(){
 		}
 	});
         
-        //remove an bit - IvanMel
+    //remove an bit - IvanMel
 	$('.remove_bit_link').live('click',function(e){
 		e.preventDefault();
 		var id = $(this).attr('id');
