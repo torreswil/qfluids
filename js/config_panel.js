@@ -427,7 +427,13 @@ $(function(){
 		}
 
 		//validate there is not repeated order numbers
-		//*****
+		$('.tank_order').each(function(){
+			var value 	= $(this).val();
+			var matches = 0;
+			$('.tank_order').each(function(){
+				
+			});
+		});
 	});
 
 	$('.show_measures').live('click',function(e){
