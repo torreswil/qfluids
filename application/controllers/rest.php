@@ -533,7 +533,7 @@ class Rest extends CI_Controller {
 	public function update_tank_order(){
 		$tanks = json_decode($this->data_input);
 		foreach ($tanks as $tank) {
-				$this->Api->update_where('project_tanks',array('order'=>$tank['order']),array('id'=>$tank['id']));
+				$this->Api->update_where('project_tanks',array('order'=>$tank->order),array('id'=>$tank->id));
 		}
 		echo json_encode(true);		
 	}
