@@ -369,10 +369,10 @@ class Rest extends CI_Controller {
 			foreach ($tanks as $tank){
 				$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
 				echo '
-					<tr>
+					<tr class="this_tank">
 						<td class="label_m" style="padding-right:3px;"><a href="remove_tank_'.$tank['id'].'" class="remove_tank" title="Delete '.$tank['tank_name'].'"><img src="/img/delete.png" /></a></td>
 						<td>
-							<select style="width:50px;" id="tank_order_'.$tank['id'].'">';
+							<select style="width:50px;" id="tank_order_'.$tank['id'].'" class="tank_order">';
 								for($i = 1; $i<= $tanks_qty;$i++){
 									if($i == $tank['order']){
 										$selected = 'selected="selected"';
@@ -533,7 +533,7 @@ class Rest extends CI_Controller {
 	public function update_tank_order(){
 		$tanks = json_decode($this->data_input);
 		foreach ($tanks as $tank) {
-				$this->Api->update_where('project_tanks',array('order'=>$tank['order']),array('id'=>$tank['id']));
+				$this->Api->update_where('project_tanks',array('order'=>$tank->order),array('id'=>$tank->id));
 		}
 		echo json_encode(true);		
 	}
