@@ -200,6 +200,18 @@ class Rest extends CI_Controller {
 	//MUD FUNCTIONS
 	public function insert_mud(){
 		echo json_encode($this->Api->create('lodos',$_POST));
+	}                
+        public function load_muds(){
+            $lodos = $this->Api->get_where('lodos', $_POST);                
+            foreach ($lodos as $lodo) {
+                    echo '<tr id="this_mud_'.$lodo['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$lodo['nombre'].'" /></td><td><a href="#remove_mud" class="remove_mud_link" id="rm_mud_'.$lodo['id'].'"><img src="/img/delete.png" /></a></td></tr>';
+            }
+	}
+        public function remove_mud(){
+		if(count($_POST) > 0){
+			$this->Api->update('lodos', array('active'=>0), $_POST['id']);
+			echo json_encode(array('message'=>'deactivated'));
+		}
 	}
 
 	//CASING FUNCTIONS
