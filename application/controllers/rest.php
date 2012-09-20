@@ -101,9 +101,9 @@ class Rest extends CI_Controller {
 
 	//BIT FUNCTIONS        
         public function load_bits(){
-            $brocas = $this->Api->get_where('brocas', array('active'=>1, 'custom'=>1));                
+            $brocas = $this->Api->get_where('vista_brocas', array('active'=>1, 'custom'=>1));                
             foreach ($brocas as $broca) {
-                    echo '<tr id="this_bit_'.$broca['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$broca['nombre_broca'].'" /></td><td><a href="#remove_bit" class="remove_bit_link" id="rm_bit_'.$broca['id'].'"><img src="/img/delete.png" /></a></td></tr>';
+                    echo '<tr id="this_bit_'.$broca['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$broca['nombre_broca'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$broca['nombre_modelo'].'" /></td><td><input type="text" style="width:80px;" disabled="" value="'.$broca['odfracc'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['unit_oddfracc'].'" /></td><td><input type="text" style="width:80px;" disabled="" value="'.$broca['odddeci'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['unit_odddeci'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['length'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['unit_length'].'" /></td><td><a href="#remove_bit" class="remove_bit_link" id="rm_bit_'.$broca['id'].'"><img src="/img/delete.png" /></a></td></tr>';
             }
 	}        
 	public function listar_brocas(){
@@ -123,7 +123,7 @@ class Rest extends CI_Controller {
 	}
         public function remove_bit(){
 		if(count($_POST) > 0){
-			$this->Api->update('brocas', array('active'=>0), $_POST['id']);
+			$this->Api->update('brocas_modelos', array('active'=>0), $_POST['id']);
 			echo json_encode(array('message'=>'deactivated'));
 		}
 	}
@@ -195,7 +195,19 @@ class Rest extends CI_Controller {
 	public function insert_pump(){
 		echo json_encode($this->Api->create('bombas',$_POST));
 	}
-
+        public function load_pumps(){
+            $bombas = $this->Api->get_where('bombas', $_POST);                
+            foreach ($bombas as $bomba) {
+                    echo '<tr id="this_pump_'.$bomba['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$bomba['maker'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$bomba['type'].'" /></td><td><input type="text" style="width:80px;" disabled="" value="'.$bomba['modelo'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$bomba['strokelength'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$bomba['strokelength_unit'].'" /></td><td><input type="text" style="width:30px;" disabled="" value="'.$bomba['linerdiameter'].'" /></td><td><input type="text" style="width:30px;" disabled="" value="'.$bomba['rod'].'" /></td><td><input type="text" style="width:25px;" disabled="" value="'.$bomba['rod_unit'].'" /></td><td><input type="text" style="width:30px;" disabled="" value="'.$bomba['presion'].'" /></td><td><input type="text" style="width:25px;" disabled="" value="'.$bomba['presion_unit'].'" /></td><td><input type="text" style="width:30px;" disabled="" value="'.$bomba['max_spm'].'" /></td><td><input type="text" style="width:30px;" disabled="" value="'.$bomba['strokefrac'].'" /></td><td><input type="text" style="width:25px;" disabled="" value="'.$bomba['strokefrac_unit'].'" /></td><td><input type="text" style="width:30px;" disabled="" value="'.$bomba['linerdiameter_frac'].'" /></td><td><input type="text" style="width:25px;" disabled="" value="'.$bomba['linerdiameterfrac_unit'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$bomba['rodfrac'].'" /></td><td><input type="text" style="width:25px;" disabled="" value="'.$bomba['rodfrac_unit'].'" /></td><td><a href="#remove_pump" class="remove_pump_link" id="rm_pump_'.$bomba['id'].'"><img src="/img/delete.png" /></a></td></tr>';                    
+            }
+	}
+        public function remove_pump(){
+            if(count($_POST) > 0){
+                    $this->Api->update('bombas', array('active'=>0), $_POST['id']);
+                    echo json_encode(array('message'=>'deactivated'));
+            }
+	}
+                
 
 	//MUD FUNCTIONS
 	public function insert_mud(){
@@ -221,6 +233,18 @@ class Rest extends CI_Controller {
 
 	public function insert_casing(){
 		echo json_encode($this->Api->create('casing',$_POST));
+	}
+        public function load_casing(){
+            $cubiertas = $this->Api->get_where('casing', $_POST);                
+            foreach ($cubiertas as $cubierta) {
+                    echo '<tr id="this_casing_'.$cubierta['id'].'"><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['odfrac'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['oddeci'].'" /></td><td><input type="text" style="width:50px;" disabled="" value="'.$cubierta['od_unit'].'" /></td><td><input type="text" style="width:50px;" disabled="" value="'.$cubierta['idfrac'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['iddeci'].'" /></td><td><input type="text" style="width:50px;" disabled="" value="'.$cubierta['id_unit'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['weight'].'" /></td><td><input type="text" style="width:50px;" disabled="" value="'.$cubierta['w_unit'].'" /></td><td><a href="#remove_casing" class="remove_casing_link" id="rm_casing_'.$cubierta['id'].'"><img src="/img/delete.png" /></a></td></tr>';
+            }
+	}
+        public function remove_casing(){
+		if(count($_POST) > 0){
+			$this->Api->update('casing', array('active'=>0), $_POST['id']);
+			echo json_encode(array('message'=>'deactivated'));
+		}
 	}
 
 	/*==========================================================================================================*/
