@@ -26,9 +26,10 @@ $(function(){
 		}
 	});
 
-	//load asinc data on page load
+	//load async data on page load
 	load_personal();
 	load_current_tanks();
+	load_tools_and_mud();
 
 	/*==========================================================================================================*/
 	// 1. GENERAL
@@ -713,7 +714,7 @@ $(function(){
 		},'json');
 	});
 
-	function load_tools_and_mud() {  
+	function load_tools_and_mud(){  
 	    var all_data = {active:1,custom:1};
 
         $.post('/rest/load_bits',all_data,function(r){			
