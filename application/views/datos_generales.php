@@ -49,6 +49,32 @@
 					</tr>
 				</table>
 			</fieldset>
+                        <fieldset>
+                                <legend>Enginers list</legend>                    
+                                <table>
+                                        <thead>
+                                                <tr>                                
+                                                <th style="text-align: left">IDENDIFICATION</th>                                
+                                                <th style="text-align: left">NAME</th>
+                                                <th style="text-align: left">LAST NAME</th>
+                                                <th style="text-align: left">CATEGORY</th>                                                                                                    
+                                                <th></th>
+                                            </tr>                            
+                                        </thead>                            
+                                        <tbody>
+                                            <?php foreach ($enginers as $enginer): ?>
+                                                <tr id="this_enginers_list_<?php echo $enginer['id']?>">
+                                                    <td><input type="text" disabled="disabled" style="width:100px;" value="<?php echo $enginer['identification'] ?>" /></td>
+                                                    <td><input type="text" disabled="disabled" style="width:100px;" value="<?php echo $enginer['name'] ?>" /></td>
+                                                    <td><input type="text" disabled="disabled" style="width:100px;" value="<?php echo $enginer['lastname']; ?>" /></td>
+                                                    <td><input type="text" disabled="disabled" style="width:100px;" value="<?php echo $enginer['category_name'] ?>" /></td>
+                                                    <td class="label_m"><a href="/main/enginer/<?php echo $enginer['id']; ?>" target="_blank" class="">View report</a></td>
+                                                </tr>                                                
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                </table>
+                        </fieldset>
+                
 	    </div>
 
 	    <!-- Operators -->
