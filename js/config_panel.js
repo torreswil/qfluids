@@ -351,32 +351,32 @@ $(function(){
 					switch(tank_type){
 						case 1:
 							//alert('creando cuadrado');
-							data.sh_1 = $('.sh_1',parent_form).val();
-							data.sa_1 = $('.sa_1',parent_form).val();
-							data.sl_1 = $('.sl_1',parent_form).val();
+							data.sh1 = $('.sh1',parent_form).val();
+							data.sa1 = $('.sa1',parent_form).val();
+							data.sl1 = $('.sl1',parent_form).val();
 							break;
 						case 2:
 							//alert('creando semicircular');
-							data.sh_1 = $('.sh_1',parent_form).val();
-							data.sa_1 = $('.sa_1',parent_form).val();
-							data.sl_1 = $('.sl_1',parent_form).val();
-							data.sh_2 = $('.sh_2',parent_form).val();
-							data.sa_2 = $('.sa_2',parent_form).val();
-							data.sl_2 = $('.sl_2',parent_form).val();
+							data.sh1 = $('.sh1',parent_form).val();
+							data.sa1 = $('.sa1',parent_form).val();
+							data.sl1 = $('.sl1',parent_form).val();
+							data.sh2 = $('.sh2',parent_form).val();
+							data.sa2 = $('.sa2',parent_form).val();
+							data.sl2 = $('.sl2',parent_form).val();
 							break;
 						case 3:
 							//alert('creando trailer');
-							data.sh_1 = $('.sh_1',parent_form).val();
-							data.sa_1 = $('.sa_1',parent_form).val();
-							data.sl_1 = $('.sl_1',parent_form).val();
-							data.sh_2 = $('.sh_2',parent_form).val();
-							data.sa_2 = $('.sa_2',parent_form).val();
-							data.sl_2 = $('.sl_2',parent_form).val();
+							data.sh1 = $('.sh1',parent_form).val();
+							data.sa1 = $('.sa1',parent_form).val();
+							data.sl1 = $('.sl1',parent_form).val();
+							data.sh2 = $('.sh2',parent_form).val();
+							data.sa2 = $('.sa2',parent_form).val();
+							data.sl2 = $('.sl2',parent_form).val();
 							break;
 						case 4:
 							//alert('creando cilindro');
-							data.diametro 	= $('.sl_1',parent_form).val();
-							data.sl_1 		= $('.sl_1',parent_form).val();
+							data.diametro 	= $('.sl1',parent_form).val();
+							data.sl1 		= $('.sl1',parent_form).val();
 							break;
 					}
 
@@ -507,6 +507,17 @@ $(function(){
 			$('#current_reserve_tanks').html(r);
 		});	
 	}
+
+	function calcular_aforo(data){
+		//cuadrado
+		if(data.tipo_tanque == '1'){
+
+		//semicilindro
+		}
+
+	}
+
+	function calcular_max_altura_libre(){}
 
 
 	/*==========================================================================================================*/

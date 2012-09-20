@@ -434,9 +434,9 @@ class Rest extends CI_Controller {
 					        				<td class="label_m"><label>Heigth:</label></td>
 					        			</tr>
 					        			<tr>
-					        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1" value="<?= $tank['sl_1'] ?>">in.</td>
-					        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1" value="<?= $tank['sa_1'] ?>">in.</td>
-					        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1" value="<?= $tank['sh_1'] ?>">in.</td>
+					        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1" value="<?= $tank['sl1'] ?>">in.</td>
+					        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa1" value="<?= $tank['sa1'] ?>">in.</td>
+					        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh1" value="<?= $tank['sh1'] ?>">in.</td>
 					        			</tr>
 					        		</table>
 	
@@ -460,12 +460,12 @@ class Rest extends CI_Controller {
 				        				<td class="label_m" style="padding-left:20px;"><label>Semicilinder Height:</label></td>
 				        			</tr>
 				        			<tr>
-				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1" value="<?= $tank['sl_1'] ?>">in.</td>
-				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_2" value="<?= $tank['sl_2'] ?>">in.</td>
-										<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1" value="<?= $tank['sa_1'] ?>">in.</td>
-										<td><input type="text" style="width:50px;margin-right:5px;" class="sa_2" value="<?= $tank['sa_2'] ?>">in.</td>
-				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1" value="<?= $tank['sh_1'] ?>">in.</td>
-										<td><input type="text" style="width:50px;margin-right:5px;" class="sh_2" value="<?= $tank['sh_2'] ?>">in.</td>
+				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1" value="<?= $tank['sl1'] ?>">in.</td>
+				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl2" value="<?= $tank['sl2'] ?>">in.</td>
+										<td><input type="text" style="width:50px;margin-right:5px;" class="sa1" value="<?= $tank['sa1'] ?>">in.</td>
+										<td><input type="text" style="width:50px;margin-right:5px;" class="sa2" value="<?= $tank['sa2'] ?>">in.</td>
+				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh1" value="<?= $tank['sh1'] ?>">in.</td>
+										<td><input type="text" style="width:50px;margin-right:5px;" class="sh2" value="<?= $tank['sh2'] ?>">in.</td>
 				        			</tr>
 				        		</table>
 
@@ -489,12 +489,12 @@ class Rest extends CI_Controller {
 			        				<td class="label_m" style="padding-left:20px;"><label>Inferior height:</label></td>
 			        			</tr>
 			        			<tr>
-			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1" value="<?= $tank['sl_1'] ?>">in.</td>
-			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_2" value="<?= $tank['sl_2'] ?>">in.</td>
-			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1" value="<?= $tank['sa_1'] ?>">in.</td>
-			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_2" value="<?= $tank['sa_2'] ?>">in.</td>
-			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1" value="<?= $tank['sh_1'] ?>">in.</td>
-			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_2" value="<?= $tank['sh_2'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1" value="<?= $tank['sl1'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl2" value="<?= $tank['sl2'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa1" value="<?= $tank['sa1'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa2" value="<?= $tank['sa2'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh1" value="<?= $tank['sh1'] ?>">in.</td>
+			        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh2" value="<?= $tank['sh2'] ?>">in.</td>
 			        			</tr>
 			        		</table>
 			        		<input type="button" class="cancel_edit_tank" value="Cancel" id="btn_cancel_tank_editing_<?= $tank['id'] ?>" style="margin:0 20px 20px 20px; float:left;" />
@@ -513,7 +513,7 @@ class Rest extends CI_Controller {
 				        			</tr>
 				        			<tr>
 				        				<td><input type="text" style="width:50px;margin-right:5px;" class="diametro" value="<?= $tank['diametro'] ?>">in.</td>
-				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1" value="<?= $tank['sl_1'] ?>">in.</td>
+				        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1" value="<?= $tank['sl1'] ?>">in.</td>
 				        			</tr>
 				        		</table>
 

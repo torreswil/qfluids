@@ -76,15 +76,15 @@
 		        		<table style="display:none;" id="active_cuadrado" class="tank_type_form_active medidas_cuadrado">
 		        			<tr>
 		        				<td class="label_m"><label>Length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1">in.</td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m"><label>Width:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa1">in.</td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m"><label>Heigth:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh1">in.</td>
 		        			</tr>
 		        		</table>
 
@@ -99,21 +99,21 @@
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m" style=""><label>Length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>Length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl2">in.</td>
 		        			</tr>
 		        			<tr>	
 		        				<td class="label_m" style=""><label>Width:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>Width:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa2">in.</td>
 		        			</tr>
 		        			<tr>	
 		        				<td class="label_m" style=""><label>Height:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>Height:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh2">in.</td>
 		        			</tr>
 		        		</table>
 
@@ -127,21 +127,21 @@
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m" style=""><label>length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl2">in.</td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m" style=""><label>width:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>width.:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa2">in.</td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m" style=""><label>height:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>height:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh2">in.</td>
 		        			</tr>
 		        		</table>
 		        		
@@ -153,7 +153,7 @@
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m"><label>Length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1">in.</td>
 		        			</tr>
 		        		</table>
 	        		</fieldset>
@@ -253,15 +253,15 @@
 		        		<table style="display:none;" id="reserve_cuadrado" class="tank_type_form_reserve medidas_cuadrado">
 		        			<tr>
 		        				<td class="label_m"><label>Length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1">in.</td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m"><label>Width:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa1">in.</td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m"><label>Heigth:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh1">in.</td>
 		        			</tr>
 		        		</table>
 
@@ -276,21 +276,21 @@
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m" style=""><label>Length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>Length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl2">in.</td>
 		        			</tr>
 		        			<tr>	
 		        				<td class="label_m" style=""><label>Width:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>Width:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa2">in.</td>
 		        			</tr>
 		        			<tr>	
 		        				<td class="label_m" style=""><label>Height:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>Height:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh2">in.</td>
 		        			</tr>
 		        		</table>
 
@@ -304,21 +304,21 @@
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m" style=""><label>length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl2">in.</td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m" style=""><label>width:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>width.:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sa2">in.</td>
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m" style=""><label>height:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh1">in.</td>
 		        				<td class="label_m" style="padding-left:20px;"><label>height:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh_2">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sh2">in.</td>
 		        			</tr>
 		        		</table>
 		        		
@@ -330,7 +330,7 @@
 		        			</tr>
 		        			<tr>
 		        				<td class="label_m"><label>Length:</label></td>
-		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl_1">in.</td>
+		        				<td><input type="text" style="width:50px;margin-right:5px;" class="sl1">in.</td>
 		        			</tr>
 		        		</table>
 	        		</fieldset>

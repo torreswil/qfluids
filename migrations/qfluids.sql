@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-09-20 07:30:31
+Date: 2012-09-20 16:24:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -830,12 +830,12 @@ CREATE TABLE `project_tanks` (
   `project` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `name` int(11) DEFAULT NULL,
-  `sh_1` float DEFAULT NULL,
-  `sa_1` float DEFAULT NULL,
-  `sl_1` float DEFAULT NULL,
-  `sh_2` float DEFAULT NULL,
-  `sa_2` float DEFAULT NULL,
-  `sl_2` float DEFAULT NULL,
+  `sh1` float DEFAULT NULL,
+  `sa1` float DEFAULT NULL,
+  `sl1` float DEFAULT NULL,
+  `sh2` float DEFAULT NULL,
+  `sa2` float DEFAULT NULL,
+  `sl2` float DEFAULT NULL,
   `diametro` float DEFAULT NULL,
   `agitators` int(11) DEFAULT NULL,
   `jets` int(11) DEFAULT NULL,
@@ -996,7 +996,13 @@ DROP VIEW IF EXISTS `vista_personal`;
 CREATE VIEW `vista_personal` AS select `personal`.`id` AS `id`,`personal`.`identification` AS `identification`,`personal`.`lastname` AS `lastname`,`personal`.`name` AS `name`,`personal`.`project` AS `project`,`personal`.`category` AS `category`,`personal_categories`.`name` AS `category_name`,`personal_categories`.`type` AS `type`,`personal`.`active` AS `active`,`personal`.`rate` AS `rate` from (`personal` join `personal_categories` on((`personal_categories`.`id` = `personal`.`category`))) ;
 
 -- ----------------------------
+-- View structure for `vista_reporte_personal`
+-- ----------------------------
+DROP VIEW IF EXISTS `vista_reporte_personal`;
+CREATE VIEW `vista_reporte_personal` AS select `vista_personal`.`id` AS `id`,`vista_personal`.`identification` AS `identification`,`vista_personal`.`lastname` AS `lastname`,`vista_personal`.`name` AS `name`,`vista_personal`.`project` AS `project`,`vista_personal`.`category` AS `category`,`vista_personal`.`category_name` AS `category_name`,`vista_personal`.`type` AS `type`,`vista_personal`.`active` AS `active`,`vista_personal`.`rate` AS `rate`,`personal_report_enginers`.`date` AS `date`,`personal_report_enginers`.`cover` AS `cover` from (`personal_report_enginers` left join `vista_personal` on((`vista_personal`.`id` = `personal_report_enginers`.`enginer`))) ;
+
+-- ----------------------------
 -- View structure for `vista_tanks`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_tanks`;
-CREATE VIEW `vista_tanks` AS select `project_tanks`.`id` AS `id`,`project_tanks`.`project` AS `project`,`project_tanks`.`type` AS `type`,`project_tanks`.`name` AS `name`,`project_tanks`.`sh_1` AS `sh_1`,`project_tanks`.`sa_1` AS `sa_1`,`project_tanks`.`sl_1` AS `sl_1`,`project_tanks`.`sh_2` AS `sh_2`,`project_tanks`.`sa_2` AS `sa_2`,`project_tanks`.`sl_2` AS `sl_2`,`project_tanks`.`diametro` AS `diametro`,`project_tanks`.`agitators` AS `agitators`,`project_tanks`.`jets` AS `jets`,`project_tanks`.`voltkaforo` AS `voltkaforo`,`project_tanks`.`hlibremax` AS `hlibremax`,`project_tanks`.`active` AS `active`,`tank_names`.`name` AS `tank_name`,`tanks_types`.`name` AS `tank_type`,`tank_names`.`type` AS `tank_category`,`project_tanks`.`order` AS `order` from ((`project_tanks` left join `tank_names` on((`tank_names`.`id` = `project_tanks`.`name`))) left join `tanks_types` on((`tanks_types`.`id` = `project_tanks`.`type`))) ;
+CREATE VIEW `vista_tanks` AS select `project_tanks`.`id` AS `id`,`project_tanks`.`project` AS `project`,`project_tanks`.`type` AS `type`,`project_tanks`.`name` AS `name`,`project_tanks`.`sh1` AS `sh1`,`project_tanks`.`sa1` AS `sa1`,`project_tanks`.`sl1` AS `sl1`,`project_tanks`.`sh2` AS `sh2`,`project_tanks`.`sa2` AS `sa2`,`project_tanks`.`sl2` AS `sl2`,`project_tanks`.`diametro` AS `diametro`,`project_tanks`.`agitators` AS `agitators`,`project_tanks`.`jets` AS `jets`,`project_tanks`.`voltkaforo` AS `voltkaforo`,`project_tanks`.`hlibremax` AS `hlibremax`,`project_tanks`.`active` AS `active`,`tank_names`.`name` AS `tank_name`,`tanks_types`.`name` AS `tank_type`,`tank_names`.`type` AS `tank_category`,`project_tanks`.`order` AS `order` from ((`project_tanks` left join `tank_names` on((`tank_names`.`id` = `project_tanks`.`name`))) left join `tanks_types` on((`tanks_types`.`id` = `project_tanks`.`type`))) ;
