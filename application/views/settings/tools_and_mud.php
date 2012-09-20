@@ -1,5 +1,5 @@
 <div class="config_panel" id="tools_and_mud">
-	<h2>Moud and tools librarys</h2>
+	<h2>Mud and tools librarys</h2>
 	
 	<div class="simpleTabs">
             <ul class="simpleTabsNavigation">
