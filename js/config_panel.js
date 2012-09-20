@@ -508,6 +508,10 @@ $(function(){
 		});	
 	}
 
+	function calcular_aforo(){}
+
+	function calcular_max_altura_libre(){}
+
 
 	/*==========================================================================================================*/
 	// 5. MUD PROPERTIES
