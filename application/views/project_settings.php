@@ -1,10 +1,4 @@
-<?php 
-	if($project['last_report'] == 0){
-		$settings_style	='display:block;';
-	}else{
-		$settings_style	='display:none;';
-	}
-?>
+<?php $project['last_report'] == 0 ? $settings_style	='display:block;' : $settings_style	='display:none;'; ?>
 <div class="options_panel" id="project_settings" style="<?= $settings_style ?>">
 	<div class="op_content">
 		<div class="options_sidebar">
@@ -16,7 +10,7 @@
 				<li><a href="#tanks">Tanks</a></li>
 				<li><a href="#mudproperties">Mud properties</a></li>
 				<li><a href="#enginers" id="personal_settings_link">Personal</a></li>
-                                <li><a href="#tools_and_mud" id="tools_settings_link">Tools and mud library</a></li>
+                <li><a href="#tools_and_mud" id="tools_settings_link">Mud and Tools library</a></li>
 			</ul>
 			<input type="button" value="Close Settings" id="close_settings_btn" class="just_close" />
 		</div>
@@ -27,7 +21,7 @@
 			<?php $this->load->view('settings/tanks'); ?>
 			<?php $this->load->view('settings/mud_properties'); ?>
 			<?php $this->load->view('settings/personal'); ?>
-                        <?php $this->load->view('settings/tools_and_mud'); ?>
+            <?php $this->load->view('settings/tools_and_mud'); ?>
 		</div>
 	</div>
 </div>

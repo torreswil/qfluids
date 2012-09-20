@@ -100,11 +100,11 @@ class Rest extends CI_Controller {
 	/*==========================================================================================================*/
 
 	//BIT FUNCTIONS        
-        public function load_bits(){
-            $brocas = $this->Api->get_where('vista_brocas', array('active'=>1, 'custom'=>1));                
-            foreach ($brocas as $broca) {
-                    echo '<tr id="this_bit_'.$broca['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$broca['nombre_broca'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$broca['nombre_modelo'].'" /></td><td><input type="text" style="width:80px;" disabled="" value="'.$broca['odfracc'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['unit_oddfracc'].'" /></td><td><input type="text" style="width:80px;" disabled="" value="'.$broca['odddeci'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['unit_odddeci'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['length'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['unit_length'].'" /></td><td><a href="#remove_bit" class="remove_bit_link" id="rm_bit_'.$broca['id'].'"><img src="/img/delete.png" /></a></td></tr>';
-            }
+    public function load_bits(){
+        $brocas = $this->Api->get_where('vista_brocas', array('active'=>1, 'custom'=>1));                
+        foreach ($brocas as $broca) {
+                echo '<tr id="this_bit_'.$broca['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$broca['nombre_broca'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$broca['nombre_modelo'].'" /></td><td><input type="text" style="width:80px;" disabled="" value="'.$broca['odfracc'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['unit_oddfracc'].'" /></td><td><input type="text" style="width:80px;" disabled="" value="'.$broca['odddeci'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['unit_odddeci'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['length'].'" /></td><td><input type="text" style="width:40px;" disabled="" value="'.$broca['unit_length'].'" /></td><td><a href="#remove_bit" class="remove_bit_link" id="rm_bit_'.$broca['id'].'"><img src="/img/delete.png" /></a></td></tr>';
+        }
 	}        
 	public function listar_brocas(){
 		echo json_encode($this->Api->get('brocas'));
@@ -121,7 +121,7 @@ class Rest extends CI_Controller {
 	public function insertar_broca(){
 		echo json_encode($this->Api->create('brocas_modelos',$_POST));
 	}
-        public function remove_bit(){
+    public function remove_bit(){
 		if(count($_POST) > 0){
 			$this->Api->update('brocas_modelos', array('active'=>0), $_POST['id']);
 			echo json_encode(array('message'=>'deactivated'));

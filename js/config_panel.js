@@ -643,7 +643,7 @@ $(function(){
                 
 	}
         
-        /*==========================================================================================================*/
+    /*==========================================================================================================*/
 	// 7. TOOLS AND MUD LIBRARY - IvanMel
 	/*==========================================================================================================*/
 	
@@ -658,89 +658,85 @@ $(function(){
 		var id = $(this).attr('id');
 		id = id.split('rm_bit_')[1];
 		
-                var data = {'id':id};
+        var data = {'id':id};
 
 		$.post('/rest/remove_bit',data,function(r){
 			if(r.message == 'deactivated'){
-                            load_tools_and_mud();
-                            $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+                load_tools_and_mud();
+                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 			}
 		},'json');
 	});
         
-        $('.remove_pump_link').live('click',function(e){
+    $('.remove_pump_link').live('click',function(e){
 		e.preventDefault();
 		var id = $(this).attr('id');
 		id = id.split('rm_pump_')[1];
 		
-                var data = {'id':id};
+        var data = {'id':id};
 
 		$.post('/rest/remove_pump',data,function(r){
 			if(r.message == 'deactivated'){
-                            load_tools_and_mud();
-                            $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+                load_tools_and_mud();
+                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 			}
 		},'json');
 	});
         
-        $('.remove_casing_link').live('click',function(e){
+    $('.remove_casing_link').live('click',function(e){
 		e.preventDefault();
 		var id = $(this).attr('id');
 		id = id.split('rm_casing_')[1];
 		
-                var data = {'id':id};
+        var data = {'id':id};
 
 		$.post('/rest/remove_casing',data,function(r){
 			if(r.message == 'deactivated'){
-                            load_tools_and_mud();
-                            $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+                load_tools_and_mud();
+                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 			}
 		},'json');
 	});
         
-        $('.remove_mud_link').live('click',function(e){
+    $('.remove_mud_link').live('click',function(e){
 		e.preventDefault();
 		var id = $(this).attr('id');
 		id = id.split('rm_mud_')[1];
 		
-                var data = {'id':id};
+        var data = {'id':id};
 
 		$.post('/rest/remove_mud',data,function(r){
 			if(r.message == 'deactivated'){
-                            load_tools_and_mud();
-                            $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+                load_tools_and_mud();
+                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 			}
 		},'json');
 	});
 
 	function load_tools_and_mud() {  
-            
-                var all_data = {                    
-                    active		: 1,
-                    custom              : 1
-                };
-                                
-                $.post('/rest/load_bits',all_data,function(r){			
-                        load = $('#current_bits_list');
-                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+	    var all_data = {active:1,custom:1};
+
+        $.post('/rest/load_bits',all_data,function(r){			
+            load = $('#current_bits_list');
+            (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
 			load.html(r);
 		});
                 
-                $.post('/rest/load_pumps',all_data,function(r){			
-                        load = $('#current_pumps_list');
-                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+        $.post('/rest/load_pumps',all_data,function(r){			
+            load = $('#current_pumps_list');
+            (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
 			load.html(r);			
 		});
                                                                                 
-                $.post('/rest/load_casing',all_data,function(r){
-                        load = $('#current_casings_list');
-                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+        $.post('/rest/load_casing',all_data,function(r){
+            load = $('#current_casings_list');
+            (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
 			load.html(r);			
 		});
                 
-                $.post('/rest/load_muds',all_data,function(r){
-                        load = $('#current_muds_list');
-                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+        $.post('/rest/load_muds',all_data,function(r){
+            load = $('#current_muds_list');
+            (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
 			load.html(r);
 		});
                 
