@@ -1,5 +1,5 @@
 <div class="config_panel" id="tools_and_mud">
-	<h2>Tools and mud librarys</h2>
+	<h2>Mud and tools librarys</h2>
 	
 	<div class="simpleTabs">
             <ul class="simpleTabsNavigation">
@@ -17,13 +17,9 @@
                             <tr>                                
                                 <th style="text-align: left">Name</th>
                                 <th style="text-align: left">Model</th>
-                                <th style="text-align: left">Od/Frac</th>
-                                <th style="text-align: left">Unit</th>
-                                <th style="text-align: left">Od/Deci</th>
-                                <th style="text-align: left">Unit</th>                               
-                                <th style="text-align: left">Length</th>
-                                <th style="text-align: left">Unit</th>
-                                
+                                <th style="text-align: left">Od/Frac</th>                                
+                                <th style="text-align: left">Od/Deci</th>                                                            
+                                <th style="text-align: left">Length</th>                                                                
                                 <th></th>
                             </tr>                            
                         </thead>                            
@@ -41,21 +37,14 @@
                                 <th style="text-align: left">Maker</th>
                                 <th style="text-align: left">Type</th>
                                 <th style="text-align: left">Model</th>
-                                <th style="text-align: left">Stroke</th>
-                                <th style="text-align: left">Unit</th>
-                                <th style="text-align: left">Diameter</th>
-                                <th style="text-align: left">Unit</th>
-                                <th style="text-align: left">Rod</th>
-                                <th style="text-align: left">Unit</th>
+                                <th style="text-align: left">Stroke</th>                                
+                                <th style="text-align: left">Diameter</th>                                
+                                <th style="text-align: left">Rod</th>                                
                                 <th style="text-align: left">Presion</th>
-                                <th style="text-align: left">Unit</th>                            
                                 <th style="text-align: left">Max spm</th> 
                                 <th style="text-align: left">S. Frac</th> 
-                                <th style="text-align: left">Unit</th> 
                                 <th style="text-align: left">D. Frac</th> 
-                                <th style="text-align: left">Unit</th> 
                                 <th style="text-align: left">R. Frac</th>
-                                <th style="text-align: left">Unit</th>
                                 <th></th>
                             </tr>                            
                         </thead>                        
@@ -71,13 +60,11 @@
                         <thead  style="display: none;">
                             <tr>
                                 <th style="text-align: left">Od/Frac</th>
-                                <th style="text-align: left">Od/Deci</th>
-                                <th style="text-align: left">Unit</th>
+                                <th style="text-align: left">Od/Deci</th>                                
                                 <th style="text-align: left">Id/Frac</th>
-                                <th style="text-align: left">Id/Deci</th>
-                                <th style="text-align: left">Unit</th>
+                                <th style="text-align: left">Id/Deci</th>                                
                                 <th style="text-align: left">Weight</th>
-                                <th colspan="2" style="text-align: left">Unit</th>
+                                <th></th>
                             </tr>                            
                         </thead>                        
                         <tbody id="current_casings_list"></tbody>
