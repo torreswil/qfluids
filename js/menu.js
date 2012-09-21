@@ -68,13 +68,26 @@ $(function(){
 
 	$('#btn_new_report').click(function(e){
 		e.preventDefault();
+                $('#continue_phase_overlay').show();                
+	});
+        
+        //close the overlay on cancel
+	$('#continue_phase_overlay .close_link').click(function(e){
+		e.preventDefault();
+		$('#continue_phase_overlay').hide();
+	});
+        
+        //submit report 
+	$('#continue_phase_overlay #continue_phase_btn').click(function(e){                
+		e.preventDefault();                
+		$('#continue_phase_overlay').hide();                
 		var data = {
-			'number'					: $('#current_report').val(),
-			'date'						: $('#current_date').html(),
-			'project_transactional_id'	: $('#transactional_id').val()
+			'number'			: $('#current_report').val(),
+			'date'				: $('#current_date').html(),
+			'project_transactional_id'	: $('#transactional_id').val(),
+                        'phase'                         : $('[name="phase"]:checked').val()                        
 		};
-
-		$.post('/rest/new_report',data,function(r){
+                $.post('/rest/new_report',data,function(r){
 			if(r.message == 'sucess'){
 				location.reload();
 			}else{

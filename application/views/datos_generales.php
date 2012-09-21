@@ -119,12 +119,14 @@
 	    				<td class="label_m"></td>
 	    				<td class="label_m"><label>Yard Worker</label></td>
 	    				<td class="label_m"><label>Cost</label></td>
+                                        <td class="label_m"><label>Turno</label></td>
 	    			</tr>
 	    			<?php foreach ($yardworkers as $worker){ ?>
 	    				<tr>
 		    				<td class="label_m" style="padding-right:15px;"><input type="checkbox" class="worker_checkbox" id="worker_checkbox_<?= $worker['id'] ?>" /></td>
 		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($worker['name']) ?> <?= strtoupper($worker['lastname']) ?>" style="width:150px;" /></td>
 		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($worker['rate']) ?>" style="width:100px;" id="worker_cost_<?= $worker['id'] ?>" /></td>
+                                                <td class="label_m"><select id="this_yardworkers_<?= $worker['id']; ?>" class="this_yardworker" style="width:179px; height: 25px;"><option value="">Please select...</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
 		    			</tr>
 	    			<?php } ?>
 	    		</table>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-09-2012 a las 15:38:32
+-- Tiempo de generación: 21-09-2012 a las 18:11:24
 -- Versión del servidor: 5.5.24
 -- Versión de PHP: 5.3.10-1ubuntu3.4
 
@@ -979,6 +979,7 @@ CREATE TABLE IF NOT EXISTS `reports` (
   `date` date DEFAULT NULL,
   `number` int(11) DEFAULT NULL,
   `generated` int(11) DEFAULT '0',
+  `phase` int(11) NOT NULL DEFAULT '1' COMMENT 'Identificador de la fase',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
@@ -986,20 +987,20 @@ CREATE TABLE IF NOT EXISTS `reports` (
 -- Volcado de datos para la tabla `reports`
 --
 
-INSERT INTO `reports` (`id`, `transactional_id`, `project_transactional_id`, `date`, `number`, `generated`) VALUES
-(1, 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', 1, 0),
-(5, 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', 2, 0),
-(6, 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', 3, 0),
-(7, 'FCKGW_qflrpt_4', 'FCKGW', '2012-09-08', 4, 0),
-(8, 'FCKGW_qflrpt_5', 'FCKGW', '2012-09-09', 5, 0),
-(9, 'FCKGW_qflrpt_6', 'FCKGW', '2012-09-10', 6, 0),
-(10, 'FCKGW_qflrpt_7', 'FCKGW', '2012-09-11', 7, 0),
-(11, 'YXRKT01_qflrpt_1', 'YXRKT01', '2012-09-06', 1, 0),
-(12, 'YXRKT01_qflrpt_2', 'YXRKT01', '2012-09-07', 2, 0),
-(13, 'YXRKT01_qflrpt_3', 'YXRKT01', '2012-09-08', 3, 0),
-(14, 'FCKGW_qflrpt_8', 'FCKGW', '2012-09-12', 8, 0),
-(15, 'QWERTY_qflrpt_1', 'QWERTY', '2012-09-11', 1, 0),
-(16, 'FCKGW_qflrpt_9', 'FCKGW', '2012-09-13', 9, 0);
+INSERT INTO `reports` (`id`, `transactional_id`, `project_transactional_id`, `date`, `number`, `generated`, `phase`) VALUES
+(1, 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', 1, 0, 1),
+(5, 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', 2, 0, 1),
+(6, 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', 3, 0, 1),
+(7, 'FCKGW_qflrpt_4', 'FCKGW', '2012-09-08', 4, 0, 1),
+(8, 'FCKGW_qflrpt_5', 'FCKGW', '2012-09-09', 5, 0, 1),
+(9, 'FCKGW_qflrpt_6', 'FCKGW', '2012-09-10', 6, 0, 1),
+(10, 'FCKGW_qflrpt_7', 'FCKGW', '2012-09-11', 7, 0, 1),
+(11, 'YXRKT01_qflrpt_1', 'YXRKT01', '2012-09-06', 1, 0, 1),
+(12, 'YXRKT01_qflrpt_2', 'YXRKT01', '2012-09-07', 2, 0, 1),
+(13, 'YXRKT01_qflrpt_3', 'YXRKT01', '2012-09-08', 3, 0, 1),
+(14, 'FCKGW_qflrpt_8', 'FCKGW', '2012-09-12', 8, 0, 1),
+(15, 'QWERTY_qflrpt_1', 'QWERTY', '2012-09-11', 1, 0, 1),
+(16, 'FCKGW_qflrpt_9', 'FCKGW', '2012-09-13', 9, 0, 1);
 
 -- --------------------------------------------------------
 
