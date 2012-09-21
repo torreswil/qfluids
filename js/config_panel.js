@@ -513,6 +513,12 @@ $(function(){
 		if(data.tipo_tanque == '1'){
 
 		//semicilindro
+		}else if(data.tipo_tanque == '2'){
+
+		}else if(data.tipo_tanque == '3'){
+
+		}else if(data.tipo_tanque == '4'){
+
 		}
 
 	}
