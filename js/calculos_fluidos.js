@@ -1675,4 +1675,38 @@ function calculos_raw(){
 		bitxcien = (pdbit / totallossesbin) * 100;
 	}
 	completar_campo_val('bitxcien',bitxcien);
+
+
+	/***************************************************************/
+	// VOLUMENES
+	/***************************************************************/
+
+	//volrealtk
+	$('.volrealtk').each(function(){
+		var id = $(this).attr('id');
+			id = id.split('volrealtk_');
+			id = id[1];
+
+		var volrealtk = 0;
+		var tank_type = ival('tank_type_id_'+id);
+		
+		if(tank_type == 1){
+			volrealtk = ((fval('hlibremax_'+id) - fval('hlibre_'+id)) * fval('sl1_'+id) * fval('sa1_'+id)) / 9702;
+		}else if(tank_type == 2){
+			if(fval('sh1_'+id) >= fval('hlibre_'+id)){
+				volrealtk =  ( ( fval('sh1_'+id) - fval('hlibre_'+id) ) *  fval('sl1_'+id) * fval('sa1_'+id) ) / 9702 + (( 0.3168 * (fval('sa2_'+id) / 12 ) * ( ( fval('hlibremax_'+id) - fval('hlibre_'+id) ) / 12 ) + 1.403 * Math.pow( ( fval('hlibremax_'+id) - fval('hlibre1_'+id) )  / 12 , 2 ) - 0.933 * Math.pow( ( fval('hlibremax_'+id) - fval('hlibre_'+id) ) / 12,3 )  /  ( fval('sa2_'+id) / 12 ) ) * ( fval('sl2_'+id) / 12 ) ) / 5.6146;	
+			}else{
+				volrealtk = 0;
+			}
+			
+		
+		}else if(tank_type == 3){
+
+		}else if(tank_type == 4){
+
+		}
+
+		completar_campo_val('volrealtk_'+id,volrealtk);	
+	});
+
 }

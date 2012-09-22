@@ -214,71 +214,136 @@ $(function(){
 	// 4. TANKS
 	/*==========================================================================================================*/
 
-	$('#active_type').change(function(){
-		if($(this).val() == ''){
-			$('.tank_type_form_active').hide();
-			$('#btn_create_active_tank').hide();
-			$('.tank_measures_fieldset_active').hide();
-		}else if(parseInt($(this).val()) == 1){
-			$('.tank_type_form_active').hide();
-			$('#active_cuadrado').show();
-			$('#btn_create_active_tank').show();
-			$('.tank_measures_fieldset_active').show();
-		}else if(parseInt($(this).val()) == 2){
-			$('.tank_type_form_active').hide();
-			$('#active_semicircular').show();
-			$('#btn_create_active_tank').show();
-			$('.tank_measures_fieldset_active').show();
-		}else if(parseInt($(this).val()) == 3){
-			$('.tank_type_form_active').hide();
-			$('#active_trailer').show();
-			$('#btn_create_active_tank').show();
-			$('.tank_measures_fieldset_active').show();
-		}else if(parseInt($(this).val()) == 4){
-			$('.tank_type_form_active').hide();
-			$('#active_horizontal').show();
-			$('#btn_create_active_tank').show();
-			$('.tank_measures_fieldset_active').show();
+	$('#link_create_tank').click(function(e){
+		e.preventDefault();
+		$('input[name="system_type"]').val('active');
+		var data = {type:'active'};
+		$.post('/rest/list_tank_names',data,function(r){
+			$('#new_tank_overlay .name').html(r);
+		});
+		$('#new_tank_overlay').slideDown();
+	});
+
+	$('.new_tank_st').change(function(){
+		var data = {type:$(this).val()};
+		$.post('/rest/list_tank_names',data,function(r){
+			$('#new_tank_overlay .name').html(r);
+		});	
+	});
+
+	$('#active_type').change(function(e){
+		e.preventDefault();
+		var tank_type = parseInt($(this).val());
+		
+		$('#voltkaforo,#hlibremax').val(0);
+
+		//cuadrado
+		if(tank_type == 1){
+			$('.tank_formula_input').hide();
+			$('.fieldset_tank_cuadrado').show();
+
+		//semicircular
+		}else if(tank_type == 2){
+			$('.tank_formula_input').hide();
+			$('.fieldset_tank_semicircular').show();
+
+		//trailer	
+		}else if(tank_type == 3){
+			$('.tank_formula_input').hide();
+			$('.fieldset_tank_trailer').show();
+
+		//cilindro horizontal
+		}else if(tank_type == 4){
+			$('.tank_formula_input').hide();
+			$('.fieldset_tank_horizontal').show();
+		
+		//ninguno
+		}else{
+			$('.tank_formula_input').hide();
+				
 		}
 	});
 
-	$('#reserve_type').change(function(){
-		if($(this).val() == ''){
-			$('.tank_type_form_reserve').hide();
-			$('#btn_create_reserve_tank').hide();
-			$('.tank_measures_fieldset_reserve').hide();
-		}else if(parseInt($(this).val()) == 1){
-			$('.tank_type_form_reserve').hide();
-			$('#reserve_cuadrado').show();
-			$('#btn_create_reserve_tank').show();
-			$('.tank_measures_fieldset_reserve').show();
-		}else if(parseInt($(this).val()) == 2){
-			$('.tank_type_form_reserve').hide();
-			$('#reserve_semicircular').show();
-			$('#btn_create_reserve_tank').show();
-			$('.tank_measures_fieldset_reserve').show();
-		}else if(parseInt($(this).val()) == 3){
-			$('.tank_type_form_reserve').hide();
-			$('#reserve_trailer').show();
-			$('#btn_create_reserve_tank').show();
-			$('.tank_measures_fieldset_reserve').show();
-		}else if(parseInt($(this).val()) == 4){
-			$('.tank_type_form_reserve').hide();
-			$('#reserve_horizontal').show();
-			$('#btn_create_reserve_tank').show();
-			$('.tank_measures_fieldset_reserve').show();
-		}
-
-		var parent_form = $(this).parents('form');
-		$('input',parent_form).removeClass('required');
+	$('#new_tank_overlay .cancel_overlay').click(function(e){
+		e.preventDefault();
+		$('.tank_formula_input').hide();
+		$('.tank_formula_input input').val('');
+		$('#voltkaforo,#hlibremax').val(0);
+		$('#new_tank_overlay').slideUp();
 	});
 
-	$('.btn_create_tank').click(function(){
-		var parent_form = $(this).parents('form');
-		if(parent_form.attr('id') == 'form_active_tank'){ 
-			var current_tanks_table = $('#current_active_tanks');
-		}else if(parent_form.attr('id') == 'form_reserve_tank'){
-			var current_tanks_table = $('#current_reserve_tanks');
+	$('.tank_formula_input input').keyup(function(){
+		//define the tank type and the current form
+		var tank_type = parseInt($('#active_type').val());
+		switch(tank_type){
+			case 1:
+				var context = $('.medidas_cuadrado');
+				break;
+			case 2:
+				var context = $('.medidas_semicircular');
+				break;
+			case 3:
+				var context = $('.fieldset_tank_trailer');
+				break;
+			case 4:
+				var context = $('.fieldset_tank_horizontal');
+				break;
+		}
+
+		//hlibremax
+		var hlibremax = 0;
+		if(tank_type == 1){
+			hlibremax = parseFloat($('.sh1',context).val());	
+		}else if(tank_type == 2){
+			var sh1 = parseFloat($('.sh1',context).val());
+			var sh2 = parseFloat($('.sh2',context).val());
+			hlibremax = sh1 + sh2;			
+		}else if(tank_type == 3){
+			var sh1 = parseFloat($('.sh1',context).val());
+			var sh2 = parseFloat($('.sh2',context).val());
+			hlibremax = sh1 + sh2;	
+		}else if(tank_type == 4){}
+		completar_campo_val('hlibremax',hlibremax.toFixed(1));
+
+		//voltkaforo
+		var voltkaforo = 0;
+		
+		if(tank_type == 1){
+			var sh1 = parseFloat($('.sh1',context).val());
+			var sl1 = parseFloat($('.sl1',context).val());
+			var sa1 = parseFloat($('.sa1',context).val());
+			voltkaforo = (sh1 * sl1 * sa1) / 9702;
+		
+		}else if(tank_type == 2){
+			var sh1 = parseFloat($('.sh1',context).val());
+			var sl1 = parseFloat($('.sl1',context).val());
+			var sa1 = parseFloat($('.sa1',context).val());
+			var sh2 = parseFloat($('.sh2',context).val());
+			var sl2 = parseFloat($('.sl2',context).val());
+			var sa2 = parseFloat($('.sa2',context).val());
+			voltkaforo = (sh1 * sl1 * sa1) / 9702 + ((0.3168 * (sa2 / 12) * (sh2 / 12) + 1.403 * Math.pow(sh2 / 12,2) - 0.933 * Math.pow(sh2 /12, 3)  / (sa2 / 12))*(sl2 / 12))/5.6146;
+			//log('('+sh1+' * '+sl1+' * '+sa1+') / 9702 + ((0.3168 * ('+sa2+' / 12) * ('+sh2+' / 12) + 1.403 * Math.pow('+sh2+' / 12.2 , 2) - 0.933 * Math.pow('+sh2+' /12.3 , 2)  / ('+sa2+' / 12))*('+sl2+' / 12))/5.6146');
+		}else if(tank_type == 3){
+			var sh1 = parseFloat($('.sh1',context).val());
+			var sl1 = parseFloat($('.sl1',context).val());
+			var sa1 = parseFloat($('.sa1',context).val());
+			var sh2 = parseFloat($('.sh2',context).val());
+			var sl2 = parseFloat($('.sl2',context).val());
+			var sa2 = parseFloat($('.sa2',context).val());
+			voltkaforo = (sh1 * sl1 * sa1) / 9702 + (sh2 * sl2 * sa2) / 9702;
+
+		}
+
+		completar_campo_val('voltkaforo',voltkaforo.toFixed(1));
+	});
+
+	$('#btn_tank_create').click(function(){
+		var parent_form 		= $('#new_tank_overlay');
+		var current_tanks_table = $('#new_tank_st').val();
+		if(current_tanks_table == 'active'){
+			current_tanks_table = $('#current_active_tanks');
+		}else if(current_tanks_table == 'reserve'){
+			current_tanks_table = $('#current_reserve_tanks');
 		}
 
 		var current_tanks_qty 	=  $('.this_tank',current_tanks_table).length;
@@ -306,7 +371,7 @@ $(function(){
 				alert('This tank is already created. Please choose a different name and try again.');
 			}else{
 				//get the tank type
-				var tank_type = parseInt($('.type',parent_form).val());
+				var tank_type = parseInt($('#active_type').val());
 				switch(tank_type){
 					case 1:
 						$('.medidas_cuadrado input',parent_form).addClass('required');
@@ -315,10 +380,10 @@ $(function(){
 						$('.medidas_semicircular input',parent_form).addClass('required');
 						break;
 					case 3:
-						$('.medidas_trailer input',parent_form).addClass('required');
+						$('.fieldset_tank_trailer input',parent_form).addClass('required');
 						break;
 					case 4:
-						$('.medidas_cilindro input',parent_form).addClass('required');
+						$('.fieldset_tank_horizontal input',parent_form).addClass('required');
 						break;
 				}
 
@@ -342,53 +407,55 @@ $(function(){
 						agitators	: $('.agitators',parent_form).val(),
 						jets 		: $('.jets',parent_form).val(),
 						voltkaforo 	: $('.voltkaforo',parent_form).val(),
-						hlibremax 	: $('.hlibremax',parent_form).val(),
-						active 		: 1
+						hlibremax 	: $('#hlibremax',parent_form).val(),
+						active 		: 1,
+						order 		: current_tanks_qty + 1
 					}
 
-					data.order = current_tanks_qty + 1;
+					log(data);
 
 					switch(tank_type){
 						case 1:
-							//alert('creando cuadrado');
-							data.sh1 = $('.sh1',parent_form).val();
-							data.sa1 = $('.sa1',parent_form).val();
-							data.sl1 = $('.sl1',parent_form).val();
+							var context = $('.medidas_cuadrado');
+							data.sh1 = $('.sh1',context).val();
+							data.sa1 = $('.sa1',context).val();
+							data.sl1 = $('.sl1',context).val();
 							break;
 						case 2:
-							//alert('creando semicircular');
-							data.sh1 = $('.sh1',parent_form).val();
-							data.sa1 = $('.sa1',parent_form).val();
-							data.sl1 = $('.sl1',parent_form).val();
-							data.sh2 = $('.sh2',parent_form).val();
-							data.sa2 = $('.sa2',parent_form).val();
-							data.sl2 = $('.sl2',parent_form).val();
+							var context = $('.medidas_semicircular');
+							data.sh1 = $('.sh1',context).val();
+							data.sa1 = $('.sa1',context).val();
+							data.sl1 = $('.sl1',context).val();
+							data.sh2 = $('.sh2',context).val();
+							data.sa2 = $('.sa2',context).val();
+							data.sl2 = $('.sl2',context).val();
 							break;
 						case 3:
-							//alert('creando trailer');
-							data.sh1 = $('.sh1',parent_form).val();
-							data.sa1 = $('.sa1',parent_form).val();
-							data.sl1 = $('.sl1',parent_form).val();
-							data.sh2 = $('.sh2',parent_form).val();
-							data.sa2 = $('.sa2',parent_form).val();
-							data.sl2 = $('.sl2',parent_form).val();
+							var context = $('.fieldset_tank_trailer');
+							data.sh1 = $('.sh1',context).val();
+							data.sa1 = $('.sa1',context).val();
+							data.sl1 = $('.sl1',context).val();
+							data.sh2 = $('.sh2',context).val();
+							data.sa2 = $('.sa2',context).val();
+							data.sl2 = $('.sl2',context).val();
 							break;
 						case 4:
-							//alert('creando cilindro');
-							data.diametro 	= $('.sl1',parent_form).val();
-							data.sl1 		= $('.sl1',parent_form).val();
+							var context = $('.fieldset_tank_horizontal');
+							data.diametro 	= $('.sl1',context).val();
+							data.sl1 		= $('.sl1',context).val();
 							break;
 					}
+
 
 					$.post('/rest/create_tank',data,function(r){
 						if(r == true){
 							//reload the tank list
 							load_current_tanks();
+							$('.tank_formula_input').hide();
+							$('.tank_formula_input input').val('');
+							$('#voltkaforo,#hlibremax').val(0);
+							$('#new_tank_overlay').slideUp();
 
-							//reset form
-							$('input[type="text"]',parent_form).val('');
-							$('.name',parent_form).val('');
-							
 							//upgrade the config panel close button	
 							$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 
@@ -467,23 +534,6 @@ $(function(){
 				}
 			},'json');
 		}
-	});
-
-	$('.show_measures').live('click',function(e){
-		e.preventDefault();
-		$('.edit_tank_tr').hide();
-		var id = $(this).attr('href');
-			id = id.split('show_measures_');
-			id = id[1];
-			$('.show_measures').show();
-			$(this).hide();
-			$('#tr_tank_'+id).show();
-	});
-
-	$('.cancel_edit_tank').live('click',function(e){
-		e.preventDefault();
-		$(this).parents('tr').hide();
-		$('.show_measures').show();
 	});
 
 	function load_current_tanks(){
