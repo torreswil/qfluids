@@ -45,8 +45,8 @@ class Main extends CI_Controller {
 				if($project_data['last_report'] > 0){
 					$project_data['last_report_meta'] 	= $this->Api->get_where('reports',array('project_transactional_id'=>$project_data['transactional_id']));
 					$project_data['last_report_meta'] 	= $project_data['last_report_meta'][$project_data['last_report'] - 1];	
-				}
-				
+				}				
+                               
 
 				//CATALOGOS DE HERRAMIENTAS
 				$data['lista_casing']			= $this->Api->get_distinct_where('casing','oddeci,odfrac');

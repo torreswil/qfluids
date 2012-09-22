@@ -781,33 +781,38 @@ $(function(){
 		},'json');
 	});
 
-	function load_tools_and_mud(){  
-	    var all_data = {active:1,custom:1};
+        function load_tools_and_mud() {  
+                project = $('#project_id').val();
+                var all_data = {
+                        projects_id     : project,
+                        active          : 1,
+                        custom          : 1
+                };
 
-        $.post('/rest/load_bits',all_data,function(r){			
-            load = $('#current_bits_list');
-            (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
-			load.html(r);
-		});
-                
-        $.post('/rest/load_pumps',all_data,function(r){			
-            load = $('#current_pumps_list');
-            (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
-			load.html(r);			
-		});
-                                                                                
-        $.post('/rest/load_casing',all_data,function(r){
-            load = $('#current_casings_list');
-            (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
-			load.html(r);			
-		});
-                
-        $.post('/rest/load_muds',all_data,function(r){
-            load = $('#current_muds_list');
-            (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
-			load.html(r);
-		});
-                
-	}
+                $.post('/rest/load_bits',all_data,function(r){			
+                        load = $('#current_bits_list');
+                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+                        load.html(r);
+                });
+
+                $.post('/rest/load_pumps',all_data,function(r){			
+                        load = $('#current_pumps_list');
+                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+                        load.html(r);			
+                });
+
+                $.post('/rest/load_casing',all_data,function(r){
+                load = $('#current_casings_list');
+                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+                        load.html(r);			
+                });
+
+                $.post('/rest/load_muds',all_data,function(r){
+                        load = $('#current_muds_list');
+                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+                        load.html(r);
+                });
+
+        }
 });
 /****** THE END ******/

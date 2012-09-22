@@ -116,4 +116,5 @@
 	<?php $this->load->view('report_history_overlay'); ?>
 	<?php $this->load->view('project_settings'); ?>
 	<?php $this->load->view('personal_registration_tool'); ?>
+        <?php $this->load->view('continue_phase'); ?>
 </div>

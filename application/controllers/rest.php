@@ -79,6 +79,7 @@ class Rest extends CI_Controller {
 		$report['project_transactional_id'] = $_POST['project_transactional_id'];
 		$report['date'] 					= $date;
 		$report['number'] 					= $number;
+                $report['phase']                                        = $_POST['phase'];
 
 		$this->Api->create('reports',$report);
 
@@ -101,7 +102,7 @@ class Rest extends CI_Controller {
 
 	//BIT FUNCTIONS        
         public function load_bits(){
-                $brocas = $this->Api->get_where('vista_brocas', array('active'=>1, 'custom'=>1));                
+                $brocas = $this->Api->get_where('vista_brocas', $_POST);                
                 foreach ($brocas as $broca) {
                         echo '<tr id="this_bit_'.$broca['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$broca['nombre_broca'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$broca['nombre_modelo'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$broca['odfracc'].' '.$broca['unit_oddfracc'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$broca['odddeci'].' '.$broca['unit_odddeci'].'" /></td><td><input type="text" style="width:80px;" disabled="" value="'.$broca['length'].' '.$broca['unit_length'].'" /></td><td><a href="#remove_bit" class="remove_bit_link" id="rm_bit_'.$broca['id'].'"><img src="/img/delete.png" /></a></td></tr>';
                 }
