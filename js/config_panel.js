@@ -226,6 +226,7 @@ $(function(){
 
 	$('.new_tank_st').change(function(){
 		var data = {type:$(this).val()};
+		$('#new_tank_overlay .name').html('<option value="">Loading...</option>');
 		$.post('/rest/list_tank_names',data,function(r){
 			$('#new_tank_overlay .name').html(r);
 		});	
