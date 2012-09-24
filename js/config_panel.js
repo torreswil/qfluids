@@ -791,7 +791,7 @@ $(function(){
         function load_tools_and_mud() {  
                 project = $('#project_id').val();
                 var all_data = {
-                        projects_id     : project,
+                        project_id     : project,
                         active          : 1,
                         custom          : 1
                 };
