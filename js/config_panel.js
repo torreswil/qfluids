@@ -563,24 +563,30 @@ $(function(){
 		$.post('/rest/load_current_tanks',reserve_data,function(r){
 			$('#current_reserve_tanks').html(r);
 		});	
-	}
-
-	function calcular_aforo(data){
-		//cuadrado
-		if(data.tipo_tanque == '1'){
-
-		//semicilindro
-		}else if(data.tipo_tanque == '2'){
-
-		}else if(data.tipo_tanque == '3'){
-
-		}else if(data.tipo_tanque == '4'){
-
+	
+		var pill_data = {
+			active  		: 1,
+			project 		: $('#project_id').val(),
+			tank_category 	: 'pill'
 		}
 
+		$.post('/rest/load_current_tanks',pill_data,function(r){
+			$('#current_pill_tanks').html(r);
+		});
+
+		var trip_data = {
+			active  		: 1,
+			project 		: $('#project_id').val(),
+			tank_category 	: 'trip'
+		}
+
+		$.post('/rest/load_current_tanks',trip_data,function(r){
+			$('#current_trip_tanks').html(r);
+		});
+
 	}
 
-	function calcular_max_altura_libre(){}
+
 
 
 	/*==========================================================================================================*/

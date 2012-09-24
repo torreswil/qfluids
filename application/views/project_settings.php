@@ -42,6 +42,8 @@
 								<select name="system_type" style="width:179px;" class="new_tank_st">
 									<option value="active" selected="selected">Active</option>
 									<option value="reserve">Reserve</option>
+									<option value="pill">Pill</option>
+									<option value="trip">Trip tank</option>
 								</select>
 							</td>
 						</tr>
