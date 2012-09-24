@@ -302,7 +302,9 @@ $(function(){
 			var sh1 = parseFloat($('.sh1',context).val());
 			var sh2 = parseFloat($('.sh2',context).val());
 			hlibremax = sh1 + sh2;	
-		}else if(tank_type == 4){}
+		}else if(tank_type == 4){
+			hlibremax = parseFloat($('.diametro',context).val());
+		}
 		completar_campo_val('hlibremax',hlibremax.toFixed(1));
 
 		//voltkaforo
@@ -332,6 +334,11 @@ $(function(){
 			var sa2 = parseFloat($('.sa2',context).val());
 			voltkaforo = (sh1 * sl1 * sa1) / 9702 + (sh2 * sl2 * sa2) / 9702;
 
+		}else if(tank_type == 4){
+			var radio  	= parseFloat($('.diametro',context).val()) / 2;
+			var cd1 	= parseFloat($('.diametro',context).val());
+			var sl1 	= parseFloat($('.sl1',context).val());
+			voltkaforo 	= sl1 * ((Math.pow( radio , 2) * Math.asin( ( radio - cd1 ) / radio )) - ( ( radio - cd1 ) * Math.pow((2 * radio * cd1 - Math.pow( cd1, 2 ) ) , 0.5) ) ) / 9702;
 		}
 
 		completar_campo_val('voltkaforo',voltkaforo.toFixed(1));
