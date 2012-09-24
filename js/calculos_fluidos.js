@@ -1709,7 +1709,7 @@ function calculos_raw(){
 			var caltura = fval('diametro_'+id) - fval('hlibre_'+id);
 			volrealtk = fval('sl1_'+id) * ((Math.pow( radio , 2) * Math.asin( ( radio - caltura ) / radio )) - ( ( radio - caltura) * Math.pow((2 * radio * caltura - Math.pow(caltura, 2 ) ) , 0.5) ) ) / 9702;
 		}
-		completar_campo_val('volrealtk_'+id,volrealtk);
+		completar_campo_val('volrealtk_'+id,volrealtk.toFixed(1));
 	});
 
 }

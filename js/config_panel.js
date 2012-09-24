@@ -324,7 +324,7 @@ $(function(){
 			var sl2 = parseFloat($('.sl2',context).val());
 			var sa2 = parseFloat($('.sa2',context).val());
 			voltkaforo = (sh1 * sl1 * sa1) / 9702 + ((0.3168 * (sa2 / 12) * (sh2 / 12) + 1.403 * Math.pow(sh2 / 12,2) - 0.933 * Math.pow(sh2 /12, 3)  / (sa2 / 12))*(sl2 / 12))/5.6146;
-			//log('('+sh1+' * '+sl1+' * '+sa1+') / 9702 + ((0.3168 * ('+sa2+' / 12) * ('+sh2+' / 12) + 1.403 * Math.pow('+sh2+' / 12.2 , 2) - 0.933 * Math.pow('+sh2+' /12.3 , 2)  / ('+sa2+' / 12))*('+sl2+' / 12))/5.6146');
+	
 		}else if(tank_type == 3){
 			var sh1 = parseFloat($('.sh1',context).val());
 			var sl1 = parseFloat($('.sl1',context).val());
@@ -339,6 +339,7 @@ $(function(){
 			var cd1 	= parseFloat($('.diametro',context).val());
 			var sl1 	= parseFloat($('.sl1',context).val());
 			voltkaforo 	= sl1 * ((Math.pow( radio , 2) * Math.asin( ( radio - cd1 ) / radio )) - ( ( radio - cd1 ) * Math.pow((2 * radio * cd1 - Math.pow( cd1, 2 ) ) , 0.5) ) ) / 9702;
+			log('voltkaforo 	= '+sl1+' * ((Math.pow( '+radio+' , 2) * Math.asin( ( '+radio+' - '+cd1+' ) / '+radio+' )) - ( ( '+radio+' - '+cd1+' ) * Math.pow((2 * '+radio+' * '+cd1+' - Math.pow( '+cd1+', 2 ) ) , 0.5) ) ) / 9702;');
 		}
 
 		completar_campo_val('voltkaforo',voltkaforo.toFixed(1));
