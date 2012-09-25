@@ -554,7 +554,9 @@ $(function(){
 		}
 
 		$.post('/rest/load_current_tanks',active_data,function(r){
-			$('#current_active_tanks').html(r);
+			if(r !== ''){
+				$('#current_active_tanks').html(r).parents('fieldset').show();
+			}
 		});
 
 		var reserve_data = {
@@ -564,7 +566,9 @@ $(function(){
 		}
 
 		$.post('/rest/load_current_tanks',reserve_data,function(r){
-			$('#current_reserve_tanks').html(r);
+			if(r !== ''){
+				$('#current_reserve_tanks').html(r).parents('fieldset').show();
+			}
 		});	
 	
 		var pill_data = {
@@ -574,7 +578,9 @@ $(function(){
 		}
 
 		$.post('/rest/load_current_tanks',pill_data,function(r){
-			$('#current_pill_tanks').html(r);
+			if(r !== ''){
+				$('#current_pill_tanks').html(r).parents('fieldset').show();
+			}
 		});
 
 		var trip_data = {
@@ -584,7 +590,9 @@ $(function(){
 		}
 
 		$.post('/rest/load_current_tanks',trip_data,function(r){
-			$('#current_trip_tanks').html(r);
+			if(r !== ''){	
+				$('#current_trip_tanks').html(r).parents('fieldset').show();
+			}
 		});
 
 	}

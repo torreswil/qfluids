@@ -4,7 +4,7 @@
 		<a href="#create_tank" id="link_create_tank" style="float:left;width:100px;text-decoration:underline;margin-top:3px;">[+ Add Tank]</a>
 	</div>
 
-	<fieldset style="float:left;width:95%;">
+	<fieldset style="float:left;width:95%;display:none;">
 		<legend>Current trip tanks</legend>
 		<table>
 			<thead>
@@ -26,7 +26,7 @@
 		<input type="button" value="Update order" class="update_tank_order" id="trip_order" />
 	</fieldset>
 	
-	<fieldset style="float:left;width:95%;">
+	<fieldset style="float:left;width:95%;display:none;">
 		<legend>Current active tanks:</legend>
 		<table>
 			<thead>
@@ -48,7 +48,7 @@
 		<input type="button" value="Update order" class="update_tank_order" id="active_order" />
 	</fieldset>
 
-	<fieldset style="float:left;width:95%;">
+	<fieldset style="float:left;width:95%;display:none;">
 		<legend>Current pill tanks</legend>
 		<table>
 			<thead>
@@ -70,7 +70,7 @@
 		<input type="button" value="Update order" class="update_tank_order" id="pill_order" />
 	</fieldset>
 
-	<fieldset style="float:left;width:95%;">
+	<fieldset style="float:left;width:95%;display:none;">
 		<legend>Current reserve tanks</legend>
 		<table>
 			<thead>

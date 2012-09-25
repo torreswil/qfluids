@@ -9,7 +9,7 @@
 				<li><a href="#cse">Control Solids Eq.</a></li>
 				<li><a href="#tanks">Tanks</a></li>
 				<li><a href="#mudproperties">Mud properties</a></li>
-				<li><a href="#enginers" id="personal_settings_link">Personal</a></li>
+				<li><a href="#enginers" id="personal_settings_link">Personnel</a></li>
                 <li><a href="#tools_and_mud" id="tools_settings_link">Mud and Tools library</a></li>
 			</ul>
 			<input type="button" value="Close Settings" id="close_settings_btn" class="just_close" />
