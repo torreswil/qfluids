@@ -1710,7 +1710,7 @@ function calculos_raw(){
 			var radio = fval('diametro_'+id) / 2;
 			var caltura = fval('diametro_'+id) - fval('hlibre_'+id);
 			volrealtk = fval('sl1_'+id) * ((Math.pow( radio , 2) * Math.acos( ( radio - caltura ) / radio )) - ( ( radio - caltura) * Math.pow((2 * radio * caltura - Math.pow(caltura, 2 ) ) , 0.5) ) ) / 9702;
-			log('cilindrico',"volrealtk = "fval('sl1_'+id)" * ((Math.pow( "+radio+" , 2) * Math.acos( ( "+radio+" - "+caltura+" ) / "+radio+" )) - ( ( "+radio+" - "+caltura+") * Math.pow((2 * "+radio+" * "+caltura+" - Math.pow("+caltura+", 2 ) ) , 0.5) ) ) / 9702;");
+			log('cilindrico',"volrealtk = "+fval('sl1_'+id)+" * ((Math.pow( "+radio+" , 2) * Math.acos( ( "+radio+" - "+caltura+" ) / "+radio+" )) - ( ( "+radio+" - "+caltura+") * Math.pow((2 * "+radio+" * "+caltura+" - Math.pow("+caltura+", 2 ) ) , 0.5) ) ) / 9702;");
 		}
 		completar_campo_val('volrealtk_'+id,volrealtk.toFixed(1));
 	});
