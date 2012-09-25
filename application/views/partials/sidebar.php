@@ -11,7 +11,7 @@
 				<li><a href="#propiedades_fluido">Mud Properties</a></li>
 				<li><a href="#equipos_solidos">Solids Control Eq.</a></li>
 				<li><a href="#datos_generales">Personnel</a></li>
-				<li><a href="#inventario">Materials Stock</a></li>
+				<li><a href="#inventario">Material Stock</a></li>
 				<li><a href="#volumenes">Volumes</a></li>
 			</ul>
 		</li>
