@@ -339,8 +339,8 @@ $(function(){
 			var radio  	= parseFloat($('.diametro',context).val()) / 2;
 			var cd1 	= parseFloat($('.diametro',context).val());
 			var sl1 	= parseFloat($('.sl1',context).val());
-			voltkaforo 	= sl1 * ((Math.pow( radio , 2) * Math.asin( ( radio - cd1 ) / radio )) - ( ( radio - cd1 ) * Math.pow((2 * radio * cd1 - Math.pow( cd1, 2 ) ) , 0.5) ) ) / 9702;
-			log('voltkaforo 	= '+sl1+' * ((Math.pow( '+radio+' , 2) * Math.asin( ( '+radio+' - '+cd1+' ) / '+radio+' )) - ( ( '+radio+' - '+cd1+' ) * Math.pow((2 * '+radio+' * '+cd1+' - Math.pow( '+cd1+', 2 ) ) , 0.5) ) ) / 9702;');
+			voltkaforo 	= sl1 * ((Math.pow( radio , 2) * Math.acos( ( radio - cd1 ) / radio )) - ( ( radio - cd1 ) * Math.pow((2 * radio * cd1 - Math.pow( cd1, 2 ) ) , 0.5) ) ) / 9702;
+			log('voltkaforo 	= '+sl1+' * ((Math.pow( '+radio+' , 2) * Math.acos( ( '+radio+' - '+cd1+' ) / '+radio+' )) - ( ( '+radio+' - '+cd1+' ) * Math.pow((2 * '+radio+' * '+cd1+' - Math.pow( '+cd1+', 2 ) ) , 0.5) ) ) / 9702;');
 		}
 
 		completar_campo_val('voltkaforo',voltkaforo.toFixed(1));
