@@ -1695,8 +1695,10 @@ function calculos_raw(){
 		}else if(tank_type == 2){
 			if(fval('sh1_'+id) >= fval('hlibre_'+id)){
 				volrealtk =  ( ( fval('sh1_'+id) - fval('hlibre_'+id) ) *  fval('sl1_'+id) * fval('sa1_'+id) ) / 9702 + (( 0.3168 * (fval('sa2_'+id) / 12 ) * ( ( fval('hlibremax_'+id) - fval('hlibre_'+id) ) / 12 ) + 1.403 * Math.pow( ( fval('hlibremax_'+id) - fval('hlibre1_'+id) )  / 12 , 2 ) - 0.933 * Math.pow( ( fval('hlibremax_'+id) - fval('hlibre_'+id) ) / 12,3 )  /  ( fval('sa2_'+id) / 12 ) ) * ( fval('sl2_'+id) / 12 ) ) / 5.6146;	
+				log('fondo semicircular: altura seccion superior mayor que altura libre',"volrealtk =  ( ( "+fval('sh1_'+id)+" - "+fval('hlibre_'+id)+" ) *  "+fval('sl1_'+id)+" * "+fval('sa1_'+id)+" ) / 9702 + (( 0.3168 * ("+fval('sa2_'+id)+" / 12 ) * ( ( "+fval('hlibremax_'+id)+" - "+fval('hlibre_'+id)+" ) / 12 ) + 1.403 * Math.pow( ( "+fval('hlibremax_'+id)+" - "+fval('hlibre1_'+id)+" )  / 12 , 2 ) - 0.933 * Math.pow( ( "+fval('hlibremax_'+id)+" - "+fval('hlibre_'+id)+" ) / 12,3 )  /  ( "+fval('sa2_'+id)+" / 12 ) ) * ( "+fval('sl2_'+id)+" / 12 ) ) / 5.6146;");
 			}else{
 				volrealtk = (( 0.3168 * (fval('sa2_'+id) / 12 ) * ( ( fval('hlibremax_'+id) - fval('hlibre_'+id) ) / 12 ) + 1.403 * Math.pow( ( fval('hlibremax_'+id) - fval('hlibre_'+id) )  / 12 , 2 ) - 0.933 * Math.pow( ( fval('hlibremax_'+id) - fval('hlibre1_'+id) ) / 12, 3 )  /  ( fval('sa2_'+id) / 12 ) ) * ( fval('sl2_'+id) / 12 ) ) / 5.6146;
+				log('fondo semicircular: altura seccion menor o igual que altura libre',"volrealtk = (( 0.3168 * ("+fval('sa2_'+id)+" / 12 ) * ( ( "+fval('hlibremax_'+id)+" - "+fval('hlibre_'+id)+" ) / 12 ) + 1.403 * Math.pow( ( "+fval('hlibremax_'+id)+" - "+fval('hlibre_'+id)+" )  / 12 , 2 ) - 0.933 * Math.pow( ( "+fval('hlibremax_'+id)+" - "+fval('hlibre1_'+id)+" ) / 12, 3 )  /  ( "+fval('sa2_'+id)+" / 12 ) ) * ( "+fval('sl2_'+id)+" / 12 ) ) / 5.6146;");
 			}
 		}else if(tank_type == 3){
 			if(fval('sh1_'+id) >= fval('hlibre_'+id)){
@@ -1708,6 +1710,7 @@ function calculos_raw(){
 			var radio = fval('diametro_'+id) / 2;
 			var caltura = fval('diametro_'+id) - fval('hlibre_'+id);
 			volrealtk = fval('sl1_'+id) * ((Math.pow( radio , 2) * Math.acos( ( radio - caltura ) / radio )) - ( ( radio - caltura) * Math.pow((2 * radio * caltura - Math.pow(caltura, 2 ) ) , 0.5) ) ) / 9702;
+			log('cilindrico',"volrealtk = "fval('sl1_'+id)" * ((Math.pow( "+radio+" , 2) * Math.acos( ( "+radio+" - "+caltura+" ) / "+radio+" )) - ( ( "+radio+" - "+caltura+") * Math.pow((2 * "+radio+" * "+caltura+" - Math.pow("+caltura+", 2 ) ) , 0.5) ) ) / 9702;");
 		}
 		completar_campo_val('volrealtk_'+id,volrealtk.toFixed(1));
 	});
