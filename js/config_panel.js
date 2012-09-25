@@ -381,6 +381,7 @@ $(function(){
 			}else{
 				//get the tank type
 				var tank_type = parseInt($('#active_type').val());
+				$('.medidas_cuadrado input,.medidas_semicircular input,.fieldset_tank_trailer input,.fieldset_tank_horizontal input',parent_form).addClass('required');
 				switch(tank_type){
 					case 1:
 						$('.medidas_cuadrado input',parent_form).addClass('required');
