@@ -1,0 +1,38 @@
+/**
+Hoja de estilo para la vista de impresión
+**/
+.printer {width: 1024px;margin: 0 auto;padding-top: 20px;}
+.printer, h5 { font-size: 8px;}
+.container-fluid { padding-left: 0px; padding-right: 0px }
+.container-fluid:after {clear: both;}
+.container-fluid:before, .container-fluid:after {content: "";display: table;line-height: 0;}
+.container-fluid:before, .container-fluid:after {content: "";display: table;line-height: 0;}
+.table { margin-bottom: 0px;}
+.table-condensed th, .table-condensed td { padding: 0px 1px;}
+
+/*.group, .group td { vertical-align: middle; text-align: center !important; background-color: #BFBFBF;}*/
+
+.data-table { display: block; float:left;}
+.sub-header { vertical-align: middle; text-align: center !important; background-color: #bfbfbf}
+.sub-header h5 { margin: 0px;}
+
+ /*Bordes*/
+.b-all { border: 1px #008040 solid }
+.b-top { border-top: 1px #008040 solid }
+.b-left { border-left: 1px #008040 solid}
+.b-right { border-right: 1px #008040 solid}
+.b-bottom { border-bottom: 1px #008040 solid} 
+
+.b-all-2 { border: 2px #008040 solid }
+.b-top-2 { border-top: 2px #008040 solid }
+.b-left-2 { border-left: 2px #008040 solid}
+.b-right-2 { border-right: 2px #008040 solid}
+.b-bottom-2 { border-bottom: 2px #008040 solid} 
+
+h3 { color: #008040; font-size: 14px;}
+.strong { font-weight: bold;}
+.txt-center { text-align: center !important;}
+.txt-center-all { text-align: center !important; vertical-align: middle !important}
+.txt-left { text-align: left !important;}
+.txt-right { text-align: right !important;}
+.txt-justify { text-align: justify !important;}
