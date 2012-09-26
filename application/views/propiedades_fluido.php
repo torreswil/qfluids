@@ -296,42 +296,42 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="label_m"><label>600</label></td>
+									<td class="label_m"><label>&theta;600</label></td>
 									<td><input type="text" style="width:60px;" ></td>
 									<td><input type="text" style="width:65px;" class="t_600" id="teta_601" name="teta_601" /></td>
 									<td><input type="text" style="width:65px;" class="t_600" id="teta_602" name="teta_602"></td>
 									<td><input type="text" style="width:65px;" class="t_600" id="teta_603" name="teta_603"></td>
 								</tr>
 								<tr>
-									<td class="label_m"><label>300</label></td>
+									<td class="label_m"><label>&theta;300</label></td>
 									<td><input type="text" style="width:60px;" ></td>
 									<td><input type="text" style="width:65px;" class="t_300" id="teta_301" name="teta_301"></td>
 									<td><input type="text" style="width:65px;" class="t_300" id="teta_302" name="teta_302"></td>
 									<td><input type="text" style="width:65px;" class="t_300" id="teta_303" name="teta_303"></td>
 								</tr>
 								<tr>
-									<td class="label_m"><label>200</label></td>
+									<td class="label_m"><label>&theta;200</label></td>
 									<td><input type="text" style="width:60px;"></td>
 									<td><input type="text" style="width:65px;" class="t_200" id="teta_201" name="teta_201"></td>
 									<td><input type="text" style="width:65px;" class="t_200" id="teta_202" name="teta_202"></td>
 									<td><input type="text" style="width:65px;" class="t_200" id="teta_203" name="teta_203"></td>
 								</tr>
 								<tr>
-									<td class="label_m"><label>100</label></td>
+									<td class="label_m"><label>&theta;100</label></td>
 									<td><input type="text" style="width:60px;"></td>
 									<td><input type="text" style="width:65px;" class="t_100" id="teta_101" name="teta_101"></td>
 									<td><input type="text" style="width:65px;" class="t_100" id="teta_102" name="teta_102"></td>
 									<td><input type="text" style="width:65px;" class="t_100" id="teta_103" name="teta_103"></td>
 								</tr>
 								<tr>
-									<td class="label_m"><label>6</label></td>
+									<td class="label_m"><label>&theta;6</label></td>
 									<td><input type="text" style="width:60px;"></td>
 									<td><input type="text" style="width:65px;" class="t_6" id="teta_61" name="teta_61"></td>
 									<td><input type="text" style="width:65px;" class="t_6" id="teta_62" name="teta_62"></td>
 									<td><input type="text" style="width:65px;" class="t_6" id="teta_63" name="teta_63"></td>
 								</tr>
 								<tr>
-									<td class="label_m"><label>3</label></td>
+									<td class="label_m"><label>&theta;3</label></td>
 									<td><input type="text" style="width:60px;"></td>
 									<td><input type="text" style="width:65px;" class="t_3" id="teta_31" name="teta_31"></td>
 									<td><input type="text" style="width:65px;" class="t_3" id="teta_32" name="teta_32"></td>
@@ -508,14 +508,6 @@
 									<td><input type="text" style="width:50px;" disabled="disabled" id="sol_1" name="sol_1"></td>
 									<td><input type="text" style="width:50px;" disabled="disabled" id="sol_2" name="sol_2"></td>
 									<td><input type="text" style="width:50px;" disabled="disabled" id="sol_3" name="sol_3"></td>
-								</tr>
-								<tr>
-									<td class="label_m"><label>Corr. Salt.</label></td>
-									<td class="unit_field">%</td>
-									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="corrsalt_1" name="corrsalt_1"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="corrsalt_2" name="corrsalt_2"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="corrsalt_3" name="corrsalt_3"></td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>ASG Solids</label></td>

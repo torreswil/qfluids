@@ -270,24 +270,31 @@ $(function(){
 		$('.tank_formula_input').hide();
 		$('.tank_formula_input input').val('');
 		$('#voltkaforo,#hlibremax').val(0);
+		$('#new_tank_overlay select').val('');
+		$('.new_tank_st').val('active');
+		var data = {type:'active'};
+		$('#new_tank_overlay .name').html('<option value="">Loading...</option>');
+		$.post('/rest/list_tank_names',data,function(r){
+			$('#new_tank_overlay .name').html(r);
+		});
 		$('#new_tank_overlay').slideUp();
 	});
 
-	$('.tank_formula_input input').keyup(function(){
+	$('#new_tank_overlay .tank_formula_input input').keyup(function(){
 		//define the tank type and the current form
 		var tank_type = parseInt($('#active_type').val());
 		switch(tank_type){
 			case 1:
-				var context = $('.medidas_cuadrado');
+				var context = $('#new_tank_overlay .medidas_cuadrado');
 				break;
 			case 2:
-				var context = $('.medidas_semicircular');
+				var context = $('#new_tank_overlay .medidas_semicircular');
 				break;
 			case 3:
-				var context = $('.fieldset_tank_trailer');
+				var context = $('#new_tank_overlay .fieldset_tank_trailer');
 				break;
 			case 4:
-				var context = $('.fieldset_tank_horizontal');
+				var context = $('#new_tank_overlay .fieldset_tank_horizontal');
 				break;
 		}
 
@@ -348,14 +355,19 @@ $(function(){
 
 	$('#btn_tank_create').click(function(){
 		var parent_form 		= $('#new_tank_overlay');
-		var current_tanks_table = $('#new_tank_st').val();
+		var current_tanks_table = $('.new_tank_st').val();
 		if(current_tanks_table == 'active'){
 			current_tanks_table = $('#current_active_tanks');
 		}else if(current_tanks_table == 'reserve'){
 			current_tanks_table = $('#current_reserve_tanks');
+		}else if(current_tanks_table == 'pill'){
+			current_tanks_table = $('#current_pill_tanks');
+		}else if(current_tanks_table == 'trip'){
+			current_tanks_table = $('#current_trip_tanks');
 		}
 
 		var current_tanks_qty 	=  $('.this_tank',current_tanks_table).length;
+		log(current_tanks_qty);
 
 		var eqty = 0;
 		$('select',parent_form).each(function(){
@@ -426,13 +438,13 @@ $(function(){
 
 					switch(tank_type){
 						case 1:
-							var context = $('.medidas_cuadrado');
+							var context = $('#new_tank_overlay .medidas_cuadrado');
 							data.sh1 = $('.sh1',context).val();
 							data.sa1 = $('.sa1',context).val();
 							data.sl1 = $('.sl1',context).val();
 							break;
 						case 2:
-							var context = $('.medidas_semicircular');
+							var context = $('#new_tank_overlay .medidas_semicircular');
 							data.sh1 = $('.sh1',context).val();
 							data.sa1 = $('.sa1',context).val();
 							data.sl1 = $('.sl1',context).val();
@@ -441,7 +453,7 @@ $(function(){
 							data.sl2 = $('.sl2',context).val();
 							break;
 						case 3:
-							var context = $('.fieldset_tank_trailer');
+							var context = $('#new_tank_overlay .fieldset_tank_trailer');
 							data.sh1 = $('.sh1',context).val();
 							data.sa1 = $('.sa1',context).val();
 							data.sl1 = $('.sl1',context).val();
@@ -450,8 +462,8 @@ $(function(){
 							data.sl2 = $('.sl2',context).val();
 							break;
 						case 4:
-							var context = $('.fieldset_tank_horizontal');
-							data.diametro 	= $('.sl1',context).val();
+							var context = $('#new_tank_overlay .fieldset_tank_horizontal');
+							data.diametro 	= $('.diametro',context).val();
 							data.sl1 		= $('.sl1',context).val();
 							break;
 					}
@@ -465,6 +477,14 @@ $(function(){
 							$('.tank_formula_input input').val('');
 							$('#voltkaforo,#hlibremax').val(0);
 							$('#new_tank_overlay').slideUp();
+
+							$('#new_tank_overlay select').val('');
+							$('.new_tank_st').val('active');
+							var data = {type:'active'};
+							$('#new_tank_overlay .name').html('<option value="">Loading...</option>');
+							$.post('/rest/list_tank_names',data,function(r){
+								$('#new_tank_overlay .name').html(r);
+							});
 
 							//upgrade the config panel close button	
 							$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
@@ -483,9 +503,8 @@ $(function(){
 			id = id.split('remove_tank_');
 			id = id[1];
 
-		var sure = confirm('Are you sure to delete this tank?');
-
-		if(sure == true){
+		if(confirm('Are you sure to delete this tank?')){
+			$(this).parents('tr').remove();
 			var data = {id : id};
 			$.post('/rest/remove_tank',data,function(r){
 				if(r == true){
@@ -555,7 +574,9 @@ $(function(){
 
 		$.post('/rest/load_current_tanks',active_data,function(r){
 			if(r !== ''){
-				$('#current_active_tanks').html(r).parents('fieldset').show();
+				$('#current_active_tanks').empty().html(r).parents('fieldset').show();	
+			}else{
+				$('#current_active_tanks').empty().parents('fieldset').hide();
 			}
 		});
 
@@ -567,7 +588,9 @@ $(function(){
 
 		$.post('/rest/load_current_tanks',reserve_data,function(r){
 			if(r !== ''){
-				$('#current_reserve_tanks').html(r).parents('fieldset').show();
+				$('#current_reserve_tanks').empty().html(r).parents('fieldset').show();
+			}else{
+				$('#current_reserve_tanks').empty().parents('fieldset').hide();	
 			}
 		});	
 	
@@ -579,7 +602,9 @@ $(function(){
 
 		$.post('/rest/load_current_tanks',pill_data,function(r){
 			if(r !== ''){
-				$('#current_pill_tanks').html(r).parents('fieldset').show();
+				$('#current_pill_tanks').empty().html(r).parents('fieldset').show();
+			}else{
+				$('#current_pill_tanks').empty().parents('fieldset').hide();	
 			}
 		});
 
@@ -591,14 +616,229 @@ $(function(){
 
 		$.post('/rest/load_current_tanks',trip_data,function(r){
 			if(r !== ''){	
-				$('#current_trip_tanks').html(r).parents('fieldset').show();
+				$('#current_trip_tanks').empty().html(r).parents('fieldset').show();
+			}else{
+				$('#current_trip_tanks').empty().parents('fieldset').hide();	
 			}
 		});
 
 	}
 
 
+	$('.show_measures').live('click',function(e){
+		e.preventDefault();
+		var id = $(this).attr('href');
+			id = id.split('show_measures_');
+			id = id[1];
 
+		var data = {'id':id};
+		$.post('/rest/get_tank_properties',data,function(r){
+			if(r == false){
+				alert('An error has ocurred. Please try again.');
+			}else{
+				log(r);
+				if(r.tank_category == 'active'){
+					var category_name = 'Active';
+				}else if(r.tank_category == 'trip'){
+					var category_name = 'Trip Tank';
+				}else if(r.tank_category == 'pill'){
+					var category_name = 'Pill';
+				}else if(r.tank_category == 'reserve'){
+					var category_name = 'Reserve';
+				}
+
+				$('#edit_tank_overlay .estype').val(category_name);
+				$('#edit_tank_overlay .ename').val(r.tank_name);
+				$('#edit_tank_overlay .eagitators').val(r.agitators);
+				$('#edit_tank_overlay .ejets').val(r.jets);
+				$('#edit_tank_overlay .etanktype').val(r.tank_type);
+				$('#edit_tank_overlay .evoltkaforo').val(r.voltkaforo);
+				$('#edit_tank_overlay .ehlibremax').val(r.hlibremax);
+				$('#edit_tank_overlay .id_tank').val(r.id);
+				$('#edit_tank_overlay .type').val(r.type);
+
+				if(r.type == 1){
+					$('#edit_tank_overlay .fieldset_tank_cuadrado .sl1').val(r.sl1);
+					$('#edit_tank_overlay .fieldset_tank_cuadrado .sa1').val(r.sa1);
+					$('#edit_tank_overlay .fieldset_tank_cuadrado .sh1').val(r.sh1);
+					$('#edit_tank_overlay .fieldset_tank_cuadrado').show();
+				}else if(r.type == 2){
+					$('#edit_tank_overlay .fieldset_tank_semicircular .sl1').val(r.sl1);
+					$('#edit_tank_overlay .fieldset_tank_semicircular .sa1').val(r.sa1);
+					$('#edit_tank_overlay .fieldset_tank_semicircular .sh1').val(r.sh1);
+					$('#edit_tank_overlay .fieldset_tank_semicircular .sl2').val(r.sl2);
+					$('#edit_tank_overlay .fieldset_tank_semicircular .sa2').val(r.sa2);
+					$('#edit_tank_overlay .fieldset_tank_semicircular .sh2').val(r.sh2);
+					$('#edit_tank_overlay .fieldset_tank_semicircular').show();
+				}else if(r.type == 3){
+					$('#edit_tank_overlay .fieldset_tank_trailer .sl1').val(r.sl1);
+					$('#edit_tank_overlay .fieldset_tank_trailer .sa1').val(r.sa1);
+					$('#edit_tank_overlay .fieldset_tank_trailer .sh1').val(r.sh1);
+					$('#edit_tank_overlay .fieldset_tank_trailer .sl2').val(r.sl2);
+					$('#edit_tank_overlay .fieldset_tank_trailer .sa2').val(r.sa2);
+					$('#edit_tank_overlay .fieldset_tank_trailer .sh2').val(r.sh2);
+					$('#edit_tank_overlay .fieldset_tank_trailer').show();
+				}else if(r.type == 4){
+					$('#edit_tank_overlay .fieldset_tank_horizontal .sl1').val(r.sl1);
+					$('#edit_tank_overlay .fieldset_tank_horizontal .diametro').val(r.diametro);
+					$('#edit_tank_overlay .fieldset_tank_horizontal').show();		
+				} 
+
+				$('#edit_tank_overlay').show();	
+			}
+		},'json');
+
+	});
+
+	$('#edit_tank_overlay .cancel_overlay').click(function(e){
+		e.preventDefault();
+		$('#edit_tank_overlay input').val('');
+		$('#edit_tank_overlay tank_formula_input').hide();
+		$('#edit_tank_overlay').hide();	
+	});
+
+	$('#edit_tank_overlay .tank_formula_input input').keyup(function(){
+		//define the tank type and the current form
+		var tank_type = parseInt($('#edit_tank_overlay .type').val());
+		switch(tank_type){
+			case 1:
+				var context = $('#edit_tank_overlay .fieldset_tank_cuadrado');
+				break;
+			case 2:
+				var context = $('#edit_tank_overlay .fieldset_tank_semicircular');
+				break;
+			case 3:
+				var context = $('#edit_tank_overlay .fieldset_tank_trailer');
+				break;
+			case 4:
+				var context = $('#edit_tank_overlay .fieldset_tank_horizontal');
+				break;
+		}
+
+		//hlibremax
+		var hlibremax = 0;
+		if(tank_type == 1){
+			hlibremax = parseFloat($('.sh1',context).val());	
+		}else if(tank_type == 2){
+			var sh1 = parseFloat($('.sh1',context).val());
+			var sh2 = parseFloat($('.sh2',context).val());
+			hlibremax = sh1 + sh2;			
+		}else if(tank_type == 3){
+			var sh1 = parseFloat($('.sh1',context).val());
+			var sh2 = parseFloat($('.sh2',context).val());
+			hlibremax = sh1 + sh2;	
+		}else if(tank_type == 4){
+			hlibremax = parseFloat($('.diametro',context).val());
+		}
+		completar_campo_val('ehlibremax',hlibremax.toFixed(1));
+
+		//voltkaforo
+		var voltkaforo = 0;
+		
+		if(tank_type == 1){
+			var sh1 = parseFloat($('.sh1',context).val());
+			var sl1 = parseFloat($('.sl1',context).val());
+			var sa1 = parseFloat($('.sa1',context).val());
+			voltkaforo = (sh1 * sl1 * sa1) / 9702;
+		
+		}else if(tank_type == 2){
+			var sh1 = parseFloat($('.sh1',context).val());
+			var sl1 = parseFloat($('.sl1',context).val());
+			var sa1 = parseFloat($('.sa1',context).val());
+			var sh2 = parseFloat($('.sh2',context).val());
+			var sl2 = parseFloat($('.sl2',context).val());
+			var sa2 = parseFloat($('.sa2',context).val());
+			voltkaforo = (sh1 * sl1 * sa1) / 9702 + ((0.3168 * (sa2 / 12) * (sh2 / 12) + 1.403 * Math.pow(sh2 / 12,2) - 0.933 * Math.pow(sh2 /12, 3)  / (sa2 / 12))*(sl2 / 12))/5.6146;
+	
+		}else if(tank_type == 3){
+			var sh1 = parseFloat($('.sh1',context).val());
+			var sl1 = parseFloat($('.sl1',context).val());
+			var sa1 = parseFloat($('.sa1',context).val());
+			var sh2 = parseFloat($('.sh2',context).val());
+			var sl2 = parseFloat($('.sl2',context).val());
+			var sa2 = parseFloat($('.sa2',context).val());
+			voltkaforo = (sh1 * sl1 * sa1) / 9702 + (sh2 * sl2 * sa2) / 9702;
+
+		}else if(tank_type == 4){
+			var radio  	= parseFloat($('.diametro',context).val()) / 2;
+			var cd1 	= parseFloat($('.diametro',context).val());
+			var sl1 	= parseFloat($('.sl1',context).val());
+			voltkaforo 	= sl1 * ((Math.pow( radio , 2) * Math.acos( ( radio - cd1 ) / radio )) - ( ( radio - cd1 ) * Math.pow((2 * radio * cd1 - Math.pow( cd1, 2 ) ) , 0.5) ) ) / 9702;
+		}
+
+		completar_campo_val('evoltkaforo',voltkaforo.toFixed(1));
+	});
+
+	$('#btn_tank_edit').click(function(){
+		//validate there are not empty fields
+		var eqty = 0;
+		$('#edit_tank_overlay input').each(function(){
+			if($(this).val() == ''){
+				eqty = eqty + 1;
+			}
+		});
+
+		if(eqty > 0){
+			alert('Some fields are empty. Please verify and try again.');
+		}else{
+			//collect the data depending on the tank type
+			var data = {};
+				data.id = $('#edit_tank_overlay .id_tank').val();
+
+			var tank_type = $('#edit_tank_overlay .type').val(); 
+			
+			if(tank_type == 1){
+				var context 	= $('#edit_tank_overlay .fieldset_tank_cuadrado');
+				data.sh1 		= $('.sh1',context).val();
+				data.sl1 		= $('.sl1',context).val();
+				data.sa1	 	= $('.sa1',context).val();
+				data.voltkaforo = $('#edit_tank_overlay .evoltkaforo').val();
+				data.hlibremax  = $('#edit_tank_overlay .ehlibremax').val();
+
+			}else if(tank_type == 2){
+				var context 	= $('#edit_tank_overlay .fieldset_tank_semicircular');
+				data.sh1 		= $('.sh1',context).val();
+				data.sl1 		= $('.sl1',context).val();
+				data.sa1	 	= $('.sa1',context).val();
+				data.sh2 		= $('.sh2',context).val();
+				data.sl2 		= $('.sl2',context).val();
+				data.sa2	 	= $('.sa2',context).val();
+				data.voltkaforo = $('#edit_tank_overlay .evoltkaforo').val();
+				data.hlibremax  = $('#edit_tank_overlay .ehlibremax').val();
+
+			}else if(tank_type == 3){
+				var context 	= $('#edit_tank_overlay .fieldset_tank_trailer');
+				data.sh1 		= $('.sh1',context).val();
+				data.sl1 		= $('.sl1',context).val();
+				data.sa1	 	= $('.sa1',context).val();
+				data.sh2 		= $('.sh2',context).val();
+				data.sl2 		= $('.sl2',context).val();
+				data.sa2	 	= $('.sa2',context).val();
+				data.voltkaforo = $('#edit_tank_overlay .evoltkaforo').val();
+				data.hlibremax  = $('#edit_tank_overlay .ehlibremax').val();
+
+			}else if(tank_type == 4){
+				var context 	= $('#edit_tank_overlay .fieldset_tank_horizontal');
+				data.diametro 	= $('.diametro',context).val();
+				data.sl1 		= $('.sl1',context).val();
+				data.voltkaforo = $('#edit_tank_overlay .evoltkaforo').val();
+				data.hlibremax  = $('#edit_tank_overlay .ehlibremax').val();
+			}
+
+			//send data to the server and save
+			$.post('/rest/update_tank',data,function(r){
+				if(r == true){
+					$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+					alert('Tank updated.');
+					//hide the overlay and refresh the tank list
+					load_current_tanks();
+					$('#edit_tank_overlay input').val('');
+					$('#edit_tank_overlay tank_formula_input').hide();
+					$('#edit_tank_overlay').hide();	
+				}
+			},'json');	
+		}
+	});
 
 	/*==========================================================================================================*/
 	// 5. MUD PROPERTIES

@@ -419,7 +419,7 @@ class Rest extends CI_Controller {
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['voltkaforo'].'" /></td>
 						<td><input type="text" style="width:110px;" disabled="disabled" value="'.$tank['hlibremax'].'" /></td>
 						<td>
-							<!-- <a href="show_measures_'.$tank['id'].'" class="show_measures"><img src="/img/page_white_edit.png" /></a> -->
+							 <a href="show_measures_'.$tank['id'].'" class="show_measures"><img src="/img/page_white_edit.png" /></a>
 						</td>	
 					</tr>';
 			}
@@ -470,6 +470,25 @@ class Rest extends CI_Controller {
 			foreach ($names as $name) {
 				echo '<option value="'.$name['id'].'">'.$name['name'].'</option>';
 			}
+		}
+	}
+
+	public function get_tank_properties(){
+		if(count($_POST) > 0){
+			$tank = $this->Api->get_where('vista_tanks',$_POST);
+			if(count($tank) > 0){
+				$tank = $tank[0];
+				echo json_encode($tank);
+			}else{
+				echo json_encode(false);
+			}
+		}
+	}
+
+	public function update_tank(){
+		if(count($_POST) > 0){
+			$this->Api->update_where('project_tanks',$_POST,array('id'=>$_POST['id']));
+			echo json_encode(true);
 		}
 	}
 }

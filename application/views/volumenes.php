@@ -65,6 +65,7 @@
 		        				<td class="label_m" style="text-align:center;"><label>MAX HEADROOM:</label></td>
 		        				<td class="label_m" style="text-align:center;"><label>HEADROOM:</label></td>
 		        				<td class="label_m" style="text-align:center;"><label>VOLUME:</label></td>
+		        				<td class="label_m" style="text-align:center;"></td>
 							</tr>
 							<tr>
 								<td class="label_m" style="text-align:center;"></td>
@@ -75,6 +76,7 @@
 		        				<td class="label_m" style="text-align:center;">in.</td>
 		        				<td class="label_m" style="text-align:center;">in.</td>
 		        				<td class="label_m" style="text-align:center;">bbl</td>
+		        				<td class="label_m" style="text-align:center;"></td>
 							</tr>
 						</thead>
 						<tbody>
@@ -102,6 +104,7 @@
 			        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" id="hlibremax_<?= $tank['id'] ?>" /></td>
 									<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="0" /></td>
 			        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="volrealtk" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
+			        				<td class="label_m"><input type="checkbox" />Fluid Circuit</td>
 								</tr>
 
 							<?php } ?>
