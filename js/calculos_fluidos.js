@@ -1675,4 +1675,49 @@ function calculos_raw(){
 		bitxcien = (pdbit / totallossesbin) * 100;
 	}
 	completar_campo_val('bitxcien',bitxcien);
+
+
+	/***************************************************************/
+	// VOLUMENES
+	/***************************************************************/
+
+	//volrealtk
+	$('.volrealtk').each(function(){
+		var id = $(this).attr('id');
+			id = id.split('volrealtk_');
+			id = id[1];
+
+		var volrealtk = 0;
+		var tank_type = ival('tank_type_id_'+id);
+		
+		//cuadrado
+		if(tank_type == 1){
+			volrealtk = ((fval('hlibremax_'+id) - fval('hlibre_'+id)) * fval('sl1_'+id) * fval('sa1_'+id)) / 9702;
+		
+		//fondo semicircular
+		}else if(tank_type == 2){
+			if(fval('sh1_'+id) >= fval('hlibre_'+id)){
+				volrealtk =  ( ( fval('sh1_'+id) - fval('hlibre_'+id) ) *  fval('sl1_'+id) * fval('sa1_'+id) ) / 9702 + ((0.3168 * (fval('sa2_'+id) / 12) * (fval('sh2_'+id) / 12) + 1.403 * Math.pow(fval('sh2_'+id) / 12,2) - 0.933 * Math.pow(fval('sh2_'+id) /12, 3)  / (fval('sa2_'+id) / 12))*(fval('sl2_'+id) / 12))/5.6146;	
+			}else{
+				volrealtk = (( 0.3168 * (fval('sa2_'+id) / 12 ) * ( ( fval('hlibremax_'+id) - fval('hlibre_'+id) ) / 12 ) + 1.403 * Math.pow( ( fval('hlibremax_'+id) - fval('hlibre_'+id) )  / 12 , 2 ) - 0.933 * Math.pow( ( fval('hlibremax_'+id) - fval('hlibre_'+id) ) / 12, 3 )  /  ( fval('sa2_'+id) / 12 ) ) * ( fval('sl2_'+id) / 12 ) ) / 5.6146;
+			}
+
+		//trailer
+		}else if(tank_type == 3){
+			if(fval('sh1_'+id) >= fval('hlibre_'+id)){
+				volrealtk = ((fval('sh1_'+id) - fval('hlibre_'+id)) * fval('sl1_'+id) * fval('sa1_'+id)) / 9702 + (fval('sh2_'+id) * fval('sl2_'+id) * fval('sa2_'+id)) / 9702;
+			}else{
+				volrealtk = ((fval('hlibremax_'+id) - fval('hlibre_'+id)) * fval('sl2_'+id) * fval('sa2_'+id)) / 9702;
+			}
+
+		//cilindro horizontal
+		}else if(tank_type == 4){
+			var radio = fval('diametro_'+id) / 2;
+			var caltura = fval('diametro_'+id) - fval('hlibre_'+id);
+			volrealtk = fval('sl1_'+id) * ((Math.pow( radio , 2) * Math.acos( ( radio - caltura ) / radio )) - ( ( radio - caltura) * Math.pow((2 * radio * caltura - Math.pow(caltura, 2 ) ) , 0.5) ) ) / 9702;
+			log('cilindrico',"volrealtk = "+fval('sl1_'+id)+" * ((Math.pow( "+radio+" , 2) * Math.acos( ( "+radio+" - "+caltura+" ) / "+radio+" )) - ( ( "+radio+" - "+caltura+") * Math.pow((2 * "+radio+" * "+caltura+" - Math.pow("+caltura+", 2 ) ) , 0.5) ) ) / 9702;");
+		}
+		completar_campo_val('volrealtk_'+id,volrealtk.toFixed(1));
+	});
+
 }

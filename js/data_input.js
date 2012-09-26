@@ -17,12 +17,12 @@ $(function(){
 	//CLICK EN UN ENLACE DE LA BARRA LATERAL
 	$('.nav_links a').click(function(e){
 		e.preventDefault();
+		correr_calculos();
 		var target = $(this).attr('href');
 		
 		if(!$(this).hasClass('pop_up')){
 			$('.this_panel').hide();
 			$(target).show();
-			correr_calculos();
 
 			$('.nav_links a').removeClass('active');
 			$(this).addClass('active');
