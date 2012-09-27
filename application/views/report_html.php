@@ -1581,9 +1581,7 @@
                                         </div>
                                 </div>                                                                                                                                                               
                         </div>
-                </div>
                 
-                <div class="data-table-container" style="float:left; width: 55.1%;margin-left: 1px">
                         <div class="data-table b-right" style="width: 100%;">
                                 <div class="b-top"></div>
                                 
