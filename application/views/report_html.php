@@ -820,7 +820,7 @@
                 </div>
                 
                 <div class="data-table-container" style="float:left; width: 55%;margin-left: -1px">
-                        <div class="data-table b-right" style="width: 100%">
+                        <div class="data-table b-right" style="width: 100%;">
                                 <div class="sub-header b-bottom b-top"><h5>VOLUME BALANCE IN BBL</h5></div>
                                 <table class="table table-stripted table-condensed">
                                         <thead>
@@ -913,14 +913,14 @@
                                                         <td class="txt-center">36</td>
                                                         <td class=""></td>
                                                         <td class="txt-center"></td>                                                        
-                                                </tr>
+                                                </tr>                                                
                                         </tbody> 
                                 </table>
                                 
                                 <!-- DAILY CONSUMPTIONS AND COSTS -->
                                 
                                 <div class="sub-header b-bottom b-top"><h5>DAILY CONSUMPTIONS AND COSTS</h5></div>
-                                <table class="table table-stripted table-condensed">
+                                <table class="table table-stripted table-condensed">                                        
                                         <thead>
                                                 <tr>
                                                         <th class="span4">MATERIAL</th>
@@ -934,7 +934,7 @@
                                                         <th class="span1">T. Cost</th>
                                                 </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody>                                                
                                                 <tr>
                                                         <td class="">CARBONATO DE CALCIO M 50-150</td>
                                                         <td class="txt-right">100 lbs</td>
@@ -978,18 +978,7 @@
                                                         <td class="txt-right">12</td>
                                                         <td class="txt-right">365</td>
                                                         <td class="txt-right">910,00</td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="">CARBONATO DE CALCIO M 50-151</td>
-                                                        <td class="txt-right">101 lbs</td>
-                                                        <td class="txt-right">401</td>
-                                                        <td class="txt-right">101</td>
-                                                        <td class="txt-right">51</td>
-                                                        <td class="txt-right">21</td>
-                                                        <td class="txt-right">12</td>
-                                                        <td class="txt-right">365</td>
-                                                        <td class="txt-right">910,00</td>
-                                                </tr>
+                                                </tr>                                                
                                                 <tr>
                                                         <td class="">CARBONATO DE CALCIO M 50-152</td>
                                                         <td class="txt-right">102 lbs</td>
@@ -1100,57 +1089,523 @@
                                                         <td class="txt-right">365</td>
                                                         <td class="txt-right">910,00</td>
                                                 </tr>
+                                                <tr>
+                                                        <td class="">&nbsp;</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="">&nbsp;</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="">&nbsp;</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="">&nbsp;</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="">&nbsp;</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="">&nbsp;</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="">&nbsp;</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="">&nbsp;</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                        <td class="txt-right">&nbsp</td>
+                                                </tr>
                                         </tbody> 
                                 </table>
-                                <!--
+                                
                                 <div class="b-top" style="width: 100%;"></div>
-                                <table class="table table-stripted table-condensed">
-                                        <tbody>
-                                                <tr>
-                                                        <td class="span6">Lubricant</td>
-                                                        <td class="span5 txt-right">% Vol.</td>
+                                <table class="table table-stripted table-condensed">                                                                                
+                                        <tbody>                                                
+                                                <tr class="strong">
+                                                        <td class="span4">Daily Engineering Cost US$:</td>
+                                                        <td class="span2">$ 250,00</td>
+                                                        <td class="span4">Daily mud cost US$:</td>
+                                                        <td class="span2">$ 910,00</td>                                                        
                                                 </tr>
-                                                <tr>
-                                                        <td class="span6">Inhibitor</td>
-                                                        <td class="span5 txt-right">gpb</td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">&nbsp;</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">&nbsp;</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">&nbsp;</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">&nbsp;</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">&nbsp;</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">n</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">k</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">C.C.I</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
+                                                <tr class="strong">
+                                                        <td class="span4">Daily Engineering Cost US$:</td>
+                                                        <td class="span2">$ 250,00</td>
+                                                        <td class="span4">Daily mud cost US$:</td>
+                                                        <td class="span2">$ 910,00</td>                                                        
+                                                </tr>                                              
                                         </tbody> 
-                                </table>
-                                        -->
+                                </table>                               
                         </div>
                 </div>
         </div>
         
+        <div class="container-fluid">
+                                
+                <div class="data-table-container" style="float:left; width: 44.9%">
+                        
+                        <!-- COMMENTS -->
+                        
+                        <div class="data-table b-right" style="width: 100%;">
+                                <div class="sub-header b-bottom b-top"><h5>COMMENTS</h5></div>
+                                <table class="table table-stripted table-condensed">
+                                        <tbody>
+                                                <tr>
+                                                        <td style="height: 456px">
+                                                                <p class="txt-justify">
+                                                                        RIG ACTIVITY: Se recibio taladro sinopec 166, y se inicio operaciones de perforacion a las XXXX.
+                                                                </p>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                </table>
+                                
+                                <div class="b-top"></div>
+                                <table class="table table-stripted table-condensed">
+                                        <tbody>
+                                                <tr>
+                                                        <td class="span2 strong">CHARLA HSE:</td>
+                                                        <td class="span10"></td>
+                                                </tr>
+                                        </tbody>
+                                </table>                                                               
+                        </div>
+                        
+                </div>
+                
+                <div class="data-table-container" style="float:left; width: 55.1%;margin-left: 1px">
+                        <div class="data-table b-right" style="width: 100%;">
+                                <div class="b-top"></div>
+                                <table class="table table-stripted table-condensed">
+                                        <tbody>
+                                                <tr>
+                                                        <td class="span2">Cost / ft (USD)</td>
+                                                        <td class="span2"></td>
+                                                        <td class="span2">Daily:</td>
+                                                        <td class="span2"></td>
+                                                        <td class="span2">Section:</td>
+                                                        <td class="span2"></td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="span2">Dilution, Bbl/ft</td>
+                                                        <td class="span2"></td>
+                                                        <td class="span2">Daily:</td>
+                                                        <td class="span2"></td>
+                                                        <td class="span2">Section:</td>
+                                                        <td class="span2"></td>
+                                                </tr>
+                                        </tbody>
+                                </table>                                                                
+                                
+                                <div class="b-top"></div>
+                                
+                                <div class="container-fluid">
+                                        <div class="data-table-container b-right" style="float:left; width: 65%;">
+                                                <div class="sub-header b-bottom"><h5>PRODUCT CONCENTRATIONS, PPB / GPB</h5></div>
+                                                <table class="table table-stripted table-condensed">
+                                                        <thead>
+                                                                <tr>
+                                                                        <th class="span7 txt-center-all" rowspan="2">MATERIAL</th>
+                                                                        <th class="span5 txt-center" colspan="2">CONCENTRATION</th>
+                                                                </tr>
+                                                                <tr>                                                                            
+                                                                        <th class="span2 txt-center">Program</th>
+                                                                        <th class="span2 txt-center">Current.</th>
+                                                                </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                        <td>NATURAL GEL</td>
+                                                                        <td class="txt-center">4,2 ppb</td>
+                                                                        <td class="txt-center">4,2 ppb</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>NATURAL GEL</td>
+                                                                        <td class="txt-center">4,2 ppb</td>
+                                                                        <td class="txt-center">4,2 ppb</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>NATURAL GEL</td>
+                                                                        <td class="txt-center">4,2 ppb</td>
+                                                                        <td class="txt-center">4,2 ppb</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>NATURAL GEL</td>
+                                                                        <td class="txt-center">4,2 ppb</td>
+                                                                        <td class="txt-center">4,2 ppb</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td colspan="3">*0,42 gpb = 1% Vol</td>                                                                        
+                                                                </tr>
+                                                        </tbody>
+                                                </table>
+                                                <div class="sub-header b-top b-bottom"><h5>TROL EQUIPMENT</h5></div>
+                                                <table class="table table-stripted table-condensed">
+                                                        <thead>
+                                                                <tr>
+                                                                        <th class="span2">SHAKER</th>
+                                                                        <th class="span9 txt-center" colspan="5">Screens</th>
+                                                                        <th class="span1">Hours</th>
+                                                                </tr>                                                                
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                        <td>Swaco 320</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr> 
+                                                                <tr>
+                                                                        <td>Swaco 320</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>Swaco 320</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                        </tbody>
+                                                </table>
+                                                
+                                                <div class="sub-header b-top"></div>
+                                                <table class="table table-stripted table-condensed">
+                                                        <thead>
+                                                                <tr>
+                                                                        <th class="txt-center" colspan="7">MUD CLEANER</th>                                                                        
+                                                                </tr>                                                                
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                        <td>DESANDER</td>
+                                                                        <td colspan="2" class="txt-center">2 X 18"</td>
+                                                                        <td colspan="2" class="txt-center">500 gpm</td>
+                                                                        <td class="txt-center">40 PsI</td>
+                                                                        <td class="txt-center">5</td>
+                                                                </tr> 
+                                                                <tr>
+                                                                        <td>DESILTER</td>
+                                                                        <td colspan="2" class="txt-center">16 X 2"</td>
+                                                                        <td colspan="2" class="txt-center">500 gpm</td>
+                                                                        <td class="txt-center">40 PsI</td>
+                                                                        <td class="txt-center">5</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>SHAKER</td>
+                                                                        <td class="txt-center">Mongoose</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">100</td>
+                                                                        <td class="txt-center">5</td>
+                                                                </tr>
+                                                        </tbody>
+                                                </table>
+                                                
+                                                <div class="sub-header b-top"></div>
+                                                <table class="table table-stripted table-condensed">
+                                                        <thead>
+                                                                <tr>
+                                                                        <th class="txt-center">CENTRIFUGE</th>
+                                                                        <th class="txt-center">Speed</th>
+                                                                        <th class="txt-center">Over flow</th>
+                                                                        <th class="txt-center">Under flow</th>
+                                                                        <th class="txt-center">feet Rate</th>
+                                                                        <th class="txt-center">Hours</th>
+                                                                </tr>                                                                
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                        <td>Sharples 5400</td>
+                                                                        <td class="txt-center">3500</td>
+                                                                        <td class="txt-center">9</td>
+                                                                        <td class="txt-center">15</td>
+                                                                        <td class="txt-center">65</td>
+                                                                        <td class="txt-center">5</td>
+                                                                </tr> 
+                                                                <tr>
+                                                                        <td>Preco 518</td>
+                                                                        <td class="txt-center">2800</td>
+                                                                        <td class="txt-center">8,8</td>
+                                                                        <td class="txt-center">16</td>
+                                                                        <td class="txt-center">30</td>
+                                                                        <td class="txt-center">6</td>
+                                                                </tr> 
+                                                        </tbody>
+                                                </table>                                                
+                                        </div>
+                                        <div class="data-table-container" style="float:left; width: 35%">
+                                                <div class="sub-header b-right b-bottom"><h5>TIME BREAK DOWN</h5></div>                                                
+                                                <table class="table table-stripted table-condensed">
+                                                        <thead>
+                                                                <tr>
+                                                                        <th class="span7 txt-center">ACTIVITY</th>
+                                                                        <th class="span5 txt-center">TIME</th>
+                                                                </tr>                                                                
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>                                                                        
+                                                                        <td class="">DRILLING</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">TRIP</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">&nbsp;</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">TOTAL</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                        </tbody>
+                                                </table>
+                                                <div class="sub-header b-top b-bottom"><h5>DRILLING PARAMETERS</h5></div>
+                                                <table class="table table-stripted table-condensed">
+                                                        <thead>
+                                                                <tr>
+                                                                        <th class="span7 txt-center">ACTIVITY</th>
+                                                                        <th class="span5 txt-center">TIME</th>
+                                                                </tr>                                                                
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>                                                                        
+                                                                        <td class="">Feet Drilled:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr> 
+                                                                <tr>                                                                        
+                                                                        <td class="">Daily ROP:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">Daily RPM:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">Daily WOB:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">Daily avge Temp °F:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">Average caving bbl/h:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">Average cuttings bbl/h:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>                                                                
+                                                        </tbody>
+                                                </table>                                                                                                                                                
+                                                <div class="sub-header b-top b-bottom"><h5>LAST SURVEY</h5></div>
+                                                <table class="table table-stripted table-condensed">                                                        
+                                                        <tbody>
+                                                                <tr>                                                                        
+                                                                        <td class="">Survey MD:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr> 
+                                                                <tr>                                                                        
+                                                                        <td class="">Survey TVD:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">Inclination:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">Azimuth:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>
+                                                                <tr>                                                                        
+                                                                        <td class="">Dog leg:</td>
+                                                                        <td class="txt-center"></td>
+                                                                </tr>                                                                
+                                                        </tbody>
+                                                </table>                                                                                                
+                                        </div>
+                                </div>                                                                                                                                                               
+                        </div>
+                </div>
+                
+                <div class="data-table-container" style="float:left; width: 55.1%;margin-left: 1px">
+                        <div class="data-table b-right" style="width: 100%;">
+                                <div class="b-top"></div>
+                                
+                                <div class="container-fluid">
+                                        <div class="data-table-container b-right" style="float:left; width: 50%;">
+                                                <strong>Company Man/Representative:</strong>
+                                                <p class="txt-center" style="padding-top: 30px;">OSCAR GOMEZ / JUAN DANIEL MOLANO</p>                                                                                            
+                                        </div>
+                                        <div class="data-table-container" style="float:left; width: 49.9%">                                                                                                                                                                                                                                                                                            
+                                                <strong>Mud Engs.</strong>                                                
+                                                <p class="txt-center" style="padding-top: 30px;">CARLOS PARRA / DEIDER MENGUAL</p>
+                                        </div>
+                                </div>                                                                                                                                                               
+                        </div>
+                </div>
+                
+        </div>                
+        
+</div>
+
+<div class="row b-top">
+        <p style="margin: 0;">
+                QMAX SOLUTIONS COLOMBIA. Calle 100 No 8A -49. Torre B oficina 1018. Tel 6169022, Fax (571) 2180270
+        </p>
 </div>
