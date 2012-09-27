@@ -1,5 +1,5 @@
 <div class="config_panel" id="enginers">
-	<h2>Personal Settings</h2>
+	<h2>Personnel Settings</h2>
 	
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">

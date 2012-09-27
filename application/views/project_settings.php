@@ -9,6 +9,7 @@
 				<li><a href="#cse">Control Solids Eq.</a></li>
 				<li><a href="#tanks">Tanks</a></li>
 				<li><a href="#mudproperties">Mud properties</a></li>
+				<li><a href="#inventario">Materials</a></li>
 				<li><a href="#enginers" id="personal_settings_link">Personnel</a></li>
                 <li><a href="#tools_and_mud" id="tools_settings_link">Mud and Tools library</a></li>
 			</ul>
@@ -20,6 +21,7 @@
 			<?php $this->load->view('settings/cse'); ?>
 			<?php $this->load->view('settings/tanks'); ?>
 			<?php $this->load->view('settings/mud_properties'); ?>
+			<?php $this->load->view('settings/inventary'); ?>
 			<?php $this->load->view('settings/personal'); ?>
             <?php $this->load->view('settings/tools_and_mud'); ?>
 		</div>
