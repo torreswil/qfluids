@@ -1263,6 +1263,7 @@ $(function(){
 
 			data.materials 	= [];
 			var zeros_qty 	= 0;
+			var zeros_limit	= $('.materials_table')
 
 			//proccess the materials table
 			$('.materials_table .material_qty',context).each(function(){
