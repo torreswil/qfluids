@@ -2,7 +2,7 @@
 Hoja de estilo para la vista de impresión
 **/
 .printer {width: 1024px;margin: 0 auto; padding: 10px 0px;}
-.printer, h5 { font-size: 8px;}
+.printer, h5 { font-size: 9px;}
 .container-fluid { padding-left: 0px; padding-right: 0px }
 .container-fluid:after {clear: both;}
 .container-fluid:before, .container-fluid:after {content: "";display: table;line-height: 0;}
@@ -10,12 +10,13 @@ Hoja de estilo para la vista de impresión
 .row { margin-left: 0px !important;}
 .table { margin-bottom: 0px;}
 .table-condensed th, .table-condensed td { padding: 0px 1px;}
+.table th, .table td, .sub-header h5 { line-height: 13px !important;}
 .bg-black { background: #0c0c0c !important; color: #ccc !important;}
 /*.group, .group td { vertical-align: middle; text-align: center !important; background-color: #BFBFBF;}*/
 
 .data-table { display: block; float:left;}
 .sub-header { vertical-align: middle; text-align: center !important; background:#bfbfbf !important}
-.sub-header h5 { margin: 0px; background:#bfbfbf !important}
+.sub-header h5 { margin: 0px; background:#bfbfbf !important;}
 
  /*Bordes*/
 .b-all { border: 1px #008040 solid }
