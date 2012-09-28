@@ -958,7 +958,7 @@ INSERT INTO `project_tanks` VALUES ('6', '1', '4', '14', null, null, '500', null
 -- Table structure for `projects`
 -- ----------------------------
 DROP TABLE IF EXISTS `projects`;
-CREATE TABLE `projects` (
+CREATE TABLE IF NOT EXISTS `projects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `transactional_id` varchar(255) NOT NULL,
   `last_modified` datetime DEFAULT NULL,
@@ -976,13 +976,15 @@ CREATE TABLE `projects` (
   `shaker_qty` int(11) DEFAULT NULL,
   `maximun_enginers` int(11) DEFAULT NULL,
   `phase` int(11) DEFAULT NULL,
+  `operators` int(1) DEFAULT '1',
+  `yard_workers` int(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- ----------------------------
 -- Records of projects
 -- ----------------------------
-INSERT INTO `projects` VALUES ('1', 'FCKGW', '2012-09-05 10:06:37', 'ORITO', 'PETROMINERALES', 'CAMBRIA1', 'ORITO', '0000', 'ORITO', '1', null, '2012-09-05 10:06:37', '2012-09-05', '0', '3', '3', '1');
+INSERT INTO `projects` VALUES ('1', 'FCKGW', '2012-09-05 10:06:37', 'ORITO', 'PETROMINERALES', 'CAMBRIA1', 'ORITO', '0000', 'ORITO', '1', NULL, '2012-09-05 10:06:37', '2012-09-05', '0', '3', '3', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for `reports`
