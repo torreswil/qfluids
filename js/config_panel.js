@@ -974,7 +974,8 @@ $(function(){
 		});	
                 
 	}
-        
+    
+
     /*==========================================================================================================*/
 	// 7. TOOLS AND MUD LIBRARY - IvanMel
 	/*==========================================================================================================*/
@@ -1045,38 +1046,64 @@ $(function(){
 		},'json');
 	});
 
-        function load_tools_and_mud() {  
-                project = $('#project_id').val();
-                var all_data = {
-                        project_id     : project,
-                        active          : 1,
-                        custom          : 1
-                };
+    function load_tools_and_mud() {  
+            project = $('#project_id').val();
+            var all_data = {
+                    project_id     : project,
+                    active          : 1,
+                    custom          : 1
+            };
 
-                $.post('/rest/load_bits',all_data,function(r){			
-                        load = $('#current_bits_list');
-                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
-                        load.html(r);
-                });
+            $.post('/rest/load_bits',all_data,function(r){			
+                    load = $('#current_bits_list');
+                    (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+                    load.html(r);
+            });
 
-                $.post('/rest/load_pumps',all_data,function(r){			
-                        load = $('#current_pumps_list');
-                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
-                        load.html(r);			
-                });
+            $.post('/rest/load_pumps',all_data,function(r){			
+                    load = $('#current_pumps_list');
+                    (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+                    load.html(r);			
+            });
 
-                $.post('/rest/load_casing',all_data,function(r){
-                load = $('#current_casings_list');
-                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
-                        load.html(r);			
-                });
+            $.post('/rest/load_casing',all_data,function(r){
+            load = $('#current_casings_list');
+                    (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+                    load.html(r);			
+            });
 
-                $.post('/rest/load_muds',all_data,function(r){
-                        load = $('#current_muds_list');
-                        (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
-                        load.html(r);
-                });
+            $.post('/rest/load_muds',all_data,function(r){
+                    load = $('#current_muds_list');
+                    (r.length > 1) ? load.prev().show() : load.prev('thead').hide();                        
+                    load.html(r);
+            });
 
-        }
+    }
+
+    /*==========================================================================================================*/
+	// 8. MATERIALS
+	/*==========================================================================================================*/    
+    
+	$('.update_materials').click(function(e){
+		var checked_materials = [];
+		$('#materials_activation_table input[type="checkbox"]:checked').each(function(){
+			var this_material = {
+				id 				: $(this).val(),
+				used_in_project : 1
+			};
+
+			checked_materials.push(this_material);
+		});
+
+		$.post('/rest/update_materials',$.toJSON(checked_materials),function(r){
+			if(r == true){
+				alert('Materials list updated.');
+				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
+			}else{
+				alert('An error has ocurred. Please try again.');
+			}
+		},'json');
+	});
+
 });
 /****** THE END ******/

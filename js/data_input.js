@@ -1236,6 +1236,65 @@ $(function(){
 	/*==========================================================================================================*/
 	// 6. INVENTARY
 	/*==========================================================================================================*/
+	
+	$('.btn_new_transfer').click(function(e){
+		e.preventDefault();
+
+		//get the context
+		var context = $(this).parents('fieldset');
+
+		//validate there are not general information fields empty
+		var eqty = 0;
+		$('.general_st_info input',context).each(function(){
+			if($(this).val() == ''){
+				eqty = eqty + 1;
+			}
+		});
+
+		if(eqty > 0){
+			alert('Some fields are empty. Please verify and try again.');
+		}else{
+			//init the data object
+			var data = {
+				code 		: $('.st_number',context).val(),
+				origin 		: $('.st_origin',context).val(),
+				type 		: 'incoming'
+			};
+
+			data.materials 	= [];
+			var zeros_qty 	= 0;
+
+			//proccess the materials table
+			$('.materials_table .material_qty',context).each(function(){
+				if($(this).val() == ''){
+					$(this).val(0);
+				}
+
+				if(parseInt($(this).val()) == 0){
+					zeros_qty = zeros_qty + 1;
+				}
+			});
+
+			$('.materials_table .material_qty',context).each(function(){
+				var material_id = $(this).attr('id');
+					material_id = material_id.split('material_');
+					material_id = material_id[1];
+
+				if(parseInt($(this).val()) !== 0){
+					var this_material = {
+						id 			: material_id,
+						quantity	: $(this).val()
+					}
+
+					data.materials.push(this_material);
+				}
+			});
+
+			log(data);
+		}
+	});
+
+
 	/*==========================================================================================================*/
 	// 7. VOLUMES
 	/*==========================================================================================================*/

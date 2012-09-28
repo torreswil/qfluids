@@ -1,225 +1,107 @@
 <div class="this_panel" id="inventario">
-	<h2>Inventario</h2>
-        
-        <div class="simpleTabs">
-                <ul class="simpleTabsNavigation">
-                        <li><a href="#">Inventario</a></li>                        
-                </ul>
-                <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
-                        <fieldset>
-                                <table>
-                                        <tr>
-                                                <td class="label_m"><label>Producto</label></td>
-                                                <td class="label_m"><label>size</label></td>
-                                                <td class="label_m"><label>unit</label></td>
-                                                <td class="label_m"><label>s.g</label></td>
-                                                <td class="label_m"><label>unit cost</label></td>
-                                                <td class="label_m"><label>inicial</label></td>
-                                                <td class="label_m"><label>recibido</label></td>
-                                                <td class="label_m"><label>transferido</label></td>
-                                                <td class="label_m"><label>used activo</label></td>
-                                                <td class="label_m"><label>usado reserva 1</label></td>
-                                                <td class="label_m"><label>usado reserva 2</label></td>
-                                                <td class="label_m"><label>total used</label></td>
-                                                <td class="label_m"><label>stock</label></td>
-                                                <td class="label_m"><label>costo us</label></td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>Acido citrico</label></td>
-                                                <td> 55 </td>
-                                                <td> lbs </td>
-                                                <td> 1,00 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>bactericida q cide l25</label></td>
-                                                <td> 5 </td>
-                                                <td> gal </td>
-                                                <td> 1,10 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>barita</label></td>
-                                                <td> 100 </td>
-                                                <td> lbs </td>
-                                                <td> 4,20 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>bicarbonato de sodio</label></td>
-                                                <td> 55 </td>
-                                                <td> lbs </td>
-                                                <td> 2,16 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>caco3 10-40 </label></td>
-                                                <td> 110 </td>
-                                                <td> lbs </td>
-                                                <td> 2.70 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>caco3 m 200</label></td>
-                                                <td> 110 </td>
-                                                <td> lbs </td>
-                                                <td> 2,70 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>caco3 m 325</label></td>
-                                                <td> 110 </td>
-                                                <td> lbs </td>
-                                                <td> 2,70 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>caco3 m 40-100</label></td>
-                                                <td> 110 </td>
-                                                <td> lbs </td>
-                                                <td> 2,70 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>caco3 m 50-150</label></td>
-                                                <td> 110 </td>
-                                                <td> lbs </td>
-                                                <td> 2,70 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>cal hidratada</label></td>
-                                                <td> 55 </td>
-                                                <td> lbs </td>
-                                                <td> 1,42 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>Cascarilla de arroz</label></td>
-                                                <td> 25 </td>
-                                                <td> lbs </td>
-                                                <td> 0,55 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                        <tr>	
-                                                <td class="label_m"><label>desco</label></td>
-                                                <td> 25 </td>
-                                                <td> lbs </td>
-                                                <td> 1,00 </td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td><input type="text" /></td>
-                                                <td> 0 </td>
-                                                <td> 0 </td>
-                                                <td> 0,00 </td>
-                                        </tr>
-                                </table>
-                        </fieldset>
-                </div>
-        </div>
-	
-</div>
+     <h2>Materials</h2>
 
+     <div class="simpleTabs">
+          <ul class="simpleTabsNavigation">
+               <li><a href="#">Status</a></li>
+               <li><a href="#">Incoming Materials</a></li>
+               <li><a href="#">Outgoing Materials</a></li>             
+          </ul>
+          <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
+               <fieldset>
+                    <table>
+                         <thead>
+                              <tr>
+                                <td class="label_m"><label>Material Name</label></td>
+                                <td class="label_m"><label>Unit</label></td>
+                                <td class="label_m"><label>EG</label></td>
+                                <td class="label_m"><label>Price</label></td>
+                                <td class="label_m"><label>Aval.</label></td>
+                                <td class="label_m"><label>Used</label></td>
+                                <td class="label_m"><label>Transf.</label></td>
+                                <td class="label_m"><label>Volume</label></td>
+                                <td class="label_m"><label>Concen.</label></td>
+                              </tr>     
+                         </thead>
+                         <tbody>
+                              <?php foreach ($materials as $material) { ?>
+                                <tr class="this_material_<?= $material['product_id']?> ">
+                                     <td><input style="width:400px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+                                     <td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['unit_name'] ?> (<?= $material['equivalencia'] ?><?= $material['unidad_destino'] ?>)" /></td>
+                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
+                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['price'] ?>" /></td>
+                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['avaliable'] ?>" /></td>
+                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['used'] ?>" /></td>
+                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['transfered'] ?>" /></td>
+                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="0" /></td>
+                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="0" /></td>
+                                </tr>
+                              <?php } ?>
+                         </tbody>     
+                    </table>
+               </fieldset>
+          </div>
+          <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
+               <fieldset id="incoming_stock_transfer_fieldset">
+                    <legend>Incoming</legend>
+                    <table style="margin-bottom:20px;" class="general_st_info">
+                        <tr>
+                            <td class="label_m"><label>Stock Transfer Number:</label></td>
+                            <td class="label_m"><label>Origin:</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" style="width:200px;" class="st_number" /></td>
+                            <td><input type="text" style="width:200px;" class="st_origin" /></td>
+                        </tr>
+                    </table>
+                    <table>
+                         <thead>
+                              <tr>
+                                <td class="label_m"><label>Material</label></td>
+                                <td class="label_m"><label>Unit</label></td>
+                                <td class="label_m"><label>Received</label></td>
+                              </tr>
+                         </thead>
+                         <tbody class="materials_table">
+                            <?php foreach ($materials as $material) { ?>
+                                <tr class="this_material_<?= $material['product_id']?> ">
+                                    <td><input style="width:400px;max-width:357px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+                                    <td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['unit_name'] ?> (<?= $material['equivalencia'] ?><?= $material['unidad_destino'] ?>)" /></td>                        
+                                    <td><input style="width:55px;margin-right:0;" type="text" value="0" class="material_qty" id="material_<?= $material['product_id']?>" /></td>
+                                </tr>
+                            <?php } ?>
+                         </tbody>
+                    </table>
+                    <input type="button" style="margin-top:20px;" value="Load Materials" class="btn_new_transfer" />
+               </fieldset>
+               <fieldset>
+                    <legend>Archive</legend>
+                    <table>
+                         <thead>
+                              <tr>
+                                <td></td>
+                                <td class="label_m"><label>Date</label></td>
+                                <td class="label_m"><label>Code</label></td>
+                                <td class="label_m"><label>Origin</label></td>
+                                <td class="label_m"><label>Destiny</label></td>
+                              </tr>
+                         </thead>
+                         <tbody>
+                              <tr>
+                                <td class="label_m"></td>
+                                <td class="label_m"></td>
+                                <td class="label_m"></td>
+                                <td class="label_m"></td>
+                                <td class="label_m"></td>   
+                              </tr>
+                         </tbody>
+                    </table>
+               </fieldset>
+            </div>
+            <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
+               <fieldset>
+                    <legend>Outgoing</legend>
+               </fieldset>
+            </div>   
+     </div>
+</div>

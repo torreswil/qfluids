@@ -491,5 +491,23 @@ class Rest extends CI_Controller {
 			echo json_encode(true);
 		}
 	}
+
+
+	//materials
+	public function update_materials(){
+		//deactivate all materials in this project
+		$this->Api->update_where('project_materials',array('used_in_project'=>0),array('project_id' => $this->project_id));
+		
+		//reactivate just the selected materials and create the respective record in the inventary table
+		$materials = json_decode($this->data_input);
+		foreach ($materials as $material) {
+			$this->Api->update('project_materials',$material,$material->id);
+			$inventory_entries = $this->Api->get_where('inventory',array('product'=>$material->id));
+			if(count($inventory_entries) == 0){
+				$this->Api->create('inventory',array('product' => $material->id, 'avaliable'=>0, 'used'=>0, 'transfered'=>0));
+			}
+		}
+		echo json_encode(true);	
+	}
 }
 /****** THE END ******/

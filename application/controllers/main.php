@@ -77,6 +77,10 @@ class Main extends CI_Controller {
 				$data['pill_tanks'] 			= $this->Api->get_where('vista_tanks',array('project'=>$project_data['id'],'tank_category'=>'pill','active'=>1),array('order','asc'));
 				$data['trip_tanks'] 			= $this->Api->get_where('vista_tanks',array('project'=>$project_data['id'],'tank_category'=>'trip','active'=>1),array('order','asc'));
 				
+				//INVENTARIO Y MATERIALES
+				$data['all_materials']			= $this->Api->get_where('vista_materiales',array('project'=>$project_data['id']),array('commercial_name','asc'));
+				$data['materials']				= $this->Api->get_where('vista_inventario',array('project'=>$project_data['id'],'used_in_project'=>1),array('commercial_name','asc'));
+
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';
 				$data['project']				= $project_data;
