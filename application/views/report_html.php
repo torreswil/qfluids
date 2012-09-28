@@ -240,7 +240,7 @@
                                 
                                 <!-- HIDRAULYCS -->
                                 
-                                <div class="data-table b-right" style="width: 49.3%;">
+                                <div class="data-table b-right" style="width: 49.4%;">
                                         <div class="sub-header b-bottom"><h5>HYDRAULICS</h5></div>                                        
                                         <div class="data-table" style="width: 74%">
                                                 <table class="table table-stripted table-condensed b-bottom">
@@ -381,7 +381,7 @@
                                                 </tbody>                                
                                         </table>
                                 </div>
-                                <div class="data-table b-right" style="width: 49.3%">
+                                <div class="data-table b-right" style="width: 49.5%">
                                         <div class="sub-header b-bottom b-top"><h5>VOLUME RESUM IN BBL</h5></div>
                                         <table class="table table-stripted table-condensed">
                                                 <tbody>
@@ -1234,7 +1234,7 @@
                         
                 </div>
                 
-                <div class="data-table-container" style="float:left; width: 55.1%;margin-left: 1px">
+                <div class="data-table-container" style="float:left; width: 55%;margin-left: 1px">
                         <div class="data-table b-right" style="width: 100%;">
                                 <div class="b-top"></div>
                                 <table class="table table-stripted table-condensed">
@@ -1458,7 +1458,7 @@
                                                         </tbody>
                                                 </table>                                                
                                         </div>
-                                        <div class="data-table-container" style="float:left; width: 35%">
+                                        <div class="data-table-container" style="float:left; width: 34.8%">
                                                 <div class="sub-header b-right b-bottom"><h5>TIME BREAK DOWN</h5></div>                                                
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
@@ -1590,7 +1590,7 @@
                                                 <strong>Company Man/Representative:</strong>
                                                 <p class="txt-center" style="padding-top: 30px;">OSCAR GOMEZ / JUAN DANIEL MOLANO</p>                                                                                            
                                         </div>
-                                        <div class="data-table-container" style="float:left; width: 49.9%">                                                                                                                                                                                                                                                                                            
+                                        <div class="data-table-container" style="float:left; width: 49.8%">                                                                                                                                                                                                                                                                                            
                                                 <strong>Mud Engs.</strong>                                                
                                                 <p class="txt-center" style="padding-top: 30px;">CARLOS PARRA / DEIDER MENGUAL</p>
                                         </div>
