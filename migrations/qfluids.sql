@@ -975,7 +975,8 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `configured` int(11) DEFAULT '0',
   `shaker_qty` int(11) DEFAULT NULL,
   `maximun_enginers` int(11) DEFAULT NULL,
-  `phase` int(11) DEFAULT NULL,
+  `current_phase` int(11) DEFAULT NULL,
+  `max_phase` int(1) DEFAULT '10',
   `operators` int(1) DEFAULT '1',
   `yard_workers` int(1) DEFAULT '1',
   PRIMARY KEY (`id`)
@@ -984,7 +985,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
 -- ----------------------------
 -- Records of projects
 -- ----------------------------
-INSERT INTO `projects` VALUES ('1', 'FCKGW', '2012-09-05 10:06:37', 'ORITO', 'PETROMINERALES', 'CAMBRIA1', 'ORITO', '0000', 'ORITO', '1', NULL, '2012-09-05 10:06:37', '2012-09-05', '0', '3', '3', '1', '1', '1');
+INSERT INTO `projects` VALUES ('1', 'FCKGW', '2012-09-05 10:06:37', 'ORITO', 'PETROMINERALES', 'CAMBRIA1', 'ORITO', '0000', 'ORITO', '1', NULL, '2012-09-05 10:06:37', '2012-09-05', '0', '3', '3', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for `reports`
@@ -997,25 +998,26 @@ CREATE TABLE `reports` (
   `date` date DEFAULT NULL,
   `number` int(11) DEFAULT NULL,
   `generated` int(11) DEFAULT '0',
+  `phase` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of reports
 -- ----------------------------
-INSERT INTO `reports` VALUES ('1', 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', '1', '0');
-INSERT INTO `reports` VALUES ('5', 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', '2', '0');
-INSERT INTO `reports` VALUES ('6', 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', '3', '0');
-INSERT INTO `reports` VALUES ('7', 'FCKGW_qflrpt_4', 'FCKGW', '2012-09-08', '4', '0');
-INSERT INTO `reports` VALUES ('8', 'FCKGW_qflrpt_5', 'FCKGW', '2012-09-09', '5', '0');
-INSERT INTO `reports` VALUES ('9', 'FCKGW_qflrpt_6', 'FCKGW', '2012-09-10', '6', '0');
-INSERT INTO `reports` VALUES ('10', 'FCKGW_qflrpt_7', 'FCKGW', '2012-09-11', '7', '0');
-INSERT INTO `reports` VALUES ('11', 'YXRKT01_qflrpt_1', 'YXRKT01', '2012-09-06', '1', '0');
-INSERT INTO `reports` VALUES ('12', 'YXRKT01_qflrpt_2', 'YXRKT01', '2012-09-07', '2', '0');
-INSERT INTO `reports` VALUES ('13', 'YXRKT01_qflrpt_3', 'YXRKT01', '2012-09-08', '3', '0');
-INSERT INTO `reports` VALUES ('14', 'FCKGW_qflrpt_8', 'FCKGW', '2012-09-12', '8', '0');
-INSERT INTO `reports` VALUES ('15', 'QWERTY_qflrpt_1', 'QWERTY', '2012-09-11', '1', '0');
-INSERT INTO `reports` VALUES ('16', 'FCKGW_qflrpt_9', 'FCKGW', '2012-09-13', '9', '0');
+INSERT INTO `reports` VALUES ('1', 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', '1', '0', '1');
+INSERT INTO `reports` VALUES ('5', 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', '2', '0', '1');
+INSERT INTO `reports` VALUES ('6', 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', '3', '0', '1');
+INSERT INTO `reports` VALUES ('7', 'FCKGW_qflrpt_4', 'FCKGW', '2012-09-08', '4', '0', '1');
+INSERT INTO `reports` VALUES ('8', 'FCKGW_qflrpt_5', 'FCKGW', '2012-09-09', '5', '0', '1');
+INSERT INTO `reports` VALUES ('9', 'FCKGW_qflrpt_6', 'FCKGW', '2012-09-10', '6', '0', '1');
+INSERT INTO `reports` VALUES ('10', 'FCKGW_qflrpt_7', 'FCKGW', '2012-09-11', '7', '0', '1');
+INSERT INTO `reports` VALUES ('11', 'YXRKT01_qflrpt_1', 'YXRKT01', '2012-09-06', '1', '0', '1');
+INSERT INTO `reports` VALUES ('12', 'YXRKT01_qflrpt_2', 'YXRKT01', '2012-09-07', '2', '0', '1');
+INSERT INTO `reports` VALUES ('13', 'YXRKT01_qflrpt_3', 'YXRKT01', '2012-09-08', '3', '0', '1');
+INSERT INTO `reports` VALUES ('14', 'FCKGW_qflrpt_8', 'FCKGW', '2012-09-12', '8', '0', '1');
+INSERT INTO `reports` VALUES ('15', 'QWERTY_qflrpt_1', 'QWERTY', '2012-09-11', '1', '0', '1');
+INSERT INTO `reports` VALUES ('16', 'FCKGW_qflrpt_9', 'FCKGW', '2012-09-13', '9', '0', '1');
 
 -- ----------------------------
 -- Table structure for `stock_transfers`

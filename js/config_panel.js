@@ -920,7 +920,20 @@ $(function(){
 		},'json');
 	});
 
-	//save enginer settings
+	//save phases number
+	$('#save_phases_number').click(function(e){
+		e.preventDefault();		                    
+                max_phase = $('select[name="phase_number"] option:selected').val();	
+                var data = {'max_phase':max_phase};
+                $.post('/rest/save_project_settings',data,function(r){
+                        if(r.message == 'project_updated'){
+                                alert('Number of phases saved');
+                                location.reload();
+                        }
+                },'json');		
+	});
+        
+        //save enginer settings
 	$('#save_enginer_settings').click(function(e){
 		e.preventDefault();
 		var maximun_enginers = $('#maximun_enginers').val();
