@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-09-28 15:18:09
+Date: 2012-10-01 07:22:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -630,21 +630,23 @@ INSERT INTO `conversions_table` VALUES ('2', 'CX40', '40', 'lt');
 -- ----------------------------
 DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE `inventory` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product` int(11) DEFAULT NULL,
   `avaliable` int(11) DEFAULT NULL,
   `used` int(11) DEFAULT NULL,
-  `transfered` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `transfered` int(11) DEFAULT NULL,
+  `project_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of inventory
 -- ----------------------------
-INSERT INTO `inventory` VALUES (null, '1', '0', '0', '0');
-INSERT INTO `inventory` VALUES (null, '2', '0', '0', '0');
-INSERT INTO `inventory` VALUES (null, '3', '0', '0', '0');
-INSERT INTO `inventory` VALUES (null, '10', '0', '0', '0');
-INSERT INTO `inventory` VALUES (null, '4', '0', '0', '0');
+INSERT INTO `inventory` VALUES ('1', '1', '10', '0', '0', '1');
+INSERT INTO `inventory` VALUES ('2', '2', '20', '0', '0', '1');
+INSERT INTO `inventory` VALUES ('3', '3', '0', '0', '0', '1');
+INSERT INTO `inventory` VALUES ('4', '10', '0', '0', '0', '1');
+INSERT INTO `inventory` VALUES ('5', '4', '0', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for `inventory_movements`
@@ -768,12 +770,14 @@ CREATE TABLE `personal_report_enginers` (
   `cover` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of personal_report_enginers
 -- ----------------------------
 INSERT INTO `personal_report_enginers` VALUES ('1', '1', '1', '1', '2012-09-12');
+INSERT INTO `personal_report_enginers` VALUES ('2', '1', '1', '1', '2012-09-28');
+INSERT INTO `personal_report_enginers` VALUES ('3', '1', '1', '1', '2012-09-27');
 
 -- ----------------------------
 -- Table structure for `project_centrifugues`
@@ -958,7 +962,7 @@ INSERT INTO `project_tanks` VALUES ('6', '1', '4', '14', null, null, '500', null
 -- Table structure for `projects`
 -- ----------------------------
 DROP TABLE IF EXISTS `projects`;
-CREATE TABLE IF NOT EXISTS `projects` (
+CREATE TABLE `projects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `transactional_id` varchar(255) NOT NULL,
   `last_modified` datetime DEFAULT NULL,
@@ -980,12 +984,12 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `operators` int(1) DEFAULT '1',
   `yard_workers` int(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of projects
 -- ----------------------------
-INSERT INTO `projects` VALUES ('1', 'FCKGW', '2012-09-05 10:06:37', 'ORITO', 'PETROMINERALES', 'CAMBRIA1', 'ORITO', '0000', 'ORITO', '1', NULL, '2012-09-05 10:06:37', '2012-09-05', '0', '3', '3', '1', '1', '1', '1');
+INSERT INTO `projects` VALUES ('1', 'FCKGW', '2012-09-05 10:06:37', 'ORITO', 'PETROMINERALES', 'CAMBRIA1', 'ORITO', '0000', 'ORITO', '1', null, '2012-09-05 10:06:37', '2012-09-05', '0', '3', '3', null, '10', '1', '1');
 
 -- ----------------------------
 -- Table structure for `reports`
@@ -1005,19 +1009,19 @@ CREATE TABLE `reports` (
 -- ----------------------------
 -- Records of reports
 -- ----------------------------
-INSERT INTO `reports` VALUES ('1', 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', '1', '0', '1');
-INSERT INTO `reports` VALUES ('5', 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', '2', '0', '1');
-INSERT INTO `reports` VALUES ('6', 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', '3', '0', '1');
-INSERT INTO `reports` VALUES ('7', 'FCKGW_qflrpt_4', 'FCKGW', '2012-09-08', '4', '0', '1');
-INSERT INTO `reports` VALUES ('8', 'FCKGW_qflrpt_5', 'FCKGW', '2012-09-09', '5', '0', '1');
-INSERT INTO `reports` VALUES ('9', 'FCKGW_qflrpt_6', 'FCKGW', '2012-09-10', '6', '0', '1');
-INSERT INTO `reports` VALUES ('10', 'FCKGW_qflrpt_7', 'FCKGW', '2012-09-11', '7', '0', '1');
-INSERT INTO `reports` VALUES ('11', 'YXRKT01_qflrpt_1', 'YXRKT01', '2012-09-06', '1', '0', '1');
-INSERT INTO `reports` VALUES ('12', 'YXRKT01_qflrpt_2', 'YXRKT01', '2012-09-07', '2', '0', '1');
-INSERT INTO `reports` VALUES ('13', 'YXRKT01_qflrpt_3', 'YXRKT01', '2012-09-08', '3', '0', '1');
-INSERT INTO `reports` VALUES ('14', 'FCKGW_qflrpt_8', 'FCKGW', '2012-09-12', '8', '0', '1');
-INSERT INTO `reports` VALUES ('15', 'QWERTY_qflrpt_1', 'QWERTY', '2012-09-11', '1', '0', '1');
-INSERT INTO `reports` VALUES ('16', 'FCKGW_qflrpt_9', 'FCKGW', '2012-09-13', '9', '0', '1');
+INSERT INTO `reports` VALUES ('1', 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', '1', '0', null);
+INSERT INTO `reports` VALUES ('5', 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', '2', '0', null);
+INSERT INTO `reports` VALUES ('6', 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', '3', '0', null);
+INSERT INTO `reports` VALUES ('7', 'FCKGW_qflrpt_4', 'FCKGW', '2012-09-08', '4', '0', null);
+INSERT INTO `reports` VALUES ('8', 'FCKGW_qflrpt_5', 'FCKGW', '2012-09-09', '5', '0', null);
+INSERT INTO `reports` VALUES ('9', 'FCKGW_qflrpt_6', 'FCKGW', '2012-09-10', '6', '0', null);
+INSERT INTO `reports` VALUES ('10', 'FCKGW_qflrpt_7', 'FCKGW', '2012-09-11', '7', '0', null);
+INSERT INTO `reports` VALUES ('11', 'YXRKT01_qflrpt_1', 'YXRKT01', '2012-09-06', '1', '0', null);
+INSERT INTO `reports` VALUES ('12', 'YXRKT01_qflrpt_2', 'YXRKT01', '2012-09-07', '2', '0', null);
+INSERT INTO `reports` VALUES ('13', 'YXRKT01_qflrpt_3', 'YXRKT01', '2012-09-08', '3', '0', null);
+INSERT INTO `reports` VALUES ('14', 'FCKGW_qflrpt_8', 'FCKGW', '2012-09-12', '8', '0', null);
+INSERT INTO `reports` VALUES ('15', 'QWERTY_qflrpt_1', 'QWERTY', '2012-09-11', '1', '0', null);
+INSERT INTO `reports` VALUES ('16', 'FCKGW_qflrpt_9', 'FCKGW', '2012-09-13', '9', '0', null);
 
 -- ----------------------------
 -- Table structure for `stock_transfers`
@@ -1032,11 +1036,12 @@ CREATE TABLE `stock_transfers` (
   `project_id` int(11) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of stock_transfers
 -- ----------------------------
+INSERT INTO `stock_transfers` VALUES ('1', '0001', '2012-09-29', 'CERETE', 'ORITO (PETROMINERALES)', '1', 'incoming');
 
 -- ----------------------------
 -- Table structure for `tank_names`
@@ -1116,6 +1121,12 @@ DROP VIEW IF EXISTS `vista_materiales`;
 CREATE VIEW `vista_materiales` AS select `project_materials`.`id` AS `id`,`project_materials`.`project_id` AS `project`,`project_materials`.`erp_id` AS `erp_id`,`project_materials`.`commercial_name` AS `commercial_name`,`project_materials`.`unit` AS `unit`,`project_materials`.`egravity` AS `egravity`,`project_materials`.`internal_name` AS `internal_name`,`project_materials`.`price` AS `price`,`project_materials`.`used_in_project` AS `used_in_project`,`conversions_table`.`nombre_unidad` AS `unit_name`,`conversions_table`.`equivalencia` AS `equivalencia`,`conversions_table`.`unidad_destino` AS `unidad_destino` from (`project_materials` left join `conversions_table` on((`conversions_table`.`id` = `project_materials`.`unit`))) ;
 
 -- ----------------------------
+-- View structure for `vista_inventario`
+-- ----------------------------
+DROP VIEW IF EXISTS `vista_inventario`;
+CREATE VIEW `vista_inventario` AS select `vista_materiales`.`id` AS `product_id`,`vista_materiales`.`project` AS `project`,`vista_materiales`.`commercial_name` AS `commercial_name`,`inventory`.`avaliable` AS `avaliable`,`inventory`.`used` AS `used`,`inventory`.`transfered` AS `transfered`,`vista_materiales`.`erp_id` AS `erp_id`,`vista_materiales`.`unit` AS `unit`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`internal_name` AS `internal_name`,`vista_materiales`.`price` AS `price`,`vista_materiales`.`used_in_project` AS `used_in_project`,`vista_materiales`.`unit_name` AS `unit_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino` from (`inventory` left join `vista_materiales` on((`vista_materiales`.`id` = `inventory`.`product`))) ;
+
+-- ----------------------------
 -- View structure for `vista_personal`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_personal`;
@@ -1132,9 +1143,3 @@ CREATE VIEW `vista_reporte_personal` AS select `vista_personal`.`id` AS `id`,`vi
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_tanks`;
 CREATE VIEW `vista_tanks` AS select `project_tanks`.`id` AS `id`,`project_tanks`.`project` AS `project`,`project_tanks`.`type` AS `type`,`project_tanks`.`name` AS `name`,`project_tanks`.`sh1` AS `sh1`,`project_tanks`.`sa1` AS `sa1`,`project_tanks`.`sl1` AS `sl1`,`project_tanks`.`sh2` AS `sh2`,`project_tanks`.`sa2` AS `sa2`,`project_tanks`.`sl2` AS `sl2`,`project_tanks`.`diametro` AS `diametro`,`project_tanks`.`agitators` AS `agitators`,`project_tanks`.`jets` AS `jets`,`project_tanks`.`voltkaforo` AS `voltkaforo`,`project_tanks`.`hlibremax` AS `hlibremax`,`project_tanks`.`active` AS `active`,`tank_names`.`name` AS `tank_name`,`tanks_types`.`name` AS `tank_type`,`tank_names`.`type` AS `tank_category`,`project_tanks`.`order` AS `order` from ((`project_tanks` left join `tank_names` on((`tank_names`.`id` = `project_tanks`.`name`))) left join `tanks_types` on((`tanks_types`.`id` = `project_tanks`.`type`))) ;
-
--- ----------------------------
--- View structure for `vista_inventario`
--- ----------------------------
-DROP VIEW IF EXISTS `vista_inventario`;
-CREATE VIEW `vista_inventario` AS select `vista_materiales`.`id` AS `product_id`,`vista_materiales`.`project` AS `project`,`vista_materiales`.`commercial_name` AS `commercial_name`,`inventory`.`avaliable` AS `avaliable`,`inventory`.`used` AS `used`,`inventory`.`transfered` AS `transfered`,`vista_materiales`.`erp_id` AS `erp_id`,`vista_materiales`.`unit` AS `unit`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`internal_name` AS `internal_name`,`vista_materiales`.`price` AS `price`,`vista_materiales`.`used_in_project` AS `used_in_project`,`vista_materiales`.`unit_name` AS `unit_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino` from (`inventory` left join `vista_materiales` on((`vista_materiales`.`id` = `inventory`.`product`))) ;
