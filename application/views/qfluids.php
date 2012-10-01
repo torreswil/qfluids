@@ -77,6 +77,9 @@
 							<strong>Rig:</strong> 
 						</td>
 						<td><span style="margin-left:5px;text-transform:uppercase;"><?= $project['rig'] ?></span></td>
+						<td width="25"></td>
+						<td><strong>Phase:</strong></td>
+						<td><span style="margin-left:5px;text-transform:uppercase;"><?= $project['current_phase'] ?></span></td>
 					</tr>
 				</table>
 			</div>
@@ -101,6 +104,8 @@
 			<?php $this->load->view('equipos_solidos'); ?>
 			<?php $this->load->view('inventario'); ?>
 			<?php $this->load->view('volumenes'); ?>
+			<?php $this->load->view('concentrations'); ?>
+			<?php $this->load->view('comments'); ?>
 
 			<!-- PANELES OCULTOS -->
 			<div class="hidden_tabs">

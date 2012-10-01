@@ -13,6 +13,8 @@
 				<li><a href="#datos_generales">Personnel</a></li>
 				<li><a href="#inventario">Material Stock</a></li>
 				<li><a href="#volumenes">Volumes</a></li>
+				<li><a href="#concentrations">Concentrations</a></li>
+				<li><a href="#comments">Comments</a></li>
 			</ul>
 		</li>
 		<li class="main_navigation">
