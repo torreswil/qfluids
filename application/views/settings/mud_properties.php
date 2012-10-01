@@ -27,7 +27,7 @@
 					</tr>
                                         <tr>
 	        				<td></td>	
-	        				<td><input type="button" value="Close & reload" id="save_phases_number" style="margin-top:10px;" /></td>
+	        				<td><input type="button" value="Save phases number" id="save_phases_number" style="margin-top:10px;" /></td>
 	        			</tr>
 				</table>
 			</fieldset>
