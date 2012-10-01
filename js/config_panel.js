@@ -943,6 +943,20 @@ $(function(){
 			var data = {'maximun_enginers':maximun_enginers, 'operators': operators, 'yard_workers':yard_workers};
 			$.post('/rest/save_project_settings',data,function(r){
 				if(r.message == 'project_updated'){
+                                        if(yard_workers==1) {
+                                                $('.tab_yard_workers').show();
+                                                $("#show_yard_workers").val('1');
+                                        } else {
+                                                $('.tab_yard_workers').hide();
+                                                $("#show_yard_workers").val('0');
+                                        }
+                                        if(operators==1) {
+                                                $('.tab_operators').show();
+                                                $('#show_operators').val('1');
+                                        } else {
+                                                $('.tab_operators').hide();
+                                                $('#show_operators').val('0');
+                                        }
 					alert('Enginer settings saved');
 				}else{
 					alert('An error has ocurred. Please try again, or ask the system administrator for help.');
@@ -977,6 +991,8 @@ $(function(){
                         $.post('/rest/load_personal',operators_data,function(r){
                                 $('#current_operators_list').html(r);
                         }); 
+                } else {                        
+                        $('.tab_operators').hide();
                 }
 		
 
@@ -991,6 +1007,8 @@ $(function(){
                         $.post('/rest/load_personal',yardworker_data,function(r){
                                 $('#current_yardworkers_list').html(r);
                         });	
+                } else {
+                        $('.tab_yard_workers').hide();
                 }		
                 
 	}
