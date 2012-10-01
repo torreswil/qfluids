@@ -1263,7 +1263,7 @@ $(function(){
 
 			data.materials 	= [];
 			var zeros_qty 	= 0;
-			var zeros_limit	= $('.materials_table')
+			var zeros_limit	= $('.materials_table tr',context).length;
 
 			//proccess the materials table
 			$('.materials_table .material_qty',context).each(function(){
@@ -1276,22 +1276,30 @@ $(function(){
 				}
 			});
 
-			$('.materials_table .material_qty',context).each(function(){
-				var material_id = $(this).attr('id');
-					material_id = material_id.split('material_');
-					material_id = material_id[1];
+			if(zeros_qty == zeros_limit){
+				alert('To register this stock transfer, the quantities need to be greater than 0 in at least one material.');
+			}else{
+				$('.materials_table .material_qty',context).each(function(){
+					var material_id = $(this).attr('id');
+						material_id = material_id.split('material_');
+						material_id = material_id[1];
 
-				if(parseInt($(this).val()) !== 0){
-					var this_material = {
-						id 			: material_id,
-						quantity	: $(this).val()
+					if(parseInt($(this).val()) !== 0){
+						var this_material = {
+							id 			: material_id,
+							quantity	: $(this).val()
+						}
+
+						data.materials.push(this_material);
 					}
+				});
 
-					data.materials.push(this_material);
-				}
-			});
-
-			log(data);
+				$.post('/rest/register_stock_transfer',$.toJSON(data),function(r){
+					if(r == true){
+						alert('stock transfer registered...');
+					}
+				},'json');
+			}
 		}
 	});
 

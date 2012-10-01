@@ -19,7 +19,7 @@ class Main extends CI_Controller {
 		if(isset($_POST['method']) && $_POST['method'] == 'new_project'){
 			unset($_POST['method']);
 			$_POST['creation_timestamp'] 	= date('Y-m-d H:i:s');
-			$_POST['last_modified'] 		= date('Y-m-d H:i:s');;
+			$_POST['last_modified'] 		= date('Y-m-d H:i:s');
 			$id 							= $this->Api->create('projects',$_POST);
 			echo json_encode($id);
 		}else{

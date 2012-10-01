@@ -8,9 +8,11 @@ class Rest extends CI_Controller {
 	    //store raw input data in a object property
 	    if(isset($_POST)){$this->data_input = file_get_contents("php://input");}
 
-	    //store the project id to all methods
-    	$project_id = $this->session->userdata('project');
-		$this->project_id = $project_id['id'];
+	    //expose the project info to all methods
+    	$project 				= $this->session->userdata('project');
+		$this->project_id 		= $project['id'];
+		$this->project_wellname = $project['well_name'];
+		$this->project_operator = $project['operator'];
 	}
 
 	public function index(){
@@ -504,10 +506,58 @@ class Rest extends CI_Controller {
 			$this->Api->update('project_materials',$material,$material->id);
 			$inventory_entries = $this->Api->get_where('inventory',array('product'=>$material->id));
 			if(count($inventory_entries) == 0){
-				$this->Api->create('inventory',array('product' => $material->id, 'avaliable'=>0, 'used'=>0, 'transfered'=>0));
+				$this->Api->create('inventory',array('product' => $material->id, 'avaliable'=>0, 'used'=>0, 'transfered'=>0,'project_id'=>$this->project_id));
 			}
 		}
 		echo json_encode(true);	
+	}
+
+
+	public function register_stock_transfer(){
+		$data = json_decode($this->data_input);
+		
+		//save the stock transfer
+		$stock_transfer = array(
+			'code'			=> $data->code,
+			'date'			=> date('Y-m-d'),
+			'origin'		=> $data->origin,
+			'destiny'		=> $this->project_wellname.' ('.$this->project_operator.')',
+			'project_id'	=> $this->project_id,
+			'type'			=> $data->type
+		);
+
+		$id_st = $this->Api->create('stock_transfers',$stock_transfer);
+
+		$materials = $data->materials;
+
+		foreach ($materials as $material) {
+
+			//verificar la cantidad que hay en stock, y sumar o restar segun sea el caso
+			$this_material = $this->Api->get_where('inventory',array('product'=>$material->id,'project_id'=>$this->project_id));
+			$this_material = $this_material[0];
+
+			if($data->type == 'incoming'){
+				$this_material['avaliable'] = $this_material['avaliable'] + $material->quantity;
+			}else if($data->type == 'outgoing'){
+				$this_material['avaliable'] = $this_material['avaliable'] - $material->quantity;
+			}
+
+			$this->Api->update_where('inventory',array('avaliable'=>$this_material['avaliable']),array('product'=>$material->id,'project_id'=>$this->project_id));
+
+
+			//actualizar la tabla de movimientos del inventario
+			$movimiento = array(
+				'project_id' 	 => $this->project_id,
+				'timestamp' 	 => date('Y-m-d H:i:s'),
+				'type' 			 => $data->type,
+				'quantity'		 => $material->quantity,
+				'product'		 => $material->id,
+				'stock_transfer' => $id_st
+			);
+			
+		}
+
+		echo json_encode(true);
 	}
 }
 /****** THE END ******/
