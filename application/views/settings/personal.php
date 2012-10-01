@@ -5,9 +5,9 @@
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Report Settings</a></li>
 			<li><a href="#">Enginers</a></li>
-			<li><a href="#">Operators</a></li>
-	      	<li><a href="#">Yard Workers</a></li>
-	    </ul>
+			<li class="tab_operators"><a href="#">Operators</a></li>
+                        <li class="tab_yard_workers"><a href="#">Yard Workers</a></li>
+                </ul>
 	  
 	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>

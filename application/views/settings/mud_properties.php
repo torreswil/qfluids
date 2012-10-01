@@ -17,22 +17,17 @@
 						<td>How many phases this project will have?</td>
 						<td>
 							<select name="phase_number">
-								<option value="1" selected="selected">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="8">8</option>
-								<option value="9">9</option>
-								<option value="10">10</option>
+                                                                <?php for($i=1 ; $i<11 ; $i++) { ?>
+                                                                        <?php $selected = ($project['max_phase'] == $i) ? 'selected="selected"' : ''; ?>
+                                                                        <option value="<?= $i; ?>" <?= $selected; ?>><?= $i; ?></option>
+                                                                <?php } ?>
+								<option value="1" >1</option>																
 							</select>
 						</td>
 					</tr>
                                         <tr>
 	        				<td></td>	
-	        				<td><input type="button" value="Save phases number" id="save_phases_number" style="margin-top:10px;" /></td>
+	        				<td><input type="button" value="Close & reload" id="save_phases_number" style="margin-top:10px;" /></td>
 	        			</tr>
 				</table>
 			</fieldset>

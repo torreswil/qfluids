@@ -3,12 +3,8 @@
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Enginers</a></li>
-                        <?php if($project['operators']) {?>
-			<li><a href="#">Operators</a></li>
-                        <?php } ?>
-                        <?php if($project['yard_workers']) {?>
-			<li><a href="#">Yard Workers</a></li>
-                        <?php } ?>
+			<li class="tab_operators"><a href="#">Operators</a></li>                        
+			<li class="tab_yard_workers"><a href="#">Yard Workers</a></li>                                                
 	      	<li><a href="#">Third Party</a></li>
 	    </ul>
 	  
@@ -81,8 +77,7 @@
                 
 	    </div>
 
-	    <!-- Operators -->
-            <?php if($project['operators']) {?>
+	    <!-- Operators -->            
 	    <div class="simpleTabsContent">
 	    	<fieldset>
 	    		<table style="float:left;margin-right:20px;">
@@ -115,10 +110,9 @@
 				</table>
 	    	</fieldset>	
                 </div>
-            <?php } ?>
+            
 
-		<!-- Yard Workers -->
-                <?php if($project['yard_workers']) {?>
+		<!-- Yard Workers -->           
 	    <div class="simpleTabsContent">
 			<fieldset>
 	    		<table style="float:left;margin-right:20px;">
@@ -162,7 +156,6 @@
 				</table>
 	    	</fieldset>		    	
 		</div>
-                <?php } ?>
 
 		<!-- Third Party -->
 	    <div class="simpleTabsContent">
