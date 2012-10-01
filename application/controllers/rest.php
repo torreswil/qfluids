@@ -539,6 +539,7 @@ class Rest extends CI_Controller {
 
 			if($data->type == 'incoming'){
 				$this_material['avaliable'] = $this_material['avaliable'] + $material->quantity;
+				$this_material['received']  =  $this_material['received'] + $material->quantity;
 			}else if($data->type == 'outgoing'){
 				$this_material['avaliable'] = $this_material['avaliable'] - $material->quantity;
 			}
@@ -570,7 +571,7 @@ class Rest extends CI_Controller {
 				<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$<?= $material['price'] ?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="0" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['received'] ?>" /></td>
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['transfered'] ?>" /></td>
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['used'] ?>" /></td>
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['avaliable'] ?>" /></td>
