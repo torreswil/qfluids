@@ -1321,7 +1321,8 @@ $(function(){
 	/*==========================================================================================================*/
 	
 	//show_add_chemicals_overlay
-	$('.show_add_chemicals_overlay').click(function(){
+	$('.show_add_chemicals_overlay').click(function(e){
+		e.preventDefault();
 		$('#add_chemicals_overlay').show();
 	});
 

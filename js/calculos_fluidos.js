@@ -302,62 +302,62 @@ function calculos_raw(){
 
 	//lgspercent_1
 	var lgspercent_1 = 0;
-	lgspercent_1 = ((parseFloat($('#wa_1').val()) + (sol_1 * 4.2) + (parseFloat($('#oil_1').val()) * 0.84)) - (100 * (parseFloat($('#mw_1').val()) / 8.33))) / 1.6;
+	lgspercent_1 = sol_1 * (4.2 - asg_1) / 1.55;
 	completar_campo_val('lgspercent_1',lgspercent_1.toFixed(2));
 
 	//lgspercent_2
 	var lgspercent_2 = 0;
-	lgspercent_2 = ((parseFloat($('#wa_2').val()) + (sol_2 * 4.2) + (parseFloat($('#oil_2').val()) * 0.84)) - (100 * (parseFloat($('#mw_2').val()) / 8.33))) / 1.6;
+	lgspercent_2 = sol_2 * (4.2 - asg_2) / 1.55;
 	completar_campo_val('lgspercent_2',lgspercent_2.toFixed(2));
 
 	//lgspercent_3
 	var lgspercent_3 = 0;
-	lgspercent_3 = ((parseFloat($('#wa_3').val()) + (sol_3 * 4.2) + (parseFloat($('#oil_3').val()) * 0.84)) - (100 * (parseFloat($('#mw_3').val()) / 8.33))) / 1.6;
+	lgspercent_3 = sol_3 * (4.2 - asg_3) / 1.55;
 	completar_campo_val('lgspercent_3',lgspercent_3.toFixed(2));
 
 	//hgspercent_1
 	var hgspercent_1 = 0;
-	hgspercent_1 = (100 * (parseFloat($('#mw_1').val()) / 8.33 ) - (parseFloat($('#wa_1').val()) + (sol_1 * 2.6) + (parseFloat($('#oil_1').val()) * 0.84))) / 1.6;
+	hgspercent_1 = sol_1 * (asg_1 - 2.65)/1.55;
 	completar_campo_val('hgspercent_1',hgspercent_1.toFixed(2));
 
 	//hgspercent_2
 	var hgspercent_2 = 0;
-	hgspercent_2 = (100 * (parseFloat($('#mw_2').val()) / 8.33 ) - (parseFloat($('#wa_2').val()) + (sol_2 * 2.6) + (parseFloat($('#oil_2').val()) * 0.84))) / 1.6;
+	hgspercent_2 = sol_2 * (asg_2 - 2.65)/1.55;
 	completar_campo_val('hgspercent_2',hgspercent_2.toFixed(2));
 
 	//hgspercent_3
 	var hgspercent_3 = 0;
-	hgspercent_3 = (100 * (parseFloat($('#mw_3').val()) / 8.33 ) - (parseFloat($('#wa_3').val()) + (sol_3 * 2.6) + (parseFloat($('#oil_3').val()) * 0.84))) / 1.6;
+	hgspercent_3 = sol_3 * (asg_3 - 2.65)/1.55;
 	completar_campo_val('hgspercent_3',hgspercent_3.toFixed(2));
 
 	//lgsppb_1
 	var lgsppb_1 = 0;
-	lgsppb_1 = (lgspercent_1 / 100) * 909.7;
+	lgsppb_1 = lgspercent_1 * 9.271;
 	completar_campo_val('lgsppb_1',lgsppb_1.toFixed(2));
 
 	//lgsppb_2
 	var lgsppb_2 = 0;
-	lgsppb_2 = (lgspercent_2 / 100) * 909.7;
+	lgsppb_2 = lgspercent_2 * 9.271;
 	completar_campo_val('lgsppb_2',lgsppb_2.toFixed(2));
 
 	//lgsppb_3
 	var lgsppb_3 = 0;
-	lgsppb_3 = (lgspercent_3 / 100) * 909.7;
+	lgsppb_3 = lgspercent_3 * 9.271;
 	completar_campo_val('lgsppb_3',lgsppb_3.toFixed(2));
 
 	//hgsppb_1
 	var hgsppb_1 = 0;
-	hgsppb_1 = (hgspercent_1 / 100) * 979;
+	hgsppb_1 = hgspercent_1 * 14.69;
 	completar_campo_val('hgsppb_1',hgsppb_1.toFixed(2));
 
 	//hgsppb_2
 	var hgsppb_2 = 0;
-	hgsppb_2 = (hgspercent_2 / 100) * 979;
+	hgsppb_2 = hgspercent_2 * 14.69;
 	completar_campo_val('hgsppb_2',hgsppb_2.toFixed(2));
 
 	//hgsppb_3
 	var hgsppb_3 = 0;
-	hgsppb_3 = (hgspercent_3 / 100) * 979;
+	hgsppb_3 = hgspercent_3 * 14.69;
 	completar_campo_val('hgsppb_3',hgsppb_3.toFixed(2));
 
 	//capdp
