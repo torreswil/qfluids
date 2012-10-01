@@ -446,114 +446,116 @@
 			</table>
 	    </div>
 	    <div class="simpleTabsContent">
-	    	<table style="width:100%;">
-				<tr>
-					<td style="width:400px;">
-						<fieldset style="width:400px;">
-							<table>
-								<tr>
-									<td></td>
-									<td></td>
-									<td class="label_m"><label>PROGRAM</label></td>
-									<td class="label_m">
-										<label class="clock_1_label">06:00</label>
-									</td>
-									<td class="label_m">
-										<label class="clock_2_label">14:00</label>
-									</td>
-									<td class="label_m">
-										<label class="clock_3_label">23:00</label>
-									</td>
-								</tr>
-								<tr>
-									<td class="label_m"><label>Water</label></td>
-									<td class="unit_field">% Vol</td>
-									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" id="wa_1" name="wa_1" value="0"></td>
-									<td><input type="text" style="width:50px;" id="wa_2" name="wa_2" value="0"></td>
-									<td><input type="text" style="width:50px;" id="wa_3" name="wa_3" value="0"></td>
-								</tr>
-								<tr>
-									<td class="label_m"><label>Oil</label></td>
-									<td class="unit_field">% Vol</td>
-									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" id="oil_1" name="oil_1" value="0"></td>
-									<td><input type="text" style="width:50px;" id="oil_2" name="oil_2" value="0"></td>
-									<td><input type="text" style="width:50px;" id="oil_3" name="oil_3" value="0"></td>
-								</tr>								
-							</table>
-						</fieldset>
-					</td>
-					<td style="width:460px;">
-						<fieldset>
-							<table>
-								<tr>
-									<td></td>
-									<td></td>
-									<td class="label_m"><label>PROGRAM</label></td>
-									<td class="label_m">
-										<label class="clock_1_label">06:00</label>
-									</td>
-									<td class="label_m">
-										<label class="clock_2_label">14:00</label>
-									</td>
-									<td class="label_m">
-										<label class="clock_3_label">23:00</label>
-									</td>
-								</tr>
-								<tr>
-									<td class="label_m"><label>Solids</label></td>
-									<td class="unit_field">% Vol</td>
-									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="sol_1" name="sol_1"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="sol_2" name="sol_2"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="sol_3" name="sol_3"></td>
-								</tr>
-								<tr>
-									<td class="label_m"><label>ASG Solids</label></td>
-									<td class="unit_field"></td>
-									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="asg_1" name="asg_1"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="asg_2" name="asg_2"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="asg_3" name="asg_3"></td>
-								</tr>
-								<tr>
-									<td class="label_m"><label>LGS</label></td>
-									<td class="unit_field">ppb</td>
-									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="lgsppb_1" name="lgsppb_1"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="lgsppb_2" name="lgsppb_2"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="lgsppb_3" name="lgsppb_3"></td>
-								</tr>
-								<tr>
-									<td class="label_m"><label>HGS</label></td>
-									<td class="unit_field">ppb</td>
-									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="hgsppb_1" name="hgsppb_1"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="hgsppb_2" name="hgsppb_2"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="hgsppb_3" name="hgsppb_3"></td>
-								</tr>
-								<tr>
-									<td class="label_m"><label>LGS</label></td>
-									<td class="unit_field">% Vol.</td>
-									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="lgspercent_1" name="lgspercent_1"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="lgspercent_2" name="lgspercent_2"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="lgspercent_3" name="lgspercent_3"></td>
-								</tr>
-								<tr>
-									<td class="label_m"><label>HGS</label></td>
-									<td class="unit_field">% Vol.</td>
-									<td><input type="text" style="width:60px;"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_1" name="hgspercent_1"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_2" name="hgspercent_2"></td>
-									<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_3" name="hgspercent_3"></td>
-								</tr>								
-							</table>
-						</fieldset>
-					</td>
-				</tr>
-			</table>
+	    	
+			<fieldset>
+				<table>
+					<tr>
+						<td></td>
+						<td></td>
+						<td class="label_m"><label>PROGRAM</label></td>
+						<td class="label_m">
+							<label class="clock_1_label">06:00</label>
+						</td>
+						<td class="label_m">
+							<label class="clock_2_label">14:00</label>
+						</td>
+						<td class="label_m">
+							<label class="clock_3_label">23:00</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="label_m" style="width:78px;"><label>Water</label></td>
+						<td class="unit_field">% Vol</td>
+						<td><input type="text" style="width:60px;"></td>
+						<td><input type="text" style="width:50px;" id="wa_1" name="wa_1" value="0"></td>
+						<td><input type="text" style="width:50px;" id="wa_2" name="wa_2" value="0"></td>
+						<td><input type="text" style="width:50px;" id="wa_3" name="wa_3" value="0"></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Oil</label></td>
+						<td class="unit_field">% Vol</td>
+						<td><input type="text" style="width:60px;"></td>
+						<td><input type="text" style="width:50px;" id="oil_1" name="oil_1" value="0"></td>
+						<td><input type="text" style="width:50px;" id="oil_2" name="oil_2" value="0"></td>
+						<td><input type="text" style="width:50px;" id="oil_3" name="oil_3" value="0"></td>
+					</tr>								
+				</table>
+			</fieldset>
+		
+			<fieldset>
+				<table>
+					<tr>
+						<td></td>
+						<td></td>
+						<td class="label_m"><label>PROGRAM</label></td>
+						<td class="label_m">
+							<label class="clock_1_label">06:00</label>
+						</td>
+						<td class="label_m">
+							<label class="clock_2_label">14:00</label>
+						</td>
+						<td class="label_m">
+							<label class="clock_3_label">23:00</label>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>Solids</label></td>
+						<td class="unit_field">% Vol</td>
+						<td><input type="text" style="width:60px;"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="sol_1" name="sol_1"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="sol_2" name="sol_2"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="sol_3" name="sol_3"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>ASG Solids</label></td>
+						<td class="unit_field"></td>
+						<td><input type="text" style="width:60px;"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="asg_1" name="asg_1"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="asg_2" name="asg_2"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="asg_3" name="asg_3"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>LGS</label></td>
+						<td class="unit_field">ppb</td>
+						<td><input type="text" style="width:60px;"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="lgsppb_1" name="lgsppb_1"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="lgsppb_2" name="lgsppb_2"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="lgsppb_3" name="lgsppb_3"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>HGS</label></td>
+						<td class="unit_field">ppb</td>
+						<td><input type="text" style="width:60px;"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="hgsppb_1" name="hgsppb_1"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="hgsppb_2" name="hgsppb_2"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="hgsppb_3" name="hgsppb_3"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>LGS</label></td>
+						<td class="unit_field">% Vol.</td>
+						<td><input type="text" style="width:60px;"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="lgspercent_1" name="lgspercent_1"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="lgspercent_2" name="lgspercent_2"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="lgspercent_3" name="lgspercent_3"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="label_m"><label>HGS</label></td>
+						<td class="unit_field">% Vol.</td>
+						<td><input type="text" style="width:60px;"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_1" name="hgspercent_1"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_2" name="hgspercent_2"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_3" name="hgspercent_3"></td>
+						<td class="label_m" id="hgspercent_alert"></td>
+					</tr>								
+				</table>
+			</fieldset>
+
 	    </div>
 	</div>	
 </div>

@@ -318,16 +318,43 @@ function calculos_raw(){
 	//hgspercent_1
 	var hgspercent_1 = 0;
 	hgspercent_1 = sol_1 * (asg_1 - 2.65)/1.55;
+	if(hgspercent_1 >= -0.5 && hgspercent_1 <= 0.5){
+		hgspercent_1 = 0;
+	}
+	if(hgspercent_1 < 0){
+		var hour_label = $('.clock_1').val();
+		$('#hgspercent_alert').html('<p style="margin:0;"><strong>Warning:</strong> the value is negative at <span>'+hour_label+'</span>. Please verify your test retort data.</p>');
+	}else{
+		$('#hgspercent_alert').html('');	
+	}
 	completar_campo_val('hgspercent_1',hgspercent_1.toFixed(2));
 
 	//hgspercent_2
 	var hgspercent_2 = 0;
 	hgspercent_2 = sol_2 * (asg_2 - 2.65)/1.55;
+	if(hgspercent_2 >= -0.5 && hgspercent_2 <= 0.5){
+		hgspercent_2 = 0;
+	}
+	if(hgspercent_2 < 0){
+		var hour_label = $('.clock_2').val();
+		$('#hgspercent_alert').html('<p style="margin:0;"><strong>Warning:</strong> the value is negative at <span>'+hour_label+'</span>. Please verify your test retort data.</p>');
+	}else{
+		$('#hgspercent_alert').html('');	
+	}
 	completar_campo_val('hgspercent_2',hgspercent_2.toFixed(2));
 
 	//hgspercent_3
 	var hgspercent_3 = 0;
 	hgspercent_3 = sol_3 * (asg_3 - 2.65)/1.55;
+	if(hgspercent_3 >= -0.5 && hgspercent_3 <= 0.5){
+		hgspercent_3 = 0;
+	}
+	if(hgspercent_3 < 0){
+		var hour_label = $('.clock_3').val();
+		$('#hgspercent_alert').html('<p style="margin:0;"><strong>Warning:</strong> the value is negative at <span>'+hour_label+'</span>. Please verify your test retort data.</p>');
+	}else{
+		$('#hgspercent_alert').html('');	
+	}
 	completar_campo_val('hgspercent_3',hgspercent_3.toFixed(2));
 
 	//lgsppb_1
