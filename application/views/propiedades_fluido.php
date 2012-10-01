@@ -548,14 +548,13 @@
 						<td class="label_m"><label>HGS</label></td>
 						<td class="unit_field">% Vol.</td>
 						<td><input type="text" style="width:60px;"></td>
-						<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_1" name="hgspercent_1"></td>
-						<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_2" name="hgspercent_2"></td>
-						<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_3" name="hgspercent_3"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_1" name="hgspercent_1" class="hgspercent"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_2" name="hgspercent_2" class="hgspercent"></td>
+						<td><input type="text" style="width:50px;" disabled="disabled" id="hgspercent_3" name="hgspercent_3" class="hgspercent"></td>
 						<td class="label_m" id="hgspercent_alert"></td>
 					</tr>								
 				</table>
 			</fieldset>
-
 	    </div>
 	</div>	
 </div>

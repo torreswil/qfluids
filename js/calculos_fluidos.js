@@ -321,12 +321,6 @@ function calculos_raw(){
 	if(hgspercent_1 >= -0.5 && hgspercent_1 <= 0.5){
 		hgspercent_1 = 0;
 	}
-	if(hgspercent_1 < 0){
-		var hour_label = $('.clock_1').val();
-		$('#hgspercent_alert').html('<p style="margin:0;"><strong>Warning:</strong> the value is negative at <span>'+hour_label+'</span>. Please verify your test retort data.</p>');
-	}else{
-		$('#hgspercent_alert').html('');	
-	}
 	completar_campo_val('hgspercent_1',hgspercent_1.toFixed(2));
 
 	//hgspercent_2
@@ -335,13 +329,8 @@ function calculos_raw(){
 	if(hgspercent_2 >= -0.5 && hgspercent_2 <= 0.5){
 		hgspercent_2 = 0;
 	}
-	if(hgspercent_2 < 0){
-		var hour_label = $('.clock_2').val();
-		$('#hgspercent_alert').html('<p style="margin:0;"><strong>Warning:</strong> the value is negative at <span>'+hour_label+'</span>. Please verify your test retort data.</p>');
-	}else{
-		$('#hgspercent_alert').html('');	
-	}
 	completar_campo_val('hgspercent_2',hgspercent_2.toFixed(2));
+	
 
 	//hgspercent_3
 	var hgspercent_3 = 0;
@@ -349,13 +338,23 @@ function calculos_raw(){
 	if(hgspercent_3 >= -0.5 && hgspercent_3 <= 0.5){
 		hgspercent_3 = 0;
 	}
-	if(hgspercent_3 < 0){
-		var hour_label = $('.clock_3').val();
-		$('#hgspercent_alert').html('<p style="margin:0;"><strong>Warning:</strong> the value is negative at <span>'+hour_label+'</span>. Please verify your test retort data.</p>');
-	}else{
-		$('#hgspercent_alert').html('');	
-	}
 	completar_campo_val('hgspercent_3',hgspercent_3.toFixed(2));
+
+	
+	//hgspercent_alert
+	var hgspercent_alert = '';
+	$('.hgspercent').each(function() {
+		if(parseFloat($(this).val()) < 0){
+			var id = $(this).attr('id');
+				id = id.split('hgspercent_');
+				id = id[1];
+
+			var hour_label 		= $('.clock_'+id).val(); 	
+			hgspercent_alert = '<p style="margin:0;"><strong>Warning:</strong> the value is negative at <span>'+hour_label+'</span>. Please verify your retort test data.</p>'; 
+		}
+	});
+	$('#hgspercent_alert').html(hgspercent_alert);
+	
 
 	//lgsppb_1
 	var lgsppb_1 = 0;
