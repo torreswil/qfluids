@@ -36,7 +36,7 @@
 							} ?>
 							<input type="text" style="width:100px;margin-left:5px;" id="spud_data" value="<?= $project['spud_date'] ?>" class="datepicker" <?= $sd_disabled; ?> />
 						</td>
-						<td width="25"></td>
+						<td width="18"></td>
 						<td>
 							<strong style="float:left;">CURRENT DATE:</strong>
 						</td>
@@ -45,7 +45,7 @@
 								<?php if($project['spud_date'] != ''){ echo $project['last_report_meta']['date'];} ?>
 							</span>
 						</td>
-						<td width="25"></td>
+						<td width="18"></td>
 						<td><strong>Report#:</strong></td>
 						<td>
 							
@@ -62,22 +62,22 @@
 
 							<span id="current_report_str" style="margin-left:5px;text-transform:uppercase;"><?= str_pad($project['last_report'], 4, "0", STR_PAD_LEFT); ?></span>
 						</td> 
-						<td width="25"></td>
+						<td width="18"></td>
 						<td>
 							<strong>Operadora:</strong>
 						</td>
 						<td><span style="margin-left:5px;text-transform:uppercase;"><?= $project['operator'] ?></span></td>
-						<td width="25"></td>
+						<td width="18"></td>
 						<td>
 							<strong>Well:</strong>
 						</td>
 						<td><span style="margin-left:5px;text-transform:uppercase;"><?= $project['well_name'] ?></span></td>
-						<td width="25"></td>
+						<td width="18"></td>
 						<td>
 							<strong>Rig:</strong> 
 						</td>
 						<td><span style="margin-left:5px;text-transform:uppercase;"><?= $project['rig'] ?></span></td>
-						<td width="25"></td>
+						<td width="18"></td>
 						<td><strong>Phase:</strong></td>
 						<td><span style="margin-left:5px;text-transform:uppercase;"><?= $project['current_phase'] ?></span></td>
 					</tr>

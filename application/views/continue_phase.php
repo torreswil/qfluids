@@ -6,11 +6,10 @@
 			<form id="continue_phase_form">
 				<table style="margin-bottom:20px;">					                                       
                     <tr>						
-						<td><input type="radio" checked name="phase" value="<?= isset($project['last_report_meta']['phase']) ? $project['last_report_meta']['phase'] : 1; ?>" /> Continue in the phase <?= $project['last_report_meta']['phase'] ?></td>
-                                  
+						<td><p style="margin:0 0 15px 0;"><input style="margin:5px;" type="radio" checked name="phase" value="<?= isset($project['last_report_meta']['phase']) ? $project['last_report_meta']['phase'] : 1; ?>" /> <strong>PHASE <?= $project['last_report_meta']['phase'] ?>:</strong> Continue.</p></td>
 					</tr>
                     <tr>
-						<td><input type="radio" name="phase" value=" <?= isset($project['last_report_meta']['phase']) ? ($project['last_report_meta']['phase'] + 1): 1; ?>" /> Start phase <?= $project['last_report_meta']['phase'] + 1 ?></td>
+						<td><p style="margin:0 0 15px 0;"><input style="margin:5px;" type="radio" name="phase" value=" <?= isset($project['last_report_meta']['phase']) ? ($project['last_report_meta']['phase'] + 1): 1; ?>" /> <strong>PHASE <?= $project['last_report_meta']['phase'] + 1 ?>:</strong> Start.</p></td>
 					</tr>
 				</table>				
 			</form>
