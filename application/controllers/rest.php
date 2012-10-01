@@ -81,9 +81,10 @@ class Rest extends CI_Controller {
 		$report['project_transactional_id'] = $_POST['project_transactional_id'];
 		$report['date'] 					= $date;
 		$report['number'] 					= $number;
-                $report['phase']                                        = $_POST['phase'];
+        $report['phase']            		= $_POST['phase'];
 
 		$this->Api->create('reports',$report);
+		$this->Api->update_where('projects',array('current_phase'=>$_POST['phase']),array('id'=>$this->project_id));
 
 		$report['message'] 					= 'sucess';
 		$report['number'] 					= str_pad($number, 4, "0", STR_PAD_LEFT);
