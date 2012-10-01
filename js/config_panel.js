@@ -920,12 +920,27 @@ $(function(){
 		},'json');
 	});
 
-	//save enginer settings
+	//save phases number
+	$('#save_phases_number').click(function(e){
+		e.preventDefault();		                    
+                max_phase = $('select[name="phase_number"] option:selected').val();	
+                var data = {'max_phase':max_phase};
+                $.post('/rest/save_project_settings',data,function(r){
+                        if(r.message == 'project_updated'){
+                                alert('Number of phases saved');
+                                location.reload();
+                        }
+                },'json');		
+	});
+        
+        //save enginer settings
 	$('#save_enginer_settings').click(function(e){
 		e.preventDefault();
 		var maximun_enginers = $('#maximun_enginers').val();
+                var operators = $('input[name="operators"]:checked').val();
+                var yard_workers = $('input[name="yard_workers"]:checked').val();
 		if(!isNaN(maximun_enginers)){
-			var data = {'maximun_enginers':maximun_enginers};
+			var data = {'maximun_enginers':maximun_enginers, 'operators': operators, 'yard_workers':yard_workers};
 			$.post('/rest/save_project_settings',data,function(r){
 				if(r.message == 'project_updated'){
 					alert('Enginer settings saved');
@@ -952,26 +967,31 @@ $(function(){
 		});
 
 		//load operators
-		var operators_data = {
-			project 	:$('#project_id').val(),
-			type 		:'operator', 
-			active		: 1
-		};
+                if($("#show_operators").val()==1) {                        
+                       var operators_data = {
+                                project 	:$('#project_id').val(),
+                                type 		:'operator', 
+                                active		: 1
+                        };
 
-		$.post('/rest/load_personal',operators_data,function(r){
-			$('#current_operators_list').html(r);
-		});
+                        $.post('/rest/load_personal',operators_data,function(r){
+                                $('#current_operators_list').html(r);
+                        }); 
+                }
+		
 
 		//load yard workers
-		var yardworker_data = {
-			project 	:$('#project_id').val(),
-			type 		:'yard_worker', 
-			active		: 1
-		};
+                if($("#show_yard_workers").val()==1) {                        
+                        var yardworker_data = {
+                                project 	:$('#project_id').val(),
+                                type 		:'yard_worker', 
+                                active		: 1
+                        };
 
-		$.post('/rest/load_personal',yardworker_data,function(r){
-			$('#current_yardworkers_list').html(r);
-		});	
+                        $.post('/rest/load_personal',yardworker_data,function(r){
+                                $('#current_yardworkers_list').html(r);
+                        });	
+                }		
                 
 	}
     

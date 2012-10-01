@@ -91,7 +91,7 @@ class Rest extends CI_Controller {
 	}	
 
 	public function save_project_settings(){
-		if(count($_POST) > 0){
+		if(count($_POST) > 0){                        
 			$this->Api->update('projects',$_POST,$this->project_id);
 			echo json_encode(array('message'=>'project_updated'));
 		}	

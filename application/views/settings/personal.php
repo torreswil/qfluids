@@ -26,6 +26,27 @@
 	        					</select>
 	        				</td>
 	        			</tr>
+                                        <tr style="height: 50px;">
+	        				<td class="label_m" style="width:354px;">
+	        					<label>Este proyecto tiene operarios de máquina? </label>
+	        				</td>	        				
+                                                <td class="label_m" style="width:354px;">
+	        					<label>Este proyecto tiene obreros de patio?</label>
+	        				</td>	        				
+	        			</tr>
+                                        <tr>						
+                                                <?php $checked = ($project['operators']) ? 'checked' : ''; ?>
+						<td><input type="radio" <?= $checked; ?> name="operators" value="1" /> YES</td>
+                                                <?php $checked = ($project['yard_workers']) ? 'checked' : ''; ?>
+                                                <td><input type="radio" <?= $checked; ?> name="yard_workers" value="1" /> YES</td>
+                                                
+					</tr>
+                                        <tr>
+                                                <?php $checked = (!$project['operators']) ? 'checked' : ''; ?>
+						<td><input type="radio" <?= $checked; ?> name="operators" value="0" /> NO</td>
+                                                <?php $checked = (!$project['yard_workers']) ? 'checked' : ''; ?>
+                                                <td><input type="radio" <?= $checked; ?> name="yard_workers" value="0" /> NO</td>
+					</tr>
 	        			<tr>
 	        				<td></td>	
 	        				<td><input type="button" value="Save report setings" id="save_enginer_settings" style="margin-top:5px;" /></td>
