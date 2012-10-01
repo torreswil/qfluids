@@ -12,31 +12,20 @@
                     <table>
                          <thead>
                               <tr>
+                                <td class="label_m"></td>
                                 <td class="label_m"><label>Material Name</label></td>
                                 <td class="label_m"><label>Unit</label></td>
                                 <td class="label_m"><label>EG</label></td>
-                                <td class="label_m"><label>Price</label></td>
-                                <td class="label_m"><label>Aval.</label></td>
-                                <td class="label_m"><label>Used</label></td>
+                                <td class="label_m"><label>U. Cost</label></td>
+                                <td class="label_m"><label>Received.</label></td>
                                 <td class="label_m"><label>Transf.</label></td>
-                                <td class="label_m"><label>Volume</label></td>
-                                <td class="label_m"><label>Concen.</label></td>
+                                <td class="label_m"><label>Used</label></td>
+                                <td class="label_m"><label>Stock</label></td>
+                                <td class="label_m"><label>T. Cost</label></td>
                               </tr>     
                          </thead>
-                         <tbody>
-                              <?php foreach ($materials as $material) { ?>
-                                <tr class="this_material_<?= $material['product_id']?> ">
-                                     <td><input style="width:400px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
-                                     <td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['unit_name'] ?> (<?= $material['equivalencia'] ?><?= $material['unidad_destino'] ?>)" /></td>
-                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
-                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['price'] ?>" /></td>
-                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['avaliable'] ?>" /></td>
-                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['used'] ?>" /></td>
-                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['transfered'] ?>" /></td>
-                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="0" /></td>
-                                     <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="0" /></td>
-                                </tr>
-                              <?php } ?>
+                         <tbody id="materials_status_table">
+                              <!-- ajax loadaded -->
                          </tbody>     
                     </table>
                </fieldset>

@@ -111,22 +111,22 @@ class Main extends CI_Controller {
 	}
         
         
-        /**
-         * Método para generar el reporte - IvanMel
-         * @param string $format
-         */
-        public function report($format='html') {
-                if($format!='html' && $format!='xls') {
-                        $format='html';
-                }
-                
-                
-                $data['main_content'] = 'report_'.$format;
-                if($format=='html') {
-                        $this->load->view('partials/printer',$data);
-                } else {
-                        //TODO mostra solo la vista sin template
-                }
-                
-        }
+    /**
+     * Método para generar el reporte - IvanMel
+     * @param string $format
+     */
+    public function report($format='html') {
+            if($format!='html' && $format!='xls') {
+                    $format='html';
+            }
+            
+            
+            $data['main_content'] = 'report_'.$format;
+            if($format=='html') {
+                    $this->load->view('partials/printer',$data);
+            } else {
+                    //TODO mostra solo la vista sin template
+            }
+            
+    }
 }

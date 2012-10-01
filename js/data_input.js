@@ -6,6 +6,12 @@
 $(function(){
 
 	/*==========================================================================================================*/
+	// INIT FUNCTIONS
+	/*==========================================================================================================*/
+	//materials
+	load_materials_status();
+
+	/*==========================================================================================================*/
 	// NAVIGATION
 	/*==========================================================================================================*/
 	
@@ -1296,17 +1302,36 @@ $(function(){
 
 				$.post('/rest/register_stock_transfer',$.toJSON(data),function(r){
 					if(r == true){
-						alert('stock transfer registered...');
+						$('.materials_table .material_qty',context).val('');
+						$('.general_st_info input',context).val('');
+						alert('Stock Transfer registered.');
+						load_materials_status();
 					}
 				},'json');
 			}
 		}
 	});
 
+	function load_materials_status(){
+		$('#materials_status_table').load('/rest/load_materials_status');
+	}
 
 	/*==========================================================================================================*/
 	// 7. VOLUMES
 	/*==========================================================================================================*/
+	
+	//show_add_chemicals_overlay
+	$('.show_add_chemicals_overlay').click(function(){
+		$('#add_chemicals_overlay').show();
+	});
+
+	$('#add_chemicals_overlay .close_link').click(function(e){
+		e.preventDefault();
+		$('#add_chemicals_overlay .chemical_qty').val(0);		
+		$('#add_chemicals_overlay').hide();
+	});
+
+
 	/*==========================================================================================================*/
 	// 8. REPORT HISTORY
 	/*==========================================================================================================*/

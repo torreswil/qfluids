@@ -285,6 +285,7 @@
 		</div>
 		<div class="simpleTabsContent">
 			<fieldset>
+				<a href="#add_chemicals_overlay" class="show_add_chemicals_overlay">Add chemicals</a>
 				<table>
 					<tr>
 						<td></td>

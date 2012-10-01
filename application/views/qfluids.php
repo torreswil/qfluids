@@ -54,10 +54,10 @@
 							<input type="hidden" id="master_report_count" value="<?= $project['last_report'] ?>" />
 							<input type="hidden" id="current_report" value="<?= $project['last_report'] ?>" />
 							<input type="hidden" id="project_id" value="<?= $project['id'] ?>" />
-                                                        <input type="hidden" id="show_operators" value="<?= $project['operators'] ?>" />
-                                                        <input type="hidden" id="show_yard_workers" value="<?= $project['yard_workers'] ?>" />
-                                                        <input type="hidden" id="current_phase" value="<?= $project['current_phase'] ?>" />
-                                                        <input type="hidden" id="max_phase" value="<?= $project['max_phase'] ?>" />
+                            <input type="hidden" id="show_operators" value="<?= $project['operators'] ?>" />
+                            <input type="hidden" id="show_yard_workers" value="<?= $project['yard_workers'] ?>" />
+                            <input type="hidden" id="current_phase" value="<?= $project['current_phase'] ?>" />
+                            <input type="hidden" id="max_phase" value="<?= $project['max_phase'] ?>" />
 							<!-- VERY IMPORTANT -->
 
 							<span id="current_report_str" style="margin-left:5px;text-transform:uppercase;"><?= str_pad($project['last_report'], 4, "0", STR_PAD_LEFT); ?></span>
@@ -120,5 +120,6 @@
 	<?php $this->load->view('report_history_overlay'); ?>
 	<?php $this->load->view('project_settings'); ?>
 	<?php $this->load->view('personal_registration_tool'); ?>
-        <?php $this->load->view('continue_phase'); ?>
+    <?php $this->load->view('continue_phase'); ?>
+    <?php $this->load->view('add_chemicals_overlay'); ?>
 </div>

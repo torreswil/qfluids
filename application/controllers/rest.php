@@ -559,5 +559,23 @@ class Rest extends CI_Controller {
 
 		echo json_encode(true);
 	}
+
+	public function load_materials_status(){
+		$materials = $this->Api->get_where('vista_inventario',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
+		foreach ($materials as $material) { ?>
+			<tr class="this_material_<?= $material['product_id']?> ">
+				<td class="label_m"><input type="checkbox" style="margin-top:5px;margin-right:5px;"/></td>
+				<td><input style="width:400px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+				<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$<?= $material['price'] ?>" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="0" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['transfered'] ?>" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['used'] ?>" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['avaliable'] ?>" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$0" /></td>
+            </tr> <?php
+		}
+	}
 }
 /****** THE END ******/
