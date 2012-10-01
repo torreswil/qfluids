@@ -928,7 +928,9 @@ $(function(){
                 $.post('/rest/save_project_settings',data,function(r){
                         if(r.message == 'project_updated'){
                                 alert('Number of phases saved');
-                                location.reload();
+                                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+                        } else{
+                                alert('An error has ocurred. Please try again, or ask the system administrator for help.');
                         }
                 },'json');		
 	});
