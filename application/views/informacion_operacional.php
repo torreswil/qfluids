@@ -156,21 +156,21 @@
 	    					<table>
 	    						<tr>
 	    							<td class="label_m" style="width:90px;"><label>Bottoms up:</label></td>
-	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;"></td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;" name="bottomsup" id="bottomsup"></td>
 	    							<td class="label_m" style="padding-right:5px;">min</td>
 	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;"></td>
 	    							<td class="label_m" style="padding-right:5px;">stk</td>
 	    						</td>
 	    						<tr>
 	    							<td class="label_m"><label>Lag Down:</label></td>
-	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;"></td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;" name="lapdown" id="lapdown"></td>
 	    							<td class="label_m" style="padding-right:5px;">min</td>
 	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;"></td>
 	    							<td class="label_m" style="padding-right:5px;">stk</td>
 	    						</td>
 	    						<tr>
 	    							<td class="label_m"><label>Total Lag:</label></td>
-	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;"></td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;" name="totallap" id="totallap"></td>
 	    							<td class="label_m" style="padding-right:5px;">min</td>
 	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;"></td>
 	    							<td class="label_m" style="padding-right:5px;">stk</td>
