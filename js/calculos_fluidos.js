@@ -1748,17 +1748,31 @@ function calculos_raw(){
 	//bottomsup
 	var bottomsup = 0;
 		bottomsup = (capanultotal * 42) / qgaltotal;
-		completar_campo_val('bottomsup',bottomsup);
+		completar_campo_val('bottomsup',Math.round(bottomsup));
 
 	//lapdown
 	var lapdown = 0; 
 		lapdown = (captotal * 42) / qgaltotal;
-		completar_campo_val('lapdown',lapdown);
+		completar_campo_val('lapdown',Math.round(lapdown));
 
 	//totallap
 	var totallap = 0;
 		totallap = bottomsup + lapdown;
-		completar_campo_val('totallap',totallap);
+		completar_campo_val('totallap',Math.round(totallap));
 	
+	//spmbottoms
+	var spmbottoms = 0; 
+		spmbottoms = (fval('spm_1') + fval('spm_2') + fval('spm_3')) * bottomsup;
+		completar_campo_val('spmbottoms',Math.round(spmbottoms));
+
+	//spmdown
+	var	spmdown = 0;
+		spmdown = (fval('spm_1') + fval('spm_2') + fval('spm_3')) * lapdown;
+		completar_campo_val('spmdown',Math.round(spmdown));
+
+	//spmtotallap
+	var	spmtotallap = 0; 
+		spmtotallap = (fval('spm_1') + fval('spm_2') + fval('spm_3')) * totallap;
+		completar_campo_val('spmtotallap',Math.round(spmtotallap));
 
 }

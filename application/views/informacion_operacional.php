@@ -144,9 +144,9 @@
 								<tr>
 									<td class="label_m"><label>SPM:</label></td>
 									<td class="unit_field"></td>
-									<td><input type="text" style="width:75px;" class="pump_1" name="spm_1" id="spm_1" /></td>
-									<td><input type="text" style="width:75px;" class="pump_2" name="spm_2" id="spm_2" /></td>
-									<td><input type="text" style="width:75px;" class="pump_3" name="spm_3" id="spm_3" /></td>
+									<td><input type="text" style="width:75px;" class="pump_1" name="spm_1" id="spm_1" value="0" /></td>
+									<td><input type="text" style="width:75px;" class="pump_2" name="spm_2" id="spm_2" value="0" /></td>
+									<td><input type="text" style="width:75px;" class="pump_3" name="spm_3" id="spm_3" value="0" /></td>
 									
 								</tr>
 							</table>			
@@ -158,21 +158,21 @@
 	    							<td class="label_m" style="width:90px;"><label>Bottoms up:</label></td>
 	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;" name="bottomsup" id="bottomsup"></td>
 	    							<td class="label_m" style="padding-right:5px;">min</td>
-	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;"></td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;" name="spmbottoms" id="spmbottoms" ></td>
 	    							<td class="label_m" style="padding-right:5px;">stk</td>
 	    						</td>
 	    						<tr>
 	    							<td class="label_m"><label>Lag Down:</label></td>
 	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;" name="lapdown" id="lapdown"></td>
 	    							<td class="label_m" style="padding-right:5px;">min</td>
-	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;"></td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;" name="spmdown" id="spmdown" ></td>
 	    							<td class="label_m" style="padding-right:5px;">stk</td>
 	    						</td>
 	    						<tr>
 	    							<td class="label_m"><label>Total Lag:</label></td>
 	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;" name="totallap" id="totallap"></td>
 	    							<td class="label_m" style="padding-right:5px;">min</td>
-	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;"></td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;" name="spmtotallap" id="spmtotallap" ></td>
 	    							<td class="label_m" style="padding-right:5px;">stk</td>
 	    						</td>
 	    						<tr>
