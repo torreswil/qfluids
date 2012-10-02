@@ -111,10 +111,11 @@
 			</table>
 	    </div>
 	    <div class="simpleTabsContent">
-	    	<table>
+	    	<table style="width:100%;">
 	    		<tr>
 	    			<td style="width:50%">
-	    				<fieldset style="width:402px;">
+	    				<fieldset style="width:93%;">
+	    					<legend>Pump system</legend>
 				    		<table>
 								<tr>
 									<td></td>
@@ -150,9 +151,43 @@
 								</tr>
 							</table>			
 	    				</fieldset>
+	    				<fieldset style="width:93%">
+	    					<legend>Lag Strokes & Lag Time</legend>
+	    					<table>
+	    						<tr>
+	    							<td class="label_m" style="width:90px;"><label>Bottoms up:</label></td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;"></td>
+	    							<td class="label_m" style="padding-right:5px;">min</td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;"></td>
+	    							<td class="label_m" style="padding-right:5px;">stk</td>
+	    						</td>
+	    						<tr>
+	    							<td class="label_m"><label>Lag Down:</label></td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;"></td>
+	    							<td class="label_m" style="padding-right:5px;">min</td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;"></td>
+	    							<td class="label_m" style="padding-right:5px;">stk</td>
+	    						</td>
+	    						<tr>
+	    							<td class="label_m"><label>Total Lag:</label></td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;"></td>
+	    							<td class="label_m" style="padding-right:5px;">min</td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;"></td>
+	    							<td class="label_m" style="padding-right:5px;">stk</td>
+	    						</td>
+	    						<tr>
+	    							<td class="label_m"><label>Circulate:</label></td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;"></td>
+	    							<td class="label_m" style="padding-right:5px;">min</td>
+	    							<td class="label_m"><input type="text" disabled="disabled" style="margin-right:2px;width:43px;margin-left:14px;"></td>
+	    							<td class="label_m" style="padding-right:5px;">stk</td>
+	    						</td>
+	    					</table>
+	    				</fieldset>
 	    			</td>
 	    			<td style="width:50%">
 	    				<fieldset>
+	    					<legend>Pump properties</legend>
 				    		<table>
 								<tr>
 									<td></td>

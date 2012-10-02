@@ -393,7 +393,7 @@
 								</tr>
 								<tr>
 									<td class="label_m"><label>pv</label></td>
-									<td class="unit_field">lbf/100 ft<sup>2</sup></td>
+									<td class="unit_field">cp</td>
 									<td><input type="text" style="width:60px;"></td>
 									<td><input type="text" style="width:60px;" disabled="disabled" id="pv_1" name="pv_1" class="pv"></td>
 									<td><input type="text" style="width:60px;" disabled="disabled" id="pv_2" name="pv_2" class="pv"></td>

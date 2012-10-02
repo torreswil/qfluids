@@ -4,7 +4,7 @@
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Enginers</a></li>
 			<li class="tab_operators"><a href="#">Operators</a></li>                        
-			<li class="tab_yard_workers"><a href="#">Yard Workers</a></li>                                                
+			<li class="tab_yard_workers"><a href="#">Patio Hands</a></li>                                                
 	      	<li><a href="#">Third Party</a></li>
 	    </ul>
 	  

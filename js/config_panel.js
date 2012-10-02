@@ -935,37 +935,78 @@ $(function(){
                 },'json');		
 	});
         
-        //save enginer settings
+    //save enginer settings
 	$('#save_enginer_settings').click(function(e){
 		e.preventDefault();
-		var maximun_enginers = $('#maximun_enginers').val();
-                var operators = $('input[name="operators"]:checked').val();
-                var yard_workers = $('input[name="yard_workers"]:checked').val();
+		var maximun_enginers 		= $('#maximun_enginers').val();
+                var operators 		= $('input[name="operators"]:checked').val();
+                var yard_workers 	= $('input[name="yard_workers"]:checked').val();
+		
 		if(!isNaN(maximun_enginers)){
-			var data = {'maximun_enginers':maximun_enginers, 'operators': operators, 'yard_workers':yard_workers};
+			var data = {
+				'maximun_enginers'	: maximun_enginers, 
+				'operators'			: operators, 
+				'yard_workers'		: yard_workers
+			};
+			
 			$.post('/rest/save_project_settings',data,function(r){
 				if(r.message == 'project_updated'){
-                                        if(yard_workers==1) {
-                                                $('.tab_yard_workers').show();
-                                                $("#show_yard_workers").val('1');
-                                        } else {
-                                                $('.tab_yard_workers').hide();
-                                                $("#show_yard_workers").val('0');
-                                        }
-                                        if(operators==1) {
-                                                $('.tab_operators').show();
-                                                $('#show_operators').val('1');
-                                        } else {
-                                                $('.tab_operators').hide();
-                                                $('#show_operators').val('0');
-                                        }
+                    if(yard_workers == 1) {
+                        $('.tab_yard_workers').show();
+                        $("#show_yard_workers").val('1');
+                    } else {
+                        $('.tab_yard_workers').hide();
+                        $("#show_yard_workers").val('0');
+                    }
+                    if(operators == 1) {
+                        $('.tab_operators').show();
+                        $('#show_operators').val('1');
+                    } else{
+                        $('.tab_operators').hide();
+                        $('#show_operators').val('0');
+                    }
 					alert('Enginer settings saved');
+					$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 				}else{
 					alert('An error has ocurred. Please try again, or ask the system administrator for help.');
 				}
 			},'json');
+
 		}else{
 			alert('Some fields are wrong. Please verify and try again');
+		}
+	});
+	
+	$('#enginer_configuration input[type="radio"]').change(function(){
+		var data = {
+			setting_type : $(this).attr('name'),
+			value 		 : $(this).val()
+		};
+
+		$.post('/rest/set_personal_settings',data,function(r){
+			if(r == true){
+				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
+			}else{
+				alert('An error has ocurred. Please try again');
+			}
+		},'json');
+
+		//operators activated
+		if(data.setting_type == 'operators' && parseInt(data.value) == 1){
+			$('.tab_operators').show();
+		}
+		//operators deactivated
+		if(data.setting_type == 'operators' && parseInt(data.value) == 0){
+			$('.tab_operators').hide();	
+		}
+
+		//yardworkers activated
+		if(data.setting_type == 'yard_workers' && parseInt(data.value) == 1){
+			$('.tab_yard_workers').show();
+		}
+		//yardworkers deactivated
+		if(data.setting_type == 'yard_workers' && parseInt(data.value) == 0){
+			$('.tab_yard_workers').hide();	
 		}
 	});
         
@@ -983,36 +1024,35 @@ $(function(){
 		});
 
 		//load operators
-                if($("#show_operators").val()==1) {                        
-                       var operators_data = {
-                                project 	:$('#project_id').val(),
-                                type 		:'operator', 
-                                active		: 1
-                        };
+        if($("#show_operators").val()==1) {                        
+               var operators_data = {
+                        project 	:$('#project_id').val(),
+                        type 		:'operator', 
+                        active		: 1
+                };
 
-                        $.post('/rest/load_personal',operators_data,function(r){
-                                $('#current_operators_list').html(r);
-                        }); 
-                } else {                        
-                        $('.tab_operators').hide();
-                }
+                $.post('/rest/load_personal',operators_data,function(r){
+                        $('#current_operators_list').html(r);
+                }); 
+        } else {                        
+                $('.tab_operators').hide();
+        }
 		
 
 		//load yard workers
-                if($("#show_yard_workers").val()==1) {                        
-                        var yardworker_data = {
-                                project 	:$('#project_id').val(),
-                                type 		:'yard_worker', 
-                                active		: 1
-                        };
+        if($("#show_yard_workers").val()==1) {                        
+                var yardworker_data = {
+                        project 	:$('#project_id').val(),
+                        type 		:'yard_worker', 
+                        active		: 1
+                };
 
-                        $.post('/rest/load_personal',yardworker_data,function(r){
-                                $('#current_yardworkers_list').html(r);
-                        });	
-                } else {
-                        $('.tab_yard_workers').hide();
-                }		
-                
+                $.post('/rest/load_personal',yardworker_data,function(r){
+                        $('#current_yardworkers_list').html(r);
+                });	
+        } else {
+                $('.tab_yard_workers').hide();
+        }		        
 	}
     
 

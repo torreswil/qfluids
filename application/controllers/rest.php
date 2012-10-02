@@ -579,5 +579,17 @@ class Rest extends CI_Controller {
             </tr> <?php
 		}
 	}
+
+	public function set_personal_settings(){
+		if(count($_POST) > 0){
+			if($_POST['setting_type'] == 'operators'){
+				$data = array('operators'=>$_POST['value']);
+			}else if($_POST['setting_type'] == 'yard_workers'){
+				$data = array('yard_workers'=>$_POST['value']);
+			}
+			$this->Api->update_where('projects',$data,array('id'=>$this->project_id));
+			echo json_encode(true);
+		}
+	}
 }
 /****** THE END ******/
