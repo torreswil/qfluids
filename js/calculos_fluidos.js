@@ -1745,10 +1745,10 @@ function calculos_raw(){
 		completar_campo_val('volrealtk_'+id,volrealtk.toFixed(1));
 	});
 
-	//bottonsup
-	var bottonsup = 0;
-		bottonsup = (capanultotal * 42) / qgaltotal;
-		completar_campo_val('bottonsup',bottonsup);
+	//bottomsup
+	var bottomsup = 0;
+		bottomsup = (capanultotal * 42) / qgaltotal;
+		completar_campo_val('bottomsup',bottomsup);
 
 	//lapdown
 	var lapdown = 0; 
