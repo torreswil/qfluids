@@ -1342,6 +1342,13 @@ $(function(){
 		$('#reserve_td_'+target).show();
 	});
 
+	$('.remove_activetank').change(function(){
+		var check = $(this).attr('checked');
+		if(check == undefined){}else if(check == checked){
+			
+		}
+	});
+
 
 	/*==========================================================================================================*/
 	// 8. REPORT HISTORY

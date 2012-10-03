@@ -112,24 +112,21 @@
 					echo '<fieldset><legend>Tanks</legend><p>There are no configured tanks. Plase go "Menu - Settings - Tanks" and create some to get started.</p></fieldset>';
 				}else{ ?>
 					<fieldset>
-						<legend>Tanks</legend>
 						<table>
 							<thead>
 								<tr>
-									<td class="label_m"><label>SYSTEM:</label></td>
-									<td class="label_m"><label>TANK NAME:</label></td>
-			        				<td class="label_m"><label>AGITATORS #:</label></td>
-			        				<td class="label_m"><label>JETS:</label></td>
-			        				<td class="label_m"><label>TANK TYPE:</label></td>
-			        				<td class="label_m" style="text-align:center;"><label>VOL. CAPACITY:</label></td>
-			        				<td class="label_m" style="text-align:center;"><label>MAX HEADROOM:</label></td>
-			        				<td class="label_m" style="text-align:center;"><label>HEADROOM:</label></td>
-			        				<td class="label_m" style="text-align:center;"><label>VOLUME:</label></td>
+									<td class="label_m" style="width:123px;"><label>TANK NAME:</label></td>
+			        				<td class="label_m" style="width:91px;"><label>AGITATORS #:</label></td>
+			        				<td class="label_m" style="width:50px;"><label>JETS:</label></td>
+			        				<td class="label_m" style="width:112px;"><label>TANK TYPE:</label></td>
+			        				<td class="label_m" style="text-align:center;width:105px;"><label>VOL. CAPACITY:</label></td>
+			        				<td class="label_m" style="text-align:center;width:109px;"><label>MAX HEADROOM:</label></td>
+			        				<td class="label_m" style="text-align:center;width:100px;"><label>HEADROOM:</label></td>
+			        				<td class="label_m" style="text-align:center;width:100px;"><label>VOLUME:</label></td>
 			        				<td class="label_m" style="text-align:center;"></td>
 			        				<td class="label_m" style="text-align:center;"></td>
 								</tr>
 								<tr>
-									<td class="label_m" style="text-align:center;"></td>
 									<td class="label_m" style="text-align:center;"></td>
 			        				<td class="label_m" style="text-align:center;"></td>
 			        				<td class="label_m" style="text-align:center;"></td>
@@ -142,15 +139,19 @@
 			        				<td class="label_m" style="text-align:center;"></td>
 								</tr>
 							</thead>
-							<tbody>
-
+						</table>
+					</fieldset>
+					
+					<?php if(count($trip_tanks) > 0){ ?>
+						<fieldset>
+							<legend>Trip Tank</legend>
+							<table>
 								<?php 
 									//TRIP TANK
 									foreach($trip_tanks as $tank){ 
 										$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
 								?>
 									<tr>
-										<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="Trip Tank" /></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_name'] ?>" /></td>
 				        				<td class="label_m"><input type="text" style="margin-right:0;width:70px;"  disabled="disabled" value="<?= $tank['agitators'] ?>" /></td>
 				        				<td class="label_m"><input type="text" style="margin-right:0;width:30px;"  disabled="disabled" value="<?= $has_jets ?>" /></td>
@@ -174,14 +175,20 @@
 			        					<td class="label_m" style="text-align:center;"></td>
 									</tr>
 								<?php } ?>
-
+							</table>
+						</fieldset>
+					<?php } ?>
+					
+					<?php if(count($active_tanks) > 0){ ?>
+						<fieldset>
+							<legend>Active Tanks</legend>
+							<table>		
 								<?php
 									//ACTIVE TANKS 
 									foreach($active_tanks as $tank){ 
 										$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
 								?>
 									<tr>
-										<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="Active Tanks" /></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_name'] ?>" /></td>
 				        				<td class="label_m"><input type="text" style="margin-right:0;width:70px;"  disabled="disabled" value="<?= $tank['agitators'] ?>" /></td>
 				        				<td class="label_m"><input type="text" style="margin-right:0;width:30px;"  disabled="disabled" value="<?= $has_jets ?>" /></td>
@@ -201,17 +208,23 @@
 				        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" id="hlibremax_<?= $tank['id'] ?>" /></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="0" /></td>
 				        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="volrealtk" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
-				        				<td class="label_m" style="text-align:center;"><input type="checkbox" style="margin-top:4px;margin-left:5px;margin-right:5px;" /></td>
+				        				<td class="label_m" style="text-align:center;"><input type="checkbox" style="margin-top:4px;margin-left:5px;margin-right:5px;" checked="checked" class="remove_activetank" id="active_tank_<?= $tank['id'] ?>" /></td>
 			        					<td class="label_m" style="text-align:center;">Fluid Circuit</td>
 									</tr>
 								<?php } ?>
+							</table>		
+						</fieldset>
+					<?php } ?>
 
+					<?php if(count($pill_tanks) > 0){ ?>
+						<fieldset>
+							<legend>Pill Tanks</legend>
+							<table>
 								<?php 
 									foreach($pill_tanks as $tank){ 
 										$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
 								?>
 									<tr>
-										<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="Pill Tanks" /></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_name'] ?>" /></td>
 				        				<td class="label_m"><input type="text" style="margin-right:0;width:70px;"  disabled="disabled" value="<?= $tank['agitators'] ?>" /></td>
 				        				<td class="label_m"><input type="text" style="margin-right:0;width:30px;"  disabled="disabled" value="<?= $has_jets ?>" /></td>
@@ -235,9 +248,10 @@
 			        					<td class="label_m" style="text-align:center;"></td>
 									</tr>
 								<?php } ?>
-							</tbody>
-						</table>
-					</fieldset>
+							</table>
+						</fieldset>
+					<?php } ?>	
+						
 			<?php } ?>
 		</div>
 
