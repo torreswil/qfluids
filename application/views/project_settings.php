@@ -8,7 +8,7 @@
 				<li><a href="#rig">Rig</a></li>
 				<li><a href="#cse">Control Solids Eq.</a></li>
 				<li><a href="#tanks">Tanks</a></li>
-				<li><a href="#mudproperties">Mud properties</a></li>
+				<li><a href="#mudproperties" id="mud_properties_link">Mud properties</a></li>
 				<li><a href="#inventario">Materials</a></li>
 				<li><a href="#enginers" id="personal_settings_link">Personnel</a></li>
                 <li><a href="#tools_and_mud" id="tools_settings_link">Mud and Tools library</a></li>

@@ -591,5 +591,67 @@ class Rest extends CI_Controller {
 			echo json_encode(true);
 		}
 	}
+        
+        /**
+         * MUD PROPERTIES
+         */
+        public function load_test(){
+		if(count($_POST) > 0){	    
+                        
+                        $project = $this->session->userdata('project');
+                        
+                        $tests = $this->Api->get_where('test', $_POST);
+                                                
+                        if(isset($_POST['custom'])) {
+                                foreach($tests as $test) {
+                                        if($test['type_test']==1) {
+                                                $type = 'Physical and Chemical properties';
+                                        } else if($test['type_test']==2) {
+                                                $type = 'Rheology';
+                                        } else {
+                                                $type = 'Solid math';
+                                        }
+                                        echo '<tr id="this_test_'.$test['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$test['test'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$test['unit_test'].'" /></td><td><input type="text" style="width:200px;" disabled="" value="'.$type.'" /></td><td><a href="#remove_test" class="remove_test_link" id="rm_test_'.$test['id'].'"><img src="/img/delete.png" /></a></td></tr>';
+                                }
+                        } else {                                
+                                $rs = "<tr><td></td><td class=\"unit_field\"></td>";                                
+                                for($i=1 ; $i<=$project['max_phase'] ; $i++) {
+                                        $rs.= "<td class=\"label_m\"><label>Program $i</label></td>";
+                                }                                
+                                $rs.='</tr>';                        			
+                                foreach($tests as $test) {
+                                        //TODO consultar los program registrados según el test
+                                        $rs.= "<tr id=\"this_test_list_{$test['id']}\"><td class=\"label_m\"><label>{$test['test']}</label></td><td class=\"unit_field\">{$test['unit_test']}</td>";
+                                        for($i=0 ; $i<$project['max_phase'] ; $i++) {
+                                                //TODO revisar el nombre del input para guardar                                                
+                                                $rs.= "<td><input type=\"text\" name=\"field_test_{$test['id']}[] \" style=\"width:60px;\"></td>";
+                                        }
+                                        $rs.= "</tr>";                                        
+                                }                                   
+                                echo $rs;
+                        }
+		}
+	}
+        
+        public function new_test(){
+		if(count($_POST) > 0){			
+			$match = $this->Api->get_where('test',array('test' => $_POST['test'], 'type_test' => $_POST['type_test'], 'unit_test' => $_POST['unit_test'], 'active' => 1));
+			if(count($match) > 0){
+				$response = array('message'=>'already_created');
+			} else {				
+				$this->Api->create('test',$_POST);
+				$test           = $this->Api->get_where('test',array('test' => $_POST['test'], 'active' => 1, 'type_test'=>$_POST['type_test']));
+				$response 	= array('message'=>'success','test'=>$test);
+			}
+			echo json_encode($response);
+		}
+	}
+        
+        public function remove_test(){
+		if(count($_POST) > 0){
+			$this->Api->delete('test',$_POST['id']);
+			echo json_encode(array('message'=>'deactivated'));
+		}
+	}
 }
 /****** THE END ******/

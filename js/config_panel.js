@@ -30,6 +30,7 @@ $(function(){
 	load_personal();
 	load_current_tanks();
 	load_tools_and_mud();
+        load_test();
 
 	/*==========================================================================================================*/
 	// 1. GENERAL
@@ -1160,7 +1161,7 @@ $(function(){
 
     }
 
-    /*==========================================================================================================*/
+        /*==========================================================================================================*/
 	// 8. MATERIALS
 	/*==========================================================================================================*/    
     
@@ -1181,6 +1182,96 @@ $(function(){
 				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
 			}else{
 				alert('An error has ocurred. Please try again.');
+			}
+		},'json');
+	});
+        
+        /*==========================================================================================================*/
+	// 8. MUD PROPERTIES
+	/*==========================================================================================================*/    
+        
+        //when opening the mud properties link..
+	$('#mud_properties_link').click(function(e){
+		e.preventDefault();                
+		load_test();
+	})
+        
+        function load_test() {
+                //load enginers
+		var p_and_c_data = {			
+			type_test	: 1, 
+			active		: 1
+		};
+                $.post('/rest/load_test',p_and_c_data,function(r){			
+                        $('#settings_physical_and_chemical_list').html(r);
+                });
+                var rheology_data = {			
+			type_test	: 2, 
+			active		: 1
+		};                
+                $.post('/rest/load_test',rheology_data,function(r){			
+                        $('#settings_rheology_list').html(r);
+                });
+                var solids_math_data = {			
+			type_test	: 3, 
+			active		: 1
+		};
+                $.post('/rest/load_test',solids_math_data,function(r){			
+                        $('#settings_solids_math_list').html(r);
+                });
+                var custom_data = {			
+			custom          : 1, 
+			active		: 1
+		};
+                $.post('/rest/load_test',custom_data,function(r){			
+                        $('#custom_test_list').html(r);
+                });
+                
+        }
+        
+        //create a new enginer
+	$('#form_new_test a').click(function(e){
+		e.preventDefault();
+                
+		var current_form = $(this).parents('form');
+		var eqty = 0;
+		$('input',current_form).each(function(){
+			if($(this).val() == ''){
+				eqty = eqty + 1;
+			}
+		});
+		$('select',current_form).each(function(){
+			if($(this).val() == ''){
+				eqty = eqty + 1;
+			}
+		});
+		if(eqty > 0){
+			alert('Some fields are empty, please verify and try again.');
+		} else {
+			var data = current_form.serialize();
+			$('input[name="test"],input[name="unit_test"],select[name="type_test"]',current_form).val('');
+			$.post('/rest/new_test',data,function(r){
+				if(r.message == 'already_created'){
+					alert('This test is already created');
+				}else{
+					load_test();
+					$('#close_settings_btn').val('Close & Reload').removeClass('just_close');			
+				}
+			},'json');	
+		}
+	});
+        
+        //remove an test
+	$('.remove_test_link').live('click',function(e){
+		e.preventDefault();
+		var id = $(this).attr('id');
+		id = id.split('rm_test_')[1];		
+                
+		var data = {'id':id};
+		$.post('/rest/remove_test',data,function(r){
+			if(r.message == 'deactivated'){
+				load_test();
+				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 			}
 		},'json');
 	});
