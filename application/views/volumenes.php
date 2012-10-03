@@ -182,13 +182,13 @@
 					<?php if(count($active_tanks) > 0){ ?>
 						<fieldset>
 							<legend>Active Tanks</legend>
-							<table>		
+							<table id="inside_circuit_active_tanks">		
 								<?php
 									//ACTIVE TANKS 
 									foreach($active_tanks as $tank){ 
 										$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
 								?>
-									<tr>
+									<tr id="this_active_tank_<?= $tank['id'] ?>">
 										<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_name'] ?>" /></td>
 				        				<td class="label_m"><input type="text" style="margin-right:0;width:70px;"  disabled="disabled" value="<?= $tank['agitators'] ?>" /></td>
 				        				<td class="label_m"><input type="text" style="margin-right:0;width:30px;"  disabled="disabled" value="<?= $has_jets ?>" /></td>
@@ -215,6 +215,11 @@
 							</table>		
 						</fieldset>
 					<?php } ?>
+
+					<fieldset style="display:none;">
+						<legend>Out of active</legend>
+						<table id="out_of_active_table"></table>
+					</fieldset>
 
 					<?php if(count($pill_tanks) > 0){ ?>
 						<fieldset>

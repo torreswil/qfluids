@@ -1342,10 +1342,27 @@ $(function(){
 		$('#reserve_td_'+target).show();
 	});
 
-	$('.remove_activetank').change(function(){
+	$('.remove_activetank').live('change',function(){
 		var check = $(this).attr('checked');
-		if(check == undefined){}else if(check == checked){
-			
+		var id = $(this).attr('id');
+			id = id.split('active_tank_');
+			id = id[1];
+
+		//tank has been unchecked, move to out of circuit
+		if(check == undefined){
+			var tank_html = $('#this_active_tank_'+id);
+			$('#this_active_tank_'+id).remove();
+			$('#out_of_active_table').append(tank_html).parent().show();
+
+		//tank is active again, move to the mud circuit
+		}else if(check == 'checked'){
+			var tank_html = $('#this_active_tank_'+id);
+			$('#this_active_tank_'+id).remove();
+			$('#inside_circuit_active_tanks').append(tank_html).parent().show();
+
+			if($('#out_of_active_table tr').length == 0){
+				$('#out_of_active_table').parent().hide();	
+			}
 		}
 	});
 
