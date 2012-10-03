@@ -1332,6 +1332,16 @@ $(function(){
 		$('#add_chemicals_overlay').hide();
 	});
 
+	$('.show_n_hide_reserves').click(function(e){
+		e.preventDefault();
+		var target = $(this).attr('href');
+			target = target.split('toggle_plus_');
+			target = target[1];
+
+		$('.reserve_td').hide();
+		$('#reserve_td_'+target).show();
+	});
+
 
 	/*==========================================================================================================*/
 	// 8. REPORT HISTORY
