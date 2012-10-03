@@ -1354,6 +1354,10 @@ $(function(){
 			$('#this_active_tank_'+id).remove();
 			$('#out_of_active_table').append(tank_html).parent().show();
 
+			if($('#inside_circuit_active_tanks tr').length == 0){
+				$('#inside_circuit_active_tanks').parent().hide();	
+			}
+
 		//tank is active again, move to the mud circuit
 		}else if(check == 'checked'){
 			var tank_html = $('#this_active_tank_'+id);
