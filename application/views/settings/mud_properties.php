@@ -34,339 +34,57 @@
 		</div>
         <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
-        		<table>
-                                
-                                <tr>
-                                        <td></td>
-                                        <td class="unit_field"></td>
-                                        <?php $counter_phase = 1; ?>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td class="label_m"><label>Program <?= $counter_phase; ?></label></td>
-                                        <?php $counter_phase++; ?>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>depth</label></td>
-                                        <td class="unit_field">ft</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>pit/flow line</label></td>
-                                        <td class="unit_field"></td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>flowline temp</label></td>
-                                        <td class="unit_field">ºF</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>mud weight</label></td>
-                                        <td class="unit_field">ppg</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>Funnel viscosity</label></td>
-                                        <td class="unit_field">sec/qt</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>API fl/cake</label></td>
-                                        <td class="unit_field">c.c./30min</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>Sand</label></td>
-                                        <td class="unit_field">% vol</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>Lubricant</label></td>
-                                        <td class="unit_field">% vol</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>Inhibitor</label></td>
-                                        <td class="unit_field">gpb</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-
-                                <tr>
-                                        <td class="label_m"><label>pH METER</label></td>
-                                        <td class="unit_field"></td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>PM</label></td>
-                                        <td class="unit_field">ml <span style="text-transform:uppercase">H<sub>2</sub>SO<sub>4</sub></span></td>                                        
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>PF/MF</label></td>
-                                        <td class="unit_field">ml <span style="text-transform:uppercase">H<sub>2</sub>SO<sub>4</sub></span></td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>MBT</label></td>
-                                        <td class="unit_field">lb/bbl eq</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>CHLORIDES</label></td>
-                                        <td class="unit_field">mg/l</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
-                                <tr>
-                                        <td class="label_m"><label>Ca++</label></td>
-                                        <td class="unit_field">mg/l</td>
-                                        <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                        <td><input type="text" style="width:60px;"></td>
-                                        <?php } ?>
-                                </tr>
+        		<table id="settings_physical_and_chemical_list">
+                                                                
                         </table>	
         	</fieldset>
         </div>
         <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
-        		<table>
-					<tr>
-						<td></td>
-						<td class="unit_field"></td>						
-                                                <?php $counter_phase = 1; ?>
-                                                <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                                <td class="label_m"><label>Program <?= $counter_phase; ?></label></td>
-                                                <?php $counter_phase++; ?>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>&theta;600</label></td>
-						<td class="unit_field"></td>
-                                                <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>&theta;300</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>&theta;200</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>&theta;100</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>&theta;6</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>&theta;3</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>GEL:</label></td>
-						<td class="unit_field"></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>10"</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>10'</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>30'</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>pv</label></td>
-						<td class="unit_field">lbf/100 ft<sup>2</sup></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>yp</label></td>
-						<td class="unit_field">lbf/100 ft<sup>2</sup></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>YS</label></td>
-						<td class="unit_field">lbf/100 ft<sup>2</sup></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label style="text-transform:lowercase;">n</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label style="text-transform:lowercase;">k</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>c.c.i.</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-				</table>
+        		<table id="settings_rheology_list">
+                                
+                        </table>
         	</fieldset>
         </div>
         <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
-	        	<table>
-					<tr>
-						<td></td>
-						<td></td>
-						<?php $counter_phase = 1; ?>
-                                                <?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-                                                <td class="label_m"><label>Program <?= $counter_phase; ?></label></td>
-                                                <?php $counter_phase++; ?>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Water</label></td>
-						<td class="unit_field">% Vol</td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Oil</label></td>
-						<td class="unit_field">% Vol</td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>	
-					<tr>
-						<td class="label_m"><label>Solids</label></td>
-						<td class="unit_field">% Vol</td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>ASG Solids</label></td>
-						<td class="unit_field"></td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>LGS</label></td>
-						<td class="unit_field">ppb</td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>HGS</label></td>
-						<td class="unit_field">ppb</td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>LGS</label></td>
-						<td class="unit_field">% Vol.</td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>
-					<tr>
-						<td class="label_m"><label>HGS</label></td>
-						<td class="unit_field">% Vol.</td>
-						<?php for($i=0 ; $i<$project['max_phase'] ; $i++) { ?>
-						<td><input type="text" style="width:60px;" ></td>
-                                                <?php } ?>
-					</tr>							
-				</table>
+	        	<table id="settings_solids_math_list">
+                                
+                        </table>
         	</fieldset>
         </div>
         <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
         		<legend>Create a new test</legend>
-        		<table>
-        			<tr>
-        				<td class="label_m"><label>Test name:</label></td>
-        				<td class="label_m"><label>Report Unit:</label></td>
-        				<td class="label_m"><label>Program:</label></td>
-        			</tr>
-                                <?php for($i=1 ; $i<=$project['max_phase'] ; $i++) { ?>
-                                <tr>
-        				<td class="label_m"><input type="text" /></td>
-        				<td class="label_m"><input type="text" /></td>
-        				<td class="label_m"><input type="text" value="<?= $i; ?>" /></td>                                        
-        			</tr>                                
-                                <?php } ?>        			
-        		</table>
+                        <form id="form_new_test">
+                                <table>
+                                        <tr>
+                                                <td class="label_m"><label>Test name:</label></td>
+                                                <td class="label_m"><label>Report Unit:</label></td>
+                                                <td class="label_m"><label>Type:</label></td>
+                                                <td></td>
+                                        </tr>
+
+                                        <tr>
+                                                <td><input type="text" name="test" style="width:110px;" /></td>
+                                                <td><input type="text" name="unit_test" style="width:110px;" /></td>
+                                                <td>
+                                                        <select name="type_test" style="width:200px;">
+                                                                <option value="">Select...</option>
+                                                                <option value="1">Physical and Chemical properties</option>
+                                                                <option value="2">Rheology</option>
+                                                                <option value="3">Solids Math</option>
+                                                        </select>
+                                                </td>            
+                                                <td class="label_m">
+                                                        <a href="#create_test">Create</a>                                                
+                                                        <input type="hidden" name="custom" value="1" />
+                                                </td>
+                                        </tr>                                
+
+                                </table>
+                        </form>
+                        <table id="custom_test_list"></table>
         	</fieldset>
         </div>
     </div>
