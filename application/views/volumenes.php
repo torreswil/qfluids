@@ -377,7 +377,7 @@
 									</tr>
 								</table>
 							</fieldset>
-							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;width:40%;height:223px;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
+							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;width:40%;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
 								<legend>Tank</legend>
 								<table>
 									<tr>
