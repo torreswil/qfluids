@@ -1787,4 +1787,8 @@ function calculos_raw(){
 		dailysurface = fval('surf') + fval('caving') + fval('shakers') + fval('cleaner') + fval('centri') + fval('dew') + fval('becsg') + fval('others');
 		completar_campo_val('dailysurface',Math.round(dailysurface));
 
+	var totallosses = 0;
+	totallosses = dailysubsurface + dailysurface;
+	completar_campo_val('totallosses',totallosses);
+	completar_campo_val('ztotallosses',totallosses);	
 }

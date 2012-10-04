@@ -290,7 +290,7 @@
 					</tr>
 					<tr>
 						<td class="label_m"><label>TOTAL LOSSES</label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;" name="totallosses" id="totallosses" > bbl</td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>VOLUMEN POR FUERA DEL CIRCUITO ACTIVO</label></td>
@@ -484,7 +484,7 @@
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total losses:</label></td>
-									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" /> bbl</td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" id="ztotallosses" name="ztotallosses" /> bbl</td>
 								</tr>
 							</table>
 						</td>
