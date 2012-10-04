@@ -368,12 +368,8 @@
 										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 									</tr>
 									<tr>
-										<td class="label_m"><label><a href="#" class="" style="text-decoration:underline;">MUD TRANSFERED TO ACTIVE:</a></label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>TOTAL LOSSES:</label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+										<td class="label_m"><label>MUD TRANSFERED TO ACTIVE:</label></td>
+										<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
