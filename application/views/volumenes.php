@@ -289,7 +289,7 @@
 						<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
-						<td class="label_m"><label><a href="#" class="" style="text-decoration:underline;">MUD TRANSFERED TO RESERVES</a></label></td>
+						<td class="label_m"><label><a href="#transfer_mud_to_reserves" class="mtr_link" style="text-decoration:underline;">MUD TRANSFERED TO RESERVES</a></label></td>
 						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
