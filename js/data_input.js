@@ -1338,8 +1338,16 @@ $(function(){
 			target = target.split('toggle_plus_');
 			target = target[1];
 
-		$('.reserve_td').hide();
-		$('#reserve_td_'+target).show();
+		if($(this).hasClass('closed')){
+			$('.reserve_td').hide();
+			$('.reserve_td_'+target).show();
+			$(this).removeClass('closed').addClass('opened');	
+		}else if($(this).hasClass('opened')){
+			$('.reserve_td').hide();
+			$(this).removeClass('opened').addClass('closed');	
+		}	
+
+		
 	});
 
 	$('.remove_activetank').live('change',function(){

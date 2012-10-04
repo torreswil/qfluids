@@ -332,40 +332,29 @@
 						$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
 				?>
 					<tr>
-						<td class="label_m" style="width:16px;"><a href="toggle_plus_<?= $tank['id'] ?>" class="show_n_hide_reserves"><img src="/img/bullet_toggle_plus.png" /></a></td> <!-- ojo aca -->
+						<td class="label_m" style="width:16px;"><a href="toggle_plus_<?= $tank['id'] ?>" class="show_n_hide_reserves closed"><img src="/img/bullet_toggle_plus.png" /></a></td> <!-- ojo aca -->
 						<td class="label_m"><label><?= $tank['tank_name'] ?></label></strong></td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>
-							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;" id="reserve_td_<?= $tank['id'] ?>" class="reserve_td">
+							<fieldset style="width:40%;display:none;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
 								<table>
-									<tr>
-										<td class="label_m"><label>Current function:</label></td>
-										<td class="label_m"><input type="text" style="margin-right:0;width:100px;" value="" /></td>
-
-										<td style="width:50px;"></td>
-
-										<td class="label_m"><label>STARTING VOLUME:</label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-									</tr>
+									<td class="label_m" style="width:110px;"><label>Function:</label></td>
+									<td class="label_m"><input type="text" style="margin-right:0;width:300px;max-width:500px;" value="" /></td>
+								</table>
+							</fieldset>
+							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;margin-right:20px;width:40%;height:223px;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
+								<legend>Tank</legend>
+								<table>
 									<tr>
 										<td class="label_m"><label>Agitators:</label></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:100px;"  disabled="disabled" value="<?= $tank['agitators'] ?>" /></td>
-
-										<td style="width:50px;"></td>
-
-										<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>Jets:</label></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:100px;"  disabled="disabled" value="<?= $has_jets ?>" /></td>
 
-										<td style="width:50px;"></td>
-
-										<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
-										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>Tank Type:</label></td>
@@ -380,45 +369,57 @@
 											<input type="hidden" value="<?= $tank['sl2'] ?>" id="sl2_<?= $tank['id'] ?>" />
 											<input type="hidden" value="<?= $tank['diametro'] ?>" id="diametro_<?= $tank['id'] ?>" />
 										</td>
-
-										<td style="width:50px;"></td>
-
-										<td class="label_m"><label>WATER ADITIONS:</label></td>
-										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>Vol. Capacity:</label></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:100px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" id="voltkaforo_<?= $tank['id'] ?>" /></td>
-
-										<td style="width:50px;"></td>
-
-										<td class="label_m"><label>BUILDED MUD:</label></td>
-										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>Max. Headroom:</label></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:100px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" id="hlibremax_<?= $tank['id'] ?>" /></td>
-
-										<td style="width:50px;"></td>
-
-										<td class="label_m"><label><a href="#" class="" style="text-decoration:underline;">MUD TRANSFERED TO ACTIVE:</a></label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>Headroom:</label></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:100px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="0" /></td>
-
-										<td style="width:50px;"></td>
-
-										<td class="label_m"><label>TOTAL LOSSES:</label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>Volume:</label></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:100px;" class="volrealtk" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
-
-										<td style="width:50px;"></td>
-
+									</tr>
+								</table>
+							</fieldset>
+							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;width:40%;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
+								<legend>Balance</legend>
+								<table>
+									<tr>
+										<td class="label_m"><label>STARTING VOLUME:</label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
+										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>WATER ADITIONS:</label></td>
+										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>BUILDED MUD:</label></td>
+										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label><a href="#" class="" style="text-decoration:underline;">MUD TRANSFERED TO ACTIVE:</a></label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>TOTAL LOSSES:</label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
 										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
 										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 									</tr>
