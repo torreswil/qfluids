@@ -95,7 +95,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label_m"><label>Vol. Cap. (bbl):</label></td>
+							<td class="label_m"><label class="tank_volume_label">Vol. Cap. (bbl):</label></td>
 							<td><input type="text" value="0" disabled="disabled" style="width:190px;margin-right:5px;" class="voltkaforo" name="voltkaforo" id="voltkaforo" /></td>
 						</tr>
 						<tr>

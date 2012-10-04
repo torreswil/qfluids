@@ -30,7 +30,7 @@ $(function(){
 	load_personal();
 	load_current_tanks();
 	load_tools_and_mud();
-        load_test();
+    load_test();
 
 	/*==========================================================================================================*/
 	// 1. GENERAL
@@ -279,6 +279,11 @@ $(function(){
 			$('#new_tank_overlay .name').html(r);
 		});
 		$('#new_tank_overlay').slideUp();
+
+		$('#new_tank_overlay input[name="hlibremax"]').addClass('required').parents('tr').show();
+		$('.tank_volume_label').html('Vol. Capacity');
+		$('#new_tank_overlay .voltkaforo').attr('disabled','disabled');
+		$('#new_tank_overlay .type').addClass('required').parents('tr').show();	
 	});
 
 	$('#new_tank_overlay .tank_formula_input input').keyup(function(){
@@ -377,6 +382,10 @@ $(function(){
 			}
 		});
 
+		if(parseInt($('.name',parent_form).val()) > 32 ){
+			eqty = eqty - 1;
+		}
+
 		if(eqty > 0){
 			alert('Some fields are empty. Please verify and try again.');
 		}else{
@@ -392,23 +401,29 @@ $(function(){
 			if(ename > 0){
 				alert('This tank is already created. Please choose a different name and try again.');
 			}else{
-				//get the tank type
-				var tank_type = parseInt($('#active_type').val());
-				$('.medidas_cuadrado input,.medidas_semicircular input,.fieldset_tank_trailer input,.fieldset_tank_horizontal input',parent_form).removeClass('required');
-				switch(tank_type){
-					case 1:
-						$('.medidas_cuadrado input',parent_form).addClass('required');
-						break;
-					case 2:
-						$('.medidas_semicircular input',parent_form).addClass('required');
-						break;
-					case 3:
-						$('.fieldset_tank_trailer input',parent_form).addClass('required');
-						break;
-					case 4:
-						$('.fieldset_tank_horizontal input',parent_form).addClass('required');
-						break;
+			
+				if(!isNaN($('#active_type').val())){
+					//get the tank type
+					var tank_type = parseInt($('#active_type').val());
+					$('.medidas_cuadrado input,.medidas_semicircular input,.fieldset_tank_trailer input,.fieldset_tank_horizontal input',parent_form).removeClass('required');
+					switch(tank_type){
+						case 1:
+							$('.medidas_cuadrado input',parent_form).addClass('required');
+							break;
+						case 2:
+							$('.medidas_semicircular input',parent_form).addClass('required');
+							break;
+						case 3:
+							$('.fieldset_tank_trailer input',parent_form).addClass('required');
+							break;
+						case 4:
+							$('.fieldset_tank_horizontal input',parent_form).addClass('required');
+							break;
+					}	
+				}else{
+					var tank_type = 99;
 				}
+				
 
 				//validate fields are not empty
 				var eqty = 0;
@@ -477,6 +492,10 @@ $(function(){
 							$('.tank_formula_input').hide();
 							$('.tank_formula_input input').val('');
 							$('#voltkaforo,#hlibremax').val(0);
+							$('#new_tank_overlay input[name="hlibremax"]').addClass('required').parents('tr').show();
+							$('.tank_volume_label').html('Vol. Capacity');
+							$('#new_tank_overlay .voltkaforo').attr('disabled','disabled');
+							$('#new_tank_overlay .type').addClass('required').parents('tr').show();	
 							$('#new_tank_overlay').slideUp();
 
 							$('#new_tank_overlay select').val('');
@@ -841,6 +860,33 @@ $(function(){
 		}
 	});
 
+	$('#new_tank_overlay .name').change(function(){
+		
+		if(parseInt($(this).val()) > 32 && parseInt($(this).val()) < 37){
+			log($(this).val());
+
+			//ocultar medidas 
+			$('#new_tank_overlay .tank_formula_input').hide();
+
+			//quitarle la obligatoriedad a medidas 
+			$('#new_tank_overlay .tank_formula_input input').removeClass('required');
+
+			//ocultar y eliminar la obligatoriedad max headroom
+			$('#new_tank_overlay input[name="hlibremax"]').removeClass('required').parents('tr').hide();
+
+			//cambiar el label al volumen
+			$('.tank_volume_label').html('Max Volume:');
+			$('#new_tank_overlay .voltkaforo').removeAttr('disabled');
+
+			$('#new_tank_overlay .type').removeClass('required').parents('tr').hide();
+		}else{
+			$('#new_tank_overlay input[name="hlibremax"]').addClass('required').parents('tr').show();
+			$('.tank_volume_label').html('Vol. Capacity');
+			$('#new_tank_overlay .voltkaforo').attr('disabled','disabled');
+			$('#new_tank_overlay .type').addClass('required').parents('tr').show();	
+		}
+	});
+
 	/*==========================================================================================================*/
 	// 5. MUD PROPERTIES
 	/*==========================================================================================================*/
@@ -1161,7 +1207,7 @@ $(function(){
 
     }
 
-        /*==========================================================================================================*/
+    /*==========================================================================================================*/
 	// 8. MATERIALS
 	/*==========================================================================================================*/    
     
@@ -1186,11 +1232,11 @@ $(function(){
 		},'json');
 	});
         
-        /*==========================================================================================================*/
+    /*==========================================================================================================*/
 	// 8. MUD PROPERTIES
 	/*==========================================================================================================*/    
         
-        //when opening the mud properties link..
+    //when opening the mud properties link..
 	$('#mud_properties_link').click(function(e){
 		e.preventDefault();                
 		load_test();
