@@ -42,6 +42,8 @@ function power(selector,exponente){
 function fval(selector){
 	if(!isNaN($('#'+selector).val()) && isFinite($('#'+selector).val())){
 		return parseFloat($('#'+selector).val());
+	}else if($('#'+selector).val() == ''){
+		return 0;
 	}else{
 		return 0;
 	}
@@ -1774,5 +1776,15 @@ function calculos_raw(){
 	var	spmtotallap = 0; 
 		spmtotallap = (fval('spm_1') + fval('spm_2') + fval('spm_3')) * totallap;
 		completar_campo_val('spmtotallap',Math.round(spmtotallap));
+
+	//dailysubsurface
+	var dailysubsurface = 0;
+		dailysubsurface = fval('subsurf');
+		completar_campo_val('dailysubsurface',Math.round(dailysubsurface));
+
+	//dailysurface
+	var dailysurface = 0;	
+		dailysurface = fval('surf') + fval('caving') + fval('shakers') + fval('cleaner') + fval('centri') + fval('dew') + fval('becsg') + fval('others');
+		completar_campo_val('dailysurface',Math.round(dailysurface));
 
 }

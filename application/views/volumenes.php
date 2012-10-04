@@ -273,10 +273,6 @@
 						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
-						<td class="label_m"><label>RECEIVED MUD FROM OTHERS</label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-					</tr>
-					<tr>
 						<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
 						<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
@@ -290,10 +286,6 @@
 					</tr>
 					<tr>
 						<td class="label_m"><label><a href="#transfer_mud_to_reserves" class="mtr_link" style="text-decoration:underline;">MUD TRANSFERED TO RESERVES</a></label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-					</tr>
-					<tr>
-						<td class="label_m"><label><a href="#" class="" style="text-decoration:underline;">MUD TRANSFERED TO OTHERS</a></label></td>
 						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
@@ -432,64 +424,73 @@
 			<fieldset>
 				<table>
 					<tr>
-						<td class="label_m"><label>SURFACE</label></td>
-						<td><input type="text" /></td>
+						<td>
+							<table>
+								<tr>
+									<td class="label_m"><label>SUB/SURFACE:</label></td>
+									<td><input type="text" style="width:100px;" name="subsurf" id="subsurf" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>SURFACE:</label></td>
+									<td class="label_m"><input type="text" style="width:100px;" name="surf" id="surf" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>CAVINGS:</label></td>
+									<td class="label_m"><input type="text" style="width:100px;" name="caving" id="caving" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>SHAKERS:</label></td>
+									<td class="label_m"><input type="text" style="width:100px;" name="shakes" id="shakes" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>MUD CLEANER:</label></td>
+									<td class="label_m"><input type="text" style="width:100px;" name="cleaner" id="cleaner" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>CENTRIFUGUES:</label></td>
+									<td class="label_m"><input type="text" style="width:100px;" name="centri" id="centri" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>DEWATERING:</label></td>
+									<td class="label_m"><input type="text" style="width:100px;" name="dew" id="dew" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>BEHIND CASING:</label></td>
+									<td class="label_m"><input type="text" style="width:100px;" name="becsg" id="becsg" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>OTHERS:</label></td>
+									<td class="label_m"><input type="text" style="width:100px;" name="other" id="other" /> bbl</td>
+								</tr>
+							</table>	
+						</td>
+						<td style="padding-left:50px;">
+							<table>
+								<tr>
+									<td class="label_m"><label>Daily Surface losses:</label></td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" id="dailysurface" name="dailysurface" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>Cumulative Surface losses:</label></td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>Daily Sub/Surface losses:</label></td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" name="dailysubsurface" id="dailysubsurface" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>Cumulative Sub/Surface losses:</label></td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" /> bbl</td>
+								</tr>
+								<tr>
+									<td class="label_m"><label>Total losses:</label></td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" /> bbl</td>
+								</tr>
+							</table>
+						</td>
 					</tr>
-					<tr>
-						<td class="label_m"><label>SHAKERS/CAVINGS</label></td>
-						<td><input type="text" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>MUD CLEANER</label></td>
-						<td><input type="text" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>CENTRIFUGUES</label></td>
-						<td><input type="text" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>DEWATERING</label></td>
-						<td><input type="text" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>BEHIND CASING</label></td>
-						<td><input type="text" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>OTHERS</label></td>
-						<td><input type="text" /></td>
-					</tr>
-					
 				</table>
-			</fieldset>
-			<fieldset style="margin-top:10px;">
-				<table>
-					<tr>
-						<td class="label_m"><label>sub/surface</label></td>
-						<td><input type="text" /></td>
-					</tr>
-				</table>
-			</fieldset>
-			<fieldset style="margin-top:10px;">
-				<table>
-					<tr>
-						<td class="label_m"><label>Daily Surf.losses:</label></td>
-						<td><input type="text" disabled="disabled" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Cum Surf.losse:</label></td>
-						<td><input type="text" disabled="disabled" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Daily Sub/Surf.losse:</label></td>
-						<td><input type="text" disabled="disabled" /></td>
-					</tr>
-					<tr>
-						<td class="label_m"><label>Cum. Sub/Surf.losse:</label></td>
-						<td><input type="text" disabled="disabled" /></td>
-					</tr>
-				</table>
-			</fieldset>
+			</fieldset>			
 		</div>
 	</div>
 </div>
