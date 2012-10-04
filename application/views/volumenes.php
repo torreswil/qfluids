@@ -344,7 +344,44 @@
 									<td class="label_m"><input type="text" style="margin-right:0;width:300px;max-width:500px;" value="" /></td>
 								</table>
 							</fieldset>
-							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;margin-right:20px;width:40%;height:223px;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
+							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;width:40%;margin-right:20px;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
+								<legend>Balance</legend>
+								<table>
+									<tr>
+										<td class="label_m"><label>STARTING VOLUME:</label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
+										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>WATER ADITIONS:</label></td>
+										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>BUILDED MUD:</label></td>
+										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label><a href="#" class="" style="text-decoration:underline;">MUD TRANSFERED TO ACTIVE:</a></label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>TOTAL LOSSES:</label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+								</table>
+							</fieldset>
+							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;width:40%;height:223px;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
 								<legend>Tank</legend>
 								<table>
 									<tr>
@@ -385,43 +422,6 @@
 									<tr>
 										<td class="label_m"><label>Volume:</label></td>
 										<td class="label_m"><input type="text" style="margin-right:0;width:100px;" class="volrealtk" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
-									</tr>
-								</table>
-							</fieldset>
-							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;width:40%;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
-								<legend>Balance</legend>
-								<table>
-									<tr>
-										<td class="label_m"><label>STARTING VOLUME:</label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
-										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>WATER ADITIONS:</label></td>
-										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>BUILDED MUD:</label></td>
-										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label><a href="#" class="" style="text-decoration:underline;">MUD TRANSFERED TO ACTIVE:</a></label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label>TOTAL LOSSES:</label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
-									</tr>
-									<tr>
-										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
-										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
 									</tr>
 								</table>
 							</fieldset>
