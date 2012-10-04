@@ -1384,6 +1384,11 @@ $(function(){
 		$('#mtr_overlay').show();
 	});
 
+	$('#mtr_overlay .close_link').click(function(e){
+		e.preventDefault();
+		$('#mtr_overlay').hide();
+	});
+
 
 	/*==========================================================================================================*/
 	// 8. REPORT HISTORY
