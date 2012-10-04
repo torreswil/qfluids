@@ -40,10 +40,10 @@ function power(selector,exponente){
 }
 
 function fval(selector){
-	if(!isNaN($('#'+selector).val()) && isFinite($('#'+selector).val())){
-		return parseFloat($('#'+selector).val());
-	}else if($('#'+selector).val() == ''){
+	if($('#'+selector).val() == ''){
 		return 0;
+	}else if(!isNaN($('#'+selector).val()) && isFinite($('#'+selector).val())){
+		return parseFloat($('#'+selector).val());	
 	}else{
 		return 0;
 	}
@@ -1785,6 +1785,7 @@ function calculos_raw(){
 	//dailysurface
 	var dailysurface = 0;	
 		dailysurface = fval('surf') + fval('caving') + fval('shakers') + fval('cleaner') + fval('centri') + fval('dew') + fval('becsg') + fval('others');
+		log(fval('surf') +"+"+ fval('caving') +"+"+ fval('shakers') +"+"+ fval('cleaner') +"+"+ fval('centri') +"+"+ fval('dew') +"+"+ fval('becsg') +"+"+ fval('others'));
 		completar_campo_val('dailysurface',Math.round(dailysurface));
 
 	var totallosses = 0;
