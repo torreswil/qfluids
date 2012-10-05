@@ -50,7 +50,11 @@ function fval(selector){
 }
 
 function ival(selector){
-	return parseInt($('#'+selector).val());
+	if($('#'+selector).val() == ''){
+		return 0;
+	}else{
+		return parseInt($('#'+selector).val());
+	}
 }
 
 function correr_calculos(){
