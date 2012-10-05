@@ -107,7 +107,7 @@
 	    </div>	
 		<div class="simpleTabsContent">
 			<?php 
-				$tanks_qty = count($trip_tanks) + count($active_tanks) + count($pill_tanks); 
+				$tanks_qty = count($trip_tanks) + count($active_tanks); 
 				if($tanks_qty == 0){
 					echo '<fieldset><legend>Tanks</legend><p>There are no configured tanks. Plase go "Menu - Settings - Tanks" and create some to get started.</p></fieldset>';
 				}else{ ?>
@@ -219,44 +219,7 @@
 					<fieldset style="display:none;">
 						<legend>Out of active</legend>
 						<table id="out_of_active_table"></table>
-					</fieldset>
-
-					<?php if(count($pill_tanks) > 0){ ?>
-						<fieldset>
-							<legend>Pill Tanks</legend>
-							<table>
-								<?php 
-									foreach($pill_tanks as $tank){ 
-										$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
-								?>
-									<tr>
-										<td class="label_m"><input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_name'] ?>" /></td>
-				        				<td class="label_m"><input type="text" style="margin-right:0;width:70px;"  disabled="disabled" value="<?= $tank['agitators'] ?>" /></td>
-				        				<td class="label_m"><input type="text" style="margin-right:0;width:30px;"  disabled="disabled" value="<?= $has_jets ?>" /></td>
-				        				<td class="label_m">
-				        					<input type="text" style="margin-right:0;width:110px;" disabled="disabled" value="<?= $tank['tank_type'] ?>" />
-				        					<input type="hidden" value="<?= $tank['type'] ?>" id="tank_type_id_<?= $tank['id'] ?>" />
-				        					
-				        					<input type="hidden" value="<?= $tank['sh1'] ?>" id="sh1_<?= $tank['id'] ?>" />
-				        					<input type="hidden" value="<?= $tank['sa1'] ?>" id="sa1_<?= $tank['id'] ?>" />
-				        					<input type="hidden" value="<?= $tank['sl1'] ?>" id="sl1_<?= $tank['id'] ?>" />
-				        					<input type="hidden" value="<?= $tank['sh2'] ?>" id="sh2_<?= $tank['id'] ?>" />
-				        					<input type="hidden" value="<?= $tank['sa2'] ?>" id="sa2_<?= $tank['id'] ?>" />
-				        					<input type="hidden" value="<?= $tank['sl2'] ?>" id="sl2_<?= $tank['id'] ?>" />
-				        					<input type="hidden" value="<?= $tank['diametro'] ?>" id="diametro_<?= $tank['id'] ?>" />
-				        				</td>
-				        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" id="voltkaforo_<?= $tank['id'] ?>" /></td>
-				        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" id="hlibremax_<?= $tank['id'] ?>" /></td>
-										<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="0" /></td>
-				        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="volrealtk" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
-										<td class="label_m" style="text-align:center;"></td>
-			        					<td class="label_m" style="text-align:center;"></td>
-									</tr>
-								<?php } ?>
-							</table>
-						</fieldset>
-					<?php } ?>	
-						
+					</fieldset>						
 			<?php } ?>
 		</div>
 
@@ -319,6 +282,103 @@
 				<legend>Reserve Tanks</legend>
 				<p>Pick the tank you want to use...</p>
 				<table style="width:100%;">
+				<?php 
+					foreach($pill_tanks as $tank){ 
+						$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
+				?>
+					<tr>
+						<td class="label_m" style="width:16px;"><a href="toggle_plus_<?= $tank['id'] ?>" class="show_n_hide_reserves closed"><img src="/img/bullet_toggle_plus.png" /></a></td> <!-- ojo aca -->
+						<td class="label_m"><label><?= $tank['tank_name'] ?></label></strong></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<fieldset style="width:40%;display:none;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
+								<table>
+									<td class="label_m" style="width:110px;"><label>Function:</label></td>
+									<td class="label_m"><input type="text" style="margin-right:0;width:300px;max-width:500px;" value="" /></td>
+								</table>
+							</fieldset>
+							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;width:40%;margin-right:20px;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
+								<legend>Balance</legend>
+								<table>
+									<tr>
+										<td class="label_m"><label>STARTING VOLUME:</label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
+										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>WATER ADITIONS:</label></td>
+										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>BUILDED MUD:</label></td>
+										<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>MUD TRANSFERED TO ACTIVE:</label></td>
+										<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
+										<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+									</tr>
+								</table>
+							</fieldset>
+							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;width:40%;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
+								<legend>Tank</legend>
+								<table>
+									<tr>
+										<td class="label_m"><label>Agitators:</label></td>
+										<td class="label_m"><input type="text" style="margin-right:0;width:100px;"  disabled="disabled" value="<?= $tank['agitators'] ?>" /></td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>Jets:</label></td>
+										<td class="label_m"><input type="text" style="margin-right:0;width:100px;"  disabled="disabled" value="<?= $has_jets ?>" /></td>
+
+									</tr>
+									<tr>
+										<td class="label_m"><label>Tank Type:</label></td>
+										<td class="label_m">
+											<input type="text" style="margin-right:0;width:100px;" disabled="disabled" value="<?= $tank['tank_type'] ?>" />
+											<input type="hidden" value="<?= $tank['type'] ?>" id="tank_type_id_<?= $tank['id'] ?>" />
+											<input type="hidden" value="<?= $tank['sh1'] ?>" id="sh1_<?= $tank['id'] ?>" />
+											<input type="hidden" value="<?= $tank['sa1'] ?>" id="sa1_<?= $tank['id'] ?>" />
+											<input type="hidden" value="<?= $tank['sl1'] ?>" id="sl1_<?= $tank['id'] ?>" />
+											<input type="hidden" value="<?= $tank['sh2'] ?>" id="sh2_<?= $tank['id'] ?>" />
+											<input type="hidden" value="<?= $tank['sa2'] ?>" id="sa2_<?= $tank['id'] ?>" />
+											<input type="hidden" value="<?= $tank['sl2'] ?>" id="sl2_<?= $tank['id'] ?>" />
+											<input type="hidden" value="<?= $tank['diametro'] ?>" id="diametro_<?= $tank['id'] ?>" />
+										</td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>Vol. Capacity:</label></td>
+										<td class="label_m"><input type="text" style="margin-right:0;width:100px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" id="voltkaforo_<?= $tank['id'] ?>" /></td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>Max. Headroom:</label></td>
+										<td class="label_m"><input type="text" style="margin-right:0;width:100px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" id="hlibremax_<?= $tank['id'] ?>" /></td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>Headroom:</label></td>
+										<td class="label_m"><input type="text" style="margin-right:0;width:100px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="0" /></td>
+									</tr>
+									<tr>
+										<td class="label_m"><label>Volume:</label></td>
+										<td class="label_m"><input type="text" style="margin-right:0;width:100px;" class="volrealtk" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
+									</tr>
+								</table>
+							</fieldset>
+						</td>
+					</tr>
+				<?php } ?>
 				<?php 
 					foreach($reserve_tanks as $tank){ 
 						$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
