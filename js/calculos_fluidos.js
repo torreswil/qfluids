@@ -1810,7 +1810,7 @@ function calculos_raw(){
 		//volcons
 		var volcons = 0;
 		 	volcons = fval('volwater_'+id) + fval('volchem_'+id);
-		completar_campo_val('volcons_'+id,volcons);
+		completar_campo_val('volcons_'+id,Math.round(volcons));
 	});
 	
 }
