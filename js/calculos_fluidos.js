@@ -1797,7 +1797,7 @@ function calculos_raw(){
 	completar_campo_val('ztotallosses',totallosses);
 
 	
-	$('#reserve_volume_tab table tr.tank').each(function(){
+	$('.tank').each(function(){
 		var id = $(this).attr('id');
 			id = id.split('this_tank_');
 			id = id[1];
