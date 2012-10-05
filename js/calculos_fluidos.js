@@ -1789,11 +1789,23 @@ function calculos_raw(){
 	//dailysurface
 	var dailysurface = 0;	
 		dailysurface = fval('surf') + fval('caving') + fval('shakers') + fval('cleaner') + fval('centri') + fval('dew') + fval('becsg') + fval('others');
-		log(fval('surf') +"+"+ fval('caving') +"+"+ fval('shakers') +"+"+ fval('cleaner') +"+"+ fval('centri') +"+"+ fval('dew') +"+"+ fval('becsg') +"+"+ fval('others'));
 		completar_campo_val('dailysurface',Math.round(dailysurface));
 
 	var totallosses = 0;
 	totallosses = dailysubsurface + dailysurface;
 	completar_campo_val('totallosses',totallosses);
-	completar_campo_val('ztotallosses',totallosses);	
+	completar_campo_val('ztotallosses',totallosses);
+
+	//volfinal
+	$('#reserve_volume_tab table tr.tank').each(function(){
+		var id = $(this).attr('id');
+			id = id.split('this_tank_');
+			id = id[1];
+		
+		var volfinal = 0;
+			volfinal = fval('volstart_'+id) + fval('volrec_'+id) + fval('volcons_'+id) - fval('voltransf_'+id); 		
+			
+		completar_campo_val('volfinal_'+id,Math.round(volfinal));	
+	});
+	
 }
