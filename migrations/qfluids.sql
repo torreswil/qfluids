@@ -1213,7 +1213,7 @@ INSERT INTO `test` VALUES ('35', 'ASG Solids', '', '3', '0', '1');
 INSERT INTO `test` VALUES ('36', 'LGS', 'ppb', '3', '0', '1');
 INSERT INTO `test` VALUES ('37', 'HGS', 'ppb', '3', '0', '1');
 INSERT INTO `test` VALUES ('38', 'LGS', '% Vol', '3', '0', '1');
-INSERT INTO `test` VALUES ('39', 'HGS', '% Vol', '3', '0', '1');
+INSERT INTO `test` VALUES ('39', 'HGS vol', '% Vol', '3', '0', '1');
 
 -- ----------------------------
 -- View structure for `vista_brocas`
