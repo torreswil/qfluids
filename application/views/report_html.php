@@ -242,7 +242,7 @@
                                 
                                 <div class="data-table b-right" style="width: 49.4%;">
                                         <div class="sub-header b-bottom"><h5>HYDRAULICS</h5></div>                                        
-                                        <div class="data-table" style="width: 74%">
+                                        <div class="data-table" style="width: 70%">
                                                 <table class="table table-stripted table-condensed b-bottom">
                                                         <thead>
                                                                 <tr class="txt-center">                                        
@@ -302,7 +302,7 @@
                                                         </tbody>
                                                 </table>
                                         </div>
-                                        <div class="data-table b-left" style="width: 25.7%">
+                                        <div class="data-table b-left" style="width: 29.7%">
                                                 <table class="table table-stripted table-condensed b-bottom">
                                                         <thead>
                                                                 <tr>                                        
@@ -1212,7 +1212,7 @@
                                 <table class="table table-stripted table-condensed">
                                         <tbody>
                                                 <tr>
-                                                        <td style="height: 456px">
+                                                        <td style="height: 460px">
                                                                 <p class="txt-justify">
                                                                         RIG ACTIVITY: Se recibio taladro sinopec 166, y se inicio operaciones de perforacion a las XXXX.
                                                                 </p>

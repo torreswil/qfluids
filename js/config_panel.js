@@ -974,7 +974,8 @@ $(function(){
                 var data = {'max_phase':max_phase};
                 $.post('/rest/save_project_settings',data,function(r){
                         if(r.message == 'project_updated'){
-                                alert('Number of phases saved');
+                                alert('Number of phases saved');                                
+                                load_test();
                                 $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
                         } else{
                                 alert('An error has ocurred. Please try again, or ask the system administrator for help.');
@@ -1320,6 +1321,54 @@ $(function(){
 				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 			}
 		},'json');
+	});
+        
+        
+        $('.save_program_test').click(function(e){
+		e.preventDefault();                
+                var table = $(this).parent().prev();                
+                var fields = table.find('.program_value');                
+                var eqty = 0;
+                //Valido los input
+		fields.each(function(){
+			var value       = $(this).val();			
+                        if(value == null || value == '') {
+                                eqty = eqty + 1;			                                
+                        }
+		});
+		if(eqty > 0){
+			alert('Some fields are empty, please verify and try again.');
+		} else {
+                        
+			var data = [];
+                        var project = $('#project_id').val();
+			fields.each(function() {                                
+                                var phase = $(this).attr('data-phase');
+                                var test = $(this).attr('data-test');;
+                                var id = $(this).attr('data-program-id');
+                                if(id==undefined || id==null || id=='') {
+                                    id = null;    
+                                }
+                                var value_program = $(this).val();                                				
+				this_program = {
+                                        'id'            : id,
+					'project_id'	: project,
+					'test_id'	: test,
+                                        'value_program' : value_program,
+                                        'phase'         : phase
+				}
+
+				data.push(this_program);
+			});
+
+			$.post('/rest/save_program',$.toJSON(data),function(r){
+				if(r == true){
+					load_test();
+					$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+					alert('Programs saved.');	
+				}
+			},'json');
+		}
 	});
 
 });

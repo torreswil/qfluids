@@ -36,7 +36,10 @@
         	<fieldset>
         		<table id="settings_physical_and_chemical_list">
                                                                 
-                        </table>	
+                        </table>
+                        <div class="">
+                            <input type="button" value="Save program" class="save_program_test" style="margin-top:10px;" />    
+                        </div>
         	</fieldset>
         </div>
         <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
@@ -44,6 +47,9 @@
         		<table id="settings_rheology_list">
                                 
                         </table>
+                        <div class="">
+                            <input type="button" value="Save program" class="save_program_test" style="margin-top:10px;" />    
+                        </div>
         	</fieldset>
         </div>
         <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
@@ -51,6 +57,9 @@
 	        	<table id="settings_solids_math_list">
                                 
                         </table>
+                        <div class="">
+                            <input type="button" value="Save program" class="save_program_test" style="margin-top:10px;" />    
+                        </div>
         	</fieldset>
         </div>
         <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">

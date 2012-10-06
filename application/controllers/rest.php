@@ -620,11 +620,12 @@ class Rest extends CI_Controller {
                                 }                                
                                 $rs.='</tr>';                        			
                                 foreach($tests as $test) {
-                                        //TODO consultar los program registrados según el test
-                                        $rs.= "<tr id=\"this_test_list_{$test['id']}\"><td class=\"label_m\"><label>{$test['test']}</label></td><td class=\"unit_field\">{$test['unit_test']}</td>";
-                                        for($i=0 ; $i<$project['max_phase'] ; $i++) {
-                                                //TODO revisar el nombre del input para guardar                                                
-                                                $rs.= "<td><input type=\"text\" name=\"field_test_{$test['id']}[] \" style=\"width:60px;\"></td>";
+                                        $programs = $this->Api->get_where('program', array('project_id'=>$this->project_id, 'test_id'=>$test['id']));                                        
+                                        $rs.= "<tr><td class=\"label_m\"><label>{$test['test']}</label></td><td class=\"unit_field\">{$test['unit_test']}</td>";
+                                        for($i=1 ; $i<=$project['max_phase'] ; $i++) {                                                
+                                                $value  = empty($programs[($i-1)]['value_program']) ? '' : $programs[($i-1)]['value_program'];
+                                                $id     = ($value) ? $programs[($i-1)]['id'] : '';
+                                                $rs.= "<td><input type=\"text\" value=\"$value\" data-program-id=\"$id\" class=\"program_value\" style=\"width:60px;\"  data-phase=\"$i\"  data-test=\"{$test['id']}\" data-type=\"{$test['type_test']}\"></td>";
                                         }
                                         $rs.= "</tr>";                                        
                                 }                                   
@@ -652,6 +653,18 @@ class Rest extends CI_Controller {
 			$this->Api->delete('test',$_POST['id']);
 			echo json_encode(array('message'=>'deactivated'));
 		}
+	}
+        
+        public function save_program(){
+		$programs = json_decode($this->data_input);                
+		foreach ($programs as $program) {
+                        if(empty($program->id)) {
+                                $this->Api->create('program',array('project_id'=>$this->project_id, 'test_id'=>$program->test_id, 'phase'=>$program->phase, 'value_program'=>$program->value_program));
+                        } else {
+                                $this->Api->update('program', array('value_program'=>$program->value_program), $program->id);
+                        }
+		}
+		echo json_encode(true);		
 	}
 }
 /****** THE END ******/

@@ -2,7 +2,7 @@
 Hoja de estilo para la vista de impresión
 **/
 .printer {width: 1024px;margin: 0 auto; padding: 10px 0px;}
-.printer, h5 { font-size: 9px;}
+.printer, h5 { font-size: 10px;}
 .container-fluid { padding-left: 0px; padding-right: 0px }
 .container-fluid:after {clear: both;}
 .container-fluid:before, .container-fluid:after {content: "";display: table;line-height: 0;}
