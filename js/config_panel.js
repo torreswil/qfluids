@@ -31,7 +31,6 @@ $(function(){
 	load_current_tanks();
 	load_tools_and_mud();
         load_test();        
-        load_stock();        
 
 	/*==========================================================================================================*/
 	// 1. GENERAL
@@ -1226,25 +1225,13 @@ $(function(){
 
 		$.post('/rest/update_materials',$.toJSON(checked_materials),function(r){
 			if(r == true){
-				alert('Materials list updated.');
+				alert('Materials list updated.');         
 				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
 			}else{
 				alert('An error has ocurred. Please try again.');
 			}
 		},'json');
-	});
-        
-        
-        function load_stock() {                
-                var project = $('#project_id').val();
-                var incoming_list = {
-                    project_id          : project,
-                    type                : 'incoming'
-                };
-                $.post('/rest/load_stock',incoming_list,function(r){			
-                        $('#incoming_stock_list').html(r);
-                });                                                
-        }
+	});                        
                 
         /*==========================================================================================================*/
 	// 8. MUD PROPERTIES
