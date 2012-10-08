@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-10-03 10:48:26
+Date: 2012-10-08 14:32:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -794,9 +794,9 @@ CREATE TABLE `program` (
   PRIMARY KEY (`id`),
   KEY `fk_program_test_idx` (`test_id`) USING BTREE,
   KEY `fk_program_projects_idx` (`project_id`) USING BTREE,
-  CONSTRAINT `fk_program_test` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `fk_program_projects` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  CONSTRAINT `program_ibfk_1` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `program_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of program
@@ -908,10 +908,10 @@ CREATE TABLE `project_report_test` (
   KEY `fk_project_report_test_program_idx` (`program_id`) USING BTREE,
   KEY `fk_project_report_test_reports_idx` (`report_id`) USING BTREE,
   KEY `fk_project_report_test_test_idx` (`test_id`) USING BTREE,
-  CONSTRAINT `fk_project_report_test_program` FOREIGN KEY (`program_id`) REFERENCES `program` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `fk_project_report_test_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `fk_project_report_test_test` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  CONSTRAINT `project_report_test_ibfk_1` FOREIGN KEY (`program_id`) REFERENCES `program` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `project_report_test_ibfk_2` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `project_report_test_ibfk_3` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of project_report_test
@@ -993,18 +993,22 @@ CREATE TABLE `project_tanks` (
   `order` int(11) DEFAULT NULL,
   `active` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of project_tanks
 -- ----------------------------
-INSERT INTO `project_tanks` VALUES ('1', '1', '1', '2', '30', '20', '15', null, null, null, null, '1', '0', '0.9', '30', '1', '1');
-INSERT INTO `project_tanks` VALUES ('2', '1', '1', '12', '30', '20', '10', null, null, null, null, '1', '0', '0.6', '30', '1', '1');
-INSERT INTO `project_tanks` VALUES ('3', '1', '1', '15', '30', '20', '10', null, null, null, null, '1', '0', '0.6', '30', '1', '1');
-INSERT INTO `project_tanks` VALUES ('4', '1', '1', '16', '30', '20', '10', null, null, null, null, '0', '0', '0.6', '30', '2', '1');
-INSERT INTO `project_tanks` VALUES ('5', '1', '1', '13', '30', '20', '10', null, null, null, null, '2', '0', '0.6', '30', '2', '1');
-INSERT INTO `project_tanks` VALUES ('6', '1', '4', '14', null, null, '500', null, null, null, '200', '2', '0', '1619', '200', '3', '1');
-INSERT INTO `project_tanks` VALUES ('8', '1', '1', '3', '90', '50', '40', null, null, null, null, '1', '0', '18.6', '90', '2', '1');
+INSERT INTO `project_tanks` VALUES ('1', '1', '0', '34', null, null, null, null, null, null, null, '2', '0', '100', '0', '6', '0');
+INSERT INTO `project_tanks` VALUES ('2', '1', '0', '36', null, null, null, null, null, null, null, '2', '0', '500', '0', '4', '0');
+INSERT INTO `project_tanks` VALUES ('3', '1', '0', '33', null, null, null, null, null, null, null, '0', '0', '1000', '0', '4', '0');
+INSERT INTO `project_tanks` VALUES ('4', '1', '1', '3', '100', '100', '100', null, null, null, null, '1', '0', '103.1', '100', '1', '1');
+INSERT INTO `project_tanks` VALUES ('5', '1', '1', '9', '100', '100', '100', null, null, null, null, '3', '0', '103.1', '100', '1', '1');
+INSERT INTO `project_tanks` VALUES ('6', '1', '1', '12', '20', '30', '20', null, null, null, null, '0', '0', '1.2', '20', '1', '1');
+INSERT INTO `project_tanks` VALUES ('7', '1', '1', '15', '100', '100', '100', null, null, null, null, '0', '0', '103.1', '100', '1', '1');
+INSERT INTO `project_tanks` VALUES ('8', '1', '1', '16', '10', '10', '10', null, null, null, null, '0', '0', '0.1', '10', '2', '1');
+INSERT INTO `project_tanks` VALUES ('9', '1', '1', '17', '10', '30', '20', null, null, null, null, '0', '0', '0.6', '10', '3', '1');
+INSERT INTO `project_tanks` VALUES ('10', '1', '1', '18', '30', '20', '10', null, null, null, null, '0', '0', '0.6', '30', '4', '1');
+INSERT INTO `project_tanks` VALUES ('11', '1', '1', '19', '30', '20', '10', null, null, null, null, '0', '0', '0.6', '30', '5', '1');
 
 -- ----------------------------
 -- Table structure for `projects`
@@ -1087,7 +1091,7 @@ CREATE TABLE `stock_transfers` (
   `project_id` int(11) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of stock_transfers
@@ -1103,7 +1107,7 @@ CREATE TABLE `tank_names` (
   `name` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tank_names
@@ -1127,19 +1131,11 @@ INSERT INTO `tank_names` VALUES ('16', 'Reserve 2', 'reserve');
 INSERT INTO `tank_names` VALUES ('17', 'Reserve 3', 'reserve');
 INSERT INTO `tank_names` VALUES ('18', 'Reserve 4', 'reserve');
 INSERT INTO `tank_names` VALUES ('19', 'Reserve 5', 'reserve');
-INSERT INTO `tank_names` VALUES ('20', 'Reserve 6', 'reserve');
-INSERT INTO `tank_names` VALUES ('21', 'Sharing tank 1', 'reserve');
-INSERT INTO `tank_names` VALUES ('22', 'Sharing tank 2', 'reserve');
-INSERT INTO `tank_names` VALUES ('23', 'Sharing tank 3', 'reserve');
-INSERT INTO `tank_names` VALUES ('24', 'Sharing tank 4', 'reserve');
-INSERT INTO `tank_names` VALUES ('25', 'Sharing tank 5', 'reserve');
-INSERT INTO `tank_names` VALUES ('26', 'Sharing tank 6', 'reserve');
-INSERT INTO `tank_names` VALUES ('27', 'Frack tank 1', 'reserve');
-INSERT INTO `tank_names` VALUES ('28', 'Frack tank 2', 'reserve');
-INSERT INTO `tank_names` VALUES ('29', 'Frack tank 3', 'reserve');
-INSERT INTO `tank_names` VALUES ('30', 'Frack tank 4', 'reserve');
-INSERT INTO `tank_names` VALUES ('31', 'Frack tank 5', 'reserve');
-INSERT INTO `tank_names` VALUES ('32', 'Frack tank 6', 'reserve');
+INSERT INTO `tank_names` VALUES ('33', 'Storage 1', 'reserve');
+INSERT INTO `tank_names` VALUES ('34', 'Storage 2', 'reserve');
+INSERT INTO `tank_names` VALUES ('35', 'Storage 3', 'reserve');
+INSERT INTO `tank_names` VALUES ('36', 'Storage 4', 'reserve');
+INSERT INTO `tank_names` VALUES ('37', 'Storage 5', 'reserve');
 
 -- ----------------------------
 -- Table structure for `tanks_types`
@@ -1171,7 +1167,7 @@ CREATE TABLE `test` (
   `custom` int(1) DEFAULT '0',
   `active` int(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of test
@@ -1233,11 +1229,12 @@ CREATE VIEW `vista_materiales` AS select `project_materials`.`id` AS `id`,`proje
 DROP VIEW IF EXISTS `vista_inventario`;
 CREATE VIEW `vista_inventario` AS select `vista_materiales`.`id` AS `product_id`,`vista_materiales`.`project` AS `project`,`vista_materiales`.`commercial_name` AS `commercial_name`,`inventory`.`avaliable` AS `avaliable`,`inventory`.`used` AS `used`,`inventory`.`transfered` AS `transfered`,`vista_materiales`.`erp_id` AS `erp_id`,`vista_materiales`.`unit` AS `unit`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`internal_name` AS `internal_name`,`vista_materiales`.`price` AS `price`,`vista_materiales`.`used_in_project` AS `used_in_project`,`vista_materiales`.`unit_name` AS `unit_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino`,`inventory`.`received` AS `received` from (`inventory` left join `vista_materiales` on((`vista_materiales`.`id` = `inventory`.`product`))) ;
 
+
 -- ----------------------------
 -- View structure for `vista_personal`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_personal`;
-CREATE VIEW `vista_personal` AS select `personal`.`id` AS `id`,`personal`.`identification` AS `identification`,`personal`.`lastname` AS `lastname`,`personal`.`name` AS `name`,`personal`.`project` AS `project`,`personal`.`category` AS `category`,`personal_categories`.`name` AS `category_name`,`personal_categories`.`type` AS `type`,`personal`.`active` AS `active`,`personal`.`rate` AS `rate` from (`personal` join `personal_categories` on((`personal_categories`.`id` = `personal`.`category`))) ;
+CREATE DEFINER VIEW `vista_personal` AS select `personal`.`id` AS `id`,`personal`.`identification` AS `identification`,`personal`.`lastname` AS `lastname`,`personal`.`name` AS `name`,`personal`.`project` AS `project`,`personal`.`category` AS `category`,`personal_categories`.`name` AS `category_name`,`personal_categories`.`type` AS `type`,`personal`.`active` AS `active`,`personal`.`rate` AS `rate` from (`personal` join `personal_categories` on((`personal_categories`.`id` = `personal`.`category`))) ;
 
 -- ----------------------------
 -- View structure for `vista_reporte_personal`
