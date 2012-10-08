@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+s<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Rest extends CI_Controller {
 	public function __construct(){
@@ -577,6 +577,19 @@ class Rest extends CI_Controller {
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['avaliable'] ?>" /></td>
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$0" /></td>
             </tr> <?php
+		}
+	}
+        
+        public function load_stock(){
+		$result = $this->Api->get_where('stock_transfers', $_POST);
+		foreach ($result as $stock) { ?>
+			<tr class="this_incoming_stock_<?= $stock['d']?> ">								
+                                <td></td>
+				<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['date'] ?>" /></td>
+				<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['code'] ?>" /></td>
+				<td><input style="width:150px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['origin'] ?>" /></td>
+				<td><input style="width:150px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['destiny'] ?>" /></td>
+                        </tr> <?php
 		}
 	}
 

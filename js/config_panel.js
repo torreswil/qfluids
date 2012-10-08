@@ -30,7 +30,8 @@ $(function(){
 	load_personal();
 	load_current_tanks();
 	load_tools_and_mud();
-    load_test();
+        load_test();        
+        load_stock();        
 
 	/*==========================================================================================================*/
 	// 1. GENERAL
@@ -1104,7 +1105,7 @@ $(function(){
 	}
     
 
-    /*==========================================================================================================*/
+        /*==========================================================================================================*/
 	// 7. TOOLS AND MUD LIBRARY - IvanMel
 	/*==========================================================================================================*/
 	
@@ -1208,10 +1209,10 @@ $(function(){
 
     }
 
-    /*==========================================================================================================*/
+        /*==========================================================================================================*/
 	// 8. MATERIALS
 	/*==========================================================================================================*/    
-    
+            
 	$('.update_materials').click(function(e){
 		var checked_materials = [];
 		$('#materials_activation_table input[type="checkbox"]:checked').each(function(){
@@ -1233,18 +1234,30 @@ $(function(){
 		},'json');
 	});
         
-    /*==========================================================================================================*/
+        
+        function load_stock() {                
+                var project = $('#project_id').val();
+                var incoming_list = {
+                    project_id          : project,
+                    type                : 'incoming'
+                };
+                $.post('/rest/load_stock',incoming_list,function(r){			
+                        $('#incoming_stock_list').html(r);
+                });                                                
+        }
+                
+        /*==========================================================================================================*/
 	// 8. MUD PROPERTIES
 	/*==========================================================================================================*/    
         
-    //when opening the mud properties link..
+        //when opening the mud properties link..
 	$('#mud_properties_link').click(function(e){
 		e.preventDefault();                
 		load_test();
 	})
         
         function load_test() {
-                //load enginers
+                //load physical and chemical properties
 		var p_and_c_data = {			
 			type_test	: 1, 
 			active		: 1
