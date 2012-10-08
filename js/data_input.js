@@ -1443,6 +1443,18 @@ $(function(){
 	});
 
 
+	$('#show_active_system_tanks').click(function(e){
+		e.preventDefault();
+		if($(this).hasClass('show')){
+			$('#show_active_tanks_tr').show();
+			$(this).removeClass('show').addClass('hide').html('Hide Tanks');	
+		}else if($(this).hasClass('hide')){
+			$('#show_active_tanks_tr').hide();
+			$(this).removeClass('hide').addClass('show').html('Show Tanks');	
+		}
+	});
+
+
 
 	/*==========================================================================================================*/
 	// 8. REPORT HISTORY
