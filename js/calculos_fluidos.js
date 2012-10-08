@@ -1806,11 +1806,17 @@ function calculos_raw(){
 		var volfinal = 0;
 			volfinal = fval('volstart_'+id) + fval('volrec_'+id) + fval('volcons_'+id) - fval('voltransf_'+id);
 		completar_campo_val('volfinal_'+id,Math.round(volfinal));	
+	});
 
+	$('.tank').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('this_tank_');
+		id = id[1];
+		
 		//volcons
 		var volcons = 0;
 		 	volcons = fval('volwater_'+id) + fval('volchem_'+id);
-		completar_campo_val('volcons_'+id,Math.round(volcons));
+		completar_campo_val('volcons_'+id,Math.round(volcons));		
 	});
 	
 }
