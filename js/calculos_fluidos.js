@@ -1804,7 +1804,7 @@ function calculos_raw(){
 		
 		//volfinal
 		var volfinal = 0;
-			volfinal = fval('volstart_'+id) + fval('volrec_'+id) + fval('volcons_'+id) - fval('voltransf_'+id);
+			volfinal = fval('volstart_'+id) + fval('volrec_'+id) + fval('volwater_'+id) + fval('volchem_'+id) - fval('voltransf_'+id);
 		completar_campo_val('volfinal_'+id,Math.round(volfinal));	
 	});
 
@@ -1818,5 +1818,18 @@ function calculos_raw(){
 		 	volcons = fval('volwater_'+id) + fval('volchem_'+id);
 		completar_campo_val('volcons_'+id,Math.round(volcons));		
 	});
+
+	//volrecact
+	var volrecact = 0;
+	$('.voltransf').each(function(){
+		var id = $(this).attr('id');
+		id = id.split('voltransf_');
+		id = id[1];
+
+		completar_campo_val('mta_'+id,fval('voltransf_'+id));
+		volrecact = volrecact + fval('voltransf_'+id);
+	});
+	completar_campo_val('volrecact',volrecact);
+	completar_campo_val('total_mta',volrecact);
 	
 }

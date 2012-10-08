@@ -128,4 +128,5 @@
     <?php $this->load->view('continue_phase'); ?>
     <?php $this->load->view('add_chemicals_overlay'); ?>
     <?php $this->load->view('mtr_overlay'); ?> <!-- transfer mud to reserves -->
+    <?php $this->load->view('mta_overlay'); ?> <!-- transfer mud to reserves -->
 </div>

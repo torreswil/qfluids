@@ -1345,9 +1345,7 @@ $(function(){
 		}else if($(this).hasClass('opened')){
 			$('.reserve_td').hide();
 			$(this).removeClass('opened').addClass('closed');	
-		}	
-
-		
+		}			
 	});
 
 	$('.remove_activetank').live('change',function(){
@@ -1378,6 +1376,20 @@ $(function(){
 		}
 	});
 
+	$('.mta_link').live('click',function(e){
+		e.preventDefault();
+		$('#mta_overlay').show();
+	});
+
+	$('#mta_overlay .close_link').click(function(e){
+		e.preventDefault();
+		$('#mta_overlay').hide();
+	});
+
+	$('#mta_btn').click(function(e){
+		e.preventDefault();
+		$('#mta_overlay').hide();	
+	});
 
 	$('.mtr_link').live('click',function(e){
 		e.preventDefault();
@@ -1388,6 +1400,38 @@ $(function(){
 		e.preventDefault();
 		$('#mtr_overlay').hide();
 	});
+
+	$('#mtr_btn').click(function(e){
+		e.preventDefault();
+
+		$('#mtr_inputs input.qty').each(function(){
+			if($(this).val() == ''){
+				$(this).val(0);
+			}
+			
+			var id = $(this).attr('id');
+				id = id.split('mtr_');
+				id = id[1];
+			$('#volrec_'+id).val($(this).val());
+		});
+
+		completar_campo_val('voltransfact',$('#total_mtr').val());
+		$('#mtr_overlay').hide();
+		correr_calculos();
+	});
+
+	$('#mtr_inputs input.qty').keyup(function(){
+		var total_mtr = 0;
+		$('#mtr_inputs input.qty').each(function(){
+			if($(this).val() == ''){
+				$(this).val(0);
+			}
+			
+			total_mtr = total_mtr + parseFloat($(this).val());	
+		});
+		completar_campo_val('total_mtr',total_mtr);
+	});
+
 
 
 	/*==========================================================================================================*/
