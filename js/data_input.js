@@ -10,7 +10,7 @@ $(function(){
 	/*==========================================================================================================*/
 	//materials
 	load_materials_status();
-
+        
 	/*==========================================================================================================*/
 	// NAVIGATION
 	/*==========================================================================================================*/
@@ -493,7 +493,7 @@ $(function(){
 			}
 			var data = {
 				'maker'			: $('#pump_picker_maker').val(),
-				'type'			: $('#pump_picker_type').val(),
+				'type'			: $('#pump_picker_type').val()
 			};	
 			$.post('/rest/get_pump_strokelength',data,function(r){
 				var append_string = no_option;
@@ -523,7 +523,7 @@ $(function(){
 			var data = {
 				'maker'			: $('#pump_picker_maker').val(),
 				'type'			: $('#pump_picker_type').val(),
-				'strokelength'	: $('#pump_picker_stroke').val(),
+				'strokelength'	: $('#pump_picker_stroke').val()
 			};
 			$.post('/rest/get_pump_linerdiameter',data,function(r){
 				var append_string = no_option;
@@ -1305,16 +1305,26 @@ $(function(){
 						$('.materials_table .material_qty',context).val('');
 						$('.general_st_info input',context).val('');
 						alert('Stock Transfer registered.');
-						load_materials_status();
+						load_materials_status();                                                
 					}
 				},'json');
 			}
 		}
 	});
 
-	function load_materials_status(){
-		$('#materials_status_table').load('/rest/load_materials_status');
-	}
+	function load_materials_status(){  
+                
+                $('#materials_status_table').load('/rest/load_materials_status');                                                                
+                
+                var project = $('#project_id').val();
+                var incoming_list = {
+                    project_id          : project,
+                    type                : 'incoming'
+                };
+                $.post('/rest/load_stock',incoming_list,function(r){			
+                        $('#incoming_stock_list').html(r);
+                });                                                
+	}        
 
 	/*==========================================================================================================*/
 	// 7. VOLUMES

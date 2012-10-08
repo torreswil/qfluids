@@ -579,6 +579,19 @@ class Rest extends CI_Controller {
             </tr> <?php
 		}
 	}
+        
+        public function load_stock(){
+		$result = $this->Api->get_where('stock_transfers', $_POST);
+		foreach ($result as $stock) { ?>
+			<tr class="this_incoming_stock_<?= $stock['d']?> ">								
+                                <td></td>
+				<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['date'] ?>" /></td>
+				<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['code'] ?>" /></td>
+				<td><input style="width:150px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['origin'] ?>" /></td>
+				<td><input style="width:150px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['destiny'] ?>" /></td>
+                        </tr> <?php
+		}
+	}
 
 	public function set_personal_settings(){
 		if(count($_POST) > 0){

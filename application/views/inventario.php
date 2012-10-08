@@ -75,14 +75,8 @@
                                 <td class="label_m"><label>Destiny</label></td>
                               </tr>
                          </thead>
-                         <tbody>
-                              <tr>
-                                <td class="label_m"></td>
-                                <td class="label_m"></td>
-                                <td class="label_m"></td>
-                                <td class="label_m"></td>
-                                <td class="label_m"></td>   
-                              </tr>
+                         <tbody id="incoming_stock_list">
+                              
                          </tbody>
                     </table>
                </fieldset>
