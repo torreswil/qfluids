@@ -233,6 +233,7 @@
 
 			<fieldset>
 				<legend>Active</legend>
+				<label id="tank_name_label_0" style="display:none;">Active</label>
 				<table>
 					<tr>
 						<td></td>
@@ -246,8 +247,8 @@
 					</tr>
 					<tr>
 						<td class="label_m"><img src="/img/bullet_add.png" /></td>
-						<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
-						<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;" id="link_add_chemicals_0">CHEMICAL ADITIONS</a></label></td>
+						<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;" id="volchem_0" name="volchem_0"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
