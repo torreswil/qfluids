@@ -1372,6 +1372,8 @@ $(function(){
 				$('#out_of_active_table').parent().hide();	
 			}
 		}
+
+		correr_calculos();
 	});
 
 	$('.mta_link').live('click',function(e){
@@ -1484,7 +1486,8 @@ $(function(){
 		$('#add_chemicals_overlay .used').val(0);
 		$('#add_chemicals_overlay .volincr').val(0);
 		$('#voltotalchem').val(0);
-		$('#add_chemicals_overlay input[name="tank"]').val('');		
+		$('#add_chemicals_overlay input[name="tank"]').val('');
+		correr_calculos();		
 		$('#add_chemicals_overlay').hide(); 
 	});
 

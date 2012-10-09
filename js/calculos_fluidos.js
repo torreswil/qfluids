@@ -1856,5 +1856,24 @@ function calculos_raw(){
 	$('.volincr').each(function(){
 		voltotalchem = voltotalchem + fval($(this).attr('id'))
 	});
-	completar_campo_val('voltotalchem',voltotalchem);
+	completar_campo_val('voltotalchem',voltotalchem.toFixed(2));
+
+
+	//volfinalact
+	var volfinalact = 0;
+		volfinalact = fval('volstartact') + fval('volrecact') + fval('volconsact') - fval('voltransfact') - fval('totallosses');
+	completar_campo_val('volfinalact',volfinalact);
+
+	//volconsact
+	var volconsact = 0;
+		volconsact = fval('volwateract') + fval('volchem_0');
+	completar_campo_val('volconsact',volconsact);
+
+	//activepits
+	var activepits = 0;
+	$('#inside_circuit_active_tanks .volrealtk').each(function(){
+		activepits = activepits + fval($(this).attr('id'));
+	});
+	completar_campo_val('activepits',activepits);
+
 }

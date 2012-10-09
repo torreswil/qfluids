@@ -86,6 +86,44 @@
                <fieldset>
                     <legend>Outgoing</legend>
                </fieldset>
-            </div>   
+            </div>
+            <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
+              <fieldset>
+                <table>
+                     <thead>
+                          <tr>
+                            <td class="label_m"><label>Material</label></td>
+                            <td class="label_m"><label>Unit</label></td>
+                            <td class="label_m"><label>Active</label></td>
+                            <?php foreach($pill_tanks as $tank){ ?>
+                              <td class="label_m"><label><?= $tank['tank_name'] ?></label></td>
+                            <?php }?>
+                            <?php foreach($reserve_tanks as $tank){ ?>
+                              <?php if($tank['name'] < 32){ ?>
+                                <td class="label_m"><label><?= $tank['tank_name'] ?></label></td>
+                              <?php } ?>
+                            <?php }?>
+                          </tr>
+                     </thead>
+                     <tbody class="materials_table">
+                        <?php foreach ($materials as $material) { ?>
+                            <tr class="this_material_<?= $material['product_id']?> ">
+                                <td><input style="width:200px;max-width:357px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+                                <td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
+                                <td class="label_m"><input type="text" style="width:55px;margin-right:0;" disabled /></td>
+                                <?php foreach($pill_tanks as $tank){ ?>
+                                  <td><input type="text" style="width:55px;margin-right:0;" disabled /></td>
+                                <?php }?>
+                                <?php foreach($reserve_tanks as $tank){ ?>
+                                  <?php if($tank['name'] < 32){ ?>
+                                    <td><input type="text" style="width:55px;margin-right:0;" disabled /></td>
+                                  <?php } ?>
+                                <?php }?>
+                            </tr>
+                        <?php } ?>
+                     </tbody>
+                </table>
+              </fieldset> 
+            </div>  
      </div>
 </div>

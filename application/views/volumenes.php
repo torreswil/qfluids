@@ -73,27 +73,27 @@
 							<table>
 								<tr>
 									<td class="label_m"><label>Active Pits:</label></td>
-									<td><input type="text" name="volcsgt" id="volcsgt" disabled="disabled" style="width:100px;" /></td>
+									<td><input type="text" name="activepits" id="activepits" disabled="disabled" style="width:100px;" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Pill:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="volhole" name="volhole" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="" name="" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Trip Tank:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="volholeempty" name="volholeempty" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="" name="" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total Reserve:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" name="zdisptotal" id="zdisptotal" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" name="" id="" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total Mud:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="volwstring" name="volwstring" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="" name="" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 							</table>
@@ -174,7 +174,7 @@
 								        				</td>
 								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" id="voltkaforo_<?= $tank['id'] ?>" /></td>
 								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" id="hlibremax_<?= $tank['id'] ?>" /></td>
-														<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="0" /></td>
+														<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="<?= $tank['hlibremax'] ?>" /></td>
 								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="volrealtk" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
 														<td class="label_m" style="text-align:center;"></td>
 							        					<td class="label_m" style="text-align:center;"></td>
@@ -211,7 +211,7 @@
 								        				</td>
 								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" id="voltkaforo_<?= $tank['id'] ?>" /></td>
 								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" id="hlibremax_<?= $tank['id'] ?>" /></td>
-														<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="0" /></td>
+														<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="<?= $tank['hlibremax'] ?>" /></td>
 								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="volrealtk" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
 								        				<td class="label_m" style="text-align:center;"><input type="checkbox" style="margin-top:4px;margin-left:5px;margin-right:5px;" checked="checked" class="remove_activetank" id="active_tank_<?= $tank['id'] ?>" /></td>
 							        					<td class="label_m" style="text-align:center;">Fluid Circuit</td>
@@ -238,47 +238,42 @@
 					<tr>
 						<td></td>
 						<td class="label_m"><label>STARTING VOLUME</label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input id="volstartact" name="volstartact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td class="label_m"><img src="/img/bullet_add.png" /></td>
 						<td class="label_m"><label><a href="#received_mud_from_reserves" class="mta_link" style="text-decoration:underline;">RECEIVED MUD FROM RESERVES</a></label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;" id="volrecact" name="volrecact"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text" disabled style="width:100px;margin-right:3px;" id="volrecact" name="volrecact"> bbl</td>
 					</tr>
 					<tr>
 						<td class="label_m"><img src="/img/bullet_add.png" /></td>
 						<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;" id="link_add_chemicals_0">CHEMICAL ADITIONS</a></label></td>
-						<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;" id="volchem_0" name="volchem_0"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text" disabled style="width:100px;margin-right:3px;" id="volchem_0" name="volchem_0"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label>WATER ADITIONS</label></td>
-						<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input id="volwateract" name="volwateract" class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label>BUILDED MUD</label></td>
-						<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input disabled id="volconsact" name="volconsact" class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td><img src="/img/bullet_delete.png" /></td>
 						<td class="label_m"><label><a href="#transfer_mud_to_reserves" class="mtr_link" style="text-decoration:underline;">MUD TRANSFERED TO RESERVES</a></label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;" id="voltransfact" name="voltransfact"> bbl</td>
+						<td class="label_m"><input class="label_m" disabled type="text" style="width:100px;margin-right:3px;" id="voltransfact" name="voltransfact"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label>TOTAL LOSSES</label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;" name="totallosses" id="totallosses" > bbl</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td class="label_m"><label>VOLUMEN POR FUERA DEL CIRCUITO ACTIVO</label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;" name="totallosses" id="totallosses" disabled /> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label style="color:#333;">FINAL VOLUME</label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input disabled id="volfinalact" name="volfinalact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 				</table>
 			</fieldset>
