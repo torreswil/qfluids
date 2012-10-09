@@ -1372,6 +1372,8 @@ $(function(){
 				$('#out_of_active_table').parent().hide();	
 			}
 		}
+
+		correr_calculos();
 	});
 
 	$('.mta_link').live('click',function(e){

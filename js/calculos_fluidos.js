@@ -1869,4 +1869,11 @@ function calculos_raw(){
 		volconsact = fval('volwateract') + fval('volchem_0');
 	completar_campo_val('volconsact',volconsact);
 
+	//activepits
+	var activepits = 0;
+	$('#inside_circuit_active_tanks .volrealtk').each(function(){
+		activepits = activepits + fval($(this).attr('id'));
+	});
+	completar_campo_val('activepits',activepits);
+
 }

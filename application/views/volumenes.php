@@ -73,27 +73,27 @@
 							<table>
 								<tr>
 									<td class="label_m"><label>Active Pits:</label></td>
-									<td><input type="text" name="volcsgt" id="volcsgt" disabled="disabled" style="width:100px;" /></td>
+									<td><input type="text" name="activepits" id="activepits" disabled="disabled" style="width:100px;" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Pill:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="volhole" name="volhole" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="" name="" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Trip Tank:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="volholeempty" name="volholeempty" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="" name="" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total Reserve:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" name="zdisptotal" id="zdisptotal" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" name="" id="" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total Mud:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="volwstring" name="volwstring" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="" name="" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 							</table>
