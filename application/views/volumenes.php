@@ -238,7 +238,7 @@
 					<tr>
 						<td></td>
 						<td class="label_m"><label>STARTING VOLUME</label></td>
-						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input id="volstartact" name="volstartact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td class="label_m"><img src="/img/bullet_add.png" /></td>
@@ -253,12 +253,12 @@
 					<tr>
 						<td></td>
 						<td class="label_m"><label>WATER ADITIONS</label></td>
-						<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input id="volwateract" name="volwateract" class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label>BUILDED MUD</label></td>
-						<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input id="volconsact" name="volconsact" class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td><img src="/img/bullet_delete.png" /></td>
@@ -268,17 +268,12 @@
 					<tr>
 						<td></td>
 						<td class="label_m"><label>TOTAL LOSSES</label></td>
-						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;" name="totallosses" id="totallosses" > bbl</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td class="label_m"><label>VOLUMEN POR FUERA DEL CIRCUITO ACTIVO</label></td>
-						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;" name="totallosses" id="totallosses" disabled /> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label style="color:#333;">FINAL VOLUME</label></td>
-						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input id="volfinalact" name="volfinalact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 				</table>
 			</fieldset>
