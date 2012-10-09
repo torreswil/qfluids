@@ -238,47 +238,47 @@
 					<tr>
 						<td></td>
 						<td class="label_m"><label>STARTING VOLUME</label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td class="label_m"><img src="/img/bullet_add.png" /></td>
 						<td class="label_m"><label><a href="#received_mud_from_reserves" class="mta_link" style="text-decoration:underline;">RECEIVED MUD FROM RESERVES</a></label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;" id="volrecact" name="volrecact"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text" disabled style="width:100px;margin-right:3px;" id="volrecact" name="volrecact"> bbl</td>
 					</tr>
 					<tr>
 						<td class="label_m"><img src="/img/bullet_add.png" /></td>
 						<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;" id="link_add_chemicals_0">CHEMICAL ADITIONS</a></label></td>
-						<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;" id="volchem_0" name="volchem_0"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text" disabled style="width:100px;margin-right:3px;" id="volchem_0" name="volchem_0"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label>WATER ADITIONS</label></td>
-						<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label>BUILDED MUD</label></td>
-						<td class="label_m"><input class="label_m" type="text"  disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td><img src="/img/bullet_delete.png" /></td>
 						<td class="label_m"><label><a href="#transfer_mud_to_reserves" class="mtr_link" style="text-decoration:underline;">MUD TRANSFERED TO RESERVES</a></label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;" id="voltransfact" name="voltransfact"> bbl</td>
+						<td class="label_m"><input class="label_m" disabled type="text" style="width:100px;margin-right:3px;" id="voltransfact" name="voltransfact"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label>TOTAL LOSSES</label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;" name="totallosses" id="totallosses" > bbl</td>
+						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;" name="totallosses" id="totallosses" > bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label>VOLUMEN POR FUERA DEL CIRCUITO ACTIVO</label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="label_m"><label style="color:#333;">FINAL VOLUME</label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled="disabled" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 				</table>
 			</fieldset>
