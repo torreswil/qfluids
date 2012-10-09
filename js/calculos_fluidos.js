@@ -1832,4 +1832,29 @@ function calculos_raw(){
 	completar_campo_val('volrecact',volrecact);
 	completar_campo_val('total_mta',volrecact);
 	
+
+	//volincr
+	$('.this_material_ac').each(function(){
+		var id = $(this).attr('id');
+			id = id.split('this_material_');
+			id = id[1];
+	
+		var volincr = 0;
+
+		//act different if the material is a solid o a liquid
+		if($('#unit_'+id).val() == 'lb'){
+			volincr = (fval('size_'+id) * fval('used_'+id) ) / ( 8.33 * 42 * fval('sg_'+id));
+		}else if($('#unit_'+id).val() == 'gal'){
+			volincr = ( fval('size_'+id) * fval('used_'+id) ) / (42);
+		}
+
+		completar_campo_val('volincr_'+id,volincr.toFixed(2));
+	});
+	
+	//voltotalchem
+	var voltotalchem = 0;
+	$('.volincr').each(function(){
+		voltotalchem = voltotalchem + fval($(this).attr('id'))
+	});
+	completar_campo_val('voltotalchem',voltotalchem);
 }

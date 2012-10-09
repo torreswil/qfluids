@@ -304,7 +304,7 @@
 				?>
 					<tr>
 						<td class="label_m" style="width:16px;"><a href="toggle_plus_<?= $tank['id'] ?>" class="show_n_hide_reserves closed"><img src="/img/bullet_toggle_plus.png" /></a></td> <!-- ojo aca -->
-						<td class="label_m"><label><?= $tank['tank_name'] ?></label></strong></td>
+						<td class="label_m"><label id="tank_name_label_<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></label></strong></td>
 					</tr>
 					<tr class="tank" id="this_tank_<?= $tank['id'] ?>">
 						<td></td>
@@ -328,8 +328,8 @@
 									</tr>
 									
 									<tr>
-										<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
-										<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;" id="volchem_<?= $tank['id'] ?>" name="volchem_<?= $tank['id'] ?>"> bbl</td>
+										<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" id="link_add_chemicals_<?= $tank['id'] ?>" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
+										<td class="label_m"><input disabled class="label_m" type="text"  style="width:100px;margin-right:3px;" id="volchem_<?= $tank['id'] ?>" name="volchem_<?= $tank['id'] ?>"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>WATER ADITIONS:</label></td>
@@ -404,7 +404,7 @@
 				?>
 					<tr>
 						<td class="label_m" style="width:16px;"><a href="toggle_plus_<?= $tank['id'] ?>" class="show_n_hide_reserves closed"><img src="/img/bullet_toggle_plus.png" /></a></td> <!-- ojo aca -->
-						<td class="label_m"><label><?= $tank['tank_name'] ?></label></strong></td>
+						<td class="label_m"><label id="tank_name_label_<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></label></strong></td>
 					</tr>
 					<tr class="tank" id="this_tank_<?= $tank['id'] ?>">
 						<td></td>
@@ -428,8 +428,8 @@
 									</tr>
 									<?php if($tank['name'] > 32){ $style="display:none;";}else{$style="";} ?>
 									<tr style="<?= $style; ?>">
-										<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
-										<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;" id="volchem_<?= $tank['id'] ?>" name="volchem_<?= $tank['id'] ?>"> bbl</td>
+										<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" id="link_add_chemicals_<?= $tank['id'] ?>" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
+										<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;" id="volchem_<?= $tank['id'] ?>" name="volchem_<?= $tank['id'] ?>" disabled /> bbl</td>
 									</tr>
 									<tr style="<?= $style; ?>">
 										<td class="label_m"><label>WATER ADITIONS:</label></td>

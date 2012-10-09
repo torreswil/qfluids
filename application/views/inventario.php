@@ -15,7 +15,7 @@
                                 <td class="label_m"></td>
                                 <td class="label_m"><label>Material Name</label></td>
                                 <td class="label_m"><label>Unit</label></td>
-                                <td class="label_m"><label>EG</label></td>
+                                <td class="label_m"><label>SG</label></td>
                                 <td class="label_m"><label>U. Cost</label></td>
                                 <td class="label_m"><label>Received.</label></td>
                                 <td class="label_m"><label>Transf.</label></td>

@@ -1329,18 +1329,6 @@ $(function(){
 	/*==========================================================================================================*/
 	// 7. VOLUMES
 	/*==========================================================================================================*/
-	
-	//show_add_chemicals_overlay
-	$('.show_add_chemicals_overlay').click(function(e){
-		e.preventDefault();
-		$('#add_chemicals_overlay').show();
-	});
-
-	$('#add_chemicals_overlay .close_link').click(function(e){
-		e.preventDefault();
-		$('#add_chemicals_overlay .chemical_qty').val(0);		
-		$('#add_chemicals_overlay').hide();
-	});
 
 	$('.show_n_hide_reserves').click(function(e){
 		e.preventDefault();
@@ -1454,6 +1442,51 @@ $(function(){
 		}
 	});
 
+	//add chemicals overlay
+	$('#add_chemicals_overlay input').keyup(function(){
+		correr_calculos();
+	});
+
+	//show_add_chemicals_overlay
+	$('.show_add_chemicals_overlay').click(function(e){
+		e.preventDefault();
+		var tank_id = $(this).attr('id');
+			tank_id = tank_id.split('link_add_chemicals_');
+			tank_id = tank_id[1];
+
+		var tank_label = $('#tank_name_label_'+tank_id).html();
+		$('#add_chemicals_overlay h5').html('Add chemicals to '+tank_label);
+		$('#add_chemicals_overlay input[name="tank"]').val(tank_id);
+		$('#add_chemicals_overlay').show();
+	});
+
+	$('#add_chemicals_overlay .close_link').click(function(e){
+		e.preventDefault();
+		$('#add_chemicals_overlay .used').val(0);
+		$('#add_chemicals_overlay .volincr').val(0);
+		$('#voltotalchem').val(0);
+		$('#add_chemicals_overlay input[name="tank"]').val('');		
+		$('#add_chemicals_overlay').hide();
+	});
+
+	$('#addchemical_btn').click(function(e){
+		e.preventDefault();
+
+		//get the target tank
+		var target 			= $('#add_chemicals_overlay input[name="tank"]').val();
+		
+		//todo: validaciones de volumen maximo del tanque
+		//todo: validaciones de stock
+		//todo: descargar los materiales del inventario
+
+		completar_campo_val('volchem_'+target,(fval('volchem_'+target) + fval('voltotalchem')).toFixed(2));
+
+		$('#add_chemicals_overlay .used').val(0);
+		$('#add_chemicals_overlay .volincr').val(0);
+		$('#voltotalchem').val(0);
+		$('#add_chemicals_overlay input[name="tank"]').val('');		
+		$('#add_chemicals_overlay').hide(); 
+	});
 
 
 	/*==========================================================================================================*/
