@@ -169,7 +169,7 @@ function calculos_raw(){
 	
 	//VEL JETS
 	var veljet = 0;
-	veljet = 0.32 * parseFloat($('#qgaltotal').val()) / tfa;
+	veljet = 0.32 * fval('qgaltotal') / tfa;
 	completar_campo_val('veljet',veljet.toFixed(3));
 	
 
