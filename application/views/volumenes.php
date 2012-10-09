@@ -258,7 +258,7 @@
 					<tr>
 						<td></td>
 						<td class="label_m"><label>BUILDED MUD</label></td>
-						<td class="label_m"><input id="volconsact" name="volconsact" class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input disabled id="volconsact" name="volconsact" class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td><img src="/img/bullet_delete.png" /></td>
@@ -273,7 +273,7 @@
 					<tr>
 						<td></td>
 						<td class="label_m"><label style="color:#333;">FINAL VOLUME</label></td>
-						<td class="label_m"><input id="volfinalact" name="volfinalact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input disabled id="volfinalact" name="volfinalact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 				</table>
 			</fieldset>
