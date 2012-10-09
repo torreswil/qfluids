@@ -52,26 +52,67 @@ $(function(){
 	$('.cb_piperam').change(function(){
 		if($('.cb_piperam:checked').length == 1){
 			$('.pipe_ram').show();
+                        $('.pipe_ram:input').each(function() {
+                                val = $(this).attr('old-value');
+                                if(val!=undefined) {
+                                        $(this).val(val);
+                                }                                
+                        });                        
 		}else{
+                        $('.pipe_ram:input').each(function() {
+                                $(this).attr('old-value', $(this).val());
+                                $(this).val('');
+                        });
 			$('.pipe_ram').hide();
 		}
 	});
 
 	$('.cb_blindram').change(function(){
 		if($('.cb_blindram:checked').length == 1){
-			$('.blindram').show();
+                        $('.blind_ram:input').each(function() {
+                                val = $(this).attr('old-value');
+                                if(val!=undefined) {
+                                        $(this).val(val);
+                                }                                
+                        });                        
+			$('.blindram').show();                        
 		}else{
+                        $('.blind_ram:input').each(function() {
+                                $(this).attr('old-value', $(this).val());
+                                $(this).val('');
+                        });
 			$('.blindram').hide();
 		}
 	});
 
 	$('.cb_shearram').change(function(){
 		if($('.cb_shearram:checked').length == 1){
+                        $('.shear_ram:input').each(function() {
+                                val = $(this).attr('old-value');
+                                if(val!=undefined) {
+                                        $(this).val(val);
+                                }                                
+                        });                        
 			$('.shearram').show();
-		}else{
+		} else{                        
+                        $('.shear_ram:input').each(function() {
+                                $(this).attr('old-value', $(this).val());
+                                $(this).val('');
+                        })
 			$('.shearram').hide();
 		}
 	});
+        
+        $('#rig_form_submit').click(function(e){
+		e.preventDefault();
+                var form = $(this).parents('form:first');                                
+                $.post('/rest/save_rig', form.serialize(), function(r) {                        
+                        if(r == true){
+                                alert('Rig save!');                                
+                                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+                        }
+                }, 'json');                
+        });
 
 
 
