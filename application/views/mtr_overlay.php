@@ -14,7 +14,7 @@
 				<tbody id="mtr_inputs">
 					<tr>
 						<td><input style="width:190px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="Mud out of Active Circuit" /></td>
-						<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled /></td>
+						<td><input style="width:55px;margin-right:0;" type="text" value="0" name="voloac" id="voloac" disabled /></td>
 						<td class="label_m">bbl</td>
 		            </tr>
 					<?php foreach ($pill_tanks as $tank){ ?>
