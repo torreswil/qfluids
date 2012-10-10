@@ -1559,12 +1559,12 @@ function calculos_raw(){
 
 	//totallossespow
 	var totallossespow = 0;
-	totallossespow = lossesurf + totalstringpow + totalanulpow + totalmotor_1 + pdbit;
+	totallossespow = fval('lossesurf') + fval('totalstringpow') + fval('totalanulpow') + fval('totalmotor_1') + fval('pdbit');
 	completar_campo_val('totallossespow',totallossespow.toFixed(2));
 
 	//totallossesbin
 	var totallossesbin = 0;
-	totallossesbin = lossesurf + totalstringbing + totalanulbin + totalmotor_2 + pdbit;
+	totallossesbin = fval('lossesurf') + fval('totalstringbing') + fval('totalanulbin') + fval('totalmotor_2') + fval('pdbit');
 	completar_campo_val('totallossesbin',totallossesbin.toFixed(2));
 
 
