@@ -1876,4 +1876,34 @@ function calculos_raw(){
 	});
 	completar_campo_val('activepits',activepits);
 
+	//pill
+	var pill = 0;
+	$('.volfinalpill').each(function(){
+		pill = pill + fval($(this).attr('id'));
+	});
+	completar_campo_val('pill',pill);
+	
+	//triptank
+	var triptank = 0;
+	$('.volrealtk_triptank').each(function(){
+		triptank = triptank + fval($(this).attr('id'));
+	});
+	completar_campo_val('triptank',triptank);
+
+	//totalreserve
+	var totalreserve = 0;
+	$('.volfinalreserve').each(function(){
+		totalreserve = totalreserve + fval($(this).attr('id'));
+	});
+	completar_campo_val('totalreserve',totalreserve);
+
+	//totalmud
+	var totalmud = 0;
+		totalmud = activepits + pill + triptank + totalreserve;
+	completar_campo_val('totalmud',totalmud);
+
+	//totalcirculate
+	var totalcirculate = 0;
+		totalcirculate = volwstring + activepits;
+	completar_campo_val('totalcirculate',totalcirculate);
 }

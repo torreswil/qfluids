@@ -25,7 +25,7 @@
 	    					<table>
 		    					<tr>
 		    						<td class="label_m"><label>Total Act. Circulate:</label></td>
-		    						<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" /> bbl</td>
+		    						<td class="label_m"><input id="totalcirculate" name="totalcirculate" type="text" disabled="disabled" style="width:100px;" /> bbl</td>
 		    					</tr>
 		    				</table>
 	    				</fieldset>
@@ -78,22 +78,22 @@
 								</tr>
 								<tr>
 									<td class="label_m"><label>Pill:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="" name="" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="pill" name="pill" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Trip Tank:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="" name="" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="triptank" name="triptank" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total Reserve:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" name="" id="" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" name="totalreserve" id="totalreserve" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total Mud:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="" name="" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="totalmud" name="totalmud" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 							</table>
@@ -150,7 +150,7 @@
 									<?php if(count($trip_tanks) > 0){ ?>
 										<fieldset>
 											<legend>Trip Tank</legend>
-											<table>
+											<table id="active_triptank_table">
 												<?php 
 													//TRIP TANK
 													foreach($trip_tanks as $tank){ 
@@ -175,7 +175,7 @@
 								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" id="voltkaforo_<?= $tank['id'] ?>" /></td>
 								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" id="hlibremax_<?= $tank['id'] ?>" /></td>
 														<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="<?= $tank['hlibremax'] ?>" /></td>
-								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="volrealtk" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
+								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="volrealtk volrealtk_triptank" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
 														<td class="label_m" style="text-align:center;"></td>
 							        					<td class="label_m" style="text-align:center;"></td>
 													</tr>
@@ -343,7 +343,7 @@
 									</tr>
 									<tr>
 										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
-										<td class="label_m"><input disabled="disabled" class="label_m" type="text" style="width:100px;margin-right:3px;" id="volfinal_<?= $tank['id'] ?>" name="volfinal_<?= $tank['id'] ?>" > bbl</td>
+										<td class="label_m"><input disabled="disabled" class="label_m volfinalpill" type="text" style="width:100px;margin-right:3px;" id="volfinal_<?= $tank['id'] ?>" name="volfinal_<?= $tank['id'] ?>"> bbl</td>
 									</tr>
 								</table>
 							</fieldset>
@@ -441,7 +441,7 @@
 									</tr>
 									<tr>
 										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
-										<td class="label_m"><input disabled="disabled" class="label_m" type="text" style="width:100px;margin-right:3px;" id="volfinal_<?= $tank['id'] ?>" name="volfinal_<?= $tank['id'] ?>" > bbl</td>
+										<td class="label_m"><input disabled="disabled" class="label_m volfinalreserve" type="text" style="width:100px;margin-right:3px;" id="volfinal_<?= $tank['id'] ?>" name="volfinal_<?= $tank['id'] ?>" > bbl</td>
 									</tr>
 								</table>
 							</fieldset>
