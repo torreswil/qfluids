@@ -84,7 +84,10 @@ class Main extends CI_Controller {
 				//DATOS BASE
 				$data['main_content'] 			= 'qfluids';
 				$data['project']				= $project_data;
-
+                                
+                                //RIG
+                                $rig                                    = $this->Api->get_where('rig', array('project_id'=>$project_data['id']));
+                                $data['rig']                            = (!empty($rig[0]['id'])) ? $rig[0] : null;
 				$this->load->view('partials/basic',$data);
 			}else{
 				redirect('/');

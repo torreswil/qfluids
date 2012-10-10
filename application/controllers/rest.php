@@ -679,5 +679,28 @@ class Rest extends CI_Controller {
 		}
 		echo json_encode(true);		
 	}
+        
+        /**
+         * Rig
+         */
+        public function save_rig() {                             
+            if(count($_POST) > 0){
+                    if(!empty($_POST['id'])) {
+                            if(empty($_POST['shear_ram'])) {
+                                    $_POST['shear_ram'] = 0;
+                            }
+                            if(empty($_POST['blind_ram'])) {
+                                    $_POST['blind_ram'] = 0;
+                            }
+                            if(empty($_POST['pipe_ram'])) {
+                                    $_POST['pipe_ram'] = 0;
+                            }                                                        
+                            $this->Api->update('rig', $_POST, $_POST['id']);
+                    } else {
+                            $this->Api->create('rig', $_POST);
+                    }                    
+            }            
+            echo json_encode(true);            
+        }
 }
 /****** THE END ******/
