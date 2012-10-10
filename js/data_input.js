@@ -1366,13 +1366,13 @@ $(function(){
 		}else if(check == 'checked'){
 			var tank_html = $('#this_active_tank_'+id);
 			$('#this_active_tank_'+id).remove();
+
 			$('#inside_circuit_active_tanks').append(tank_html).parent().show();
 
 			if($('#out_of_active_table tr').length == 0){
 				$('#out_of_active_table').parent().hide();	
 			}
 		}
-
 		correr_calculos();
 	});
 

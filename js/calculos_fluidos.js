@@ -1793,8 +1793,8 @@ function calculos_raw(){
 
 	var totallosses = 0;
 	totallosses = dailysubsurface + dailysurface;
-	completar_campo_val('totallosses',totallosses);
-	completar_campo_val('ztotallosses',totallosses);
+	completar_campo_val('totallosses',Math.round(totallosses));
+	completar_campo_val('ztotallosses',Math.round(totallosses));
 
 	
 	$('.tank').each(function(){
@@ -1808,6 +1808,15 @@ function calculos_raw(){
 		completar_campo_val('volfinal_'+id,Math.round(volfinal));	
 	});
 
+
+	//totaloutofcircuit
+	var totaloutofcircuit = 0;
+	$('#out_of_active_table .volrealtk').each(function(){
+		totaloutofcircuit = totaloutofcircuit + fval($(this).attr('id'));
+	});
+	completar_campo_val('totaloutofcircuit',totaloutofcircuit);
+	completar_campo_val('ztotaloutofcircuit',totaloutofcircuit);
+
 	$('.tank').each(function(){
 		var id = $(this).attr('id');
 		id = id.split('this_tank_');
@@ -1819,6 +1828,20 @@ function calculos_raw(){
 		completar_campo_val('volcons_'+id,Math.round(volcons));		
 	});
 
+	//volmaxact
+	var volmaxact = 0;
+	$('#inside_circuit_active_tanks .voltkaforo').each(function(){
+		volmaxact = volmaxact + fval($(this).attr('id'));
+	});
+	completar_campo_val('volmaxact',Math.round(volmaxact));
+
+	//volteoricoact
+	var volteoricoact = 0;
+	$('#inside_circuit_active_tanks .volrealtk').each(function(){
+		volteoricoact = volteoricoact + fval($(this).attr('id'));
+	});
+	completar_campo_val('volteoricoact',volteoricoact);
+
 	//volrecact
 	var volrecact = 0;
 	$('.voltransf').each(function(){
@@ -1829,8 +1852,8 @@ function calculos_raw(){
 		completar_campo_val('mta_'+id,fval('voltransf_'+id));
 		volrecact = volrecact + fval('voltransf_'+id);
 	});
-	completar_campo_val('volrecact',volrecact);
-	completar_campo_val('total_mta',volrecact);
+	completar_campo_val('volrecact',Math.round(volrecact));
+	completar_campo_val('total_mta',Math.round(volrecact));
 	
 
 	//volincr
@@ -1862,11 +1885,11 @@ function calculos_raw(){
 	//volconsact
 	var volconsact = 0;
 		volconsact = fval('volwateract') + fval('volchem_0');
-	completar_campo_val('volconsact',volconsact);
+	completar_campo_val('volconsact',Math.round(volconsact));
 
 	//volfinalact
 	var volfinalact = 0;
-		volfinalact = fval('volstartact') + fval('volrecact') + fval('volconsact') - fval('voltransfact') - fval('totallosses');
+		volfinalact = fval('volstartact') + fval('volrecact') + fval('volconsact') - fval('voltransfact') - fval('totallosses') - fval('totaloutofcircuit');
 	completar_campo_val('volfinalact',Math.round(volfinalact));
 
 	//triptank
@@ -1874,7 +1897,7 @@ function calculos_raw(){
 	$('.volrealtk_triptank').each(function(){
 		triptank = triptank + fval($(this).attr('id'));
 	});
-	completar_campo_val('triptank',triptank);
+	completar_campo_val('triptank',Math.round(triptank));
 
 	//activepits
 	var activepits = 0;
@@ -1882,36 +1905,42 @@ function calculos_raw(){
 	$('#inside_circuit_active_tanks .volrealtk').each(function(){
 		activepits = activepits + fval($(this).attr('id'));
 	});
-	completar_campo_val('activepits',activepits);
+	completar_campo_val('activepits',Math.round(activepits));
 
 	//pill
 	var pill = 0;
 	$('.volfinalpill').each(function(){
 		pill = pill + fval($(this).attr('id'));
 	});
-	completar_campo_val('pill',pill);
+	completar_campo_val('pill',Math.round(pill));
 	
 	//totalreserve
 	var totalreserve = 0;
+		totalreserve = totalreserve + fval('totaloutofcircuit');
 	$('.volfinalreserve').each(function(){
 		totalreserve = totalreserve + fval($(this).attr('id'));
 	});
-	completar_campo_val('totalreserve',totalreserve);
+	completar_campo_val('totalreserve',Math.round(totalreserve));
 
 	//totalmud
 	var totalmud = 0;
 		totalmud = activepits + pill + totalreserve;
-	completar_campo_val('totalmud',totalmud);
+	completar_campo_val('totalmud',Math.round(totalmud));
 
 	//totalcirculate
 	var totalcirculate = 0;
 		totalcirculate = volwstring + activepits;
-	completar_campo_val('totalcirculate',totalcirculate);
+	completar_campo_val('totalcirculate',Math.round(totalcirculate));
 
 	//voloac
 	var voloac = 0;
 	$('#out_of_active_table .volrealtk').each(function(){
 		voloac = voloac + fval($(this).attr('id'));
 	});
-	completar_campo_val('voloac',voloac);
+	completar_campo_val('voloac',Math.round(voloac));
+
+	//balancefluido
+	var balancefluido = 0;
+		balancefluido = totalcirculate - volfinalact;
+	completar_campo_val('balancefluido',Math.round(balancefluido));
 }

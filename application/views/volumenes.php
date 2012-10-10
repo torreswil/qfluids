@@ -5,7 +5,7 @@
 		<table style="float:left;" >
 			<tr>
 				<td class="label_m"><label class="emphasis">Balance del Fluido</label></td>
-				<td><input type="text" disabled="disabled"></td>
+				<td><input type="text" style="width:100px;" disabled="disabled" name="balancefluido" id="balancefluido"></td>
 			</tr>
 		</table>
 	</fieldset>
@@ -14,7 +14,7 @@
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Volumes Resume</a></li>
 			<li><a href="#">Active Volume</a></li>
-			<li><a href="#">Reserve Volume</a></li>
+			<li><a href="#">Reserve Volume & Out of Circuit</a></li>
 			<li><a href="#">Losses Analisis</a></li>
 	    </ul>
 	    <div class="simpleTabsContent">
@@ -209,7 +209,7 @@
 								        					<input type="hidden" value="<?= $tank['sl2'] ?>" id="sl2_<?= $tank['id'] ?>" />
 								        					<input type="hidden" value="<?= $tank['diametro'] ?>" id="diametro_<?= $tank['id'] ?>" />
 								        				</td>
-								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" id="voltkaforo_<?= $tank['id'] ?>" /></td>
+								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['voltkaforo'] ?>" id="voltkaforo_<?= $tank['id'] ?>" class="voltkaforo" /></td>
 								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" disabled="disabled" value="<?= $tank['hlibremax'] ?>" id="hlibremax_<?= $tank['id'] ?>" /></td>
 														<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="hlibre" id="hlibre_<?= $tank['id'] ?>" name="hlibre_<?= $tank['id'] ?>" value="<?= $tank['hlibremax'] ?>" /></td>
 								        				<td class="label_m"><input type="text" style="margin-right:0;width:90px;" class="volrealtk" id="volrealtk_<?= $tank['id'] ?>" name="volrealtk_<?= $tank['id'] ?>" disabled="disabled" /></td>
@@ -223,7 +223,6 @@
 
 									<fieldset style="display:none;">
 										<legend>Out of active</legend>
-										<table id="out_of_active_table"></table>
 									</fieldset>						
 							<?php } ?>
 						</fieldset>
@@ -267,8 +266,23 @@
 					</tr>
 					<tr>
 						<td></td>
+						<td class="label_m"><label>MUD MOVED OUT OF THE CIRCUIT:</label></td>
+						<td class="label_m"><input class="label_m" disabled type="text" style="width:100px;margin-right:3px;" id="ztotaloutofcircuit" name="ztotaloutofcircuit"> bbl</td>
+					</tr>
+					<tr>
+						<td></td>
 						<td class="label_m"><label>TOTAL LOSSES</label></td>
 						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;" name="totallosses" id="totallosses" disabled /> bbl</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="label_m"><label style="color:#333;">VOLUMEN MAXIMO POSIBLE</label></td>
+						<td class="label_m"><input disabled id="volmaxact" name="volmaxact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="label_m"><label style="color:#333;">VOLUMEN TEORICO ACTUAL</label></td>
+						<td class="label_m"><input disabled id="volteoricoact" name="volteoricoact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -276,7 +290,7 @@
 						<td class="label_m"><input disabled id="volfinalact" name="volfinalact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 				</table>
-			</fieldset>
+			</fieldset>	
 			
 			<fieldset style="margin-top:10px;">
 				<table>
@@ -494,6 +508,15 @@
 				<?php } ?>
 				</table>
 			</fieldset>
+			<fieldset style="display:none;">
+				<legend>Volume Out of short Circuit</legend>
+				<table>
+					<tr>
+						<td class="label_m"><label>Total out of circuit:</label></td><td><input type="text" name="totaloutofcircuit" id="totaloutofcircuit" style="width:100px;" disabled /></td>
+					</tr>
+				</table>
+				<table id="out_of_active_table"></table>
+			</fieldset>
 		</div>
 
 		<div class="simpleTabsContent">
@@ -566,7 +589,7 @@
 						</td>
 					</tr>
 				</table>
-			</fieldset>			
+			</fieldset>		
 		</div>
 	</div>
 </div>
