@@ -1828,20 +1828,7 @@ function calculos_raw(){
 		completar_campo_val('volcons_'+id,Math.round(volcons));		
 	});
 
-	//volmaxact
-	var volmaxact = 0;
-	$('#inside_circuit_active_tanks .voltkaforo').each(function(){
-		volmaxact = volmaxact + fval($(this).attr('id'));
-	});
-	completar_campo_val('volmaxact',Math.round(volmaxact));
-
-	//volteoricoact
-	var volteoricoact = 0;
-	$('#inside_circuit_active_tanks .volrealtk').each(function(){
-		volteoricoact = volteoricoact + fval($(this).attr('id'));
-	});
-	completar_campo_val('volteoricoact',volteoricoact);
-
+	
 	//volrecact
 	var volrecact = 0;
 	$('.voltransf').each(function(){
@@ -1901,7 +1888,6 @@ function calculos_raw(){
 
 	//activepits
 	var activepits = 0;
-		activepits = activepits + triptank;
 	$('#inside_circuit_active_tanks .volrealtk').each(function(){
 		activepits = activepits + fval($(this).attr('id'));
 	});
@@ -1916,7 +1902,6 @@ function calculos_raw(){
 	
 	//totalreserve
 	var totalreserve = 0;
-		totalreserve = totalreserve + fval('totaloutofcircuit');
 	$('.volfinalreserve').each(function(){
 		totalreserve = totalreserve + fval($(this).attr('id'));
 	});
@@ -1924,7 +1909,7 @@ function calculos_raw(){
 
 	//totalmud
 	var totalmud = 0;
-		totalmud = activepits + pill + totalreserve;
+		totalmud = activepits + pill + totalreserve + triptank;
 	completar_campo_val('totalmud',Math.round(totalmud));
 
 	//totalcirculate

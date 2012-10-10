@@ -223,6 +223,7 @@
 
 									<fieldset style="display:none;">
 										<legend>Out of active</legend>
+										<table id="out_of_active_table"></table>
 									</fieldset>						
 							<?php } ?>
 						</fieldset>
@@ -266,23 +267,8 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td class="label_m"><label>MUD MOVED OUT OF THE CIRCUIT:</label></td>
-						<td class="label_m"><input class="label_m" disabled type="text" style="width:100px;margin-right:3px;" id="ztotaloutofcircuit" name="ztotaloutofcircuit"> bbl</td>
-					</tr>
-					<tr>
-						<td></td>
 						<td class="label_m"><label>TOTAL LOSSES</label></td>
 						<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;" name="totallosses" id="totallosses" disabled /> bbl</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td class="label_m"><label style="color:#333;">VOLUMEN MAXIMO POSIBLE</label></td>
-						<td class="label_m"><input disabled id="volmaxact" name="volmaxact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td class="label_m"><label style="color:#333;">VOLUMEN TEORICO ACTUAL</label></td>
-						<td class="label_m"><input disabled id="volteoricoact" name="volteoricoact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -507,15 +493,6 @@
 					</tr>
 				<?php } ?>
 				</table>
-			</fieldset>
-			<fieldset style="display:none;">
-				<legend>Volume Out of short Circuit</legend>
-				<table>
-					<tr>
-						<td class="label_m"><label>Total out of circuit:</label></td><td><input type="text" name="totaloutofcircuit" id="totaloutofcircuit" style="width:100px;" disabled /></td>
-					</tr>
-				</table>
-				<table id="out_of_active_table"></table>
 			</fieldset>
 		</div>
 
