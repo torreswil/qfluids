@@ -1867,7 +1867,7 @@ function calculos_raw(){
 	//volfinalact
 	var volfinalact = 0;
 		volfinalact = fval('volstartact') + fval('volrecact') + fval('volconsact') - fval('voltransfact') - fval('totallosses');
-	completar_campo_val('volfinalact',volfinalact);
+	completar_campo_val('volfinalact',Math.round(volfinalact));
 
 	//triptank
 	var triptank = 0;
