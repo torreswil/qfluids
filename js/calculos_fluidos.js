@@ -1864,6 +1864,13 @@ function calculos_raw(){
 		volfinalact = fval('volstartact') + fval('volrecact') + fval('volconsact') - fval('voltransfact') - fval('totallosses');
 	completar_campo_val('volfinalact',volfinalact);
 
+	//triptank
+	var triptank = 0;
+	$('.volrealtk_triptank').each(function(){
+		triptank = triptank + fval($(this).attr('id'));
+	});
+	completar_campo_val('triptank',triptank);
+
 	//volconsact
 	var volconsact = 0;
 		volconsact = fval('volwateract') + fval('volchem_0');
@@ -1871,6 +1878,7 @@ function calculos_raw(){
 
 	//activepits
 	var activepits = 0;
+		activepits = activepits + triptank;
 	$('#inside_circuit_active_tanks .volrealtk').each(function(){
 		activepits = activepits + fval($(this).attr('id'));
 	});
@@ -1883,13 +1891,6 @@ function calculos_raw(){
 	});
 	completar_campo_val('pill',pill);
 	
-	//triptank
-	var triptank = 0;
-	$('.volrealtk_triptank').each(function(){
-		triptank = triptank + fval($(this).attr('id'));
-	});
-	completar_campo_val('triptank',triptank);
-
 	//totalreserve
 	var totalreserve = 0;
 	$('.volfinalreserve').each(function(){
@@ -1899,7 +1900,7 @@ function calculos_raw(){
 
 	//totalmud
 	var totalmud = 0;
-		totalmud = activepits + pill + triptank + totalreserve;
+		totalmud = activepits + pill + totalreserve;
 	completar_campo_val('totalmud',totalmud);
 
 	//totalcirculate
