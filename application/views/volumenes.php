@@ -25,7 +25,7 @@
 	    					<table>
 		    					<tr>
 		    						<td class="label_m"><label>Total Act. Circulate:</label></td>
-		    						<td class="label_m"><input id="totalcirculate" name="totalcirculate" type="text" disabled="disabled" style="width:100px;" /> bbl</td>
+		    						<td class="label_m"><input id="totalcirculate" name="totalcirculate" type="text" disabled="disabled" style="width:100px;" value="0" /> bbl</td>
 		    					</tr>
 		    				</table>
 	    				</fieldset>
