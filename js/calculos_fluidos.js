@@ -1988,10 +1988,7 @@ function calculos_raw(){
 			if(isNaN(cxconc)){
 				cxconc = 0;
 			}
-
-			log("("+fval('lastconc_'+id_material+'_'+id_tank)+" * "+volstart+" + ( "+fval('size_'+id_material)+" * "+fval('used_'+id_material+'_'+id_tank)+" ) ) / ( "+volstart+" + "+voladd+")");
-
-			completar_campo_val($(this).attr('id'),cxconc.toFixed(2));
+		completar_campo_val($(this).attr('id'),cxconc.toFixed(2));
 	});
 
 }
