@@ -1989,7 +1989,7 @@ function calculos_raw(){
 				cxconc = 0;
 			}
 
-			log(cxconc);
+			log("("+fval('lastconc_'+id_material+'_'+id_tank)+" * "+volstart+" + ( "+fval('size_'+id_material)+" * "+fval('used_'+id_material+'_'+id_tank)+" ) ) / ( "+volstart+" + "+voladd+")");
 
 			completar_campo_val($(this).attr('id'),cxconc.toFixed(2));
 	});
