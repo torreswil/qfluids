@@ -1860,7 +1860,8 @@ function calculos_raw(){
 		}
 
 		completar_campo_val('volincr_'+id,volincr.toFixed(2));
-		completar_campo_val('ivolincr_'+id,volincr.toFixed(2));
+		var current_add_chemical_overlay_tank = $.trim($('#add_chemicals_overlay input[name="tank"]').val());
+		completar_campo_val('ivolincr_'+id+'_'+current_add_chemical_overlay_tank,volincr.toFixed(2));
 	});
 	
 	//voltotalchem
