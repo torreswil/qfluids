@@ -1481,6 +1481,8 @@ $(function(){
 			//cargar los consumos por producto del tanque actual
 			var id_material_tanque = id+tank_id;
 			$('#'+id_material_tanque).val($('#i'+id_material_tanque).val());
+
+			correr_calculos();
 		});
 
 		
