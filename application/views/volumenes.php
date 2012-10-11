@@ -14,8 +14,9 @@
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Volumes Resume</a></li>
 			<li><a href="#">Active Volume</a></li>
-			<li><a href="#">Reserve Volume & Out of Circuit</a></li>
+			<li><a href="#">Reserve Volume</a></li>
 			<li><a href="#">Losses Analisis</a></li>
+			<li><a href="#">Mud Transfers</a></li>
 	    </ul>
 	    <div class="simpleTabsContent">
 	    	<table style="width:100%;">
@@ -623,6 +624,47 @@
 					</tr>
 				</table>
 			</fieldset>		
+		</div>
+		<div class="simpleTabsContent">
+			<fieldset>
+				<legend>Transfer mud to and from the active system</legend>
+				<table>
+					<tr>
+						<td class="label_m"><label>Origin:</label></td>
+						<td class="label_m"><label>Destiny:</label></td>
+					</tr>
+					<tr>
+						<td>
+							<select>
+								<option value="0">Active System</option>
+								<?php foreach($pill_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+								<?php foreach($trip_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+								<?php foreach($reserve_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+							</select>
+						</td>
+						<td>
+							<select>
+								<option value="0">Active System</option>
+								<?php foreach($pill_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+								<?php foreach($trip_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+								<?php foreach($reserve_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
 		</div>
 	</div>
 </div>
