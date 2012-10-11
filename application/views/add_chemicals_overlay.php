@@ -28,8 +28,11 @@
 								<input type="hidden" name="unit_<?= $material['product_id']?>" id="unit_<?= $material['product_id']?>" class="unit" value="<?= $material['unidad_destino'] ?>" />
 							</td>
 							<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" name="sg_<?= $material['product_id']?>" id="sg_<?= $material['product_id']?>" /></td>
-							<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['avaliable'] ?>" /></td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="" class="used" name="used_<?= $material['product_id']?>" id="used_<?= $material['product_id']?>" /></td>
+							<td>
+								<input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="" id="ac_stock_<?= $material['product_id']?>" class="ac_stock" />
+								<input style="width:55px;margin-right:0;" type="hidden" disabled="disabled" value="" id="realac_stock_<?= $material['product_id']?>" class="realac_stock" />
+							</td>
+							<td><input style="width:55px;margin-right:0;" type="text" value="" class="used" name="used_<?= $material['product_id']?>_" id="used_<?= $material['product_id']?>_" /></td>
 							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" id="volincr_<?= $material['product_id']?>" name="volincr_<?= $material['product_id']?>" class="volincr" /></td>
 							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
 							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
@@ -52,8 +55,8 @@
 			<input type="hidden" name="project" value="<?= $project['id'] ?>">
 			<input type="hidden" name="tank" value="">
 			
-			<input type="button" value="Add" style="float:right;" id="addchemical_btn" />
-			<a href="#close" class="close_link" style="display:block;float:left;margin-top:10px;">Cancel</a>
+			<input type="button" value="Close" style="float:right;" id="addchemical_btn" />
+			<!-- <a href="#close" class="close_link" style="display:block;float:left;margin-top:10px;">Cancel</a> -->
 		</div>
 	</div>
 </div>

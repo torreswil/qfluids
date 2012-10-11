@@ -9,7 +9,7 @@ $(function(){
 	// INIT FUNCTIONS
 	/*==========================================================================================================*/
 	//materials
-	load_materials_status();
+	//load_materials_status();
         
 	/*==========================================================================================================*/
 	// NAVIGATION
@@ -1457,8 +1457,31 @@ $(function(){
 			tank_id = tank_id[1];
 
 		var tank_label = $('#tank_name_label_'+tank_id).html();
-		$('#add_chemicals_overlay h5').html('Add chemicals to '+tank_label);
+		$('#add_chemicals_overlay h5').html('Chemicals added today to '+tank_label+':');
 		$('#add_chemicals_overlay input[name="tank"]').val(tank_id);
+		
+		$('#add_chemicals_overlay .used').each(function(){
+			var id = $(this).attr('id');
+				id = id.split('_');
+				id = id[0]+'_'+id[1]+'_';
+			//marcar los campos con el correspondiente id del tanque y del material
+			$(this).attr('id',id+tank_id).attr('name',id+tank_id);
+
+			//cargar los stock presentes de cada material
+			var id_material = $(this).attr('id');
+				id_material = id_material.split('_');
+				id_material = id_material[1];
+
+			$('#ac_stock_'+id_material).val($('#mstock_'+id_material).val());
+			$('#realac_stock_'+id_material).val($('#mstock_'+id_material).val());
+
+			//cargar los consumos por producto del tanque actual
+			var id_material_tanque = id+tank_id;
+			$('#'+id_material_tanque).val($('#i'+id_material_tanque).val());
+		});
+
+		
+
 		$('#add_chemicals_overlay').show();
 	});
 
@@ -1472,23 +1495,30 @@ $(function(){
 	});
 
 	$('#addchemical_btn').click(function(e){
-		e.preventDefault();
+		//validar que ningun valor sea negativo en el stock
+		var eqty 	= 0;
+		var tank_id = $('#add_chemicals_overlay input[name="tank"]').val();
+		$('#add_chemicals_overlay .ac_stock').each(function(){
+			var id = $(this).attr('id');
+				id = id.split('_');
+				id = id[2];
 
-		//get the target tank
-		var target 			= $('#add_chemicals_overlay input[name="tank"]').val();
-		
-		//todo: validaciones de volumen maximo del tanque
-		//todo: validaciones de stock
-		//todo: descargar los materiales del inventario
+			if(parseInt($(this).val()) < 0){
+				eqty = eqty + 1;
+				$('#used_'+id+'_'+tank_id).addClass('input_error');
+				log('#used_'+id+'_'+tank_id);
+			}else{
+				$('#used_'+id+'_'+tank_id).removeClass('input_error');	
+			}
+		});
 
-		completar_campo_val('volchem_'+target,(fval('volchem_'+target) + fval('voltotalchem')).toFixed(2));
-
-		$('#add_chemicals_overlay .used').val(0);
-		$('#add_chemicals_overlay .volincr').val(0);
-		$('#voltotalchem').val(0);
-		$('#add_chemicals_overlay input[name="tank"]').val('');
-		correr_calculos();		
-		$('#add_chemicals_overlay').hide(); 
+		if(eqty == 0){
+			$('#add_chemicals_overlay input[name="tank"]').val('');		
+			$('#add_chemicals_overlay').hide();	
+			$('#add_chemicals_overlay .ac_stock').val('');
+		}else{
+			alert('You are atempting to use more material than the material avaliable in stock. Please verify and try again.');
+		}
 	});
 
 

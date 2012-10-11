@@ -574,7 +574,7 @@ class Rest extends CI_Controller {
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['received'] ?>" /></td>
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['transfered'] ?>" /></td>
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['used'] ?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['avaliable'] ?>" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['avaliable'] ?>" id="mstock_<?= $material['product_id']?>" /></td>
 				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$0" /></td>
             </tr> <?php
 		}
