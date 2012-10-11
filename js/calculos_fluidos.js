@@ -1860,6 +1860,7 @@ function calculos_raw(){
 		}
 
 		completar_campo_val('volincr_'+id,volincr.toFixed(2));
+		completar_campo_val('ivolincr_'+id,volincr.toFixed(2));
 	});
 	
 	//voltotalchem
