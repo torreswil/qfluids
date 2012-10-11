@@ -34,7 +34,7 @@
 							<td><input style="width:55px;margin-right:0;" type="text" value="" class="used" name="used_<?= $material['product_id']?>_" id="used_<?= $material['product_id']?>_" /></td>
 							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" id="volincr_<?= $material['product_id']?>" name="volincr_<?= $material['product_id']?>" class="volincr" /></td>
 							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
+							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" id="cxconc_<?= $material['product_id']?>" name="cxconc_<?= $material['product_id']?>" class="cxconc" /></td>
 							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
 			            </tr>	
 					<?php } ?>

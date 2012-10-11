@@ -1864,12 +1864,15 @@ function calculos_raw(){
 		completar_campo_val('ivolincr_'+id+'_'+current_add_chemical_overlay_tank,volincr.toFixed(2));
 	});
 	
+
+	//ID DEL TANQUE ACTUALMENTE SELECCIONADO
+	var current_add_chemical_overlay_tank = $.trim($('#add_chemicals_overlay input[name="tank"]').val());
+
 	//voltotalchem
 	var voltotalchem = 0;
 	$('.volincr').each(function(){
 		voltotalchem = voltotalchem + fval($(this).attr('id'));
 	});
-	var current_add_chemical_overlay_tank = $.trim($('#add_chemicals_overlay input[name="tank"]').val());
 	completar_campo_val('voltotalchem',voltotalchem.toFixed(2));
 	if(voltotalchem > 0 && voltotalchem < 1){voltotalchem = 1;}
 	completar_campo_val('volchem_'+current_add_chemical_overlay_tank,Math.round(voltotalchem));
@@ -1966,6 +1969,24 @@ function calculos_raw(){
 			id = id.split('ac_stock_');
 			id = id[1];
 		completar_campo_val('ac_stock_'+id,$('#mstock_'+id).val());	
+	});
+
+	//cxconc
+	$('.cxconc').each(function(){
+		var id_material = $(this).attr('id');
+			id_material = id_material.split('_');
+			id_material = id_material[1];
+
+		var id_tank 	= current_add_chemical_overlay_tank; 
+		
+		if(id_tank == 0){ var volstart = fval('volstartact'); var volwater = fval('volwateract');}else{ var volstart = fval('volstart_'+id_tank); var volwater = fval('volwater_'+id_tank);}
+		
+		var voladd = voltotalchem + volwater;
+
+		var cxconc 		= 0;
+			cxconc		= (fval('lastconc_'+id_material+'_'+id_tank) * volstart + ( fval('size_'+id_material) * fval('used_'+id_material+'_'+id_tank) ) ) / ( volstart + voladd);
+			if(cxconc == NaN){cxconc = 0;}
+			completar_campo_val($(this).attr('id'),cxconc.toFixed(2));
 	});
 
 }
