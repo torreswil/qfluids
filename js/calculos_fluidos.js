@@ -1872,26 +1872,6 @@ function calculos_raw(){
 	if(voltotalchem > 0 && voltotalchem < 1){voltotalchem = 1;}
 	completar_campo_val('volchem_'+current_add_chemical_overlay_tank,Math.round(voltotalchem));
 
-	if(current_add_chemical_overlay_tank !== ''){
-		//ac_stock
-		$('.ac_stock').each(function(){
-			var id = $(this).attr('id');
-				id = id.split('ac_stock_');
-				id = id[1];
-
-			var ac_stock = parseInt($('#realac_stock_'+id).val()) - fval('used_'+id+'_'+current_add_chemical_overlay_tank);
-			completar_campo_val('ac_stock_'+id,ac_stock);
-			completar_campo_val('mstock_'+id,ac_stock); 	
-		});
-
-		//iused
-		$('#add_chemicals_overlay .used').each(function(){
-			var id = $(this).attr('id');
-				id = id.split('used');
-			log('#iused'+id[1]);
-			$('#iused'+id[1]).val(parseInt($(this).val()));	
-		});	
-	}
 		
 	//volconsact
 	var volconsact = 0;
@@ -1976,6 +1956,14 @@ function calculos_raw(){
 		var mstock = 0;
 			mstock = fval('minitial_'+id) + fval('mreceived_'+id) - fval('mtransf_'+id) - fval('stotal_consumption_today_'+id);
 		completar_campo_val($(this).attr('id'),mstock);
+	});
+
+	//ac_stock
+	$('.ac_stock').each(function(){
+		var id = $(this).attr('id');
+			id = id.split('ac_stock_');
+			id = id[1];
+		completar_campo_val('ac_stock_'+id,$('#mstock_'+id).val());	
 	});
 
 }

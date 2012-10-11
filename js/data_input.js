@@ -1446,6 +1446,9 @@ $(function(){
 
 	//add chemicals overlay
 	$('#add_chemicals_overlay input').keyup(function(){
+		var id = $(this).attr('id');
+		$('#i'+id).val($(this).val());
+
 		correr_calculos();
 	});
 
