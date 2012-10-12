@@ -637,7 +637,7 @@
 					</tr>
 					<tr>
 						<td>
-							<select>
+							<select id="tv_origin">
 								<option value="0">Active System</option>
 								<?php foreach($pill_tanks as $tank){ ?>
 									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
@@ -651,7 +651,7 @@
 							</select>
 						</td>
 						<td>
-							<select>
+							<select id="tv_destiny">
 								<option value="0">Active System</option>
 								<?php foreach($pill_tanks as $tank){ ?>
 									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
@@ -664,11 +664,11 @@
 								<?php } ?>
 							</select>
 						</td>
-						<td class="label_m"><input type="text" style="width:100px;" /></td>
+						<td class="label_m"><input type="text" style="width:100px;" id="tv_volume" /></td>
 						<td class="label_m"><a href="#result_concentrations_overlay" class="show_rc_overlay">Concentraciones Resultantes</a></td>
 					</tr>
 				</table>
-				<input type="button" value="Transfer Volume" style="margin-top:20px;" />
+				<input type="button" value="Transfer Volume" style="margin-top:20px;" id="transfer_volume_btn" />
 			</fieldset>
 			<fieldset>
 				<legend>Archivo de transferencias</legend>

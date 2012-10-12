@@ -1518,6 +1518,15 @@ $(function(){
 		});
 
 		if(eqty == 0){
+			//actualizar la tabla de concentraciones iniciales
+			$('.cxconc').each(function(){
+				var id_material = $(this).attr('id');
+					id_material = id_material.split('_');
+					id_material = id_material[1];
+					completar_campo_val('currentconc_'+id_material+'_'+tank_id,$(this).val());
+			});
+
+
 			$('#add_chemicals_overlay input[name="tank"]').val('');		
 			$('#add_chemicals_overlay').hide();	
 			$('#add_chemicals_overlay .ac_stock').val('');
@@ -1527,13 +1536,90 @@ $(function(){
 	});
 
 
+	//transfer_volume_btn: transferir volumen desde y hacia el activo
+	$('#transfer_volume_btn').click(function(){
+		//validar que siempre uno de los campos sea el activo y el otro sea
+		//diferente del activo
+
+		var origin 	= $('#tv_origin').val(); 
+		var destiny = $('#tv_destiny').val();
+
+		if(origin == destiny){
+			alert('Origin and destiny must be different tanks.');
+		}else{
+			if(parseInt(origin) !== 0){
+				if(parseInt(destiny) == 0){
+					var semaforo = 'verde';
+				}else{
+					var semaforo = 'rojo';
+				}
+			}else if(parseInt(destiny) !== 0){
+				if(parseInt(origin) == 0){
+					var semaforo = 'verde';
+				}else{
+					var semaforo = 'rojo';
+				}
+			}
+
+			if(semaforo == 'rojo'){
+				alert('You can make mud transfer only from and to the active system');
+			}else{
+				var volume = fval('tv_volume');
+				if(volume == 0){
+					alert('You must define a volume and make sure it is different from zero.');
+				}else{
+					//get the origin maximun and current volume and make sure it has enought mud 
+					//in order to make the transfer
+
+					if(parseInt(origin) == 0){
+						var aforo_origen 	= 0;
+						$('#inside_circuit_active_tanks .voltkaforo').each(function(){
+							aforo_origen = aforo_origen + fval($(this).attr('id'));
+						});
+						var volumen_origen = fval('activepits');
+					}else{
+						var aforo_origen 	= fval('voltkaforo_'+origin); 
+						var volumen_origen 	= fval('volfinal_'+origin);
+					}
+
+					//get the destiny maximun and current volume and make sure it has enougth room
+					//to receive the mud
+
+					if(parseInt(destiny) == 0){
+						var aforo_destino 	= 0;
+						$('#inside_circuit_active_tanks .voltkaforo').each(function(){
+							aforo_destino = aforo_destino + fval($(this).attr('id'));
+						});
+						var volumen_destino = fval('activepits');
+					}else{
+						var aforo_destino 	= fval('voltkaforo_'+origin); 
+						var volumen_destino 	= fval('volfinal_'+origin);	
+					}
+
+
+					if(volumen_origen < volume){
+						alert('You have not enougth volume in the origin tank to make this transfer.');
+					}else{
+						var espacio_disponible_destino = aforo_destino - volumen_destino;
+						if(espacio_disponible_destino < volume){
+							alert('You have enougth room in the destiny tank in order to make this transfer');
+						}else{
+							alert('exito... hacer la transferencia de volumenes y actualizar el estado de las concentraciones.');
+						}
+					}
+				}
+
+			}
+		}
+	});
+
 	//concentraciones resultantes
 	$('.show_rc_overlay').click(function(e){
 		e.preventDefault();
 		$("#rc_overlay").show();
 	});	
 
-	$('#rc_btn').click(function(){
+	$('#rc_btn').click(function(e){
 		e.preventDefault();
 		$("#rc_overlay").hide();
 	});

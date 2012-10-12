@@ -1,8 +1,8 @@
 <!-- FORMULARIO ADICION DE QUIMICA -->
 <div class="overlay_wrapper" id="rc_overlay">
-	<div class="overlay_dialog_wrapper" style="width:870px;">
-		<div class="overlay_dialog" style="width:870px;">
-			<h5>Concentraciones resultantes en Reserve 1 (100 bbl from Active to Reserve 1):</h5>
+	<div class="overlay_dialog_wrapper" style="width:550px;">
+		<div class="overlay_dialog" style="width:550px;">
+			<h5>Concentraciones resultantes en Reserve 1<br />(100 bbl from Active to Reserve 1):</h5>
 			
 			<table style="margin-bottom:20px;">
 				<thead>
@@ -22,8 +22,8 @@
 								<input type="hidden" name="size_<?= $material['product_id']?>" value="<?= $material['equivalencia'] ?>" />
 								<input type="hidden" name="unit_<?= $material['product_id']?>" value="<?= $material['unidad_destino'] ?>" />
 							</td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
+							<td><input style="width:100px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
+							<td><input style="width:100px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
 			            </tr>	
 					<?php } ?>
 				</tbody>
