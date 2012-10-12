@@ -118,8 +118,7 @@ $(function(){
                                 var test = row.attr('data-test');;
                                 var program = row.attr('data-program');  
                                 var value = $(this).val();                        
-                                this_value = {                                
-                                        'report_id'	: report,                                
+                                this_value = {                                                                                                      
                                         'test_id'	: test,
                                         'program_id'    : program,
                                         'hour'          : hora[j],
