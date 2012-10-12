@@ -229,7 +229,7 @@
                                                 <?php } else { ?>
 
                                                         <td><input type="text" class="medium"><?= $test['test'];?></td>
-                                                        <td class="unit_field"><input type="text" style="width:20px;margin-right:0;" /><?= $test['uint_test'];?></td>
+                                                        <td class="unit_field"><input type="text" style="width:20px;margin-right:0;" /><?= $test['unit_test'];?></td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
                                                         <td><input type="text" style="width:56px;" class="data_value"></td>
                                                         <td><input type="text" style="width:56px;" class="data_value"></td>
