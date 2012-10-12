@@ -1,7 +1,7 @@
 <!-- FORMULARIO ADICION DE QUIMICA -->
 <div class="overlay_wrapper" id="add_chemicals_overlay">
-	<div class="overlay_dialog_wrapper" style="width:870px;">
-		<div class="overlay_dialog" style="width:870px;">
+	<div class="overlay_dialog_wrapper" style="width:600px;">
+		<div class="overlay_dialog" style="width:600px;">
 			<h5>Add chemicals:</h5>
 			
 			<table style="margin-bottom:20px;">
@@ -13,9 +13,6 @@
 						<td class="label_m"><label>Stock</label></td>
 						<td class="label_m"><label>Used</label></td>
 						<td class="label_m"><label>Volume</label></td>
-						<td class="label_m"><label>Conc.</label></td>
-						<td class="label_m"><label>C.x.quim.</label></td>
-						<td class="label_m"><label>Ult. conc.</label></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -33,9 +30,6 @@
 							</td>
 							<td><input style="width:55px;margin-right:0;" type="text" value="" class="used" name="used_<?= $material['product_id']?>_" id="used_<?= $material['product_id']?>_" /></td>
 							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" id="volincr_<?= $material['product_id']?>" name="volincr_<?= $material['product_id']?>" class="volincr" /></td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" id="cxconc_<?= $material['product_id']?>" name="cxconc_<?= $material['product_id']?>" class="cxconc" /></td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" /></td>
 			            </tr>	
 					<?php } ?>
 					<tr>
@@ -44,9 +38,6 @@
 						<td></td>
 						<td colspan="2" class="label_m" style="text-align:right;"><label>Total Volume:</label></td>
 						<td><input style="width:55px;margin-right:0;" type="text" value="0" class="voltotalchem" id="voltotalchem" name="voltotalchem" disabled="disabled" /></td>
-						<td></td>
-						<td></td>
-						<td></td>
 		            </tr>
 				</tbody>
 			</table>
