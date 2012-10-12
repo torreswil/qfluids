@@ -632,6 +632,8 @@
 					<tr>
 						<td class="label_m"><label>Origin:</label></td>
 						<td class="label_m"><label>Destiny:</label></td>
+						<td class="label_m"><label>Volumen (bbl):</label></td>
+						<td class="label_m"></td>
 					</tr>
 					<tr>
 						<td>
@@ -662,7 +664,55 @@
 								<?php } ?>
 							</select>
 						</td>
+						<td class="label_m"><input type="text" style="width:100px;" /></td>
+						<td class="label_m"><a href="#result_concentrations_overlay" class="show_rc_overlay">Concentraciones Resultantes</a></td>
 					</tr>
+				</table>
+				<input type="button" value="Transfer Volume" style="margin-top:20px;" />
+			</fieldset>
+			<fieldset>
+				<legend>Archivo de transferencias</legend>
+				<table>
+					<thead>
+						<tr>
+							<td></td>
+							<td class="label_m"><label>Reporte</label></td>
+							<td class="label_m"><label>Fecha</label></td>
+							<td class="label_m"><label>Origen</label></td>
+							<td class="label_m"><label>Destino</label></td>
+							<td class="label_m"><label>Volumen</label></td>
+							<td class="label_m"></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="label_m"><a href="#remove_mud_transfer" style="margin-right:10px;"><img src="/img/delete.png" /></a></td>
+							<td class="label_m"><input type="text" disabled style="width:55px;margin-right:0;"  value="12" /></td>
+							<td class="label_m"><input type="text" disabled style="width:70px;margin-right:0;"  value="2012-10-10" /></td>
+							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Active System" /></td>
+							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Reserve 1" /></td>
+							<td class="label_m"><input type="text" disabled style="width:100px;margin-right:10px;" value="100 bbl" /></td>
+							<td class="label_m"><a href="#result_concentrations_overlay">Concentraciones Resultantes</a></td>
+						</tr>
+						<tr>
+							<td class="label_m"></td>
+							<td class="label_m"><input type="text" disabled style="width:55px;margin-right:0;"  value="12" /></td>
+							<td class="label_m"><input type="text" disabled style="width:70px;margin-right:0;"  value="2012-10-10" /></td>
+							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Active System" /></td>
+							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Reserve 1" /></td>
+							<td class="label_m"><input type="text" disabled style="width:100px;margin-right:10px;" value="100 bbl" /></td>
+							<td class="label_m"><a href="#result_concentrations_overlay">Concentraciones Resultantes</a></td>
+						</tr>
+						<tr>
+							<td class="label_m"></td>
+							<td class="label_m"><input type="text" disabled style="width:55px;margin-right:0;"  value="12" /></td>
+							<td class="label_m"><input type="text" disabled style="width:70px;margin-right:0;"  value="2012-10-10" /></td>
+							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Active System" /></td>
+							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Reserve 1" /></td>
+							<td class="label_m"><input type="text" disabled style="width:100px;margin-right:10px;" value="100 bbl" /></td>
+							<td class="label_m"><a href="#result_concentrations_overlay">Concentraciones Resultantes</a></td>
+						</tr>
+					</tbody>
 				</table>
 			</fieldset>
 		</div>

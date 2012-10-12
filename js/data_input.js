@@ -1527,6 +1527,17 @@ $(function(){
 	});
 
 
+	//concentraciones resultantes
+	$('.show_rc_overlay').click(function(e){
+		e.preventDefault();
+		$("#rc_overlay").show();
+	});	
+
+	$('#rc_btn').click(function(){
+		e.preventDefault();
+		$("#rc_overlay").hide();
+	});
+
 	/*==========================================================================================================*/
 	// 8. REPORT HISTORY
 	/*==========================================================================================================*/
