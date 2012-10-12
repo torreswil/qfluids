@@ -1598,11 +1598,11 @@ $(function(){
 
 
 					if(volumen_origen < volume){
-						alert('You have not enougth volume in the origin tank to make this transfer.');
+						alert('You can transfer only '+volumen_origen+' bbl from the origin tank to make this transfer.');
 					}else{
 						var espacio_disponible_destino = aforo_destino - volumen_destino;
 						if(espacio_disponible_destino < volume){
-							alert('You have enougth room in the destiny tank in order to make this transfer');
+							alert('You have only '+espacio_disponible_destino+' bbl in the destiny tank avaliable to make this transfer');
 						}else{
 							alert('exito... hacer la transferencia de volumenes y actualizar el estado de las concentraciones.');
 						}
