@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-10-2012 a las 18:43:24
+-- Tiempo de generación: 11-10-2012 a las 21:45:33
 -- Versión del servidor: 5.5.24
 -- Versión de PHP: 5.3.10-1ubuntu3.4
 
@@ -1005,7 +1005,7 @@ CREATE TABLE IF NOT EXISTS `project_report_test` (
   `test_id` int(11) NOT NULL,
   `program_id` int(11) NOT NULL,
   `hour` time DEFAULT '00:00:00',
-  `value` float DEFAULT NULL,
+  `value` varchar(10) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fk_project_report_test_program_idx` (`program_id`) USING BTREE,
   KEY `fk_project_report_test_reports_idx` (`report_id`) USING BTREE,

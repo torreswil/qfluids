@@ -108,7 +108,7 @@ $(function(){
                 var form = $(this).parents('form:first');                                
                 $.post('/rest/save_rig', form.serialize(), function(r) {                        
                         if(r == true){
-                                alert('Rig save!');                                
+                                alert('Rig saved!');                                
                                 $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
                         }
                 }, 'json');                
