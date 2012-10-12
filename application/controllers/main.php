@@ -37,8 +37,11 @@ class Main extends CI_Controller {
 				//INICIALIZACION DE LA SESION
 				$project_data 						= $this->Api->get_where('projects',array('id'=>$project_id));
 				$project_data						= $project_data[0];
-				
-				$this->session->set_userdata(array('project' => $project_data));
+				$current_report 					= $this->Api->get_where('reports',array('project'=>$project_id),array('id','desc'));
+				$current_report 					= $current_report[0]['id'];
+				$current_report_data				= $this->Api->get_where('reports',array('id'=>$current_report));
+				$current_report_data 				= $current_report_data[0];
+				$this->session->set_userdata(array('project' => $project_data,'report'=>$current_report_data));
 
 				$project_data['last_report'] 		= count($this->Api->get_where('reports',array('project_transactional_id'=>$project_data['transactional_id'])));
 				
