@@ -702,5 +702,16 @@ class Rest extends CI_Controller {
             }            
             echo json_encode(true);            
         }
+        
+        /*==========================================================================================================*/
+	// DATA INPUT SAVE
+	/*==========================================================================================================*/
+        public function save_mud_properties(){
+		$values = json_decode($this->data_input);                
+		foreach ($values as $value) {                        
+                        $this->Api->create('project_report_test', array('report_id'=>$value->report_id, 'test_id'=>$value->test_id, 'program_id'=>$value->program_id, 'hour'=>$value->hour, 'value'=>$value->value));                        
+		}
+		echo json_encode(true);		
+	}
 }
 /****** THE END ******/
