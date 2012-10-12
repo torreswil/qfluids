@@ -70,8 +70,9 @@
                                                 <?php foreach($pandcp as $test) : ?>
                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$test['id'], 'phase'=>$project['current_phase'])); ?>
                                                 <?php $value = empty($program[0]['value_program']) ? '' : $program[0]['value_program']; ?>
+                                                <?php $program_id = empty($program[0]['id']) ? '' : $program[0]['id']; ?>
 
-                                                <tr data-test="<?= $test['id']; ?>" data-program="<?= $program[0]['id']; ?>">
+                                                <tr data-test="<?= $test['id']; ?>" data-program="<?= $program_id; ?>">
                                                 <?php if($test['test']=='depth') { ?> 
 
                                                         <td class="label_m"><label>depth</label></td>
@@ -266,8 +267,9 @@
                                                                         <?php foreach($rehology as $test) : ?>
                                                                         <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$test['id'], 'phase'=>$project['current_phase'])); ?>
                                                                         <?php $value = empty($program[0]['value_program']) ? '' : $program[0]['value_program']; ?>
+                                                                        <?php $program_id = empty($program[0]['id']) ? '' : $program[0]['id']; ?>
                                                                 
-                                                                        <tr data-test="<?= $test['id']; ?>" data-program="<?= $program[0]['id']; ?>">
+                                                                        <tr data-test="<?= $test['id']; ?>" data-program="<?= $program_id; ?>">
                                                                         <?php if($test['test']=='&theta;600') { ?>
                                                                                 <td class="label_m"><label>&theta;600</label></td>
                                                                                 <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
@@ -323,8 +325,9 @@
                                                                         <?php foreach($rehology as $test): ?>	
                                                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$test['id'], 'phase'=>$project['current_phase'])); ?>
                                                                                 <?php $value = empty($program[0]['value_program']) ? '' : $program[0]['value_program']; ?>
+                                                                                <?php $program_id = empty($program[0]['id']) ? '' : $program[0]['id']; ?>
 
-                                                                        <tr data-test="<?= $test['id']; ?>" data-program="<?= $program[0]['id']; ?>">
+                                                                        <tr data-test="<?= $test['id']; ?>" data-program="<?= $program_id; ?>">
                                                                         <?php if($test['test']=='10"') { ?>
                                                                                 <td class="label_m"><label>10"</label></td>
                                                                                 <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
@@ -373,7 +376,8 @@
                                                                         <?php foreach($rehology as $test): ?>	
                                                                         <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$test['id'], 'phase'=>$project['current_phase'])); ?>
                                                                         <?php $value = empty($program[0]['value_program']) ? '' : $program[0]['value_program']; ?>                                                                
-                                                                        <tr data-test="<?= $test['id']; ?>" data-program="<?= $program[0]['id']; ?>">
+                                                                        <?php $program_id = empty($program[0]['id']) ? '' : $program[0]['id']; ?>
+                                                                        <tr data-test="<?= $test['id']; ?>" data-program="<?= $program_id; ?>">
                                                                         <?php if($test['test']=='pv') { ?>                                                                                                                                        
                                                                                 <td class="label_m"><label>pv</label></td>
                                                                                 <td class="unit_field">cp</td>
@@ -450,7 +454,8 @@
                                                 <?php foreach($solids_math as $test): ?>	
                                                         <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$test['id'], 'phase'=>$project['current_phase'])); ?>
                                                         <?php $value = empty($program[0]['value_program']) ? '' : $program[0]['value_program']; ?>
-                                                <tr data-test="<?= $test['id']; ?>" data-program="<?= $program[0]['id']; ?>">
+                                                        <?php $program_id = empty($program[0]['id']) ? '' : $program[0]['id']; ?>
+                                                <tr data-test="<?= $test['id']; ?>" data-program="<?= $program_id; ?>">
                                                 <?php if($test['test']=='Water') { ?>                                                                
                                                         <td class="label_m" style="width:78px;"><label>Water</label></td>
                                                         <td class="unit_field">% Vol</td>
@@ -495,7 +500,8 @@
                                                 <?php foreach($solids_math as $test): ?>	
                                                         <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$test['id'], 'phase'=>$project['current_phase'])); ?>
                                                         <?php $value = empty($program[0]['value_program']) ? '' : $program[0]['value_program']; ?>                                        					
-                                                <tr data-test="<?= $test['id']; ?>" data-program="<?= $program[0]['id']; ?>">
+                                                        <?php $program_id = empty($program[0]['id']) ? '' : $program[0]['id']; ?>
+                                                <tr data-test="<?= $test['id']; ?>" data-program="<?= $program_id; ?>">
                                                 <?php if($test['test']=='Solids') { ?>                                                                
                                                         <td class="label_m"><label>Solids</label></td>
                                                         <td class="unit_field">% Vol</td>
