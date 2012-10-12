@@ -4,7 +4,7 @@
      <div class="simpleTabs">
           <ul class="simpleTabsNavigation">
                <li><a href="#">Status</a></li>
-               <!-- <li><a href="#">Incoming Materials</a></li> -->
+               <li><a href="#">Incoming Materials</a></li>
                <!-- <li><a href="#">Outgoing Materials</a></li> --> 
                <li><a href="#">Today Consumptions</a></li> 
                <li><a href="#">Volumenes por quimica</a></li>             
@@ -45,7 +45,6 @@
                     </table>
                </fieldset>
           </div>
-          <!--
           <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
                <fieldset id="incoming_stock_transfer_fieldset">
                     <legend>Incoming</legend>
@@ -97,6 +96,7 @@
                     </table>
                </fieldset>
             </div>
+          <!--  
             <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
                <fieldset>
                     <legend>Outgoing</legend>

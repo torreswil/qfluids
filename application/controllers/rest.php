@@ -10,9 +10,11 @@ class Rest extends CI_Controller {
 
 	    //expose the project info to all methods
     	$project 				= $this->session->userdata('project');
+    	$report 				= $this->session->userdata('report');
 		$this->project_id 		= $project['id'];
 		$this->project_wellname = $project['well_name'];
 		$this->project_operator = $project['operator'];
+		$this->report_id 		= $report['id'];
 	}
 
 	public function index(){
@@ -563,20 +565,20 @@ class Rest extends CI_Controller {
 	}
 
 	public function load_materials_status(){
-		$materials = $this->Api->get_where('vista_inventario',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
+		$materials = $this->Api->get_where('vista_reporte_estado_material',array('project'=>$this->project_id,'report'=>$this->report_id),array('commercial_name','asc'));
 		foreach ($materials as $material) { ?>
 			<tr class="this_material_<?= $material['product_id']?> ">
-				<td class="label_m"><input type="checkbox" style="margin-top:5px;margin-right:5px;"/></td>
-				<td><input style="width:400px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
-				<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$<?= $material['price'] ?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['received'] ?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['transfered'] ?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['used'] ?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['avaliable'] ?>" id="mstock_<?= $material['product_id']?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$0" /></td>
-            </tr> <?php
+	            <td><input style="width:300px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+	            <td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$<?= $material['price'] ?>" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" id="minitial_<?= $material['product_id']?>"  /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" id="mreceived_<?= $material['product_id']?>" value="" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" id="mtransf_<?= $material['product_id']?>" value="" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="" id="stotal_consumption_today_<?= $material['product_id']?>" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="" id="mstock_<?= $material['product_id']?>" class="mstock" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="" /></td>
+	          </tr>  <?php
 		}
 	}
         
@@ -703,15 +705,20 @@ class Rest extends CI_Controller {
             echo json_encode(true);            
         }
         
-        /*==========================================================================================================*/
+
+    /*==========================================================================================================*/
 	// DATA INPUT SAVE
 	/*==========================================================================================================*/
-        public function save_mud_properties(){
+    public function save_mud_properties(){
 		$values = json_decode($this->data_input);                
 		foreach ($values as $value) {                        
-                        $this->Api->create('project_report_test', array('report_id'=>$value->report_id, 'test_id'=>$value->test_id, 'program_id'=>$value->program_id, 'hour'=>$value->hour, 'value'=>$value->value));                        
+            $this->Api->create('project_report_test', array('report_id'=>$value->report_id, 'test_id'=>$value->test_id, 'program_id'=>$value->program_id, 'hour'=>$value->hour, 'value'=>$value->value));                        
 		}
 		echo json_encode(true);		
+	}
+
+	public function dump_session(){
+		print_r($this->session->all_userdata());
 	}
 }
 /****** THE END ******/
