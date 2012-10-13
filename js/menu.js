@@ -42,16 +42,11 @@ $(function(){
                         
                         //Se borra los textos de los trabajos registrados en el overlay
                         $("#save_report_jobs").empty();
-                        
-                        //Se validan los formularios antes de proceder a guardar
-                        if(validate_mud_properties()) {                                
-                                save_mud_properties();
-                        }
-                        
-                        if(validate_solids_control()) {
-                                save_solids_control();
-                        }
-                        
+                        //Mud properties
+                        save_mud_properties();
+                        //Solids control equipment
+                        save_solids_control();  
+                                                                       
                         //alert('saving function trigger');                                
 		}
 	});
@@ -75,37 +70,11 @@ $(function(){
         
         /**
          * MUD PROPERTIES
-         */
-        //Validacion
-        function validate_mud_properties() {               
-                //Save phisical and chemical properties
-                var table = $('#propiedades_fluido').find('table');
-                var fields = table.find('.data_value');                
-                //Valido los datos
-                eqty = 0;
-                fields.each(function(){
-                        var value       = $(this).val();			
-                        if(value == null || value == '') {
-                                eqty = eqty + 1;
-                        }
-                });                
-		if(eqty > 0){
-			setStatusReport('Some fields are empty in mud properties, please verify and try again.', 'error');
-                        return false;
-		}
-                return true;
-        }
-        
-        
-        //Registro
+         */                        
         function save_mud_properties() {                                            
                 //Save phisical and chemical properties
                 var table = $('.mud_properties_data_pcp');
-                //Verifico si está guardada
-                if(table.hasClass('saved')) {                        
-                        setStatusReport('Mud properties saved!', 'valid');
-                        return true;
-                }
+                
                 var hora = [];
                 table.find('.data_clock').each(function(){
                         hora.push($(this).val());
@@ -134,10 +103,7 @@ $(function(){
                 
                 //Save rehology
                 var rehology = $('.mud_properties_data_rehology');
-                //Verifico si está guardada
-                if(rehology.hasClass('saved')) {                         
-                        return true;
-                }
+                
                 var hora2 = [];
                 rehology.find('.data_clock').each(function(){
                         hora2.push($(this).text());
@@ -164,10 +130,7 @@ $(function(){
                 
                 //Save solids math
                 var solids = $('.mud_properties_data_solids');
-                //Verifico si está guardada
-                if(solids.hasClass('saved')) {                         
-                        return true;
-                }
+                
                 var hora3 = [];
                 solids.find('.data_clock').each(function(){
                         hora3.push($(this).text());
@@ -190,159 +153,116 @@ $(function(){
                                 }
                                 data.push(this_value);                        
                         });
-                });
-                rs = false;
+                });                
                 $.post('/rest/save_mud_properties',$.toJSON(data),function(r){
-                        if(r == true){    
-                                rs = true;
-                                //Para que no la vuelva a guardar
-                                $('#propiedades_fluido').find('table').addClass('saved');                                                                 
-                                setStatusReport('Mud properties saved!', 'valid');
+                        if(r == true){                                                                    
+                                setStatusReport('Mud properties saved!');
                         }
-                },'json');
-                return rs;
+                },'json');                
                 
         }
         
         /**
          * SOLIDS CONTROL EQUIPMENT
-         */        
-        //Validacion
-        function validate_solids_control() {               
-                //Valido shakers
-                var table = $('#equipos_solidos').find('table');
-                var fields = table.find('.validate_input');                
-                //Valido los datos
-                eqty = 0;
-                fields.each(function(){
-                        //Si es visible el elemento se valida
-                        if($(this).is(':visible')) {
-                                var value       = $(this).val();			
-                                if(value == null || value == '') {
-                                        eqty = eqty + 1;
-                                }
-                        }                        
-                });                
-		if(eqty > 0){
-			setStatusReport('Some fields are empty in solids control equipment, please verify and try again.', 'error');
-                        return false;
-		}
-                return true;
-        }
-        
-        
-        //Registro
+         */                
         function save_solids_control() {                                            
                 //Save shakers
-                var table = $('.input_data_shakers');
-                //Verifico si está guardada
-                if(!table.hasClass('saved')) {                        
-                        //Armo la data
-                        var data = [];                
-                        table.each(function() {
-                                var esta = $(this);
-                                var project_sharkers = esta.attr('data-sharker');                        
-                                var hour = esta.find('.data_hour').val();
-                                this_value = {
-                                        project_sharkers_id      : project_sharkers,
-                                        operational_hour         : hour,
-                                        screens1                 : (esta.find('.screen_1').val()!=undefined) ? esta.find('.screen_1').val() : '',
-                                        screens2                 : (esta.find('.screen_2').val()!=undefined) ? esta.find('.screen_2').val() : '',
-                                        screens3                 : (esta.find('.screen_3').val()!=undefined) ? esta.find('.screen_3').val() : '',
-                                        screens4                 : (esta.find('.screen_4').val()!=undefined) ? esta.find('.screen_4').val() : '',
-                                        screens5                 : (esta.find('.screen_5').val()!=undefined) ? esta.find('.screen_5').val() : ''
-                                }
-                                data.push(this_value);
-                        });                               
-                        //Save shakers                
-                        $.post('/rest/save_solids_control/shakers/',$.toJSON(data),function(r){
-                                if(r == true){                                                                    
-                                        //Para que no la vuelva a guardar
-                                        $('.input_data_shakers').addClass('saved');
-                                }
-                        },'json');
-                }                
+                var table = $('.input_data_shakers');                
+                //Armo la data de shakers
+                var data = [];                
+                table.each(function() {
+                        var esta = $(this);
+                        var project_sharkers = esta.attr('data-sharker');                        
+                        var hour = esta.find('.data_hour').val();
+                        this_value = {
+                                project_sharkers_id      : project_sharkers,
+                                operational_hour         : hour,
+                                screens1                 : (esta.find('.screen_1').val()!=undefined) ? esta.find('.screen_1').val() : '',
+                                screens2                 : (esta.find('.screen_2').val()!=undefined) ? esta.find('.screen_2').val() : '',
+                                screens3                 : (esta.find('.screen_3').val()!=undefined) ? esta.find('.screen_3').val() : '',
+                                screens4                 : (esta.find('.screen_4').val()!=undefined) ? esta.find('.screen_4').val() : '',
+                                screens5                 : (esta.find('.screen_5').val()!=undefined) ? esta.find('.screen_5').val() : ''
+                        }
+                        data.push(this_value);
+                });                                                               
 
                 //Save mud cleaner
-                var mud_cleaner = $('.input_data_mud_cleaner');
-                //Verifico si está guardada
-                if(!mud_cleaner.hasClass('saved')) {  
-                        //Para que no la vuelva a guardar
-                        mud_cleaner.each(function() {
-                                $(this).addClass('saved');
-                        });
-                        //Armo la data del mud cleaner
-                        var data2 = [];  
-                        var project_mudcleaner = $('#data_mudcleaner').val();                        
-                        var hour = mud_cleaner.find('.data_hour').val();                
-                        this_value = {
-                                project_mudcleaner_id   : project_mudcleaner,
-                                desander_flow           : ($('#desander_flow').val()!=undefined) ? $("#desander_flow").val() : '',
-                                desander_presure        : ($('#desander_presure').val()!=undefined) ? $("#desander_presure").val() : '',
-                                desander_hours          : ($('#desander_hours').val()!=undefined) ? $("#desander_hours").val() : '',
-                                destiler_flow           : ($('#destiler_flow').val()!=undefined) ? $("#destiler_flow").val() : '',
-                                destiler_presure        : ($('#destiler_presure').val()!=undefined) ? $("#destiler_presure").val() : '',
-                                destiler_hours          : ($('#destiler_hours').val()!=undefined) ? $("#destiler_hours").val() : '',
-                                screens1                : (mud_cleaner.find('.screen_1').val()!=undefined) ? mud_cleaner.find('.screen_1').val() : '',
-                                screens2                : (mud_cleaner.find('.screen_2').val()!=undefined) ? mud_cleaner.find('.screen_2').val() : '',
-                                screens3                : (mud_cleaner.find('.screen_3').val()!=undefined) ? mud_cleaner.find('.screen_3').val() : '',
-                                screens4                : (mud_cleaner.find('.screen_4').val()!=undefined) ? mud_cleaner.find('.screen_4').val() : '',
-                                screens5                : (mud_cleaner.find('.screen_5').val()!=undefined) ? mud_cleaner.find('.screen_5').val() : '',
-                                operational_hour        : hour
-                        }   
-                        data2.push(this_value);
-                        //Save shakers                
-                        $.post('/rest/save_solids_control/mudcleaner/',$.toJSON(data2),function(r){
-                                if(r == true){                                                                    
-                                        //Para que no la vuelva a guardar
-                                        mud_cleaner.each(function() {
-                                                $(this).addClass('saved');
-                                        });                                        
-                                }
-                        },'json');
-                }
+                var mud_cleaner = $('.input_data_mud_cleaner');                
+                //Armo la data del mud cleaner
+                var data2 = [];  
+                var project_mudcleaner = $('#data_mudcleaner').val();                        
+                var hour = mud_cleaner.find('.data_hour').val();                
+                this_value = {
+                        project_mudcleaner_id   : project_mudcleaner,
+                        desander_flow           : ($('#desander_flow').val()!=undefined) ? $("#desander_flow").val() : '',
+                        desander_presure        : ($('#desander_presure').val()!=undefined) ? $("#desander_presure").val() : '',
+                        desander_hours          : ($('#desander_hours').val()!=undefined) ? $("#desander_hours").val() : '',
+                        destiler_flow           : ($('#destiler_flow').val()!=undefined) ? $("#destiler_flow").val() : '',
+                        destiler_presure        : ($('#destiler_presure').val()!=undefined) ? $("#destiler_presure").val() : '',
+                        destiler_hours          : ($('#destiler_hours').val()!=undefined) ? $("#destiler_hours").val() : '',
+                        screens1                : (mud_cleaner.find('.screen_1').val()!=undefined) ? mud_cleaner.find('.screen_1').val() : '',
+                        screens2                : (mud_cleaner.find('.screen_2').val()!=undefined) ? mud_cleaner.find('.screen_2').val() : '',
+                        screens3                : (mud_cleaner.find('.screen_3').val()!=undefined) ? mud_cleaner.find('.screen_3').val() : '',
+                        screens4                : (mud_cleaner.find('.screen_4').val()!=undefined) ? mud_cleaner.find('.screen_4').val() : '',
+                        screens5                : (mud_cleaner.find('.screen_5').val()!=undefined) ? mud_cleaner.find('.screen_5').val() : '',
+                        operational_hour        : hour
+                }   
+                data2.push(this_value);                        
+                
                 
                 //Save centrifugues
-                var centrifugues = $('.input_data_centrifugues');
-                
-                //Verifico si está guardada
-                if(!centrifugues.hasClass('saved')) {                        
-                        //Armo la data
-                        var data3 = [];                
-                        centrifugues.each(function() {
-                                var esta = $(this);
+                var centrifugues = $('.input_data_centrifugues');                                
+                //Armo la data
+                var data3 = [];                
+                centrifugues.each(function() {
+                        var esta = $(this);                        
+                        var project_centrifugues = esta.attr('data-centrifugues');                                                                                        
+                        this_value = {
+                                project_centrifugues_id  : project_centrifugues,
+                                operational_hour         : hour,
+                                speed                    : esta.find('.centrifugues_speed').val(),
+                                overflow                 : esta.find('.centrifugue_overflow').val(),
+                                underflow                : esta.find('.centrifugue_underflow').val(),
+                                feet_rate                : esta.find('.centrifugue_feet_rate').val(),
+                                operational_hours        : esta.find('.operational_hours').val(),
+                                bowl_diam                : (esta.find('.bowl_diam').val()!=undefined) ? esta.find('.bowl_diam').val() : '',
+                                bowl_pulley              : (esta.find('.bowl_pulley').val()!=undefined) ? esta.find('.bowl_pulley').val() : '',
+                                motor_pulley             : (esta.find('.motor_pulley').val()!=undefined) ? esta.find('.motor_pulley').val() : '',
+                                motor                    : (esta.find('.motor').val()!=undefined) ? esta.find('.motor').val() : '',
+                                speed_rpm                : (esta.find('.speed_rpm').val()!=undefined) ? esta.find('.speed_rpm').val() : '',
+                                g_force                  : (esta.find('.g_force').val()!=undefined) ? esta.find('.g_force').val() : '',
+                                type                     : (esta.find('.type').val()!=undefined) ? esta.find('.type').val() : ''
+                        }
+                        data3.push(this_value);
+                });                               
+                                                        
+                //Save shakers                
+                $.post('/rest/save_solids_control/shakers/',$.toJSON(data),function(r){
+                        if(r == true){                                                                    
                                 //Para que no la vuelva a guardar
-                                esta.addClass('saved');
-                                var project_centrifugues = esta.attr('data-centrifugues');                                                                                        
-                                this_value = {
-                                        project_centrifugues_id  : project_centrifugues,
-                                        operational_hour         : hour,
-                                        speed                    : esta.find('.centrifugues_speed').val(),
-                                        overflow                 : esta.find('.centrifugue_overflow').val(),
-                                        underflow                : esta.find('.centrifugue_underflow').val(),
-                                        feet_rate                : esta.find('.centrifugue_feet_rate').val(),
-                                        operational_hours        : esta.find('.operational_hours').val(),
-                                        bowl_diam                : (esta.find('.bowl_diam').val()!=undefined) ? esta.find('.bowl_diam').val() : '',
-                                        bowl_pulley              : (esta.find('.bowl_pulley').val()!=undefined) ? esta.find('.bowl_pulley').val() : '',
-                                        motor_pulley             : (esta.find('.motor_pulley').val()!=undefined) ? esta.find('.motor_pulley').val() : '',
-                                        motor                    : (esta.find('.motor').val()!=undefined) ? esta.find('.motor').val() : '',
-                                        speed_rpm                : (esta.find('.speed_rpm').val()!=undefined) ? esta.find('.speed_rpm').val() : '',
-                                        g_force                  : (esta.find('.g_force').val()!=undefined) ? esta.find('.g_force').val() : '',
-                                        type                     : (esta.find('.type').val()!=undefined) ? esta.find('.type').val() : ''
-                                }
-                                data3.push(this_value);
-                        });                               
-                        //Save shakers                
-                        $.post('/rest/save_solids_control/centrifugues/',$.toJSON(data3),function(r){
-                                if(r == true){                                         
-                                        //Para que no la vuelva a guardar                                        
-                                        centrifugues.addClass('saved');
-                                }
-                        },'json');
-                }   
+                                $('.input_data_shakers').addClass('saved');
+                        }
+                },'json');
                 
-                setStatusReport('Solids controls equipment saved!', 'valid');
-
+                //Save mudcleaner         
+                $.post('/rest/save_solids_control/mudcleaner/',$.toJSON(data2),function(r){
+                        if(r == true){                                                                    
+                                //Para que no la vuelva a guardar
+                                mud_cleaner.each(function() {
+                                        $(this).addClass('saved');
+                                });                                        
+                        }
+                },'json');
+                
+                //Save centrifugues
+                $.post('/rest/save_solids_control/centrifugues/',$.toJSON(data3),function(r){
+                        if(r == true){                                         
+                                //Para que no la vuelva a guardar                                        
+                                centrifugues.addClass('saved');
+                        }
+                },'json');
+                
+                setStatusReport('Solids controls equipment saved!');
                 
         }
 
