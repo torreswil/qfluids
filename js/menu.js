@@ -362,8 +362,18 @@ $(function(){
 
 	$('#btn_search_report').click(function(e){
 		e.preventDefault();
+                $.get('/rest/load_report/', function(data) {
+                        $('#report_history_overlay tbody').html(data);                
+                });
+                $("#report_history_overlay").show();
 		
 	});
+        //close the overlay on cancel
+	$('#report_history_overlay .close_link').click(function(e){
+		e.preventDefault();
+		$("#report_history_overlay").hide();
+	});
+        
 
 
 

@@ -99,6 +99,20 @@ class Rest extends CI_Controller {
 			echo json_encode(array('message'=>'project_updated'));
 		}	
 	}
+        
+        public function load_report() {
+                $reportes       = $this->Api->get_where('reports', array('project'=>$this->project_id), array('id','desc'));
+                $actual         = $this->session->userdata('report');
+                foreach($reportes as $reporte) {
+                        if($reporte['number'] < $actual['number']) { ?>                        
+                                <tr id="this_report_<?= $reporte['id']; ?>">                                       
+                                        <td><input type="text" style="width:120px;" disabled="disabled" value="REPORT <?= $reporte['number']; ?>" /></td>
+                                        <td><input type="text" style="width:100px;" disabled="disabled" value="<?= $reporte['date']; ?>" /></td>
+                                        <td><input type="text" style="width:100px;" disabled="disabled" value="<?= $reporte['phase']; ?>" /></td>
+                                </tr>                                
+                        <?php } 
+                }
+        }
 
 
 	/*==========================================================================================================*/
