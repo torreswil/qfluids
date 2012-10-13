@@ -706,16 +706,34 @@ class Rest extends CI_Controller {
         }
         
 
-    /*==========================================================================================================*/
-	// DATA INPUT SAVE
-	/*==========================================================================================================*/
-    public function save_mud_properties(){
+        /*==========================================================================================================*/
+        // DATA INPUT SAVE
+        /*==========================================================================================================*/
+        public function save_mud_properties(){
 		$values = json_decode($this->data_input);                
 		foreach ($values as $value) {                        
-            $this->Api->create('project_report_test', array('report_id'=>$this->report_id, 'test_id'=>$value->test_id, 'program_id'=>$value->program_id, 'hour'=>$value->hour, 'value'=>$value->value));                        
+                        $this->Api->create('project_report_test', array('report_id'=>$this->report_id, 'test_id'=>$value->test_id, 'program_id'=>$value->program_id, 'hour'=>$value->hour, 'value'=>$value->value));                        
 		}
 		echo json_encode(true);		
 	}
+        
+        public function save_solids_control($type) {
+                $values = json_decode($this->data_input);                
+                if($type=='shakers') {
+                        foreach ($values as $value) {                        
+                                $this->Api->create('project_report_shakers', array('project_shakers_id'=>$value->project_sharkers_id, 'report_id'=>$this->report_id, 'operational_hours'=>$value->operational_hour, 'screens1'=>$value->screens1, 'screens2'=>$value->screens2, 'screens3'=>$value->screens3, 'screens4'=>$value->screens4, 'screens5'=>$value->screens5));                        
+                        }
+                } else if($type=='mudcleaner') {
+                        foreach ($values as $value) {                        
+                                $this->Api->create('project_report_mudcleaner', array('project_mudcleaner_id'=>$value->project_mudcleaner_id, 'report_id'=>$this->report_id, 'desander_flow'=>$value->desander_flow, 'desander_presure'=>$value->desander_presure, 'desander_hours'=>$value->desander_hours, 'destiler_flow'=>$value->destiler_flow, 'destiler_presure'=>$value->destiler_presure, 'destiler_hours'=>$value->destiler_hours, 'screens1'=>$value->screens1, 'screens2'=>$value->screens2, 'screens3'=>$value->screens3, 'screens4'=>$value->screens4, 'screens5'=>$value->screens5, 'operational_hours'=>$value->operational_hour));                        
+                        }
+                } else {
+                        foreach ($values as $value) {                        
+                                $this->Api->create('project_report_centrifugues', array('project_centrifugues_id'=>$value->project_centrifugues_id, 'report_id'=>$this->report_id, 'speed'=>$value->speed, 'overflow'=>$value->overflow, 'underflow'=>$value->underflow, 'feet_rate'=>$value->feet_rate, 'operational_hours'=>$value->operational_hours, 'bowl_diam'=>$value->bowl_diam, 'bowl_pulley'=>$value->bowl_pulley, 'motor_pulley'=>$value->motor_pulley, 'motor'=>$value->motor, 'speed_rpm'=>$value->speed_rmp, 'g_force'=>$value->g_force, 'type'=>$value->type));                        
+                        }
+                }
+                echo json_encode(true);		
+        }
 
 	public function dump_session(){
 		print_r($this->session->all_userdata());
