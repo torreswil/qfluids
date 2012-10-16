@@ -220,7 +220,7 @@ $(function(){
                         this_value = {
                                 project_centrifugues_id  : project_centrifugues,
                                 operational_hour         : hour,
-                                speed                    : esta.find('.centrifugues_speed').val(),
+                                speed                    : esta.find('.centrifugue_speed').val(),
                                 overflow                 : esta.find('.centrifugue_overflow').val(),
                                 underflow                : esta.find('.centrifugue_underflow').val(),
                                 feet_rate                : esta.find('.centrifugue_feet_rate').val(),
