@@ -45,7 +45,9 @@ $(function(){
                         //Mud properties
                         save_mud_properties();
                         //Solids control equipment
-                        save_solids_control();  
+                        save_solids_control(); 
+                        //Save personal
+                        save_personal();
                                                                        
                         //alert('saving function trigger');                                
 		}
@@ -264,6 +266,52 @@ $(function(){
                 
                 setStatusReport('Solids controls equipment saved!');
                 
+        }
+        
+        function save_personal() {
+                var data = [];
+                var engineers = $('.personal_engineers_data');
+                engineers.each(function(j) {                        
+                        this_data = {
+                                personal_id             : $(this).find('.this_enginer').val(),                                 
+                                turn                    : '',
+                                cost                    : $(this).find('.this_enginer_cost').val()
+                        }
+                        data.push(this_data);
+                       
+                });
+                var operators = $('.personal_operators_data');
+                operators.each(function(j){
+                        operator = $(this).find('.operator_checkbox');
+                        if(operator.is(':checked')) {
+                                id = operator.attr('id').split('operator_checkbox_')[1];                                
+                                this_data = {
+                                        personal_id     : id,
+                                        turn            : '',
+                                        cost            : $(this).find('.this_operator_cost').val()
+                                }
+                                data.push(this_data);
+                        }
+                });
+                var yardworker = $('.personal_yardworkers_data');
+                yardworker.each(function(j){
+                        worker = $(this).find('.worker_checkbox');
+                        if(worker.is(':checked')) {
+                                id = worker.attr('id').split('worker_checkbox_')[1];                                
+                                this_data = {
+                                        personal_id     : id,
+                                        turn            : $(this).find('.this_worker_turn').val(),
+                                        cost            : $(this).find('.this_worker_cost').val()
+                                }
+                                data.push(this_data);
+                        }
+                });
+                //Save centrifugues
+                $.post('/rest/save_personal/',$.toJSON(data),function(r){
+                        if(r == true){                                         
+                                setStatusReport('Perasonal saved!');
+                        }
+                },'json');                                
         }
 
 

@@ -729,6 +729,21 @@ class Rest extends CI_Controller {
                 }
                 echo json_encode(true);		
         }
+        
+        public function save_personal(){
+		$values = json_decode($this->data_input); 
+                //Elimino los campos enviados con anterioridad para tener los nuevos almacenados
+                $this->Api->total_remove_where('project_report_personal', array('report_id'=>$this->report_id));
+		foreach ($values as $value) {      
+                        if(empty($value->personal_id)) { //Para que no genere error
+                                continue;
+                        }
+                        $personal = $this->Api->get_where('personal', array('id'=>$value->personal_id));
+                        $category = $personal[0]['category'];                                                
+                        $this->Api->create('project_report_personal', array('report_id'=>$this->report_id, 'personal_id'=>$value->personal_id, 'personal_categories_id'=>$category, 'turn'=>$value->turn, 'cost'=>$value->cost));                        
+		}
+		echo json_encode(true);		
+	}
 
 	public function dump_session(){
 		print_r($this->session->all_userdata());

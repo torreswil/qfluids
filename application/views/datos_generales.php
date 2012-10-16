@@ -1,3 +1,4 @@
+<?php $reporte = $this->session->userdata('report'); ?>
 <div class="this_panel" id="datos_generales">
 	<h2>Personnel</h2>
 	<div class="simpleTabs">
@@ -17,19 +18,21 @@
 						<td class="label_m"><label>Enginer:</label></td>
 						<td class="label_m"><label>Cost:</label></td>
 					</tr>
-					<?php for($i = 1; $i <= $project['maximun_enginers']; $i++){ ?>
-						<tr>
+                                        <? $rs = $this->Api->get_where('project_report_personal', array('report_id'=>$reporte['id'], 'personal_categories_id'=>1)); ?>
+					<?php for($i = 1; $i <= $project['maximun_enginers']; $i++){ ?>                                                                                        
+						<tr class="personal_engineers_data">
 							<td class="label_m"><label>Fluids Enginer <?= $i?>:</label></td>
 							<td>
 								<select style="width:179px;" class="this_enginer" id="this_enginer_<?= $i ?>">
 									<option value="">Please select...</option>
 									<?php foreach ($enginers as $enginer) { ?>
-						        		<option value="<?= $enginer['id'] ?>" ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
+                                                                        <?= $id = (empty($rs[$i-1]['personal_id'])) ? '' : $rs[$i-1]['personal_id']; ?>
+						        		<option value="<?= $enginer['id'] ?>" <?= $id==$enginer['id'] ? 'selected' : ''; ?>  ><?= $enginer['name'] ?> <?= $enginer['lastname'] ?></option>
 						        	<?php } ?>	
 								</select>
 							</td>
 							<td>
-								<input type="text" class="this_enginer_cost" id="this_enginer_cost_<?= $i ?>" style="width:100px;" value="0" disabled="disabled" />
+								<input type="text" class="this_enginer_cost" id="this_enginer_cost_<?= $i ?>" style="width:100px;" value="<?= (empty($rs[$i-1]['cost'])) ? '0' : $rs[$i-1]['cost']; ?>" disabled="disabled" />
 							</td>
 						</tr>
 					<?php } ?>
@@ -62,7 +65,7 @@
                                             </tr>                            
                                         </thead>                            
                                         <tbody>
-                                            <?php foreach ($enginers as $enginer): ?>
+                                            <?php foreach ($enginers as $enginer): ?>                                                
                                                 <tr id="this_enginers_list_<?php echo $enginer['id']?>">
                                                     <td><input type="text" disabled="disabled" style="width:100px;" value="<?php echo $enginer['identification'] ?>" /></td>
                                                     <td><input type="text" disabled="disabled" style="width:100px;" value="<?php echo $enginer['name'] ?>" /></td>
@@ -87,10 +90,11 @@
 	    				<td class="label_m"><label>Cost</label></td>
 	    			</tr>
 	    			<?php foreach ($operators as $operator){ ?>
-	    				<tr>
-		    				<td class="label_m" style="padding-right:15px;"><input type="checkbox" class="operator_checkbox" id="operator_checkbox_<?= $operator['id'] ?>" /></td>
+                                <? $rs = $this->Api->get_where('project_report_personal', array('report_id'=>$reporte['id'], 'personal_id'=>$operator['id'])); ?>
+	    				<tr class="personal_operators_data">
+		    				<td class="label_m" style="padding-right:15px;"><input type="checkbox" class="operator_checkbox" id="operator_checkbox_<?= $operator['id'] ?>" <?= (empty($rs[0]['personal_id'])) ? '' : 'checked'; ?> /></td>
 		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($operator['name']) ?> <?= strtoupper($operator['lastname']) ?>" style="width:150px;" /></td>
-		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($operator['rate']) ?>" style="width:100px;" id="operator_cost_<?= $operator['id'] ?>" /></td>
+		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($operator['rate']) ?>" style="width:100px;" id="operator_cost_<?= $operator['id'] ?>" class="this_operator_cost" /></td>
 		    			</tr>
 	    			<?php } ?>
 	    		</table>
@@ -123,20 +127,22 @@
                         <td class="label_m"><label>Turn</label></td>
 	    			</tr>
 	    			<?php foreach ($yardworkers as $worker){ ?>
-	    				<tr>
-		    				<td class="label_m" style="padding-right:15px;"><input type="checkbox" class="worker_checkbox" id="worker_checkbox_<?= $worker['id'] ?>" /></td>
+                                        <? $rs = $this->Api->get_where('project_report_personal', array('report_id'=>$reporte['id'], 'personal_id'=>$worker['id'])); ?>
+                                        <? $turn = (empty($rs[0]['turn'])) ? '' : $rs[0]['turn']; ?>
+	    				<tr id="this_yardworkers_list_<?php echo $worker['id']?>" class="personal_yardworkers_data">                                                
+		    				<td class="label_m" style="padding-right:15px;"><input type="checkbox" class="worker_checkbox" id="worker_checkbox_<?= $worker['id'] ?>" <?= (empty($rs[0]['personal_id'])) ? '' : 'checked'; ?> /></td>
 		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($worker['name']) ?> <?= strtoupper($worker['lastname']) ?>" style="width:150px;" /></td>
-		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($worker['rate']) ?>" style="width:100px;" id="worker_cost_<?= $worker['id'] ?>" /></td>
-                            <td class="label_m">
-                            	<select id="this_yardworker_<?= $worker['id']; ?>" class="this_yardworker" style="width:179px; height: 25px;">
-                            		<option value="">Please select...</option>
-                            		<option value="1">1 - 06:00 AM - 02:00 PM</option>
-                            		<option value="2">2 - 02:00 PM - 10:00 PM</option>
-                            		<option value="3">3 - 10:00 PM - 06:00 AM</option>
-                            		<option value="4">4 - 06:00 AM - 06:00 PM</option>
-                            		<option value="5">5 - 06:00 PM - 06:00 AM</option>
-                            	</select>
-                            </td>
+		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($worker['rate']) ?>" style="width:100px;" id="worker_cost_<?= $worker['id'] ?>" class="this_worker_cost" /></td>
+                                                <td class="label_m">
+                                                <select id="this_yardworker_<?= $worker['id']; ?>" class="this_yardworker this_worker_turn" style="width:179px; height: 25px;">
+                                                        <option value="">Please select...</option>
+                                                        <option value="1" <?= ($turn==1) ? 'selected' : ''; ?> >1 - 06:00 AM - 02:00 PM</option>
+                                                        <option value="2" <?= ($turn==2) ? 'selected' : ''; ?>>2 - 02:00 PM - 10:00 PM</option>
+                                                        <option value="3" <?= ($turn==3) ? 'selected' : ''; ?>>3 - 10:00 PM - 06:00 AM</option>
+                                                        <option value="4" <?= ($turn==4) ? 'selected' : ''; ?>>4 - 06:00 AM - 06:00 PM</option>
+                                                        <option value="5" <?= ($turn==1) ? 'selected' : ''; ?>>5 - 06:00 PM - 06:00 AM</option>
+                                                </select>
+                                            </td>
 		    			</tr>
 	    			<?php } ?>
 	    		</table>
