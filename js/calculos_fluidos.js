@@ -1874,9 +1874,6 @@ function calculos_raw(){
 		voltotalchem = voltotalchem + fval($(this).attr('id'));
 	});
 	completar_campo_val('voltotalchem',voltotalchem.toFixed(2));
-	if(voltotalchem > 0 && voltotalchem < 1){voltotalchem = 1;}
-	completar_campo_val('volchem_'+current_add_chemical_overlay_tank,Math.round(voltotalchem));
-
 		
 	//volconsact
 	var volconsact = 0;

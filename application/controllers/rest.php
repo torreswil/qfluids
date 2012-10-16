@@ -516,82 +516,54 @@ class Rest extends CI_Controller {
 	}
 
 
-	public function register_stock_transfer(){
-		$data = json_decode($this->data_input);
-		
-		//save the stock transfer
-		$stock_transfer = array(
-			'code'			=> $data->code,
-			'date'			=> date('Y-m-d'),
-			'origin'		=> $data->origin,
-			'destiny'		=> $this->project_wellname.' ('.$this->project_operator.')',
-			'project_id'	=> $this->project_id,
-			'type'			=> $data->type
-		);
-
-		$id_st = $this->Api->create('stock_transfers',$stock_transfer);
-
-		$materials = $data->materials;
-
-		foreach ($materials as $material) {
-
-			//verificar la cantidad que hay en stock, y sumar o restar segun sea el caso
-			$this_material = $this->Api->get_where('inventory',array('product'=>$material->id,'project_id'=>$this->project_id));
-			$this_material = $this_material[0];
-
-			if($data->type == 'incoming'){
-				$this_material['avaliable'] = $this_material['avaliable'] + $material->quantity;
-				$this_material['received']  =  $this_material['received'] + $material->quantity;
-			}else if($data->type == 'outgoing'){
-				$this_material['avaliable'] = $this_material['avaliable'] - $material->quantity;
-			}
-
-			$this->Api->update_where('inventory',array('avaliable'=>$this_material['avaliable']),array('product'=>$material->id,'project_id'=>$this->project_id));
-
-
-			//actualizar la tabla de movimientos del inventario
-			$movimiento = array(
-				'project_id' 	 => $this->project_id,
-				'timestamp' 	 => date('Y-m-d H:i:s'),
-				'type' 			 => $data->type,
-				'quantity'		 => $material->quantity,
-				'product'		 => $material->id,
-				'stock_transfer' => $id_st
-			);
-			
-		}
-
-		echo json_encode(true);
-	}
-
 	public function load_materials_status(){
 		$materials = $this->Api->get_where('vista_reporte_estado_material',array('project'=>$this->project_id,'report'=>$this->report_id),array('commercial_name','asc'));
 		foreach ($materials as $material) { ?>
-			<tr class="this_material_<?= $material['product_id']?> ">
+			<tr class="this_material_<?= $material['material']?> ">
 	            <td><input style="width:300px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
 	            <td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
 	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
 	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$<?= $material['price'] ?>" /></td>
-	            <td><input style="width:55px;margin-right:0;" type="text" id="minitial_<?= $material['product_id']?>"  /></td>
-	            <td><input style="width:55px;margin-right:0;" type="text" id="mreceived_<?= $material['product_id']?>" value="" /></td>
-	            <td><input style="width:55px;margin-right:0;" type="text" id="mtransf_<?= $material['product_id']?>" value="" /></td>
-	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="" id="stotal_consumption_today_<?= $material['product_id']?>" /></td>
-	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="" id="mstock_<?= $material['product_id']?>" class="mstock" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" id="minitial_<?= $material['material']?>" value="<?= $material['initial'] ?>" disabled  /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" id="mreceived_<?= $material['material']?>" value="<?= $material['received'] ?>" disabled /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" id="mtransf_<?= $material['material']?>" value="<?= $material['transfered'] ?>" disabled /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['used'] ?>" id="stotal_consumption_today_<?= $material['material']?>" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['stock'] ?>" id="mstock_<?= $material['material']?>" class="mstock" /></td>
 	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="" /></td>
 	          </tr>  <?php
 		}
 	}
+
+	public function load_ac_status(){
+		$materials = $this->Api->get_where('vista_reporte_estado_material',array('project'=>$this->project_id,'report'=>$this->report_id),array('commercial_name','asc'));	
+		foreach ($materials as $material) { ?>
+			<tr class="this_material_ac" id="this_material_<?= $material['material']?> ">
+				<td><input style="width:230px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+				<td>
+					<input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" />
+					<input type="hidden" name="size_<?= $material['material']?>" id="size_<?= $material['material']?>" class="size" value="<?= $material['equivalencia'] ?>" />
+					<input type="hidden" name="unit_<?= $material['material']?>" id="unit_<?= $material['material']?>" class="unit" value="<?= $material['unidad_destino'] ?>" />
+				</td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" name="sg_<?= $material['material']?>" id="sg_<?= $material['material']?>" /></td>
+				<td>
+					<input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['stock'] ?>" id="ac_stock_<?= $material['material']?>" class="ac_stock" />
+				</td>
+				<td><input style="width:55px;margin-right:0;" type="text" value="" class="used" name="used_<?= $material['material']?>" id="used_<?= $material['material']?>_" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" id="volincr_<?= $material['material']?>" name="volincr_<?= $material['material']?>" class="volincr" /></td>
+            </tr>  <?php
+		}
+	}
         
-        public function load_stock(){
+    public function load_stock(){
 		$result = $this->Api->get_where('stock_transfers', $_POST);
 		foreach ($result as $stock) { ?>
 			<tr class="this_incoming_stock_<?= $stock['d']?> ">								
-                                <td></td>
+                <td></td>
 				<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['date'] ?>" /></td>
 				<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['code'] ?>" /></td>
 				<td><input style="width:150px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['origin'] ?>" /></td>
 				<td><input style="width:150px;margin-right:0;" type="text" disabled="disabled" value="<?= $stock['destiny'] ?>" /></td>
-                        </tr> <?php
+            </tr> <?php
 		}
 	}
 

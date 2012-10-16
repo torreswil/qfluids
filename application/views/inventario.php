@@ -27,20 +27,7 @@
                               </tr>     
                          </thead>
                          <tbody id="materials_status_table">
-                            <?php foreach ($materials as $material) { ?>
-                              <tr class="this_material_<?= $material['product_id']?> ">
-                                <td><input style="width:300px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
-                                <td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
-                                <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
-                                <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$<?= $material['price'] ?>" /></td>
-                                <td><input style="width:55px;margin-right:0;" type="text" id="minitial_<?= $material['product_id']?>" /></td>
-                                <td><input style="width:55px;margin-right:0;" type="text" id="mreceived_<?= $material['product_id']?>" value="" /></td>
-                                <td><input style="width:55px;margin-right:0;" type="text" id="mtransf_<?= $material['product_id']?>" value="" /></td>
-                                <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="" id="stotal_consumption_today_<?= $material['product_id']?>" /></td>
-                                <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="" id="mstock_<?= $material['product_id']?>" class="mstock" /></td>
-                                <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="" /></td>
-                              </tr> 
-                            <?php } ?>
+                            <!-- ajax loadaded -->
                          </tbody>     
                     </table>
                </fieldset>

@@ -9,7 +9,8 @@ $(function(){
 	// INIT FUNCTIONS
 	/*==========================================================================================================*/
 	//materials
-	//load_materials_status();
+	load_materials_status();
+	load_ac_status();
         
 	/*==========================================================================================================*/
 	// NAVIGATION
@@ -1154,7 +1155,7 @@ $(function(){
 
 	});
 
-		//clocks
+	//clocks
 	$('.clock_1,.clock_2,.clock_3').change(function(){
 		var this_class = $(this).attr('class');
 		var new_hour = $(this).val();
@@ -1300,7 +1301,7 @@ $(function(){
 					}
 				});
 
-				$.post('/rest/register_stock_transfer',$.toJSON(data),function(r){
+				$.post('/rest_mvc/register_stock_transfer',$.toJSON(data),function(r){
 					if(r == true){
 						$('.materials_table .material_qty',context).val('');
 						$('.general_st_info input',context).val('');
@@ -1313,17 +1314,19 @@ $(function(){
 	});
 
 	function load_materials_status(){  
-                
-                $('#materials_status_table').load('/rest/load_materials_status');                                                                
-                
-                var project = $('#project_id').val();
-                var incoming_list = {
-                    project_id          : project,
-                    type                : 'incoming'
-                };
-                $.post('/rest/load_stock',incoming_list,function(r){			
-                        $('#incoming_stock_list').html(r);
-                });                                                
+        var data = {'project_id' : $('#project_id').val()};
+        $.post('/rest/load_materials_status',data,function(r){
+        	$('#materials_status_table').html(r);	
+        });
+                                                                     
+        var project = $('#project_id').val();
+        var incoming_list = {
+            project_id          : project,
+            type                : 'incoming'
+        };
+        $.post('/rest/load_stock',incoming_list,function(r){			
+                $('#incoming_stock_list').html(r);
+        });                                                
 	}        
 
 	/*==========================================================================================================*/
@@ -1444,96 +1447,101 @@ $(function(){
 		}
 	});
 
-	//add chemicals overlay
-	$('#add_chemicals_overlay input').keyup(function(){
-		var id = $(this).attr('id');
-		$('#i'+id).val($(this).val());
 
-		correr_calculos();
-	});
 
-	//show_add_chemicals_overlay
-	$('.show_add_chemicals_overlay').click(function(e){
+	//ADICIONAR QUIMICA A UN TANQUE
+	$('#add_chemicals_btn').click(function(e){
 		e.preventDefault();
-		var tank_id = $(this).attr('id');
-			tank_id = tank_id.split('link_add_chemicals_');
-			tank_id = tank_id[1];
 
-		var tank_label = $('#tank_name_label_'+tank_id).html();
-		$('#add_chemicals_overlay h5').html('Chemicals added today to '+tank_label+':');
-		$('#add_chemicals_overlay input[name="tank"]').val(tank_id);
-		
-		$('#add_chemicals_overlay .used').each(function(){
-			var id = $(this).attr('id');
-				id = id.split('_');
-				id = id[0]+'_'+id[1]+'_';
-			//marcar los campos con el correspondiente id del tanque y del material
-			$(this).attr('id',id+tank_id).attr('name',id+tank_id);
-
-			//cargar los stock presentes de cada material
-			var id_material = $(this).attr('id');
-				id_material = id_material.split('_');
-				id_material = id_material[1];
-
-			$('#ac_stock_'+id_material).val($('#mstock_'+id_material).val());
-			$('#realac_stock_'+id_material).val($('#mstock_'+id_material).val());
-
-			//cargar los consumos por producto del tanque actual
-			var id_material_tanque = id+tank_id;
-			$('#'+id_material_tanque).val($('#i'+id_material_tanque).val());
-
-			correr_calculos();
-		});
-
-		
-
-		$('#add_chemicals_overlay').show();
-	});
-
-	$('#add_chemicals_overlay .close_link').click(function(e){
-		e.preventDefault();
-		$('#add_chemicals_overlay .used').val(0);
-		$('#add_chemicals_overlay .volincr').val(0);
-		$('#voltotalchem').val(0);
-		$('#add_chemicals_overlay input[name="tank"]').val('');		
-		$('#add_chemicals_overlay').hide();
-	});
-
-	$('#addchemical_btn').click(function(e){
-		//validar que ningun valor sea negativo en el stock
-		var eqty 	= 0;
-		var tank_id = $('#add_chemicals_overlay input[name="tank"]').val();
-		$('#add_chemicals_overlay .ac_stock').each(function(){
-			var id = $(this).attr('id');
-				id = id.split('_');
-				id = id[2];
-
-			if(parseInt($(this).val()) < 0){
-				eqty = eqty + 1;
-				$('#used_'+id+'_'+tank_id).addClass('input_error');
-				log('#used_'+id+'_'+tank_id);
-			}else{
-				$('#used_'+id+'_'+tank_id).removeClass('input_error');	
-			}
-		});
-
-		if(eqty == 0){
-			//actualizar la tabla de concentraciones iniciales
-			$('.cxconc').each(function(){
-				var id_material = $(this).attr('id');
-					id_material = id_material.split('_');
-					id_material = id_material[1];
-					completar_campo_val('currentconc_'+id_material+'_'+tank_id,$(this).val());
-			});
-
-
-			$('#add_chemicals_overlay input[name="tank"]').val('');		
-			$('#add_chemicals_overlay').hide();	
-			$('#add_chemicals_overlay .ac_stock').val('');
+		//validar que el tanque destino no este vacio
+		if($('#ca_tank').val() == ''){
+			alert('The destiny tank cannot be empty.');
 		}else{
-			alert('You are atempting to use more material than the material avaliable in stock. Please verify and try again.');
+			var destiny = ival('ca_tank');
+
+			//obtener el aforo maximo y la cantidad ocupada del tanque destino
+			if(destiny == 0){
+				var aforo_maximo = 0;
+				var cantidad_ocupada = fval('activepits');
+				$('#inside_circuit_active_tanks .voltkaforo').each(function(){
+					aforo_maximo = aforo_maximo + fval($(this).attr('id'));
+				});
+			}else{
+				var aforo_maximo 		= fval('voltkaforo_'+destiny);
+				var cantidad_ocupada 	= fval('volfinal_'+destiny); 
+			}
+
+			//validar que el incremento de volumen no sea mayor que la capacidad disponible
+			var capacidad_disponible 	= aforo_maximo - cantidad_ocupada;
+			var capacidad_requerida 	= fval('voltotalchem') + fval('ca_wa');
+
+			if(capacidad_disponible < capacidad_requerida){
+				//log(capacidad_disponible,capacidad_requerida);
+				alert('There is not enought room in the destiny tank. Please verify the quantities and water aditions to continue.');
+			}else{
+				//validar que las cantidades a consumir de cada elemento no sean mayores que las que hay en stock.
+				var eqty = 0;
+				$('.used').each(function(){
+					var id = $(this).attr('id');
+						id = id.split('_');
+						id = id[1];
+
+					if(ival($(this).attr('id')) > ival('ac_stock_'+id)){
+						eqty = eqty + 1;
+					}
+
+				});
+
+				if(eqty > 0){
+					alert('You cannot use more material than the one in stock. Please verify your quantities and try again.');
+				}else{
+					//armar el objeto
+					var data = {
+						'tank' 				: destiny,
+						'water_volume' 		: fval('ca_wa'),
+						'chemical_volume' 	: fval('voltotalchem'),
+						'chemicals' 		: []
+					}
+
+					$('.used').each(function(){
+						var id = $(this).attr('id');
+							id = id.split('_');
+							id = id[1];
+
+						var this_chemical = {
+							'id' 		: id,
+							'used' 		: ival($(this).attr('id')),
+							'volume' 	: fval('volincr_'+id)
+						}
+
+						data.chemicals.push(this_chemical);
+					});
+
+					//ajax
+					$.post('/rest_mvc/chemical_adition',$.toJSON(data),function(r){
+						if(r == true){
+							//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
+							load_materials_status();
+							load_ac_status();
+							load_tank_status();	
+						}
+					},'json');
+				}
+			}
 		}
 	});
+
+	function load_ac_status(){
+		var data = {'project_id' : $('#project_id').val()};
+		$.post('/rest/load_ac_status',data,function(r){
+			$('#ac_status').html(r);	
+		});
+		
+	}
+
+	function load_tank_status(){
+		alert('gatillo actualizacion de tanques.');
+	}
 
 
 	//transfer_volume_btn: transferir volumen desde y hacia el activo
