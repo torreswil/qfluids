@@ -1,3 +1,4 @@
+<?php $reporte = $this->session->userdata('report'); ?>
 <div class="this_panel plusribbon" id="propiedades_fluido">
 	<h2>Mud Properties</h2>
 	<fieldset class="top_ribbon">
@@ -71,16 +72,18 @@
                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$test['id'], 'phase'=>$project['current_phase'])); ?>
                                                 <?php $value = empty($program[0]['value_program']) ? '' : $program[0]['value_program']; ?>
                                                 <?php $program_id = empty($program[0]['id']) ? '' : $program[0]['id']; ?>
-
+                                                
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$test['id'])); ?>
+                                                
                                                 <tr data-test="<?= $test['id']; ?>" data-program="<?= $program_id; ?>">
                                                 <?php if($test['test']=='depth') { ?> 
 
                                                         <td class="label_m"><label>depth</label></td>
                                                         <td class="unit_field">ft</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='pit/flow line') { ?>
 
@@ -89,23 +92,26 @@
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
                                                         <td>
                                                                 <select style="width:70px;" class="data_value">
-                                                                        <option val="">Select...</option>
-                                                                        <option val="pit">Pit</option>
-                                                                        <option val="flow_line">Flow Line</option>
+                                                                        <?php $select =  (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>
+                                                                        <option value="">Select...</option>
+                                                                        <option value="pit" <?= ($select == 'pit') ? 'selected' : ''; ?>>Pit</option>
+                                                                        <option value="flow_line" <?= ($select == 'flow_line') ? 'selected' : ''; ?>>Flow Line</option>
                                                                 </select>
                                                         </td>
                                                         <td>
                                                                 <select style="width:70px;" class="data_value">
-                                                                        <option val="">Select...</option>
-                                                                        <option val="pit">Pit</option>
-                                                                        <option val="flow_line">Flow Line</option>
+                                                                        <?php $select =  (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>
+                                                                        <option value="">Select...</option>
+                                                                        <option value="pit" <?= ($select == 'pit') ? 'selected' : ''; ?>>Pit</option>
+                                                                        <option value="flow_line" <?= ($select == 'flow_line') ? 'selected' : ''; ?>>Flow Line</option>
                                                                 </select>
                                                         </td>
                                                         <td>
                                                                 <select style="width:70px;" class="data_value">
-                                                                        <option val="">Select...</option>
-                                                                        <option val="pit">Pit</option>
-                                                                        <option val="flow_line">Flow Line</option>
+                                                                        <?php $select =  (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>
+                                                                        <option value="">Select...</option>
+                                                                        <option value="pit" <?= ($select == 'pit') ? 'selected' : ''; ?>>Pit</option>
+                                                                        <option value="flow_line" <?= ($select == 'flow_line') ? 'selected' : ''; ?>>Flow Line</option>
                                                                 </select>
                                                         </td>
 
@@ -114,126 +120,126 @@
                                                         <td class="label_m"><label>flowline temp</label></td>
                                                         <td class="unit_field">ºF</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" id="ztemp_1" name="ztemp_1" style="width:56px;" class="ztemp data_value"></td>
-                                                        <td><input type="text" id="ztemp_2" name="ztemp_2" style="width:56px;" class="ztemp data_value"></td>
-                                                        <td><input type="text" id="ztemp_3" name="ztemp_3" style="width:56px;" class="ztemp data_value"></td>
+                                                        <td><input type="text" id="ztemp_1" name="ztemp_1" style="width:56px;" class="ztemp data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" id="ztemp_2" name="ztemp_2" style="width:56px;" class="ztemp data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" id="ztemp_3" name="ztemp_3" style="width:56px;" class="ztemp data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='mud weight') { ?>
 
                                                         <td class="label_m"><label>mud weight</label></td>
                                                         <td class="unit_field">ppg</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" id="mw_1" class="mw data_value"></td>
-                                                        <td><input type="text" style="width:56px;" id="mw_2" class="mw data_value"></td>
-                                                        <td><input type="text" style="width:56px;" id="mw_3" class="mw data_value"></td>
+                                                        <td><input type="text" style="width:56px;" id="mw_1" class="mw data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" id="mw_2" class="mw data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" id="mw_3" class="mw data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='Funnel viscosity') { ?>
 
                                                         <td class="label_m"><label>Funnel viscosity</label></td>
                                                         <td class="unit_field">sec/qt</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" id="funelv_1" name="funelv_1" class="funelv data_value"></td>
-                                                        <td><input type="text" style="width:56px;" id="funelv_2" name="funelv_2" class="funelv data_value"></td>
-                                                        <td><input type="text" style="width:56px;" id="funelv_3" name="funelv_3" class="funelv data_value"></td>
+                                                        <td><input type="text" style="width:56px;" id="funelv_1" name="funelv_1" class="funelv data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" id="funelv_2" name="funelv_2" class="funelv data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" id="funelv_3" name="funelv_3" class="funelv data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='API fl/cake') { ?>
 
                                                         <td class="label_m"><label>API fl/cake</label></td>
                                                         <td class="unit_field">c.c./30min</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" placeholder="00/00" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" placeholder="00/00" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" placeholder="00/00" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" placeholder="00/00" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" placeholder="00/00" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" placeholder="00/00" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='Sand') { ?>
 
                                                         <td class="label_m"><label>Sand</label></td>
                                                         <td class="unit_field">% vol</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='Lubricant') { ?>
 
                                                         <td class="label_m"><label>Lubricant</label></td>
                                                         <td class="unit_field">% vol</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='Inhibitor') { ?>
 
                                                         <td class="label_m"><label>Inhibitor</label></td>
                                                         <td class="unit_field">gpb</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='pH METER') { ?>        
 
                                                         <td class="label_m"><label>pH METER</label></td>
                                                         <td class="unit_field"></td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='PM') { ?>
 
                                                         <td class="label_m"><label>PM</label></td>
                                                         <td class="unit_field">ml <span style="text-transform:uppercase">H<sub>2</sub>SO<sub>4</sub></span></td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='PF/MF') { ?>
 
                                                         <td class="label_m"><label>PF/MF</label></td>
                                                         <td class="unit_field">ml <span style="text-transform:uppercase">H<sub>2</sub>SO<sub>4</sub></span></td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='MBT') { ?>
 
                                                         <td class="label_m"><label>MBT</label></td>
                                                         <td class="unit_field">lb/bbl eq</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='CHLORIDES') { ?>
 
                                                         <td class="label_m"><label>CHLORIDES</label></td>
                                                         <td class="unit_field">mg/l</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else if($test['test']=='Ca++') { ?>
 
                                                         <td class="label_m"><label>Ca++</label></td>
                                                         <td class="unit_field">mg/l</td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else { ?>
 
                                                         <td><input type="text" class="medium"><?= $test['test'];?></td>
-                                                        <td class="unit_field"><input type="text" style="width:20px;margin-right:0;" /><?= $test['uint_test'];?></td>
+                                                        <td class="unit_field"><input type="text" style="width:20px;margin-right:0;" /><?= $test['unit_test'];?></td>
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
-                                                        <td><input type="text" style="width:56px;" class="data_value"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
+                                                        <td><input type="text" style="width:56px;" class="data_value" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
                                                 <?php } ?>
                                                 </tr>
                                                 <?php endforeach; ?>

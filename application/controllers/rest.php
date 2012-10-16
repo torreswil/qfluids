@@ -99,6 +99,20 @@ class Rest extends CI_Controller {
 			echo json_encode(array('message'=>'project_updated'));
 		}	
 	}
+        
+        public function load_report() {
+                $reportes       = $this->Api->get_where('reports', array('project'=>$this->project_id), array('id','desc'));
+                $actual         = $this->session->userdata('report');
+                foreach($reportes as $reporte) {
+                        if($reporte['number'] < $actual['number']) { ?>                        
+                                <tr id="this_report_<?= $reporte['id']; ?>">                                       
+                                        <td><input type="text" style="width:120px;" disabled="disabled" value="REPORT <?= $reporte['number']; ?>" /></td>
+                                        <td><input type="text" style="width:100px;" disabled="disabled" value="<?= $reporte['date']; ?>" /></td>
+                                        <td><input type="text" style="width:100px;" disabled="disabled" value="<?= $reporte['phase']; ?>" /></td>
+                                </tr>                                
+                        <?php } 
+                }
+        }
 
 
 	/*==========================================================================================================*/
@@ -678,16 +692,39 @@ class Rest extends CI_Controller {
         }
         
 
-    /*==========================================================================================================*/
-	// DATA INPUT SAVE
-	/*==========================================================================================================*/
-    public function save_mud_properties(){
-		$values = json_decode($this->data_input);                
+        /*==========================================================================================================*/
+        // DATA INPUT SAVE
+        /*==========================================================================================================*/
+        public function save_mud_properties(){
+		$values = json_decode($this->data_input); 
+                //Elimino los campos enviados con anterioridad para tener los nuevos almacenados
+                $this->Api->total_remove_where('project_report_test', array('report_id'=>$this->report_id));                
 		foreach ($values as $value) {                        
-            $this->Api->create('project_report_test', array('report_id'=>$value->report_id, 'test_id'=>$value->test_id, 'program_id'=>$value->program_id, 'hour'=>$value->hour, 'value'=>$value->value));                        
+                        $this->Api->create('project_report_test', array('report_id'=>$this->report_id, 'test_id'=>$value->test_id, 'program_id'=>$value->program_id, 'hour'=>$value->hour, 'value'=>$value->value));                        
 		}
 		echo json_encode(true);		
 	}
+        
+        public function save_solids_control($type) {
+                $values = json_decode($this->data_input);                
+                if($type=='shakers') {
+                        $this->Api->total_remove_where('project_report_shakers', array('report_id'=>$this->report_id));                
+                        foreach ($values as $value) {                        
+                                $this->Api->create('project_report_shakers', array('project_shakers_id'=>$value->project_sharkers_id, 'report_id'=>$this->report_id, 'operational_hours'=>$value->operational_hour, 'screens1'=>$value->screens1, 'screens2'=>$value->screens2, 'screens3'=>$value->screens3, 'screens4'=>$value->screens4, 'screens5'=>$value->screens5));                        
+                        }
+                } else if($type=='mudcleaner') {
+                        $this->Api->total_remove_where('project_report_mudcleaner', array('report_id'=>$this->report_id));                
+                        foreach ($values as $value) {                        
+                                $this->Api->create('project_report_mudcleaner', array('project_mudcleaner_id'=>$value->project_mudcleaner_id, 'report_id'=>$this->report_id, 'desander_flow'=>$value->desander_flow, 'desander_presure'=>$value->desander_presure, 'desander_hours'=>$value->desander_hours, 'destiler_flow'=>$value->destiler_flow, 'destiler_presure'=>$value->destiler_presure, 'destiler_hours'=>$value->destiler_hours, 'screens1'=>$value->screens1, 'screens2'=>$value->screens2, 'screens3'=>$value->screens3, 'screens4'=>$value->screens4, 'screens5'=>$value->screens5, 'operational_hours'=>$value->operational_hour));                        
+                        }
+                } else {
+                        $this->Api->total_remove_where('project_report_centrifugues', array('report_id'=>$this->report_id));                
+                        foreach ($values as $value) {                        
+                                $this->Api->create('project_report_centrifugues', array('project_centrifugues_id'=>$value->project_centrifugues_id, 'report_id'=>$this->report_id, 'speed'=>$value->speed, 'overflow'=>$value->overflow, 'underflow'=>$value->underflow, 'feet_rate'=>$value->feet_rate, 'operational_hours'=>$value->operational_hours, 'bowl_diam'=>$value->bowl_diam, 'bowl_pulley'=>$value->bowl_pulley, 'motor_pulley'=>$value->motor_pulley, 'motor'=>$value->motor, 'speed_rpm'=>$value->speed_rmp, 'g_force'=>$value->g_force, 'type'=>$value->type));                        
+                        }
+                }
+                echo json_encode(true);		
+        }
 
 	public function dump_session(){
 		print_r($this->session->all_userdata());

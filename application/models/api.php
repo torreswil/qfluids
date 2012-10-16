@@ -99,6 +99,24 @@
 	    	$data = array('active' => 0);
 	    	$this->db->where($condition)->update($table,$data);	
 	    }
+            
+            /*
+		* total_remove 		: returns void
+		* @table[string] 	: Name of the table/object you want to fetch.
+		* @id[int] 		: id of the object to delete
+	    */
+	    public function total_remove($table,$id){
+                    $this->db->delete($table, array('id' => $id));                         	
+	    }
+
+	    /*
+		* total_remove_where 		: returns void
+		* @table[string] 	: Name of the table/object you want to fetch.
+		* @condition[array]	: Parameters to filter with.
+	    */
+	    public function total_remove_where($table,$condition = array()){                    
+                    $this->db->delete($table, $condition);	    	
+	    }
 
 	}
 
