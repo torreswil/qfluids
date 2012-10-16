@@ -11,6 +11,7 @@ $(function(){
 	//materials
 	load_materials_status();
 	load_ac_status();
+	load_current_concentrations();
         
 	/*==========================================================================================================*/
 	// NAVIGATION
@@ -1476,7 +1477,6 @@ $(function(){
 			var capacidad_requerida 	= fval('voltotalchem') + fval('ca_wa');
 
 			if(capacidad_disponible < capacidad_requerida){
-				//log(capacidad_disponible,capacidad_requerida);
 				alert('There is not enought room in the destiny tank. Please verify the quantities and water aditions to continue.');
 			}else{
 				//validar que las cantidades a consumir de cada elemento no sean mayores que las que hay en stock.
@@ -1509,9 +1509,10 @@ $(function(){
 							id = id[1];
 
 						var this_chemical = {
-							'id' 		: id,
-							'used' 		: ival($(this).attr('id')),
-							'volume' 	: fval('volincr_'+id)
+							'id' 			: id,
+							'used' 			: ival($(this).attr('id')),
+							'volume' 		: fval('volincr_'+id),
+							'add_quimica' 	: ival('concincr_'+id)
 						}
 
 						data.chemicals.push(this_chemical);
@@ -1523,7 +1524,8 @@ $(function(){
 							//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
 							load_materials_status();
 							load_ac_status();
-							load_tank_status();	
+							load_tank_status();
+							load_current_concentrations();
 						}
 					},'json');
 				}
@@ -1541,6 +1543,13 @@ $(function(){
 
 	function load_tank_status(){
 		alert('gatillo actualizacion de tanques.');
+	}
+
+	function load_current_concentrations(){
+		var data = {'project_id' : $('#project_id').val()};
+		$.post('/rest_mvc/load_current_concentrations',data,function(r){
+			$('#current_concentrations_table').html(r);	
+		});	
 	}
 
 

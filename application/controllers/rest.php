@@ -563,10 +563,14 @@ class Rest extends CI_Controller {
 					<input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['stock'] ?>" id="ac_stock_<?= $material['material']?>" class="ac_stock" />
 				</td>
 				<td><input style="width:55px;margin-right:0;" type="text" value="" class="used" name="used_<?= $material['material']?>" id="used_<?= $material['material']?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" id="volincr_<?= $material['material']?>" name="volincr_<?= $material['material']?>" class="volincr" /></td>
+				<td>
+					<input style="width:55px;margin-right:0;" type="text" value="0" disabled="disabled" id="volincr_<?= $material['material']?>" name="volincr_<?= $material['material']?>" class="volincr" />
+					<input type="hidden" value="" id="concincr_<?= $material['material']?>" name="concincr_<?= $material['material']?>" class="concincr"  />
+				</td>
             </tr>  <?php
 		}
 	}
+
         
     public function load_stock(){
 		$result = $this->Api->get_where('stock_transfers', $_POST);
@@ -635,7 +639,7 @@ class Rest extends CI_Controller {
 		}
 	}
         
-        public function new_test(){
+    public function new_test(){
 		if(count($_POST) > 0){			
 			$match = $this->Api->get_where('test',array('test' => $_POST['test'], 'type_test' => $_POST['type_test'], 'unit_test' => $_POST['unit_test'], 'active' => 1));
 			if(count($match) > 0){

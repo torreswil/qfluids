@@ -1849,24 +1849,28 @@ function calculos_raw(){
 			id = id.split('this_material_');
 			id = $.trim(id[1]);
 		
-		var tank = $.trim($('#add_chemicals_overlay input[name="tank"]').val());
+		var tank 	= $.trim($('#add_chemicals_overlay input[name="tank"]').val());
 		var volincr = 0;
 
 		//act different if the material is a solid o a liquid
 		if($('#unit_'+id).val() == 'lb'){
-			volincr = (fval('size_'+id) * fval('used_'+id+'_'+tank) ) / ( 8.33 * 42 * fval('sg_'+id));
+			volincr = (fval('size_'+id) * fval('used_'+id) ) / ( 8.33 * 42 * fval('sg_'+id));
 		}else if($('#unit_'+id).val() == 'gal'){
-			volincr = ( fval('size_'+id) * fval('used_'+id+'_'+tank) ) / (42);
+			volincr = ( fval('size_'+id) * fval('used_'+id) ) / (42);
 		}
 
 		completar_campo_val('volincr_'+id,volincr.toFixed(2));
-		var current_add_chemical_overlay_tank = $.trim($('#add_chemicals_overlay input[name="tank"]').val());
-		completar_campo_val('ivolincr_'+id+'_'+current_add_chemical_overlay_tank,volincr.toFixed(2));
 	});
 	
+	//concincr
+	$('.concincr').each(function(){
+		var id = $(this).attr('id');
+			id = id.split('_');
+			id = id[1];
 
-	//ID DEL TANQUE ACTUALMENTE SELECCIONADO
-	var current_add_chemical_overlay_tank = $.trim($('#add_chemicals_overlay input[name="tank"]').val());
+		var concincr = fval('size_'+id) * fval('used_'+id);
+		completar_campo_val('concincr_'+id,concincr);
+	});
 
 	//voltotalchem
 	var voltotalchem = 0;
