@@ -113,10 +113,10 @@ class Rest_mvc extends CI_Controller {
 			$ca_id = $this->Api->create('chemical_aditions',$chemical_adition);
 			
 			
-			foreach ($used_chemicals as $chemical) {
-				$material 	= $chemical->id;
-				$used 		= $chemical->used;
-				$volume 	= $chemical->volume;
+			foreach ($used_chemicals as $this_chemical) {
+				$material 	= $this_chemical->id;
+				$used 		= $this_chemical->used;
+				$volume 	= $this_chemical->volume;
 
 				//registrar el detalle de la adicion de quimica
 				$chemical_adition_detail = array(
@@ -160,7 +160,171 @@ class Rest_mvc extends CI_Controller {
 			}
 		}
 
+
+
+
+		//ESTADO DEL TANQUE
+		//inicializar el tanque en la tabla de estados si el tanque no ha sido iniciado antes.
+		if(count($this->Api->get_where('tank_status_time',array('tank'=>$tank))) == 0){
+			
+			$nuevo_tanque = array(
+				'project' 						=> $this->project_id,
+				'report'	 					=> $this->report_id,
+				'tank' 							=> $tank,
+				'producto_de' 					=> 'inicio',
+				'activo'						=> 1,
+				'volumen_inicial'				=> 0,
+				'volumen_recibido_reservas' 	=> 0,
+				'volumen_adicion_quimica'		=> 0,
+				'volumen_adicion_agua' 			=> 0,
+				'volumen_construido' 			=> 0,
+				'volumen_transferido_reservas' 	=> 0,
+				'volumen_transferido_activo' 	=> 0,
+				'volumen_perdido' 			 	=> 0,
+				'volumen_final' 			 	=> 0
+			);
+
+			$id_nuevo_estado_tanque = $this->Api->create('tank_status_time',$nuevo_tanque);			
+		}
+
+		//crear un nuevo estado de tanque (una adicion de quimica es igual a una transferencia de volumen)
+		//consultar el estado inmediatamente anterior
+		$condicion_estado_tanque = array(
+			'tank' 		=> $tank,
+			'report'	=> $this->report_id,
+			'project' 	=> $this->project_id,
+			'activo' 	=> 1
+		);
+		$estado_actual_tanque = $this->Api->get_where('tank_status_time',$condicion_estado_tanque);
+		$estado_actual_tanque = $estado_actual_tanque[0];
+
+
+		//si el tanque destino es el sistema activo
+		$nuevo_estado_tanque = array(
+			'project' 						=> $this->project_id,
+			'report'	 					=> $this->report_id,
+			'tank' 							=> $tank,
+			'producto_de' 					=> 'adicion_quimica',
+			'activo'						=> 1,
+			'volumen_inicial'				=> $estado_actual_tanque['volumen_inicial'],
+			'volumen_recibido_reservas' 	=> $estado_actual_tanque['volumen_recibido_reservas'],
+			'volumen_adicion_quimica'		=> $estado_actual_tanque['volumen_adicion_quimica'] + $chemical,
+			'volumen_adicion_agua' 			=> $estado_actual_tanque['volumen_adicion_agua'] + $water,
+			'volumen_construido' 			=> ($estado_actual_tanque['volumen_adicion_quimica'] + $chemical) + ($estado_actual_tanque['volumen_adicion_agua'] + $water),
+			'volumen_transferido_reservas' 	=> $estado_actual_tanque['volumen_transferido_reservas'],
+			'volumen_transferido_activo' 	=> $estado_actual_tanque['volumen_transferido_activo'],
+			'volumen_perdido' 			 	=> $estado_actual_tanque['volumen_perdido'],
+			'volumen_final' 			 	=> $estado_actual_tanque['volumen_final'] + $water + $chemical
+		);
+
+		//desactivar el estado actual del tanque
+		$this->Api->update('tank_status_time',array('activo'=>0),$estado_actual_tanque['id']);
+
+		//incrustar el nuevo estado del tanque
+		$id_nuevo_estado_tanque = $this->Api->create('tank_status_time',$nuevo_estado_tanque);
+
+
+		//inicializar los espacios para actualizar la concentracion en la tabla de concentraciones
+		$productos = $this->Api->get_where('vista_inventario',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
+		foreach ($productos as $producto) {
+			$concentracion_en_blanco = array(
+				'tank_status_time'  => $id_nuevo_estado_tanque,
+				'material' 			=> $producto['product_id'],
+				'concentracion'  	=> 0
+			);
+
+			$this->Api->create('concentrations',$concentracion_en_blanco);
+
+			//por cada material, clonar la concentracion inmediatamente anterior
+			$estado_actual_material = $this->Api->get_where('concentrations',array('material'=>$producto['product_id'],'tank_status_time'=>$estado_actual_tanque['id']));
+			$estado_actual_material = $estado_actual_material[0];
+			$vieja_concentracion = array(
+				'concentracion' 	=> $estado_actual_material['concentracion']
+			);
+			$this->Api->update_where('concentrations',$vieja_concentracion,array('tank_status_time'=>$id_nuevo_estado_tanque,'material'=>$producto['product_id']));
+		}
+
+		//listar todos los materiales que vienen en la peticion
+		foreach ($used_chemicals as $este_material) {
+			$estado_actual_material = $this->Api->get_where('concentrations',array('material'=>$este_material->id,'tank_status_time'=>$estado_actual_tanque['id']));
+			$estado_actual_material = $estado_actual_material[0];
+			
+
+			//por cada material, actualizar el record con la nueva concentracion del tanque y asociarlo con el estado recientemente creado
+			$concentracion = array(
+				'concentracion'  	=> ($estado_actual_material['concentracion'] * $estado_actual_tanque['volumen_final'] + $este_material->add_quimica) / (($water + $chemical) + $estado_actual_tanque['volumen_final'])
+			);
+
+			$this->Api->update_where('concentrations',$concentracion,array('tank_status_time'=>$id_nuevo_estado_tanque,'material'=>$este_material->id));
+		}
+		
 		echo json_encode(true);
+	}
+
+	public function load_current_concentrations(){
+		echo '<table>';
+		$materials 		= $this->Api->get_where('vista_inventario',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
+		$pill_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'pill','active'=>1),array('order','asc'));
+		$reserve_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'reserve','active'=>1),array('order','asc'));
+
+		foreach ($materials as $material){ ?>
+			<tr>
+				<td><input style="width:200px;max-width:357px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
+				<td>
+
+					<?php 
+						//obtener el estado actual del tanque
+						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>0));
+						$id_estado_actual = $id_estado_actual[0];
+						$id_estado_actual = $id_estado_actual['id'];
+
+						//obtener la concentracion para este producto
+						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
+						$concentracion = $concentracion[0]['concentracion'];
+					?>
+					<input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_0" disabled value="<?= number_format($concentracion,2,'.','') ?>" />
+				</td>
+				<?php foreach($pill_tanks as $tank){ ?>
+					<?php 
+						
+						//obtener el estado actual del tanque
+						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>$tank['id']));
+						$id_estado_actual = $id_estado_actual[0];
+						$id_estado_actual = $id_estado_actual['id'];
+
+						//obtener la concentracion para este producto
+						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
+						if(count($concentracion) > 0){
+							$concentracion = $concentracion[0]['concentracion'];	
+						}else{
+							$concentracion = 0;	
+						}
+					?>
+                  	<td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
+                <?php }?>
+                <?php foreach($reserve_tanks as $tank){ ?>
+                  <?php if($tank['name'] < 32){ ?>
+                    <?php 
+						//obtener el estado actual del tanque
+						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>$tank['id']));
+						$id_estado_actual = $id_estado_actual[0];
+						$id_estado_actual = $id_estado_actual['id'];
+
+						//obtener la concentracion para este producto
+						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
+						if(count($concentracion) > 0){
+							$concentracion = $concentracion[0]['concentracion'];	
+						}else{
+							$concentracion = 0;	
+						}
+					?>	
+                    <td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
+                  <?php } ?>
+                <?php }?>
+			</tr>
+		<?php }
+		echo '</table>';
 	}
 
 }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-10-16 09:14:24
+Date: 2012-10-16 15:09:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -620,12 +620,30 @@ CREATE TABLE `chemical_aditions` (
   `increment_by_chemical` float DEFAULT NULL,
   `increment_by_water` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of chemical_aditions
 -- ----------------------------
 INSERT INTO `chemical_aditions` VALUES ('1', '1', '21', '0', '109.52', '9.52', '100');
+INSERT INTO `chemical_aditions` VALUES ('2', '1', '21', '0', '1.98', '1.98', '0');
+INSERT INTO `chemical_aditions` VALUES ('3', '1', '21', '0', '1.98', '1.98', '0');
+INSERT INTO `chemical_aditions` VALUES ('4', '1', '21', '0', '1.98', '1.98', '0');
+INSERT INTO `chemical_aditions` VALUES ('5', '1', '21', '0', '1.98', '1.98', '0');
+INSERT INTO `chemical_aditions` VALUES ('6', '1', '21', '0', '1.98', '1.98', '0');
+INSERT INTO `chemical_aditions` VALUES ('7', '1', '21', '0', '1.98', '1.98', '0');
+INSERT INTO `chemical_aditions` VALUES ('8', '1', '21', '0', '1.98', '1.98', '0');
+INSERT INTO `chemical_aditions` VALUES ('9', '1', '21', '0', '25.73', '25.73', '0');
+INSERT INTO `chemical_aditions` VALUES ('10', '1', '21', '0', '25.73', '25.73', '0');
+INSERT INTO `chemical_aditions` VALUES ('11', '1', '21', '0', '100', '0', '100');
+INSERT INTO `chemical_aditions` VALUES ('12', '1', '21', '0', '21.98', '1.98', '20');
+INSERT INTO `chemical_aditions` VALUES ('13', '1', '21', '0', '21.98', '1.98', '20');
+INSERT INTO `chemical_aditions` VALUES ('14', '1', '21', '0', '21.98', '1.98', '20');
+INSERT INTO `chemical_aditions` VALUES ('15', '1', '21', '0', '21.98', '1.98', '20');
+INSERT INTO `chemical_aditions` VALUES ('16', '1', '21', '0', '21.98', '1.98', '20');
+INSERT INTO `chemical_aditions` VALUES ('17', '1', '21', '0', '11.98', '1.98', '10');
+INSERT INTO `chemical_aditions` VALUES ('18', '1', '21', '0', '10.95', '0.95', '10');
+INSERT INTO `chemical_aditions` VALUES ('19', '1', '21', '0', '101.98', '1.98', '100');
 
 -- ----------------------------
 -- Table structure for `chemical_aditions_detail`
@@ -638,7 +656,7 @@ CREATE TABLE `chemical_aditions_detail` (
   `used` int(11) DEFAULT NULL,
   `volume_increment` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of chemical_aditions_detail
@@ -647,6 +665,146 @@ INSERT INTO `chemical_aditions_detail` VALUES ('1', '1', '1', '10', '9.52');
 INSERT INTO `chemical_aditions_detail` VALUES ('2', '1', '2', '0', '0');
 INSERT INTO `chemical_aditions_detail` VALUES ('3', '1', '4', '0', '0');
 INSERT INTO `chemical_aditions_detail` VALUES ('4', '1', '10', '0', '0');
+INSERT INTO `chemical_aditions_detail` VALUES ('5', '2', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('6', '2', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('7', '2', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('8', '2', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('9', '3', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('10', '3', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('11', '3', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('12', '3', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('13', '4', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('14', '4', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('15', '4', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('16', '4', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('17', '5', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('18', '5', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('19', '5', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('20', '5', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('21', '6', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('22', '6', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('23', '6', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('24', '6', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('25', '7', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('26', '7', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('27', '7', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('28', '7', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('29', '8', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('30', '8', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('31', '8', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('32', '8', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('33', '9', '1', '10', '9.52');
+INSERT INTO `chemical_aditions_detail` VALUES ('34', '9', '2', '15', '14.29');
+INSERT INTO `chemical_aditions_detail` VALUES ('35', '9', '4', '20', '0.66');
+INSERT INTO `chemical_aditions_detail` VALUES ('36', '9', '10', '25', '1.26');
+INSERT INTO `chemical_aditions_detail` VALUES ('37', '10', '1', '10', '9.52');
+INSERT INTO `chemical_aditions_detail` VALUES ('38', '10', '2', '15', '14.29');
+INSERT INTO `chemical_aditions_detail` VALUES ('39', '10', '4', '20', '0.66');
+INSERT INTO `chemical_aditions_detail` VALUES ('40', '10', '10', '25', '1.26');
+INSERT INTO `chemical_aditions_detail` VALUES ('41', '11', '1', '0', '0');
+INSERT INTO `chemical_aditions_detail` VALUES ('42', '11', '2', '0', '0');
+INSERT INTO `chemical_aditions_detail` VALUES ('43', '11', '4', '0', '0');
+INSERT INTO `chemical_aditions_detail` VALUES ('44', '11', '10', '0', '0');
+INSERT INTO `chemical_aditions_detail` VALUES ('45', '12', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('46', '12', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('47', '12', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('48', '12', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('49', '13', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('50', '13', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('51', '13', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('52', '13', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('53', '14', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('54', '14', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('55', '14', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('56', '14', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('57', '15', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('58', '15', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('59', '15', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('60', '15', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('61', '16', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('62', '16', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('63', '16', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('64', '16', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('65', '17', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('66', '17', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('67', '17', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('68', '17', '10', '1', '0.05');
+INSERT INTO `chemical_aditions_detail` VALUES ('69', '18', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('70', '18', '2', '0', '0');
+INSERT INTO `chemical_aditions_detail` VALUES ('71', '18', '4', '0', '0');
+INSERT INTO `chemical_aditions_detail` VALUES ('72', '18', '10', '0', '0');
+INSERT INTO `chemical_aditions_detail` VALUES ('73', '19', '1', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('74', '19', '2', '1', '0.95');
+INSERT INTO `chemical_aditions_detail` VALUES ('75', '19', '4', '1', '0.03');
+INSERT INTO `chemical_aditions_detail` VALUES ('76', '19', '10', '1', '0.05');
+
+-- ----------------------------
+-- Table structure for `concentrations`
+-- ----------------------------
+DROP TABLE IF EXISTS `concentrations`;
+CREATE TABLE `concentrations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tank_status_time` int(11) DEFAULT NULL,
+  `material` int(11) DEFAULT NULL,
+  `concentracion` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of concentrations
+-- ----------------------------
+INSERT INTO `concentrations` VALUES ('1', '1', '1', '0');
+INSERT INTO `concentrations` VALUES ('2', '1', '2', '0');
+INSERT INTO `concentrations` VALUES ('3', '1', '4', '0');
+INSERT INTO `concentrations` VALUES ('4', '1', '10', '0');
+INSERT INTO `concentrations` VALUES ('5', '6', '1', '0');
+INSERT INTO `concentrations` VALUES ('6', '6', '2', '0');
+INSERT INTO `concentrations` VALUES ('7', '6', '4', '0');
+INSERT INTO `concentrations` VALUES ('8', '6', '10', '0');
+INSERT INTO `concentrations` VALUES ('9', '7', '1', '0');
+INSERT INTO `concentrations` VALUES ('10', '7', '2', '0');
+INSERT INTO `concentrations` VALUES ('11', '7', '4', '0');
+INSERT INTO `concentrations` VALUES ('12', '7', '10', '0');
+INSERT INTO `concentrations` VALUES ('13', '8', '1', '0');
+INSERT INTO `concentrations` VALUES ('14', '8', '2', '0');
+INSERT INTO `concentrations` VALUES ('15', '8', '4', '0');
+INSERT INTO `concentrations` VALUES ('16', '8', '10', '0');
+INSERT INTO `concentrations` VALUES ('17', '9', '1', '0');
+INSERT INTO `concentrations` VALUES ('18', '9', '2', '0');
+INSERT INTO `concentrations` VALUES ('19', '9', '4', '0');
+INSERT INTO `concentrations` VALUES ('20', '9', '10', '0');
+INSERT INTO `concentrations` VALUES ('21', '10', '1', '15.5461');
+INSERT INTO `concentrations` VALUES ('22', '10', '2', '23.3191');
+INSERT INTO `concentrations` VALUES ('23', '10', '4', '19.4326');
+INSERT INTO `concentrations` VALUES ('24', '10', '10', '24.2907');
+INSERT INTO `concentrations` VALUES ('25', '11', '1', '3.18143');
+INSERT INTO `concentrations` VALUES ('26', '11', '2', '4.77213');
+INSERT INTO `concentrations` VALUES ('27', '11', '4', '3.97678');
+INSERT INTO `concentrations` VALUES ('28', '11', '10', '4.97097');
+INSERT INTO `concentrations` VALUES ('29', '14', null, '0');
+INSERT INTO `concentrations` VALUES ('30', '14', null, '0');
+INSERT INTO `concentrations` VALUES ('31', '14', null, '0');
+INSERT INTO `concentrations` VALUES ('32', '14', null, '0');
+INSERT INTO `concentrations` VALUES ('33', '15', '1', '0.187222');
+INSERT INTO `concentrations` VALUES ('34', '15', '2', '0.187222');
+INSERT INTO `concentrations` VALUES ('35', '15', '4', '0.117014');
+INSERT INTO `concentrations` VALUES ('36', '15', '10', '0.117014');
+INSERT INTO `concentrations` VALUES ('37', '16', '1', '0.339515');
+INSERT INTO `concentrations` VALUES ('38', '16', '2', '0.339515');
+INSERT INTO `concentrations` VALUES ('39', '16', '4', '0.212197');
+INSERT INTO `concentrations` VALUES ('40', '16', '10', '0.212197');
+INSERT INTO `concentrations` VALUES ('41', '17', '1', '0.484633');
+INSERT INTO `concentrations` VALUES ('42', '17', '2', '0.484633');
+INSERT INTO `concentrations` VALUES ('43', '17', '4', '0.302896');
+INSERT INTO `concentrations` VALUES ('44', '17', '10', '0.302896');
+INSERT INTO `concentrations` VALUES ('45', '18', '1', '0.618812');
+INSERT INTO `concentrations` VALUES ('46', '18', '2', '0.464109');
+INSERT INTO `concentrations` VALUES ('47', '18', '4', '0.290068');
+INSERT INTO `concentrations` VALUES ('48', '18', '10', '0.290068');
+INSERT INTO `concentrations` VALUES ('49', '34', '1', '0.554724');
+INSERT INTO `concentrations` VALUES ('50', '34', '2', '0.443779');
+INSERT INTO `concentrations` VALUES ('51', '34', '4', '0.277362');
+INSERT INTO `concentrations` VALUES ('52', '34', '10', '0.277362');
 
 -- ----------------------------
 -- Table structure for `conversions_table`
@@ -684,11 +842,11 @@ CREATE TABLE `inventory` (
 -- ----------------------------
 -- Records of inventory
 -- ----------------------------
-INSERT INTO `inventory` VALUES ('1', '1', '110', '10', '0', '1', '120');
-INSERT INTO `inventory` VALUES ('2', '2', '120', '0', '0', '1', '120');
+INSERT INTO `inventory` VALUES ('1', '1', '75', '45', '0', '1', '120');
+INSERT INTO `inventory` VALUES ('2', '2', '76', '44', '0', '1', '120');
 INSERT INTO `inventory` VALUES ('3', '3', '0', '0', '0', '1', '0');
-INSERT INTO `inventory` VALUES ('4', '10', '120', '0', '0', '1', '120');
-INSERT INTO `inventory` VALUES ('5', '4', '120', '0', '0', '1', '120');
+INSERT INTO `inventory` VALUES ('4', '10', '56', '64', '0', '1', '120');
+INSERT INTO `inventory` VALUES ('5', '4', '66', '54', '0', '1', '120');
 
 -- ----------------------------
 -- Table structure for `inventory_movements`
@@ -708,7 +866,7 @@ CREATE TABLE `inventory_movements` (
   `stock_transfer` int(11) DEFAULT NULL,
   `chemical_adition` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of inventory_movements
@@ -729,6 +887,78 @@ INSERT INTO `inventory_movements` VALUES ('13', '1', '21', null, null, '2012-10-
 INSERT INTO `inventory_movements` VALUES ('14', '1', '21', null, null, '2012-10-16 08:44:36', null, '2', '0', '2', null, '1');
 INSERT INTO `inventory_movements` VALUES ('15', '1', '21', null, null, '2012-10-16 08:44:36', null, '2', '0', '4', null, '1');
 INSERT INTO `inventory_movements` VALUES ('16', '1', '21', null, null, '2012-10-16 08:44:36', null, '2', '0', '10', null, '1');
+INSERT INTO `inventory_movements` VALUES ('17', '1', '21', null, null, '2012-10-16 11:59:39', null, '2', '1', '1', null, '2');
+INSERT INTO `inventory_movements` VALUES ('18', '1', '21', null, null, '2012-10-16 11:59:39', null, '2', '1', '2', null, '2');
+INSERT INTO `inventory_movements` VALUES ('19', '1', '21', null, null, '2012-10-16 11:59:39', null, '2', '1', '4', null, '2');
+INSERT INTO `inventory_movements` VALUES ('20', '1', '21', null, null, '2012-10-16 11:59:39', null, '2', '1', '10', null, '2');
+INSERT INTO `inventory_movements` VALUES ('21', '1', '21', null, null, '2012-10-16 12:02:00', null, '2', '1', '1', null, '3');
+INSERT INTO `inventory_movements` VALUES ('22', '1', '21', null, null, '2012-10-16 12:02:00', null, '2', '1', '2', null, '3');
+INSERT INTO `inventory_movements` VALUES ('23', '1', '21', null, null, '2012-10-16 12:02:00', null, '2', '1', '4', null, '3');
+INSERT INTO `inventory_movements` VALUES ('24', '1', '21', null, null, '2012-10-16 12:02:00', null, '2', '1', '10', null, '3');
+INSERT INTO `inventory_movements` VALUES ('25', '1', '21', null, null, '2012-10-16 12:04:29', null, '2', '1', '1', null, '4');
+INSERT INTO `inventory_movements` VALUES ('26', '1', '21', null, null, '2012-10-16 12:04:29', null, '2', '1', '2', null, '4');
+INSERT INTO `inventory_movements` VALUES ('27', '1', '21', null, null, '2012-10-16 12:04:29', null, '2', '1', '4', null, '4');
+INSERT INTO `inventory_movements` VALUES ('28', '1', '21', null, null, '2012-10-16 12:04:30', null, '2', '1', '10', null, '4');
+INSERT INTO `inventory_movements` VALUES ('29', '1', '21', null, null, '2012-10-16 12:05:25', null, '2', '1', '1', null, '5');
+INSERT INTO `inventory_movements` VALUES ('30', '1', '21', null, null, '2012-10-16 12:05:25', null, '2', '1', '2', null, '5');
+INSERT INTO `inventory_movements` VALUES ('31', '1', '21', null, null, '2012-10-16 12:05:25', null, '2', '1', '4', null, '5');
+INSERT INTO `inventory_movements` VALUES ('32', '1', '21', null, null, '2012-10-16 12:05:25', null, '2', '1', '10', null, '5');
+INSERT INTO `inventory_movements` VALUES ('33', '1', '21', null, null, '2012-10-16 12:06:44', null, '2', '1', '1', null, '6');
+INSERT INTO `inventory_movements` VALUES ('34', '1', '21', null, null, '2012-10-16 12:06:44', null, '2', '1', '2', null, '6');
+INSERT INTO `inventory_movements` VALUES ('35', '1', '21', null, null, '2012-10-16 12:06:45', null, '2', '1', '4', null, '6');
+INSERT INTO `inventory_movements` VALUES ('36', '1', '21', null, null, '2012-10-16 12:06:45', null, '2', '1', '10', null, '6');
+INSERT INTO `inventory_movements` VALUES ('37', '1', '21', null, null, '2012-10-16 12:08:18', null, '2', '1', '1', null, '7');
+INSERT INTO `inventory_movements` VALUES ('38', '1', '21', null, null, '2012-10-16 12:08:18', null, '2', '1', '2', null, '7');
+INSERT INTO `inventory_movements` VALUES ('39', '1', '21', null, null, '2012-10-16 12:08:18', null, '2', '1', '4', null, '7');
+INSERT INTO `inventory_movements` VALUES ('40', '1', '21', null, null, '2012-10-16 12:08:19', null, '2', '1', '10', null, '7');
+INSERT INTO `inventory_movements` VALUES ('41', '1', '21', null, null, '2012-10-16 12:09:24', null, '2', '1', '1', null, '8');
+INSERT INTO `inventory_movements` VALUES ('42', '1', '21', null, null, '2012-10-16 12:09:24', null, '2', '1', '2', null, '8');
+INSERT INTO `inventory_movements` VALUES ('43', '1', '21', null, null, '2012-10-16 12:09:24', null, '2', '1', '4', null, '8');
+INSERT INTO `inventory_movements` VALUES ('44', '1', '21', null, null, '2012-10-16 12:09:25', null, '2', '1', '10', null, '8');
+INSERT INTO `inventory_movements` VALUES ('45', '1', '21', null, null, '2012-10-16 12:11:33', null, '2', '10', '1', null, '9');
+INSERT INTO `inventory_movements` VALUES ('46', '1', '21', null, null, '2012-10-16 12:11:33', null, '2', '15', '2', null, '9');
+INSERT INTO `inventory_movements` VALUES ('47', '1', '21', null, null, '2012-10-16 12:11:34', null, '2', '20', '4', null, '9');
+INSERT INTO `inventory_movements` VALUES ('48', '1', '21', null, null, '2012-10-16 12:11:34', null, '2', '25', '10', null, '9');
+INSERT INTO `inventory_movements` VALUES ('49', '1', '21', null, null, '2012-10-16 12:14:01', null, '2', '10', '1', null, '10');
+INSERT INTO `inventory_movements` VALUES ('50', '1', '21', null, null, '2012-10-16 12:14:01', null, '2', '15', '2', null, '10');
+INSERT INTO `inventory_movements` VALUES ('51', '1', '21', null, null, '2012-10-16 12:14:01', null, '2', '20', '4', null, '10');
+INSERT INTO `inventory_movements` VALUES ('52', '1', '21', null, null, '2012-10-16 12:14:02', null, '2', '25', '10', null, '10');
+INSERT INTO `inventory_movements` VALUES ('53', '1', '21', null, null, '2012-10-16 12:14:37', null, '2', '0', '1', null, '11');
+INSERT INTO `inventory_movements` VALUES ('54', '1', '21', null, null, '2012-10-16 12:14:37', null, '2', '0', '2', null, '11');
+INSERT INTO `inventory_movements` VALUES ('55', '1', '21', null, null, '2012-10-16 12:14:37', null, '2', '0', '4', null, '11');
+INSERT INTO `inventory_movements` VALUES ('56', '1', '21', null, null, '2012-10-16 12:14:37', null, '2', '0', '10', null, '11');
+INSERT INTO `inventory_movements` VALUES ('57', '1', '21', null, null, '2012-10-16 13:42:00', null, '2', '1', '1', null, '12');
+INSERT INTO `inventory_movements` VALUES ('58', '1', '21', null, null, '2012-10-16 13:42:01', null, '2', '1', '2', null, '12');
+INSERT INTO `inventory_movements` VALUES ('59', '1', '21', null, null, '2012-10-16 13:42:01', null, '2', '1', '4', null, '12');
+INSERT INTO `inventory_movements` VALUES ('60', '1', '21', null, null, '2012-10-16 13:42:01', null, '2', '1', '10', null, '12');
+INSERT INTO `inventory_movements` VALUES ('61', '1', '21', null, null, '2012-10-16 13:42:10', null, '2', '1', '1', null, '13');
+INSERT INTO `inventory_movements` VALUES ('62', '1', '21', null, null, '2012-10-16 13:42:11', null, '2', '1', '2', null, '13');
+INSERT INTO `inventory_movements` VALUES ('63', '1', '21', null, null, '2012-10-16 13:42:11', null, '2', '1', '4', null, '13');
+INSERT INTO `inventory_movements` VALUES ('64', '1', '21', null, null, '2012-10-16 13:42:11', null, '2', '1', '10', null, '13');
+INSERT INTO `inventory_movements` VALUES ('65', '1', '21', null, null, '2012-10-16 13:43:13', null, '2', '1', '1', null, '14');
+INSERT INTO `inventory_movements` VALUES ('66', '1', '21', null, null, '2012-10-16 13:43:13', null, '2', '1', '2', null, '14');
+INSERT INTO `inventory_movements` VALUES ('67', '1', '21', null, null, '2012-10-16 13:43:14', null, '2', '1', '4', null, '14');
+INSERT INTO `inventory_movements` VALUES ('68', '1', '21', null, null, '2012-10-16 13:43:14', null, '2', '1', '10', null, '14');
+INSERT INTO `inventory_movements` VALUES ('69', '1', '21', null, null, '2012-10-16 13:44:17', null, '2', '1', '1', null, '15');
+INSERT INTO `inventory_movements` VALUES ('70', '1', '21', null, null, '2012-10-16 13:44:17', null, '2', '1', '2', null, '15');
+INSERT INTO `inventory_movements` VALUES ('71', '1', '21', null, null, '2012-10-16 13:44:17', null, '2', '1', '4', null, '15');
+INSERT INTO `inventory_movements` VALUES ('72', '1', '21', null, null, '2012-10-16 13:44:17', null, '2', '1', '10', null, '15');
+INSERT INTO `inventory_movements` VALUES ('73', '1', '21', null, null, '2012-10-16 13:46:34', null, '2', '1', '1', null, '16');
+INSERT INTO `inventory_movements` VALUES ('74', '1', '21', null, null, '2012-10-16 13:46:34', null, '2', '1', '2', null, '16');
+INSERT INTO `inventory_movements` VALUES ('75', '1', '21', null, null, '2012-10-16 13:46:34', null, '2', '1', '4', null, '16');
+INSERT INTO `inventory_movements` VALUES ('76', '1', '21', null, null, '2012-10-16 13:46:35', null, '2', '1', '10', null, '16');
+INSERT INTO `inventory_movements` VALUES ('77', '1', '21', null, null, '2012-10-16 14:06:17', null, '2', '1', '1', null, '17');
+INSERT INTO `inventory_movements` VALUES ('78', '1', '21', null, null, '2012-10-16 14:06:17', null, '2', '1', '2', null, '17');
+INSERT INTO `inventory_movements` VALUES ('79', '1', '21', null, null, '2012-10-16 14:06:18', null, '2', '1', '4', null, '17');
+INSERT INTO `inventory_movements` VALUES ('80', '1', '21', null, null, '2012-10-16 14:06:18', null, '2', '1', '10', null, '17');
+INSERT INTO `inventory_movements` VALUES ('81', '1', '21', null, null, '2012-10-16 14:06:49', null, '2', '1', '1', null, '18');
+INSERT INTO `inventory_movements` VALUES ('82', '1', '21', null, null, '2012-10-16 14:06:49', null, '2', '0', '2', null, '18');
+INSERT INTO `inventory_movements` VALUES ('83', '1', '21', null, null, '2012-10-16 14:06:49', null, '2', '0', '4', null, '18');
+INSERT INTO `inventory_movements` VALUES ('84', '1', '21', null, null, '2012-10-16 14:06:50', null, '2', '0', '10', null, '18');
+INSERT INTO `inventory_movements` VALUES ('85', '1', '21', null, null, '2012-10-16 15:01:26', null, '2', '1', '1', null, '19');
+INSERT INTO `inventory_movements` VALUES ('86', '1', '21', null, null, '2012-10-16 15:01:26', null, '2', '1', '2', null, '19');
+INSERT INTO `inventory_movements` VALUES ('87', '1', '21', null, null, '2012-10-16 15:01:26', null, '2', '1', '4', null, '19');
+INSERT INTO `inventory_movements` VALUES ('88', '1', '21', null, null, '2012-10-16 15:01:26', null, '2', '1', '10', null, '19');
 
 -- ----------------------------
 -- Table structure for `lodos`
@@ -1210,10 +1440,10 @@ CREATE TABLE `report_materialstatus` (
 -- ----------------------------
 -- Records of report_materialstatus
 -- ----------------------------
-INSERT INTO `report_materialstatus` VALUES ('1', '21', '1', '0', '120', '0', '10', '110');
-INSERT INTO `report_materialstatus` VALUES ('2', '21', '2', '0', '120', '0', '0', '120');
-INSERT INTO `report_materialstatus` VALUES ('3', '21', '4', '0', '120', '0', '0', '120');
-INSERT INTO `report_materialstatus` VALUES ('4', '21', '10', '0', '120', '0', '0', '120');
+INSERT INTO `report_materialstatus` VALUES ('1', '21', '1', '0', '120', '0', '45', '75');
+INSERT INTO `report_materialstatus` VALUES ('2', '21', '2', '0', '120', '0', '44', '76');
+INSERT INTO `report_materialstatus` VALUES ('3', '21', '4', '0', '120', '0', '54', '66');
+INSERT INTO `report_materialstatus` VALUES ('4', '21', '10', '0', '120', '0', '64', '56');
 
 -- ----------------------------
 -- Table structure for `reports`
@@ -1341,6 +1571,67 @@ INSERT INTO `tank_names` VALUES ('34', 'Storage 2', 'reserve');
 INSERT INTO `tank_names` VALUES ('35', 'Storage 3', 'reserve');
 INSERT INTO `tank_names` VALUES ('36', 'Storage 4', 'reserve');
 INSERT INTO `tank_names` VALUES ('37', 'Storage 5', 'reserve');
+
+-- ----------------------------
+-- Table structure for `tank_status_time`
+-- ----------------------------
+DROP TABLE IF EXISTS `tank_status_time`;
+CREATE TABLE `tank_status_time` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project` int(11) DEFAULT NULL,
+  `report` int(11) DEFAULT NULL,
+  `tank` int(11) NOT NULL,
+  `producto_de` varchar(255) DEFAULT NULL COMMENT 'puede ser por transferencia o por adicion de quimica',
+  `activo` int(11) DEFAULT NULL,
+  `volumen_inicial` float DEFAULT NULL,
+  `volumen_recibido_reservas` float DEFAULT NULL,
+  `volumen_adicion_quimica` float DEFAULT NULL,
+  `volumen_adicion_agua` float DEFAULT NULL,
+  `volumen_construido` float DEFAULT NULL,
+  `volumen_transferido_reservas` float DEFAULT NULL,
+  `volumen_transferido_activo` float DEFAULT NULL,
+  `volumen_perdido` float DEFAULT NULL,
+  `volumen_final` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of tank_status_time
+-- ----------------------------
+INSERT INTO `tank_status_time` VALUES ('1', '1', '21', '0', 'incio', '0', '0', '0', '0', '0', '0', '0', null, '0', '0');
+INSERT INTO `tank_status_time` VALUES ('2', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '1', '0', '1', '0', null, '0', '1');
+INSERT INTO `tank_status_time` VALUES ('3', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '2.98', '0', '2.98', '0', null, '0', '2.98');
+INSERT INTO `tank_status_time` VALUES ('4', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '4.96', '0', '4.96', '0', null, '0', '4.96');
+INSERT INTO `tank_status_time` VALUES ('5', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '6.94', '0', '6.94', '0', null, '0', '6.94');
+INSERT INTO `tank_status_time` VALUES ('6', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '8.92', '0', '8.92', '0', null, '0', '8.92');
+INSERT INTO `tank_status_time` VALUES ('7', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '10.9', '0', '10.9', '0', null, '0', '10.9');
+INSERT INTO `tank_status_time` VALUES ('8', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '12.88', '0', '12.88', '0', null, '0', '12.88');
+INSERT INTO `tank_status_time` VALUES ('9', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '0', '0', '0', '0', null, '0', '0');
+INSERT INTO `tank_status_time` VALUES ('10', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '25.73', '0', '25.73', '0', null, '0', '25.73');
+INSERT INTO `tank_status_time` VALUES ('11', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '25.73', '100', '125.73', '0', null, '0', '125.73');
+INSERT INTO `tank_status_time` VALUES ('12', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '27.71', '120', '147.71', '0', null, '0', '147.71');
+INSERT INTO `tank_status_time` VALUES ('13', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '29.69', '140', '169.69', '0', null, '0', '169.69');
+INSERT INTO `tank_status_time` VALUES ('14', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '31.67', '160', '191.67', '0', null, '0', '191.67');
+INSERT INTO `tank_status_time` VALUES ('15', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '33.65', '180', '213.65', '0', null, '0', '213.65');
+INSERT INTO `tank_status_time` VALUES ('16', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '35.63', '200', '235.63', '0', null, '0', '235.63');
+INSERT INTO `tank_status_time` VALUES ('17', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '37.61', '210', '247.61', '0', null, '0', '247.61');
+INSERT INTO `tank_status_time` VALUES ('18', '1', '21', '0', 'adicion_quimica', '0', '0', '0', '38.56', '220', '258.56', '0', null, '0', '258.56');
+INSERT INTO `tank_status_time` VALUES ('19', '1', '21', '1', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('20', '1', '21', '2', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('21', '1', '21', '3', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('22', '1', '21', '4', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('23', '1', '21', '5', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('24', '1', '21', '6', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('25', '1', '21', '7', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('26', '1', '21', '8', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('27', '1', '21', '9', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('28', '1', '21', '10', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('29', '1', '21', '11', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('30', '1', '21', '12', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('31', '1', '21', '13', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('32', '1', '21', '14', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('33', '1', '21', '15', 'inicio', '1', '0', '0', '0', '0', '0', null, '0', '0', '0');
+INSERT INTO `tank_status_time` VALUES ('34', '1', '21', '0', 'adicion_quimica', '1', '0', '0', '40.54', '320', '360.54', '0', null, '0', '360.54');
 
 -- ----------------------------
 -- Table structure for `tanks_types`
