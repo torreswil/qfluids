@@ -1949,25 +1949,7 @@ function calculos_raw(){
 		completar_campo_val('s'+$(this).attr('id'),total_consumption_today);
 	});
 
-	//mstock
-	$('.mstock').each(function(){
-		var id = $(this).attr('id');
-			id = id.split('mstock_');
-			id = id[1];
-
-		var mstock = 0;
-			mstock = fval('minitial_'+id) + fval('mreceived_'+id) - fval('mtransf_'+id) - fval('stotal_consumption_today_'+id);
-		completar_campo_val($(this).attr('id'),mstock);
-	});
-
-	//ac_stock
-	$('.ac_stock').each(function(){
-		var id = $(this).attr('id');
-			id = id.split('ac_stock_');
-			id = id[1];
-		completar_campo_val('ac_stock_'+id,$('#mstock_'+id).val());	
-	});
-
+	
 	//cxconc
 	$('.cxconc').each(function(){
 		var id_material = $(this).attr('id');
