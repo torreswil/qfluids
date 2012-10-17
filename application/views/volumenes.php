@@ -689,7 +689,6 @@
 						<td class="label_m"><label>Origin:</label></td>
 						<td class="label_m"><label>Destiny:</label></td>
 						<td class="label_m"><label>Volumen (bbl):</label></td>
-						<td class="label_m"></td>
 					</tr>
 					<tr>
 						<td>
@@ -721,7 +720,6 @@
 							</select>
 						</td>
 						<td class="label_m"><input type="text" style="width:100px;" id="tv_volume" /></td>
-						<td class="label_m"><a href="#result_concentrations_overlay" class="show_rc_overlay">Concentraciones Resultantes</a></td>
 					</tr>
 				</table>
 				<input type="button" value="Transfer Volume" style="margin-top:20px;" id="transfer_volume_btn" />

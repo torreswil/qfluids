@@ -1609,19 +1609,36 @@ $(function(){
 						});
 						var volumen_destino = fval('activepits');
 					}else{
-						var aforo_destino 	= fval('voltkaforo_'+origin); 
+						var aforo_destino 		= fval('voltkaforo_'+origin); 
 						var volumen_destino 	= fval('volfinal_'+origin);	
 					}
 
-
+					volumen_origen = 1000; //ojo aca
 					if(volumen_origen < volume){
 						alert('You can transfer only '+volumen_origen+' bbl from the origin tank to make this transfer.');
 					}else{
 						var espacio_disponible_destino = aforo_destino - volumen_destino;
+							espacio_disponible_destino = 1000; //ojo aca
 						if(espacio_disponible_destino < volume){
 							alert('You have only '+espacio_disponible_destino+' bbl in the destiny tank avaliable to make this transfer');
 						}else{
-							alert('exito... hacer la transferencia de volumenes y actualizar el estado de las concentraciones.');
+
+							//exito... hacer la transferencia de volumenes y actualizar el estado de las concentraciones
+							var data = {
+								'origin' 	: origin,	
+								'destiny' 	: destiny,
+								'volume'	: volume
+							}
+
+							$.post('/rest_mvc/transferencia_volumen',$.toJSON(data),function(r){
+								if(r == true){
+									//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
+									load_materials_status();
+									load_ac_status();
+									load_tank_status();
+									load_current_concentrations();
+								}
+							},'json');
 						}
 					}
 				}
