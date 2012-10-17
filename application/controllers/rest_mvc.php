@@ -22,6 +22,71 @@ class Rest_mvc extends CI_Controller {
 		redirect('/main/login');
 	}
 
+	public function load_current_concentrations(){
+		
+		$materials 		= $this->Api->get_where('vista_inventario',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
+		$pill_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'pill','active'=>1),array('order','asc'));
+		$reserve_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'reserve','active'=>1),array('order','asc'));
+
+		foreach ($materials as $material){ ?>
+			<tr>
+				<td><input style="width:200px;max-width:357px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
+				<td>
+
+					<?php 
+						//obtener el estado actual del tanque
+						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>0));
+						$id_estado_actual = $id_estado_actual[0];
+						$id_estado_actual = $id_estado_actual['id'];
+
+						//obtener la concentracion para este producto
+						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
+						$concentracion = $concentracion[0]['concentracion'];
+					?>
+					<input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_0" disabled value="<?= number_format($concentracion,2,'.','') ?>" />
+				</td>
+				<?php foreach($pill_tanks as $tank){ ?>
+					<?php 
+						
+						//obtener el estado actual del tanque
+						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>$tank['id']));
+						$id_estado_actual = $id_estado_actual[0];
+						$id_estado_actual = $id_estado_actual['id'];
+
+						//obtener la concentracion para este producto
+						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
+						if(count($concentracion) > 0){
+							$concentracion = $concentracion[0]['concentracion'];	
+						}else{
+							$concentracion = 0;	
+						}
+					?>
+                  	<td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
+                <?php }?>
+                <?php foreach($reserve_tanks as $tank){ ?>
+                  <?php if($tank['name'] < 32){ ?>
+                    <?php 
+						//obtener el estado actual del tanque
+						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>$tank['id']));
+						$id_estado_actual = $id_estado_actual[0];
+						$id_estado_actual = $id_estado_actual['id'];
+
+						//obtener la concentracion para este producto
+						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
+						if(count($concentracion) > 0){
+							$concentracion = $concentracion[0]['concentracion'];	
+						}else{
+							$concentracion = 0;	
+						}
+					?>	
+                    <td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
+                  <?php } ?>
+                <?php }?>
+			</tr>
+		<?php }
+	}
+
 
 	//registrar un stock transfer
 	public function register_stock_transfer(){
@@ -469,69 +534,74 @@ class Rest_mvc extends CI_Controller {
 		}
 	}
 
-	public function load_current_concentrations(){
+	//metodo para entregarle al cliente la información mas reciente conocida de un tanque
+	public function load_tank_status(){
+		$tanques = array();
 		
-		$materials 		= $this->Api->get_where('vista_inventario',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
-		$pill_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'pill','active'=>1),array('order','asc'));
-		$reserve_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'reserve','active'=>1),array('order','asc'));
+		//obtener la informacion del sistema activo
+		$active_tank_status = $this->Api->get_where('tank_status_time',array('tank'=>0,'project'=>$this->project_id,'report'=>$this->report_id),array('id','desc'));
+		$active_tank_status = $active_tank_status[0];
+		$tanques['active'] = array(
+			'id'							=> 0,
+			'name'							=> 'active',
+			'volumen_inicial'				=> $active_tank_status['volumen_inicial'],				
+			'volumen_recibido'				=> $active_tank_status['volumen_recibido'],
+			'volumen_adicion_quimica'		=> $active_tank_status['volumen_adicion_quimica'],
+			'volumen_adicion_agua'			=> $active_tank_status['volumen_adicion_agua'],
+			'volumen_construido' 			=> $active_tank_status['volumen_construido'],
+			'volumen_transferido_reservas' 	=> $active_tank_status['volumen_transferido_reservas'],
+			'volumen_transferido_activo'	=> $active_tank_status['volumen_transferido_activo'],
+			'volumen_perdido'				=> $active_tank_status['volumen_perdido'],
+			'volumen_final'					=> $active_tank_status['volumen_final']
+		);
 
-		foreach ($materials as $material){ ?>
-			<tr>
-				<td><input style="width:200px;max-width:357px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
-				<td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
-				<td>
+		$tanques['all_tanks'] = array();
 
-					<?php 
-						//obtener el estado actual del tanque
-						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>0));
-						$id_estado_actual = $id_estado_actual[0];
-						$id_estado_actual = $id_estado_actual['id'];
 
-						//obtener la concentracion para este producto
-						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
-						$concentracion = $concentracion[0]['concentracion'];
-					?>
-					<input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_0" disabled value="<?= number_format($concentracion,2,'.','') ?>" />
-				</td>
-				<?php foreach($pill_tanks as $tank){ ?>
-					<?php 
-						
-						//obtener el estado actual del tanque
-						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>$tank['id']));
-						$id_estado_actual = $id_estado_actual[0];
-						$id_estado_actual = $id_estado_actual['id'];
+		//listar e informar sobre todos los demas tanques. 
+		//Si no hay información disponible, ponerlos en cero.
+		$project_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'active'=>1),array('order','asc'));
+		foreach ($project_tanks as $tank) {
+			//obtener el id del tanque
+			$tank_id 		= $tank['id'];
+			$tank_status 	= $this->Api->get_where('tank_status_time',array('tank'=>$tank_id,'project'=>$this->project_id,'report'=>$this->report_id),array('id','desc'));
+			if(count($tank_status) > 0){
+				$tank_status 	= $tank_status[0]; 	
+				$este_tanque = array(
+					'id'							=> $tank_id,
+					'name'							=> $tank['tank_name'],
+					'volumen_inicial'				=> $tank_status['volumen_inicial'],				
+					'volumen_recibido'				=> $tank_status['volumen_recibido'],
+					'volumen_adicion_quimica'		=> $tank_status['volumen_adicion_quimica'],
+					'volumen_adicion_agua'			=> $tank_status['volumen_adicion_agua'],
+					'volumen_construido' 			=> $tank_status['volumen_construido'],
+					'volumen_transferido_reservas' 	=> $tank_status['volumen_transferido_reservas'],
+					'volumen_transferido_activo'	=> $tank_status['volumen_transferido_activo'],
+					'volumen_perdido'				=> $tank_status['volumen_perdido'],
+					'volumen_final'					=> $tank_status['volumen_final']
+				);	
+			}else{
+				$este_tanque = array(
+					'id'							=> $tank_id,
+					'name'							=> $tank['tank_name'],
+					'volumen_inicial'				=> 0,				
+					'volumen_recibido'				=> 0,
+					'volumen_adicion_quimica'		=> 0,
+					'volumen_adicion_agua'			=> 0,
+					'volumen_construido' 			=> 0,
+					'volumen_transferido_reservas' 	=> 0,
+					'volumen_transferido_activo'	=> 0,
+					'volumen_perdido'				=> 0,
+					'volumen_final'					=> 0
+				);
+			}
 
-						//obtener la concentracion para este producto
-						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
-						if(count($concentracion) > 0){
-							$concentracion = $concentracion[0]['concentracion'];	
-						}else{
-							$concentracion = 0;	
-						}
-					?>
-                  	<td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
-                <?php }?>
-                <?php foreach($reserve_tanks as $tank){ ?>
-                  <?php if($tank['name'] < 32){ ?>
-                    <?php 
-						//obtener el estado actual del tanque
-						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>$tank['id']));
-						$id_estado_actual = $id_estado_actual[0];
-						$id_estado_actual = $id_estado_actual['id'];
+			array_push($tanques['all_tanks'], $este_tanque);
+			
+		}
 
-						//obtener la concentracion para este producto
-						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
-						if(count($concentracion) > 0){
-							$concentracion = $concentracion[0]['concentracion'];	
-						}else{
-							$concentracion = 0;	
-						}
-					?>	
-                    <td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
-                  <?php } ?>
-                <?php }?>
-			</tr>
-		<?php }
+		//print_r($tanques);
+		echo json_encode($tanques);
 	}
 
 }

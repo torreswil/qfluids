@@ -12,6 +12,7 @@ $(function(){
 	load_materials_status();
 	load_ac_status();
 	load_current_concentrations();
+	load_tank_status();
         
 	/*==========================================================================================================*/
 	// NAVIGATION
@@ -1542,7 +1543,32 @@ $(function(){
 	}
 
 	function load_tank_status(){
-		alert('gatillo actualizacion de tanques.');
+		$.getJSON('/rest_mvc/load_tank_status',function(r){
+			//colocar la informacion en el tanque activo
+			var a = r.active;
+			completar_campo_val('volstartact',a.volumen_inicial);
+			completar_campo_val('volrecact',a.volumen_recibido);
+			completar_campo_val('volchem_0',a.volumen_adicion_quimica);
+			completar_campo_val('volwateract',a.volumen_adicion_agua);
+			completar_campo_val('volconsact',a.volumen_construido);
+			completar_campo_val('voltransfact',a.volumen_transferido_reservas);
+			completar_campo_val('volfinalact',a.volumen_final);
+
+			//colocar la informacion en todos los tanques
+			$(r.all_tanks).each(function(){
+				var id = this.id;
+				if($('#this_tank_'+id).length > 0){
+					completar_campo_val('volstart_'+id,this.volumen_inicial);
+					completar_campo_val('volrec_'+id,this.volumen_recibido);
+					completar_campo_val('volchem_'+id,this.volumen_adicion_quimica);
+					completar_campo_val('volwater_'+id,this.volumen_adicion_agua);
+					completar_campo_val('volcons_'+id,this.volumen_construido);
+					completar_campo_val('voltransf_'+id,this.volumen_transferido_activo);
+					completar_campo_val('volfinal_'+id,this.volumen_final);
+				}
+			});
+		});
+		correr_calculos();
 	}
 
 	function load_current_concentrations(){

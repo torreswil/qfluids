@@ -203,7 +203,7 @@
 					<tr>
 						<td></td>
 						<td class="label_m"><label>STARTING VOLUME</label></td>
-						<td class="label_m"><input id="volstartact" name="volstartact" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input id="volstartact" name="volstartact" class="label_m" type="text" style="width:100px;margin-right:3px;" disabled> bbl</td>
 					</tr>
 					<tr>
 						<td class="label_m"><img src="/img/bullet_add.png" /></td>
@@ -218,7 +218,7 @@
 					<tr>
 						<td></td>
 						<td class="label_m"><label>WATER ADITIONS</label></td>
-						<td class="label_m"><input id="volwateract" name="volwateract" class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
+						<td class="label_m"><input id="volwateract" name="volwateract" class="label_m" type="text"  style="width:100px;margin-right:3px;" disabled > bbl</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -274,7 +274,7 @@
 								<table>
 									<tr>
 										<td class="label_m"><label>STARTING VOLUME:</label></td>
-										<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;" id="volstart_<?= $tank['id'] ?>" name="volstart_<?= $tank['id'] ?>"> bbl</td>
+										<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;" id="volstart_<?= $tank['id'] ?>" name="volstart_<?= $tank['id'] ?>" disabled> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
@@ -287,7 +287,7 @@
 									</tr>
 									<tr style="display:none;">
 										<td class="label_m"><label>WATER ADITIONS:</label></td>
-										<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;" name="volwater_<?= $tank['id'] ?>" id="volwater_<?= $tank['id'] ?>" > bbl</td>
+										<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;" name="volwater_<?= $tank['id'] ?>" id="volwater_<?= $tank['id'] ?>" disabled> bbl</td>
 									</tr>
 									<tr style="display:none;">
 										<td class="label_m"><label>BUILDED MUD:</label></td>
@@ -295,7 +295,7 @@
 									</tr>
 									<tr>
 										<td class="label_m"><label>MUD TRANSFERED TO ACTIVE:</label></td>
-										<td class="label_m"><input class="label_m voltransf" type="text" style="width:100px;margin-right:3px;" name="voltransf_<?= $tank['id'] ?>" id="voltransf_<?= $tank['id'] ?>" /> bbl</td>
+										<td class="label_m"><input disabled class="label_m voltransf" type="text" style="width:100px;margin-right:3px;" name="voltransf_<?= $tank['id'] ?>" id="voltransf_<?= $tank['id'] ?>" /> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
@@ -374,7 +374,7 @@
 								<table>
 									<tr>
 										<td class="label_m"><label>STARTING VOLUME:</label></td>
-										<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;" id="volstart_<?= $tank['id'] ?>" name="volstart_<?= $tank['id'] ?>"> bbl</td>
+										<td class="label_m"><input disabled class="label_m" type="text" style="width:100px;margin-right:3px;" id="volstart_<?= $tank['id'] ?>" name="volstart_<?= $tank['id'] ?>"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
@@ -387,7 +387,7 @@
 									</tr>
 									<tr>
 										<td class="label_m"><label>WATER ADITIONS:</label></td>
-										<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;" name="volwater_<?= $tank['id'] ?>" id="volwater_<?= $tank['id'] ?>" > bbl</td>
+										<td class="label_m"><input disabled class="label_m" type="text"  style="width:100px;margin-right:3px;" name="volwater_<?= $tank['id'] ?>" id="volwater_<?= $tank['id'] ?>" > bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>BUILDED MUD:</label></td>
@@ -397,7 +397,7 @@
 
 									<tr>
 										<td class="label_m"><label>MUD TRANSFERED TO ACTIVE:</label></td>
-										<td class="label_m"><input class="label_m voltransf" type="text" style="width:100px;margin-right:3px;" name="voltransf_<?= $tank['id'] ?>" id="voltransf_<?= $tank['id'] ?>" /> bbl</td>
+										<td class="label_m"><input disabled class="label_m voltransf" type="text" style="width:100px;margin-right:3px;" name="voltransf_<?= $tank['id'] ?>" id="voltransf_<?= $tank['id'] ?>" /> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
@@ -474,7 +474,7 @@
 								<table>
 									<tr>
 										<td class="label_m"><label>STARTING VOLUME:</label></td>
-										<td class="label_m"><input class="label_m" type="text" style="width:100px;margin-right:3px;" id="volstart_<?= $tank['id'] ?>" name="volstart_<?= $tank['id'] ?>"> bbl</td>
+										<td class="label_m"><input disabled class="label_m" type="text" style="width:100px;margin-right:3px;" id="volstart_<?= $tank['id'] ?>" name="volstart_<?= $tank['id'] ?>"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
@@ -487,7 +487,7 @@
 									</tr>
 									<tr style="<?= $style; ?>">
 										<td class="label_m"><label>WATER ADITIONS:</label></td>
-										<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;" name="volwater_<?= $tank['id'] ?>" id="volwater_<?= $tank['id'] ?>" > bbl</td>
+										<td class="label_m"><input disabled class="label_m" type="text"  style="width:100px;margin-right:3px;" name="volwater_<?= $tank['id'] ?>" id="volwater_<?= $tank['id'] ?>" > bbl</td>
 									</tr>
 									<tr style="<?= $style; ?>">
 										<td class="label_m"><label>BUILDED MUD:</label></td>
@@ -495,7 +495,7 @@
 									</tr>
 									<tr>
 										<td class="label_m"><label>MUD TRANSFERED TO ACTIVE:</label></td>
-										<td class="label_m"><input class="label_m voltransf" type="text" style="width:100px;margin-right:3px;" name="voltransf_<?= $tank['id'] ?>" id="voltransf_<?= $tank['id'] ?>"> bbl</td>
+										<td class="label_m"><input disabled class="label_m voltransf" type="text" style="width:100px;margin-right:3px;" name="voltransf_<?= $tank['id'] ?>" id="voltransf_<?= $tank['id'] ?>"> bbl</td>
 									</tr>
 									<tr>
 										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
