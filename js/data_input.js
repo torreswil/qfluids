@@ -1451,6 +1451,32 @@ $(function(){
 
 
 
+	//show_add_chemicals_overlay
+	$('.show_add_chemicals_overlay').click(function(e){
+		e.preventDefault();
+		var tank_id = $(this).attr('id');
+			tank_id = tank_id.split('link_add_chemicals_');
+			tank_id = tank_id[1];
+
+		var tank_label = $('#tank_name_label_'+tank_id).html();
+		$('#add_chemicals_overlay h5').html('Add chemicals to '+tank_label+':');
+		$('#ca_tank').val(tank_id);
+		$('#add_chemicals_overlay').show();
+	});
+
+	$('#add_chemicals_overlay .close_link').click(function(e){
+		e.preventDefault();
+		$('#ca_tank').val('');
+		$('#ca_wa').val('');		
+		$('#add_chemicals_overlay').hide();
+	});
+
+	$('#add_chemicals_overlay .used').live('keyup',function(){
+		correr_calculos();
+	});
+
+
+
 	//ADICIONAR QUIMICA A UN TANQUE
 	$('#add_chemicals_btn').click(function(e){
 		e.preventDefault();
@@ -1527,6 +1553,8 @@ $(function(){
 							load_ac_status();
 							load_tank_status();
 							load_current_concentrations();
+							//emular click del usuario sobre el boton cancelar
+							$('#add_chemicals_overlay .close_link').click();
 						}
 					},'json');
 				}

@@ -16,7 +16,6 @@
 			<li><a href="#">Active Volume</a></li>
 			<li><a href="#">Reserve Volume</a></li>
 			<li><a href="#">Losses Analisis</a></li>
-			<li><a href="#">Chemical & Water Aditions</a></li>
 			<li><a href="#">Mud Transfers</a></li>
 	    </ul>
 	    <div class="simpleTabsContent">
@@ -626,59 +625,6 @@
 				</table>
 			</fieldset>		
 		</div>
-
-		<!-- CHEMICAL ADITIONS -->
-		<div class="simpleTabsContent" id="chemical_aditions_area">
-			<fieldset>
-				<legend>Add chemicals and/or water to a tank</legend>
-				<table style="margin-bottom:20px;width:601px">
-					<thead>
-						<tr>
-							<td class="label_m"><label>Material Name:</label></td>
-							<td class="label_m"><label>Unit</label></td>
-							<td class="label_m"><label>SG</label></td>
-							<td class="label_m"><label>Stock</label></td>
-							<td class="label_m"><label>Used</label></td>
-							<td class="label_m"><label>Volume</label></td>
-						</tr>
-					</thead>
-					<tbody id="ac_status">
-						<!-- ajax loadaded -->
-					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="5" class="label_m" style="text-align:right;"><label>Volume Increment by Chemical Aditions:</label></td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="0" class="voltotalchem" id="voltotalchem" name="voltotalchem" disabled="disabled" /></td>
-			            </tr>
-			            <tr>
-							<td colspan="5" class="label_m" style="text-align:right;"><label>Water Aditions:</label></td>
-							<td><input style="width:55px;margin-right:0;" type="text" id="ca_wa" /></td>
-			            </tr>
-					</tfoot>
-				</table>
-				<table style="width:601px;">
-					<tr>
-						<td class="label_m"><label>Tank:</label></td>
-						<td class="label_m">
-							<select id="ca_tank">
-								<option value="">Select a tank...</option>
-								<option value="0">Active System</option>
-								<?php foreach($pill_tanks as $tank){
-									?><option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option><?php
-								}?>
-								<?php foreach($reserve_tanks as $tank){
-									?><option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option><?php
-								}?>
-							</select>
-						</td>
-						<td class="label_m">
-							<input type="button" value="Add Chemicals" id="add_chemicals_btn" style="float:right;" />
-						</td>
-					</tr>
-				</table>
-			</fieldset>
-		</div>
-
 
 		<!-- MUD TRANSFERS -->
 		<div class="simpleTabsContent">

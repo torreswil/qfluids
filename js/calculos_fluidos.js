@@ -1849,7 +1849,6 @@ function calculos_raw(){
 			id = id.split('this_material_');
 			id = $.trim(id[1]);
 		
-		var tank 	= $.trim($('#add_chemicals_overlay input[name="tank"]').val());
 		var volincr = 0;
 
 		//act different if the material is a solid o a liquid
