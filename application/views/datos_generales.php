@@ -23,7 +23,7 @@
 						<tr class="personal_engineers_data">
 							<td class="label_m"><label>Fluids Enginer <?= $i?>:</label></td>
 							<td>
-								<select style="width:179px;" class="this_enginer" id="this_enginer_<?= $i ?>">
+								<select style="width:179px;" class="this_enginer data-reset" id="this_enginer_<?= $i ?>">
 									<option value="">Please select...</option>
 									<?php foreach ($enginers as $enginer) { ?>
                                                                         <?= $id = (empty($rs[$i-1]['personal_id'])) ? '' : $rs[$i-1]['personal_id']; ?>
@@ -32,7 +32,7 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" class="this_enginer_cost" id="this_enginer_cost_<?= $i ?>" style="width:100px;" value="<?= (empty($rs[$i-1]['cost'])) ? '0' : $rs[$i-1]['cost']; ?>" disabled="disabled" />
+								<input type="text" class="this_enginer_cost data-reset" id="this_enginer_cost_<?= $i ?>" style="width:100px;" value="<?= (empty($rs[$i-1]['cost'])) ? '0' : $rs[$i-1]['cost']; ?>" disabled="disabled" />
 							</td>
 						</tr>
 					<?php } ?>
@@ -92,7 +92,7 @@
 	    			<?php foreach ($operators as $operator){ ?>
                                 <? $rs = $this->Api->get_where('project_report_personal', array('report_id'=>$reporte['id'], 'personal_id'=>$operator['id'])); ?>
 	    				<tr class="personal_operators_data">
-		    				<td class="label_m" style="padding-right:15px;"><input type="checkbox" class="operator_checkbox" id="operator_checkbox_<?= $operator['id'] ?>" <?= (empty($rs[0]['personal_id'])) ? '' : 'checked'; ?> /></td>
+		    				<td class="label_m" style="padding-right:15px;"><input type="checkbox" class="operator_checkbox data-reset" id="operator_checkbox_<?= $operator['id'] ?>" <?= (empty($rs[0]['personal_id'])) ? '' : 'checked'; ?> /></td>
 		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($operator['name']) ?> <?= strtoupper($operator['lastname']) ?>" style="width:150px;" /></td>
 		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($operator['rate']) ?>" style="width:100px;" id="operator_cost_<?= $operator['id'] ?>" class="this_operator_cost" /></td>
 		    			</tr>
@@ -130,7 +130,7 @@
                                         <? $rs = $this->Api->get_where('project_report_personal', array('report_id'=>$reporte['id'], 'personal_id'=>$worker['id'])); ?>
                                         <? $turn = (empty($rs[0]['turn'])) ? '' : $rs[0]['turn']; ?>
 	    				<tr id="this_yardworkers_list_<?php echo $worker['id']?>" class="personal_yardworkers_data">                                                
-		    				<td class="label_m" style="padding-right:15px;"><input type="checkbox" class="worker_checkbox" id="worker_checkbox_<?= $worker['id'] ?>" <?= (empty($rs[0]['personal_id'])) ? '' : 'checked'; ?> /></td>
+		    				<td class="label_m" style="padding-right:15px;"><input type="checkbox" class="worker_checkbox data-reset" id="worker_checkbox_<?= $worker['id'] ?>" <?= (empty($rs[0]['personal_id'])) ? '' : 'checked'; ?> /></td>
 		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($worker['name']) ?> <?= strtoupper($worker['lastname']) ?>" style="width:150px;" /></td>
 		    				<td class="label_m"><input type="text" disabled="disabled" value="<?= strtoupper($worker['rate']) ?>" style="width:100px;" id="worker_cost_<?= $worker['id'] ?>" class="this_worker_cost" /></td>
                                                 <td class="label_m">
