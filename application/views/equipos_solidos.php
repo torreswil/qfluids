@@ -47,11 +47,11 @@
                                         <?php $screens_acum = 0 ?>
                                         <?php while($screens_acum < $shaker['screens']){ ?>
                                             <?php $screens_acum++; ?>
-        		        					<tr><td class="label_m"><label><?= $screens_acum ?>:</label><input type="text" style="width:75px;" class="screen_<?= $screens_acum; ?> validate_input" value="<?= (empty($rs["screens{$screens_acum}"]) ? '' : $rs["screens{$screens_acum}"]); ?>" /></td></tr>
+        		        					<tr><td class="label_m"><label><?= $screens_acum ?>:</label><input type="text" style="width:75px;" class="screen_<?= $screens_acum; ?> validate_input data-reset" value="<?= (empty($rs["screens{$screens_acum}"]) ? '' : $rs["screens{$screens_acum}"]); ?>" /></td></tr>
     		        				    <?php } ?>
                                     </table>
     		        			</td>
-    		        			<td><input type="text" style="width:75px;" class="data_hour validate_input" value="<?= (empty($rs["operational_hours"]) ? '' : $rs["operational_hours"]); ?>"/></td>
+    		        			<td><input type="text" style="width:75px;" class="data_hour validate_input data-reset" value="<?= (empty($rs["operational_hours"]) ? '' : $rs["operational_hours"]); ?>"/></td>
     		        		</tr>
     		        </table>
     	    	</fieldset>
@@ -111,13 +111,13 @@
         					<input type="text" style="width:120px;" disabled="disabled" value="<?= $mudcleaner['desander_pumptype']; ?>" />
         				</td>
         				<td class="label_m">
-        					<input type="text" style="width:75px;"  id="desander_flow" class="validate_input" value="<?= (empty($rs["desander_flow"]) ? '' : $rs["desander_flow"]); ?>">
+        					<input type="text" style="width:75px;"  id="desander_flow" class="validate_input data-reset" value="<?= (empty($rs["desander_flow"]) ? '' : $rs["desander_flow"]); ?>">
         				</td>
         				<td class="label_m">
-        					<input type="text" style="width:75px;"  id="desander_presure" class="validate_input" value="<?= (empty($rs["desander_presure"]) ? '' : $rs["desander_presure"]); ?>">
+        					<input type="text" style="width:75px;"  id="desander_presure" class="validate_input data-reset" value="<?= (empty($rs["desander_presure"]) ? '' : $rs["desander_presure"]); ?>">
         				</td>
         				<td class="label_m">
-        					<input type="text" style="width:75px;"  id="desander_hours" class="validate_input" value="<?= (empty($rs["desander_hours"]) ? '' : $rs["desander_hours"]); ?>">
+        					<input type="text" style="width:75px;"  id="desander_hours" class="validate_input data-reset" value="<?= (empty($rs["desander_hours"]) ? '' : $rs["desander_hours"]); ?>">
         				</td>
         			</tr>
         			<tr>
@@ -131,13 +131,13 @@
         					<input type="text" style="width:120px;" disabled="disabled" value="<?= $mudcleaner['desilter_pumptype']; ?>" />
         				</td>
         				<td class="label_m">
-        					<input type="text" style="width:75px;" id="destiler_flow" class="validate_input" value="<?= (empty($rs["destiler_flow"]) ? '' : $rs["destiler_flow"]); ?>">
+        					<input type="text" style="width:75px;" id="destiler_flow" class="validate_input data-reset" value="<?= (empty($rs["destiler_flow"]) ? '' : $rs["destiler_flow"]); ?>">
         				</td>
         				<td class="label_m">
-        					<input type="text" style="width:75px;"  id="destiler_presure" class="validate_input" value="<?= (empty($rs["destiler_presure"]) ? '' : $rs["destiler_presure"]); ?>">
+        					<input type="text" style="width:75px;"  id="destiler_presure" class="validate_input data-reset" value="<?= (empty($rs["destiler_presure"]) ? '' : $rs["destiler_presure"]); ?>">
         				</td>
         				<td class="label_m">
-        					<input type="text" style="width:75px;"  id="destiler_hours" class="validate_input" value="<?= (empty($rs["destiler_hours"]) ? '' : $rs["destiler_hours"]); ?>">
+        					<input type="text" style="width:75px;"  id="destiler_hours" class="validate_input data-reset" value="<?= (empty($rs["destiler_hours"]) ? '' : $rs["destiler_hours"]); ?>">
         				</td>
         			</tr>
         		</table>
@@ -160,11 +160,11 @@
 	        			<td style="padding-bottom:20px;">
 	        				<table>
                                 <?php for($i = $mudcleaner['shaker_screens']; $i > 0; $i--){ ?>
-                                    <tr><td class="label_m"><label><?= $i; ?>:</label><input type="text" style="width:55px;" class="screen_<?= $i; ?> validate_input"  value="<?= (empty($rs["screens{$i}"]) ? '' : $rs["screens{$i}"]); ?>" /></td></tr>
+                                    <tr><td class="label_m"><label><?= $i; ?>:</label><input type="text" style="width:55px;" class="screen_<?= $i; ?> validate_input data-reset"  value="<?= (empty($rs["screens{$i}"]) ? '' : $rs["screens{$i}"]); ?>" /></td></tr>
                                 <?php } ?>
                             </table>
 	        			</td>
-	        			<td><input type="text" style="width:75px;" class="data_hour validate_input"  value="<?= (empty($rs["operational_hours"]) ? '' : $rs["operational_hours"]); ?>"/></td>
+	        			<td><input type="text" style="width:75px;" class="data_hour validate_input data-reset"  value="<?= (empty($rs["operational_hours"]) ? '' : $rs["operational_hours"]); ?>"/></td>
 	        		</tr>
         		</table>
         	</fieldset>
@@ -207,11 +207,11 @@
             				<td class="label_m"><input type="text" style="width:150px;" disabled="disabled" value="<?= $centrifugue['maker']; ?>" /></td>
             				<td class="label_m"><input type="text" style="width:75px;"  disabled="disabled" value="<?= $centrifugue['type']; ?>" /></td>
             				<td class="label_m"><input type="text" style="width:60px;"  disabled="disabled" value="<?= $centrifugue['maxrpm']; ?>" /></td>
-            				<td class="label_m"><input type="text" style="width:60px;"  class="validate_input centrifugue_speed" value="<?= (empty($rs["speed"]) ? '' : $rs["speed"]); ?>"/></td>
-            				<td class="label_m"><input type="text" style="width:60px;"  class="validate_input centrifugue_overflow" value="<?= (empty($rs["overflow"]) ? '' : $rs["overflow"]); ?>"/></td>
-            				<td class="label_m"><input type="text" style="width:60px;"  class="validate_input centrifugue_underflow" value="<?= (empty($rs["underflow"]) ? '' : $rs["underflow"]); ?>"/></td>
-            				<td class="label_m"><input type="text" style="width:60px;"  class="validate_input centrifugue_feet_rate" value="<?= (empty($rs["feet_rate"]) ? '' : $rs["feet_rate"]); ?>"/></td>
-            				<td class="label_m"><input type="text" style="width:60px;"  class="validate_input operational_hours" value="<?= (empty($rs["operational_hours"]) ? '' : $rs["operational_hours"]); ?>"/></td>
+            				<td class="label_m"><input type="text" style="width:60px;"  class="validate_input centrifugue_speed data-reset" value="<?= (empty($rs["speed"]) ? '' : $rs["speed"]); ?>"/></td>
+            				<td class="label_m"><input type="text" style="width:60px;"  class="validate_input centrifugue_overflow data-reset" value="<?= (empty($rs["overflow"]) ? '' : $rs["overflow"]); ?>"/></td>
+            				<td class="label_m"><input type="text" style="width:60px;"  class="validate_input centrifugue_underflow data-reset" value="<?= (empty($rs["underflow"]) ? '' : $rs["underflow"]); ?>"/></td>
+            				<td class="label_m"><input type="text" style="width:60px;"  class="validate_input centrifugue_feet_rate data-reset" value="<?= (empty($rs["feet_rate"]) ? '' : $rs["feet_rate"]); ?>"/></td>
+            				<td class="label_m"><input type="text" style="width:60px;"  class="validate_input operational_hours data-reset" value="<?= (empty($rs["operational_hours"]) ? '' : $rs["operational_hours"]); ?>"/></td>
             			</tr>
                                 <tr>
                                         <td colspan="8">
@@ -236,11 +236,11 @@
                                                                 <td class="label_m"></td>
                                                         </tr>
                                                         <tr>
-                                                                <td class="label_m"><input type="text" style="width:85px;" class="validate_input bowl_diam" value="<?= (empty($rs["bowl_diam"]) ? '' : $rs["bowl_diam"]); ?>"/></td>
-                                                                <td class="label_m"><input type="text" style="width:85px;" class="validate_input bowl_pulley" value="<?= (empty($rs["bowl_pulley"]) ? '' : $rs["bowl_pulley"]); ?>" /></td>
-                                                                <td class="label_m"><input type="text" style="width:85px;" class="validate_input motor_pulley"value="<?= (empty($rs["motor_pulley"]) ? '' : $rs["motor_pulley"]); ?>" /></td>
+                                                                <td class="label_m"><input type="text" style="width:85px;" class="validate_input bowl_diam data-reset" value="<?= (empty($rs["bowl_diam"]) ? '' : $rs["bowl_diam"]); ?>"/></td>
+                                                                <td class="label_m"><input type="text" style="width:85px;" class="validate_input bowl_pulley data-reset" value="<?= (empty($rs["bowl_pulley"]) ? '' : $rs["bowl_pulley"]); ?>" /></td>
+                                                                <td class="label_m"><input type="text" style="width:85px;" class="validate_input motor_pulley data-reset"value="<?= (empty($rs["motor_pulley"]) ? '' : $rs["motor_pulley"]); ?>" /></td>
                                                                 <?php if($centrifugue['variator'] !== 1){?>
-                                                                <td class="label_m"><input type="text" style="width:85px;"  class="validate_input motor" value="<?= (empty($rs["motor"]) ? '' : $rs["motor"]); ?>" /></td></td><?php } ?>
+                                                                <td class="label_m"><input type="text" style="width:85px;"  class="validate_input motor data-reset" value="<?= (empty($rs["motor"]) ? '' : $rs["motor"]); ?>" /></td></td><?php } ?>
                                                                 <?php if($centrifugue['variator'] !== 0){ $disabled = 'disabled="disabled"'; }else{ $disabled = ' class="validate_input" '; } ?>
                                                                 <td class="label_m"><input type="text" style="width:85px;" <?= $disabled ?>  class="speed_rmp" value="<?= (empty($rs["speed_rmp"]) ? '' : $rs["speed_rpm"]); ?>"/></td>
                                                                 <td class="label_m"><input type="text" style="width:85px;" disabled="disabled" class="g_force" value="<?= (empty($rs["g_force"]) ? '' : $rs["g_force"]); ?>"/></td> 

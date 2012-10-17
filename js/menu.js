@@ -384,6 +384,16 @@ $(function(){
                 
                 $.post('/rest/new_report',data,function(r){
 			if(r.message == 'sucess'){
+                                inputs = $('body').find('.data-reset');
+                                inputs.each(function(j){
+                                        if($(this).is(":checked"))  { //Para los checbox
+                                                $(this).attr("checked", false);
+                                        } else if($(this).attr('data-reset')!=undefined) { //Si tiene algún reset por defecto
+                                                $(this).val($(this).attr('data-reset'));
+                                        } else { //Borro el resto
+                                                $(this).val('');
+                                        }
+                                });
 				location.reload();
 			}else{
 				alert('An error has ocourred. Please try again');
