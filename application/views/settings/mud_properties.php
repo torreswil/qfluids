@@ -78,11 +78,8 @@
                                                 <td><input type="text" name="test" style="width:110px;" /></td>
                                                 <td><input type="text" name="unit_test" style="width:110px;" /></td>
                                                 <td>
-                                                        <select name="type_test" style="width:200px;">
-                                                                <option value="">Select...</option>
-                                                                <option value="1">Physical and Chemical properties</option>
-                                                                <option value="2">Rheology</option>
-                                                                <option value="3">Solids Math</option>
+                                                        <select name="type_test" style="width:200px;">                                                                
+                                                                <option value="1">Physical and Chemical properties</option>                                                                
                                                         </select>
                                                 </td>            
                                                 <td class="label_m">

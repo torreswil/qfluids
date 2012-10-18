@@ -233,9 +233,8 @@
                                                         <td><input type="text" style="width:56px;" class="data_value data-reset" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else { ?>
-
-                                                        <td><input type="text" class="medium"><?= $test['test'];?></td>
-                                                        <td class="unit_field"><input type="text" style="width:20px;margin-right:0;" /><?= $test['unit_test'];?></td>
+                                                        <td class="label_m"><label><?= $test['test'];?></label></td>
+                                                        <td class="unit_field"><?= $test['unit_test'];?></td>                                                                                                                
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
                                                         <td><input type="text" style="width:56px;" class="data_value data-reset" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
                                                         <td><input type="text" style="width:56px;" class="data_value data-reset" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
@@ -403,7 +402,7 @@
                                                                                 <td><input type="text" style="width:60px;" disabled="disabled" id="yp_1" name="yp_1" class="yp data_value data-reset" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
                                                                                 <td><input type="text" style="width:60px;" disabled="disabled" id="yp_2" name="yp_2" class="yp data_value data-reset" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
                                                                                 <td><input type="text" style="width:60px;" disabled="disabled" id="yp_3" name="yp_3" class="yp data_value data-reset" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>                                                                        
-                                                                        <?php } else if($test['test']=='YS') { ?>                                                                                                                                        
+                                                                        <?php } else if($test['test']=='ys') { ?>                                                                                                                                        
                                                                                 <td class="label_m"><label>YS</label></td>
                                                                                 <td class="unit_field">lbf/100 ft<sup>2</sup></td>
                                                                                 <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
@@ -556,7 +555,7 @@
                                                         <td><input type="text" style="width:50px;" disabled="disabled" id="hgsppb_3" name="hgsppb_3" class="data_value data-reset" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
                                                         <td></td>
                                                 
-                                                <?php } else if($test['test']=='LGS') { ?>                                                                
+                                                <?php } else if($test['test']=='LGS vol') { ?>                                                                
                                                 
                                                         <td class="label_m"><label>LGS</label></td>
                                                         <td class="unit_field">% Vol.</td>
@@ -566,7 +565,7 @@
                                                         <td><input type="text" style="width:50px;" disabled="disabled" id="lgspercent_3" name="lgspercent_3" class="data_value data-reset" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>""></td>
                                                         <td></td>
                                                 
-                                                <?php } else if($test['test']=='LGS vol') { ?>                                                                
+                                                <?php } else if($test['test']=='HGS vol') { ?>                                                                
                                                 
                                                         <td class="label_m"><label>HGS</label></td>
                                                         <td class="unit_field">% Vol.</td>
