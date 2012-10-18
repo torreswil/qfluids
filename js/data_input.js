@@ -1731,7 +1731,7 @@ $(function(){
 						$('#inside_circuit_active_tanks .voltkaforo').each(function(){
 							aforo_origen = aforo_origen + fval($(this).attr('id'));
 						});
-						var volumen_origen = fval('activepits');
+						var volumen_origen = fval('volfinalact');
 					}else{
 						var aforo_origen 	= fval('voltkaforo_'+origin); 
 						var volumen_origen 	= fval('volfinal_'+origin);
@@ -1745,7 +1745,7 @@ $(function(){
 						$('#inside_circuit_active_tanks .voltkaforo').each(function(){
 							aforo_destino = aforo_destino + fval($(this).attr('id'));
 						});
-						var volumen_destino = fval('activepits');
+						var volumen_destino = fval('volfinalact');
 					}else{
 						var aforo_destino 		= fval('voltkaforo_'+origin); 
 						var volumen_destino 	= fval('volfinal_'+origin);	

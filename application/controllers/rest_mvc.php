@@ -499,18 +499,10 @@ class Rest_mvc extends CI_Controller {
 				if(count($estado_actual_material) > 0){
 					$estado_actual_material = $estado_actual_material[0];
 					
-					if($nuevo_estado_origen['volumen_final'] > 0){
-						$vieja_concentracion_origen = array(
-							'concentracion' 	=> $estado_actual_material['concentracion']
-						);
-					}else{
-						$vieja_concentracion_origen = array(
-							'concentracion' 	=> 0
-						);	
-					}
+					$vieja_concentracion_origen = array(
+						'concentracion' 	=> $estado_actual_material['concentracion']
+					);
 					
-
-
 					$this->Api->update_where('concentrations',$vieja_concentracion_origen,array('tank_status_time'=>$id_nuevo_estado_origen,'material'=>$producto['product_id']));
 				}
 
@@ -545,6 +537,15 @@ class Rest_mvc extends CI_Controller {
 					'concentracion' 	=> ($volumen * $vieja_concentracion_origen['concentracion'] + $estado_destino['volumen_final'] * $vieja_concentracion_destino['concentracion']) / ($volumen + $estado_destino['volumen_final'])
 				);
 				$this->Api->update_where('concentrations',$nueva_concentracion,array('tank_status_time'=>$id_nuevo_estado_destino,'material'=>$producto['product_id']));	
+				
+
+				//OTRA VEZ ORIGEN
+				if($nuevo_estado_origen['volumen_final'] == 0){
+					$vieja_concentracion_origen = array(
+						'concentracion' 	=> 0
+					);
+					$this->Api->update_where('concentrations',$vieja_concentracion_origen,array('tank_status_time'=>$id_nuevo_estado_origen,'material'=>$producto['product_id']));
+				}	
 			}
 
 			echo json_encode(true);
