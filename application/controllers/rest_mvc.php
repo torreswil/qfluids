@@ -351,6 +351,7 @@ class Rest_mvc extends CI_Controller {
 			$estado_origen = $this->Api->get_where('tank_status_time',array('project'=>$this->project_id,'tank'=>$origen,'activo'=>1));
 			if(count($estado_origen) == 0){
 				$estado_origen = array(
+					'id'							=> 0,
 					'project'						=> $this->project_id,
 					'report'						=> $this->report_id,
 					'tank'							=> $origen,
@@ -375,6 +376,7 @@ class Rest_mvc extends CI_Controller {
 
 			if(count($estado_destino) == 0){
 				$estado_destino = array(
+					'id'							=> 0,
 					'project'						=> $this->project_id,
 					'report'						=> $this->report_id,
 					'tank'							=> $origen,

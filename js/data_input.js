@@ -1455,7 +1455,7 @@ $(function(){
 
 		//si es de una reserva al activo
 		if(parseInt($('#tv_destiny').val()) == 0){
-			var tanque_origen 	= $('#tv_origen').val();
+			var tanque_origen 	= $('#tv_origin').val();
 			var tanque_destino 	= 0;
 			var volumen_destino = fval('volfinalact');
 
