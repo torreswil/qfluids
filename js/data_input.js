@@ -1383,7 +1383,25 @@ $(function(){
 
 	$('.mta_link').live('click',function(e){
 		e.preventDefault();
-		$('#mta_overlay').show();
+		$('#tv_destiny').prepend('<option value="0">Active</option>').val(0).attr('disabled','disabled');
+		$('#tv_origin option[value="0"]').remove();
+		$('#tv_origin').val('').removeAttr('disabled');
+		$('#mtr_overlay h5').html('Transfer mud to Active:');
+		$('#tv_volume').val('');
+
+		//traer las concentraciones del activo y ponerlas en la tabla de concentraciones del tanque de destino
+		$('.sconcentration').each(function(){
+			//obtener el id del material
+			var id = $(this).attr('id');
+				id = id.split('_');
+				id = id[1];
+
+			//el id del destino es 0 porque el destino es activo
+			var id_destino = 0;
+			$(this).val($('#currentconc_'+id+'_'+id_destino).val());
+
+		});
+		$('#mtr_overlay').show();
 	});
 
 	$('#mta_overlay .close_link').click(function(e){
@@ -1398,12 +1416,70 @@ $(function(){
 
 	$('.mtr_link').live('click',function(e){
 		e.preventDefault();
+		$('#tv_origin').prepend('<option value="0">Active</option>').val(0).attr('disabled','disabled');
+		$('#tv_destiny option[value="0"]').remove();
+		$('#tv_destiny').val('').removeAttr('disabled');
+		$('#mtr_overlay h5').html('Transfer mud from Active:');
+		$('#tv_volume').val('');
+		$('.sconcentration').each(function(){
+			$(this).val('');
+		});
 		$('#mtr_overlay').show();
 	});
 
 	$('#mtr_overlay .close_link').click(function(e){
 		e.preventDefault();
 		$('#mtr_overlay').hide();
+	});
+
+	$('#tv_destiny').change(function(e){
+		log($(this).val());
+		e.preventDefault();
+		var id_destino = $(this).val();
+
+		//trabajar solo si el tanque existe
+		if($('#this_tank_'+id_destino).length > 0){
+			$('.sconcentration').each(function(){
+				//obtener el id del material
+				var id = $(this).attr('id');
+					id = id.split('_');
+					id = id[1];
+				$(this).val($('#currentconc_'+id+'_'+id_destino).val());
+			});	
+		}
+
+	});
+
+	$('#tv_volume').keyup(function(e){
+		e.preventDefault();
+
+		//si es de una reserva al activo
+		if(parseInt($('#tv_destiny').val()) == 0){
+			var tanque_origen 	= $('#tv_origen').val();
+			var tanque_destino 	= 0;
+			var volumen_destino = fval('volfinalact');
+
+		//si es del activo para una reserva
+		}else{
+			var tanque_origen 	= 0;
+			var tanque_destino 	= $('#tv_destiny').val();
+			var volumen_destino = fval('volfinal_'+tanque_destino);
+		}
+
+		var volumen_transferido = fval('tv_volume');
+
+
+		$('.sconcentration').each(function(){
+			var id = $(this).attr('id');
+				id = id.split('_');
+				id = id[1];
+
+			var concentracion_origen 	= fval('currentconc_'+id+'_'+tanque_origen);
+			var concentracion_destino 	= fval('currentconc_'+id+'_'+tanque_destino);
+
+			var concentracion = (volumen_transferido * concentracion_origen + volumen_destino * concentracion_destino) / (volumen_transferido + volumen_destino);
+			completar_campo_val($(this).attr('id'),concentracion.toFixed(2));
+		});
 	});
 
 	$('#mtr_btn').click(function(e){
@@ -1467,7 +1543,8 @@ $(function(){
 	$('#add_chemicals_overlay .close_link').click(function(e){
 		e.preventDefault();
 		$('#ca_tank').val('');
-		$('#ca_wa').val('');		
+		$('#ca_wa').val('');
+		$('#voltotalchem').val('');		
 		$('#add_chemicals_overlay').hide();
 	});
 
@@ -1691,6 +1768,7 @@ $(function(){
 									load_ac_status();
 									load_tank_status();
 									load_current_concentrations();
+									$('#mtr_overlay .close_link').click();
 								}
 							},'json');
 						}

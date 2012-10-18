@@ -16,7 +16,6 @@
 			<li><a href="#">Active Volume</a></li>
 			<li><a href="#">Reserve Volume</a></li>
 			<li><a href="#">Losses Analisis</a></li>
-			<li><a href="#">Mud Transfers</a></li>
 	    </ul>
 	    <div class="simpleTabsContent">
 	    	<table style="width:100%;">
@@ -624,97 +623,6 @@
 					</tr>
 				</table>
 			</fieldset>		
-		</div>
-
-		<!-- MUD TRANSFERS -->
-		<div class="simpleTabsContent">
-			<fieldset>
-				<legend>Transfer mud to and from the active system</legend>
-				<table>
-					<tr>
-						<td class="label_m"><label>Origin:</label></td>
-						<td class="label_m"><label>Destiny:</label></td>
-						<td class="label_m"><label>Volumen (bbl):</label></td>
-					</tr>
-					<tr>
-						<td>
-							<select id="tv_origin">
-								<option value="0">Active System</option>
-								<?php foreach($pill_tanks as $tank){ ?>
-									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
-								<?php } ?>
-								<?php foreach($trip_tanks as $tank){ ?>
-									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
-								<?php } ?>
-								<?php foreach($reserve_tanks as $tank){ ?>
-									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
-								<?php } ?>
-							</select>
-						</td>
-						<td>
-							<select id="tv_destiny">
-								<option value="0">Active System</option>
-								<?php foreach($pill_tanks as $tank){ ?>
-									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
-								<?php } ?>
-								<?php foreach($trip_tanks as $tank){ ?>
-									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
-								<?php } ?>
-								<?php foreach($reserve_tanks as $tank){ ?>
-									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
-								<?php } ?>
-							</select>
-						</td>
-						<td class="label_m"><input type="text" style="width:100px;" id="tv_volume" /></td>
-					</tr>
-				</table>
-				<input type="button" value="Transfer Volume" style="margin-top:20px;" id="transfer_volume_btn" />
-			</fieldset>
-			<fieldset>
-				<legend>Archivo de transferencias</legend>
-				<table>
-					<thead>
-						<tr>
-							<td></td>
-							<td class="label_m"><label>Reporte</label></td>
-							<td class="label_m"><label>Fecha</label></td>
-							<td class="label_m"><label>Origen</label></td>
-							<td class="label_m"><label>Destino</label></td>
-							<td class="label_m"><label>Volumen</label></td>
-							<td class="label_m"></td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="label_m"><a href="#remove_mud_transfer" style="margin-right:10px;"><img src="/img/delete.png" /></a></td>
-							<td class="label_m"><input type="text" disabled style="width:55px;margin-right:0;"  value="12" /></td>
-							<td class="label_m"><input type="text" disabled style="width:70px;margin-right:0;"  value="2012-10-10" /></td>
-							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Active System" /></td>
-							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Reserve 1" /></td>
-							<td class="label_m"><input type="text" disabled style="width:100px;margin-right:10px;" value="100 bbl" /></td>
-							<td class="label_m"><a href="#result_concentrations_overlay">Concentraciones Resultantes</a></td>
-						</tr>
-						<tr>
-							<td class="label_m"></td>
-							<td class="label_m"><input type="text" disabled style="width:55px;margin-right:0;"  value="12" /></td>
-							<td class="label_m"><input type="text" disabled style="width:70px;margin-right:0;"  value="2012-10-10" /></td>
-							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Active System" /></td>
-							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Reserve 1" /></td>
-							<td class="label_m"><input type="text" disabled style="width:100px;margin-right:10px;" value="100 bbl" /></td>
-							<td class="label_m"><a href="#result_concentrations_overlay">Concentraciones Resultantes</a></td>
-						</tr>
-						<tr>
-							<td class="label_m"></td>
-							<td class="label_m"><input type="text" disabled style="width:55px;margin-right:0;"  value="12" /></td>
-							<td class="label_m"><input type="text" disabled style="width:70px;margin-right:0;"  value="2012-10-10" /></td>
-							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Active System" /></td>
-							<td class="label_m"><input type="text" disabled style="width:150px;margin-right:0;" value="Reserve 1" /></td>
-							<td class="label_m"><input type="text" disabled style="width:100px;margin-right:10px;" value="100 bbl" /></td>
-							<td class="label_m"><a href="#result_concentrations_overlay">Concentraciones Resultantes</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</fieldset>
 		</div>
 	</div>
 </div>

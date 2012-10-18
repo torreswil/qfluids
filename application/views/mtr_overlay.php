@@ -1,50 +1,74 @@
-<!-- FORMULARIO ADICION DE LODO A LAS RESERVAS -->
+<!-- FORMULARIO DE TRANSFERENCIAS DE LODO DESDE Y HACIA LAS RESERVAS -->
 <div class="overlay_wrapper" id="mtr_overlay">
-	<div class="overlay_dialog_wrapper" style="width:300px;">
-		<div class="overlay_dialog" style="width:300px;">
-			<h5>Tansfer Mud to Reserves:</h5>
+	<div class="overlay_dialog_wrapper" style="width:542px;">
+		<div class="overlay_dialog" style="width:542px;">
+			<h5>Tansfer Mud:</h5>
 			
-			<table style="margin-bottom:20px;">
-				<thead>
+			<fieldset>
+				<table>
 					<tr>
-						<td class="label_m"><label>Reserve Tank Name:</label></td>
-						<td class="label_m"><label>Mud qty:</label></td>
+						<td class="label_m"><label>Origin:</label></td>
+						<td class="label_m"><label>Destiny:</label></td>
+						<td class="label_m"><label>Volumen (bbl):</label></td>
 					</tr>
-				</thead>
-				<tbody id="mtr_inputs">
-					<?php foreach ($trip_tanks as $tank){ ?>
-						<tr class="this_trip_tank_<?= $tank['id']?> ">
-							<td><input style="width:190px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $tank['tank_name'] ?>" /></td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="0" id="mtr_<?= $tank['id']?>" class="qty" /></td>
-							<td class="label_m">bbl</td>
-			            </tr>	
-					<?php } ?>
-					<?php foreach ($pill_tanks as $tank){ ?>
-						<tr class="this_pill_tank_<?= $tank['id']?> ">
-							<td><input style="width:190px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $tank['tank_name'] ?>" /></td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="0" id="mtr_<?= $tank['id']?>" class="qty" /></td>
-							<td class="label_m">bbl</td>
-			            </tr>	
-					<?php } ?>
-					<?php foreach ($reserve_tanks as $tank){ ?>
-						<tr class="this_reserserve_tank_<?= $tank['id']?> ">
-							<td><input style="width:190px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $tank['tank_name'] ?>" /></td>
-							<td><input style="width:55px;margin-right:0;" type="text" value="0" id="mtr_<?= $tank['id']?>" class="qty" /></td>
-							<td class="label_m">bbl</td>
-			            </tr>	
-					<?php } ?>
 					<tr>
-						<td class="label_m" style="text-align:right;"><label>Total:</label></td>
-						<td class="label_m"><input type="text" style="width:55px;margin-right:0;" id="total_mtr" disabled="disabled" /></td>
-						<td class="label_m">bbl</td>
+						<td>
+							<select id="tv_origin">
+								<option value="">Select...</option>
+								<?php foreach($pill_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+								<?php foreach($trip_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+								<?php foreach($reserve_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+							</select>
+						</td>
+						<td>
+							<select id="tv_destiny">
+								<option value="">Select...</option>
+								<?php foreach($pill_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+								<?php foreach($trip_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+								<?php foreach($reserve_tanks as $tank){ ?>
+									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+								<?php } ?>
+							</select>
+						</td>
+						<td class="label_m"><input type="text" style="width:100px;" id="tv_volume" /></td>
 					</tr>
-				</tbody>
-			</table>
-			<input type="hidden" name="report" value="1">
-			<input type="hidden" name="project" value="<?= $project['id'] ?>">
-			
-			<input type="button" value="Transfer Mud" style="float:right;" id="mtr_btn" />
-			<a href="#close" class="close_link" style="display:block;float:left;margin-top:10px;">Cancel</a>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Concentraciones resultantes en destino:</legend>
+				<table>
+					<thead>
+						<tr>
+							<td class="label_m"><label>Material Name</label></td>
+                            <td class="label_m"><label>Unit</label></td>
+                            <td class="label_m"><label>Concentratrion</label></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<?php foreach ($materials as $material) { ?>
+								<tr class="this_material_<?= $material['product_id']?> ">
+						            <td><input style="width:255px;max-width:255px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+						            <td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
+						            <td><input style="width:110px;margin-right:0;" type="text" disabled="disabled" value="" id="sconcentration_<?= $material['product_id']?>" class="sconcentration" /></td>
+						        </tr> <?php
+							} ?>
+						</tr>
+					</tbody>
+				</table>
+			</fieldset>
+			<input type="button" value="Transfer Mud" style="margin-top:20px;float:right;" id="transfer_volume_btn" />
+			<a href="#close" class="close_link" style="display:block;float:left;margin-top:27px;">Cancel</a>
 		</div>
 	</div>
 </div>
