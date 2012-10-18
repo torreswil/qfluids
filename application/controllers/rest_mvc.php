@@ -544,7 +544,7 @@ class Rest_mvc extends CI_Controller {
 		$tanques = array();
 		
 		//obtener la informacion del sistema activo
-		$active_tank_status = $this->Api->get_where('tank_status_time',array('tank'=>0,'project'=>$this->project_id,'report'=>$this->report_id),array('id','desc'));
+		$active_tank_status = $this->Api->get_where('tank_status_time',array('tank'=>0,'project'=>$this->project_id,'report'=>$this->report_id,'activo'=>1),array('id','desc'));
 		$active_tank_status = $active_tank_status[0];
 		$tanques['active'] = array(
 			'id'							=> 0,
@@ -569,7 +569,7 @@ class Rest_mvc extends CI_Controller {
 		foreach ($project_tanks as $tank) {
 			//obtener el id del tanque
 			$tank_id 		= $tank['id'];
-			$tank_status 	= $this->Api->get_where('tank_status_time',array('tank'=>$tank_id,'project'=>$this->project_id,'report'=>$this->report_id),array('id','desc'));
+			$tank_status 	= $this->Api->get_where('tank_status_time',array('tank'=>$tank_id,'project'=>$this->project_id,'report'=>$this->report_id,'activo'=>1),array('id','desc'));
 			if(count($tank_status) > 0){
 				$tank_status 	= $tank_status[0]; 	
 				$este_tanque = array(
