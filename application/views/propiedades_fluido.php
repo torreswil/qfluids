@@ -556,7 +556,7 @@
                                                         <td><input type="text" style="width:50px;" disabled="disabled" id="hgsppb_3" name="hgsppb_3" class="data_value data-reset" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
                                                         <td></td>
                                                 
-                                                <?php } else if($test['test']=='LGS') { ?>                                                                
+                                                <?php } else if($test['test']=='LGS vol') { ?>                                                                
                                                 
                                                         <td class="label_m"><label>LGS</label></td>
                                                         <td class="unit_field">% Vol.</td>
@@ -566,7 +566,7 @@
                                                         <td><input type="text" style="width:50px;" disabled="disabled" id="lgspercent_3" name="lgspercent_3" class="data_value data-reset" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>""></td>
                                                         <td></td>
                                                 
-                                                <?php } else if($test['test']=='LGS vol') { ?>                                                                
+                                                <?php } else if($test['test']=='HGS vol') { ?>                                                                
                                                 
                                                         <td class="label_m"><label>HGS</label></td>
                                                         <td class="unit_field">% Vol.</td>
