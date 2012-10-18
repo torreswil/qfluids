@@ -233,9 +233,8 @@
                                                         <td><input type="text" style="width:56px;" class="data_value data-reset" value="<?= (empty($rs[2]['value']) ? '' : $rs[2]['value']); ?>"></td>
 
                                                 <?php } else { ?>
-
-                                                        <td><input type="text" class="medium"><?= $test['test'];?></td>
-                                                        <td class="unit_field"><input type="text" style="width:20px;margin-right:0;" /><?= $test['unit_test'];?></td>
+                                                        <td class="label_m"><label><?= $test['test'];?></label></td>
+                                                        <td class="unit_field"><?= $test['unit_test'];?></td>                                                                                                                
                                                         <td><input type="text" style="width:60px;" value="<?=$value;?>" disabled=""></td>
                                                         <td><input type="text" style="width:56px;" class="data_value data-reset" value="<?= (empty($rs[0]['value']) ? '' : $rs[0]['value']); ?>"></td>
                                                         <td><input type="text" style="width:56px;" class="data_value data-reset" value="<?= (empty($rs[1]['value']) ? '' : $rs[1]['value']); ?>"></td>
