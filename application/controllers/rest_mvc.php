@@ -37,12 +37,17 @@ class Rest_mvc extends CI_Controller {
 					<?php 
 						//obtener el estado actual del tanque
 						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>0));
-						$id_estado_actual = $id_estado_actual[0];
-						$id_estado_actual = $id_estado_actual['id'];
+						if(count($id_estado_actual) > 0){
+							$id_estado_actual = $id_estado_actual[0];
+							$id_estado_actual = $id_estado_actual['id'];
 
-						//obtener la concentracion para este producto
-						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
-						$concentracion = $concentracion[0]['concentracion'];
+							//obtener la concentracion para este producto
+							$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
+							$concentracion = $concentracion[0]['concentracion'];	
+						}else{
+							$concentracion = 0;
+						}
+						
 					?>
 					<input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_0" disabled value="<?= number_format($concentracion,2,'.','') ?>" />
 				</td>
