@@ -1158,9 +1158,16 @@ $(function(){
 	});
 
 	//clocks
-	$('.clock_1,.clock_2,.clock_3').change(function(){
-		var this_class = $(this).attr('class');
-		var new_hour = $(this).val();
+	$('.clock_1,.clock_2,.clock_3').change(function(){                
+                var this_class;
+                if($(this).hasClass('clock_1')) {
+                        this_class = 'clock_1';
+                } else if($(this).hasClass('clock_2')) {
+                        this_class = 'clock_2';
+                } else {
+                        this_class = 'clock_3';
+                }		
+		var new_hour = $(this).val();                                
 		$('.'+this_class+'_label').html(new_hour);
 	});
 
