@@ -641,7 +641,6 @@ class Rest_mvc extends CI_Controller {
 	}
 
 	public function load_today_consumptions(){
-		echo '<table>';
 			$materials = $this->Api->get_where('vista_materiales',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
 			$pill_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'pill','active'=>1),array('order','asc'));
 			$reserve_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'reserve','active'=>1),array('order','asc'));
@@ -690,7 +689,6 @@ class Rest_mvc extends CI_Controller {
                 </tr>
             <?php } ?>
 		<?php
-		echo '</table>';
 	}
 
 }
