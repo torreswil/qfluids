@@ -13,6 +13,7 @@ $(function(){
 	load_ac_status();
 	load_current_concentrations();
 	load_tank_status();
+	load_today_consumptions();
         
 	/*==========================================================================================================*/
 	// NAVIGATION
@@ -1315,6 +1316,7 @@ $(function(){
 						$('.materials_table .material_qty',context).val('');
 						$('.general_st_info input',context).val('');
 						alert('Stock Transfer registered.');
+						load_ac_status();
 						load_materials_status();                                                
 					}
 				},'json');
@@ -1336,7 +1338,11 @@ $(function(){
         $.post('/rest/load_stock',incoming_list,function(r){			
                 $('#incoming_stock_list').html(r);
         });                                                
-	}        
+	} 
+
+	function load_today_consumptions(){
+		$('#today_consumptions_table').load('/rest_mvc/load_today_consumptions');
+	}       
 
 	/*==========================================================================================================*/
 	// 7. VOLUMES
@@ -1639,6 +1645,7 @@ $(function(){
 								//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
 								load_tank_status();
 								load_materials_status();
+								load_today_consumptions();
 								load_ac_status();
 								load_current_concentrations();
 								correr_calculos();

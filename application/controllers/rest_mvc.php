@@ -640,4 +640,57 @@ class Rest_mvc extends CI_Controller {
 		}
 	}
 
+	public function load_today_consumptions(){
+		echo '<table>';
+			$materials = $this->Api->get_where('vista_materiales',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
+			$pill_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'pill','active'=>1),array('order','asc'));
+			$reserve_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'reserve','active'=>1),array('order','asc'));
+		?>
+			 <?php foreach ($materials as $material) { 
+			 	$used_acum = 0;
+			 ?>
+                <tr class="this_material_<?= $material['id']?> ">
+                    <td><input style="width:200px;max-width:357px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+                    <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
+                    <?php 
+                    	$chemical_aditions = $this->Api->get_where('vista_detalle_adicion_quimica',array('tank'=>0,'report'=>$this->report_id,'material'=>$material['id']));
+                    	$used = 0;
+                    	foreach ($chemical_aditions as $adition) {
+                			$used = $used + $adition['used'];
+                		}
+
+                		$used_acum = $used_acum + $used;
+                    ?>
+                    <td><input value="<?= $used; ?>" type="text" style="width:55px;margin-right:0;" id="iused_<?= $material['id'] ?>_0" class="used_<?= $material['id'] ?>" disabled /></td>
+                    <?php foreach($pill_tanks as $tank){ ?>
+                    	<?php 
+                    		$chemical_aditions = $this->Api->get_where('vista_detalle_adicion_quimica',array('tank'=>$tank['id'],'report'=>$this->report_id,'material'=>$material['id']));
+                    		$used = 0;
+                    		foreach ($chemical_aditions as $adition) {
+                    			$used = $used + $adition['used'];
+                    		}
+                    		$used_acum = $used_acum + $used;
+                    	?>
+                      	<td><input value="<?= $used; ?>" type="text" style="width:55px;margin-right:0;" id="iused_<?= $material['id'] ?>_<?= $tank['id'] ?>" class="used_<?= $material['id'] ?>" disabled /></td>
+                    <?php }?>
+                    <?php foreach($reserve_tanks as $tank){ ?>
+                      <?php if($tank['name'] < 32){ ?>
+                      	<?php 
+                    		$chemical_aditions = $this->Api->get_where('vista_detalle_adicion_quimica',array('tank'=>$tank['id'],'report'=>$this->report_id,'material'=>$material['id']));
+                    		$used = 0;
+                    		foreach ($chemical_aditions as $adition) {
+                    			$used = $used + $adition['used'];
+                    		}
+                    		$used_acum = $used_acum + $used;
+                    	?>
+                        <td><input  value="<?= $used; ?>" type="text" style="width:55px;margin-right:0;" id="iused_<?= $material['id'] ?>_<?= $tank['id'] ?>" class="used_<?= $material['id'] ?>" disabled /></td>
+                      <?php } ?>
+                    <?php }?>
+                    <td><input type="text" value="<?= $used_acum; ?>" style="width:55px;margin-right:0;" disabled id="total_consumption_today_<?= $material['id'] ?>" class="total_consumption_today" disabled /></td>
+                </tr>
+            <?php } ?>
+		<?php
+		echo '</table>';
+	}
+
 }

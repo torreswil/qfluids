@@ -6,8 +6,7 @@
                <li><a href="#">Status</a></li>
                <li><a href="#">Incoming Materials</a></li>
                <!-- <li><a href="#">Outgoing Materials</a></li> --> 
-               <li><a href="#">Today Consumptions</a></li> 
-               <li><a href="#">Volumenes por quimica</a></li>             
+               <li><a href="#">Today Consumptions</a></li>            
           </ul>
           <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
                <fieldset>
@@ -110,68 +109,11 @@
                             <td class="label_m"><label>T. Used</label></td>
                           </tr>
                      </thead>
-                     <tbody class="materials_table">
-                        <?php foreach ($materials as $material) { ?>
-                            <tr class="this_material_<?= $material['product_id']?> ">
-                                <td><input style="width:200px;max-width:357px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
-                                <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
-                                <td><input type="text" style="width:55px;margin-right:0;" id="iused_<?= $material['product_id'] ?>_0" class="used_<?= $material['product_id'] ?>" disabled /></td>
-                                <?php foreach($pill_tanks as $tank){ ?>
-                                  <td><input type="text" style="width:55px;margin-right:0;" id="iused_<?= $material['product_id'] ?>_<?= $tank['id'] ?>" class="used_<?= $material['product_id'] ?>" disabled /></td>
-                                <?php }?>
-                                <?php foreach($reserve_tanks as $tank){ ?>
-                                  <?php if($tank['name'] < 32){ ?>
-                                    <td><input type="text" style="width:55px;margin-right:0;" id="iused_<?= $material['product_id'] ?>_<?= $tank['id'] ?>" class="used_<?= $material['product_id'] ?>" disabled /></td>
-                                  <?php } ?>
-                                <?php }?>
-                                <td><input type="text" style="width:55px;margin-right:0;" disabled id="total_consumption_today_<?= $material['product_id'] ?>" class="total_consumption_today" disabled /></td>
-                            </tr>
-                        <?php } ?>
+                     <tbody class="materials_table" id="today_consumptions_table">
+                        <!-- ajax loadaded-->
                      </tbody>
                 </table>
               </fieldset> 
-            </div>
-
-
-            <!-- TABLA DE VOLUMENES POR QUIMICA -->
-            <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
-              <fieldset>
-                <legend>Incremento de volumenes para <?php if($project['spud_date'] != ''){ echo $project['last_report_meta']['date'];} ?> (Report <?= str_pad($project['last_report'], 4, "0", STR_PAD_LEFT); ?>)</legend>
-                <table>
-                     <thead>
-                          <tr>
-                            <td class="label_m"><label>Material</label></td>
-                            <td class="label_m"><label>Unit</label></td>
-                            <td class="label_m"><label>Active</label></td>
-                            <?php foreach($pill_tanks as $tank){ ?>
-                              <td class="label_m"><label><?= $tank['tank_name'] ?></label></td>
-                            <?php }?>
-                            <?php foreach($reserve_tanks as $tank){ ?>
-                              <?php if($tank['name'] < 32){ ?>
-                                <td class="label_m"><label><?= $tank['tank_name'] ?></label></td>
-                              <?php } ?>
-                            <?php }?>
-                          </tr>
-                     </thead>
-                     <tbody class="materials_table">
-                        <?php foreach ($materials as $material) { ?>
-                            <tr class="this_material_<?= $material['product_id']?> ">
-                                <td><input style="width:200px;max-width:357px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
-                                <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
-                                <td><input type="text" style="width:55px;margin-right:0;" id="ivolincr_<?= $material['product_id'] ?>_0" class="ivolincr_<?= $material['product_id'] ?>" disabled /></td>
-                                <?php foreach($pill_tanks as $tank){ ?>
-                                  <td><input type="text" style="width:55px;margin-right:0;" id="ivolincr_<?= $material['product_id'] ?>_<?= $tank['id'] ?>" class="ivolincr_<?= $material['product_id'] ?>" disabled /></td>
-                                <?php }?>
-                                <?php foreach($reserve_tanks as $tank){ ?>
-                                  <?php if($tank['name'] < 32){ ?>
-                                    <td><input type="text" style="width:55px;margin-right:0;" id="ivolincr_<?= $material['product_id'] ?>_<?= $tank['id'] ?>" class="ivolincr_<?= $material['product_id'] ?>" disabled /></td>
-                                  <?php } ?>
-                                <?php }?>
-                            </tr>
-                        <?php } ?>
-                     </tbody>
-                </table>
-              </fieldset> 
-            </div>  
+            </div> 
      </div>
 </div>
