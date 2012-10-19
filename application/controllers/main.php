@@ -121,29 +121,31 @@ class Main extends CI_Controller {
         * Método para generar el reporte - IvanMel
         * @param in $project_id
         */
-        public function report($project_id='') {            
+        public function report($project_id='', $report_id='') {            
                 if($project_id == '' || !is_numeric($project_id)){
                         redirect('/');
                 } else{
-                        if(count($this->Api->get_where('projects',array('id'=>$project_id))) == 1){
+                        if(count($this->Api->get_where('projects',array('id'=>$project_id))) == 1) {
 				//INICIALIZACION DE LA SESION
-				$project_data 						= $this->Api->get_where('projects',array('id'=>$project_id));
-				$project_data						= $project_data[0];
-				$current_report 					= $this->Api->get_where('reports',array('project'=>$project_id),array('id','desc'));
-				$current_report 					= $current_report[0]['id'];
-				$current_report_data				= $this->Api->get_where('reports',array('id'=>$current_report));
-				$current_report_data 				= $current_report_data[0];
+				$project_data 					= $this->Api->get_where('projects',array('id'=>$project_id));
+				$project_data					= $project_data[0];
+                                //Verifico si el reporte se ve por el id del reporte o no 
+                                $conditions = array();
+                                $conditions['project'] = $project_id;
+                                if($report_id) {
+                                        $conditions['id'] = $report_id;
+                                }
+				$current_report 				= $this->Api->get_where('reports', $conditions, array('id','desc'));
+                                if(!$report_id) {
+                                        $current_report                                 = $current_report[0]['id'];
+                                        $current_report                                 = $this->Api->get_where('reports',array('id'=>$current_report));
+                                }
+                                $current_report_data                            = $current_report[0];												
+                                
 				$this->session->set_userdata(array('project' => $project_data,'report'=>$current_report_data));
-
-				$project_data['last_report'] 		= count($this->Api->get_where('reports',array('project_transactional_id'=>$project_data['transactional_id'])));
-				
-				if($project_data['last_report'] > 0){
-					$project_data['last_report_meta'] 	= $this->Api->get_where('reports',array('project_transactional_id'=>$project_data['transactional_id']));
-					$project_data['last_report_meta'] 	= $project_data['last_report_meta'][$project_data['last_report'] - 1];	
-				}				
-                               
+                                
 				//DATOS BASE
-				$data['main_content'] 			= 'qfluids';
+				$data['main_content']                           = 'qfluids';
 				$data['project']				= $project_data;                                                                
                                
                                 //MUD PROPERITES
