@@ -1324,7 +1324,7 @@ $(function(){
 
 	function load_materials_status(){  
         var data = {'project_id' : $('#project_id').val()};
-        $.post('/rest/load_materials_status',data,function(r){
+        $.post('/rest_mvc/load_materials_status',data,function(r){
         	$('#materials_status_table').html(r);	
         });
                                                                      

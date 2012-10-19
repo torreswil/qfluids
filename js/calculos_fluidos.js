@@ -1939,20 +1939,6 @@ function calculos_raw(){
 		log(totalcirculate,volfinalact);
 	completar_campo_val('balancefluido',Math.round(balancefluido));
 
-	//total_consumption_today
-	$('.total_consumption_today').each(function(){
-		var id_producto = $(this).attr('id');
-			id_producto = id_producto.split('total_consumption_today_');
-			id_producto = id_producto[1];
-
-		var total_consumption_today = 0;	
-		$('.used_'+id_producto).each(function(){
-			total_consumption_today = total_consumption_today + fval($(this).attr('id'));
-		});
-		completar_campo_val($(this).attr('id'),total_consumption_today);
-		completar_campo_val('s'+$(this).attr('id'),total_consumption_today);
-	});
-
 	
 	//cxconc
 	$('.cxconc').each(function(){

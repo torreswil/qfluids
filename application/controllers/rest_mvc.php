@@ -622,4 +622,22 @@ class Rest_mvc extends CI_Controller {
 		echo json_encode($tanques);
 	}
 
+	public function load_materials_status(){
+		$materials = $this->Api->get_where('vista_reporte_estado_material',array('project'=>$this->project_id,'report'=>$this->report_id),array('commercial_name','asc'));
+		foreach ($materials as $material) { ?>
+			<tr class="this_material_<?= $material['material']?> ">
+	            <td><input style="width:300px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+	            <td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?> <?= $material['unidad_destino'] ?>" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$<?= $material['price'] ?>" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" id="minitial_<?= $material['material']?>" value="<?= $material['initial'] ?>" disabled  /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" id="mreceived_<?= $material['material']?>" value="<?= $material['received'] ?>" disabled /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" id="mtransf_<?= $material['material']?>" value="<?= $material['transfered'] ?>" disabled /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['used'] ?>" id="stotal_consumption_today_<?= $material['material']?>" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['stock'] ?>" id="mstock_<?= $material['material']?>" class="mstock" /></td>
+	            <td><input style="width:55px;margin-right:0;" type="text" disabled="disabled" value="$<?= $material['used'] * $material['price'] ?>" /></td>
+	          </tr>  <?php
+		}
+	}
+
 }
