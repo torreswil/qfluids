@@ -629,7 +629,7 @@ class Rest extends CI_Controller {
                                         $rs.= "<tr><td class=\"label_m\"><label>{$test['test']}</label></td><td class=\"unit_field\">{$test['unit_test']}</td>";
                                         for($i=1 ; $i<=$project['max_phase'] ; $i++) {                                                
                                                 $value  = empty($programs[($i-1)]['value_program']) ? '' : $programs[($i-1)]['value_program'];
-                                                $id     = ($value) ? $programs[($i-1)]['id'] : '';
+                                                $id     = @$programs[($i-1)]['id'];
                                                 $rs.= "<td><input type=\"text\" value=\"$value\" data-program-id=\"$id\" class=\"program_value\" style=\"width:60px;\"  data-phase=\"$i\"  data-test=\"{$test['id']}\" data-type=\"{$test['type_test']}\"></td>";
                                         }
                                         $rs.= "</tr>";                                        
@@ -664,7 +664,7 @@ class Rest extends CI_Controller {
 		$programs = json_decode($this->data_input);                
 		foreach ($programs as $program) {
                         if(empty($program->value_program)) {
-                                $program->value_program = NULL;
+                                //$program->value_program = NULL;
                         }
                         if(empty($program->id)) {
                                 $this->Api->create('program',array('project_id'=>$this->project_id, 'test_id'=>$program->test_id, 'phase'=>$program->phase, 'value_program'=>$program->value_program));
