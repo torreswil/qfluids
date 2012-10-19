@@ -1260,17 +1260,7 @@
                                                         <td class="span2">$ 250,00</td>
                                                         <td class="span4">Daily mud cost US$:</td>
                                                         <td class="span2">$ 910,00</td>                                                        
-                                                </tr> 
-                                                <?php $counter = 0; ?>
-                                                <?php foreach($pacp as $fila): ?>  
-                                                        <?php if($fila['custom']==1) { ?>
-                                                                <?php $counter++; ?>
-                                                                <tr>
-                                                                        <td colspan="4"></td>                                                                        
-                                                                </tr>                                                                 
-                                                                <?php if($counter==5) { break; } ?>                                                        
-                                                        <?php } ?>
-                                                <?php endforeach; ?>
+                                                </tr>                                                 
                                         </tbody> 
                                 </table>                               
                         </div>
@@ -1288,7 +1278,7 @@
                                 <table class="table table-stripted table-condensed">
                                         <tbody>
                                                 <tr>
-                                                        <td style="height: 460px">
+                                                        <td style="height: 458px">
                                                                 <p class="txt-justify">
                                                                         RIG ACTIVITY: Se recibio taladro sinopec 166, y se inicio operaciones de perforacion a las XXXX.
                                                                 </p>
@@ -1664,11 +1654,11 @@
                                 <div class="container-fluid">
                                         <div class="data-table-container b-right" style="float:left; width: 50%;">
                                                 <strong>Company Man/Representative:</strong>
-                                                <p class="txt-center" style="padding-top: 30px;">OSCAR GOMEZ / JUAN DANIEL MOLANO</p>                                                                                            
+                                                <p class="txt-center" style="padding-top: 30px; margin-bottom:5px;">OSCAR GOMEZ / JUAN DANIEL MOLANO</p>                                                                                            
                                         </div>
                                         <div class="data-table-container" style="float:left; width: 49.8%">                                                                                                                                                                                                                                                                                            
                                                 <strong>Mud Engs.</strong>                                                
-                                                <p class="txt-center" style="padding-top: 30px;">CARLOS PARRA / DEIDER MENGUAL</p>
+                                                <p class="txt-center" style="padding-top: 30px; margin-bottom:5px;">CARLOS PARRA / DEIDER MENGUAL</p>
                                         </div>
                                 </div>                                                                                                                                                               
                         </div>
@@ -1679,7 +1669,7 @@
 </div>
 
 <div class="row b-top">
-        <p style="margin: 0;">
+        <p style="margin: 0; font-size: 8px;">
                 QMAX SOLUTIONS COLOMBIA. Calle 100 No 8A -49. Torre B oficina 1018. Tel 6169022, Fax (571) 2180270
         </p>
 </div>

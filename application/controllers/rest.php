@@ -599,7 +599,7 @@ class Rest extends CI_Controller {
                                         } else {
                                                 $type = 'Solid math';
                                         }
-                                        echo '<tr id="this_test_'.$test['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$test['test'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$test['unit_test'].'" /></td><td><input type="text" style="width:200px;" disabled="" value="'.$type.'" /></td><td><a href="#remove_test" class="remove_test_link" id="rm_test_'.$test['id'].'"><img src="/img/delete.png" /></a></td></tr>';
+                                        echo '<tr id="this_test_'.$test['id'].'"><td><input type="text" style="width:110px;" disabled="" value="'.$test['test'].'" /></td><td><input type="text" style="width:110px;" disabled="" value="'.$test['unit_test'].'" /></td><td><a href="#remove_test" class="remove_test_link" id="rm_test_'.$test['id'].'"><img src="/img/delete.png" /></a></td></tr>';
                                 }
                         } else {                                
                                 $rs = "<tr><td></td><td class=\"unit_field\"></td>";                                

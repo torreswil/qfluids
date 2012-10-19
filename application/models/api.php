@@ -117,6 +117,14 @@
 	    public function total_remove_where($table,$condition = array()){                    
                     $this->db->delete($table, $condition);	    	
 	    }
+            
+            /**
+             * Sql              : Ejecuta una instrucción sql directa a la bd
+             * @sql string      : Instrucción sql
+             */
+            public function sql($sql) {
+                    $this->db->query($sql);
+            }
 
 	}
 
