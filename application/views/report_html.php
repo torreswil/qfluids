@@ -581,7 +581,7 @@
                         <!-- MUD TYPE -->
                         
                         <div class="data-table b-right" style="width: 64.5%">
-                                <div class="sub-header b-bottom b-top"><h5>MUD TYPE: NATURAL GEL BENEX</h5></div>
+                                <div class="sub-header b-bottom b-top"><h5>MUD TYPE: <?= $reporte['mud_type']; ?></h5></div>
                                 <table class="table table-stripted table-condensed">
                                         <tbody>
                                                 <tr>

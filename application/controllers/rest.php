@@ -115,10 +115,12 @@ class Rest extends CI_Controller {
                 }
         }
         
-        public function save_report_settings() {
+        public function save_report_settings() {                
                 if(count($_POST) > 0) {
-                        $this->Api->update_where('reports', $_POST, array('id'=>$this->report_id) );
-                        echo json_encode(array('message'=>'report_updated', 'report'=>$this->report_id));
+                        $reportes       = $this->Api->get_where('reports', array('project'=>$this->project_id), array('id','desc'));
+                        $reporte        = $reportes[0];
+                        $this->Api->update_where('reports', $_POST, array('id'=>$reporte['id']) );
+                        echo json_encode(array('message'=>'report_updated', 'report'=>$reporte['id']));
                 }
         }
 
