@@ -123,7 +123,8 @@
              * @sql string      : Instrucción sql
              */
             public function sql($sql) {
-                    $this->db->query($sql);
+                    $q = $this->db->query($sql);
+                    return $q->result_array();	
             }
 
 	}

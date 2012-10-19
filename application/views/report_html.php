@@ -826,7 +826,7 @@
                                                         <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '&nbsp' : $rs[1]['value']; ?></td>
                                                         <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '&nbsp' : $rs[2]['value']; ?></td>
                                                 </tr>
-                                                <?php $counter = 0; ?>
+                                                <?php $counter = 0; ?>                                                
                                                 <?php foreach($pacp as $fila): ?>  
                                                         <?php if($fila['custom']==1) { ?>
                                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$fila['id'], 'phase'=>$project['current_phase'])); ?>

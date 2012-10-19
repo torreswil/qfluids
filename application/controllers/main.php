@@ -151,7 +151,8 @@ class Main extends CI_Controller {
                                 //MUD PROPERITES
                                 $data['mud_properties'] = $this->Api->get_where('project_report_test', array('report_id'=>$current_report_data['id']));
                                 $data['mud_properties_hour'] = $this->Api->get_where('project_report_test', array('report_id'=>$current_report_data['id'], 'test_id'=>1));  
-                                $data['pacp'] = $this->Api->get_where('test', array('active'=>1, 'type_test'=>1)); 
+                                $data['pacp'] = $this->Api->sql("SELECT test.* FROM test INNER JOIN project_report_test ON test.id = project_report_test.test_id WHERE test.type_test = 1 AND project_report_test.report_id = {$current_report_data['id']} GROUP BY test.id");                                 
+                                //$data['pacp'] = $this->Api->get_where('test', array('active'=>1, 'type_test'=>1)); 
                                 $data['solids'] = $this->Api->get_where('test', array('active'=>1, 'type_test'=>3)); 
                                 $data['solids'] = $this->Api->get_where('test', array('active'=>1, 'type_test'=>3)); 
                                 $data['tests'] = $this->Api->get_where('test', array('active'=>1)); 
