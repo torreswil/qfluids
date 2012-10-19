@@ -1847,7 +1847,7 @@ INSERT INTO `test` (`id`, `test`, `unit_test`, `type_test`, `custom`, `active`) 
 (35, 'ASG Solids', '', 3, 0, 1),
 (36, 'LGS', 'ppb', 3, 0, 1),
 (37, 'HGS', 'ppb', 3, 0, 1),
-(38, 'LGS', '% Vol', 3, 0, 1),
+(38, 'LGS vol', '% Vol', 3, 0, 1),
 (39, 'HGS vol', '% Vol', 3, 0, 1);
 
 -- --------------------------------------------------------
