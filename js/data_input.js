@@ -1455,6 +1455,34 @@ $(function(){
 			});	
 		}
 
+		//si es de una reserva al activo
+		if(parseInt($('#tv_destiny').val()) == 0){
+			var tanque_origen 	= $('#tv_origin').val();
+			var tanque_destino 	= 0;
+			var volumen_destino = fval('volfinalact');
+
+		//si es del activo para una reserva
+		}else{
+			var tanque_origen 	= 0;
+			var tanque_destino 	= $('#tv_destiny').val();
+			var volumen_destino = fval('volfinal_'+tanque_destino);
+		}
+
+		var volumen_transferido = fval('tv_volume');
+
+
+		$('.sconcentration').each(function(){
+			var id = $(this).attr('id');
+				id = id.split('_');
+				id = id[1];
+
+			var concentracion_origen 	= fval('currentconc_'+id+'_'+tanque_origen);
+			var concentracion_destino 	= fval('currentconc_'+id+'_'+tanque_destino);
+
+			var concentracion = (volumen_transferido * concentracion_origen + volumen_destino * concentracion_destino) / (volumen_transferido + volumen_destino);
+			completar_campo_val($(this).attr('id'),concentracion.toFixed(2));
+		});
+
 	});
 
 	$('#tv_volume').keyup(function(e){
@@ -1489,38 +1517,7 @@ $(function(){
 		});
 	});
 
-	$('#mtr_btn').click(function(e){
-		e.preventDefault();
-
-		$('#mtr_inputs input.qty').each(function(){
-			if($(this).val() == ''){
-				$(this).val(0);
-			}
-			
-			var id = $(this).attr('id');
-				id = id.split('mtr_');
-				id = id[1];
-			$('#volrec_'+id).val($(this).val());
-		});
-
-		completar_campo_val('voltransfact',$('#total_mtr').val());
-		$('#mtr_overlay').hide();
-		correr_calculos();
-	});
-
-	$('#mtr_inputs input.qty').keyup(function(){
-		var total_mtr = 0;
-		$('#mtr_inputs input.qty').each(function(){
-			if($(this).val() == ''){
-				$(this).val(0);
-			}
-			
-			total_mtr = total_mtr + parseFloat($(this).val());	
-		});
-		completar_campo_val('total_mtr',total_mtr);
-	});
-
-
+	
 	$('#show_active_system_tanks').click(function(e){
 		e.preventDefault();
 		if($(this).hasClass('show')){
@@ -1564,83 +1561,96 @@ $(function(){
 	//ADICIONAR QUIMICA A UN TANQUE
 	$('#add_chemicals_btn').click(function(e){
 		e.preventDefault();
-
-		//validar que el tanque destino no este vacio
-		if($('#ca_tank').val() == ''){
-			alert('The destiny tank cannot be empty.');
-		}else{
-			var destiny = ival('ca_tank');
-
-			//obtener el aforo maximo y la cantidad ocupada del tanque destino
-			if(destiny == 0){
-				var aforo_maximo = 0;
-				var cantidad_ocupada = fval('activepits');
-				$('#inside_circuit_active_tanks .voltkaforo').each(function(){
-					aforo_maximo = aforo_maximo + fval($(this).attr('id'));
-				});
+		var confirmation = confirm('Are you sure you want to perform this action?');
+		if(confirmation){
+			//validar que el tanque destino no este vacio
+			if($('#ca_tank').val() == ''){
+				alert('The destiny tank cannot be empty.');
 			}else{
-				var aforo_maximo 		= fval('voltkaforo_'+destiny);
-				var cantidad_ocupada 	= fval('volfinal_'+destiny); 
-			}
+				var destiny = ival('ca_tank');
 
-			//validar que el incremento de volumen no sea mayor que la capacidad disponible
-			var capacidad_disponible 	= aforo_maximo - cantidad_ocupada;
-			var capacidad_requerida 	= fval('voltotalchem') + fval('ca_wa');
-
-			if(capacidad_disponible < capacidad_requerida){
-				alert('There is not enought room in the destiny tank. Please verify the quantities and water aditions to continue.');
-			}else{
-				//validar que las cantidades a consumir de cada elemento no sean mayores que las que hay en stock.
-				var eqty = 0;
-				$('.used').each(function(){
-					var id = $(this).attr('id');
-						id = id.split('_');
-						id = id[1];
-
-					if(ival($(this).attr('id')) > ival('ac_stock_'+id)){
-						eqty = eqty + 1;
-					}
-
-				});
-
-				if(eqty > 0){
-					alert('You cannot use more material than the one in stock. Please verify your quantities and try again.');
+				//obtener el aforo maximo y la cantidad ocupada del tanque destino
+				if(destiny == 0){
+					var aforo_maximo = 0;
+					var cantidad_ocupada = fval('activepits');
+					$('#inside_circuit_active_tanks .voltkaforo').each(function(){
+						aforo_maximo = aforo_maximo + fval($(this).attr('id'));
+					});
 				}else{
-					//armar el objeto
-					var data = {
-						'tank' 				: destiny,
-						'water_volume' 		: fval('ca_wa'),
-						'chemical_volume' 	: fval('voltotalchem'),
-						'chemicals' 		: []
-					}
+					var aforo_maximo 		= fval('voltkaforo_'+destiny);
+					var cantidad_ocupada 	= fval('volfinal_'+destiny); 
+				}
 
+				//validar que el incremento de volumen no sea mayor que la capacidad disponible
+				var capacidad_disponible 	= aforo_maximo - cantidad_ocupada;
+				var capacidad_requerida 	= fval('voltotalchem') + fval('ca_wa');
+
+				if(capacidad_disponible < capacidad_requerida){
+					alert('There is not enought room in the destiny tank. Please verify the quantities and water aditions to continue.');
+				}else{
+					//validar que las cantidades a consumir de cada elemento no sean mayores que las que hay en stock.
+					var eqty = 0;
 					$('.used').each(function(){
 						var id = $(this).attr('id');
 							id = id.split('_');
 							id = id[1];
 
-						var this_chemical = {
-							'id' 			: id,
-							'used' 			: ival($(this).attr('id')),
-							'volume' 		: fval('volincr_'+id),
-							'add_quimica' 	: ival('concincr_'+id)
+						if(ival($(this).attr('id')) > ival('ac_stock_'+id)){
+							eqty = eqty + 1;
 						}
 
-						data.chemicals.push(this_chemical);
 					});
 
-					//ajax
-					$.post('/rest_mvc/chemical_adition',$.toJSON(data),function(r){
-						if(r == true){
-							//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
-							load_materials_status();
-							load_ac_status();
-							load_tank_status();
-							load_current_concentrations();
-							//emular click del usuario sobre el boton cancelar
-							$('#add_chemicals_overlay .close_link').click();
+					if(eqty > 0){
+						alert('You cannot use more material than the one in stock. Please verify your quantities and try again.');
+					}else{
+						//ocultar el link de cancelar, el boton de adicion de quimica
+						// y mostrar el boton de trabajando...
+						$('#add_chemicals_btn').hide();
+						$('#add_chemicals_overlay .close_link').hide();
+						$('#add_chemicals_btn_working').show();
+
+						//armar el objeto
+						var data = {
+							'tank' 				: destiny,
+							'water_volume' 		: fval('ca_wa'),
+							'chemical_volume' 	: fval('voltotalchem'),
+							'chemicals' 		: []
 						}
-					},'json');
+
+						$('.used').each(function(){
+							var id = $(this).attr('id');
+								id = id.split('_');
+								id = id[1];
+
+							var this_chemical = {
+								'id' 			: id,
+								'used' 			: ival($(this).attr('id')),
+								'volume' 		: fval('volincr_'+id),
+								'add_quimica' 	: ival('concincr_'+id)
+							}
+
+							data.chemicals.push(this_chemical);
+						});
+
+						//ajax
+						$.post('/rest_mvc/chemical_adition',$.toJSON(data),function(r){
+							if(r == true){
+								//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
+								load_tank_status();
+								load_materials_status();
+								load_ac_status();
+								load_current_concentrations();
+								correr_calculos();
+					
+								//emular click del usuario sobre el boton cancelar
+								$('#add_chemicals_overlay .close_link').show();
+								$('#add_chemicals_overlay .close_link').click();
+								$('#add_chemicals_btn').show();
+								$('#add_chemicals_btn_working').hide();
+							}
+						},'json');
+					}
 				}
 			}
 		}
@@ -1679,8 +1689,9 @@ $(function(){
 					completar_campo_val('volfinal_'+id,this.volumen_final);
 				}
 			});
+			
+			correr_calculos();
 		});
-		correr_calculos();
 	}
 
 	function load_current_concentrations(){
@@ -1693,96 +1704,109 @@ $(function(){
 
 	//transfer_volume_btn: transferir volumen desde y hacia el activo
 	$('#transfer_volume_btn').click(function(){
-		//validar que siempre uno de los campos sea el activo y el otro sea
-		//diferente del activo
+		var confirmation = confirm('Are you sure you want to perform this action?');
 
-		var origin 	= $('#tv_origin').val(); 
-		var destiny = $('#tv_destiny').val();
+		if(confirmation){
 
-		if(origin == destiny){
-			alert('Origin and destiny must be different tanks.');
-		}else{
-			if(parseInt(origin) !== 0){
-				if(parseInt(destiny) == 0){
-					var semaforo = 'verde';
-				}else{
-					var semaforo = 'rojo';
-				}
-			}else if(parseInt(destiny) !== 0){
-				if(parseInt(origin) == 0){
-					var semaforo = 'verde';
-				}else{
-					var semaforo = 'rojo';
-				}
-			}
+			//validar que siempre uno de los campos sea el activo y el otro sea
+			//diferente del activo
 
-			if(semaforo == 'rojo'){
-				alert('You can make mud transfer only from and to the active system');
+			var origin 	= $('#tv_origin').val(); 
+			var destiny = $('#tv_destiny').val();
+
+			if(origin == destiny){
+				alert('Origin and destiny must be different tanks.');
 			}else{
-				var volume = fval('tv_volume');
-				if(volume == 0){
-					alert('You must define a volume and make sure it is different from zero.');
-				}else{
-					//get the origin maximun and current volume and make sure it has enought mud 
-					//in order to make the transfer
-
-					if(parseInt(origin) == 0){
-						var aforo_origen 	= 0;
-						$('#inside_circuit_active_tanks .voltkaforo').each(function(){
-							aforo_origen = aforo_origen + fval($(this).attr('id'));
-						});
-						var volumen_origen = fval('volfinalact');
-					}else{
-						var aforo_origen 	= fval('voltkaforo_'+origin); 
-						var volumen_origen 	= fval('volfinal_'+origin);
-					}
-
-					//get the destiny maximun and current volume and make sure it has enougth room
-					//to receive the mud
-
+				if(parseInt(origin) !== 0){
 					if(parseInt(destiny) == 0){
-						var aforo_destino 	= 0;
-						$('#inside_circuit_active_tanks .voltkaforo').each(function(){
-							aforo_destino = aforo_destino + fval($(this).attr('id'));
-						});
-						var volumen_destino = fval('volfinalact');
+						var semaforo = 'verde';
 					}else{
-						var aforo_destino 		= fval('voltkaforo_'+origin); 
-						var volumen_destino 	= fval('volfinal_'+origin);	
+						var semaforo = 'rojo';
 					}
-
-					if(volumen_origen < volume){
-						alert('You can transfer only '+volumen_origen+' bbl from the origin tank to make this transfer.');
+				}else if(parseInt(destiny) !== 0){
+					if(parseInt(origin) == 0){
+						var semaforo = 'verde';
 					}else{
-						//exito... hacer la transferencia de volumenes y actualizar el estado de las concentraciones
-						var data = {
-							'origin' 	: origin,	
-							'destiny' 	: destiny,
-							'volume'	: volume
+						var semaforo = 'rojo';
+					}
+				}
+
+				if(semaforo == 'rojo'){
+					alert('You can make mud transfer only from and to the active system');
+				}else{
+					var volume = fval('tv_volume');
+					if(volume == 0){
+						alert('You must define a volume and make sure it is different from zero.');
+					}else{
+						//get the origin maximun and current volume and make sure it has enought mud 
+						//in order to make the transfer
+
+						if(parseInt(origin) == 0){
+							var aforo_origen 	= 0;
+							$('#inside_circuit_active_tanks .voltkaforo').each(function(){
+								aforo_origen = aforo_origen + fval($(this).attr('id'));
+							});
+							var volumen_origen = fval('volfinalact');
+						}else{
+							var aforo_origen 	= fval('voltkaforo_'+origin); 
+							var volumen_origen 	= fval('volfinal_'+origin);
 						}
 
-						$.post('/rest_mvc/transferencia_volumen',$.toJSON(data),function(r){
-							if(r == true){
-								//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
-								load_materials_status();
-								load_ac_status();
-								load_tank_status();
-								load_current_concentrations();
-								$('#mtr_overlay .close_link').click();
-							}
-						},'json');
-						
-						/*
-						var espacio_disponible_destino = aforo_destino - volumen_destino;
-						if(espacio_disponible_destino < volume){
-							alert('You have only '+espacio_disponible_destino+' bbl in the destiny tank avaliable to make this transfer');
+						//get the destiny maximun and current volume and make sure it has enougth room
+						//to receive the mud
+
+						if(parseInt(destiny) == 0){
+							var aforo_destino 	= 0;
+							$('#inside_circuit_active_tanks .voltkaforo').each(function(){
+								aforo_destino = aforo_destino + fval($(this).attr('id'));
+							});
+							var volumen_destino = fval('volfinalact');
 						}else{
+							var aforo_destino 		= fval('voltkaforo_'+origin); 
+							var volumen_destino 	= fval('volfinal_'+origin);	
+						}
 
+						if(volumen_origen < volume){
+							alert('You can transfer only '+volumen_origen+' bbl from the origin tank to make this transfer.');
+						}else{
+							//exito... hacer la transferencia de volumenes y actualizar el estado de las concentraciones
+							$('#transfer_volume_btn').hide();
+							$('#mtr_overlay .close_link').hide();
+							$('#transfer_volume_btn_working').show();
+
+
+							var data = {
+								'origin' 	: origin,	
+								'destiny' 	: destiny,
+								'volume'	: volume
+							}
+
+							$.post('/rest_mvc/transferencia_volumen',$.toJSON(data),function(r){
+								if(r == true){
+									//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
+									load_materials_status();
+									load_ac_status();
+									load_tank_status();
+									load_current_concentrations();
+									$('#mtr_overlay .close_link').click();
+									$('#transfer_volume_btn').show();
+									$('#mtr_overlay .close_link').show();
+									$('#transfer_volume_btn_working').hide();
+								}
+							},'json');
 							
-						}*/
-					}
-				}
+							/*
+							var espacio_disponible_destino = aforo_destino - volumen_destino;
+							if(espacio_disponible_destino < volume){
+								alert('You have only '+espacio_disponible_destino+' bbl in the destiny tank avaliable to make this transfer');
+							}else{
 
+								
+							}*/
+						}
+					}
+
+				}
 			}
 		}
 	});

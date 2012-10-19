@@ -31,6 +31,9 @@
 				</table>
 			</fieldset>
 			<input type="hidden" id="ca_tank" value="" />
+
+			<input type="button" value="Working..." id="add_chemicals_btn_working" style="float:right;margin-top:20px;display:none;" />
+
 			<input type="button" value="Add Chemicals" id="add_chemicals_btn" style="float:right;margin-top:20px;" />
 			<a href="#close" class="close_link" style="display:block;float:left;margin-top:26px;">Cancel</a>
 		</div>

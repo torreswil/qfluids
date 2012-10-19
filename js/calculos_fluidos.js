@@ -1936,6 +1936,7 @@ function calculos_raw(){
 	//balancefluido
 	var balancefluido = 0;
 		balancefluido = totalcirculate - volfinalact;
+		log(totalcirculate,volfinalact);
 	completar_campo_val('balancefluido',Math.round(balancefluido));
 
 	//total_consumption_today

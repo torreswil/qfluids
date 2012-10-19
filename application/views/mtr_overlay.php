@@ -67,6 +67,9 @@
 					</tbody>
 				</table>
 			</fieldset>
+
+			<input type="button" value="Working..." id="transfer_volume_btn_working" style="float:right;margin-top:20px;display:none;" />
+
 			<input type="button" value="Transfer Mud" style="margin-top:20px;float:right;" id="transfer_volume_btn" />
 			<a href="#close" class="close_link" style="display:block;float:left;margin-top:27px;">Cancel</a>
 		</div>
