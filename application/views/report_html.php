@@ -504,18 +504,7 @@
                                                 <tr>
                                                         <td class="span6">Ca++</td>
                                                         <td class="span5 txt-right">mg/lt</td>
-                                                </tr>
-                                                <?php $counter = 0; ?>
-                                                <?php foreach($pacp as $fila): ?>  
-                                                        <?php if($fila['custom']==1) { ?>
-                                                                <?php $counter++; ?>
-                                                                <tr>
-                                                                        <td class="span6"><?= ucfirst($fila['test']);?></td>
-                                                                        <td class="span5 txt-right"><?= $fila['unit_test'];?></td>
-                                                                </tr>                                                                 
-                                                                <?php if($counter==5) { break; } ?>                                                        
-                                                        <?php } ?>
-                                                <?php endforeach; ?>                                                        
+                                                </tr>                                                                
                                         </tbody> 
                                 </table>
                                 <div class="b-top" style="width: 100%;"></div>
@@ -554,26 +543,25 @@
                                                         <td class="span6">Inhibitor</td>
                                                         <td class="span5 txt-right">gpb</td>
                                                 </tr>
-                                                <tr>
-                                                        <td class="span6">&nbsp;</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">&nbsp;</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">&nbsp;</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">&nbsp;</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span6">&nbsp;</td>
-                                                        <td class="span5 txt-right"></td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                <?php foreach($pacp as $fila): ?>  
+                                                        <?php if($fila['custom']==1) { ?>
+                                                                <?php $counter++; ?>
+                                                                <tr>
+                                                                        <td class="span6"><?= ucfirst($fila['test']);?></td>
+                                                                        <td class="span5 txt-right"><?= $fila['unit_test'];?></td>
+                                                                </tr>                                                                 
+                                                                <?php if($counter==5) { break; } ?>                                                        
+                                                        <?php } ?>
+                                                <?php endforeach; ?>
+                                                <?php $counter++; ?>
+                                                <?php while($counter <= 5) { ?>
+                                                        <tr>
+                                                                <td class="span6">&nbsp;</td>
+                                                                <td class="span5 txt-right">&nbsp;</td>
+                                                        </tr>                                                                 
+                                                        <?php $counter++; ?>
+                                                <?php } ?>
                                                 <tr>
                                                         <td class="span6">n</td>
                                                         <td class="span5 txt-right"></td>
@@ -767,22 +755,7 @@
                                                         <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '&nbsp' : $rs[0]['value']; ?></td>
                                                         <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '&nbsp' : $rs[1]['value']; ?></td>
                                                         <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '&nbsp' : $rs[2]['value']; ?></td>
-                                                </tr>
-                                                <?php $counter = 0; ?>
-                                                <?php foreach($pacp as $fila): ?>  
-                                                        <?php if($fila['custom']==1) { ?>
-                                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$fila['id'], 'phase'=>$project['current_phase'])); ?>
-                                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$fila['id'])); ?>
-                                                                <?php $counter++; ?>
-                                                                <tr>
-                                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '&nbsp' : $program[0]['value_program'];?></td>
-                                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '&nbsp' : $rs[0]['value']; ?></td>
-                                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '&nbsp' : $rs[1]['value']; ?></td>
-                                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '&nbsp' : $rs[2]['value']; ?></td>
-                                                                </tr>                                                                 
-                                                                <?php if($counter==5) { break; } ?>                                                        
-                                                        <?php } ?>
-                                                <?php endforeach; ?>                                                        
+                                                </tr>                                                                                                        
                                         </tbody> 
                                 </table>                                
                                 
@@ -853,36 +826,32 @@
                                                         <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '&nbsp' : $rs[1]['value']; ?></td>
                                                         <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '&nbsp' : $rs[2]['value']; ?></td>
                                                 </tr>
-                                                <tr>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                <?php foreach($pacp as $fila): ?>  
+                                                        <?php if($fila['custom']==1) { ?>
+                                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$fila['id'], 'phase'=>$project['current_phase'])); ?>
+                                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$fila['id'])); ?>
+                                                                <?php $counter++; ?>
+                                                                <tr>
+                                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '&nbsp' : $program[0]['value_program'];?></td>
+                                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '&nbsp' : $rs[0]['value']; ?></td>
+                                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '&nbsp' : $rs[1]['value']; ?></td>
+                                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '&nbsp' : $rs[2]['value']; ?></td>
+                                                                </tr>                                                                 
+                                                                <?php if($counter==5) { break; } ?>                                                        
+                                                        <?php } ?>
+                                                <?php endforeach; ?>
+                                                <?php $counter++; ?>
+                                                <?php while($counter <= 5) { ?>
+                                                        <tr>
+                                                                <td class="span3 txt-center">&nbsp;</td>
+                                                                <td class="span3 txt-center">&nbsp;</td>
+                                                                <td class="span3 txt-center">&nbsp;</td>
+                                                                <td class="span3 txt-center">&nbsp;</td>
+                                                        </tr>                                                                 
+                                                        <?php $counter++; ?>
+                                                <?php } ?>
+                                                
                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[27]['id'], 'phase'=>$project['current_phase'])); ?>
                                                 <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[27]['id'])); ?>
                                                 <tr>

@@ -69,22 +69,17 @@
                                 <table>
                                         <tr>
                                                 <td class="label_m"><label>Test name:</label></td>
-                                                <td class="label_m"><label>Report Unit:</label></td>
-                                                <td class="label_m"><label>Type:</label></td>
+                                                <td class="label_m"><label>Report Unit:</label></td>                                                
                                                 <td></td>
                                         </tr>
 
                                         <tr>
                                                 <td><input type="text" name="test" style="width:110px;" /></td>
                                                 <td><input type="text" name="unit_test" style="width:110px;" /></td>
-                                                <td>
-                                                        <select name="type_test" style="width:200px;">                                                                
-                                                                <option value="1">Physical and Chemical properties</option>                                                                
-                                                        </select>
-                                                </td>            
                                                 <td class="label_m">
                                                         <a href="#create_test">Create</a>                                                
                                                         <input type="hidden" name="custom" value="1" />
+                                                        <input type="hidden" name="type_test" value="1" />
                                                 </td>
                                         </tr>                                
 

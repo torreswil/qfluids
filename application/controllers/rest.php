@@ -583,9 +583,10 @@ class Rest extends CI_Controller {
          * MUD PROPERTIES
          */
         public function load_test(){
+                $project = $this->Api->get_where('projects', array('id'=>$this->project_id));
+                $project = $project[0];
+                
 		if(count($_POST) > 0){	    
-                        
-                        $project = $this->session->userdata('project');
                         
                         $tests = $this->Api->get_where('test', $_POST);
                                                 

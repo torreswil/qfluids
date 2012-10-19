@@ -1336,17 +1336,12 @@ $(function(){
 			if($(this).val() == ''){
 				eqty = eqty + 1;
 			}
-		});
-		$('select',current_form).each(function(){
-			if($(this).val() == ''){
-				eqty = eqty + 1;
-			}
-		});
+		});		
 		if(eqty > 0){
 			alert('Some fields are empty, please verify and try again.');
 		} else {
 			var data = current_form.serialize();
-			$('input[name="test"],input[name="unit_test"],select[name="type_test"]',current_form).val('');
+			$('input[name="test"],input[name="unit_test"]',current_form).val('');
 			$.post('/rest/new_test',data,function(r){
 				if(r.message == 'already_created'){
 					alert('This test is already created');
