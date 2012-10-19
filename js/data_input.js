@@ -1462,7 +1462,7 @@ $(function(){
 
 		//si es de una reserva al activo
 		if(parseInt($('#tv_destiny').val()) == 0){
-			var tanque_origen 	= $('#tv_origen').val();
+			var tanque_origen 	= $('#tv_origin').val();
 			var tanque_destino 	= 0;
 			var volumen_destino = fval('volfinalact');
 
@@ -1731,7 +1731,7 @@ $(function(){
 						$('#inside_circuit_active_tanks .voltkaforo').each(function(){
 							aforo_origen = aforo_origen + fval($(this).attr('id'));
 						});
-						var volumen_origen = fval('activepits');
+						var volumen_origen = fval('volfinalact');
 					}else{
 						var aforo_origen 	= fval('voltkaforo_'+origin); 
 						var volumen_origen 	= fval('volfinal_'+origin);
@@ -1745,40 +1745,41 @@ $(function(){
 						$('#inside_circuit_active_tanks .voltkaforo').each(function(){
 							aforo_destino = aforo_destino + fval($(this).attr('id'));
 						});
-						var volumen_destino = fval('activepits');
+						var volumen_destino = fval('volfinalact');
 					}else{
 						var aforo_destino 		= fval('voltkaforo_'+origin); 
 						var volumen_destino 	= fval('volfinal_'+origin);	
 					}
 
-					volumen_origen = 1000; //ojo aca
 					if(volumen_origen < volume){
 						alert('You can transfer only '+volumen_origen+' bbl from the origin tank to make this transfer.');
 					}else{
+						//exito... hacer la transferencia de volumenes y actualizar el estado de las concentraciones
+						var data = {
+							'origin' 	: origin,	
+							'destiny' 	: destiny,
+							'volume'	: volume
+						}
+
+						$.post('/rest_mvc/transferencia_volumen',$.toJSON(data),function(r){
+							if(r == true){
+								//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
+								load_materials_status();
+								load_ac_status();
+								load_tank_status();
+								load_current_concentrations();
+								$('#mtr_overlay .close_link').click();
+							}
+						},'json');
+						
+						/*
 						var espacio_disponible_destino = aforo_destino - volumen_destino;
-							espacio_disponible_destino = 1000; //ojo aca
 						if(espacio_disponible_destino < volume){
 							alert('You have only '+espacio_disponible_destino+' bbl in the destiny tank avaliable to make this transfer');
 						}else{
 
-							//exito... hacer la transferencia de volumenes y actualizar el estado de las concentraciones
-							var data = {
-								'origin' 	: origin,	
-								'destiny' 	: destiny,
-								'volume'	: volume
-							}
-
-							$.post('/rest_mvc/transferencia_volumen',$.toJSON(data),function(r){
-								if(r == true){
-									//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
-									load_materials_status();
-									load_ac_status();
-									load_tank_status();
-									load_current_concentrations();
-									$('#mtr_overlay .close_link').click();
-								}
-							},'json');
-						}
+							
+						}*/
 					}
 				}
 

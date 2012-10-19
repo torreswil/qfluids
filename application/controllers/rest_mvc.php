@@ -351,6 +351,7 @@ class Rest_mvc extends CI_Controller {
 			$estado_origen = $this->Api->get_where('tank_status_time',array('project'=>$this->project_id,'tank'=>$origen,'activo'=>1));
 			if(count($estado_origen) == 0){
 				$estado_origen = array(
+					'id'							=> 0,
 					'project'						=> $this->project_id,
 					'report'						=> $this->report_id,
 					'tank'							=> $origen,
@@ -375,6 +376,7 @@ class Rest_mvc extends CI_Controller {
 
 			if(count($estado_destino) == 0){
 				$estado_destino = array(
+					'id'							=> 0,
 					'project'						=> $this->project_id,
 					'report'						=> $this->report_id,
 					'tank'							=> $origen,
@@ -481,6 +483,7 @@ class Rest_mvc extends CI_Controller {
 
 			
 			foreach ($productos as $producto) {
+				//ORIGEN
 				//inicializar los espacios para actualizar la concentracion en la tabla de concentraciones para el origen (las concentraciones no cambian)
 				$concentracion_en_blanco = array(
 					'tank_status_time'  => $id_nuevo_estado_origen,
@@ -495,14 +498,16 @@ class Rest_mvc extends CI_Controller {
 				
 				if(count($estado_actual_material) > 0){
 					$estado_actual_material = $estado_actual_material[0];
+					
 					$vieja_concentracion_origen = array(
 						'concentracion' 	=> $estado_actual_material['concentracion']
 					);
+					
 					$this->Api->update_where('concentrations',$vieja_concentracion_origen,array('tank_status_time'=>$id_nuevo_estado_origen,'material'=>$producto['product_id']));
 				}
 
 
-
+				//DESTINO
 				//inicializar los espacios para actualizar la concentracion en la tabla de concentraciones para el destino (las concentraciones del destino varian)
 				$concentracion_en_blanco = array(
 					'tank_status_time'  => $id_nuevo_estado_destino,
@@ -529,10 +534,18 @@ class Rest_mvc extends CI_Controller {
 
 				//por cada material, recalcular la concentracion
 				$nueva_concentracion = array(
-					// (Vo*Co+Vtanquedonderecive*Coriginalderecivo) / ( vtanquedonde recive +vtanqueoriginal)
 					'concentracion' 	=> ($volumen * $vieja_concentracion_origen['concentracion'] + $estado_destino['volumen_final'] * $vieja_concentracion_destino['concentracion']) / ($volumen + $estado_destino['volumen_final'])
 				);
 				$this->Api->update_where('concentrations',$nueva_concentracion,array('tank_status_time'=>$id_nuevo_estado_destino,'material'=>$producto['product_id']));	
+				
+
+				//OTRA VEZ ORIGEN
+				if($nuevo_estado_origen['volumen_final'] == 0){
+					$vieja_concentracion_origen = array(
+						'concentracion' 	=> 0
+					);
+					$this->Api->update_where('concentrations',$vieja_concentracion_origen,array('tank_status_time'=>$id_nuevo_estado_origen,'material'=>$producto['product_id']));
+				}	
 			}
 
 			echo json_encode(true);
