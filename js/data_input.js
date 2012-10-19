@@ -1121,7 +1121,7 @@ $(function(){
 	});
 
 	$('#btn_mud_selected').click(function(e){
-		e.preventDefault();
+		e.preventDefault();                
 		if($('#checkbox_mud_not_found:checked').length == 1){
 			var error_qty = 0;
 			$('#new_mud_form input').each(function(){
@@ -1134,6 +1134,7 @@ $(function(){
 				alert('Some fields are empty, please verify and try again');
 			}else{
 				var data = $('#new_mud_form').serialize();
+                                $('.pick_mud').val($('#new_mud_form input').val());	
 				$.post('/rest/insert_mud',data,function(r){
 					$('.pick_mud').val($('#new_mud_form input').val());	
 					$('#checkbox_mud_not_found').removeAttr('checked');
@@ -1154,8 +1155,9 @@ $(function(){
 			$('#select_mud_overlay').hide();
 			$('.pick_mud').removeAttr('disabled');
 			$('#table_mud_creator').hide();	
-		}
-
+		}                
+                                
+                $.post('/rest/save_report_settings',{ mud_type: $('.pick_mud').val() },function(r){ });                
 	});
 
 	//clocks

@@ -8,7 +8,7 @@
 					<label class="emphasis">Mud Type:</label>
 				</td>
 				<td>
-					<input id="pick_mud_type" type="text" class="medium pick_mud" value="Please select..." />
+					<input name="mud_type" type="text" class="medium pick_mud" value="Please select..." />
 				</td>
 			</tr>
 		</table>

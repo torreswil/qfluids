@@ -79,11 +79,12 @@ class Rest extends CI_Controller {
 		$date 								= date_format($date,'Y-m-d');
 		
 		$report 							= array();
-		$report['transactional_id'] 		= $_POST['project_transactional_id'].'_qflrpt_'.$number;
-		$report['project_transactional_id'] = $_POST['project_transactional_id'];
-		$report['date'] 					= $date;
-		$report['number'] 					= $number;
-        $report['phase']            		= $_POST['phase'];
+		$report['transactional_id']                                     = $_POST['project_transactional_id'].'_qflrpt_'.$number;
+		$report['project_transactional_id']                             = $_POST['project_transactional_id'];
+		$report['date']                                                 = $date;
+		$report['number']                                               = $number;
+                $report['phase']                                                = $_POST['phase'];
+                $report['project']                                              = $this->project_id;
 
 		$this->Api->create('reports',$report);
 		$this->Api->update_where('projects',array('current_phase'=>$_POST['phase']),array('id'=>$this->project_id));
@@ -111,6 +112,13 @@ class Rest extends CI_Controller {
                                         <td><input type="text" style="width:100px;" disabled="disabled" value="<?= $reporte['phase']; ?>" /></td>
                                 </tr>                                
                         <?php } 
+                }
+        }
+        
+        public function save_report_settings() {
+                if(count($_POST) > 0) {
+                        $this->Api->update_where('reports', $_POST, array('id'=>$this->report_id) );
+                        echo json_encode(array('message'=>'report_updated', 'report'=>$this->report_id));
                 }
         }
 

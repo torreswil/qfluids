@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-10-2012 a las 15:45:30
+-- Tiempo de generación: 19-10-2012 a las 16:37:33
 -- Versión del servidor: 5.5.24
 -- Versión de PHP: 5.3.10-1ubuntu3.4
 
@@ -1583,16 +1583,15 @@ CREATE TABLE IF NOT EXISTS `reports` (
   `number` int(11) DEFAULT NULL,
   `generated` int(11) DEFAULT '0',
   `phase` int(11) DEFAULT NULL,
-  `lodo_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_reports_lodos_idx` (`lodo_id`)
+  `mud_type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Volcado de datos para la tabla `reports`
 --
 
-INSERT INTO `reports` (`id`, `project`, `transactional_id`, `project_transactional_id`, `date`, `number`, `generated`, `phase`, `lodo_id`) VALUES
+INSERT INTO `reports` (`id`, `project`, `transactional_id`, `project_transactional_id`, `date`, `number`, `generated`, `phase`, `mud_type`) VALUES
 (1, 1, 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', 1, 0, NULL, NULL),
 (5, 1, 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', 2, 0, NULL, NULL),
 (6, 1, 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', 3, 0, NULL, NULL),
@@ -2187,12 +2186,6 @@ ALTER TABLE `project_report_test`
   ADD CONSTRAINT `project_report_test_ibfk_1` FOREIGN KEY (`program_id`) REFERENCES `program` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `project_report_test_ibfk_2` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `project_report_test_ibfk_3` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `reports`
---
-ALTER TABLE `reports`
-  ADD CONSTRAINT `fk_reports_lodos` FOREIGN KEY (`lodo_id`) REFERENCES `lodos` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `rig`
