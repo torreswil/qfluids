@@ -1,3 +1,5 @@
+<?php $reporte = $this->session->userdata('report'); ?>
+
 <div class="row">
         <table class="table table-stripted table-condensed b-bottom">
                 <tr class="">
@@ -502,7 +504,18 @@
                                                 <tr>
                                                         <td class="span6">Ca++</td>
                                                         <td class="span5 txt-right">mg/lt</td>
-                                                </tr>                                                                                               
+                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                <?php foreach($pacp as $fila): ?>  
+                                                        <?php if($fila['custom']==1) { ?>
+                                                                <?php $counter++; ?>
+                                                                <tr>
+                                                                        <td class="span6"><?= ucfirst($fila['test']);?></td>
+                                                                        <td class="span5 txt-right"><?= $fila['unit_test'];?></td>
+                                                                </tr>                                                                 
+                                                                <?php if($counter==5) { break; } ?>                                                        
+                                                        <?php } ?>
+                                                <?php endforeach; ?>                                                        
                                         </tbody> 
                                 </table>
                                 <div class="b-top" style="width: 100%;"></div>
@@ -585,176 +598,260 @@
                                         <tbody>
                                                 <tr>
                                                         <td class="span3 strong">PROGRAM</td>
-                                                        <td class="span3 txt-center">06:00</td>
-                                                        <td class="span3 txt-center">06:00</td>
-                                                        <td class="span3 txt-center">06:00</td>
-                                                </tr>
+                                                        <td class="span3 txt-center"><?= (empty($mud_properties_hour[0]['hour'])) ? '' : date("H:i", strtotime($mud_properties_hour[0]['hour'])); ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($mud_properties_hour[1]['hour'])) ? '' : date("H:i", strtotime($mud_properties_hour[1]['hour'])); ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($mud_properties_hour[2]['hour'])) ? '' : date("H:i", strtotime($mud_properties_hour[2]['hour'])); ?></td>
+                                                </tr>                                                
+                                                
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[0]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[0]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">100</td>
-                                                        <td class="span3 txt-center">100</td>
-                                                        <td class="span3 txt-center">100</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[1]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[1]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">PIT</td>
-                                                        <td class="span3 txt-center">PIT</td>
-                                                        <td class="span3 txt-center">PIT</td>
-                                                        <td class="span3 txt-center">PIT</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : strtoupper($rs[0]['value']); ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : strtoupper($rs[1]['value']); ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : strtoupper($rs[2]['value']); ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[2]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[2]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">92</td>
-                                                        <td class="span3 txt-center">92</td>
-                                                        <td class="span3 txt-center">92</td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span3 txt-center">8.8 - 9</td>
-                                                        <td class="span3 txt-center">9,7</td>
-                                                        <td class="span3 txt-center">9,7</td>
-                                                        <td class="span3 txt-center">9,7</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>		
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[3]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[3]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">45 - 60</td>
-                                                        <td class="span3 txt-center">45</td>
-                                                        <td class="span3 txt-center">45</td>
-                                                        <td class="span3 txt-center">45</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[4]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[4]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">13</td>
-                                                        <td class="span3 txt-center">13</td>
-                                                        <td class="span3 txt-center">13</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[24]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[24]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">19</td>
-                                                        <td class="span3 txt-center">19</td>
-                                                        <td class="span3 txt-center">19</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[25]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[25]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">2</td>
-                                                        <td class="span3 txt-center">2</td>
-                                                        <td class="span3 txt-center">2</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs[0]['value'])) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs[1]['value'])) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs[2]['value'])) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[26]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[26]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center"></td>
-                                                        <td class="span3 txt-center">5/12/26</td>
-                                                        <td class="span3 txt-center">5/12/26</td>
-                                                        <td class="span3 txt-center">5/12/26</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[21]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[21]['id'])); ?>
+                                                <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[22]['id'])); ?>
+                                                <?php $rs3 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[23]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center"></td>
-                                                        <td class="span3 txt-center">45/32</td>
-                                                        <td class="span3 txt-center">45/32</td>
-                                                        <td class="span3 txt-center">45/32</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[0]['value']) && empty($rs2[0]['value']) && empty($rs3[0]['value']) ) ? '' : $rs1[0]['value'].'/'.$rs2[0]['value'].'/'.$rs3[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[1]['value']) && empty($rs2[1]['value']) && empty($rs3[1]['value']) ) ? '' : $rs1[1]['value'].'/'.$rs2[1]['value'].'/'.$rs3[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) && empty($rs3[2]['value']) ) ? '' : $rs1[2]['value'].'/'.$rs2[2]['value'].'/'.$rs3[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[15]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[15]['id'])); ?>
+                                                <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[16]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center"></td>
-                                                        <td class="span3 txt-center">28/41</td>
-                                                        <td class="span3 txt-center">28/41</td>
-                                                        <td class="span3 txt-center">28/41</td>
-                                                </tr>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[0]['value']) && empty($rs2[0]['value']) ) ? '' : $rs1[0]['value'].'/'.$rs2[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[1]['value']) && empty($rs2[1]['value']) ) ? '' : $rs1[1]['value'].'/'.$rs2[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
+                                                </tr>                                                
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[16]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[17]['id'])); ?>
+                                                <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[18]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center"></td>
-                                                        <td class="span3 txt-center">4/3</td>
-                                                        <td class="span3 txt-center">4/3</td>
-                                                        <td class="span3 txt-center">4/3</td>
-                                                </tr>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[0]['value']) && empty($rs2[0]['value']) ) ? '' : $rs1[0]['value'].'/'.$rs2[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[1]['value']) && empty($rs2[1]['value']) ) ? '' : $rs1[1]['value'].'/'.$rs2[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
+                                                </tr>                                                
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[19]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[20]['id'])); ?>
+                                                <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[21]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">8.5 - 9</td>
-                                                        <td class="span3 txt-center">8,7</td>
-                                                        <td class="span3 txt-center">8,7</td>
-                                                        <td class="span3 txt-center">8,7</td>
-                                                </tr>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[0]['value']) && empty($rs2[0]['value']) ) ? '' : $rs1[0]['value'].'/'.$rs2[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[1]['value']) && empty($rs2[1]['value']) ) ? '' : $rs1[1]['value'].'/'.$rs2[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
+                                                </tr>                                                                                                
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[9]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[9]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">0,4</td>
-                                                        <td class="span3 txt-center">0,4</td>
-                                                        <td class="span3 txt-center">0,4</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[10]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[10]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">0,3/0,55</td>
-                                                        <td class="span3 txt-center">0,3/0,55</td>
-                                                        <td class="span3 txt-center">0,3/0,55</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[11]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[11]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">5/1</td>
-                                                        <td class="span3 txt-center">5/1</td>
-                                                        <td class="span3 txt-center">5/1</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[5]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[5]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">0,1</td>
-                                                        <td class="span3 txt-center">0,1</td>
-                                                        <td class="span3 txt-center">0,1</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[6]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[6]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center"><25</td>
-                                                        <td class="span3 txt-center">22</td>
-                                                        <td class="span3 txt-center">22</td>
-                                                        <td class="span3 txt-center">22</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[12]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[12]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">900</td>
-                                                        <td class="span3 txt-center">900</td>
-                                                        <td class="span3 txt-center">900</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[13]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[13]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">50</td>
-                                                        <td class="span3 txt-center">50</td>
-                                                        <td class="span3 txt-center">50</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[14]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[14]['id'])); ?>
+                                                <tr>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
+                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                <?php foreach($pacp as $fila): ?>  
+                                                        <?php if($fila['custom']==1) { ?>
+                                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$fila['id'], 'phase'=>$project['current_phase'])); ?>
+                                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$fila['id'])); ?>
+                                                                <?php $counter++; ?>
+                                                                <tr>
+                                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
+                                                                </tr>                                                                 
+                                                                <?php if($counter==5) { break; } ?>                                                        
+                                                        <?php } ?>
+                                                <?php endforeach; ?>                                                        
                                         </tbody> 
                                 </table>                                
                                 
                                 <div class="b-top" style="width: 100%;"></div>
                                 <table class="table table-stripted table-condensed">
                                         <tbody>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[30]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[30]['id'])); ?>
+                                                <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[31]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">98/</td>
-                                                        <td class="span3 txt-center">98/</td>
-                                                        <td class="span3 txt-center">98/</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[0]['value']) && empty($rs2[0]['value']) ) ? '' : $rs1[0]['value'].'/'.$rs2[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[1]['value']) && empty($rs2[1]['value']) ) ? '' : $rs1[1]['value'].'/'.$rs2[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
                                                 </tr> 
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[32]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[32]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">2/</td>
-                                                        <td class="span3 txt-center">2/</td>
-                                                        <td class="span3 txt-center">2/</td>
-                                                </tr> 
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
+                                                </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[33]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[33]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">2,67</td>
-                                                        <td class="span3 txt-center">2,67</td>
-                                                        <td class="span3 txt-center">2,67</td>
-                                                </tr> 
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
+                                                </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[34]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[34]['id'])); ?>
+                                                <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[35]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">36,36/106,84</td>
-                                                        <td class="span3 txt-center">36,36/106,84</td>
-                                                        <td class="span3 txt-center">36,36/106,84</td>
-                                                </tr> 
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[0]['value']) && empty($rs2[0]['value']) ) ? '' : $rs1[0]['value'].'/'.$rs2[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[1]['value']) && empty($rs2[1]['value']) ) ? '' : $rs1[1]['value'].'/'.$rs2[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
+                                                </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[36]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[36]['id'])); ?>
+                                                <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[37]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">0</td>
-                                                        <td class="span3 txt-center">3,8/11</td>
-                                                        <td class="span3 txt-center">3,8/11</td>
-                                                        <td class="span3 txt-center">3,8/11</td>
-                                                </tr> 
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[0]['value']) && empty($rs2[0]['value']) ) ? '' : $rs1[0]['value'].'/'.$rs2[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[1]['value']) && empty($rs2[1]['value']) ) ? '' : $rs1[1]['value'].'/'.$rs2[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
+                                                </tr>
                                         </tbody> 
                                 </table>
                                 <div class="b-top" style="width: 100%;"></div>
                                 <table class="table table-stripted table-condensed">
                                         <tbody>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[7]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[7]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
+                                                </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[8]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[8]['id'])); ?>
+                                                <tr>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
                                                 <tr>
                                                         <td class="span3 txt-center">&nbsp;</td>
@@ -786,29 +883,29 @@
                                                         <td class="span3 txt-center">&nbsp;</td>
                                                         <td class="span3 txt-center">&nbsp;</td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[27]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[27]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[28]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[28]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
+                                                <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[29]['id'], 'phase'=>$project['current_phase'])); ?>
+                                                <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[29]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
-                                                        <td class="span3 txt-center">&nbsp;</td>
+                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '' : $program[0]['value_program'];?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '' : $rs[0]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '' : $rs[1]['value']; ?></td>
+                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '' : $rs[2]['value']; ?></td>
                                                 </tr>
                                         </tbody> 
                                 </table>                                                        
@@ -1194,7 +1291,17 @@
                                                         <td class="span2">$ 250,00</td>
                                                         <td class="span4">Daily mud cost US$:</td>
                                                         <td class="span2">$ 910,00</td>                                                        
-                                                </tr>                                              
+                                                </tr> 
+                                                <?php $counter = 0; ?>
+                                                <?php foreach($pacp as $fila): ?>  
+                                                        <?php if($fila['custom']==1) { ?>
+                                                                <?php $counter++; ?>
+                                                                <tr>
+                                                                        <td colspan="4"></td>                                                                        
+                                                                </tr>                                                                 
+                                                                <?php if($counter==5) { break; } ?>                                                        
+                                                        <?php } ?>
+                                                <?php endforeach; ?>
                                         </tbody> 
                                 </table>                               
                         </div>

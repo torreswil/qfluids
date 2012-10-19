@@ -663,6 +663,9 @@ class Rest extends CI_Controller {
         public function save_program(){
 		$programs = json_decode($this->data_input);                
 		foreach ($programs as $program) {
+                        if(empty($program->value_program)) {
+                                $program->value_program = NULL;
+                        }
                         if(empty($program->id)) {
                                 $this->Api->create('program',array('project_id'=>$this->project_id, 'test_id'=>$program->test_id, 'phase'=>$program->phase, 'value_program'=>$program->value_program));
                         } else {
@@ -704,6 +707,9 @@ class Rest extends CI_Controller {
                 //Elimino los campos enviados con anterioridad para tener los nuevos almacenados
                 $this->Api->total_remove_where('project_report_test', array('report_id'=>$this->report_id));                
 		foreach ($values as $value) {                        
+                        if(empty($value->program_id)) {
+                                $value->program_id= NULL;
+                        }
                         $this->Api->create('project_report_test', array('report_id'=>$this->report_id, 'test_id'=>$value->test_id, 'program_id'=>$value->program_id, 'hour'=>$value->hour, 'value'=>$value->value));                        
 		}
 		echo json_encode(true);		
