@@ -567,7 +567,7 @@ $(function(){
 			
 
 			$.post(post_resource,data,function(r){
-				var append_string = no_option;
+				var append_string = no_option;                                
 				$(r).each(function(){
 					if(this.rod !== null){
 						if($('#pump_picker_type').val() == 'TRIPLEX'){
@@ -654,6 +654,22 @@ $(function(){
 		}else{
 			$('#pump_picker_presure').html(no_option);
 		}
+	});
+        
+        //Consulta el ID de según los campos seleccionados
+        $('#pump_picker_presure').change(function(e){
+                var data = {
+                        'maker'			: $('#pump_picker_maker').val(),
+                        'type'			: $('#pump_picker_type').val(),
+                        'strokelength'          : $('#pump_picker_stroke').val(),
+                        'linerdiameter'         : $('#pump_picker_diameter').val(),                        
+                        'modelo'		: $('#pump_picker_model').val(),
+                        'presure'		: $('#pump_presure').val(),
+                        'project_id'            : $('#project_id').val()
+                };
+                $.post('/rest/get_pump',data,function(r){                               
+                        $("#pump_picker_selected_id").val(r[0].id);
+                }, 'json');		
 	});
 
 	//SELECT O CREATE PUMP
@@ -785,7 +801,8 @@ $(function(){
 				$('#table_pump_creator select,#table_pump_creator input').attr('disabled','disabled');
 				$('#table_pump_creator').hide();
 				$('#select_pump_overlay').hide();
-				$('#pump_'+pump_number+'_maker').removeAttr('disabled');
+				$('#pump_'+pump_number+'_maker').removeAttr('disabled');   
+                                $('#pump_'+pump_number+'_maker_id').val($("#pump_picker_selected_id").val());
 
 			//limpiar el formulario
 			}else if(pump_continue == 'clear'){
@@ -908,6 +925,7 @@ $(function(){
 						$('#pump_'+pump_number+'_maker').removeAttr('disabled');
 
 						$('#eff_'+pump_number).focus();
+                                                $('#pump_'+pump_number+'_maker_id').val(r);
 						correr_calculos();	
 					},'json');
 				}else{
@@ -999,7 +1017,7 @@ $(function(){
 		e.preventDefault();
 		
 		//CREATE A NEW BIT
-		if($('#checkbox_bit_not_found:checked').length == 1){
+		if($('#checkbox_bit_not_found:checked').length == 1){                        
 			var od 		= $('#new_bit_form input[name=odfracc]').val();
 			od 			= od.split(' ');
 			if(od.length !== 2){
@@ -1049,7 +1067,7 @@ $(function(){
 					$('#broca_bit_type').val(bit_type_label);
 					$('#broca_bit_diameter').html($('#odfracc_new').val()+' in');
 					$('#broca_bit_model').html($('#nombre_modelo_new').val());
-					$('#broca_bit_oddeci').val($('#new_bit_form input[name=odddeci]').val());
+					$('#broca_bit_oddeci').val($('#new_bit_form input[name=odddeci]').val());                                        
 					$('#broca_bit_model_id').val(r);
 					hide_bit_overlay();
 				},'json');	
@@ -1155,9 +1173,7 @@ $(function(){
 			$('#select_mud_overlay').hide();
 			$('.pick_mud').removeAttr('disabled');
 			$('#table_mud_creator').hide();	
-		}                
-                                
-                $.post('/rest/save_report_settings',{ mud_type: $('.pick_mud').val() },function(r){ });                
+		}                                                                
 	});
 
 	//clocks

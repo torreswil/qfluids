@@ -221,6 +221,10 @@ class Rest extends CI_Controller {
 	public function get_pump_pression(){
 		echo json_encode($this->Api->get_distinct_where('bombas','presion',$_POST));	
 	}
+        
+        public function get_pump(){
+		echo json_encode($this->Api->get_where('bombas', $_POST));	
+	}
 
 	public function insert_pump(){
 		echo json_encode($this->Api->create('bombas',$_POST));
@@ -695,6 +699,37 @@ class Rest extends CI_Controller {
         /*==========================================================================================================*/
         // DATA INPUT SAVE
         /*==========================================================================================================*/
+        public function save_operational_info($type) {
+                $values = json_decode($this->data_input);
+                if($type=='bit') {
+                        //Elimino los campos enviados con anterioridad para tener los nuevos almacenados
+                        $this->Api->total_remove_where('project_report_bit', array('report_id'=>$this->report_id));                
+                        foreach ($values as $value) {                        
+                                $this->Api->create('project_report_bit', array('bit_number'=>$value->bit_number, 'brocas_modelos_id'=>$value->brocas_modelos_id, 'report_id'=>$this->report_id, 'jets1'=>$value->jets1, 'jets2'=>$value->jets2, 'jets3'=>$value->jets3, 'jets4'=>$value->jets4, 'jets5'=>$value->jets5, 'jets6'=>$value->jets6, 'jets7'=>$value->jets7, 'jets8'=>$value->jets8, 'jets9'=>$value->jets9, 'jets10'=>$value->jets10, 'jets11'=>$value->jets11, 'jets12'=>$value->jets12, 'result_jets'=>$value->result_jets, 'tfa'=>$value->tfa, 'vel_jets'=>$value->vel_jets, 'pd1'=>$value->pd1, 'pd2'=>$value->pd2, 'hhp'=>$value->hhp, 'hsi'=>$value->hsi));
+                        }
+                } else if($type=='pump') {                        
+                        $this->Api->total_remove_where('project_report_pump', array('report_id'=>$this->report_id));                
+                        foreach ($values as $value) {                                 
+                                $this->Api->create('project_report_pump', array('report_id'=>$this->report_id, 'bombas_id'=>$value->bombas_id, 'efficiency'=>$value->efficiency, 'spm'=>$value->spm, 'gal'=>$value->gal, 'gpm'=>$value->gpm));
+                        }
+                } else if($type=='drillingtime') {
+                        $this->Api->total_remove_where('project_report_drilling_time', array('report_id'=>$this->report_id));                
+                        foreach ($values as $value) {                                 
+                                $this->Api->create('project_report_drilling_time', array('report_id'=>$this->report_id, 'drilling'=>$value->drilling, 'time'=>$value->time));
+                        }
+                } else if($type=='drillingparameters') {
+                        $this->Api->total_remove_where('project_report_drilling_parameters', array('report_id'=>$this->report_id));                
+                        foreach ($values as $value) {                                 
+                                $this->Api->create('project_report_drilling_parameters', array('report_id'=>$this->report_id, 'parameter'=>$value->parameter, 'unit'=>$value->unit, 'value'=>$value->value));
+                        }
+                } else if($type=='survey') {
+                        $this->Api->total_remove_where('project_report_survey', array('report_id'=>$this->report_id));                
+                        foreach ($values as $value) {                                 
+                                $this->Api->create('project_report_survey', array('report_id'=>$this->report_id, 'survey'=>$value->parameter, 'unit'=>$value->unit, 'value'=>$value->value));
+                        }
+                }
+        }
+
         public function save_mud_properties(){
 		$values = json_decode($this->data_input); 
                 //Elimino los campos enviados con anterioridad para tener los nuevos almacenados
@@ -743,7 +778,7 @@ class Rest extends CI_Controller {
 		}
 		echo json_encode(true);		
 	}
-
+                
 	public function dump_session(){
 		print_r($this->session->all_userdata());
 	}
