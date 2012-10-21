@@ -29,7 +29,7 @@
             <td></td>
         </tr>
         <tr class="hpressure_loss_resume">
-            <td class="label_m"><input type="radio" name="hreporttoshow" value="powerlaw" <?= ( (isset($reporte['hydraulic_type']) && $reporte['hydraulic_type'] == 'powerlaw') or empty($reporte['hydraulic_type']) ) ? 'checked="checked"' : ''; ?>></td>
+            <td class="label_m"><input type="radio" name="hreporttoshow" value="powerlaw" <?= ( (isset($rs[0]['hydraulic_type']) && $rs[0]['hydraulic_type'] == 'powerlaw') or empty($rs[1]['hydraulic_type']) ) ? 'checked="checked"' : ''; ?>></td>
             <td class="label_m"><label>Power Law</label></td>
             <td><input type="text" style="width:70px;margin-right:0;" id="lossesurf" class="hsurface" name="lossesurf" disabled="disabled" /></td>
             <td><input type="text" style="width:70px;margin-right:0;" id="ztotalstringpow" class="hstring" name="ztotalstringpow" disabled="disabled" /></td>
@@ -40,7 +40,7 @@
             <td class="label_m" style="padding-left:20px;">Show the <a href="#ds_panel">Drill String Math</a></td>
         </tr>
         <tr class="hpressure_loss_resume">
-            <td class="label_m"><input type="radio" name="hreporttoshow" value="bingham" <?= (isset($reporte['hydraulic_type']) && $reporte['hydraulic_type'] == 'bingham') ? 'checked="checked"' : ''; ?>></td>
+            <td class="label_m"><input type="radio" name="hreporttoshow" value="bingham" <?= (isset($rs[1]['hydraulic_type']) && $rs[1]['hydraulic_type'] == 'bingham') ? 'checked="checked"' : ''; ?>></td>
             <td class="label_m"><label>Bingham</label></td>
             <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="zlossesurf" class="hsurface" name="zlossesurf" /></td>
             <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="ztotalstringbing" class="hstring" name="ztotalstringbing" /></td>

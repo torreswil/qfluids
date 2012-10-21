@@ -729,7 +729,7 @@ class Rest extends CI_Controller {
                 } else if($type=='pressure') {
                         $this->Api->total_remove_where('project_report_pressure_loss', array('report_id'=>$this->report_id));
                         foreach ($values as $value) {                                  
-                                $this->Api->create('project_report_pressure_loss', array('report_id'=>$this->report_id, 'surface'=>$value->surface, 'string'=>$value->string, 'motor'=>$value->motor, 'bit'=>$value->bit, 'annular'=>$value->annular, 'total'=>$value->total));
+                                $this->Api->create('project_report_pressure_loss', array('report_id'=>$this->report_id, 'hydraulic_type'=>$value->hydraulic_type, 'surface'=>$value->surface, 'string'=>$value->string, 'motor'=>$value->motor, 'bit'=>$value->bit, 'annular'=>$value->annular, 'total'=>$value->total));
                         }
                 } else if($type=='velocity') {                        
                         $this->Api->total_remove_where('project_report_velocity', array('report_id'=>$this->report_id));

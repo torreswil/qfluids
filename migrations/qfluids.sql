@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-10-2012 a las 17:31:20
+-- Tiempo de generación: 21-10-2012 a las 18:13:44
 -- Versión del servidor: 5.5.24
 -- Versión de PHP: 5.3.10-1ubuntu3.4
 
@@ -1458,6 +1458,7 @@ DROP TABLE IF EXISTS `project_report_pressure_loss`;
 CREATE TABLE IF NOT EXISTS `project_report_pressure_loss` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `report_id` int(11) NOT NULL,
+  `hydraulic_type` varchar(45) DEFAULT NULL,
   `surface` float DEFAULT NULL,
   `string` float DEFAULT NULL,
   `motor` float DEFAULT NULL,

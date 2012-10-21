@@ -45,13 +45,13 @@ $(function(){
                         //Save hole geometry
                         save_hole_geometry();
                         //Save operational info
-                        //save_operational_info();
+                        save_operational_info();
                         //Mud properties
-                        //save_mud_properties();
+                        save_mud_properties();
                         //Solids control equipment
-                        //save_solids_control(); 
+                        save_solids_control(); 
                         //Save personal
-                        //save_personal();                        
+                        save_personal();                        
                                                                        
                         //alert('saving function trigger');                                
 		}
@@ -129,8 +129,11 @@ $(function(){
                 
                 //Armo la data pressure_loss_resume
                 var data_pressure_loss = [];                
-                $('tr.hpressure_loss_resume').each(function(j) {                                                                        
+                $('tr.hpressure_loss_resume').each(function(j) { 
+                        hydraulic = $(this).find('[name="hreporttoshow"]');
+                        hydraulic_type = (hydraulic.is(":checked")) ? $('[name="hreporttoshow"]:checked').val() : ''; 
                         values = {
+                                hydraulic_type  : hydraulic_type,
                                 surface         : $(this).find('.hsurface').val(),
                                 string          : $(this).find('.hstring').val(),
                                 motor           : $(this).find('.hmotor').val(),
