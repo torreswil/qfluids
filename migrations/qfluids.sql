@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-10-2012 a las 13:32:25
+-- Tiempo de generación: 21-10-2012 a las 17:31:20
 -- Versión del servidor: 5.5.24
 -- Versión de PHP: 5.3.10-1ubuntu3.4
 
@@ -1202,6 +1202,29 @@ INSERT INTO `project_mudcleaner` (`id`, `project`, `maker`, `model`, `desander_c
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `project_report_annular_section`
+--
+
+DROP TABLE IF EXISTS `project_report_annular_section`;
+CREATE TABLE IF NOT EXISTS `project_report_annular_section` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `report_id` int(11) NOT NULL,
+  `description` varchar(45) DEFAULT NULL,
+  `id_hole` float DEFAULT NULL,
+  `od` float DEFAULT NULL,
+  `length` float DEFAULT NULL,
+  `capacity` float DEFAULT NULL,
+  `vel_critical` float DEFAULT NULL,
+  `plp` float DEFAULT NULL,
+  `plb` float DEFAULT NULL,
+  `regime` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_project_report_annular_section_reports_idx` (`report_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `project_report_bit`
 --
 
@@ -1428,6 +1451,26 @@ CREATE TABLE IF NOT EXISTS `project_report_personal` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `project_report_pressure_loss`
+--
+
+DROP TABLE IF EXISTS `project_report_pressure_loss`;
+CREATE TABLE IF NOT EXISTS `project_report_pressure_loss` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `report_id` int(11) NOT NULL,
+  `surface` float DEFAULT NULL,
+  `string` float DEFAULT NULL,
+  `motor` float DEFAULT NULL,
+  `bit` float DEFAULT NULL,
+  `annular` float DEFAULT NULL,
+  `total` float DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_project_report_pressure_loss_reports_idx` (`report_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `project_report_pump`
 --
 
@@ -1634,6 +1677,35 @@ INSERT INTO `project_report_test` (`id`, `report_id`, `test_id`, `program_id`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `project_report_velocity`
+--
+
+DROP TABLE IF EXISTS `project_report_velocity`;
+CREATE TABLE IF NOT EXISTS `project_report_velocity` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `report_id` int(11) NOT NULL,
+  `casing1` varchar(45) DEFAULT NULL,
+  `casing2` varchar(45) DEFAULT NULL,
+  `casing3` varchar(45) DEFAULT NULL,
+  `dp1` varchar(45) DEFAULT NULL,
+  `dp2` varchar(45) DEFAULT NULL,
+  `dp3` varchar(45) DEFAULT NULL,
+  `dc11` varchar(45) DEFAULT NULL,
+  `dc12` varchar(45) DEFAULT NULL,
+  `dc13` varchar(45) DEFAULT NULL,
+  `dc21` varchar(45) DEFAULT NULL,
+  `dc22` varchar(45) DEFAULT NULL,
+  `dc23` varchar(45) DEFAULT NULL,
+  `bouyancy` varchar(45) DEFAULT NULL,
+  `ecd` varchar(45) DEFAULT NULL,
+  `w_out` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_project_report_velocity_reports_idx` (`report_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `project_shakers`
 --
 
@@ -1772,6 +1844,7 @@ CREATE TABLE IF NOT EXISTS `reports` (
   `bit_depth` float DEFAULT '0',
   `bha` varchar(45) DEFAULT NULL,
   `bha_length` varchar(45) DEFAULT NULL,
+  `hydraulic_type` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
@@ -1779,23 +1852,23 @@ CREATE TABLE IF NOT EXISTS `reports` (
 -- Volcado de datos para la tabla `reports`
 --
 
-INSERT INTO `reports` (`id`, `project`, `transactional_id`, `project_transactional_id`, `date`, `number`, `generated`, `phase`, `mud_type`, `activity`, `formation`, `bottoms_up`, `bottoms_up_stk`, `lag_down`, `lag_down_stk`, `total_lag`, `total_lag_stk`, `circulate`, `circulate_stk`, `feet_drilling`, `daily_rop`, `daily_avge_temp`, `depth_md`, `bit_depth`, `bha`, `bha_length`) VALUES
-(1, 1, 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', 1, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(5, 1, 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', 2, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(6, 1, 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', 3, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(7, 1, 'FCKGW_qflrpt_4', 'FCKGW', '2012-09-08', 4, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(8, 1, 'FCKGW_qflrpt_5', 'FCKGW', '2012-09-09', 5, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(9, 1, 'FCKGW_qflrpt_6', 'FCKGW', '2012-09-10', 6, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(10, 1, 'FCKGW_qflrpt_7', 'FCKGW', '2012-09-11', 7, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(11, NULL, 'YXRKT01_qflrpt_1', 'YXRKT01', '2012-09-06', 1, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(12, NULL, 'YXRKT01_qflrpt_2', 'YXRKT01', '2012-09-07', 2, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(13, NULL, 'YXRKT01_qflrpt_3', 'YXRKT01', '2012-09-08', 3, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(14, 1, 'FCKGW_qflrpt_8', 'FCKGW', '2012-09-12', 8, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(15, NULL, 'QWERTY_qflrpt_1', 'QWERTY', '2012-09-11', 1, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(16, 1, 'FCKGW_qflrpt_9', 'FCKGW', '2012-09-13', 9, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(17, 1, 'FCKGW_qflrpt_10', 'FCKGW', '2012-09-14', 10, 0, 1, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(20, 1, 'FCKGW_qflrpt_11', 'FCKGW', '2012-09-15', 11, 0, 2, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL),
-(21, 1, 'FCKGW_qflrpt_12', 'FCKGW', '2012-09-16', 12, 0, 3, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `reports` (`id`, `project`, `transactional_id`, `project_transactional_id`, `date`, `number`, `generated`, `phase`, `mud_type`, `activity`, `formation`, `bottoms_up`, `bottoms_up_stk`, `lag_down`, `lag_down_stk`, `total_lag`, `total_lag_stk`, `circulate`, `circulate_stk`, `feet_drilling`, `daily_rop`, `daily_avge_temp`, `depth_md`, `bit_depth`, `bha`, `bha_length`, `hydraulic_type`) VALUES
+(1, 1, 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', 1, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(5, 1, 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', 2, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(6, 1, 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', 3, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(7, 1, 'FCKGW_qflrpt_4', 'FCKGW', '2012-09-08', 4, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(8, 1, 'FCKGW_qflrpt_5', 'FCKGW', '2012-09-09', 5, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(9, 1, 'FCKGW_qflrpt_6', 'FCKGW', '2012-09-10', 6, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(10, 1, 'FCKGW_qflrpt_7', 'FCKGW', '2012-09-11', 7, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(11, NULL, 'YXRKT01_qflrpt_1', 'YXRKT01', '2012-09-06', 1, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(12, NULL, 'YXRKT01_qflrpt_2', 'YXRKT01', '2012-09-07', 2, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(13, NULL, 'YXRKT01_qflrpt_3', 'YXRKT01', '2012-09-08', 3, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(14, 1, 'FCKGW_qflrpt_8', 'FCKGW', '2012-09-12', 8, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(15, NULL, 'QWERTY_qflrpt_1', 'QWERTY', '2012-09-11', 1, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(16, 1, 'FCKGW_qflrpt_9', 'FCKGW', '2012-09-13', 9, 0, NULL, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(17, 1, 'FCKGW_qflrpt_10', 'FCKGW', '2012-09-14', 10, 0, 1, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(20, 1, 'FCKGW_qflrpt_11', 'FCKGW', '2012-09-15', 11, 0, 2, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL),
+(21, 1, 'FCKGW_qflrpt_12', 'FCKGW', '2012-09-16', 12, 0, 3, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2340,6 +2413,12 @@ ALTER TABLE `program`
   ADD CONSTRAINT `program_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `project_report_annular_section`
+--
+ALTER TABLE `project_report_annular_section`
+  ADD CONSTRAINT `fk_project_report_annular_section_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `project_report_bit`
 --
 ALTER TABLE `project_report_bit`
@@ -2400,6 +2479,12 @@ ALTER TABLE `project_report_personal`
   ADD CONSTRAINT `fk_project_report_personal_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `project_report_pressure_loss`
+--
+ALTER TABLE `project_report_pressure_loss`
+  ADD CONSTRAINT `fk_project_report_pressure_loss_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `project_report_pump`
 --
 ALTER TABLE `project_report_pump`
@@ -2424,6 +2509,12 @@ ALTER TABLE `project_report_test`
   ADD CONSTRAINT `project_report_test_ibfk_1` FOREIGN KEY (`program_id`) REFERENCES `program` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `project_report_test_ibfk_2` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `project_report_test_ibfk_3` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `project_report_velocity`
+--
+ALTER TABLE `project_report_velocity`
+  ADD CONSTRAINT `fk_project_report_velocity_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `rig`

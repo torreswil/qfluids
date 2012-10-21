@@ -726,6 +726,20 @@ class Rest extends CI_Controller {
                         foreach ($values as $value) {                                  
                                 $this->Api->create('project_report_drill_string', array('report_id'=>$this->report_id, 'bha_name'=>$value->bha_name, 'oddeci'=>$value->oddeci, 'iddeci'=>$value->iddeci, 'length'=>$value->length, 'capacity_vol'=>$value->capacity_vol, 'displacement_vol'=>$value->displacement_vol, 'capacity_ft'=>$value->capacity_ft, 'displacement_ft'=>$value->displacement_ft, 'pressure'=>$value->pressure, 'losses'=>$value->losses));
                         }
+                } else if($type=='pressure') {
+                        $this->Api->total_remove_where('project_report_pressure_loss', array('report_id'=>$this->report_id));
+                        foreach ($values as $value) {                                  
+                                $this->Api->create('project_report_pressure_loss', array('report_id'=>$this->report_id, 'surface'=>$value->surface, 'string'=>$value->string, 'motor'=>$value->motor, 'bit'=>$value->bit, 'annular'=>$value->annular, 'total'=>$value->total));
+                        }
+                } else if($type=='velocity') {                        
+                        $this->Api->total_remove_where('project_report_velocity', array('report_id'=>$this->report_id));
+                        $_POST['report_id'] = $this->report_id;
+                        $this->Api->create('project_report_velocity', $_POST);
+                } else if($type=='annular') {
+                        $this->Api->total_remove_where('project_report_annular_section', array('report_id'=>$this->report_id));
+                        foreach ($values as $value) {                                  
+                                $this->Api->create('project_report_annular_section', array('report_id'=>$this->report_id, 'description'=>$value->description, 'id_hole'=>$value->id_hole, 'od'=>$value->od, 'length'=>$value->length, 'capacity'=>$value->capacity, 'vel_critical'=>$value->vel_critical, 'plp'=>$value->plp, 'plb'=>$value->plb, 'regime'=>$value->regime));
+                        }
                 }
         }
         
