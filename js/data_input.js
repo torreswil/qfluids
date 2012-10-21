@@ -108,7 +108,18 @@ $(function(){
 			},'json');
 		}
 	});
-
+        
+        //Consulta el ID de según los campos seleccionados
+        $('#pickcasing_id').change(function(e){
+                var data = {
+                        'oddeci'		: $('#pickcasing_od').val(),
+                        'iddeci'                : $(this).val(),                        
+                        'project_id'            : $('#project_id').val()
+                };
+                $.post('/rest/get_casing',data,function(r){                               
+                        $("#pickcasing_selected_id").val(r[0].id);
+                }, 'json');		
+	});
 	
 	$('#select_casing_overlay .cancel_overlay').click(function(e){
 		e.preventDefault();
@@ -175,7 +186,7 @@ $(function(){
 							$('#casing_tool_'+target).addClass('active');
 							if(new_casing == 8){
 								$('#casing_tool_7 .casingclear').show();
-							}
+							}                                                        
 							hide_casing_overlay();	
 						}
 							
@@ -200,6 +211,7 @@ $(function(){
 						if(new_casing == 8){
 							$('#casing_tool_7 .casingclear').show();
 						}
+                                                $('#picker_id_'+target).val($("#pickcasing_selected_id").val());
 						hide_casing_overlay();	
 					}
 				}
@@ -275,7 +287,8 @@ $(function(){
 							}
 							hide_casing_overlay();	
 						}
-					}	
+					}
+                                        $('#picker_id_'+target).val(r);
 				},'json');
 			}
 		}
@@ -314,7 +327,7 @@ $(function(){
 		$('a.casingclear','#casing_tool_' + last_row).show();
 		$('#casing_tool_'+target+' .pick_casing').val('Select...');
 		$('#casing_tool_'+target+' .od,#casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom,#casing_tool_'+target+' .volume, #casing_tool_'+target+' .length').val(0);
-		
+                $('#picker_id_'+target).val('');
 		correr_calculos();
 	});
 

@@ -42,8 +42,10 @@ $(function(){
                         
                         //Se borra los textos de los trabajos registrados en el overlay
                         $("#save_report_jobs").empty();
+                        //Save hole geometry
+                        save_hole_geometry();
                         //Save operational info
-                        save_operational_info();
+                        //save_operational_info();
                         //Mud properties
                         //save_mud_properties();
                         //Solids control equipment
@@ -72,6 +74,72 @@ $(function(){
                 }                
         }
         
+        /**
+         * HOLE GEOMETRY
+        */
+        function save_hole_geometry() {
+                //Armo la data casing
+                var data_casing = [];                
+                $('tr.casing_tool_row').each(function(j) {                                                                        
+                        values = {
+                                casing_id       : $(this).find('.pick_casing_id').val(),
+                                type            : $(this).find('.pick_casing').val(),                                
+                                top             : $(this).find('.top').val(),
+                                bottom          : $(this).find('.bottom').val(),
+                                capacity        : $(this).find('.volume').val(),
+                                length          : $(this).find('.length').val()
+                        }
+                        data_casing.push(values);
+                });
+                //Save casing
+                $.post('/rest/save_hole_geometry/casing/',$.toJSON(data_casing),function(r){ },'json');               
+                
+                //Armo la data hole
+                var data_hole = {                        
+                        open_hole               : $('#zhole').val(),
+                        rice_carbide_test       : $('#zrice').val(),                                
+                        cuttings_caving_record  : $('#zcuttings').val(),
+                        caliper                 : $('#zcaliper').val(),
+                        washout                 : $('#zwashout').val(),
+                        average_hole            : $('#openhole').val(),
+                        open_hole_length        : $('#longhoyo').val()
+                }                
+                //Save hole
+                $.post('/rest/save_hole_geometry/hole/',data_hole,function(r){ },'json');               
+                
+                //Armo la data drill string
+                var data_drill_string = [];                
+                $('tr.row_select_drill_string').each(function(j) {                                                                        
+                        values = {
+                                bha_name                : $(this).find('.select_drill_string').val(),
+                                oddeci                  : $(this).find('.odbha').val(),
+                                iddeci                  : $(this).find('.idbha').val(),
+                                length                  : $(this).find('.longbha').val(),
+                                capacity_vol            : $(this).find('.capvbha').val(),
+                                displacement_vol        : $(this).find('.dispvbha').val(),
+                                capacity_ft             : $(this).find('.capbha').val(),
+                                displacement_ft         : $(this).find('.dispbha').val(),
+                                pressure                : $(this).find('.powerlossbha').val(),
+                                losses                  : $(this).find('.zbinglossbha').val()
+                        }
+                        data_drill_string.push(values);
+                });
+                //Save drillstring
+                $.post('/rest/save_hole_geometry/drill_string/',$.toJSON(data_drill_string),function(r){ },'json');               
+                
+                //Guarda las propiedades del reporte
+                report_hole_geometry = {
+                        depth_md: $('#md').val(), 
+                        bit_depth: $("#bitdepth").val() ,
+                        bha: $("#dsbha").val(),
+                        bha_length: $("#totalbha").val()                        
+                }
+                $.post('/rest/save_report_settings', report_hole_geometry,function(r){ });
+                
+                setStatusReport('Hole Geometry saved!');
+        }
+       
+       
         /**
          * OPERATIONAL INFO
          */                

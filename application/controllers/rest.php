@@ -261,11 +261,18 @@ class Rest extends CI_Controller {
 	}
 
 	//CASING FUNCTIONS
+        public function get_casing(){
+		echo json_encode($this->Api->get_where('casing', $_POST));	
+	}
+        
 	public function listar_id_casing(){
 		echo json_encode($this->Api->get_where('casing',array('oddeci'=>$_POST['oddeci'])));
 	}
 
 	public function insert_casing(){
+                if(isset($_POST['createcasing_top'])) {
+                        unset($_POST['createcasing_top']);
+                }
 		echo json_encode($this->Api->create('casing',$_POST));
 	}
         public function load_casing(){
@@ -698,7 +705,30 @@ class Rest extends CI_Controller {
 
         /*==========================================================================================================*/
         // DATA INPUT SAVE
-        /*==========================================================================================================*/
+        /*==========================================================================================================*/        
+        public function save_hole_geometry($type) {
+                $values = json_decode($this->data_input);
+                if($type=='casing') {
+                        //Elimino los campos enviados con anterioridad para tener los nuevos almacenados
+                        $this->Api->total_remove_where('project_report_casing', array('report_id'=>$this->report_id));
+                        foreach ($values as $value) {  
+                                if(!is_numeric($value->casing_id) ) {
+                                        continue;
+                                }
+                                $this->Api->create('project_report_casing', array('report_id'=>$this->report_id, 'casing_id'=>$value->casing_id, 'type'=>$value->type, 'top'=>$value->top, 'bottom'=>$value->bottom, 'capacity'=>$value->capacity, 'length'=>$value->length));
+                        }
+                } else if($type=='hole') {                        
+                        $this->Api->total_remove_where('project_report_hole', array('report_id'=>$this->report_id));
+                        $_POST['report_id'] = $this->report_id;
+                        $this->Api->create('project_report_hole', $_POST);
+                } else if($type=='drill_string') {                        
+                        $this->Api->total_remove_where('project_report_drill_string', array('report_id'=>$this->report_id));
+                        foreach ($values as $value) {                                  
+                                $this->Api->create('project_report_drill_string', array('report_id'=>$this->report_id, 'bha_name'=>$value->bha_name, 'oddeci'=>$value->oddeci, 'iddeci'=>$value->iddeci, 'length'=>$value->length, 'capacity_vol'=>$value->capacity_vol, 'displacement_vol'=>$value->displacement_vol, 'capacity_ft'=>$value->capacity_ft, 'displacement_ft'=>$value->displacement_ft, 'pressure'=>$value->pressure, 'losses'=>$value->losses));
+                        }
+                }
+        }
+        
         public function save_operational_info($type) {
                 $values = json_decode($this->data_input);
                 if($type=='bit') {
