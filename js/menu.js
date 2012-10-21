@@ -45,13 +45,13 @@ $(function(){
                         //Save hole geometry
                         save_hole_geometry();
                         //Save operational info
-                        //save_operational_info();
+                        save_operational_info();
                         //Mud properties
-                        //save_mud_properties();
+                        save_mud_properties();
                         //Solids control equipment
-                        //save_solids_control(); 
+                        save_solids_control(); 
                         //Save personal
-                        //save_personal();                        
+                        save_personal();                        
                                                                        
                         //alert('saving function trigger');                                
 		}
