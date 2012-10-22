@@ -1128,7 +1128,7 @@
                                                                 </tr>
                                                         </tbody>
                                                 </table>
-                                                <div class="sub-header b-top b-bottom"><h5>TROL EQUIPMENT</h5></div>
+                                                <div class="sub-header b-top b-bottom"><h5>CONTROL EQUIPMENT</h5></div>
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
                                                                 <tr>
