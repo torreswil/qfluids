@@ -147,12 +147,16 @@ class Main extends CI_Controller {
 				//DATOS BASE
 				$data['main_content']                           = 'qfluids';
 				$data['project']				= $project_data;                                                                
-                               
+                                //DRILL STRING
+                                $data['drill_string'] = $this->Api->get_where('project_report_drill_string', array('report_id'=>$current_report_data['id'])); 
+                                //CASING
+                                $data['casing'] = $this->Api->sql("SELECT * FROM project_report_casing INNER JOIN casing ON casing.id = project_report_casing.casing_id WHERE project_report_casing.report_id = {$current_report_data['id']}");
                                 //MUD PUMPS
                                 $data['mud_pumps'] = $this->Api->sql("SELECT * FROM project_report_pump INNER JOIN bombas ON bombas.id = project_report_pump.bombas_id WHERE project_report_pump.report_id = {$current_report_data['id']}"); 
+                                //DRILLING PARAMETERS
+                                $data['drilling_parameters'] = $this->Api->get_where('project_report_drilling_parameters', array('report_id'=>$current_report_data['id']));                                 
                                 //HYDRAULIC
-                                $data['velocity'] = $this->Api->get_where('project_report_velocity', array('report_id'=>$current_report_data['id']));
-                                
+                                $data['velocity'] = $this->Api->get_where('project_report_velocity', array('report_id'=>$current_report_data['id']));                                
                                 //BIT DATA
                                 $data['bit'] = $this->Api->sql("SELECT * FROM project_report_bit INNER JOIN brocas_modelos ON brocas_modelos.id = project_report_bit.brocas_modelos_id INNER JOIN brocas ON brocas.id = brocas_modelos.id_broca WHERE project_report_bit.report_id = {$current_report_data['id']}");
                                 
@@ -164,6 +168,11 @@ class Main extends CI_Controller {
                                 $data['solids'] = $this->Api->get_where('test', array('active'=>1, 'type_test'=>3)); 
                                 $data['solids'] = $this->Api->get_where('test', array('active'=>1, 'type_test'=>3)); 
                                 $data['tests'] = $this->Api->get_where('test', array('active'=>1)); 
+                                
+                                //DRILLING TIME
+                                $data['drilling_time'] = $this->Api->get_where('project_report_drilling_time', array('report_id'=>$current_report_data['id']));
+                                //SURVEY
+                                $data['survey'] = $this->Api->get_where('project_report_survey', array('report_id'=>$current_report_data['id']));
                                 
                                 $data['main_content'] = 'report_html';            
                                 $this->load->view('partials/printer',$data);

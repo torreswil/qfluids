@@ -116,7 +116,7 @@ $(function(){
                         'iddeci'                : $(this).val(),                        
                         'project_id'            : $('#project_id').val()
                 };
-                $.post('/rest/get_casing',data,function(r){                               
+                $.post('/rest/get_casing',data,function(r){                                                     
                         $("#pickcasing_selected_id").val(r[0].id);
                 }, 'json');		
 	});
@@ -186,7 +186,8 @@ $(function(){
 							$('#casing_tool_'+target).addClass('active');
 							if(new_casing == 8){
 								$('#casing_tool_7 .casingclear').show();
-							}                                                        
+							}  
+                                                        $('#picker_id_'+target).val($("#pickcasing_selected_id").val());
 							hide_casing_overlay();	
 						}
 							
@@ -211,7 +212,7 @@ $(function(){
 						if(new_casing == 8){
 							$('#casing_tool_7 .casingclear').show();
 						}
-                                                $('#picker_id_'+target).val($("#pickcasing_selected_id").val());
+                                                $('#picker_id_'+target).val($("#pickcasing_selected_id").val());                                                
 						hide_casing_overlay();	
 					}
 				}

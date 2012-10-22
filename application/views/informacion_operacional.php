@@ -623,21 +623,27 @@
 	    			</td>
 	    			<td>
 						<fieldset style="margin-left:20px;">	
-							<table style="float:left;">                                                                
+							<table style="float:left;" class="operational_info_drilling_parameters">                                                          
 								<tr>
 									<td class="label_m" style="padding-right:20px;"><label>Feet drilling:</label></td>
 									<td class="unit_field">ft</td>
-									<td><input type="text" disabled="disabled" class="medium feet_drilling" style="width:70px;" value="<?= empty($reporte['feet_drilling']) ? '' : $reporte['feet_drilling']; ?>" /></td>
+                                                                        <td><input type="hidden" class="medium drillingp_name" value="Feet drilling" /></td>
+                                                                        <td><input type="hidden" class="medium drillingp_unit" value="ft" /></td>
+									<td><input type="text" disabled="disabled" class="medium feet_drilling drillingp_value" style="width:70px;" value="<?= empty($rs[5]['value']) ? '' : $rs[5]['value']; ?>" /></td>
 								</tr>
 								<tr>	
 									<td class="label_m" style="padding-right:20px;"><label>Daily ROP:</label></td>
 									<td class="unit_field">ft</td>
-									<td><input type="text" disabled="disabled" class="medium daily_rop" style="width:70px;" value="<?= empty($reporte['daily_rop']) ? '' : $reporte['daily_rop']; ?>" /></td>
+                                                                        <td><input type="hidden" class="medium drillingp_name" value="Daily ROP" /></td>
+                                                                        <td><input type="hidden" class="medium drillingp_unit" value="ft" /></td>
+									<td><input type="text" disabled="disabled" class="medium daily_rop drillingp_value" style="width:70px;" value="<?= empty($rs[6]['value']) ? '' : $rs[6]['value']; ?>" /></td>
 								</tr>
 								<tr>	
 									<td class="label_m" style="padding-right:20px;"><label>Daily avge Temp:</label></td>
 									<td class="unit_field">ºF</td>
-									<td><input type="text" disabled="disabled" class="medium daily_avge_temp" style="width:70px;" name="zavgtemp" id="zavgtemp" value="<?= empty($reporte['daily_avge_temp']) ? '0' : $reporte['daily_avge_temp']; ?>" /></td>
+                                                                        <td><input type="hidden" class="medium drillingp_name" value="Daily avge Temp" /></td>
+                                                                        <td><input type="hidden" class="medium drillingp_unit" value="ºF" /></td>
+									<td><input type="text" disabled="disabled" class="medium daily_avge_temp drillingp_value" style="width:70px;" name="zavgtemp" id="zavgtemp" value="<?= empty($rs[7]['value']) ? '' : $rs[7]['value']; ?>" /></td>
 								</tr>
 							</table>
 						</fieldset>

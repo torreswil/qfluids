@@ -1,3 +1,7 @@
+<?php $reporte = $this->session->userdata('report'); ?>
+<?php $reporte = $this->session->userdata('report'); ?>
+<?php $reporte = $this->Api->get_where('reports', array('id'=>$reporte['id'])); ?>
+<?php $reporte = isset($reporte[0]) ? $reporte[0] : null; ?>
 <div class="qfluids_wrapper">
 	<div class="sidebar">
 		<?php $this->load->view('partials/sidebar'); ?>
@@ -12,7 +16,7 @@
 				$option_display = '';
 			} ?>
 
-			<li <?= $option_display; ?> ><a href="#print_and_send" title="Print and Send Report" id="btn_print_report"><img src="/img/icons/icon_paper_plane.png" /></a></li>
+			<li <?= $option_display; ?> ><a href="/main/report/<?= $project['id']; ?>/<?= $reporte['id']; ?>/" target="_blank" title="Print and Send Report" id="btn_print_report"><img src="/img/icons/icon_paper_plane.png" /></a></li>
 			<li <?= $option_display; ?> ><a href="#search_reports" title="Search Report Archive" id="btn_search_report"><img src="/img/icons/icon_magnify_glass.png" /></a></li>
 			<li <?= $option_display; ?> ><a href="#new_report" title="New report" id="btn_new_report"><img src="/img/icons/icon_add.png" /></a></li>
 		</ul>
