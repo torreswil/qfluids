@@ -1,4 +1,7 @@
 <?php $reporte = $this->session->userdata('report'); ?>
+<?php $reporte = $this->session->userdata('report'); ?>
+<?php $reporte = $this->Api->get_where('reports', array('id'=>$reporte['id'])); ?>
+<?php $reporte = isset($reporte[0]) ? $reporte[0] : null; ?>
 <div class="this_panel plusribbon" id="propiedades_fluido">
 	<h2>Mud Properties</h2>
 	<fieldset class="top_ribbon">
@@ -8,7 +11,7 @@
 					<label class="emphasis">Mud Type:</label>
 				</td>
 				<td>
-					<input id="pick_mud_type" type="text" class="medium pick_mud" value="Please select..." />
+					<input name="mud_type" type="text" class="medium pick_mud" value="<?= empty($reporte['mud_type']) ? 'Please select...' : $reporte['mud_type'];?>" />
 				</td>
 			</tr>
 		</table>

@@ -108,7 +108,18 @@ $(function(){
 			},'json');
 		}
 	});
-
+        
+        //Consulta el ID de según los campos seleccionados
+        $('#pickcasing_id').change(function(e){
+                var data = {
+                        'oddeci'		: $('#pickcasing_od').val(),
+                        'iddeci'                : $(this).val(),                        
+                        'project_id'            : $('#project_id').val()
+                };
+                $.post('/rest/get_casing',data,function(r){                               
+                        $("#pickcasing_selected_id").val(r[0].id);
+                }, 'json');		
+	});
 	
 	$('#select_casing_overlay .cancel_overlay').click(function(e){
 		e.preventDefault();
@@ -175,7 +186,7 @@ $(function(){
 							$('#casing_tool_'+target).addClass('active');
 							if(new_casing == 8){
 								$('#casing_tool_7 .casingclear').show();
-							}
+							}                                                        
 							hide_casing_overlay();	
 						}
 							
@@ -200,6 +211,7 @@ $(function(){
 						if(new_casing == 8){
 							$('#casing_tool_7 .casingclear').show();
 						}
+                                                $('#picker_id_'+target).val($("#pickcasing_selected_id").val());
 						hide_casing_overlay();	
 					}
 				}
@@ -275,7 +287,8 @@ $(function(){
 							}
 							hide_casing_overlay();	
 						}
-					}	
+					}
+                                        $('#picker_id_'+target).val(r);
 				},'json');
 			}
 		}
@@ -314,7 +327,7 @@ $(function(){
 		$('a.casingclear','#casing_tool_' + last_row).show();
 		$('#casing_tool_'+target+' .pick_casing').val('Select...');
 		$('#casing_tool_'+target+' .od,#casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom,#casing_tool_'+target+' .volume, #casing_tool_'+target+' .length').val(0);
-		
+                $('#picker_id_'+target).val('');
 		correr_calculos();
 	});
 
@@ -567,7 +580,7 @@ $(function(){
 			
 
 			$.post(post_resource,data,function(r){
-				var append_string = no_option;
+				var append_string = no_option;                                
 				$(r).each(function(){
 					if(this.rod !== null){
 						if($('#pump_picker_type').val() == 'TRIPLEX'){
@@ -654,6 +667,22 @@ $(function(){
 		}else{
 			$('#pump_picker_presure').html(no_option);
 		}
+	});
+        
+        //Consulta el ID de según los campos seleccionados
+        $('#pump_picker_presure').change(function(e){
+                var data = {
+                        'maker'			: $('#pump_picker_maker').val(),
+                        'type'			: $('#pump_picker_type').val(),
+                        'strokelength'          : $('#pump_picker_stroke').val(),
+                        'linerdiameter'         : $('#pump_picker_diameter').val(),                        
+                        'modelo'		: $('#pump_picker_model').val(),
+                        'presure'		: $('#pump_presure').val(),
+                        'project_id'            : $('#project_id').val()
+                };
+                $.post('/rest/get_pump',data,function(r){                               
+                        $("#pump_picker_selected_id").val(r[0].id);
+                }, 'json');		
 	});
 
 	//SELECT O CREATE PUMP
@@ -785,7 +814,8 @@ $(function(){
 				$('#table_pump_creator select,#table_pump_creator input').attr('disabled','disabled');
 				$('#table_pump_creator').hide();
 				$('#select_pump_overlay').hide();
-				$('#pump_'+pump_number+'_maker').removeAttr('disabled');
+				$('#pump_'+pump_number+'_maker').removeAttr('disabled');   
+                                $('#pump_'+pump_number+'_maker_id').val($("#pump_picker_selected_id").val());
 
 			//limpiar el formulario
 			}else if(pump_continue == 'clear'){
@@ -908,6 +938,7 @@ $(function(){
 						$('#pump_'+pump_number+'_maker').removeAttr('disabled');
 
 						$('#eff_'+pump_number).focus();
+                                                $('#pump_'+pump_number+'_maker_id').val(r);
 						correr_calculos();	
 					},'json');
 				}else{
@@ -999,7 +1030,7 @@ $(function(){
 		e.preventDefault();
 		
 		//CREATE A NEW BIT
-		if($('#checkbox_bit_not_found:checked').length == 1){
+		if($('#checkbox_bit_not_found:checked').length == 1){                        
 			var od 		= $('#new_bit_form input[name=odfracc]').val();
 			od 			= od.split(' ');
 			if(od.length !== 2){
@@ -1049,7 +1080,7 @@ $(function(){
 					$('#broca_bit_type').val(bit_type_label);
 					$('#broca_bit_diameter').html($('#odfracc_new').val()+' in');
 					$('#broca_bit_model').html($('#nombre_modelo_new').val());
-					$('#broca_bit_oddeci').val($('#new_bit_form input[name=odddeci]').val());
+					$('#broca_bit_oddeci').val($('#new_bit_form input[name=odddeci]').val());                                        
 					$('#broca_bit_model_id').val(r);
 					hide_bit_overlay();
 				},'json');	
@@ -1121,7 +1152,7 @@ $(function(){
 	});
 
 	$('#btn_mud_selected').click(function(e){
-		e.preventDefault();
+		e.preventDefault();                
 		if($('#checkbox_mud_not_found:checked').length == 1){
 			var error_qty = 0;
 			$('#new_mud_form input').each(function(){
@@ -1134,6 +1165,7 @@ $(function(){
 				alert('Some fields are empty, please verify and try again');
 			}else{
 				var data = $('#new_mud_form').serialize();
+                                $('.pick_mud').val($('#new_mud_form input').val());	
 				$.post('/rest/insert_mud',data,function(r){
 					$('.pick_mud').val($('#new_mud_form input').val());	
 					$('#checkbox_mud_not_found').removeAttr('checked');
@@ -1154,8 +1186,7 @@ $(function(){
 			$('#select_mud_overlay').hide();
 			$('.pick_mud').removeAttr('disabled');
 			$('#table_mud_creator').hide();	
-		}
-
+		}                                                                
 	});
 
 	//clocks

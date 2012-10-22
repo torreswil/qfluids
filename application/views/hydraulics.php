@@ -1,4 +1,8 @@
+<?php $reporte = $this->session->userdata('report'); ?>
+<?php $reporte = $this->Api->get_where('reports', array('id'=>$reporte['id'])); ?>
+<?php $reporte = isset($reporte[0]) ? $reporte[0] : null; ?>
 <fieldset id="pressure_loss_fieldset">
+        <?php $rs = $this->Api->get_where('project_report_pressure_loss', array('report_id'=>$reporte['id'])); ?>        
     <legend>PRESSURE LOSS RESUME</legend>
     <p style="margin-top:0px;">Please check the row you want to appear in the report...</p>
     <table>
@@ -24,26 +28,26 @@
             <td class="label_m" style="text-align:center;">psi</td>
             <td></td>
         </tr>
-        <tr>
-            <td class="label_m"><input type="radio" name="hreporttoshow" value="powerlaw" checked="checked"></td>
+        <tr class="hpressure_loss_resume">
+            <td class="label_m"><input type="radio" name="hreporttoshow" value="powerlaw" <?= ( (isset($rs[0]['hydraulic_type']) && $rs[0]['hydraulic_type'] == 'powerlaw') or empty($rs[1]['hydraulic_type']) ) ? 'checked="checked"' : ''; ?>></td>
             <td class="label_m"><label>Power Law</label></td>
-            <td><input type="text" style="width:70px;margin-right:0;" id="lossesurf" name="lossesurf" disabled="disabled" /></td>
-            <td><input type="text" style="width:70px;margin-right:0;" id="ztotalstringpow" name="ztotalstringpow" disabled="disabled" /></td>
-            <td><input type="text" style="width:70px;margin-right:0;" id="totalmotor_1" name="totalmotor_1" value="0" /></td>
-            <td><input type="text" style="width:70px;margin-right:0;" id="zpdbit" name="zpdbit" disabled="disabled" /></td>
-            <td><input type="text" style="width:70px;margin-right:0;" id="ztotalanulpow" name="ztotalanulpow" disabled="disabled" /></td>
-            <td><input type="text" style="width:70px;margin-right:0;" id="totallossespow" name="totallossespow" disabled="disabled" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" id="lossesurf" class="hsurface" name="lossesurf" disabled="disabled" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" id="ztotalstringpow" class="hstring" name="ztotalstringpow" disabled="disabled" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" id="totalmotor_1" class="hmotor" name="totalmotor_1" value="<?= empty($rs[0]['motor']) ? '0' : $rs[0]['motor']; ?>" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" id="zpdbit" class="hbit" name="zpdbit" disabled="disabled" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" id="ztotalanulpow" class="hannular" name="ztotalanulpow" disabled="disabled" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" id="totallossespow" class="htotal" name="totallossespow" disabled="disabled" /></td>
             <td class="label_m" style="padding-left:20px;">Show the <a href="#ds_panel">Drill String Math</a></td>
         </tr>
-        <tr>
-            <td class="label_m"><input type="radio" name="hreporttoshow" value="bingham"></td>
+        <tr class="hpressure_loss_resume">
+            <td class="label_m"><input type="radio" name="hreporttoshow" value="bingham" <?= (isset($rs[1]['hydraulic_type']) && $rs[1]['hydraulic_type'] == 'bingham') ? 'checked="checked"' : ''; ?>></td>
             <td class="label_m"><label>Bingham</label></td>
-            <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="zlossesurf" name="zlossesurf" /></td>
-            <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="ztotalstringbing" name="ztotalstringbing" /></td>
-            <td><input type="text" style="width:70px;margin-right:0;" name="totalmotor_2" id="totalmotor_2" value="0" /></td>
-            <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="zzpdbit" name="zzpdbit" /></td>
-            <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="ztotalanulbin" name="ztotalanulbin" /></td>
-            <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="totallossesbin" name="totallossesbin" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="zlossesurf" class="hsurface" name="zlossesurf" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="ztotalstringbing" class="hstring" name="ztotalstringbing" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" name="totalmotor_2" id="totalmotor_2" class="hmotor" value="<?= empty($rs[1]['motor']) ? '0' : $rs[1]['motor']; ?>" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="zzpdbit" class="hbit" name="zzpdbit" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="ztotalanulbin" class="hannular" name="ztotalanulbin" /></td>
+            <td><input type="text" style="width:70px;margin-right:0;" disabled="disabled" id="totallossesbin" class="htotal" name="totallossesbin" /></td>
             <td class="label_m" style="padding-left:20px;">Show the <a href="#as_panel">Anular Section Math</a></td>
         </tr>
     </table> 

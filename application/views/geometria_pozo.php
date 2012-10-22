@@ -1,3 +1,6 @@
+<?php $reporte = $this->session->userdata('report'); ?>
+<?php $reporte = $this->Api->get_where('reports', array('id'=>$reporte['id'])); ?>
+<?php $reporte = isset($reporte[0]) ? $reporte[0] : null; ?>
 <div class="this_panel plusribbon" id="geometria_pozo">
 	<h2>Hole Geometry</h2>
 	<fieldset class="top_ribbon">
@@ -7,13 +10,13 @@
 					<label class="emphasis">DEPTH MD:</label>
 				</td>
 				<td class="label_m" style="padding-right:20px;">
-					<input type="text" id="md" name="md" style="margin-right:5px;width:40px;" value="0" /> ft
+					<input type="text" id="md" name="md" style="margin-right:5px;width:40px;" value="<?= empty($reporte['depth_md']) ? '0' : $reporte['depth_md']; ?>" /> ft
 				</td>
 				<td class="label_m">
 					<label class="emphasis">BIT DEPTH:</label>
 				</td>
 				<td class="label_m" style="padding-right:20px;">
-					<input type="text" name="bitdepth" id="bitdepth" style="margin-right:5px;width:40px;" value="0" disabled="disabled" /> ft
+					<input type="text" name="bitdepth" id="bitdepth" style="margin-right:5px;width:40px;" value="<?= empty($reporte['bit_depth']) ? '0' : $reporte['bit_depth']; ?>" disabled="disabled" /> ft
 				</td>
 			</tr>
 		</table>
@@ -57,151 +60,49 @@
 							<span style="text-transform:lowercase;">ft</span></td>														
 						<td></td>
 					</tr>
-					
-					
-					<tr id="casing_tool_1" class="casing_tool_row">
-						<td>
-							<input type="text" value="Select..." class="pick_casing" id="picker_1" style="width:100px;">
-						</td>
-						<td>
-							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_1" id="odcsg_1" />
-							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
-						</td>
-						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_1" id="idcsg_1" /></td>
-						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_1" id="topscsg_1" /></td>
-						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_1" id="bottomcsg_1" /></td>
-						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_1" id="volcsg_1" /></td>
-						<td>
-							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_1" id="longcsg_1" />
-							<input type="text" class="zrrange_top" id="zrrange_top_1" name="zrrange_top_1" disabled="disabled" value="0">
-							<input type="text" class="zrrange_btm" id="zrrange_btm_1" name="zrrange_btm_1" disabled="disabled" value="0">
-						</td>
-						<td><a href="#casingclear_1" class="casingclear" style="display:none;">Clear</a></td>					
-					</tr>
-					<tr id="casing_tool_2" class="casing_tool_row">
-						<td>
-							<input type="text" value="Select..." class="pick_casing" id="picker_2" style="width:100px;">
-						</td>
-						<td>
-							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_2" id="odcsg_2" />
-							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
-						</td>
-						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_2" id="idcsg_2" /></td>
-						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_2" id="topscsg_2" /></td>
-						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_2" id="bottomcsg_2" /></td>
-						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_2" id="volcsg_2" /></td>
-						<td>
-							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_2" id="longcsg_2" />
-							<input type="text" class="zrrange_top" id="zrrange_top_2" name="zrrange_top_2" disabled="disabled" value="0">
-							<input type="text" class="zrrange_btm" id="zrrange_btm_2" name="zrrange_btm_2" disabled="disabled" value="0">
-						</td>
-						<td><a href="#casingclear_2" class="casingclear" style="display:none;">Remove</a></td>						
-					</tr>
-					<tr id="casing_tool_3" class="casing_tool_row">
-						<td>
-							<input type="text" value="Select..." class="pick_casing" id="picker_3" style="width:100px;">
-						</td>
-						<td>
-							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_3" id="odcsg_3" />
-							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
-						</td>
-						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_3" id="idcsg_3" /></td>
-						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_3" id="topscsg_3" /></td>
-						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_3" id="bottomcsg_3" /></td>
-						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_3" id="volcsg_3" /></td>
-						<td>
-							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_3" id="longcsg_3" />
-							<input type="text" class="zrrange_top" id="zrrange_top_3" name="zrrange_top_3" disabled="disabled" value="0">
-							<input type="text" class="zrrange_btm" id="zrrange_btm_3" name="zrrange_btm_3" disabled="disabled" value="0">
-						</td>
-						<td><a href="#casingclear_3" class="casingclear" style="display:none;">Remove</a></td>						
-					</tr>
-					<tr id="casing_tool_4" class="casing_tool_row">
-						<td>
-							<input type="text" value="Select..." class="pick_casing" id="picker_4" style="width:100px;">
-						</td>
-						<td>
-							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_4" id="odcsg_4" />
-							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
-						</td>
-						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_4" id="idcsg_4" /></td>
-						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_4" id="topscsg_4" /></td>
-						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_4" id="bottomcsg_4" /></td>
-						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_4" id="volcsg_4" /></td>
-						<td>
-							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_4" id="longcsg_4" />
-							<input type="text" class="zrrange_top" id="zrrange_top_4" name="zrrange_top_4" disabled="disabled" value="0">
-							<input type="text" class="zrrange_btm" id="zrrange_btm_4" name="zrrange_btm_4" disabled="disabled" value="0">
-						</td>
-						<td><a href="#casingclear_4" class="casingclear" style="display:none;">Remove</a></td>						
-					</tr>
-					<tr id="casing_tool_5" class="casing_tool_row">
-						<td>
-							<input type="text" value="Select..." class="pick_casing" id="picker_5" style="width:100px;">
-						</td>
-						<td>
-							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_5" id="odcsg_5" />
-							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
-						</td>
-						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_5" id="idcsg_5" /></td>
-						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_5" id="topscsg_5" /></td>
-						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_5" id="bottomcsg_5"/></td>
-						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_5" id="volcsg_5" /></td>
-						<td>
-							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_5" id="longcsg_5" />
-							<input type="text" class="zrrange_top" id="zrrange_top_5" name="zrrange_top_5" disabled="disabled" value="0">
-							<input type="text" class="zrrange_btm" id="zrrange_btm_5" name="zrrange_btm_5" disabled="disabled" value="0">
-						</td>
-						<td><a href="#casingclear_5" class="casingclear" style="display:none;">Remove</a></td>						
-					</tr>
-					<tr id="casing_tool_6" class="casing_tool_row">
-						<td>
-							<input type="text" value="Select..." class="pick_casing" id="picker_6" style="width:100px;">
-						</td>
-						<td>
-							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_6" id="odcsg_6" />
-							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
-						</td>
-						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_6" id="idcsg_6" /></td>
-						<td><input type="text" class="top" style="width:60px;"  disabled="disabled" value="0" name="topcsg_6" id="topscsg_6" /></td>
-						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_6" id="bottomcsg_6" /></td>
-						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_6" id="volcsg_6" /></td>
-						<td>
-							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_6" id="longcsg_6" />
-							<input type="text" class="zrrange_top" id="zrrange_top_6" name="zrrange_top_6" disabled="disabled" value="0">
-							<input type="text" class="zrrange_btm" id="zrrange_btm_6" name="zrrange_btm_6" disabled="disabled" value="0">
-						</td>
-						<td><a href="#casingclear_6" class="casingclear" style="display:none;">Remove</a></td>						
-					</tr>
-					<tr id="casing_tool_7" class="casing_tool_row">
-						<td>
-							<input type="text" value="Select..." class="pick_casing" id="picker_7" style="width:100px;">
-						</td>
-						<td>
-							<input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_7" id="odcsg_7" />
-							<input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
-						</td>
-						<td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_7" id="idcsg_7" /></td>
-						<td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_7" id="topscsg_7" /></td>
-						<td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_7" id="bottomcsg_7" /></td>
-						<td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_7" id="volcsg_7" /></td>
-						<td>
-							<input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_7" id="longcsg_7" />
-							<input type="text" class="zrrange_top" id="zrrange_top_7" name="zrrange_top_7" disabled="disabled" value="0">
-							<input type="text" class="zrrange_btm" id="zrrange_btm_7" name="zrrange_btm_7" disabled="disabled" value="0">
-						</td>
-						<td><a href="#casingclear_7" class="casingclear" style="display:none;">Remove</a></td>						
-					</tr>						
+                                        
+                                        <?php $rs = $this->Api->sql("SELECT * FROM project_report_casing INNER JOIN casing ON casing.id = project_report_casing.casing_id WHERE project_report_casing.report_id = {$reporte['id']} ORDER BY project_report_casing.id ASC"); ?>
+                                        
+                                        <?php for($i=1 ; $i<=7 ; $i++) { ?>
+                                                <tr id="casing_tool_<?= $i; ?>" class="casing_tool_row" <?= empty($rs[$i-1]['casing_id']) ? '' : 'style="display: table-row;"'; ?>>
+                                                       <td>
+                                                                <input type="text" value="<?= empty($rs[$i-1]['type']) ? 'Select...' : $rs[$i-1]['type']; ?>" class="pick_casing" id="picker_<?= $i; ?>" style="width:100px;">
+                                                                <input type="hidden" value="<?= empty($rs[$i-1]['casing_id']) ? '' : $rs[$i-1]['casing_id']; ?>" class="pick_casing_id" id="picker_id_<?= $i; ?>">
+                                                        </td>
+                                                        <td>
+                                                                <input type="hidden" class="od" disabled="disabled" value="<?= empty($rs[$i-1]['oddeci']) ? '0' : $rs[$i-1]['oddeci']; ?>" name="odcsg_<?= $i; ?>" id="odcsg_<?= $i; ?>" />
+                                                                <input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['odfrac']) ? '0' : $rs[$i-1]['odfrac']; ?>" />
+                                                        </td>
+                                                        <td><input type="text" class="id" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['iddeci']) ? '0' : $rs[$i-1]['iddeci']; ?>" name="idcsg_<?=$i;?>" id="idcsg_<?=$i;?>" /></td>
+                                                        <td><input type="text" class="top" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['top']) ? '0' : $rs[$i-1]['top']; ?>" name="topcsg_<?=$i;?>" id="topscsg_<?=$i;?>" /></td>
+                                                        <td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['bottom']) ? '0' : $rs[$i-1]['bottom']; ?>" name="bottomcsg_<?=$i;?>" id="bottomcsg_<?=$i;?>" /></td>
+                                                        <td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['capacity']) ? '0' : $rs[$i-1]['capacity']; ?>" name="volcsg_<?=$i;?>" id="volcsg_<?=$i;?>" /></td>
+                                                        <td>
+                                                                <input type="text" class="length" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['length']) ? '0' : $rs[$i-1]['length']; ?>" name="longcsg_<?=$i;?>" id="longcsg_<?=$i;?>" />
+                                                                <input type="text" class="zrrange_top" id="zrrange_top_<?=$i;?>" name="zrrange_top_<?=$i;?>" disabled="disabled" value="0">
+                                                                <input type="text" class="zrrange_btm" id="zrrange_btm_<?=$i;?>" name="zrrange_btm_<?=$i;?>" disabled="disabled" value="0">
+                                                        </td>
+                                                        <?php if($i==1) { ?>
+                                                                <td><a href="#casingclear_<?=$i;?>" class="casingclear" <?= empty($rs[$i-1]['casing_id']) ? 'style="display:none;"' : ''; ?>>Clear</a></td> 
+                                                       <?php } else  { ?>
+                                                                <td><a href="#casingclear_<?=$i;?>" class="casingclear" <?= empty($rs[$i-1]['casing_id']) ? 'style="display:none;"' : ''; ?>>Remove</a></td>
+                                                        <?php }?> 
+                                                </tr>
+					<?php } ?>											
 				</table>
 			</fieldset>
         </div>
 	    <div class="simpleTabsContent">
     		<!-- HOLE -->
+                        <? $rs = $this->Api->get_where('project_report_hole', array('report_id'=>$reporte['id'])); ?>  
+                        <? $rs = isset($rs[0]) ? $rs[0] : null; ?>                        
 			<fieldset>
 				<table style="float:left;">
 					<tr>
 						<td class="label_m"><label class="emphasis">OPEN HOLE:</label></td>
-						<td><input type="hidden" name="zholed" id="zholed" disabled="disabled"><input type="text" name="zhole" id="zhole" value="0"></td>
+						<td>
+                                                        <input type="hidden" name="zholed" id="zholed" disabled="disabled">
+                                                        <input type="text" name="zhole" id="zhole" value="<?= empty($rs['open_hole']) ? '0' : $rs['open_hole']; ?>"></td>
 						<td class="label_m">in [decimals, not fracs]</td>
 					</tr>
 				</table>
@@ -215,34 +116,34 @@
 				<table style="float:left;">
 					<tr>
 						<td class="label_m"><label>Rice & Carbide Test:</label></td>
-						<td><input class="zero" type="text" name="zrice" id="zrice" style="margin-right:3px;" value="0"></td>
+						<td><input class="zero" type="text" name="zrice" id="zrice" style="margin-right:3px;" value="<?= empty($rs['rice_carbide_test']) ? '0' : $rs['rice_carbide_test']; ?>"></td>
 						<td class="label_m" style="text-align:left;">in</td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Cuttings & Caving record:</label></td>
-						<td><input class="zero" type="text" name="zcuttings" id="zcuttings" style="margin-right:3px;" value="0"></td>
+						<td><input class="zero" type="text" name="zcuttings" id="zcuttings" style="margin-right:3px;" value="<?= empty($rs['cuttings_caving_record']) ? '0' : $rs['cuttings_caving_record']; ?>"></td>
 						<td class="label_m" style="text-align:left;">in</td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Caliper:</label></td>
-						<td><input class="zero" type="text" name="zcalipper" id="zcaliper" style="margin-right:3px;" value="0"></td>
+						<td><input class="zero" type="text" name="zcalipper" id="zcaliper" style="margin-right:3px;" value="<?= empty($rs['caliper']) ? '0' : $rs['caliper']; ?>"></td>
 						<td class="label_m" style="text-align:left;">in</td>
 					</tr>
 				</table>
 				<table style="float:left;margin-left:50px;">
 					<tr>
 						<td class="label_m" style="padding-left:6px;"><label>WASHOUT:</label></td>
-						<td><input type="text" name="zwashout" id="zwashout" disabled="disabled" style="width:50px;"></td>
+						<td><input type="text" name="zwashout" id="zwashout" disabled="disabled" style="width:50px;" value="<?= empty($rs['washout']) ? '0' : $rs['washout']; ?>"></td>
 						<td class="label_m">%</td>
 					</tr>
 					<tr>
 						<td class="label_m" style="padding-left:6px;"><label>AVERAGE HOLE:</label></td>
-						<td><input type="text" name="openhole" id="openhole" disabled="disabled" style="width:50px;"></td>
+						<td><input type="text" name="openhole" id="openhole" disabled="disabled" style="width:50px;" value="<?= empty($rs['average_hole']) ? '0' : $rs['average_hole']; ?>"></td>
 						<td class="label_m">in</td>
 					</tr>
 					<tr>
 						<td class="label_m" style="padding-left:6px;"><label>OPEN HOLE LENGTH:</label></td>
-						<td><input type="text" name="longhoyo" id="longhoyo" disabled="disabled" style="width:50px;"></td>
+						<td><input type="text" name="longhoyo" id="longhoyo" disabled="disabled" style="width:50px;" value="<?= empty($rs['open_hole_length ']) ? '0' : $rs['open_hole_length ']; ?>"></td>
 						<td class="label_m">ft</td>
 					</tr>
 				</table>
@@ -250,6 +151,7 @@
 	    </div>
         <div class="simpleTabsContent">
         		<!-- DRILL STRING -->
+                                <? $rs = $this->Api->get_where('project_report_drill_string', array('report_id'=>$reporte['id']), array('id','desc')); ?>                               
 				<table>
 					<tr>
 						<td colspan="2">
@@ -257,10 +159,10 @@
 								<table>
 									<tr>
 										<td class="label_m"><label>BHA#:</label></td>
-										<td><input type="text" style="width:40px;" /></td>
+										<td><input type="text" style="width:40px;" id="dsbha" value="<?= empty($reporte['bha']) ? '' : $reporte['bha']; ?>" /></td>
 
 										<td class="label_m"><label>TOTAL LENGTH BHA:</label></td>
-										<td><input type="text" name="totalbha" id="totalbha" disabled="disabled" style="width:40px;" /></td>
+										<td><input type="text" name="totalbha" id="totalbha" disabled="disabled" style="width:40px;" value="<?= empty($reporte['bha_length']) ? '' : $reporte['bha_length']; ?>" /></td>
 									</tr>
 								</table>
 							</fieldset>
@@ -317,38 +219,76 @@
 										</tr>
 									</thead>
 									<tbody class="drill_string_pieces">
-										<tr id="row_select_drill_string_1" class="row_select_drill_string">
-											<td>
-												<select class="select_drill_string drillstring_tool_1" id="select_drill_string_1">
-													<option value="">Select...</option>
-													<option value="bit_sub">Bit + Sub</option>
-													<option value="bit">Bit</option>
-													<option value="hw">HW</option>
-													<option value="dc">DC</option>
-													<option value="motor">Motor</option>
-													<option value="stb">STB</option>
-													<option value="xo">XO</option>
-													<option value="hwdp">HWDP</option>
-													<option value="mwd">MWD</option>
-													<option value="dp">DP</option>
-													<option value="xodp">XODP</option>
-													<option value="jar">Jar</option>
-													<option value="power_drive">Power Drive</option>
-													<option value="vortex">Vortex</option>
-													<option value="lwd">LWD</option>
-												</select>
-											</td>
-											<td><input type="text" type="text" name="odbha_1" id="odbha_1" class="odbha_1 odbha" /></td>
-											<td><input type="text" type="text" name="idbha_1" id="idbha_1" class="idbha_1 idbha" /></td>
-											<td><input type="text" type="text" name="longbha_1" id="longbha_1" class="longbha_1 longbha" value="0" style="width:40px;" /></td>
-											<td><input type="text" type="text" name="capvbha_1" id="capvbha_1" disabled="disabled" class="capvbha_1 capvbha" /></td>
-											<td><input type="text" type="text" name="dispvbha_1" id="dispvbha_1" class="dispvbha_1 dispvbha" disabled="disabled"/></td>
-											<td><input type="text" type="text" name="capbha_1" id="capbha_1" class="capbha_1 capbha" disabled="disabled" style="width:40px;" /></td>
-											<td><input type="text" type="text" name="dispbha_1" id="dispbha_1" class="dispbha_1 dispbha" disabled="disabled" style="width:40px;" /></td>
-											<td><input type="text" type="text" name="powerlossbha_1" id="powerlossbha_1" class="powerlossbha" disabled="disabled"/></td>
-											<td><input type="text" type="text" name="zbinglossbha_1" id="zbinglossbha_1" class="zbinglossbha" disabled="disabled"/></td>
-											<td class="label_m"><a href="#removeds_1" class="remove_ds">Remove</a></td>
-										</tr>
+                                                                                <?php $tam = count($rs); ?>
+                                                                                <?php if($tam>1) { ?>
+                                                                                        <?php for($i=1 ; $i<=$tam ; $i++) { ?>
+                                                                                <tr id="row_select_drill_string_<?=$i;?>" class="row_select_drill_string">
+                                                                                                        <td>
+                                                                                                                <select class="select_drill_string drillstring_tool_<?=$i;?>" id="select_drill_string_<?=$i;?>">
+                                                                                                                        <option value="">Select...</option>
+                                                                                                                        <option value="bit_sub" <?= (isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='bit_sub') ? 'selected' : ''; ?>>Bit + Sub</option>
+                                                                                                                        <option value="bit" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='bit' ? 'selected' : ''; ?>>Bit</option>
+                                                                                                                        <option value="hw" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='hw' ? 'selected' : ''; ?>>HW</option>
+                                                                                                                        <option value="dc" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='dc' ? 'selected' : ''; ?>>DC</option>
+                                                                                                                        <option value="motor" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='motor' ? 'selected' : ''; ?>>Motor</option>
+                                                                                                                        <option value="stb" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='stb' ? 'selected' : ''; ?>>STB</option>
+                                                                                                                        <option value="xo" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='xo' ? 'selected' : ''; ?>>XO</option>
+                                                                                                                        <option value="hwdp" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='hwdp' ? 'selected' : ''; ?>>HWDP</option>
+                                                                                                                        <option value="mwd" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='mwd' ? 'selected' : ''; ?>>MWD</option>
+                                                                                                                        <option value="dp" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='dp' ? 'selected' : ''; ?>>DP</option>
+                                                                                                                        <option value="xodp" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='xodp' ? 'selected' : ''; ?>>XODP</option>
+                                                                                                                        <option value="jar" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='jar' ? 'selected' : ''; ?>>Jar</option>
+                                                                                                                        <option value="power_drive" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='power_drive' ? 'selected' : ''; ?>>Power Drive</option>
+                                                                                                                        <option value="vortex" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='vortex' ? 'selected' : ''; ?>>Vortex</option>
+                                                                                                                        <option value="lwd" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='lwd' ? 'selected' : ''; ?>>LWD</option>
+                                                                                                                </select>
+                                                                                                        </td>
+                                                                                                        <td><input type="text" type="text" name="odbha_<?=$i;?>" id="odbha_<?=$i;?>" class="odbha_<?=$i;?> odbha" value="<?= empty($rs[$i-1]['oddeci']) ? '' : $rs[$i-1]['oddeci']; ?>" /></td>
+                                                                                                        <td><input type="text" type="text" name="idbha_<?=$i;?>" id="idbha_<?=$i;?>" class="idbha_<?=$i;?> idbha" value="<?= empty($rs[$i-1]['iddeci']) ? '' : $rs[$i-1]['iddeci']; ?>"/></td>
+                                                                                                        <td><input type="text" type="text" name="longbha_<?=$i;?>" id="longbha_<?=$i;?>" class="longbha_<?=$i;?> longbha" value="<?= empty($rs[$i-1]['length']) ? '0' : $rs[$i-1]['length']; ?>" style="width:40px;" /></td>
+                                                                                                        <td><input type="text" type="text" name="capvbha_<?=$i;?>" id="capvbha_<?=$i;?>" disabled="disabled" class="capvbha_<?=$i;?> capvbha" value="<?= empty($rs[$i-1]['capacity_vol']) ? '' : $rs[$i-1]['capacity_vol']; ?>" /></td>
+                                                                                                        <td><input type="text" type="text" name="dispvbha_<?=$i;?>" id="dispvbha_<?=$i;?>" class="dispvbha_<?=$i;?> dispvbha" disabled="disabled" value="<?= empty($rs[$i-1]['displacement_vol']) ? '' : $rs[$i-1]['displacement_vol']; ?>"/></td>
+                                                                                                        <td><input type="text" type="text" name="capbha_<?=$i;?>" id="capbha_<?=$i;?>" class="capbha_<?=$i;?> capbha" disabled="disabled" style="width:40px;" value="<?= empty($rs[$i-1]['capacity_ft']) ? '' : $rs[$i-1]['capacity_ft']; ?>" /></td>
+                                                                                                        <td><input type="text" type="text" name="dispbha_<?=$i;?>" id="dispbha_<?=$i;?>" class="dispbha_<?=$i;?> dispbha" disabled="disabled" style="width:40px;" value="<?= empty($rs[$i-1]['displacement_ft']) ? '' : $rs[$i-1]['displacement_ft']; ?>" /></td>
+                                                                                                        <td><input type="text" type="text" name="powerlossbha_<?=$i;?>" id="powerlossbha_<?=$i;?>" class="powerlossbha" disabled="disabled" value="<?= empty($rs[$i-1]['pressure']) ? '0' : $rs[$i-1]['pressure']; ?>"/></td>
+                                                                                                        <td><input type="text" type="text" name="zbinglossbha_<?=$i;?>" id="zbinglossbha_<?=$i;?>" class="zbinglossbha" disabled="disabled" value="<?= empty($rs[$i-1]['losses']) ? '0' : $rs[$i-1]['losses']; ?>"/></td>
+                                                                                                        <td class="label_m"><a href="#removeds_<?=$i;?>" class="remove_ds">Remove</a></td>
+                                                                                                </tr>                                                                                                
+                                                                                        <?php } ?>
+                                                                                <?php } else { ?>
+										<tr id="row_select_drill_string_1" class="row_select_drill_string">											
+                                                                                                        <td>
+                                                                                                                <select class="select_drill_string drillstring_tool_1" id="select_drill_string_1">
+                                                                                                                        <option value="">Select...</option>
+                                                                                                                        <option value="bit_sub" <?= (isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='bit_sub') ? 'selected' : ''; ?>>Bit + Sub</option>
+                                                                                                                        <option value="bit" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='bit' ? 'selected' : ''; ?>>Bit</option>
+                                                                                                                        <option value="hw" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='hw' ? 'selected' : ''; ?>>HW</option>
+                                                                                                                        <option value="dc" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='dc' ? 'selected' : ''; ?>>DC</option>
+                                                                                                                        <option value="motor" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='motor' ? 'selected' : ''; ?>>Motor</option>
+                                                                                                                        <option value="stb" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='stb' ? 'selected' : ''; ?>>STB</option>
+                                                                                                                        <option value="xo" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='xo' ? 'selected' : ''; ?>>XO</option>
+                                                                                                                        <option value="hwdp" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='hwdp' ? 'selected' : ''; ?>>HWDP</option>
+                                                                                                                        <option value="mwd" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='mwd' ? 'selected' : ''; ?>>MWD</option>
+                                                                                                                        <option value="dp" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='dp' ? 'selected' : ''; ?>>DP</option>
+                                                                                                                        <option value="xodp" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='xodp' ? 'selected' : ''; ?>>XODP</option>
+                                                                                                                        <option value="jar" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='jar' ? 'selected' : ''; ?>>Jar</option>
+                                                                                                                        <option value="power_drive" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='power_drive' ? 'selected' : ''; ?>>Power Drive</option>
+                                                                                                                        <option value="vortex" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='vortex' ? 'selected' : ''; ?>>Vortex</option>
+                                                                                                                        <option value="lwd" <?= isset($rs[0]['bha_name']) && $rs[0]['bha_name']=='lwd' ? 'selected' : ''; ?>>LWD</option>
+                                                                                                                </select>
+                                                                                                        </td>
+                                                                                                        <td><input type="text" type="text" name="odbha_1" id="odbha_1" class="odbha_1 odbha" value="<?= empty($rs[0]['oddeci']) ? '' : $rs[0]['oddeci']; ?>" /></td>
+                                                                                                        <td><input type="text" type="text" name="idbha_1" id="idbha_1" class="idbha_1 idbha" value="<?= empty($rs[0]['iddeci']) ? '' : $rs[0]['iddeci']; ?>"/></td>
+                                                                                                        <td><input type="text" type="text" name="longbha_1" id="longbha_1" class="longbha_1 longbha" value="<?= empty($rs[0]['length']) ? '0' : $rs[0]['length']; ?>" style="width:40px;" /></td>
+                                                                                                        <td><input type="text" type="text" name="capvbha_1" id="capvbha_1" disabled="disabled" class="capvbha_1 capvbha" value="<?= empty($rs[0]['capacity_vol']) ? '' : $rs[0]['capacity_vol']; ?>" /></td>
+                                                                                                        <td><input type="text" type="text" name="dispvbha_1" id="dispvbha_1" class="dispvbha_1 dispvbha" disabled="disabled" value="<?= empty($rs[0]['displacement_vol']) ? '' : $rs[0]['displacement_vol']; ?>"/></td>
+                                                                                                        <td><input type="text" type="text" name="capbha_1" id="capbha_1" class="capbha_1 capbha" disabled="disabled" style="width:40px;" value="<?= empty($rs[0]['capacity_ft']) ? '' : $rs[0]['capacity_ft']; ?>" /></td>
+                                                                                                        <td><input type="text" type="text" name="dispbha_1" id="dispbha_1" class="dispbha_1 dispbha" disabled="disabled" style="width:40px;" value="<?= empty($rs[0]['displacement_ft']) ? '' : $rs[0]['displacement_ft']; ?>" /></td>
+                                                                                                        <td><input type="text" type="text" name="powerlossbha_1" id="powerlossbha_1" class="powerlossbha" disabled="disabled" value="<?= empty($rs[0]['pressure']) ? '0' : $rs[0]['pressure']; ?>"/></td>
+                                                                                                        <td><input type="text" type="text" name="zbinglossbha_1" id="zbinglossbha_1" class="zbinglossbha" disabled="disabled" value="<?= empty($rs[0]['losses']) ? '0' : $rs[0]['losses']; ?>"/></td>
+                                                                                                        <td class="label_m"><a href="#removeds_1" class="remove_ds">Remove</a></td>
+                                                                                                </tr>
+                                                                                <?php } ?>
 										<tr>
 											<td></td>
 											<td></td>

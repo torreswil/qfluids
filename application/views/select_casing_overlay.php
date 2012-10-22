@@ -49,6 +49,9 @@
 							<td><input type="text" name="" id="pickcasing_bottom" /></td>
 							<td class="label_m">ft</td>
 						</tr>
+                                                <tr>
+                                                        <td colspan="3"><input type="hidden" id="pickcasing_selected_id" value="" /></td>
+                                                </tr>
 					</table>
 				</form>
 				<p><input type="checkbox" id="checkbox_casing_not_found" />I can't find the casing I need. I wish to create a new one.</p>

@@ -804,7 +804,7 @@ function calculos_raw(){
 		zascount = zascount + 1;
 		
 		hidraulics_table = hidraulics_table + '<tr>'
-        hidraulics_table = hidraulics_table + '    <td><input type="text" style="width:100px;" value="'+this.name+'" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" style="width:100px;" value="'+this.name+'" class="adescription" /></td>';
         hidraulics_table = hidraulics_table + '    <td><input type="text" id="idhole_'+zascount+'" name="idhole_'+zascount+'" class="idhole" style="margin-right: 0px; width: 70px;" value="'+this.idhole+'" disabled="disabled" /></td>';
         hidraulics_table = hidraulics_table + '    <td><input type="text" id="odstring_'+zascount+'" name="odstring_'+zascount+'" class="odstring" style="margin-right: 0px; width: 70px;" value="'+this.odstring+'" disabled="disabled"/></td>';
         hidraulics_table = hidraulics_table + '    <td><input type="text" id="longanular_'+zascount+'" name="longanular_'+zascount+'" class="longanular" style="margin-right: 0px; width: 70px;" value="'+this.len+'" disabled="disabled" /></td>';

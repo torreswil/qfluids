@@ -42,12 +42,16 @@ $(function(){
                         
                         //Se borra los textos de los trabajos registrados en el overlay
                         $("#save_report_jobs").empty();
+                        //Save hole geometry
+                        save_hole_geometry();
+                        //Save operational info
+                        save_operational_info();
                         //Mud properties
                         save_mud_properties();
                         //Solids control equipment
                         save_solids_control(); 
                         //Save personal
-                        save_personal();
+                        save_personal();                        
                                                                        
                         //alert('saving function trigger');                                
 		}
@@ -69,6 +73,268 @@ $(function(){
                         $("#save_report_jobs").append('<p>'+job+'</p>');
                 }                
         }
+        
+        /**
+         * HOLE GEOMETRY
+        */
+        function save_hole_geometry() {
+                //Armo la data casing
+                var data_casing = [];                
+                $('tr.casing_tool_row').each(function(j) {                                                                        
+                        values = {
+                                casing_id       : $(this).find('.pick_casing_id').val(),
+                                type            : $(this).find('.pick_casing').val(),                                
+                                top             : $(this).find('.top').val(),
+                                bottom          : $(this).find('.bottom').val(),
+                                capacity        : $(this).find('.volume').val(),
+                                length          : $(this).find('.length').val()
+                        }
+                        data_casing.push(values);
+                });
+                //Save casing
+                $.post('/rest/save_hole_geometry/casing/',$.toJSON(data_casing),function(r){ },'json');               
+                
+                //Armo la data hole
+                var data_hole = {                        
+                        open_hole               : $('#zhole').val(),
+                        rice_carbide_test       : $('#zrice').val(),                                
+                        cuttings_caving_record  : $('#zcuttings').val(),
+                        caliper                 : $('#zcaliper').val(),
+                        washout                 : $('#zwashout').val(),
+                        average_hole            : $('#openhole').val(),
+                        open_hole_length        : $('#longhoyo').val()
+                }                
+                //Save hole
+                $.post('/rest/save_hole_geometry/hole/',data_hole,function(r){ },'json');               
+                
+                //Armo la data drill string
+                var data_drill_string = [];                
+                $('tr.row_select_drill_string').each(function(j) {                                                                        
+                        values = {
+                                bha_name                : $(this).find('.select_drill_string').val(),
+                                oddeci                  : $(this).find('.odbha').val(),
+                                iddeci                  : $(this).find('.idbha').val(),
+                                length                  : $(this).find('.longbha').val(),
+                                capacity_vol            : $(this).find('.capvbha').val(),
+                                displacement_vol        : $(this).find('.dispvbha').val(),
+                                capacity_ft             : $(this).find('.capbha').val(),
+                                displacement_ft         : $(this).find('.dispbha').val(),
+                                pressure                : $(this).find('.powerlossbha').val(),
+                                losses                  : $(this).find('.zbinglossbha').val()
+                        }
+                        data_drill_string.push(values);
+                });
+                //Save drillstring
+                $.post('/rest/save_hole_geometry/drill_string/',$.toJSON(data_drill_string),function(r){ },'json');               
+                
+                //Armo la data pressure_loss_resume
+                var data_pressure_loss = [];                
+                $('tr.hpressure_loss_resume').each(function(j) { 
+                        hydraulic = $(this).find('[name="hreporttoshow"]');
+                        hydraulic_type = (hydraulic.is(":checked")) ? $('[name="hreporttoshow"]:checked').val() : ''; 
+                        values = {
+                                hydraulic_type  : hydraulic_type,
+                                surface         : $(this).find('.hsurface').val(),
+                                string          : $(this).find('.hstring').val(),
+                                motor           : $(this).find('.hmotor').val(),
+                                bit             : $(this).find('.hbit').val(),
+                                annular         : $(this).find('.hannular').val(),
+                                total           : $(this).find('.htotal').val()
+                        }
+                        data_pressure_loss.push(values);
+                });
+                //Save pressure_loss
+                $.post('/rest/save_hole_geometry/pressure/',$.toJSON(data_pressure_loss),function(r){ },'json');
+                
+                //Armo la data de velocidades
+                var data_velocity = {
+                        casing1         : $("#zcdpvel").val(),
+                        casing2         : $("#zcdpvelcrit").val(),
+                        casing3         : $("#zcdpqc").val(),
+                        dp1             : $("#zdpohvel").val(),
+                        dp2             : $("#zdpohvelcrit").val(),
+                        dp3             : $("#zdpohqc").val(),
+                        dc11            : $("#zbhavel_1").val(),
+                        dc12            : $("#zbhavelcrit_1").val(),
+                        dc13            : $("#zbhagc_1").val(),
+                        dc21            : $("#zbhavel_2").val(),
+                        dc22            : $("#zbhavelcrit_2").val(),
+                        dc23            : $("#zbhagc_2").val(),                        
+                        bouyancy        : $("#bouyancy").val(),
+                        ecd             : $("#ecd").val(),
+                        w_out           : $("#zwout").val()
+                }
+                //Save pressure_loss
+                $.post('/rest/save_hole_geometry/velocity/',data_velocity,function(r){ },'json');
+                
+                //Armo la data annular section
+                var data_annular_section = [];                
+                $('#hidraulics_table_content').find('tr').each(function(j) {                                                                        
+                        values = {
+                                description     : $(this).find('.adescription').val(),
+                                id_hole         : $(this).find('.idhole').val(),
+                                od              : $(this).find('.odstring').val(),
+                                length          : $(this).find('.longanular').val(),
+                                capacity        : $(this).find('.capanul').val(),
+                                vel_critical    : $(this).find('.zasvel').val(),
+                                plp             : $(this).find('.zapowerloss').val(),
+                                plb             : $(this).find('.zabinghloss').val(),
+                                regime          : $(this).find('.zregime').val()
+                        }
+                        data_annular_section.push(values);
+                });
+                //Save pressure_loss
+                $.post('/rest/save_hole_geometry/annular/',$.toJSON(data_annular_section),function(r){ },'json');                
+                
+                //Guarda las propiedades del reporte
+                report_hole_geometry = {
+                        depth_md: $('#md').val(), 
+                        bit_depth: $("#bitdepth").val() ,
+                        bha: $("#dsbha").val(),
+                        bha_length: $("#totalbha").val(), 
+                        hydraulic_type: $('[name="hreporttoshow"]:checked').val()
+                }
+                $.post('/rest/save_report_settings', report_hole_geometry,function(r){ });
+                
+                setStatusReport('Hole Geometry saved!');
+        }
+       
+       
+        /**
+         * OPERATIONAL INFO
+         */                
+        function save_operational_info() {                                            
+                
+                var bit_data = $('.operational_info_bit_data');                
+                //Armo la data de los bit
+                var data = [];                                                                        
+                this_value = {
+                        bit_number              : $('#bit_bitnumber').val(),
+                        brocas_modelos_id       : $('#broca_bit_model_id').val(),
+                        jets1                   : $('#j_1').val(),
+                        jets2                   : $('#j_2').val(),
+                        jets3                   : $('#j_3').val(),
+                        jets4                   : $('#j_4').val(),
+                        jets5                   : $('#j_5').val(),
+                        jets6                   : $('#j_6').val(),
+                        jets7                   : $('#j_7').val(),
+                        jets8                   : $('#j_8').val(),
+                        jets9                   : $('#j_9').val(),
+                        jets10                  : $('#j_10').val(),
+                        jets11                  : $('#j_11').val(),
+                        jets12                  : $('#j_12').val(),
+                        result_jets            : $('#jets_string').val(),
+                        tfa                     : $('#tfa').val(),
+                        vel_jets                : $('#veljet').val(),
+                        pd1                     : $('#pdbit').val(),
+                        pd2                     : $('#bitxcien').val(),
+                        hhp                     : $('#hhp').val(),
+                        hsi                     : $('#hsi').val()
+                }
+                data.push(this_value);                                                        
+                //Save bit_data
+                $.post('/rest/save_operational_info/bit/',$.toJSON(data),function(r){ },'json');
+                
+                //Armo la data de las bombas
+                var data_pump = [];                                                                        
+                pump_1 = {
+                        bombas_id               : $('#pump_1_maker_id').val(),
+                        efficiency              : $('#eff_1').val(),
+                        spm                     : $('#spm_1').val(),                        
+                        gal                     : $('#galstk_1').val(),
+                        gpm                     : $('#qgal_1').val()
+                }
+                data_pump.push(pump_1);   
+                pump_2 = {
+                        bombas_id               : $('#pump_2_maker_id').val(),
+                        efficiency              : $('#eff_2').val(),
+                        spm                     : $('#spm_2').val(),                        
+                        gal                     : $('#galstk_2').val(),
+                        gpm                     : $('#qgal_2').val()
+                }
+                data_pump.push(pump_2);
+                pump_3 = {
+                        bombas_id               : $('#pump_3_maker_id').val(),
+                        efficiency              : $('#eff_3').val(),
+                        spm                     : $('#spm_3').val(),                        
+                        gal                     : $('#galstk_3').val(),
+                        gpm                     : $('#qgal_3').val()
+                }
+                data_pump.push(pump_3);                
+                //Save pump_data
+                $.post('/rest/save_operational_info/pump/',$.toJSON(data_pump),function(r){ },'json');
+                
+                //Armo la data del drilling time
+                var data_drilling_time = [];
+                
+                drilling_time = $('.operational_info_drilling_time');
+                
+                drilling_time.find('tr').each(function(j) {
+                        drilling = $(this).find('.drilling_time_select').val();
+                        time = $(this).find('.drillingt').val();
+                        if(drilling!=undefined) {
+                                values = {
+                                        drilling        : drilling,
+                                        time            : time
+                                }
+                                data_drilling_time.push(values);
+                        }                        
+                });
+                //Save drilling time
+                $.post('/rest/save_operational_info/drillingtime/',$.toJSON(data_drilling_time),function(r){ },'json');               
+                
+                //Armo la data del drilling parameters
+                var data_drilling_parameters = [];
+                
+                drilling_parameters = $('.operational_info_drilling_parameters');
+                
+                drilling_parameters.find('tr').each(function(j) {                        
+                        values = {
+                                parameter       : $(this).find('.drillingp_name').val(),
+                                unit            : $(this).find('.drillingp_unit').val(),
+                                value           : $(this).find('.drillingp_value').val()
+                        }
+                        data_drilling_parameters.push(values);                                                
+                });
+                //Save drilling parameters
+                $.post('/rest/save_operational_info/drillingparameters/',$.toJSON(data_drilling_parameters),function(r){ },'json');               
+                
+                //Armo la data del drilling parameters
+                var data_survey = [];
+                
+                survey = $('.operational_info_survey');
+                
+                survey.find('tr').each(function(j) {                        
+                        values = {
+                                parameter       : $(this).find('.survey_name').val(),
+                                unit            : $(this).find('.survey_unit').val(),
+                                value           : $(this).find('.survey_value').val()
+                        }
+                        data_survey.push(values);                                                
+                });
+                //Save drilling parameters
+                $.post('/rest/save_operational_info/survey/',$.toJSON(data_survey),function(r){ },'json');               
+                
+                report_pump = {
+                        activity: $('#operational_info_activity').val(), 
+                        formation: $("#operational_info_formation").val(),
+                        bottoms_up: $('#bottomsup').val(),
+                        bottoms_up_stk: $('#spmbottoms').val(),
+                        lag_down: $('#lapdown').val(),
+                        lag_down_stk: $('#spmdown').val(),
+                        total_lag: $('#totallap').val(),
+                        total_lag_stk: $('#spmtotallap').val(),
+                        feet_drilling: $('.feet_drilling').val(),                        
+                        daily_rop: $('.daily_rop').val(),
+                        daily_avge_temp: $('.daily_avge_temp').val()
+                        
+                }
+                $.post('/rest/save_report_settings', report_pump,function(r){ });
+                
+                setStatusReport('Operational info saved!');
+                
+        }
+        
         
         /**
          * MUD PROPERTIES
@@ -162,6 +428,7 @@ $(function(){
                         }
                 },'json');                
                 
+                $.post('/rest/save_report_settings',{ mud_type: $('.pick_mud').val() },function(r){ });
         }
         
         /**

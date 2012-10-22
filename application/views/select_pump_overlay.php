@@ -64,6 +64,12 @@
 							</select>
 						</td>
 					</tr>	
+                                        <tr>
+						<td></td>
+						<td>
+							<input type="hidden" id="pump_picker_selected_id" value="" />
+						</td>
+					</tr>
 				</table>
 				
 				<p><input type="checkbox" id="checkbox_pump_not_found" value="model_not_found" /> I can't find my model. I need to create a new one.</p>
