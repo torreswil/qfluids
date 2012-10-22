@@ -1068,7 +1068,7 @@
                                 <div class="b-top"></div>
                                 
                                 <div class="container-fluid">
-                                        <div class="data-table-container b-right" style="float:left; width: 67%;">
+                                        <div class="data-table-container b-right" style="float:left; width: 65%;">
                                                 <div class="sub-header b-bottom"><h5>PRODUCT CONCENTRATIONS, PPB / GPB</h5></div>
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
@@ -1248,7 +1248,7 @@
                                                         </tbody>
                                                 </table>                                                
                                         </div>
-                                        <div class="data-table-container" style="float:left; width: 32.8%">
+                                        <div class="data-table-container" style="float:left; width: 34.8%">
                                                 <div class="sub-header b-right b-bottom"><h5>TIME BREAK DOWN</h5></div>                                                
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
