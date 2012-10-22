@@ -63,7 +63,7 @@
                                         
                                         <?php $rs = $this->Api->sql("SELECT * FROM project_report_casing INNER JOIN casing ON casing.id = project_report_casing.casing_id WHERE project_report_casing.report_id = {$reporte['id']} ORDER BY project_report_casing.id ASC"); ?>
                                         
-                                        <?php for($i=1 ; $i<=7 ; $i++) { ?>
+                                        <?php for($i=1 ; $i<=7 ; $i++) { ?>                                                
                                                 <tr id="casing_tool_<?= $i; ?>" class="casing_tool_row" <?= empty($rs[$i-1]['casing_id']) ? '' : 'style="display: table-row;"'; ?>>
                                                        <td>
                                                                 <input type="text" value="<?= empty($rs[$i-1]['type']) ? 'Select...' : $rs[$i-1]['type']; ?>" class="pick_casing" id="picker_<?= $i; ?>" style="width:100px;">
@@ -83,9 +83,9 @@
                                                                 <input type="text" class="zrrange_btm" id="zrrange_btm_<?=$i;?>" name="zrrange_btm_<?=$i;?>" disabled="disabled" value="0">
                                                         </td>
                                                         <?php if($i==1) { ?>
-                                                                <td><a href="#casingclear_<?=$i;?>" class="casingclear" <?= empty($rs[$i-1]['casing_id']) ? 'style="display:none;"' : ''; ?>>Clear</a></td> 
+                                                                <td><a href="#casingclear_<?=$i;?>" class="casingclear" <?= (!empty($rs[$i-1]['casing_id']) && !empty($rs[$i]['casing_id'])) ? 'style="display:none;"' : ''; ?>>Clear</a></td> 
                                                        <?php } else  { ?>
-                                                                <td><a href="#casingclear_<?=$i;?>" class="casingclear" <?= empty($rs[$i-1]['casing_id']) ? 'style="display:none;"' : ''; ?>>Remove</a></td>
+                                                                <td><a href="#casingclear_<?=$i;?>" class="casingclear" <?= (!empty($rs[$i-1]['casing_id']) && !empty($rs[$i]['casing_id'])) ? 'style="display:none;"' : ''; ?>>Remove</a></td>
                                                         <?php }?> 
                                                 </tr>
 					<?php } ?>											
@@ -151,7 +151,7 @@
 	    </div>
         <div class="simpleTabsContent">
         		<!-- DRILL STRING -->
-                                <? $rs = $this->Api->get_where('project_report_drill_string', array('report_id'=>$reporte['id']), array('id','desc')); ?>                               
+                                <? $rs = $this->Api->get_where('project_report_drill_string', array('report_id'=>$reporte['id'])); ?>                               
 				<table>
 					<tr>
 						<td colspan="2">
