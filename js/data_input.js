@@ -1950,14 +1950,8 @@ $(function(){
 
 			$.post('/rest_mvc/transferencia_volumen',$.toJSON(data),function(r){
 				if(r == true){
-					//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
-					load_materials_status();
-					load_ac_status();
-					load_tank_status();
-					load_current_concentrations();
-
 					var transfer_tank = $('#osc_transfer_tank').val();
-
+					
 					if($('#this_active_tank_'+transfer_tank).hasClass('inside_circuit')){
 						$('#this_active_tank_'+transfer_tank).removeClass('inside_circuit');
 						$('#hlibre_'+transfer_tank).attr('disabled','disabled');
@@ -1967,8 +1961,12 @@ $(function(){
 						$('#hlibre_'+transfer_tank).removeAttr('disabled');
 						$('#active_tank_'+transfer_tank).attr('checked','checked');
 					}
-					
 
+					//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
+					load_materials_status();
+					load_ac_status();
+					load_tank_status();
+					load_current_concentrations();
 					
 					$('#tv_osc_overlay .close_link').click();
 					$('#transfer_osc_btn').show();
