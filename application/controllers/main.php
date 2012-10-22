@@ -169,6 +169,12 @@ class Main extends CI_Controller {
                                 $data['solids'] = $this->Api->get_where('test', array('active'=>1, 'type_test'=>3)); 
                                 $data['tests'] = $this->Api->get_where('test', array('active'=>1)); 
                                 
+                                //SHAKERS
+                                $data['shakers'] = $this->Api->sql("SELECT * FROM project_report_shakers INNER JOIN project_shakers ON project_shakers.id = project_report_shakers.project_shakers_id WHERE project_report_shakers.report_id = {$current_report_data['id']}");
+                                //MUD CLEANER
+                                $data['mudcleaner'] = $this->Api->sql("SELECT * FROM project_report_mudcleaner INNER JOIN project_mudcleaner ON project_mudcleaner.id = project_report_mudcleaner.project_mudcleaner_id WHERE project_report_mudcleaner.report_id = {$current_report_data['id']}");
+                                //CENTRIFUGUES
+                                $data['centrifugues'] = $this->Api->sql("SELECT * FROM project_report_centrifugues INNER JOIN project_centrifugues ON project_centrifugues.id = project_report_centrifugues.project_centrifugues_id WHERE project_report_centrifugues.report_id = {$current_report_data['id']}");
                                 //DRILLING TIME
                                 $data['drilling_time'] = $this->Api->get_where('project_report_drilling_time', array('report_id'=>$current_report_data['id']));
                                 //SURVEY
