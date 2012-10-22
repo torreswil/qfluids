@@ -636,8 +636,8 @@
                                                         <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '&nbsp' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
                                                 </tr>                                                
                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[19]['id'], 'phase'=>$project['current_phase'])); ?>
-                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[20]['id'])); ?>
-                                                <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[21]['id'])); ?>
+                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[21]['id'])); ?>
+                                                <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[20]['id'])); ?>
                                                 <tr>
                                                         <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '&nbsp' : $program[0]['value_program'];?></td>
                                                         <td class="span3 txt-center"><?= (empty($rs1[0]['value']) && empty($rs2[0]['value']) ) ? '&nbsp' : $rs1[0]['value'].'/'.$rs2[0]['value']; ?></td>
