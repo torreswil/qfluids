@@ -7,7 +7,7 @@
                                 <img width="80" src="/img/qmax_logo.png">
                         </td>
                         <td class="span6 txt-center-all b-right-2 b-bottom-2">
-                                <h3>DAILY DRILLING FLUIDS REPORT N. XXX</h3>
+                                <h3>DAILY DRILLING FLUIDS REPORT N. <?= $reporte['number']; ?></h3>
                         </td>
                         <td class="span2 txt-center b-right-2 b-bottom-2">
                                 <img width="80" src="/img/qmax_logo.png">
@@ -21,24 +21,24 @@
         
         <table class="table table-stripted table-condensed b-bottom">
                 <tr class="">
-                        <td class="span2"><span class="strong">Date:</span> 01-12-12</td>
+                        <td class="span2"><span class="strong">Date:</span> <?= $reporte['date']; ?></td>
                         
-                        <td class="span2"><span class="strong">WELL:</span> ORITO 194</td>
+                        <td class="span2"><span class="strong">WELL:</span> <?= $project['well_name']; ?></td>
                         
-                        <td class="span2"><span class="strong">DEPTH MD:</span> 15000</td>                        
+                        <td class="span2"><span class="strong">DEPTH MD:</span> <?= $reporte['depth_md']; ?></td>                        
                         
-                        <td class="span2"><span class="strong">ACTIVITY:</span> PERFORANDO</td>
+                        <td class="span2"><span class="strong">ACTIVITY:</span> <?= $reporte['activity']; ?></td>
                         
-                        <td class="span2"><span class="strong">RIG:</span> SINOPEC 166</td>                        
+                        <td class="span2"><span class="strong">RIG:</span> <?= $project['rig']; ?></td>                        
                 </tr>
                 <tr class="">
-                        <td class="span2"><span class="strong">Spud date:</span> 01-12-12</td>
+                        <td class="span2"><span class="strong">Spud date:</span> <?= $project['spud_date']; ?></td>
                         
-                        <td class="span2"><span class="strong">FIELD:</span> ORITO</td>
+                        <td class="span2"><span class="strong">FIELD:</span> <?= $project['field']; ?></td>
                         
-                        <td class="span2"><span class="strong">BIT DEPTH:</span> </td>                        
+                        <td class="span2"><span class="strong">BIT DEPTH:</span> <?= $reporte['bit_depth']; ?></td>                        
                         
-                        <td class="span2"><span class="strong">FORMATION:</span> GUAYABO</td>
+                        <td class="span2"><span class="strong">FORMATION:</span> <?= $reporte['formation']; ?></td>
                         
                         <td class="span2"><span class="strong">PUSHER:</span> CARLOS DUARTE</td>
                 </tr>
@@ -48,7 +48,7 @@
                 
                 <div class="data-table-container" style="float:left; width: 25%">
                         <div class="data-table b-right" style="width: 100%">  
-                                <div class="sub-header b-bottom"><h5>DRILL STRING #1</h5></div>
+                                <div class="sub-header b-bottom"><h5>DRILL STRING #<?= $reporte['bha'];?></h5></div>
                                 <table class="table table-stripted table-condensed">
                                         <thead>
                                                 <tr class="txt-center">
@@ -191,50 +191,50 @@
                                                 <tbody>
                                                         <tr>
                                                                 <td class="txt-left span3">MAKER</td>
-                                                                <td class="txt-center span3">Continental</td>
-                                                                <td class="txt-center span3">Continental</td>
-                                                                <td class="txt-center span3">Continental</td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '' : $mud_pumps[0]['maker']; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['maker']) ? '' : $mud_pumps[1]['maker']; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['maker']) ? '' : $mud_pumps[2]['maker']; ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">MODEL</td>
-                                                                <td class="txt-center span3">FB - 1300</td>
-                                                                <td class="txt-center span3">FB - 1300</td>
-                                                                <td class="txt-center span3">FB - 1300</td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['modelo']) ? '' : $mud_pumps[0]['modelo']; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['modelo']) ? '' : $mud_pumps[1]['modelo']; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['modelo']) ? '' : $mud_pumps[2]['modelo']; ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">Diam./stk:</td>
-                                                                <td class="txt-center span3">5" X 12"</td>
-                                                                <td class="txt-center span3">5" X 12"</td>
-                                                                <td class="txt-center span3">5" X 12"</td>
+                                                                <td class="txt-center span3">5" X 12"</td><!-- REVISAR -->
+                                                                <td class="txt-center span3">5" X 12"</td><!-- REVISAR -->
+                                                                <td class="txt-center span3">5" X 12"</td><!-- REVISAR -->
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">Eff (%)</td>
-                                                                <td class="txt-center span3">95</td>
-                                                                <td class="txt-center span3">95</td>
-                                                                <td class="txt-center span3">95</td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['efficiency']) ? '' : number_format($mud_pumps[0]['efficiency'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['efficiency']) ? '' : number_format($mud_pumps[1]['efficiency'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['efficiency']) ? '' : number_format($mud_pumps[2]['efficiency'],2,",",''); ?></td>
                                                         </tr>                                        
                                                         <tr>
                                                                 <td class="txt-left span3">Gal/Stk:</td>
-                                                                <td class="txt-center span3">2,91</td>
-                                                                <td class="txt-center span3">2,91</td>
-                                                                <td class="txt-center span3">2,91</td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['gal']) ? '0,00' : number_format($mud_pumps[0]['gal'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['gal']) ? '0,00' : number_format($mud_pumps[1]['gal'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['gal']) ? '0,00' : number_format($mud_pumps[2]['gal'],2,",",''); ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">SPM:</td>
-                                                                <td class="txt-center span3">50</td>
-                                                                <td class="txt-center span3">50</td>
-                                                                <td class="txt-center span3">50</td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['spm']) ? '0' : number_format($mud_pumps[0]['spm'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['spm']) ? '0' : number_format($mud_pumps[1]['spm'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['spm']) ? '0' : number_format($mud_pumps[2]['spm'],2,",",''); ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">GPM</td>
-                                                                <td class="txt-center span3">145,5</td>
-                                                                <td class="txt-center span3">145,5</td>
-                                                                <td class="txt-center span3">145,5</td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['gpm']) ? '0,00' : number_format($mud_pumps[0]['gpm'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['gpm']) ? '0,00' : number_format($mud_pumps[1]['gpm'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['gpm']) ? '0,00' : number_format($mud_pumps[2]['gpm'],2,",",''); ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">SSP, psi</td>
-                                                                <td class="txt-center span3">1200</td>
-                                                                <td colspan="2" class="txt-left span6">TOTAL GPM:</td>                                                
+                                                                <td class="txt-center span3">1200</td><!-- REVISAR -->
+                                                                <td colspan="2" class="txt-left span6">TOTAL GPM: <?= number_format(0 + (empty($mud_pumps[0]['gpm']) ? 0 : $mud_pumps[0]['gpm']) + (empty($mud_pumps[1]['gpm']) ? 0 : $mud_pumps[1]['gpm']) + (empty($mud_pumps[2]['gpm']) ? 0 : $mud_pumps[2]['gpm']),2,",",''); ?></td> 
                                                         </tr>                                        
                                                 </tbody> 
                                         </table>
@@ -257,27 +257,27 @@
                                                         <tbody>
                                                                 <tr>
                                                                         <td class="txt-left">Casing/DP:</td>
-                                                                        <td class="txt-center">5,00</td>
-                                                                        <td class="txt-center">5</td>
-                                                                        <td class="txt-center">5</td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['casing1']) ? '0,00' : number_format($velocity[0]['casing1'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['casing2']) ? '0,00' : number_format($velocity[0]['casing2'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['casing3']) ? '0,00' : number_format($velocity[0]['casing3'], 2, ',', ''); ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="txt-left">DP/OH:</td>
-                                                                        <td class="txt-center">5,00</td>
-                                                                        <td class="txt-center">6</td>
-                                                                        <td class="txt-center">5</td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dp1']) ? '0,00' : number_format($velocity[0]['dp1'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dp2']) ? '0,00' : number_format($velocity[0]['dp2'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dp3']) ? '0,00' : number_format($velocity[0]['dp3'], 2, ',', ''); ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="txt-left">DP/OH:</td>
-                                                                        <td class="txt-center">5,00</td>
-                                                                        <td class="txt-center">7</td>
-                                                                        <td class="txt-center">5</td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc11']) ? '0,00' : number_format($velocity[0]['dc11'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc12']) ? '0,00' : number_format($velocity[0]['dc12'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc13']) ? '0,00' : number_format($velocity[0]['dc13'], 2, ',', ''); ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="txt-left">DP/OH:</td>
-                                                                        <td class="txt-center">5,00</td>
-                                                                        <td class="txt-center">7</td>
-                                                                        <td class="txt-center">5</td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc21']) ? '0,00' : number_format($velocity[0]['dc21'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc22']) ? '0,00' : number_format($velocity[0]['dc22'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc23']) ? '0,00' : number_format($velocity[0]['dc23'], 2, ',', ''); ?></td>
                                                                 </tr>                                                
                                                         </tbody>                                         
                                                 </table>
@@ -285,19 +285,19 @@
                                                         <tbody>
                                                                 <tr>
                                                                         <td class="txt-left span3">Bouyancy:</td>
-                                                                        <td class="txt-center span3">5,00</td>
+                                                                        <td class="txt-center span3"><?= empty($velocity[0]['bouyancy']) ? '0,00' : number_format($velocity[0]['bouyancy'], 3, ',', ''); ?></td>
                                                                         <td class="txt-center span3"></td>
                                                                         <td class="txt-center span3"></td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="txt-left">ECD (ppg):</td>
-                                                                        <td class="txt-center span3">5,00</td>
+                                                                        <td class="txt-center span3"><?= empty($velocity[0]['ecd']) ? '0,00' : number_format($velocity[0]['ecd'], 3, ',', ''); ?></td>
                                                                         <td class="txt-center span3"></td>
                                                                         <td class="txt-center span3"></td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="txt-left span3">W/out:</td>
-                                                                        <td class="txt-center span3">5,00</td>
+                                                                        <td class="txt-center span3"><?= empty($velocity[0]['w_out']) ? '0,00' : number_format($velocity[0]['w_out'], 3, ',', ''); ?></td>
                                                                         <td class="txt-center span3"></td>
                                                                         <td class="txt-center span3"></td>
                                                                 </tr>
@@ -314,15 +314,15 @@
                                                         <tbody>
                                                                 <tr>
                                                                         <td>Bttms/Up:</td>
-                                                                        <td class="txt-right">5 min</td>
+                                                                        <td class="txt-right">5 min</td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Surf/Bit:</td>
-                                                                        <td class="txt-right">5 min</td>
+                                                                        <td class="txt-right">5 min</td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>total Circ:</td>
-                                                                        <td class="txt-right">5 min</td>
+                                                                        <td class="txt-right">5 min</td><!-- REVISAR -->
                                                                 </tr>                                                
                                                         </tbody>
                                                 </table>
@@ -335,15 +335,15 @@
                                                         <tbody>
                                                                 <tr>
                                                                         <td>Annular:</td>
-                                                                        <td class="txt-right">5 BBL</td>
+                                                                        <td class="txt-right">5 BBL</td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Hole empty:</td>
-                                                                        <td class="txt-right">5 BBL</td>
+                                                                        <td class="txt-right">5 BBL</td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Hole W/String:</td>
-                                                                        <td class="txt-right">5 BBL</td>
+                                                                        <td class="txt-right">5 BBL</td><!-- REVISAR -->
                                                                 </tr>                                                
                                                         </tbody>
                                                 </table>
@@ -355,29 +355,29 @@
                         
                         <div class="container-fluid">
                                 <div class="data-table b-right" style="width: 50%; margin-left: 1px">
-                                        <div class="sub-header b-bottom  b-top"><h5>BIT #:1</h5></div>
+                                        <div class="sub-header b-bottom  b-top"><h5>BIT #: <?= empty($bit[0]['bit_number']) ? '' : $bit[0]['bit_number']; ?></h5></div>
                                         <table class="table table-stripted table-condensed">                                               
                                                 <tbody>
                                                         <tr>
                                                                 <td class="strong span2">DIAMETER:</td>
-                                                                <td class="span2">12 1/4</td>
+                                                                <td class="span2"><?= empty($bit[0]['odfracc']) ? '' : $bit[0]['odfracc']; ?></td>
                                                                 <td class="strong span2">TFA:</td>
-                                                                <td class="span2">0,307</td>
+                                                                <td class="span2"><?= empty($bit[0]['tfa']) ? '' : number_format($bit[0]['tfa'], 3, ',', ''); ?></td>
                                                                 <td class="strong span2">JETS VEL:</td>
-                                                                <td class="span2"></td>                                                                   
+                                                                <td class="span2"><?= empty($bit[0]['vel_jets']) ? '' : number_format($bit[0]['vel_jets'], 3, ',', ''); ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="strong span2">TYPE:</td>
-                                                                <td class="span2">PDC</td>
+                                                                <td class="span2"><?= empty($bit[0]['nombre_broca']) ? '' : $bit[0]['nombre_broca']; ?></td>
                                                                 <td class="strong span2">JETS:</td>
-                                                                <td class="span2">4X11 5X11</td>
-                                                                <td class="strong span2">HHP (HP):</td>
+                                                                <td class="span2"><?= empty($bit[0]['result_jets']) ? '' : $bit[0]['result_jets']; ?></td>
+                                                                <td class="strong span2">HHP (HP):</td><!-- REVISAR -->
                                                                 <td class="span2"></td>                                                                   
                                                         </tr>
                                                         <tr>
                                                                 <td class="strong span2">MODEL:</td>
-                                                                <td colspan="3" class="span6">1X54S6D64-D456</td>
-                                                                <td class="strong span2">HSI (HP/in2):</td>                                                                
+                                                                <td colspan="3" class="span6"><?= empty($bit[0]['nombre_modelo']) ? '' : $bit[0]['nombre_modelo']; ?></td>
+                                                                <td class="strong span2">HSI (HP/in2):</td><!-- REVISAR -->                                                                
                                                                 <td class="span2"></td>                                                                   
                                                         </tr>
                                                 </tbody>                                

@@ -148,6 +148,14 @@ class Main extends CI_Controller {
 				$data['main_content']                           = 'qfluids';
 				$data['project']				= $project_data;                                                                
                                
+                                //MUD PUMPS
+                                $data['mud_pumps'] = $this->Api->sql("SELECT * FROM project_report_pump INNER JOIN bombas ON bombas.id = project_report_pump.bombas_id WHERE project_report_pump.report_id = {$current_report_data['id']}"); 
+                                //HYDRAULIC
+                                $data['velocity'] = $this->Api->get_where('project_report_velocity', array('report_id'=>$current_report_data['id']));
+                                
+                                //BIT DATA
+                                $data['bit'] = $this->Api->sql("SELECT * FROM project_report_bit INNER JOIN brocas_modelos ON brocas_modelos.id = project_report_bit.brocas_modelos_id INNER JOIN brocas ON brocas.id = brocas_modelos.id_broca WHERE project_report_bit.report_id = {$current_report_data['id']}");
+                                
                                 //MUD PROPERITES
                                 $data['mud_properties'] = $this->Api->get_where('project_report_test', array('report_id'=>$current_report_data['id']));
                                 $data['mud_properties_hour'] = $this->Api->get_where('project_report_test', array('report_id'=>$current_report_data['id'], 'test_id'=>1));  
