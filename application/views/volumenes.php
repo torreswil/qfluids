@@ -184,7 +184,7 @@
 				</tr>
 			</table>
 
-			<fieldset style="width:45%;float:left;">
+			<fieldset>
 				<legend>Active</legend>
 				<label id="tank_name_label_0" style="display:none;">Active</label>
 				<table>
@@ -240,59 +240,7 @@
 					</tr>
 				</table>
 			</fieldset>	
-
-			<fieldset style="width:45%;float:left;margin-left:20px;height:223px;">
-				<legend>Out of Short Circuit</legend>
-				<label id="tank_name_label_99" style="display:none;">Out of Short Circuit</label>
-				<table id="this_tank_99">
-					<tr>
-						<td></td>
-						<td class="label_m"><label>STARTING VOLUME</label></td>
-						<td class="label_m"><input id="volstart_99" name="volstart_99" class="label_m" type="text" style="width:100px;margin-right:3px;" disabled> bbl</td>
-					</tr>
-					<tr style="display:none;">
-						<td class="label_m"><img src="/img/bullet_add.png" /></td>
-						<td class="label_m"><label><a href="#received_mud_from_reserves" class="mta_link" style="text-decoration:underline;">RECEIVED MUD FROM RESERVES</a></label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled style="width:100px;margin-right:3px;"> bbl</td>
-					</tr>
-					<tr style="display:none;">
-						<td class="label_m"><img src="/img/bullet_add.png" /></td>
-						<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;" id="link_add_chemicals_99">CHEMICAL ADITIONS</a></label></td>
-						<td class="label_m"><input class="label_m" type="text" disabled style="width:100px;margin-right:3px;" id="volchem_99" name="volchem_99"> bbl</td>
-					</tr>
-					<tr style="display:none;">
-						<td></td>
-						<td class="label_m"><label>WATER ADITIONS</label></td>
-						<td class="label_m"><input id="volwater_99" name="volwater_99" class="label_m" type="text"  style="width:100px;margin-right:3px;" disabled > bbl</td>
-					</tr>
-					<tr style="display:none;">
-						<td></td>
-						<td class="label_m"><label>BUILDED MUD</label></td>
-						<td class="label_m"><input disabled id="volcons_99" name="volcons_99" class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
-					</tr>
-					<tr style="display:none;">
-						<td><img src="/img/bullet_delete.png" /></td>
-						<td class="label_m"><label><a href="#transfer_mud_to_reserves" class="mtr_link" style="text-decoration:underline;">MUD TRANSFERED TO RESERVES</a></label></td>
-						<td class="label_m"><input class="label_m" disabled type="text" style="width:100px;margin-right:3px;"> bbl</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
-						<td class="label_m"><input disabled="disabled" class="label_m" type="text" style="width:100px;margin-right:3px;" id="volrec_99" name="volrec_99" > bbl</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td class="label_m"><label>MUD TRANSFERED TO ACTIVE:</label></td>
-						<td class="label_m"><input disabled class="label_m voltransf" type="text" style="width:100px;margin-right:3px;" name="voltransf_99" id="voltransf_99" /> bbl</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td class="label_m"><label style="color:#333;">FINAL VOLUME</label></td>
-						<td class="label_m"><input disabled id="volfinal_99" name="volfinal_99" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
-					</tr>
-				</table>
-			</fieldset>				
-			
+		
 			<fieldset style="margin-top:10px;float:left;">
 				<table>
 					<tr>
@@ -502,6 +450,68 @@
 						</td>
 					</tr>
 				<?php } ?>
+
+				<!-- OUT OF SHORT CIRCUIT -->
+				<tr>
+					<td class="label_m" style="width:16px;"><a href="toggle_plus_99" class="show_n_hide_reserves closed"><img src="/img/bullet_toggle_plus.png" /></a></td> <!-- ojo aca -->
+					<td class="label_m"><label id="tank_name_label_99">Out of Short Circuit</label></strong></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<fieldset style="width:40%;display:none;" class="reserve_td reserve_td_99">
+							<table id="this_tank_99">
+								<tr>
+									<td></td>
+									<td class="label_m"><label>STARTING VOLUME</label></td>
+									<td class="label_m"><input id="volstart_99" name="volstart_99" class="label_m" type="text" style="width:100px;margin-right:3px;" disabled> bbl</td>
+								</tr>
+								<tr style="display:none;">
+									<td class="label_m"><img src="/img/bullet_add.png" /></td>
+									<td class="label_m"><label><a href="#received_mud_from_reserves" class="mta_link" style="text-decoration:underline;">RECEIVED MUD FROM RESERVES</a></label></td>
+									<td class="label_m"><input class="label_m" type="text" disabled style="width:100px;margin-right:3px;"> bbl</td>
+								</tr>
+								<tr style="display:none;">
+									<td class="label_m"><img src="/img/bullet_add.png" /></td>
+									<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" style="text-decoration:underline;" id="link_add_chemicals_99">CHEMICAL ADITIONS</a></label></td>
+									<td class="label_m"><input class="label_m" type="text" disabled style="width:100px;margin-right:3px;" id="volchem_99" name="volchem_99"> bbl</td>
+								</tr>
+								<tr style="display:none;">
+									<td></td>
+									<td class="label_m"><label>WATER ADITIONS</label></td>
+									<td class="label_m"><input id="volwater_99" name="volwater_99" class="label_m" type="text"  style="width:100px;margin-right:3px;" disabled > bbl</td>
+								</tr>
+								<tr style="display:none;">
+									<td></td>
+									<td class="label_m"><label>BUILDED MUD</label></td>
+									<td class="label_m"><input disabled id="volcons_99" name="volcons_99" class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
+								</tr>
+								<tr style="display:none;">
+									<td><img src="/img/bullet_delete.png" /></td>
+									<td class="label_m"><label><a href="#transfer_mud_to_reserves" class="mtr_link" style="text-decoration:underline;">MUD TRANSFERED TO RESERVES</a></label></td>
+									<td class="label_m"><input class="label_m" disabled type="text" style="width:100px;margin-right:3px;"> bbl</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
+									<td class="label_m"><input disabled="disabled" class="label_m" type="text" style="width:100px;margin-right:3px;" id="volrec_99" name="volrec_99" > bbl</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td class="label_m"><label>MUD TRANSFERED TO ACTIVE:</label></td>
+									<td class="label_m"><input disabled class="label_m voltransf" type="text" style="width:100px;margin-right:3px;" name="voltransf_99" id="voltransf_99" /> bbl</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td class="label_m"><label style="color:#333;">FINAL VOLUME</label></td>
+									<td class="label_m"><input disabled id="volfinal_99" name="volfinal_99" class="label_m" type="text" style="width:100px;margin-right:3px;"> bbl</td>
+								</tr>
+							</table>
+						</fieldset>
+					</td>
+				</tr>
+				<!-- // OUT OF SHORT CIRCUIT -->
+
 				<?php 
 					foreach($reserve_tanks as $tank){ 
 						$tank['jets'] == 0 ? $has_jets = 'No' : $has_jets = 'Yes'; 
