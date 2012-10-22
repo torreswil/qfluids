@@ -25,6 +25,7 @@ class Rest_mvc extends CI_Controller {
 	public function load_current_concentrations(){
 		
 		$materials 		= $this->Api->get_where('vista_inventario',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
+		$trip_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'trip','active'=>1),array('order','asc'));
 		$pill_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'pill','active'=>1),array('order','asc'));
 		$reserve_tanks 	= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id,'tank_category'=>'reserve','active'=>1),array('order','asc'));
 
@@ -51,6 +52,25 @@ class Rest_mvc extends CI_Controller {
 					?>
 					<input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_0" disabled value="<?= number_format($concentracion,2,'.','') ?>" />
 				</td>
+				<?php foreach($trip_tanks as $tank){ ?>
+					<?php 
+						
+						//obtener el estado actual del tanque
+						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>$tank['id']));
+						$id_estado_actual = $id_estado_actual[0];
+						$id_estado_actual = $id_estado_actual['id'];
+
+						//obtener la concentracion para este producto
+						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
+						if(count($concentracion) > 0){
+							$concentracion = $concentracion[0]['concentracion'];	
+						}else{
+							$concentracion = 0;	
+						}
+					?>
+                  	<td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
+                <?php }?>
+
 				<td>
 
 					<?php 
@@ -70,6 +90,7 @@ class Rest_mvc extends CI_Controller {
 					?>
 					<input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_99" disabled value="<?= number_format($concentracion,2,'.','') ?>" />
 				</td>
+				
 				<?php foreach($pill_tanks as $tank){ ?>
 					<?php 
 						
