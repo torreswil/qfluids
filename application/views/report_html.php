@@ -185,9 +185,8 @@
                                                                 <td class="txt-center span3"><?= empty($mud_pumps[2]['gpm']) ? '' : number_format($mud_pumps[2]['gpm'],2,",",''); ?></td>
                                                         </tr>
                                                         <tr>
-                                                                <td class="txt-left span3">SSP, psi</td>                                                                
-                                                                <td class="txt-center span3"><?= empty($drilling_parameters[2]['value']) ? '' : $drilling_parameters[2]['value']; ?></td>
-                                                                <td colspan="2" class="txt-left span6">TOTAL GPM: <?= number_format(0 + (empty($mud_pumps[0]['gpm']) ? 0 : $mud_pumps[0]['gpm']) + (empty($mud_pumps[1]['gpm']) ? 0 : $mud_pumps[1]['gpm']) + (empty($mud_pumps[2]['gpm']) ? 0 : $mud_pumps[2]['gpm']),2,",",''); ?></td> 
+                                                                <td colspan="2" class="txt-left span5">SSP, psi: <?= empty($drilling_parameters[2]['value']) ? '' : $drilling_parameters[2]['value']; ?></td>
+                                                                <td colspan="2" class="txt-left span7">T. GPM: <?= number_format(0 + (empty($mud_pumps[0]['gpm']) ? 0 : $mud_pumps[0]['gpm']) + (empty($mud_pumps[1]['gpm']) ? 0 : $mud_pumps[1]['gpm']) + (empty($mud_pumps[2]['gpm']) ? 0 : $mud_pumps[2]['gpm']),2,",",''); ?></td> 
                                                         </tr>                                        
                                                 </tbody> 
                                         </table>
