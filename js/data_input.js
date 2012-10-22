@@ -1372,24 +1372,11 @@ $(function(){
 
 		//tank has been unchecked, move to out of circuit
 		if(check == undefined){
-			var tank_html = $('#this_active_tank_'+id);
-			$('#this_active_tank_'+id).remove();
-			$('#out_of_active_table').append(tank_html).parent().show();
-
-			if($('#inside_circuit_active_tanks tr').length == 0){
-				$('#inside_circuit_active_tanks').parent().hide();	
-			}
+			
 
 		//tank is active again, move to the mud circuit
 		}else if(check == 'checked'){
-			var tank_html = $('#this_active_tank_'+id);
-			$('#this_active_tank_'+id).remove();
-
-			$('#inside_circuit_active_tanks').append(tank_html).parent().show();
-
-			if($('#out_of_active_table tr').length == 0){
-				$('#out_of_active_table').parent().hide();	
-			}
+			
 		}
 		correr_calculos();
 	});
@@ -1675,25 +1662,27 @@ $(function(){
 		$.getJSON('/rest_mvc/load_tank_status',function(r){
 			//colocar la informacion en el tanque activo
 			var a = r.active;
-			completar_campo_val('volstartact',a.volumen_inicial);
-			completar_campo_val('volrecact',a.volumen_recibido);
-			completar_campo_val('volchem_0',a.volumen_adicion_quimica);
-			completar_campo_val('volwateract',a.volumen_adicion_agua);
-			completar_campo_val('volconsact',a.volumen_construido);
-			completar_campo_val('voltransfact',a.volumen_transferido_reservas);
-			completar_campo_val('volfinalact',a.volumen_final);
+			completar_campo_val('volstartact',Math.round(a.volumen_inicial));
+			completar_campo_val('volrecact',Math.round(a.volumen_recibido));
+			completar_campo_val('volchem_0',Math.round(a.volumen_adicion_quimica));
+			completar_campo_val('volwateract',Math.round(a.volumen_adicion_agua));
+			completar_campo_val('volconsact',Math.round(a.volumen_construido));
+			completar_campo_val('voltransfact',Math.round(a.volumen_transferido_reservas));
+			completar_campo_val('volfinalact',Math.round(a.volumen_final));
+			completar_campo_val('volrecosc',Math.round(a.volumen_recibido_osc));
+			completar_campo_val('voltransosc',Math.round(a.volumen_transferido_osc));
 
 			//colocar la informacion en todos los tanques
 			$(r.all_tanks).each(function(){
 				var id = this.id;
 				if($('#this_tank_'+id).length > 0){
-					completar_campo_val('volstart_'+id,this.volumen_inicial);
-					completar_campo_val('volrec_'+id,this.volumen_recibido);
-					completar_campo_val('volchem_'+id,this.volumen_adicion_quimica);
-					completar_campo_val('volwater_'+id,this.volumen_adicion_agua);
-					completar_campo_val('volcons_'+id,this.volumen_construido);
-					completar_campo_val('voltransf_'+id,this.volumen_transferido_activo);
-					completar_campo_val('volfinal_'+id,this.volumen_final);
+					completar_campo_val('volstart_'+id,Math.round(this.volumen_inicial));
+					completar_campo_val('volrec_'+id,Math.round(this.volumen_recibido));
+					completar_campo_val('volchem_'+id,Math.round(this.volumen_adicion_quimica));
+					completar_campo_val('volwater_'+id,Math.round(this.volumen_adicion_agua));
+					completar_campo_val('volcons_'+id,Math.round(this.volumen_construido));
+					completar_campo_val('voltransf_'+id,Math.round(this.volumen_transferido_activo));
+					completar_campo_val('volfinal_'+id,Math.round(this.volumen_final));
 				}
 			});
 			
@@ -1827,6 +1816,136 @@ $(function(){
 	$('#rc_btn').click(function(e){
 		e.preventDefault();
 		$("#rc_overlay").hide();
+	});
+
+	$('.remove_activetank').click(function(e){
+		e.preventDefault();
+		var id = $(this).attr('id');
+			id = id.split('_');
+			id = id[2];
+
+		var tank_row = $('#this_active_tank_'+id);
+		
+		//el tanque aun se encuetra en el circuito, sacarlo
+		if(tank_row.hasClass('inside_circuit')){
+			var parametros_transferencia = {
+				'volumen' 	: fval('volrealtk_'+id),
+				'origen' 	: 0,
+				'destino' 	: 99,
+				'tanque' 	: id
+			}
+		//el tanque ya no está en en circuto, reintegrarlo
+		}else{
+			var parametros_transferencia = {
+				'volumen' 	: fval('volrealtk_'+id),
+				'origen' 	: 99,
+				'destino' 	: 0,
+				'tanque' 	: id 
+			}
+		}
+
+		sc_transfer(parametros_transferencia);
+	});
+
+	$('#tv_osc_overlay .close_link').click(function(e){
+		e.preventDefault();
+		$('#tv_osc_overlay').hide();
+	});
+
+	function sc_transfer(d){
+		var origin 	= d.origen;
+		var destiny = d.destino;
+		var volume 	= d.volumen;
+		var tank 	= d.tanque;
+
+		if(volume > 0){
+			if(origin == 0){
+				$('#tv_osc_overlay h5').html('Transfer '+volume+' bbl to Out of Short Circuit:');
+				$('#tv_osc_overlay legend').html('Concentraciones resultantes por fuera del circuito corto:');
+			}else{
+				$('#tv_osc_overlay h5').html('Transfer '+volume+' bbl back to active:');
+				$('#tv_osc_overlay legend').html('Concentraciones resultantes en el sistema activo:');
+			}
+
+			$('#tv_osc_origin').val(origin);
+			$('#tv_osc_destiny').val(destiny);
+			$('#tv_osc_volume').val(volume);
+			$('#osc_transfer_tank').val(tank);
+
+			var volumen_transferido = volume;
+
+			if(destiny == 99){
+				var volumen_destino = fval('volfinal_99');
+			}else if(destiny == 0){
+				var volumen_destino = fval('volfinalact');
+			}
+			
+			$('.soc_concentration').each(function(){
+				var material = $(this).attr('id');
+					material = material.split('_');
+					material = material[2];
+
+				var concentracion_origen 	= fval('currentconc_'+material+'_'+origin);
+				var concentracion_destino 	= fval('currentconc_'+material+'_'+destiny);
+
+				var concentracion = 0;
+				var concentracion = (volumen_transferido * concentracion_origen + volumen_destino * concentracion_destino) / (volumen_transferido + volumen_destino);
+				
+				completar_campo_val($(this).attr('id'),concentracion.toFixed(2));
+			});
+
+			$('#tv_osc_overlay').show();
+		}else{
+			alert('This tank has no volume. Please verify the headroom and try again');
+		}
+	}
+
+
+	$('#transfer_osc_btn').click(function(e){
+		e.preventDefault();
+		var confirmation = confirm('Are you sure you want to perform this action?');
+		if(confirmation){
+			//exito... hacer la transferencia de volumenes y actualizar el estado de las concentraciones
+			$('#transfer_osc_btn').hide();
+			$('#tv_osc_overlay .close_link').hide();
+			$('#transfer_osc_volume_btn_working').show();
+
+
+			var data = {
+				'origin' 	: $('#tv_osc_origin').val(),	
+				'destiny' 	: $('#tv_osc_destiny').val(),
+				'volume'	: $('#tv_osc_volume').val()
+			}
+
+			$.post('/rest_mvc/transferencia_volumen',$.toJSON(data),function(r){
+				if(r == true){
+					//actualizar el tanque, refrescar el inventario y refrescar el formulario de stock de adicion de quimica
+					load_materials_status();
+					load_ac_status();
+					load_tank_status();
+					load_current_concentrations();
+
+					var transfer_tank = $('#osc_transfer_tank').val();
+
+					if($('#this_active_tank_'+transfer_tank).hasClass('inside_circuit')){
+						$('#this_active_tank_'+transfer_tank).removeClass('inside_circuit');
+						$('#hlibre_'+transfer_tank).attr('disabled','disabled');
+						$('#active_tank_'+transfer_tank).removeAttr('checked');	
+					}else{
+						$('#this_active_tank_'+transfer_tank).addClass('inside_circuit');
+						$('#hlibre_'+transfer_tank).removeAttr('disabled');
+						$('#active_tank_'+transfer_tank).attr('checked','checked');
+					}
+					
+
+					
+					$('#tv_osc_overlay .close_link').click();
+					$('#transfer_osc_btn').show();
+					$('#tv_osc_overlay .close_link').show();
+					$('#transfer_osc_volume_btn_working').hide();
+				}
+			},'json');
+		}	
 	});
 
 	/*==========================================================================================================*/

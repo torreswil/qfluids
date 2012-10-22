@@ -1809,14 +1809,6 @@ function calculos_raw(){
 	});
 
 
-	//totaloutofcircuit
-	var totaloutofcircuit = 0;
-	$('#out_of_active_table .volrealtk').each(function(){
-		totaloutofcircuit = totaloutofcircuit + fval($(this).attr('id'));
-	});
-	completar_campo_val('totaloutofcircuit',totaloutofcircuit);
-	completar_campo_val('ztotaloutofcircuit',totaloutofcircuit);
-
 	$('.tank').each(function(){
 		var id = $(this).attr('id');
 		id = id.split('this_tank_');
@@ -1878,6 +1870,7 @@ function calculos_raw(){
 	});
 	completar_campo_val('voltotalchem',voltotalchem.toFixed(2));
 		
+	/*
 	//volconsact
 	var volconsact = 0;
 		volconsact = fval('volwateract') + fval('volchem_0');
@@ -1888,6 +1881,8 @@ function calculos_raw(){
 		volfinalact = fval('volstartact') + fval('volrecact') + fval('volconsact') - fval('voltransfact') - fval('totallosses') - fval('totaloutofcircuit');
 	completar_campo_val('volfinalact',Math.round(volfinalact));
 
+	*/
+
 	//triptank
 	var triptank = 0;
 	$('.volrealtk_triptank').each(function(){
@@ -1897,8 +1892,12 @@ function calculos_raw(){
 
 	//activepits
 	var activepits = 0;
-	$('#inside_circuit_active_tanks .volrealtk').each(function(){
-		activepits = activepits + fval($(this).attr('id'));
+	$('.remove_activetank:checked').each(function(){
+		var id = $(this).attr('id');
+			id = id.split('_');
+			id = id[2];
+
+		activepits = activepits + fval('volrealtk_'+id);
 	});
 	completar_campo_val('activepits',Math.round(activepits));
 
@@ -1928,15 +1927,20 @@ function calculos_raw(){
 
 	//voloac
 	var voloac = 0;
-	$('#out_of_active_table .volrealtk').each(function(){
-		voloac = voloac + fval($(this).attr('id'));
+	$('.remove_activetank:not(:checked)').each(function(){
+		var id = $(this).attr('id');
+			id = id.split('_');
+			id = id[2];
+
+		voloac = voloac + fval('volrealtk_'+id);
 	});
 	completar_campo_val('voloac',Math.round(voloac));
+	completar_campo_val('totaloutofcircuit',Math.round(voloac));
+	completar_campo_val('ztotaloutofcircuit',Math.round(voloac));
 
 	//balancefluido
 	var balancefluido = 0;
-		balancefluido = totalcirculate - volfinalact;
-		log(totalcirculate,volfinalact);
+		balancefluido = totalcirculate - fval('volfinalact');
 	completar_campo_val('balancefluido',Math.round(balancefluido));
 
 	

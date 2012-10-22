@@ -15,6 +15,7 @@
 				            <td class="label_m"><label>Material</label></td>
 				            <td class="label_m"><label>Unit</label></td>
 				            <td class="label_m"><label>Active</label></td>
+				            <td class="label_m"><label>OSC</label></td>
 				            <?php foreach($pill_tanks as $tank){ ?>
 				              <td class="label_m"><label><?= $tank['tank_name'] ?></label></td>
 				            <?php }?>
