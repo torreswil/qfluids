@@ -266,15 +266,15 @@
                                                         <tbody>
                                                                 <tr>
                                                                         <td>Bttms/Up:</td>
-                                                                        <td class="txt-right"> min</td><!-- REVISAR -->
+                                                                        <td class="txt-right"></td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Surf/Bit:</td>
-                                                                        <td class="txt-right"> min</td><!-- REVISAR -->
+                                                                        <td class="txt-right"></td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>total Circ:</td>
-                                                                        <td class="txt-right"> min</td><!-- REVISAR -->
+                                                                        <td class="txt-right"></td><!-- REVISAR -->
                                                                 </tr>                                                
                                                         </tbody>
                                                 </table>
@@ -287,15 +287,15 @@
                                                         <tbody>
                                                                 <tr>
                                                                         <td>Annular:</td>
-                                                                        <td class="txt-right"> BBL</td><!-- REVISAR -->
+                                                                        <td class="txt-right"></td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Hole empty:</td>
-                                                                        <td class="txt-right"> BBL</td><!-- REVISAR -->
+                                                                        <td class="txt-right"></td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Hole W/String:</td>
-                                                                        <td class="txt-right"> BBL</td><!-- REVISAR -->
+                                                                        <td class="txt-right"></td><!-- REVISAR -->
                                                                 </tr>                                                
                                                         </tbody>
                                                 </table>
@@ -341,21 +341,21 @@
                                                 <tbody>
                                                         <tr>
                                                                 <td class="strong span3">Active pits:</td>
-                                                                <td class="span3">BBL</td>
+                                                                <td class="span3"></td>
                                                                 <td class="strong span3">Total circulate:</td>
-                                                                <td class="span3">BBL</td>
+                                                                <td class="span3"></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="strong span3">Pill:</td>
-                                                                <td class="span3">BBL</td>
+                                                                <td class="span3"></td>
                                                                 <td class="strong span3">Total Reserve:</td>
-                                                                <td class="span3">BBL</td>                                                                
+                                                                <td class="span3"></td>                                                                
                                                         </tr>
                                                         <tr>
                                                                 <td class="strong span3">Trip tank:</td>
-                                                                <td class="span3">BBL</td>
+                                                                <td class="span3"></td>
                                                                 <td class="strong span3">Total mud:</td>
-                                                                <td class="span3">BBL</td>                                                                
+                                                                <td class="span3"></td>                                                                
                                                         </tr>
                                                 </tbody> 
                                         </table>
@@ -842,7 +842,7 @@
                                 <div class="sub-header b-bottom b-top"><h5>VOLUME BALANCE IN BBL</h5></div>
                                 <table class="table table-stripted table-condensed">
                                         <thead>
-                                                <tr class="bg-black">
+                                                <tr class="">
                                                         <th class="span2 txt-left">VOLUME</th>
                                                         <th class="span1 txt-center">ACTIVE</th>
                                                         <th class="span1 txt-center">RESERVE</th>
@@ -851,84 +851,84 @@
                                         </thead>
                                         
                                         <tbody>
-                                                <tr class="bg-black">
+                                                <tr class="">
                                                         <td class="">Starting Vol</td>
-                                                        <td class="txt-center">0,00</td>
-                                                        <td class="txt-center">0,00</td>
+                                                        <td class="txt-center"></td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Surface</td>
-                                                        <td class="txt-center">1</td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Daily Surf. Losses</td>
-                                                        <td class="txt-center">1</td>                                                        
+                                                        <td class="txt-center"></td>                                                        
                                                 </tr>                                                                                                                                               
-                                                <tr class="bg-black">
+                                                <tr class="">
                                                         <td class="">Transferred Mud</td>
-                                                        <td class="txt-center">0,00</td>
-                                                        <td class="txt-center">0,00</td>
+                                                        <td class="txt-center"></td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Shakers/Cvg's</td>
-                                                        <td class="txt-center">2</td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Cum. surf. losses</td>
-                                                        <td class="txt-center">2</td>                                                        
+                                                        <td class="txt-center"></td>                                                        
                                                 </tr>
-                                                <tr class="bg-black">
+                                                <tr class="">
                                                         <td class="">Received Mud</td>
-                                                        <td class="txt-center">0,00</td>
-                                                        <td class="txt-center">0,00</td>
+                                                        <td class="txt-center"></td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Mud Cleaner</td>
-                                                        <td class="txt-center">3</td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Daily Surf. Losses</td>
-                                                        <td class="txt-center">3</td>                                                        
+                                                        <td class="txt-center"></td>                                                        
                                                 </tr>				
-                                                <tr class="bg-black">
+                                                <tr class="">
                                                         <td class="">Chemicals</td>
-                                                        <td class="txt-center">3,85</td>
-                                                        <td class="txt-center">3,85</td>
+                                                        <td class="txt-center"></td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Centrifuges</td>
-                                                        <td class="txt-center">4</td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Cum. S/Surf. losses</td>
-                                                        <td class="txt-center">4</td>                                                        
+                                                        <td class="txt-center"></td>                                                        
                                                 </tr>
-                                                <tr class="bg-black">
+                                                <tr class="">
                                                         <td class="">Water</td>
-                                                        <td class="txt-center">999,72</td>
-                                                        <td class="txt-center">999,72</td>
+                                                        <td class="txt-center"></td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Dewatering</td>
-                                                        <td class="txt-center">5</td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">&nbsp;</td>
                                                         <td class="txt-center">&nbsp;</td>                                                        
                                                 </tr>
-                                                <tr class="bg-black">
+                                                <tr class="">
                                                         <td class="strong">Total Additions</td>
-                                                        <td class="txt-center">1003,57</td>
-                                                        <td class="txt-center">1003,57</td>
+                                                        <td class="txt-center"></td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Surface</td>
-                                                        <td class="txt-center">6</td>
+                                                        <td class="txt-center"></td>
                                                         <td class="strong" colspan="2">BY EVAPORATED bbl/day</td>                                                        
                                                 </tr>                                                				
-                                                <tr class="bg-black strong">
+                                                <tr class="strong">
                                                         <td class="">FINAL VOLUME</td>
-                                                        <td class="txt-center">1003,57</td>
-                                                        <td class="txt-center">1003,57</td>
+                                                        <td class="txt-center"></td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Behind Casing</td>
-                                                        <td class="txt-center">7</td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Water Evaporated.</td>
-                                                        <td class="txt-center">5</td>                                                        
+                                                        <td class="txt-center"></td>                                                        
                                                 </tr>
-                                                <tr class="bg-black">
+                                                <tr class="">
                                                         <td class="">Section mud made:</td>
                                                         <td class="txt-center"></td>
                                                         <td class="txt-center"></td>
                                                         <td class="">Others</td>
-                                                        <td class="txt-center">8</td>
+                                                        <td class="txt-center"></td>
                                                         <td class="">Water added by Evp.</td>
-                                                        <td class="txt-center">5</td>                                                        
+                                                        <td class="txt-center"></td>                                                        
                                                 </tr>
 																			
-                                                <tr class="bg-black">
+                                                <tr class="">
                                                         <td class="">Cum. Mud made:</td>
                                                         <td class="txt-center"></td>
                                                         <td class="txt-center"></td>
                                                         <td class="strong">Total Losses</td>
-                                                        <td class="txt-center">36</td>
+                                                        <td class="txt-center"></td>
                                                         <td class=""></td>
                                                         <td class="txt-center"></td>                                                        
                                                 </tr>                                                
@@ -956,15 +956,15 @@
                                                 <?php $counter = 1; ?>
                                                 <?php while($counter <= 21) { ?>
                                                 <tr>
-                                                        <td class=""></td>
-                                                        <td class="txt-right">lbs</td>
+                                                        <td class="">&nbsp;</td>
                                                         <td class="txt-right"></td>
                                                         <td class="txt-right"></td>
                                                         <td class="txt-right"></td>
                                                         <td class="txt-right"></td>
                                                         <td class="txt-right"></td>
                                                         <td class="txt-right"></td>
-                                                        <td class="txt-right">0,00</td>
+                                                        <td class="txt-right"></td>
+                                                        <td class="txt-right"></td>
                                                 </tr>
                                                 <?php $counter++; ?>
                                                 <?php } ?>                                                
@@ -985,18 +985,18 @@
                                 
                                 <div class="b-top" style="width: 100%;"></div>
                                 <table class="table table-stripted table-condensed">                                                                                
-                                        <tbody>                                                
-                                                <tr class="strong">
+                                        <tbody>  
+                                                 <tr>
                                                         <td class="span4">Daily Engineering Cost US$:</td>
-                                                        <td class="span2">$ 0,00</td>
-                                                        <td class="span4">Daily mud cost US$:</td>
-                                                        <td class="span2">$ 0,00</td>                                                        
+                                                        <td class="span1"></td>
+                                                        <td class="span6 strong" colspan="5">Daily mud cost US$:</td>                                                        
+                                                        <td class="span1"></td>
                                                 </tr>
-                                                <tr class="strong">
-                                                        <td class="span4">Daily Engineering Cost US$:</td>
-                                                        <td class="span2">$ 0,00</td>
-                                                        <td class="span4">Daily mud cost US$:</td>
-                                                        <td class="span2">$ 0,00</td>                                                        
+                                                <tr>
+                                                        <td class="span4">Daily Operator Cost US$:</td>
+                                                        <td class="span1"></td>
+                                                        <td class="span6 strong" colspan="5">Cum. Mud Cost US$:</td>                                                        
+                                                        <td class="span1"></td>
                                                 </tr>                                                 
                                         </tbody> 
                                 </table>                               
@@ -1039,32 +1039,36 @@
                 
                 <div class="data-table-container" style="float:left; width: 55%;margin-left: 1px">
                         <div class="data-table b-right" style="width: 100%;">
-                                <div class="b-top"></div>
+                                <!--<div class="b-top"></div>-->
                                 <table class="table table-stripted table-condensed">
                                         <tbody>
                                                 <tr>
+                                                        <td class="span4">Daily Patio Handsc Cost US$:</td>
+                                                        <td class="span1"></td>
                                                         <td class="span2">Cost / ft (USD)</td>
-                                                        <td class="span2"></td>
-                                                        <td class="span2">Daily:</td>
-                                                        <td class="span2"></td>
-                                                        <td class="span2">Section:</td>
-                                                        <td class="span2"></td>
+                                                        <td class="span1"></td>
+                                                        <td class="span1">Daily:</td>
+                                                        <td class="span1"></td>
+                                                        <td class="span1">Section:</td>
+                                                        <td class="span1"></td>
                                                 </tr>
                                                 <tr>
+                                                        <td class="span4  strong">Cum. Personnel Cost US$:</td>
+                                                        <td class="span1">500</td>
                                                         <td class="span2">Dilution, Bbl/ft</td>
-                                                        <td class="span2"></td>
-                                                        <td class="span2">Daily:</td>
-                                                        <td class="span2"></td>
-                                                        <td class="span2">Section:</td>
-                                                        <td class="span2"></td>
-                                                </tr>
+                                                        <td class="span1"></td>
+                                                        <td class="span1">Daily:</td>
+                                                        <td class="span1"></td>
+                                                        <td class="span1">Section:</td>
+                                                        <td class="span1"></td>
+                                                </tr>                                                
                                         </tbody>
                                 </table>                                                                
                                 
                                 <div class="b-top"></div>
                                 
                                 <div class="container-fluid">
-                                        <div class="data-table-container b-right" style="float:left; width: 65%;">
+                                        <div class="data-table-container b-right" style="float:left; width: 67%;">
                                                 <div class="sub-header b-bottom"><h5>PRODUCT CONCENTRATIONS, PPB / GPB</h5></div>
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
@@ -1079,26 +1083,6 @@
                                                         </thead>
                                                         <tbody>
                                                                 <tr>
-                                                                        <td></td>
-                                                                        <td class="txt-center">ppb</td>
-                                                                        <td class="txt-center">ppb</td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td></td>
-                                                                        <td class="txt-center">ppb</td>
-                                                                        <td class="txt-center">ppb</td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td></td>
-                                                                        <td class="txt-center">ppb</td>
-                                                                        <td class="txt-center">ppb</td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td></td>
-                                                                        <td class="txt-center">ppb</td>
-                                                                        <td class="txt-center">ppb</td>
-                                                                </tr>
-                                                                <tr>
                                                                         <td>&nbsp</td>
                                                                         <td class="txt-center">&nbsp</td>
                                                                         <td class="txt-center">&nbsp</td>
@@ -1124,7 +1108,27 @@
                                                                         <td class="txt-center">&nbsp</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td colspan="3">*0,42 gpb = 1% Vol</td>                                                                        
+                                                                        <td>&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="txt-center">&nbsp</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td colspan="3">&nbsp;</td><!--*0,42 gpb = 1% Vol-->                                                                        
                                                                 </tr>
                                                         </tbody>
                                                 </table>
@@ -1138,6 +1142,22 @@
                                                                 </tr>                                                                
                                                         </thead>
                                                         <tbody>
+                                                                <?php $total = count($shakers); ?>
+                                                                <?php $counter = 0; ?>
+                                                                <?php foreach($shakers as $fila) : ?>
+                                                                <tr>
+                                                                        <td><?= $fila['maker']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['screens1']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['screens2']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['screens3']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['screens4']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['screens5']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['operational_hours']; ?></td>
+                                                                </tr>
+                                                                <?php $counter++; ?>
+                                                                <?php endforeach; ?>
+                                                                <?php $counter++; ?>
+                                                                <?php while($counter <= 4 ) { ?>
                                                                 <tr>
                                                                         <td>&nbsp;</td>
                                                                         <td class="txt-center"></td>
@@ -1147,33 +1167,9 @@
                                                                         <td class="txt-center"></td>
                                                                         <td class="txt-center"></td>
                                                                 </tr>
-                                                                <tr>
-                                                                        <td>&nbsp;</td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td>&nbsp;</td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td>&nbsp;</td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                </tr>                                                                
+                                                                <?php $counter++; ?>
+                                                                <?php } ?>
+                                                                                                                                
                                                         </tbody>
                                                 </table>
                                                 
@@ -1187,26 +1183,26 @@
                                                         <tbody>
                                                                 <tr>
                                                                         <td>DESANDER</td>
-                                                                        <td colspan="2" class="txt-center"></td>
-                                                                        <td colspan="2" class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['desander_cones']) ? '' : $mudcleaner[0]['desander_cones'].'*'.$mudcleaner[0]['desander_conediameter']; ?></td>
+                                                                        <td colspan="2" class="txt-center"><?= empty($mudcleaner[0]['desander_flow']) ? '' : $mudcleaner[0]['desander_flow'].' gpm'; ?></td>
+                                                                        <td colspan="2" class="txt-center"><?= empty($mudcleaner[0]['desander_presure']) ? '' : $mudcleaner[0]['desander_presure'].' psi'; ?></td>
+                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['desander_hours']) ? '' : $mudcleaner[0]['desander_hours']; ?></td>
                                                                 </tr> 
                                                                 <tr>
                                                                         <td>DESILTER</td>
-                                                                        <td colspan="2" class="txt-center"></td>
-                                                                        <td colspan="2" class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['desilter_cones']) ? '' : $mudcleaner[0]['desilter_cones'].'*'.$mudcleaner[0]['desilter_conediameter']; ?></td>
+                                                                        <td colspan="2" class="txt-center"><?= empty($mudcleaner[0]['destiler_flow']) ? '' : $mudcleaner[0]['destiler_flow'].' gpm'; ?></td>
+                                                                        <td colspan="2" class="txt-center"><?= empty($mudcleaner[0]['destiler_presure']) ? '' : $mudcleaner[0]['destiler_presure'].' psi'; ?></td>
+                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['destiler_hours']) ? '' : $mudcleaner[0]['destiler_hours']; ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td>SHAKER</td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
+                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['maker']) ? '' : $mudcleaner[0]['maker']; ?></td>
+                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['screens1']) ? '' : $mudcleaner[0]['screens1']; ?></td>
+                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['screens2']) ? '' : $mudcleaner[0]['screens2']; ?></td>
+                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['screens3']) ? '' : $mudcleaner[0]['screens3']; ?></td>
+                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['screens4']) ? '' : $mudcleaner[0]['screens4']; ?></td>
+                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['operational_hours']) ? '' : $mudcleaner[0]['operational_hours']; ?></td>
                                                                 </tr>
                                                         </tbody>
                                                 </table>
@@ -1224,6 +1220,21 @@
                                                                 </tr>                                                                
                                                         </thead>
                                                         <tbody>
+                                                                <?php $total = count($centrifugues); ?>
+                                                                <?php $counter = 0; ?>
+                                                                <?php foreach($centrifugues as $fila) : ?>
+                                                                <tr>
+                                                                        <td><?= $fila['maker']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['speed']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['overflow']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['underflow']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['feet_rate']; ?></td>
+                                                                        <td class="txt-center"><?= $fila['operational_hours']; ?></td>                                                                        
+                                                                </tr>
+                                                                <?php $counter++; ?>
+                                                                <?php endforeach; ?>
+                                                                <?php $counter++; ?>
+                                                                <?php while($counter <= 4 ) { ?>
                                                                 <tr>
                                                                         <td>&nbsp;</td>
                                                                         <td class="txt-center"></td>
@@ -1232,34 +1243,12 @@
                                                                         <td class="txt-center"></td>
                                                                         <td class="txt-center"></td>                                                                        
                                                                 </tr>
-                                                                <tr>
-                                                                        <td>&nbsp;</td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>                                                                        
-                                                                </tr>
-                                                                <tr>
-                                                                        <td>&nbsp;</td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>                                                                        
-                                                                </tr>
-                                                                <tr>
-                                                                        <td>&nbsp;</td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>                                                                        
-                                                                </tr>
+                                                                <?php $counter++; ?>
+                                                                <?php } ?>                                                                
                                                         </tbody>
                                                 </table>                                                
                                         </div>
-                                        <div class="data-table-container" style="float:left; width: 34.8%">
+                                        <div class="data-table-container" style="float:left; width: 32.8%">
                                                 <div class="sub-header b-right b-bottom"><h5>TIME BREAK DOWN</h5></div>                                                
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
