@@ -16,6 +16,7 @@
 			<li><a href="#">Active Volume</a></li>
 			<li><a href="#">Reserve Volume</a></li>
 			<li><a href="#">Losses Analisis</a></li>
+			<li><a href="#">Undo & Step by Step</a></li>
 	    </ul>
 	    <div class="simpleTabsContent">
 	    	<table style="width:100%;">
@@ -530,34 +531,48 @@
 								</table>
 							</fieldset>
 							<fieldset style="display:none;margin-bottom:20px;margin-top:10px;float:left;width:40%;height:196px;margin-right:20px;" class="reserve_td reserve_td_<?= $tank['id'] ?>">
+								<?php if($tank['name'] > 32){ $style="display:none;";}else{$style="";} ?>
 								<legend>Balance</legend>
 								<table>
+									<?php if($tank['name'] > 32){ ?>
+										<tr id="manual_tank_config_<?= $tank['id'] ?>">
+											<td class="label_m"><img src="/img/bullet_add.png" /></td>
+											<td class="label_m"><label><a href="#manual_tank_setup" id="manual_tank_setup_<?= $tank['id'] ?>" class="manual_tank_setup" style="text-decoration:underline;">VOLUME AND CONCENTRATIONS</a></label></td>
+											<td></td>
+										</tr>
+									<?php } ?>
 									<tr>
+										<td></td>
 										<td class="label_m"><label>STARTING VOLUME:</label></td>
 										<td class="label_m"><input disabled class="label_m" type="text" style="width:100px;margin-right:3px;" id="volstart_<?= $tank['id'] ?>" name="volstart_<?= $tank['id'] ?>"> bbl</td>
 									</tr>
-									<tr>
+									<tr style="<?= $style; ?>">
+										<td></td>
 										<td class="label_m"><label>RECEIVED MUD FROM ACTIVE:</label></td>
 										<td class="label_m"><input disabled="disabled" class="label_m" type="text" style="width:100px;margin-right:3px;" id="volrec_<?= $tank['id'] ?>" name="volrec_<?= $tank['id'] ?>" > bbl</td>
 									</tr>
-									<?php if($tank['name'] > 32){ $style="display:none;";}else{$style="";} ?>
 									<tr style="<?= $style; ?>">
+										<td></td>
 										<td class="label_m"><label><a href="#add_chemicals_overlay" class="show_add_chemicals_overlay" id="link_add_chemicals_<?= $tank['id'] ?>" style="text-decoration:underline;">CHEMICAL ADITIONS</a></label></td>
 										<td class="label_m"><input class="label_m" type="text"  style="width:100px;margin-right:3px;" id="volchem_<?= $tank['id'] ?>" name="volchem_<?= $tank['id'] ?>" disabled /> bbl</td>
 									</tr>
 									<tr style="<?= $style; ?>">
+										<td></td>
 										<td class="label_m"><label>WATER ADITIONS:</label></td>
 										<td class="label_m"><input disabled class="label_m" type="text"  style="width:100px;margin-right:3px;" name="volwater_<?= $tank['id'] ?>" id="volwater_<?= $tank['id'] ?>" > bbl</td>
 									</tr>
 									<tr style="<?= $style; ?>">
+										<td></td>
 										<td class="label_m"><label>BUILDED MUD:</label></td>
 										<td class="label_m"><input disabled="disabled" class="label_m" type="text"  style="width:100px;margin-right:3px;" name="volcons_<?= $tank['id'] ?>" id="volcons_<?= $tank['id'] ?>" > bbl</td>
 									</tr>
 									<tr>
+										<td></td>
 										<td class="label_m"><label>MUD TRANSFERED TO ACTIVE:</label></td>
 										<td class="label_m"><input disabled class="label_m voltransf" type="text" style="width:100px;margin-right:3px;" name="voltransf_<?= $tank['id'] ?>" id="voltransf_<?= $tank['id'] ?>"> bbl</td>
 									</tr>
 									<tr>
+										<td></td>
 										<td class="label_m"><label style="color:#333;">FINAL VOLUME:</label></td>
 										<td class="label_m"><input disabled="disabled" class="label_m volfinalreserve" type="text" style="width:100px;margin-right:3px;" id="volfinal_<?= $tank['id'] ?>" name="volfinal_<?= $tank['id'] ?>" > bbl</td>
 									</tr>
@@ -686,5 +701,6 @@
 				</table>
 			</fieldset>		
 		</div>
+		<div class="simpleTabsContent"></div>
 	</div>
 </div>

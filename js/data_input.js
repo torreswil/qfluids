@@ -1978,6 +1978,58 @@ $(function(){
 		}	
 	});
 
+
+	$('.manual_tank_setup').click(function(e){
+		e.preventDefault();
+		var id = $(this).attr('id');
+			id = id.split('_');
+			id = id[3];
+
+		$.post('/rest_mvc/load_single_tank',{'tank':id},function(r){
+			log(r);
+			$('#mte_current_volume').val(r.status.volumen_final);
+			$(r.concentrations).each(function(){
+				$('#mteconcentration_'+this.material).val(this.concentration);	
+			});
+		},'json');
+
+		$('#mts_tank').val(id);
+		$('#mts_overlay').show();
+	});
+
+	$('#mts_overlay .close_link').click(function(e){
+		e.preventDefault();
+		$('#mts_overlay').hide();
+	});
+
+	$('#setup_volume_btn').click(function(){
+		var data = {
+			'tank' 			 : fval('mts_tank'),
+			'volume'		 : fval('mte_current_volume'),
+			'concentrations' : []
+		}
+
+		$('.mteconcentration').each(function(){
+			var material = $(this).attr('id');
+				material = material.split('_');
+				material = material[1];
+
+			var concentracion = fval($(this).attr('id'));
+
+			var esta_concentracion = {
+				'material' : material,
+				'concentracion' : concentracion
+			}
+
+			data.concentrations.push(esta_concentracion);
+		});
+
+		$.post('/rest_mvc/create_tank_status',$.toJSON(data),function(r){
+			load_tank_status();
+			$('#mts_overlay .close_link').click();
+		},'json');		
+	});
+
 	/*==========================================================================================================*/
 	// 8. REPORT HISTORY
 	/*==========================================================================================================*/

@@ -723,6 +723,59 @@ class Rest_mvc extends CI_Controller {
 		echo json_encode($tanques);
 	}
 
+	public function load_single_tank(){
+		if(count($_POST) > 0){
+			$materials = $this->Api->get_where('vista_materiales',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
+			$tank_status = $this->Api->get_where('tank_status_time',array('project'=>$this->project_id,'activo'=>1,'tank'=>$_POST['tank']));	
+			$output = array();
+			if(count($tank_status) > 0){
+				$tank_status = $tank_status[0];
+				//estado del tanque
+				$output['status'] = $tank_status;
+				$output['concentrations'] = array();
+
+				foreach ($materials as $material) {
+					$esta_concentracion = array();
+					//obtener la concentracion
+					$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $tank_status['id'],'material'=>$material['id']));
+					if(count($concentracion) > 0){
+						$esta_concentracion['material'] 		= $concentracion['material'];
+						$esta_concentracion['concentration'] 	= $concentracion['concentracion']; 
+					}else{
+						$esta_concentracion['material'] 		= $material['id'];
+						$esta_concentracion['concentration'] 	= 0; 	
+					}
+
+					array_push($output['concentrations'], $esta_concentracion);
+				}
+			}else{
+				$output['status'] 			= array(
+					'id'							=> $_POST['tank'],
+					'volumen_inicial'				=> 0,				
+					'volumen_recibido'				=> 0,
+					'volumen_adicion_quimica'		=> 0,
+					'volumen_adicion_agua'			=> 0,
+					'volumen_construido' 			=> 0,
+					'volumen_transferido_reservas' 	=> 0,
+					'volumen_transferido_activo'	=> 0,
+					'volumen_perdido'				=> 0,
+					'volumen_final'					=> 0,
+					'volumen_transferido_osc' 		=> 0,
+					'volumen_recibido_osc' 			=> 0	
+				);
+				$output['concentrations'] 	= array();
+				foreach ($materials as $material) {
+					$esta_concentracion 					= array();
+					$esta_concentracion['material'] 		= $material['id'];
+					$esta_concentracion['concentration'] 	= 0;
+					array_push($output['concentrations'], $esta_concentracion); 	
+				}	
+			}
+
+			echo json_encode($output);
+		}	
+	}
+
 	public function load_materials_status(){
 		$materials = $this->Api->get_where('vista_reporte_estado_material',array('project'=>$this->project_id,'report'=>$this->report_id),array('commercial_name','asc'));
 		foreach ($materials as $material) { ?>
@@ -790,6 +843,57 @@ class Rest_mvc extends CI_Controller {
                 </tr>
             <?php } ?>
 		<?php
+	}
+
+	public function create_tank_status(){
+		if(count($_POST) > 0){
+			$data = json_decode($this->data_input);
+
+			$status = array(
+				'project'  		=> $this->project_id,
+				'report' 		=> $this->report_id,
+				'tank' 			=> $data['tank'],
+				'producto_de' 	=> 'user_entry',
+				'activo' 		=> 1,
+				'volumen_final' => $data['volume']
+			);
+
+			//desactivar el estado anterior del tanque
+			$nuevo_estado_tanque = array('activo'=>0);
+			$this->Api->update('tank_status_time',$nuevo_estado_tanque,array('tank'=>$data['tank']));
+			
+			//insertar el nuevo estado
+			$id_estado = $this->Api->create('tank_status_time',$status);
+
+			//crear el paquete de concentraciones en cero
+			//obtener la lista de los productos
+			$productos = $this->Api->get_where('vista_inventario',array('project'=>$this->project_id,'used_in_project'=>1),array('commercial_name','asc'));
+			
+			//inicializar la concentracion en blanco
+			foreach ($productos as $producto) {
+				$concentracion_en_blanco = array(
+					'tank_status_time'  => $id_estado,
+					'material' 			=> $producto['product_id'],
+					'concentracion'  	=> 0
+				);
+
+				$this->Api->create('concentrations',$concentracion_en_blanco);
+			}
+
+			//actualizar las concentraciones
+			foreach ($data['concentrations'] as $concentration) {
+				$nueva_concentracion = array(
+					'tank_status_time'  => $id_estado,
+					'material' 			=> $concentracion['material'],
+					'concentracion'  	=> $concentration['concentracion']
+				);
+
+				$this->Api->update('concentrations',$nueva_concentracion,array('tank_status_time'=>$id_estado,'material' => $concentracion['material']));
+			}
+
+		}
+
+		echo json_encode(true);
 	}
 
 }
