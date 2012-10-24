@@ -614,22 +614,43 @@ class Rest_mvc extends CI_Controller {
 		
 		//obtener la informacion del sistema activo
 		$active_tank_status = $this->Api->get_where('tank_status_time',array('tank'=>0,'project'=>$this->project_id,'report'=>$this->report_id,'activo'=>1),array('id','desc'));
-		$active_tank_status = $active_tank_status[0];
-		$tanques['active'] = array(
-			'id'							=> 0,
-			'name'							=> 'active',
-			'volumen_inicial'				=> $active_tank_status['volumen_inicial'],				
-			'volumen_recibido'				=> $active_tank_status['volumen_recibido'],
-			'volumen_adicion_quimica'		=> $active_tank_status['volumen_adicion_quimica'],
-			'volumen_adicion_agua'			=> $active_tank_status['volumen_adicion_agua'],
-			'volumen_construido' 			=> $active_tank_status['volumen_construido'],
-			'volumen_transferido_reservas' 	=> $active_tank_status['volumen_transferido_reservas'],
-			'volumen_transferido_activo'	=> $active_tank_status['volumen_transferido_activo'],
-			'volumen_perdido'				=> $active_tank_status['volumen_perdido'],
-			'volumen_final'					=> $active_tank_status['volumen_final'],
-			'volumen_transferido_osc' 		=> $active_tank_status['volumen_transferido_osc'],
-			'volumen_recibido_osc' 			=> $active_tank_status['volumen_recibido_osc']
-		);
+		
+		if(count($active_tank_status) > 0){
+			$active_tank_status = $active_tank_status[0];
+			$tanques['active'] = array(
+				'id'							=> 0,
+				'name'							=> 'active',
+				'volumen_inicial'				=> $active_tank_status['volumen_inicial'],				
+				'volumen_recibido'				=> $active_tank_status['volumen_recibido'],
+				'volumen_adicion_quimica'		=> $active_tank_status['volumen_adicion_quimica'],
+				'volumen_adicion_agua'			=> $active_tank_status['volumen_adicion_agua'],
+				'volumen_construido' 			=> $active_tank_status['volumen_construido'],
+				'volumen_transferido_reservas' 	=> $active_tank_status['volumen_transferido_reservas'],
+				'volumen_transferido_activo'	=> $active_tank_status['volumen_transferido_activo'],
+				'volumen_perdido'				=> $active_tank_status['volumen_perdido'],
+				'volumen_final'					=> $active_tank_status['volumen_final'],
+				'volumen_transferido_osc' 		=> $active_tank_status['volumen_transferido_osc'],
+				'volumen_recibido_osc' 			=> $active_tank_status['volumen_recibido_osc']
+			);			
+		}else{
+			$tanques['active'] = array(
+				'id'							=> 0,
+				'name'							=> 'active',
+				'volumen_inicial'				=> 0,				
+				'volumen_recibido'				=> 0,
+				'volumen_adicion_quimica'		=> 0,
+				'volumen_adicion_agua'			=> 0,
+				'volumen_construido' 			=> 0,
+				'volumen_transferido_reservas' 	=> 0,
+				'volumen_transferido_activo'	=> 0,
+				'volumen_perdido'				=> 0,
+				'volumen_final'					=> 0,
+				'volumen_transferido_osc' 		=> 0,
+				'volumen_recibido_osc' 			=> 0
+			);	
+		}
+
+
 
 		$tanques['all_tanks'] = array();
 
@@ -739,8 +760,8 @@ class Rest_mvc extends CI_Controller {
 					//obtener la concentracion
 					$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $tank_status['id'],'material'=>$material['id']));
 					if(count($concentracion) > 0){
-						$esta_concentracion['material'] 		= $concentracion['material'];
-						$esta_concentracion['concentration'] 	= $concentracion['concentracion']; 
+						$esta_concentracion['material'] 		= $concentracion[0]['material'];
+						$esta_concentracion['concentration'] 	= $concentracion[0]['concentracion']; 
 					}else{
 						$esta_concentracion['material'] 		= $material['id'];
 						$esta_concentracion['concentration'] 	= 0; 	
@@ -846,21 +867,21 @@ class Rest_mvc extends CI_Controller {
 	}
 
 	public function create_tank_status(){
-		if(count($_POST) > 0){
+		if(isset($_POST)){
 			$data = json_decode($this->data_input);
 
 			$status = array(
 				'project'  		=> $this->project_id,
 				'report' 		=> $this->report_id,
-				'tank' 			=> $data['tank'],
+				'tank' 			=> $data->tank,
 				'producto_de' 	=> 'user_entry',
 				'activo' 		=> 1,
-				'volumen_final' => $data['volume']
+				'volumen_final' => $data->volume
 			);
 
 			//desactivar el estado anterior del tanque
 			$nuevo_estado_tanque = array('activo'=>0);
-			$this->Api->update('tank_status_time',$nuevo_estado_tanque,array('tank'=>$data['tank']));
+			$this->Api->update_where('tank_status_time',$nuevo_estado_tanque,array('tank'=>$data->tank));
 			
 			//insertar el nuevo estado
 			$id_estado = $this->Api->create('tank_status_time',$status);
@@ -881,19 +902,18 @@ class Rest_mvc extends CI_Controller {
 			}
 
 			//actualizar las concentraciones
-			foreach ($data['concentrations'] as $concentration) {
+			foreach ($data->concentrations as $concentration) {
 				$nueva_concentracion = array(
 					'tank_status_time'  => $id_estado,
-					'material' 			=> $concentracion['material'],
-					'concentracion'  	=> $concentration['concentracion']
+					'material' 			=> $concentration->material,
+					'concentracion'  	=> $concentration->concentracion
 				);
 
-				$this->Api->update('concentrations',$nueva_concentracion,array('tank_status_time'=>$id_estado,'material' => $concentracion['material']));
+				$this->Api->update_where('concentrations',$nueva_concentracion,array('tank_status_time'=>$id_estado,'material' => $concentration->material));
 			}
 
+			echo json_encode(true);
 		}
-
-		echo json_encode(true);
 	}
 
 }

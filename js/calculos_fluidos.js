@@ -1801,11 +1801,6 @@ function calculos_raw(){
 		var id = $(this).attr('id');
 			id = id.split('this_tank_');
 			id = id[1];
-		
-		//volfinal
-		var volfinal = 0;
-			volfinal = fval('volstart_'+id) + fval('volrec_'+id) + fval('volwater_'+id) + fval('volchem_'+id) - fval('voltransf_'+id);
-		completar_campo_val('volfinal_'+id,Math.round(volfinal));	
 	});
 
 

@@ -1715,6 +1715,7 @@ $(function(){
 					completar_campo_val('volcons_'+id,Math.round(this.volumen_construido));
 					completar_campo_val('voltransf_'+id,Math.round(this.volumen_transferido_activo));
 					completar_campo_val('volfinal_'+id,Math.round(this.volumen_final));
+					if(id == 12){log('volfinal_'+id,this.volumen_final)}
 				}
 			});
 			
