@@ -6,7 +6,8 @@
                <li><a href="#">Status</a></li>
                <li><a href="#">Incoming Materials</a></li>
                <!-- <li><a href="#">Outgoing Materials</a></li> --> 
-               <li><a href="#">Today Consumptions</a></li>            
+               <li><a href="#">Today Consumptions</a></li> 
+               <li><a href="#">Daily Report</a></li>            
           </ul>
           <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
                <fieldset>
@@ -114,6 +115,16 @@
                      </tbody>
                 </table>
               </fieldset> 
-            </div> 
+          </div>
+
+          <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
+             <fieldset>
+                <legend>Please note:</legend>
+                <p>In the report will appear the first 22 products. To set this order, please use the drop down list on the left of each product.</p>
+             </fieldset>
+             <fieldset>
+                  
+             </fieldset>
+          </div>
      </div>
 </div>
