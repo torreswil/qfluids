@@ -36,7 +36,9 @@
 									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
 								<?php } ?>
 								<?php foreach($reserve_tanks as $tank){ ?>
-									<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+									<?php if($tank['name'] <= 32){ ?> 
+										<option value="<?= $tank['id'] ?>"><?= $tank['tank_name'] ?></option>
+									<?php } ?>
 								<?php } ?>
 							</select>
 						</td>

@@ -22,9 +22,7 @@
 				              <td class="label_m"><label><?= $tank['tank_name'] ?></label></td>
 				            <?php }?>
 				            <?php foreach($reserve_tanks as $tank){ ?>
-				              <?php if($tank['name'] < 32){ ?>
 				                <td class="label_m"><label><?= $tank['tank_name'] ?></label></td>
-				              <?php } ?>
 				            <?php }?>
 				          </tr>
 				     </thead>

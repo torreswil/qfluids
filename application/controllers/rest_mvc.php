@@ -110,7 +110,6 @@ class Rest_mvc extends CI_Controller {
                   	<td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
                 <?php }?>
                 <?php foreach($reserve_tanks as $tank){ ?>
-                  <?php if($tank['name'] < 32){ ?>
                     <?php 
 						//obtener el estado actual del tanque
 						$id_estado_actual = $this->Api->get_where('tank_status_time',array('activo'=>1,'tank'=>$tank['id']));
@@ -126,7 +125,6 @@ class Rest_mvc extends CI_Controller {
 						}
 					?>	
                     <td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
-                  <?php } ?>
                 <?php }?>
 			</tr>
 		<?php }
@@ -913,6 +911,13 @@ class Rest_mvc extends CI_Controller {
 			}
 
 			echo json_encode(true);
+		}
+	}
+
+	public function get_tank_info(){
+		if(count($_POST) > 0){
+			$tank_info = $this->Api->get_where('vista_tanks',array('id'=>$_POST['tank']));
+			echo json_encode($tank_info[0]);
 		}
 	}
 

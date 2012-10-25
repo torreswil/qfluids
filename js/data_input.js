@@ -1817,6 +1817,21 @@ $(function(){
 									load_ac_status();
 									load_tank_status();
 									load_current_concentrations();
+
+									if(parseInt(origin) !== 0){
+										//preguntarle al servidor el tipo del tanque
+										var data = {'tank':origin};
+										$.post('/rest_mvc/get_tank_info',data,function(r){
+											if(parseInt(r.name) > 32){
+												if((volumen_origen - volume) < 1){
+													$('#manual_tank_setup_'+origin).show();	
+												}else{
+													$('#manual_tank_setup_'+origin).hide();
+												}
+											}
+										},'json');
+									}
+
 									$('#mtr_overlay .close_link').click();
 									$('#transfer_volume_btn').show();
 									$('#mtr_overlay .close_link').show();
@@ -2027,6 +2042,7 @@ $(function(){
 
 		$.post('/rest_mvc/create_tank_status',$.toJSON(data),function(r){
 			load_tank_status();
+			load_current_concentrations();
 			$('#mts_overlay .close_link').click();
 		},'json');		
 	});
