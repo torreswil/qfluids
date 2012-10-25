@@ -535,17 +535,41 @@ class Rest extends CI_Controller {
 
 	//materials
 	public function update_materials(){
+		//get all the reports for this project
+		$reports = $this->Api->get_where('reports',array('project'=>$this->project_id));
+
 		//deactivate all materials in this project
 		$this->Api->update_where('project_materials',array('used_in_project'=>0),array('project_id' => $this->project_id));
 		
-		//reactivate just the selected materials and create the respective record in the inventary table
+		//reactivate just the selected materials and create the respective record in the inventary table and material status table
 		$materials = json_decode($this->data_input);
 		foreach ($materials as $material) {
+			//project materials and inventory table
 			$this->Api->update('project_materials',$material,$material->id);
 			$inventory_entries = $this->Api->get_where('inventory',array('product'=>$material->id));
 			if(count($inventory_entries) == 0){
 				$this->Api->create('inventory',array('product' => $material->id, 'avaliable'=>0, 'used'=>0, 'transfered'=>0,'project_id'=>$this->project_id));
 			}
+
+			//report_materialstatus
+			foreach ($reports as $report) {
+				$material_status = $this->Api->get_where('report_materialstatus',array('report'=>$report['id'],'material'=>$material->id));
+				if(count($material_status) == 0){
+					$this_material_status = array(
+						'report'   		=> $report['id'],
+						'material'		=> $material->id,
+						'initial'		=> 0,
+						'received'		=> 0,
+						'transfered'	=> 0,
+						'used'			=> 0,
+						'stock' 		=> 0
+					);
+
+					$this->Api->create('report_materialstatus',$this_material_status);
+				}
+			}
+
+
 		}
 		echo json_encode(true);	
 	}
