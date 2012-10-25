@@ -16,7 +16,7 @@
 				$option_display = '';
 			} ?>
 
-			<li <?= $option_display; ?> ><a href="/main/report/<?= $project['id']; ?>/<?= $reporte['id']; ?>/" target="_blank" title="Print and Send Report" id="btn_print_report"><img src="/img/icons/icon_paper_plane.png" /></a></li>
+			<li <?= $option_display; ?> ><a href="#print_and_save" title="Print and Send Report" id="btn_print_report"><img src="/img/icons/icon_paper_plane.png" /></a></li>
 			<li <?= $option_display; ?> ><a href="#search_reports" title="Search Report Archive" id="btn_search_report"><img src="/img/icons/icon_magnify_glass.png" /></a></li>
 			<li <?= $option_display; ?> ><a href="#new_report" title="New report" id="btn_new_report"><img src="/img/icons/icon_add.png" /></a></li>
 		</ul>
@@ -129,11 +129,13 @@
 	<?php $this->load->view('report_history_overlay'); ?>
 	<?php $this->load->view('project_settings'); ?>
 	<?php $this->load->view('personal_registration_tool'); ?>
-    <?php $this->load->view('continue_phase'); ?>
-    <?php $this->load->view('add_chemicals_overlay'); ?>
-    <?php $this->load->view('mtr_overlay'); ?> <!-- transfer mud to reserves -->
-    <?php $this->load->view('mta_overlay'); ?> <!-- transfer mud to active -->
-    <?php $this->load->view('rc_overlay'); ?> <!-- concentraciones resultantes -->
-    <?php $this->load->view('tv_osc_overlay'); ?>
-    <?php $this->load->view('save_report'); ?> 
+        <?php $this->load->view('continue_phase'); ?>
+        <?php $this->load->view('add_chemicals_overlay'); ?>
+        <?php $this->load->view('mtr_overlay'); ?> <!-- transfer mud to reserves -->
+        <?php $this->load->view('mta_overlay'); ?> <!-- transfer mud to active -->
+        <?php $this->load->view('rc_overlay'); ?> <!-- concentraciones resultantes -->
+        <?php $this->load->view('tv_osc_overlay'); ?>
+        <?php $this->load->view('save_report'); ?> 
+        <?php $this->load->view('select_type_report'); ?>
+        <?php $this->load->view('mud_properties_overlay'); ?>
 </div>

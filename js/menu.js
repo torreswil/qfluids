@@ -587,8 +587,46 @@ $(function(){
 	/*==========================================================================================================*/
 	// PRINT AND SEND
 	/*==========================================================================================================*/
-
-
+        $('#btn_print_report').click(function(e){
+		e.preventDefault();                
+                $("#select_type_report").show();
+		
+	});
+        
+        $('#report_mud_properties_list').click(function(e){
+		e.preventDefault();                
+                $("#report_mud_properties_overlay").show();
+		
+	});
+        
+        //close the overlay on cancel
+	$('#select_type_report .close_link').click(function(e){
+		e.preventDefault();
+		$("#select_type_report").hide();
+	});
+        
+        $('#report_mud_properties_overlay .close_link').click(function(e){
+		e.preventDefault();                
+                $("#report_mud_properties_overlay").hide();
+		
+	});
+        $("#btn_select_mud_properties_list").click(function(e){
+                e.preventDefault();
+                var contenedor = $("#report_mud_properties_overlay");
+                var items = [];
+                contenedor.find('input').each(function(j){
+                        if($(this).is(':checked')) {
+                                items.push($(this).val());
+                        }
+                });
+                var url = '/reports/mud_properties/project/'+contenedor.attr('data-project')+'/';
+                if(items.length>0) {
+                        url = url+'?items='+items.join(',');
+                }
+                var reporte_xls = "height=200,width=200,scrollTo,resizable=1,scrollbars=1,location=0";
+                popup = window.open(url, 'Popup', reporte_xls);
+                return false;
+        });        
 
 
 	/*==========================================================================================================*/

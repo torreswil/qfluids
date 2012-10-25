@@ -121,6 +121,7 @@ class Main extends CI_Controller {
         * Método para generar el reporte - IvanMel
         * @param in $project_id
         */
+        
         public function report($project_id='', $report_id='', $format='html') {            
                 if($project_id == '' || !is_numeric($project_id)){
                         redirect('/');
@@ -185,15 +186,10 @@ class Main extends CI_Controller {
                                         $data['survey'] = $this->Api->get_where('project_report_survey', array('report_id'=>$current_report_data['id']));
 
                                 } else {
-                                        //Selecciono los reportes
-                                        $data['reports'] = $this->Api->get_where('reports', array("project"=>$project_id, "phase >"=>0));                                        
+                                        redirect('/');
                                 }                                                                                             
-                                $data['main_content'] = 'report_'.$format;    
-                                if($format=='html') {
-                                        $this->load->view('partials/printer',$data);                                        
-                                } else {                                        
-                                        $this->load->view('report_xls', $data);
-                                }
+                                $data['main_content'] = 'report_html';                                    
+                                $this->load->view('partials/printer',$data);                                                                        
                                 
 			} else{
 				redirect('/');

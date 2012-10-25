@@ -114,6 +114,9 @@ $row_j = 3;
 
 foreach($reports as $report) { 
         
+        //Número de columnas donde inician las pruebas
+        $col = 1;
+        
         //Reviso cuantas pruebas se realizaron por proyecto por reporte       
         $tmp_report = $this->Api->sql("SELECT reports.id, reports.number, reports.phase, project_report_test.value, project_report_test.hour, test.test FROM reports LEFT JOIN project_report_test ON reports.id = project_report_test.report_id LEFT JOIN test ON test.id = project_report_test.test_id WHERE reports.id = {$report['id']} GROUP BY project_report_test.hour");
         foreach($tmp_report as $fila) {
@@ -127,104 +130,138 @@ foreach($reports as $report) {
         //Consulto el test 'depth'
         $depth = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = 'depth' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");
         foreach($depth as $fila) {
-                $worksheet->write($row_i, 2, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //Mud weight
         $row_i = $row_j;
+        $col++;
         $mud_weight = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = 'mud weight' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($mud_weight as $fila) {                
-                $worksheet->write($row_i, 3, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         } 
         
         //funnel_viscosity
         $row_i = $row_j;
+        $col++;
         $funnel_viscosity = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = 'Funnel viscosity' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($funnel_viscosity as $fila) {                
-                $worksheet->write($row_i, 4, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //PV
         $row_i = $row_j;
+        $col++;
         $pv = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = 'pv' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($pv as $fila) {                
-                $worksheet->write($row_i, 5, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //YP
         $row_i = $row_j;
+        $col++;
         $yp = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = 'yp' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($yp as $fila) {                
-                $worksheet->write($row_i, 6, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //10"
         $row_i = $row_j;
+        $col++;
         $t_10_1 = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = '10\"' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($t_10_1 as $fila) {                
-                $worksheet->write($row_i, 7, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //10'
         $row_i = $row_j;
+        $col++;
         $t_10_2 = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = '10\'' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($t_10_2 as $fila) {                
-                $worksheet->write($row_i, 8, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //30'
         $row_i = $row_j;
+        $col++;
         $t_30 = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = '30\'' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($t_30 as $fila) {                
-                $worksheet->write($row_i, 9, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //API fl/cake'
         $row_i = $row_j;
+        $col++;
         $API_fl_cake = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = 'API fl/cake' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($API_fl_cake as $fila) {                
-                $worksheet->write($row_i, 10, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //MBT
         $row_i = $row_j;
+        $col++;
         $mbt = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = 'MBT' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($mbt as $fila) {                
-                $worksheet->write($row_i, 11, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //Ph
         $row_i = $row_j;
+        $col++;
         $ph = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = 'pH METER' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($ph as $fila) {                
-                $worksheet->write($row_i, 12, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //Ca
         $row_i = $row_j;
+        $col++;
         $ca = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = 'Ca++' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($ca as $fila) {                
-                $worksheet->write($row_i, 13, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
         }
         
         //Cii
         $row_i = $row_j;
+        $col++;
         $cii = $this->Api->sql("SELECT project_report_test.* FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.test = 'c.c.i.' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");        
         foreach($cii as $fila) {                
-                $worksheet->write($row_i, 14, empty($fila['value']) ? '' : $fila['value'], $decimal);                
+                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);                
                 $row_i++;
+        }
+        
+        if(is_array($options) && !empty($options[0])) {
+                $col_header = 15;
+                foreach($options as $option) {
+                        $row_i = $row_j;
+                        $col++;
+                        $opt = $this->Api->sql("SELECT project_report_test.*, test.test FROM project_report_test INNER JOIN test ON test.id = project_report_test.test_id WHERE project_report_test.report_id = {$report['id']} AND test.id = '$option' ORDER BY project_report_test.hour ASC, project_report_test.id ASC");
+                        foreach($opt as $fila) {  
+                                //Agrego las cabeceras
+                                $worksheet->write(1, $col_header, strtoupper(str_replace('&theta;', '', ($fila['test']))), $f_header);
+                                $worksheet->write(2, $col_header, "", $f_header);                                
+                                $worksheet->setColumn(0,$col_header,11);
+                                $worksheet->setMerge(1, $col_header, 2, $col_header);
+                                
+                                $worksheet->write($row_i, $col, empty($fila['value']) ? '' : $fila['value'], $decimal);
+                                $row_i++;
+                        }                        
+                        $col_header++;
+                } 
+                //Aplico el merge para el título
+                $worksheet->setMerge(0, 0, 0, $col_header-1);
         }
         
         //Asigno la nueva fila dependiendo de los reportes que tenga
