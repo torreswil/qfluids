@@ -248,7 +248,7 @@
                                                 </table>
                                         </fieldset>
                                 </div>    
-                                <input type="button" value="View report" style="float:right;" id="btn_select_mud_properties_list" />
+                                <input type="button" value="View report" style="float:right;" class="close_link" id="btn_select_mud_properties_list" />
                                 <a href="#close" class="close_link" style="display:block;float:left;margin-top:10px;">Cancel</a>
                         </div>		
                 </div>

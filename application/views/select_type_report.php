@@ -15,7 +15,7 @@
                                         <td><a href="#" id="report_mud_properties_list" class='close_link'>Reporte de las propiedades del lodo</a></td>
                                 </tr>
                         </table>										
-                        <a href="#close" class="close_link" style="display:block;float:left;margin-top:10px;">Cancel</a>
+                        <a href="#close" class="close_link" style="display:block;float:left;margin-top:10px;">Close</a>
                 </div>		
 	</div>
 </div>
