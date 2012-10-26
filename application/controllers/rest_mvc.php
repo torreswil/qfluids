@@ -1016,4 +1016,79 @@ class Rest_mvc extends CI_Controller {
 		<?php }
 	}
 
+	public function undo_step(){
+		if(isset($_POST['id'])){
+			$step = $_POST['id'];
+
+			//get the step basic information
+			$step_info = $this->Api->get_where('mvc_trunk',array('id'=>$step));
+			$step_info = $step_info[0];
+
+			//if the trunk is a chemical adition
+			if($step_info['tree'] == 'chemical_adition'){
+				//obtener el detalle de la adicion
+				$adition 			= $this->Api->get_where('chemical_aditions',array('id'=>$step_info['subtree']));
+				$adition 			= $adition[0];
+				$adition_granules 	= $this->Api->get_where('chemical_aditions_detail',array('chemical_adition'=>$adition['id'])); 
+
+				foreach ($adition_granules as $granule) {
+					//devolver el material al inventario
+					$inventory_entry = $this->Api->get_where('inventory',array('product'=>$granule['material'],'project_id'=>$this->project_id));
+					$inventory_entry = $inventory_entry[0];
+
+					$updated_inventory = array(
+						'used' 		=> $inventory_entry['used'] - $granule['used'],
+						'avaliable' => $inventory_entry['avaliable'] + $granule['used']
+					);
+
+					$this->Api->update('inventory',$updated_inventory,$inventory_entry['id']);
+					
+					//actualizar el estado de la quimica para hoy
+					$status_entry = $this->Api->get_where('report_materialstatus',array('material'=>$granule['material'],'report'=>$this->report_id));						
+					$status_entry = $status_entry[0];
+
+					$updated_status = array(
+						'used' 	=> $status_entry['used'] - $granule['used'],
+						'stock' => $status_entry['stock'] + $granule['used']
+					);
+
+					$this->Api->update('report_materialstatus',$updated_status,$status_entry['id']);
+				}
+
+				//desactivar los movimientos del inventario
+				$this->Api->delete_where('inventory_movements',array('chemical_adition'=>$step_info['subtree']));
+
+
+				//establecer el estado actual de cada tanque afectado en 3
+				$this->Api->update('tank_status_time',array('activo'=>3),$adition['status_producido']);
+				
+				//seleccionar de manera inversa los estados del tanque que sean 0
+				$estados_tanque = $this->Api->get_where('tank_status_time',array('tank'=>$adition['tank'],'activo'=>0),array('id','desc'));
+				$nuevo_activo 	= $estados_tanque[0];
+				
+				//reactivar el primer estado de la lista (ponerle 1 nuevamente)
+				$this->Api->update('tank_status_time',array('activo'=>1),$nuevo_activo['id']);
+			}
+
+			//if the trunk is a volume transfer
+			else if($step_info['tree'] == 'volume_transfer'){
+				//obtener el detalle de la transferencia de volumen
+				$volume_transfer = $this->Api->get_where('volume_transfers',array('id'=>$step_info['subtree']));
+				$volume_transfer = $volume_transfer[0];
+
+				//convertir en 3 los estados resultantes
+				$this->Api->update('tank_status_time',array('activo'=>3),$volume_transfer['to_origin_status']);
+				$this->Api->update('tank_status_time',array('activo'=>3),$volume_transfer['to_destiny_status']);
+				//convertir en 1 los estados originales
+				$this->Api->update('tank_status_time',array('activo'=>1),$volume_transfer['from_origin_status']);
+				$this->Api->update('tank_status_time',array('activo'=>1),$volume_transfer['from_destiny_status']);
+			}
+
+			//destruir el paso
+			$this->Api->delete('mvc_trunk',$step);
+			echo json_encode(true);
+
+		}
+	}
+
 }

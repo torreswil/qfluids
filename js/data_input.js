@@ -1818,6 +1818,7 @@ $(function(){
 									load_ac_status();
 									load_tank_status();
 									load_current_concentrations();
+									step_by_step_mvc();	
 
 									if(parseInt(origin) !== 0){
 										//preguntarle al servidor el tipo del tanque
@@ -1985,6 +1986,7 @@ $(function(){
 					load_ac_status();
 					load_tank_status();
 					load_current_concentrations();
+					step_by_step_mvc();	
 					
 					$('#tv_osc_overlay .close_link').click();
 					$('#transfer_osc_btn').show();
@@ -2054,7 +2056,21 @@ $(function(){
 
 	$('.delete_mvc_step').live('click',function(e){
 		e.preventDefault();
-		alert('Hola Oscar... estoy haciendo modificaciones a esta parte. Volverá en breve.');
+		if(confirm('Are you sure yo want to undo this step?')){
+			var id = $(this).attr('href');
+				id = id.split('_');
+				id = id[1];
+
+			$.post('/rest_mvc/undo_step',{'id':id},function(r){
+				if(r == true){
+					load_materials_status();
+					load_ac_status();
+					load_tank_status();
+					load_current_concentrations();
+					step_by_step_mvc();
+				}
+			},'json');
+		}
 	});
 
 	/*==========================================================================================================*/
