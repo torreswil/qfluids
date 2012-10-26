@@ -703,7 +703,7 @@
 		</div>
 		<div class="simpleTabsContent">
 			<fieldset>
-				<legend>Step by Step</legend>
+				<legend>Today Movements</legend>
 				<p><strong>Instructions:</strong> to get back to a previous step, just click on the minus button on the left of each movement.<p>
 				<table>
 					<thead>
@@ -714,7 +714,7 @@
 						</tr>
 					</thead>
 					<tbody id="step_by_step_mvc">
-						
+
 					</tbody>
 				</table>
 			</fieldset>
