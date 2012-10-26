@@ -2052,7 +2052,7 @@ $(function(){
 		$('#step_by_step_mvc').load('/rest_mvc/step_by_step_mvc');
 	}
 
-	$('.delete_mvc_step').click(function(e){
+	$('.delete_mvc_step').live('click',function(e){
 		e.preventDefault();
 		alert('Hola Oscar... estoy haciendo modificaciones a esta parte. Volverá en breve.');
 	});
