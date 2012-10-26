@@ -333,7 +333,7 @@
 	    			<td class="label_m"><label>Time</label></td>
 	    		</tr>
 	    		<tr>
-	    			<td><input type="text" disabled="disabled" style="width:86px;" class="drilling_time_select" value="<?= empty($rs[0]['drilling']) ? 'Drilling' : $rs[0]['drilling']; ?>"></td>
+	    			<td><input type="text" disabled="disabled" style="width:86px;" class="drilling_time_select" value="Drilling"></td>
 	    			<td><input type="text" name="drillingt_0" id="drillingt_0" class="drillingt" value="<?= empty($rs[0]['time']) ? '' : $rs[0]['time']; ?>"/></td>
 	    		</tr>
 	    		<tr>

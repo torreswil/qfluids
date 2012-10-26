@@ -10,7 +10,7 @@
 					<label class="emphasis">Mud Type:</label>
 				</td>
 				<td>
-					<input name="mud_type" type="text" class="medium pick_mud" value="<?= empty($reporte['mud_type']) ? 'Please select...' : $reporte['mud_type'];?>" />
+                                        <input name="mud_type" type="text" class="medium pick_mud" value="<?= empty($reporte['mud_type']) ? '' : $reporte['mud_type'];?>"  placeholder="Please select..."/>
 				</td>
 			</tr>
 		</table>

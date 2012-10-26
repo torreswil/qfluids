@@ -51,7 +51,10 @@ $(function(){
                         //Solids control equipment
                         save_solids_control(); 
                         //Save personal
-                        save_personal();                        
+                        save_personal();
+                        //Correr calculos
+                        correr_calculos();
+                        setStatusReport('All data saved!', 'valid');
                                                                        
                         //alert('saving function trigger');                                
 		}
@@ -92,7 +95,13 @@ $(function(){
                         data_casing.push(values);
                 });
                 //Save casing
-                $.post('/rest/save_hole_geometry/casing/',$.toJSON(data_casing),function(r){ },'json');               
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_hole_geometry/casing/',
+                        data: $.toJSON(data_casing),
+                        dataType: 'json',
+                        async: false
+                });                
                 
                 //Armo la data hole
                 var data_hole = {                        
@@ -104,8 +113,14 @@ $(function(){
                         average_hole            : $('#openhole').val(),
                         open_hole_length        : $('#longhoyo').val()
                 }                
-                //Save hole
-                $.post('/rest/save_hole_geometry/hole/',data_hole,function(r){ },'json');               
+                //Save hole                
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_hole_geometry/hole/',
+                        data: data_hole,
+                        dataType: 'json',
+                        async: false
+                });                
                 
                 //Armo la data drill string
                 var data_drill_string = [];                
@@ -125,7 +140,13 @@ $(function(){
                         data_drill_string.push(values);
                 });
                 //Save drillstring
-                $.post('/rest/save_hole_geometry/drill_string/',$.toJSON(data_drill_string),function(r){ },'json');               
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_hole_geometry/drill_string/',
+                        data: $.toJSON(data_drill_string),
+                        dataType: 'json',
+                        async: false
+                });
                 
                 //Armo la data pressure_loss_resume
                 var data_pressure_loss = [];                
@@ -143,8 +164,14 @@ $(function(){
                         }
                         data_pressure_loss.push(values);
                 });
-                //Save pressure_loss
-                $.post('/rest/save_hole_geometry/pressure/',$.toJSON(data_pressure_loss),function(r){ },'json');
+                //Save pressure_loss                
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_hole_geometry/pressure/',
+                        data: $.toJSON(data_pressure_loss),
+                        dataType: 'json',
+                        async: false
+                }); 
                 
                 //Armo la data de velocidades
                 var data_velocity = {
@@ -164,8 +191,14 @@ $(function(){
                         ecd             : $("#ecd").val(),
                         w_out           : $("#zwout").val()
                 }
-                //Save pressure_loss
-                $.post('/rest/save_hole_geometry/velocity/',data_velocity,function(r){ },'json');
+                //Save data velocity
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_hole_geometry/velocity/',
+                        data: data_velocity,
+                        dataType: 'json',
+                        async: false
+                });                 
                 
                 //Armo la data annular section
                 var data_annular_section = [];                
@@ -183,18 +216,30 @@ $(function(){
                         }
                         data_annular_section.push(values);
                 });
-                //Save pressure_loss
-                $.post('/rest/save_hole_geometry/annular/',$.toJSON(data_annular_section),function(r){ },'json');                
+                //Save annular section
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_hole_geometry/annular/',
+                        data: $.toJSON(data_annular_section),
+                        dataType: 'json',
+                        async: false
+                }); 
                 
                 //Guarda las propiedades del reporte
-                report_hole_geometry = {
+                var report_hole_geometry = {
                         depth_md: $('#md').val(), 
                         bit_depth: $("#bitdepth").val() ,
                         bha: $("#dsbha").val(),
                         bha_length: $("#totalbha").val(), 
                         hydraulic_type: $('[name="hreporttoshow"]:checked').val()
                 }
-                $.post('/rest/save_report_settings', report_hole_geometry,function(r){ });
+                //Save report properties
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_report_settings',
+                        data: report_hole_geometry,                        
+                        async: false
+                });                 
                 
                 setStatusReport('Hole Geometry saved!');
         }
@@ -233,7 +278,13 @@ $(function(){
                 }
                 data.push(this_value);                                                        
                 //Save bit_data
-                $.post('/rest/save_operational_info/bit/',$.toJSON(data),function(r){ },'json');
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_operational_info/bit/',
+                        data: $.toJSON(data),
+                        dataType: 'json',
+                        async: false
+                });                
                 
                 //Armo la data de las bombas
                 var data_pump = [];                                                                        
@@ -262,7 +313,13 @@ $(function(){
                 }
                 data_pump.push(pump_3);                
                 //Save pump_data
-                $.post('/rest/save_operational_info/pump/',$.toJSON(data_pump),function(r){ },'json');
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_operational_info/pump/',
+                        data: $.toJSON(data_pump),
+                        dataType: 'json',
+                        async: false
+                });
                 
                 //Armo la data del drilling time
                 var data_drilling_time = [];
@@ -281,7 +338,13 @@ $(function(){
                         }                        
                 });
                 //Save drilling time
-                $.post('/rest/save_operational_info/drillingtime/',$.toJSON(data_drilling_time),function(r){ },'json');               
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_operational_info/drillingtime/',
+                        data: $.toJSON(data_drilling_time),
+                        dataType: 'json',
+                        async: false
+                });                
                 
                 //Armo la data del drilling parameters
                 var data_drilling_parameters = [];
@@ -297,7 +360,13 @@ $(function(){
                         data_drilling_parameters.push(values);                                                
                 });
                 //Save drilling parameters
-                $.post('/rest/save_operational_info/drillingparameters/',$.toJSON(data_drilling_parameters),function(r){ },'json');               
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_operational_info/drillingparameters/',
+                        data: $.toJSON(data_drilling_parameters),
+                        dataType: 'json',
+                        async: false
+                });                 
                 
                 //Armo la data del drilling parameters
                 var data_survey = [];
@@ -312,10 +381,16 @@ $(function(){
                         }
                         data_survey.push(values);                                                
                 });
-                //Save drilling parameters
-                $.post('/rest/save_operational_info/survey/',$.toJSON(data_survey),function(r){ },'json');               
+                //Save survey
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_operational_info/survey/',
+                        data: $.toJSON(data_survey),
+                        dataType: 'json',
+                        async: false
+                });                 
                 
-                report_pump = {
+                var report_pump = {
                         activity: $('#operational_info_activity').val(), 
                         formation: $("#operational_info_formation").val(),
                         bottoms_up: $('#bottomsup').val(),
@@ -329,7 +404,14 @@ $(function(){
                         daily_avge_temp: $('.daily_avge_temp').val()
                         
                 }
-                $.post('/rest/save_report_settings', report_pump,function(r){ });
+                
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_report_settings',
+                        data: report_pump,
+                        dataType: 'json',
+                        async: false
+                });                                 
                 
                 setStatusReport('Operational info saved!');
                 
@@ -421,14 +503,25 @@ $(function(){
                                 }
                                 data.push(this_value);                        
                         });
-                });                
-                $.post('/rest/save_mud_properties',$.toJSON(data),function(r){
-                        if(r == true){                                                                    
-                                setStatusReport('Mud properties saved!');
-                        }
-                },'json');                
+                });   
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_mud_properties',
+                        data: $.toJSON(data),
+                        dataType: 'json',
+                        async: false
+                });
                 
-                $.post('/rest/save_report_settings',{ mud_type: $('.pick_mud').val() },function(r){ });
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_report_settings',
+                        data: { mud_type: $('.pick_mud').val() },
+                        dataType: 'json',
+                        async: false
+                });
+               
+                setStatusReport('Mud properties saved!');               
+                                
         }
         
         /**
@@ -505,32 +598,30 @@ $(function(){
                         data3.push(this_value);
                 });                               
                                                         
-                //Save shakers                
-                $.post('/rest/save_solids_control/shakers/',$.toJSON(data),function(r){
-                        if(r == true){                                                                    
-                                //Para que no la vuelva a guardar
-                                $('.input_data_shakers').addClass('saved');
-                        }
-                },'json');
-                
+                //Save shakers  
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_solids_control/shakers/',
+                        data: $.toJSON(data),
+                        dataType: 'json',
+                        async: false
+                });                
                 //Save mudcleaner         
-                $.post('/rest/save_solids_control/mudcleaner/',$.toJSON(data2),function(r){
-                        if(r == true){                                                                    
-                                //Para que no la vuelva a guardar
-                                mud_cleaner.each(function() {
-                                        $(this).addClass('saved');
-                                });                                        
-                        }
-                },'json');
-                
-                //Save centrifugues
-                $.post('/rest/save_solids_control/centrifugues/',$.toJSON(data3),function(r){
-                        if(r == true){                                         
-                                //Para que no la vuelva a guardar                                        
-                                centrifugues.addClass('saved');
-                        }
-                },'json');
-                
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_solids_control/mudcleaner/',
+                        data: $.toJSON(data2),
+                        dataType: 'json',
+                        async: false
+                });                                
+                //Save centrifugues                
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_solids_control/centrifugues/',
+                        data: $.toJSON(data3),
+                        dataType: 'json',
+                        async: false
+                }); 
                 setStatusReport('Solids controls equipment saved!');
                 
         }
@@ -573,12 +664,15 @@ $(function(){
                                 data.push(this_data);
                         }
                 });
-                //Save centrifugues
-                $.post('/rest/save_personal/',$.toJSON(data),function(r){
-                        if(r == true){                                         
-                                setStatusReport('Perasonal saved!');
-                        }
-                },'json');                                
+                //Save personal
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_personal/',
+                        data: $.toJSON(data),
+                        dataType: 'json',
+                        async: false
+                });    
+                setStatusReport('Perasonal saved!');                
         }
 
 

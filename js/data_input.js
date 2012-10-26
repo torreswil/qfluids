@@ -328,7 +328,7 @@ $(function(){
 		var last_row = target - 1;
 		$('a.casingclear','#casing_tool_' + last_row).show();
 		$('#casing_tool_'+target+' .pick_casing').val('Select...');
-		$('#casing_tool_'+target+' .od,#casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom,#casing_tool_'+target+' .volume, #casing_tool_'+target+' .length').val(0);
+		$('#casing_tool_'+target+' .od, #casing_tool_'+target+' .od_dummie, #casing_tool_'+target+' .id,#casing_tool_'+target+' .top,#casing_tool_'+target+' .bottom,#casing_tool_'+target+' .volume, #casing_tool_'+target+' .length').val(0);
                 $('#picker_id_'+target).val('');
 		correr_calculos();
 	});

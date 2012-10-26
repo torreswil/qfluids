@@ -743,7 +743,7 @@ class Rest extends CI_Controller {
                         }
                 } else if($type=='hole') {                        
                         $this->Api->total_remove_where('project_report_hole', array('report_id'=>$this->report_id));
-                        $_POST['report_id'] = $this->report_id;
+                        $_POST['report_id'] = $this->report_id;                        
                         $this->Api->create('project_report_hole', $_POST);
                 } else if($type=='drill_string') {                        
                         $this->Api->total_remove_where('project_report_drill_string', array('report_id'=>$this->report_id));
@@ -772,7 +772,10 @@ class Rest extends CI_Controller {
                 if($type=='bit') {
                         //Elimino los campos enviados con anterioridad para tener los nuevos almacenados
                         $this->Api->total_remove_where('project_report_bit', array('report_id'=>$this->report_id));                
-                        foreach ($values as $value) {                        
+                        foreach ($values as $value) {  
+                                if(empty($values->brocas_modelos_id)) {//Para no generar error cuando no se digita algo
+                                        continue;
+                                }
                                 $this->Api->create('project_report_bit', array('bit_number'=>$value->bit_number, 'brocas_modelos_id'=>$value->brocas_modelos_id, 'report_id'=>$this->report_id, 'jets1'=>$value->jets1, 'jets2'=>$value->jets2, 'jets3'=>$value->jets3, 'jets4'=>$value->jets4, 'jets5'=>$value->jets5, 'jets6'=>$value->jets6, 'jets7'=>$value->jets7, 'jets8'=>$value->jets8, 'jets9'=>$value->jets9, 'jets10'=>$value->jets10, 'jets11'=>$value->jets11, 'jets12'=>$value->jets12, 'result_jets'=>$value->result_jets, 'tfa'=>$value->tfa, 'vel_jets'=>$value->vel_jets, 'pd1'=>$value->pd1, 'pd2'=>$value->pd2, 'hhp'=>$value->hhp, 'hsi'=>$value->hsi));
                         }
                 } else if($type=='pump') {                        
@@ -820,7 +823,10 @@ class Rest extends CI_Controller {
                         }
                 } else if($type=='mudcleaner') {
                         $this->Api->total_remove_where('project_report_mudcleaner', array('report_id'=>$this->report_id));                
-                        foreach ($values as $value) {                        
+                        foreach ($values as $value) { 
+                                if(empty($value->project_mudcleaner_id)) { //Por si no hay registros para no generar error en las fk
+                                        continue;
+                                }
                                 $this->Api->create('project_report_mudcleaner', array('project_mudcleaner_id'=>$value->project_mudcleaner_id, 'report_id'=>$this->report_id, 'desander_flow'=>$value->desander_flow, 'desander_presure'=>$value->desander_presure, 'desander_hours'=>$value->desander_hours, 'destiler_flow'=>$value->destiler_flow, 'destiler_presure'=>$value->destiler_presure, 'destiler_hours'=>$value->destiler_hours, 'screens1'=>$value->screens1, 'screens2'=>$value->screens2, 'screens3'=>$value->screens3, 'screens4'=>$value->screens4, 'screens5'=>$value->screens5, 'operational_hours'=>$value->operational_hour));                        
                         }
                 } else {
