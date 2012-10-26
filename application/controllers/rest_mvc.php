@@ -1003,7 +1003,7 @@ class Rest_mvc extends CI_Controller {
 			<tr>
 				<td class="label_m" style="padding-right:10px;">
 					<?php if($count == 1){ ?>
-						<a href="deletestep_<?= $step['id'] ?>"><img src="/img/brick_delete.png" /></a>
+						<a href="deletestep_<?= $step['id'] ?>" class="delete_mvc_step"><img src="/img/brick_delete.png" /></a>
 					<?php }?>
 				</td>
 				<td class="label_m">

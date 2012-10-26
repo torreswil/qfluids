@@ -2052,6 +2052,11 @@ $(function(){
 		$('#step_by_step_mvc').load('/rest_mvc/step_by_step_mvc');
 	}
 
+	$('.delete_mvc_step').click(function(e){
+		e.preventDefault();
+		alert('Hola Oscar... estoy haciendo modificaciones a esta parte. Volverá en breve.');
+	});
+
 	/*==========================================================================================================*/
 	// 8. REPORT HISTORY
 	/*==========================================================================================================*/
