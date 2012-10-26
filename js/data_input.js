@@ -14,6 +14,7 @@ $(function(){
 	load_current_concentrations();
 	load_tank_status();
 	load_today_consumptions();
+	step_by_step_mvc();
         
 	/*==========================================================================================================*/
 	// NAVIGATION
@@ -2046,6 +2047,10 @@ $(function(){
 			$('#mts_overlay .close_link').click();
 		},'json');		
 	});
+
+	function step_by_step_mvc(){
+		$('#step_by_step_mvc').load('/rest_mvc/step_by_step_mvc');
+	}
 
 	/*==========================================================================================================*/
 	// 8. REPORT HISTORY

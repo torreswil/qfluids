@@ -701,6 +701,23 @@
 				</table>
 			</fieldset>		
 		</div>
-		<div class="simpleTabsContent"></div>
+		<div class="simpleTabsContent">
+			<fieldset>
+				<legend>Step by Step</legend>
+				<p><strong>Instructions:</strong> to get back to a previous step, just click on the minus button on the left of each movement.<p>
+				<table>
+					<thead>
+						<tr>
+							<td class="label_m"><label></label></td>
+							<td class="label_m"><label>Timestamp</label></td>
+							<td class="label_m"><label>Description</label></td>
+						</tr>
+					</thead>
+					<tbody id="step_by_step_mvc">
+						
+					</tbody>
+				</table>
+			</fieldset>
+		</div>
 	</div>
 </div>
