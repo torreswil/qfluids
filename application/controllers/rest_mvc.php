@@ -45,7 +45,7 @@ class Rest_mvc extends CI_Controller {
 
 							//obtener la concentracion para este producto
 							$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
-							$concentracion = $concentracion[0]['concentracion'];	
+							if(count($concentracion) > 0){$concentracion = $concentracion[0]['concentracion'];}else{$concentracion = 0;}	
 						}else{
 							$concentracion = 0;
 						}
@@ -63,11 +63,7 @@ class Rest_mvc extends CI_Controller {
 
 						//obtener la concentracion para este producto
 						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
-						if(count($concentracion) > 0){
-							$concentracion = $concentracion[0]['concentracion'];	
-						}else{
-							$concentracion = 0;	
-						}
+						if(count($concentracion) > 0){$concentracion = $concentracion[0]['concentracion'];}else{$concentracion = 0;}
 					?>
                   	<td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
                 <?php }?>
@@ -83,7 +79,7 @@ class Rest_mvc extends CI_Controller {
 
 							//obtener la concentracion para este producto
 							$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
-							$concentracion = $concentracion[0]['concentracion'];	
+							if(count($concentracion) > 0){$concentracion = $concentracion[0]['concentracion'];}else{$concentracion = 0;}
 						}else{
 							$concentracion = 0;
 						}

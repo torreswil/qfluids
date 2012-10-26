@@ -1669,6 +1669,7 @@ $(function(){
 								load_ac_status();
 								load_current_concentrations();
 								correr_calculos();
+								step_by_step_mvc();
 					
 								//emular click del usuario sobre el boton cancelar
 								$('#add_chemicals_overlay .close_link').show();
@@ -2046,6 +2047,7 @@ $(function(){
 		$.post('/rest_mvc/create_tank_status',$.toJSON(data),function(r){
 			load_tank_status();
 			load_current_concentrations();
+			step_by_step_mvc();
 			$('#mts_overlay .close_link').click();
 		},'json');		
 	});
