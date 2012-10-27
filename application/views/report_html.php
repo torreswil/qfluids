@@ -1,46 +1,56 @@
 <?php $reporte = $this->session->userdata('report'); ?>
 
 <div class="row">
-        <table class="table table-stripted table-condensed b-bottom">
+        <table class="table table-stripted table-condensed b-bottom table-fixed">
                 <tr class="">
                         <td class="span2 txt-center b-right-2 b-bottom-2">
                                 <img width="80" src="/img/qmax_logo.png">
                         </td>
-                        <td class="span6 txt-center-all b-right-2 b-bottom-2">
+                        <td class="span5 txt-center-all b-right-2 b-bottom-2">
                                 <h3>DAILY DRILLING FLUIDS REPORT N. <?= $reporte['number']; ?></h3>
                         </td>
-                        <td class="span2 txt-center b-right-2 b-bottom-2">
+                        <td class="span3 txt-center b-right-2 b-bottom-2">
                                 <img width="80" src="/img/qmax_logo.png">
                         </td>
-                        <td class="span2 txt-center-all b-bottom-2">
+                        <td class="txt-center-all b-bottom-2" style="width: 100px;">
                                 Fo IF 002 V-01 <br />
                                 1 de 1                                        
                         </td>
                 </tr>
         </table>
         
-        <table class="table table-stripted table-condensed b-bottom">
+        <table class="table table-stripted table-condensed b-bottom table-fixed">
                 <tr class="">
-                        <td class="span2"><span class="strong">Date:</span> <?= $reporte['date']; ?></td>
+                        <td style="width: 6.5%"><span class="strong">Date:</span></td>
+                        <td style="width: 6.5%"><?= date("d-M-y", strtotime($reporte['date'])); ?></td>
                         
-                        <td class="span2"><span class="strong">WELL:</span> <?= $project['well_name']; ?></td>
+                        <td style="width: 4%"><span class="strong">WELL: </td>
+                        <td style="width: 15.875%"><?= $project['well_name']; ?></td>
                         
-                        <td class="span2"><span class="strong">DEPTH MD:</span> <?= $reporte['depth_md']; ?></td>                        
+                        <td style="width: 6.5%"><span class="strong">DEPTH MD:</span> </td>
+                        <td style="width: 15.875%"><?= $reporte['depth_md']; ?></td>
                         
-                        <td class="span2"><span class="strong">ACTIVITY:</span> <?= $reporte['activity']; ?></td>
+                        <td style="width: 7%"><span class="strong">ACTIVITY:</span> </td>
+                        <td style="width: 15.875%"><?= $reporte['activity']; ?></td>
                         
-                        <td class="span2"><span class="strong">RIG:</span> <?= $project['rig']; ?></td>                        
+                        <td style="width: 6%"><span class="strong">RIG:</span> </td>
+                        <td style="width: 15.875%"><?= $project['rig']; ?></td>
                 </tr>
                 <tr class="">
-                        <td class="span2"><span class="strong">Spud date:</span> <?= $project['spud_date']; ?></td>
+                        <td><span class="strong">Spud date:</td>
+                        <td><?= date("d-M-y", strtotime($project['spud_date'])); ?></td>
                         
-                        <td class="span2"><span class="strong">FIELD:</span> <?= $project['field']; ?></td>
+                        <td><span class="strong">FIELD:</span> </td>
+                        <td style="width: 15.875%"><?= $project['field']; ?></td>
                         
-                        <td class="span2"><span class="strong">BIT DEPTH:</span> <?= $reporte['bit_depth']; ?></td>                        
+                        <td><span class="strong">BIT DEPTH:</span> </td>
+                        <td style="width: 15.875%"><?= $reporte['bit_depth']; ?></td>                        
                         
-                        <td class="span2"><span class="strong">FORMATION:</span> <?= $reporte['formation']; ?></td>
+                        <td><span class="strong">FORMATION:</span> </td>
+                        <td style="width: 15.875%"><?= $reporte['formation']; ?></td>
                         
-                        <td class="span2"><span class="strong">PUSHER:</span> CARLOS DUARTE</td>
+                        <td><span class="strong">PUSHER:</span> </td>
+                        <td style="width: 15.875%" class="txt-overflow"> CARLOS DUARTE MELENDEZ SANCHEZ IVAN DAVID CARLOS DUARTE MELENDEZ SANCHEZ IVAN DAVID CARLOS DUARTE MELENDEZ SANCHEZ IVAN DAVID</td>
                 </tr>
         </table>
         
@@ -59,20 +69,20 @@
                                                 </tr>
                                         </thead>
                                         <tbody>
-                                                <?php $total = count($drill_string); ?>
+                                                <?php $total = count($drill_string); ?>                                                
                                                 <?php $counter = 0; ?>
                                                 <?php $total_length = 0; ?>
                                                 <?php foreach($drill_string as $fila) : ?>
                                                 <tr>
                                                         <td><?= str_replace('_', ' ', strtoupper($fila['bha_name'])); ?></td>
-                                                        <td><?= (empty($fila['oddeci'])) ? '' : number_format($fila['oddeci'], 2, ',', ''); ?></td>
+                                                        <td><?= (empty($fila['oddeci'])) ? '&nbsp;' : number_format($fila['oddeci'], 2, ',', ''); ?></td>
                                                         <td><?= (empty($fila['iddeci'])) ? '' : number_format($fila['iddeci'], 2, ',', ''); ?></td>
                                                         <td class="txt-right"><?= (empty($fila['length'])) ? '' : number_format($fila['length'], 2, ',', ''); ?></td>
                                                         <?php $counter++; ?>
                                                         <?php $total_length = $total_length + $fila['length']; ?>
                                                 </tr>
                                                 <?php endforeach; ?>
-                                                <?php $counter++; ?>
+                                                <?php $counter++; ?>                                                
                                                 <?php while($counter <= 9) { ?>
                                                 <tr>
                                                         <td>&nbsp;</td>
@@ -107,9 +117,9 @@
                                         <table class="table table-stripted table-condensed">
                                                 <thead>
                                                         <tr class="">                                        
-                                                                <th class="txt-center span4">OD</th>
-                                                                <th class="txt-center span4">ID</th>
-                                                                <th class="txt-center span4">LENGTH</th>
+                                                                <th class="txt-center" style="width: 33%;">OD</th>
+                                                                <th class="txt-center" style="width: 33%;">ID</th>
+                                                                <th class="txt-center" style="width: 33%;">LENGTH</th>
                                                         </tr>
                                                 </thead>
                                                 <tbody>    
@@ -144,45 +154,45 @@
                                                 <tbody>
                                                         <tr>
                                                                 <td class="txt-left span3">MAKER</td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '' : $mud_pumps[0]['maker']; ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['maker']) ? '' : $mud_pumps[1]['maker']; ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['maker']) ? '' : $mud_pumps[2]['maker']; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '&nbsp;' : $mud_pumps[0]['maker']; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['maker']) ? '&nbsp;' : $mud_pumps[1]['maker']; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['maker']) ? '&nbsp;' : $mud_pumps[2]['maker']; ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">MODEL</td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['modelo']) ? '' : $mud_pumps[0]['modelo']; ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['modelo']) ? '' : $mud_pumps[1]['modelo']; ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['modelo']) ? '' : $mud_pumps[2]['modelo']; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['modelo']) ? '&nbsp;' : $mud_pumps[0]['modelo']; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['modelo']) ? '&nbsp;' : $mud_pumps[1]['modelo']; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['modelo']) ? '&nbsp;' : $mud_pumps[2]['modelo']; ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">Diam./stk:</td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '' : $mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'; ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '' : $mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'; ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '' : $mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '&nbsp;' : $mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '&nbsp;' : $mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '&nbsp;' : $mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'; ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">Eff (%)</td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['efficiency']) ? '' : number_format($mud_pumps[0]['efficiency'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['efficiency']) ? '&nbsp;' : number_format($mud_pumps[0]['efficiency'],2,",",''); ?></td>
                                                                 <td class="txt-center span3"><?= empty($mud_pumps[1]['efficiency']) ? '' : number_format($mud_pumps[1]['efficiency'],2,",",''); ?></td>
                                                                 <td class="txt-center span3"><?= empty($mud_pumps[2]['efficiency']) ? '' : number_format($mud_pumps[2]['efficiency'],2,",",''); ?></td>
                                                         </tr>                                        
                                                         <tr>
                                                                 <td class="txt-left span3">Gal/Stk:</td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['gal']) ? '' : number_format($mud_pumps[0]['gal'],2,",",''); ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['gal']) ? '' : number_format($mud_pumps[1]['gal'],2,",",''); ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['gal']) ? '' : number_format($mud_pumps[2]['gal'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['gal']) ? '&nbsp;' : number_format($mud_pumps[0]['gal'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['gal']) ? '&nbsp;' : number_format($mud_pumps[1]['gal'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['gal']) ? '&nbsp;' : number_format($mud_pumps[2]['gal'],2,",",''); ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">SPM:</td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['spm']) ? '' : number_format($mud_pumps[0]['spm'],2,",",''); ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['spm']) ? '' : number_format($mud_pumps[1]['spm'],2,",",''); ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['spm']) ? '' : number_format($mud_pumps[2]['spm'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['spm']) ? '&nbsp;' : number_format($mud_pumps[0]['spm'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['spm']) ? '&nbsp;' : number_format($mud_pumps[1]['spm'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['spm']) ? '&nbsp;' : number_format($mud_pumps[2]['spm'],2,",",''); ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">GPM</td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['gpm']) ? '' : number_format($mud_pumps[0]['gpm'],2,",",''); ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['gpm']) ? '' : number_format($mud_pumps[1]['gpm'],2,",",''); ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['gpm']) ? '' : number_format($mud_pumps[2]['gpm'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['gpm']) ? '&nbsp;' : number_format($mud_pumps[0]['gpm'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[1]['gpm']) ? '&nbsp;' : number_format($mud_pumps[1]['gpm'],2,",",''); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[2]['gpm']) ? '&nbsp;' : number_format($mud_pumps[2]['gpm'],2,",",''); ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td colspan="2" class="txt-left span5">SSP, psi: <?= empty($drilling_parameters[2]['value']) ? '' : $drilling_parameters[2]['value']; ?></td>
@@ -194,69 +204,69 @@
                                 
                                 <!-- HIDRAULYCS -->
                                 
-                                <div class="data-table b-right" style="width: 49.4%;">
+                                <div class="data-table" style="width: 49.4%;">
                                         <div class="sub-header b-bottom"><h5>HYDRAULICS</h5></div>                                        
-                                        <div class="data-table" style="width: 64%">
+                                        <div class="data-table" style="width: 60%">
                                                 <table class="table table-stripted table-condensed b-bottom">
                                                         <thead>
                                                                 <tr class="txt-center">                                        
-                                                                        <th class="span3">ANNULAR:</th>
-                                                                        <th class="span3">Actual vel</th>
-                                                                        <th class="span3">Critical:</th>
-                                                                        <th class="span3">Qc (gpm):</th>
+                                                                        <th style="width: 28%">VEL.(ft/s)</th>
+                                                                        <th style="width: 24%">Annular</th>
+                                                                        <th style="width: 24%">Critical</th>
+                                                                        <th style="width: 24%">Qc (gpm)</th>
                                                                 </tr>
                                                         </thead>
                                                         <tbody>
                                                                 <tr>
                                                                         <td class="txt-left">Casing/DP:</td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['casing1']) ? '' : number_format($velocity[0]['casing1'], 2, ',', ''); ?></td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['casing2']) ? '' : number_format($velocity[0]['casing2'], 2, ',', ''); ?></td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['casing3']) ? '' : number_format($velocity[0]['casing3'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['casing1']) ? '&nbsp;' : number_format($velocity[0]['casing1'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['casing2']) ? '&nbsp;' : number_format($velocity[0]['casing2'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['casing3']) ? '&nbsp;' : number_format($velocity[0]['casing3'], 2, ',', ''); ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="txt-left">DP/OH:</td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['dp1']) ? '' : number_format($velocity[0]['dp1'], 2, ',', ''); ?></td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['dp2']) ? '' : number_format($velocity[0]['dp2'], 2, ',', ''); ?></td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['dp3']) ? '' : number_format($velocity[0]['dp3'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dp1']) ? '&nbsp;' : number_format($velocity[0]['dp1'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dp2']) ? '&nbsp;' : number_format($velocity[0]['dp2'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dp3']) ? '&nbsp;' : number_format($velocity[0]['dp3'], 2, ',', ''); ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="txt-left">DP/OH:</td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['dc11']) ? '' : number_format($velocity[0]['dc11'], 2, ',', ''); ?></td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['dc12']) ? '' : number_format($velocity[0]['dc12'], 2, ',', ''); ?></td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['dc13']) ? '' : number_format($velocity[0]['dc13'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc11']) ? '&nbsp;' : number_format($velocity[0]['dc11'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc12']) ? '&nbsp;' : number_format($velocity[0]['dc12'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc13']) ? '&nbsp;' : number_format($velocity[0]['dc13'], 2, ',', ''); ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="txt-left">DP/OH:</td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['dc21']) ? '' : number_format($velocity[0]['dc21'], 2, ',', ''); ?></td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['dc22']) ? '' : number_format($velocity[0]['dc22'], 2, ',', ''); ?></td>
-                                                                        <td class="txt-center"><?= empty($velocity[0]['dc23']) ? '' : number_format($velocity[0]['dc23'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc21']) ? '&nbsp;' : number_format($velocity[0]['dc21'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc22']) ? '&nbsp;' : number_format($velocity[0]['dc22'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['dc23']) ? '&nbsp;' : number_format($velocity[0]['dc23'], 2, ',', ''); ?></td>
                                                                 </tr>                                                
                                                         </tbody>                                         
                                                 </table>
                                                 <table class="table table-stripted table-condensed">
                                                         <tbody>
                                                                 <tr>
-                                                                        <td class="txt-left span3">Bouyancy:</td>
-                                                                        <td class="txt-center span3"><?= empty($velocity[0]['bouyancy']) ? '' : number_format($velocity[0]['bouyancy'], 3, ',', ''); ?></td>
-                                                                        <td class="txt-center span3"></td>
-                                                                        <td class="txt-center span3"></td>
+                                                                        <td class="txt-left" style="width: 28%;">Bouyancy:</td>
+                                                                        <td class="txt-center" style="width: 24%;"><?= empty($velocity[0]['bouyancy']) ? '&nbsp;' : number_format($velocity[0]['bouyancy'], 3, ',', ''); ?></td>
+                                                                        <td class="txt-center" style="width: 24%;">&nbsp;</td>
+                                                                        <td class="txt-center" style="width: 24%;">&nbsp;</td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="txt-left">ECD (ppg):</td>
-                                                                        <td class="txt-center span3"><?= empty($velocity[0]['ecd']) ? '' : number_format($velocity[0]['ecd'], 3, ',', ''); ?></td>
-                                                                        <td class="txt-center span3"></td>
-                                                                        <td class="txt-center span3"></td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['ecd']) ? '&nbsp;' : number_format($velocity[0]['ecd'], 3, ',', ''); ?></td>
+                                                                        <td class="txt-center" style="width: 24%;">&nbsp;</td>
+                                                                        <td class="txt-center" style="width: 24%;">&nbsp;</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td class="txt-left span3">W/out:</td>
-                                                                        <td class="txt-center span3"><?= empty($velocity[0]['w_out']) ? '' : number_format($velocity[0]['w_out'], 3, ',', ''); ?></td>
-                                                                        <td class="txt-center span3"></td>
-                                                                        <td class="txt-center span3"></td>
+                                                                        <td class="txt-left">W/out:</td>
+                                                                        <td class="txt-center"><?= empty($velocity[0]['w_out']) ? '&nbsp;' : number_format($velocity[0]['w_out'], 3, ',', ''); ?></td>
+                                                                        <td class="txt-center" style="width: 24%;">&nbsp;</td>
+                                                                        <td class="txt-center" style="width: 24%;">&nbsp;</td>
                                                                 </tr>
                                                         </tbody>
                                                 </table>
                                         </div>
-                                        <div class="data-table b-left" style="width: 35.7%">
+                                        <div class="data-table b-left" style="width: 39.7%">
                                                 <table class="table table-stripted table-condensed b-bottom">
                                                         <thead>
                                                                 <tr>                                        
@@ -266,15 +276,15 @@
                                                         <tbody>
                                                                 <tr>
                                                                         <td>Bttms/Up:</td>
-                                                                        <td class="txt-right"></td><!-- REVISAR -->
+                                                                        <td class="txt-right" style="width: 50%;">&nbsp;</td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Surf/Bit:</td>
-                                                                        <td class="txt-right"></td><!-- REVISAR -->
+                                                                        <td class="txt-right">&nbsp;</td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>total Circ:</td>
-                                                                        <td class="txt-right"></td><!-- REVISAR -->
+                                                                        <td class="txt-right">&nbsp;</td><!-- REVISAR -->
                                                                 </tr>                                                
                                                         </tbody>
                                                 </table>
@@ -287,15 +297,15 @@
                                                         <tbody>
                                                                 <tr>
                                                                         <td>Annular:</td>
-                                                                        <td class="txt-right"></td><!-- REVISAR -->
+                                                                        <td class="txt-right" style="width: 50%;">&nbsp;</td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Hole empty:</td>
-                                                                        <td class="txt-right"></td><!-- REVISAR -->
+                                                                        <td class="txt-right">&nbsp;</td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Hole W/String:</td>
-                                                                        <td class="txt-right"></td><!-- REVISAR -->
+                                                                        <td class="txt-right">&nbsp;</td><!-- REVISAR -->
                                                                 </tr>                                                
                                                         </tbody>
                                                 </table>
@@ -306,56 +316,56 @@
                         
                         
                         <div class="container-fluid">
-                                <div class="data-table b-right" style="width: 50%; margin-left: 1px">
+                                <div class="data-table b-right b-left" style="width: 50.15%;">
                                         <div class="sub-header b-bottom  b-top"><h5>BIT #: <?= empty($bit[0]['bit_number']) ? '' : $bit[0]['bit_number']; ?></h5></div>
                                         <table class="table table-stripted table-condensed">                                               
                                                 <tbody>
                                                         <tr>
                                                                 <td class="strong span2">DIAMETER:</td>
-                                                                <td class="span2"><?= empty($bit[0]['odfracc']) ? '' : $bit[0]['odfracc']; ?></td>
+                                                                <td class="span2"><?= empty($bit[0]['odfracc']) ? '&nbsp;' : $bit[0]['odfracc']; ?></td>
                                                                 <td class="strong span2">TFA:</td>
-                                                                <td class="span2"><?= empty($bit[0]['tfa']) ? '' : number_format($bit[0]['tfa'], 3, ',', ''); ?></td>
+                                                                <td class="span2"><?= empty($bit[0]['tfa']) ? '&nbsp;' : number_format($bit[0]['tfa'], 3, ',', ''); ?></td>
                                                                 <td class="strong span2">JETS VEL:</td>
-                                                                <td class="span2"><?= empty($bit[0]['vel_jets']) ? '' : number_format($bit[0]['vel_jets'], 3, ',', ''); ?></td>
+                                                                <td class="span2"><?= empty($bit[0]['vel_jets']) ? '&nbsp;' : number_format($bit[0]['vel_jets'], 3, ',', ''); ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="strong span2">TYPE:</td>
-                                                                <td class="span2"><?= empty($bit[0]['nombre_broca']) ? '' : $bit[0]['nombre_broca']; ?></td>
+                                                                <td class="span2"><?= empty($bit[0]['nombre_broca']) ? '&nbsp;' : $bit[0]['nombre_broca']; ?></td>
                                                                 <td class="strong span2">JETS:</td>
-                                                                <td class="span2"><?= empty($bit[0]['result_jets']) ? '' : $bit[0]['result_jets']; ?></td>
+                                                                <td class="span2"><?= empty($bit[0]['result_jets']) ? '&nbsp;' : $bit[0]['result_jets']; ?></td>
                                                                 <td class="strong span2">HHP (HP):</td>
-                                                                <td class="span2"><?= empty($bit[0]['hhp']) ? '' : number_format($bit[0]['hhp'], 3, ',', ''); ?></td>                                                                   
+                                                                <td class="span2"><?= empty($bit[0]['hhp']) ? '&nbsp;' : number_format($bit[0]['hhp'], 3, ',', ''); ?></td>                                                                   
                                                         </tr>
                                                         <tr>
                                                                 <td class="strong span2">MODEL:</td>
                                                                 <td colspan="3" class="span6"><?= empty($bit[0]['nombre_modelo']) ? '' : $bit[0]['nombre_modelo']; ?></td>
                                                                 <td class="strong span2">HSI (HP/in2):</td>
-                                                                <td class="span2"><?= empty($bit[0]['hsi']) ? '' : number_format($bit[0]['hsi'], 3, ',', ''); ?></td>                                                                   
+                                                                <td class="span2"><?= empty($bit[0]['hsi']) ? '&nbsp;' : number_format($bit[0]['hsi'], 3, ',', ''); ?></td>                                                                   
                                                         </tr>
                                                 </tbody>                                
                                         </table>
                                 </div>
-                                <div class="data-table b-right" style="width: 49.5%">
+                                <div class="data-table" style="width: 49.5%">
                                         <div class="sub-header b-bottom b-top"><h5>VOLUME RESUM IN BBL</h5></div>
                                         <table class="table table-stripted table-condensed">
                                                 <tbody>
                                                         <tr>
                                                                 <td class="strong span3">Active pits:</td>
-                                                                <td class="span3"></td>
+                                                                <td class="span3">&nbsp;</td>
                                                                 <td class="strong span3">Total circulate:</td>
-                                                                <td class="span3"></td>
+                                                                <td class="span3">&nbsp;</td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="strong span3">Pill:</td>
-                                                                <td class="span3"></td>
+                                                                <td class="span3">&nbsp;</td>
                                                                 <td class="strong span3">Total Reserve:</td>
-                                                                <td class="span3"></td>                                                                
+                                                                <td class="span3">&nbsp;</td>                                                                
                                                         </tr>
                                                         <tr>
                                                                 <td class="strong span3">Trip tank:</td>
-                                                                <td class="span3"></td>
+                                                                <td class="span3">&nbsp;</td>
                                                                 <td class="strong span3">Total mud:</td>
-                                                                <td class="span3"></td>                                                                
+                                                                <td class="span3">&nbsp;</td>                                                                
                                                         </tr>
                                                 </tbody> 
                                         </table>
@@ -456,15 +466,10 @@
                                                 <tr>
                                                         <td class="span6">Ca++</td>
                                                         <td class="span5 txt-right">mg/lt</td>
-                                                </tr>                                                                
-                                        </tbody> 
-                                </table>
-                                <div class="b-top" style="width: 100%;"></div>
-                                <table class="table table-stripted table-condensed">
-                                        <tbody>
+                                                </tr>                                                                                                        
                                                 <tr>
-                                                        <td class="span6">Water / Oil</td>
-                                                        <td class="span5 txt-right">% Vol.</td>
+                                                        <td class="b-top span6">Water / Oil</td>
+                                                        <td class="b-top span5 txt-right">% Vol.</td>
                                                 </tr>
                                                 <tr>
                                                         <td class="span6">Sol./Sol. Corr. Salt</td>
@@ -481,15 +486,10 @@
                                                 <tr>
                                                         <td class="span6">LGS / HGS</td>
                                                         <td class="span5 txt-right">% Vol.</td>
-                                                </tr>                                                 
-                                        </tbody> 
-                                </table>
-                                <div class="b-top" style="width: 100%;"></div>
-                                <table class="table table-stripted table-condensed">
-                                        <tbody>
+                                                </tr>                                                                                         
                                                 <tr>
-                                                        <td class="span6">Lubricant</td>
-                                                        <td class="span5 txt-right">% Vol.</td>
+                                                        <td class="b-top span6">Lubricant</td>
+                                                        <td class="b-top span5 txt-right">% Vol.</td>
                                                 </tr>
                                                 <tr>
                                                         <td class="span6">Inhibitor</td>
@@ -636,7 +636,7 @@
                                                         <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '&nbsp' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
                                                 </tr>                                                
                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[19]['id'], 'phase'=>$project['current_phase'])); ?>
-                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[21]['id'])); ?>
+                                                <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[19]['id'])); ?>
                                                 <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[20]['id'])); ?>
                                                 <tr>
                                                         <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '&nbsp' : $program[0]['value_program'];?></td>
@@ -707,21 +707,16 @@
                                                         <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '&nbsp' : $rs[0]['value']; ?></td>
                                                         <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '&nbsp' : $rs[1]['value']; ?></td>
                                                         <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '&nbsp' : $rs[2]['value']; ?></td>
-                                                </tr>                                                                                                        
-                                        </tbody> 
-                                </table>                                
-                                
-                                <div class="b-top" style="width: 100%;"></div>
-                                <table class="table table-stripted table-condensed">
-                                        <tbody>
+                                                </tr>
+                                                
                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[30]['id'], 'phase'=>$project['current_phase'])); ?>
                                                 <?php $rs1 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[30]['id'])); ?>
                                                 <?php $rs2 = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[31]['id'])); ?>
-                                                <tr>
-                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '&nbsp' : $program[0]['value_program'];?></td>
-                                                        <td class="span3 txt-center"><?= (empty($rs1[0]['value']) && empty($rs2[0]['value']) ) ? '&nbsp' : $rs1[0]['value'].'/'.$rs2[0]['value']; ?></td>
-                                                        <td class="span3 txt-center"><?= (empty($rs1[1]['value']) && empty($rs2[1]['value']) ) ? '&nbsp' : $rs1[1]['value'].'/'.$rs2[1]['value']; ?></td>
-                                                        <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '&nbsp' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
+                                                <tr class="">
+                                                        <td class="b-top span3 txt-center"><?= empty($program[0]['value_program']) ? '&nbsp' : $program[0]['value_program'];?></td>
+                                                        <td class="b-top span3 txt-center"><?= (empty($rs1[0]['value']) && empty($rs2[0]['value']) ) ? '&nbsp' : $rs1[0]['value'].'/'.$rs2[0]['value']; ?></td>
+                                                        <td class="b-top span3 txt-center"><?= (empty($rs1[1]['value']) && empty($rs2[1]['value']) ) ? '&nbsp' : $rs1[1]['value'].'/'.$rs2[1]['value']; ?></td>
+                                                        <td class="b-top span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '&nbsp' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
                                                 </tr> 
                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[32]['id'], 'phase'=>$project['current_phase'])); ?>
                                                 <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[32]['id'])); ?>
@@ -757,18 +752,13 @@
                                                         <td class="span3 txt-center"><?= (empty($rs1[1]['value']) && empty($rs2[1]['value']) ) ? '&nbsp' : $rs1[1]['value'].'/'.$rs2[1]['value']; ?></td>
                                                         <td class="span3 txt-center"><?= (empty($rs1[2]['value']) && empty($rs2[2]['value']) ) ? '&nbsp' : $rs1[2]['value'].'/'.$rs2[2]['value']; ?></td>
                                                 </tr>
-                                        </tbody> 
-                                </table>
-                                <div class="b-top" style="width: 100%;"></div>
-                                <table class="table table-stripted table-condensed">
-                                        <tbody>
                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[7]['id'], 'phase'=>$project['current_phase'])); ?>
                                                 <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[7]['id'])); ?>
                                                 <tr>
-                                                        <td class="span3 txt-center"><?= empty($program[0]['value_program']) ? '&nbsp' : $program[0]['value_program'];?></td>
-                                                        <td class="span3 txt-center"><?= empty($rs[0]['value']) ? '&nbsp' : $rs[0]['value']; ?></td>
-                                                        <td class="span3 txt-center"><?= empty($rs[1]['value']) ? '&nbsp' : $rs[1]['value']; ?></td>
-                                                        <td class="span3 txt-center"><?= empty($rs[2]['value']) ? '&nbsp' : $rs[2]['value']; ?></td>
+                                                        <td class="b-top span3 txt-center"><?= empty($program[0]['value_program']) ? '&nbsp' : $program[0]['value_program'];?></td>
+                                                        <td class="b-top span3 txt-center"><?= empty($rs[0]['value']) ? '&nbsp' : $rs[0]['value']; ?></td>
+                                                        <td class="b-top span3 txt-center"><?= empty($rs[1]['value']) ? '&nbsp' : $rs[1]['value']; ?></td>
+                                                        <td class="b-top span3 txt-center"><?= empty($rs[2]['value']) ? '&nbsp' : $rs[2]['value']; ?></td>
                                                 </tr>
                                                 <?php $program = $this->Api->get_where('program', array('project_id'=>$project['id'], 'test_id'=>$tests[8]['id'], 'phase'=>$project['current_phase'])); ?>
                                                 <?php $rs = $this->Api->get_where('project_report_test', array('report_id'=>$reporte['id'], 'test_id'=>$tests[8]['id'])); ?>
@@ -838,166 +828,166 @@
                 </div>
                 
                 <div class="data-table-container" style="float:left; width: 55%;margin-left: -1px">
-                        <div class="data-table b-right" style="width: 100%;">
-                                <div class="sub-header b-bottom b-top"><h5>VOLUME BALANCE IN BBL</h5></div>
+                        <div class="data-table" style="width: 100%;">
+                                <div class="sub-header b-bottom b-top b-left"><h5>VOLUME BALANCE IN BBL</h5></div>
                                 <table class="table table-stripted table-condensed">
                                         <thead>
                                                 <tr class="">
-                                                        <th class="span2 txt-left">VOLUME</th>
-                                                        <th class="span1 txt-center">ACTIVE</th>
-                                                        <th class="span1 txt-center">RESERVE</th>
-                                                        <th colspan="4" class="span8 txt-center">LOSSES ANALYSIS</th>
+                                                        <th class="txt-left b-point-right" style="width: 20%">VOLUME</th>
+                                                        <th class="txt-center b-point-right" style="width: 14%">ACTIVE</th>
+                                                        <th class="txt-center b-point-right" style="width: 14%">RESERVE</th>
+                                                        <th colspan="4" class="txt-center"  style="width: 52%; border-bottom: 0px;">LOSSES ANALYSIS</th>
                                                 </tr>
                                         </thead>
                                         
                                         <tbody>
                                                 <tr class="">
-                                                        <td class="">Starting Vol</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Surface</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Daily Surf. Losses</td>
-                                                        <td class="txt-center"></td>                                                        
+                                                        <td class="b-point-top b-point-right">Starting Vol</td>
+                                                        <td class="b-point-top b-point-right txt-center">&nbsp;</td>
+                                                        <td class="b-point-top b-point-right txt-center">&nbsp;</td>
+                                                        <td class="b-point-top b-point-right" style="width: 17%">Sub/surface</td>
+                                                        <td class="b-point-top b-point-right txt-center" style="width: 8%;">&nbsp;</td>
+                                                        <td class="b-point-top b-point-right" style="width: 17%">Daily Surf. Losses</td>
+                                                        <td class="b-point-top txt-center" style="width: 8%">&nbsp;</td>                                                        
                                                 </tr>                                                                                                                                               
                                                 <tr class="">
-                                                        <td class="">Transferred Mud</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Shakers/Cvg's</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Cum. surf. losses</td>
-                                                        <td class="txt-center"></td>                                                        
+                                                        <td class="b-point-top b-point-right">Received Mud</td>
+                                                        <td class="b-point-top b-point-right txt-center"></td>
+                                                        <td class="b-point-top b-point-right txt-center"></td>
+                                                        <td class="b-point-top b-point-right">Surface</td>
+                                                        <td class="b-point-top b-point-right txt-center"></td>
+                                                        <td class="b-point-top b-point-right">Cum. surf. losses</td>
+                                                        <td class="b-point-top txt-center"></td>                                                        
                                                 </tr>
                                                 <tr class="">
-                                                        <td class="">Received Mud</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Mud Cleaner</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Daily Surf. Losses</td>
-                                                        <td class="txt-center"></td>                                                        
+                                                        <td class="b-point-top b-point-right">Chemicals</td>
+                                                        <td class="b-point-top b-point-right txt-center"></td>
+                                                        <td class="b-point-top b-point-right txt-center"></td>
+                                                        <td class="b-point-top b-point-right">Cavingsr</td>
+                                                        <td class="b-point-top b-point-right txt-center"></td>
+                                                        <td class="b-point-top b-point-right">Daily S/Surf.losses</td>
+                                                        <td class="b-point-top txt-center"></td>                                                        
                                                 </tr>				
                                                 <tr class="">
-                                                        <td class="">Chemicals</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Centrifuges</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Cum. S/Surf. losses</td>
-                                                        <td class="txt-center"></td>                                                        
+                                                       <td class="b-point-top b-point-right ">Water</td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right ">Shakers</td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right ">Cum. S/Surf. losses</td>
+                                                       <td class="b-point-top txt-center"></td>                                                        
                                                 </tr>
                                                 <tr class="">
-                                                        <td class="">Water</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Dewatering</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">&nbsp;</td>
-                                                        <td class="txt-center">&nbsp;</td>                                                        
+                                                       <td class="b-point-top b-point-right ">Builded mud</td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right ">Centrifugues</td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top" style="border-right: 0px !important">&nbsp;</td>
+                                                       <td class="b-point-top txt-center" style="border-left: 0px !important">&nbsp;</td>
                                                 </tr>
                                                 <tr class="">
-                                                        <td class="strong">Total Additions</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Surface</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="strong" colspan="2">BY EVAPORATED bbl/day</td>                                                        
+                                                       <td class="b-point-top b-point-right ">Transferred Mud</td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right ">Dewatering</td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top strong" style="border-right: 0px !important">BY EVAPORATED</td>
+                                                       <td class="b-point-top txt-center strong" style="border-left: 0px !important">bbl/day</td>                                                        
                                                 </tr>                                                				
-                                                <tr class="strong">
-                                                        <td class="">FINAL VOLUME</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Behind Casing</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Water Evaporated.</td>
-                                                        <td class="txt-center"></td>                                                        
+                                                <tr class="">
+                                                       <td class="b-point-top b-point-right ">Total losses</td>
+                                                       <td class="b-point-top b-point-right txt-center strong"></td>
+                                                       <td class="b-point-top b-point-right txt-center strong"></td>
+                                                       <td class="b-point-top b-point-right ">Behind Casing</td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right ">Water Evaporated</td>
+                                                       <td class="b-point-top txt-center"></td>                                                        
                                                 </tr>
                                                 <tr class="">
-                                                        <td class="">Section mud made:</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Others</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="">Water added by Evp.</td>
-                                                        <td class="txt-center"></td>                                                        
+                                                       <td class="b-point-top b-point-right strong">FINAL VOLUME</td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right ">Others</td>
+                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right ">Water added by Evp</td>
+                                                       <td class="b-point-top txt-center"></td>                                                        
                                                 </tr>
 																			
                                                 <tr class="">
-                                                        <td class="">Cum. Mud made:</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="txt-center"></td>
-                                                        <td class="strong">Total Losses</td>
-                                                        <td class="txt-center"></td>
-                                                        <td class=""></td>
-                                                        <td class="txt-center"></td>                                                        
+                                                       <td class="b-point-top b-point-right strong b-top b-point-right" >Section mud made:</td>
+                                                       <td class="b-point-top b-point-right txt-center b-top b-point-right">&nbsp</td>
+                                                       <td class="b-point-top b-point-right txt-center b-top b-point-right">&nbsp</td>
+                                                       <td class="b-point-top b-point-right strong b-top b-point-right">Cum. Mud made</td>
+                                                       <td class="b-point-top b-point-right txt-center b-top b-right">&nbsp</td>
+                                                       <td class="b-point-top b-point-right ">&nbsp</td>
+                                                       <td class="b-point-top txt-center">&nbsp</td>                                                        
                                                 </tr>                                                
                                         </tbody> 
                                 </table>
                                 
                                 <!-- DAILY CONSUMPTIONS AND COSTS -->
                                 
-                                <div class="sub-header b-bottom b-top"><h5>DAILY CONSUMPTIONS AND COSTS</h5></div>
+                                <div class="sub-header b-bottom b-top b-left"><h5>DAILY CONSUMPTIONS AND COSTS</h5></div>
                                 <table class="table table-stripted table-condensed">                                        
                                         <thead>
-                                                <tr>
-                                                        <th class="span4">MATERIAL</th>
-                                                        <th class="span1">Size</th>
-                                                        <th class="span1">U. Cost</th>
-                                                        <th class="span1">Initial</th>
-                                                        <th class="span1">Recv</th>
-                                                        <th class="span1">Transf.</th>
-                                                        <th class="span1">Used</th>
-                                                        <th class="span1">Stock</th>
-                                                        <th class="span1">T. Cost</th>
+                                                <tr class="">
+                                                        <th class="span4 b-point-right">MATERIAL</th>
+                                                        <th class="span1 txt-center b-point-right">Size</th>
+                                                        <th class="span1 txt-center b-point-right">U. Cost</th>
+                                                        <th class="span1 txt-center b-point-right">Initial</th>
+                                                        <th class="span1 txt-center b-point-right">Recv</th>
+                                                        <th class="span1 txt-center b-point-right">Transf</th>
+                                                        <th class="span1 txt-center b-point-right">Used</th>
+                                                        <th class="span1 txt-center b-point-right">Stock</th>
+                                                        <th class="span1 txt-center">T. Cost</th>
                                                 </tr>
                                         </thead>
                                         <tbody>  
                                                 <?php $counter = 1; ?>
-                                                <?php while($counter <= 21) { ?>
-                                                <tr>
-                                                        <td class="">&nbsp;</td>
-                                                        <td class="txt-right"></td>
-                                                        <td class="txt-right"></td>
-                                                        <td class="txt-right"></td>
-                                                        <td class="txt-right"></td>
-                                                        <td class="txt-right"></td>
-                                                        <td class="txt-right"></td>
-                                                        <td class="txt-right"></td>
-                                                        <td class="txt-right"></td>
-                                                </tr>
+                                                <?php while($counter <= 21) { ?>                                                
+                                                <tr class="">
+                                                        <td class="b-point-top b-point-right">&nbsp;</td>
+                                                        <td class="txt-right b-point-top b-point-right">&nbsp;</td>
+                                                        <td class="txt-right b-point-top b-point-right">&nbsp;</td>
+                                                        <td class="txt-right b-point-top b-point-right">&nbsp;</td>
+                                                        <td class="txt-right b-point-top b-point-right">&nbsp;</td>
+                                                        <td class="txt-right b-point-top b-point-right">&nbsp;</td>
+                                                        <td class="txt-right b-point-top b-point-right">&nbsp;</td>
+                                                        <td class="txt-right b-point-top b-point-right">&nbsp;</td>
+                                                        <td class="txt-right b-point-top" style="border-right: 0px !important;"></td>
+                                                </tr>                                                                          
                                                 <?php $counter++; ?>
-                                                <?php } ?>                                                
-                                                
-                                                <tr>
-                                                        <td class="">&nbsp;</td>
-                                                        <td class="txt-right">&nbsp</td>
-                                                        <td class="txt-right">&nbsp</td>
-                                                        <td class="txt-right">&nbsp</td>
-                                                        <td class="txt-right">&nbsp</td>
-                                                        <td class="txt-right">&nbsp</td>
-                                                        <td class="txt-right">&nbsp</td>
-                                                        <td class="txt-right">&nbsp</td>
-                                                        <td class="txt-right">&nbsp</td>
+                                                <?php } ?>                                                                                                
+                                                <tr class="">
+                                                        <td class="b-point-top b-point-right">&nbsp;</td>
+                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                        <td class="b-point-top txt-right">&nbsp</td>
                                                 </tr>
                                         </tbody> 
                                 </table>
                                 
                                 <div class="b-top" style="width: 100%;"></div>
-                                <table class="table table-stripted table-condensed">                                                                                
-                                        <tbody>  
-                                                 <tr>
-                                                        <td class="span4">Daily Engineering Cost US$:</td>
-                                                        <td class="span1"></td>
-                                                        <td class="span6 strong" colspan="5">Daily mud cost US$:</td>                                                        
-                                                        <td class="span1"></td>
+                                <table class="table b-left table-stripted table-condensed">                                                                                
+                                        <tbody>                                                  
+                                                <tr>
+                                                        <td class="" style="width: 39.1%">Daily Engineering Cost US$:</td>
+                                                        <td class="b-point-right" style="width: 10.9%">88,00</td>                                                        
+                                                        <td class="span4 b-point-bottom strong" style="width: 39.1%">&nbsp;Daily Mud Cost US$:</td>
+                                                        <td class="b-point-bottom" style="width: 10.9%">88,00</td>
                                                 </tr>
                                                 <tr>
-                                                        <td class="span4">Daily Operator Cost US$:</td>
-                                                        <td class="span1"></td>
-                                                        <td class="span6 strong" colspan="5">Cum. Mud Cost US$:</td>                                                        
-                                                        <td class="span1"></td>
-                                                </tr>                                                 
+                                                        <td class="span4 b-point-top">Daily Operator Cost US$:</td>
+                                                        <td class="span2 b-point-top b-point-right">&nbsp;</td>
+                                                        <td class="span5 b-point-top strong">&nbsp;Cum. Mud Cost US$:</td> 
+                                                        <td class="span2 b-point-top">&nbsp;</td>
+                                                </tr>
                                         </tbody> 
                                 </table>                               
                         </div>
@@ -1038,29 +1028,21 @@
                 </div>
                 
                 <div class="data-table-container" style="float:left; width: 55%;margin-left: 1px">
-                        <div class="data-table b-right" style="width: 100%;">
+                        <div class="data-table" style="width: 100%;">
                                 <!--<div class="b-top"></div>-->
                                 <table class="table table-stripted table-condensed">
                                         <tbody>
                                                 <tr>
-                                                        <td class="span4">Daily Patio Handsc Cost US$:</td>
-                                                        <td class="span1"></td>
-                                                        <td class="span2">Cost / ft (USD)</td>
-                                                        <td class="span1"></td>
-                                                        <td class="span1">Daily:</td>
-                                                        <td class="span1"></td>
-                                                        <td class="span1">Section:</td>
-                                                        <td class="span1"></td>
+                                                        <td class="" style="width: 39%">Daily Patio Handsc Cost US$:</td>
+                                                        <td class="b-point-right" style="width: 11%">88,00</td>
+                                                        <td class="b-point-bottom" style="width: 39%">&nbsp;Cost / ft (USD) Daily:</td>
+                                                        <td class="b-point-bottom" style="width: 11%">88,00</td>
                                                 </tr>
                                                 <tr>
-                                                        <td class="span4  strong">Cum. Personnel Cost US$:</td>
-                                                        <td class="span1">500</td>
-                                                        <td class="span2">Dilution, Bbl/ft</td>
-                                                        <td class="span1"></td>
-                                                        <td class="span1">Daily:</td>
-                                                        <td class="span1"></td>
-                                                        <td class="span1">Section:</td>
-                                                        <td class="span1"></td>
+                                                        <td class="span4 b-point-top strong">Cum. Personnel Cost US$:</td>
+                                                        <td class="b-point-top b-point-right" style="width: 11%">&nbsp;</td>
+                                                        <td class="span5 b-point-top strong">&nbsp;Dilution, Bbl/ft Daily:</td> 
+                                                        <td class="b-point-top" style="width: 11%">88,00</td>
                                                 </tr>                                                
                                         </tbody>
                                 </table>                                                                
@@ -1074,61 +1056,61 @@
                                                         <thead>
                                                                 <tr>
                                                                         <th class="span7 txt-center-all" rowspan="2">MATERIAL</th>
-                                                                        <th class="span5 txt-center" colspan="2">CONCENTRATION</th>
+                                                                        <th class="span5 txt-center b-point-left" colspan="2">CONCENTRATION</th>
                                                                 </tr>
                                                                 <tr>                                                                            
-                                                                        <th class="span2 txt-center">Program</th>
-                                                                        <th class="span2 txt-center">Current.</th>
+                                                                        <th class="span2 txt-center b-point-top b-point-left b-point-right">Program</th>
+                                                                        <th class="span2 txt-center b-point-top b-point-left">Current.</th>
                                                                 </tr>
                                                         </thead>
                                                         <tbody>
                                                                 <tr>
-                                                                        <td>&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top">&nbsp</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td>&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top">&nbsp</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td>&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top">&nbsp</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td>&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top">&nbsp</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td>&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top">&nbsp</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td>&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top">&nbsp</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td>&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top">&nbsp</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td>&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top">&nbsp</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td>&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
-                                                                        <td class="txt-center">&nbsp</td>
+                                                                        <td class="b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top b-point-right">&nbsp</td>
+                                                                        <td class="txt-center b-point-top">&nbsp</td>
                                                                 </tr>
                                                                 <tr>
-                                                                        <td colspan="3">&nbsp;</td><!--*0,42 gpb = 1% Vol-->                                                                        
+                                                                        <td colspan="3" class="b-point-top">*0,42 gpb = 1% Vol</td><!--*0,42 gpb = 1% Vol-->                                                                        
                                                                 </tr>
                                                         </tbody>
                                                 </table>
@@ -1136,9 +1118,9 @@
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
                                                                 <tr>
-                                                                        <th class="span2">SHAKER</th>
-                                                                        <th class="span9 txt-center" colspan="5">Screens</th>
-                                                                        <th class="span1">Hours</th>
+                                                                        <th class="span2 txt-center b-point-right">SHAKER</th>
+                                                                        <th class="span5 txt-center b-point-right" colspan="5">Screens "mesh - API"</th>
+                                                                        <th class="span1 txt-center b-point-right">Hours</th>
                                                                 </tr>                                                                
                                                         </thead>
                                                         <tbody>
@@ -1146,26 +1128,26 @@
                                                                 <?php $counter = 0; ?>
                                                                 <?php foreach($shakers as $fila) : ?>
                                                                 <tr>
-                                                                        <td><?= $fila['maker']; ?></td>
-                                                                        <td class="txt-center"><?= $fila['screens1']; ?></td>
-                                                                        <td class="txt-center"><?= $fila['screens2']; ?></td>
-                                                                        <td class="txt-center"><?= $fila['screens3']; ?></td>
-                                                                        <td class="txt-center"><?= $fila['screens4']; ?></td>
-                                                                        <td class="txt-center"><?= $fila['screens5']; ?></td>
-                                                                        <td class="txt-center"><?= $fila['operational_hours']; ?></td>
+                                                                        <td class="b-point-right"><?= $fila['maker']; ?></td>
+                                                                        <td class="span1 txt-center b-point-right"><?= $fila['screens1']; ?></td>
+                                                                        <td class="span1 txt-center b-point-right"><?= $fila['screens2']; ?></td>
+                                                                        <td class="span1 txt-center b-point-right"><?= $fila['screens3']; ?></td>
+                                                                        <td class="span1 txt-center b-point-right"><?= $fila['screens4']; ?></td>
+                                                                        <td class="span1 txt-center b-point-right"><?= $fila['screens5']; ?></td>
+                                                                        <td class="span1 txt-center"><?= $fila['operational_hours']; ?></td>
                                                                 </tr>
                                                                 <?php $counter++; ?>
                                                                 <?php endforeach; ?>
                                                                 <?php $counter++; ?>
                                                                 <?php while($counter <= 4 ) { ?>
                                                                 <tr>
-                                                                        <td>&nbsp;</td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
+                                                                        <td class="b-point-right">&nbsp;</td>
+                                                                        <td class="span1 txt-center b-point-right"></td>
+                                                                        <td class="span1 txt-center b-point-right"></td>
+                                                                        <td class="span1 txt-center b-point-right"></td>
+                                                                        <td class="span1 txt-center b-point-right"></td>
+                                                                        <td class="span1 txt-center b-point-right"></td>
+                                                                        <td class="span1 txt-center"></td>
                                                                 </tr>
                                                                 <?php $counter++; ?>
                                                                 <?php } ?>
@@ -1177,33 +1159,33 @@
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
                                                                 <tr>
-                                                                        <th class="txt-center" colspan="7">MUD CLEANER</th>                                                                        
+                                                                        <th class="txt-center" colspan="7">MUD CLEANER</th>
                                                                 </tr>                                                                
                                                         </thead>
                                                         <tbody>
                                                                 <tr>
-                                                                        <td>DESANDER</td>
-                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['desander_cones']) ? '' : $mudcleaner[0]['desander_cones'].'*'.$mudcleaner[0]['desander_conediameter']; ?></td>
-                                                                        <td colspan="2" class="txt-center"><?= empty($mudcleaner[0]['desander_flow']) ? '' : $mudcleaner[0]['desander_flow'].' gpm'; ?></td>
-                                                                        <td colspan="2" class="txt-center"><?= empty($mudcleaner[0]['desander_presure']) ? '' : $mudcleaner[0]['desander_presure'].' psi'; ?></td>
+                                                                        <td class="b-point-right">SHAKER</td>                                                                        
+                                                                        <td class="span1 txt-center b-point-right"><?= empty($mudcleaner[0]['screens1']) ? '&nbsp;' : $mudcleaner[0]['screens1']; ?></td>
+                                                                        <td class="span1 txt-center b-point-right"><?= empty($mudcleaner[0]['screens2']) ? '&nbsp;' : $mudcleaner[0]['screens2']; ?></td>
+                                                                        <td class="span1 txt-center b-point-right"><?= empty($mudcleaner[0]['screens3']) ? '&nbsp;' : $mudcleaner[0]['screens3']; ?></td>
+                                                                        <td class="span1 txt-center b-point-right"><?= empty($mudcleaner[0]['screens4']) ? '&nbsp;' : $mudcleaner[0]['screens4']; ?></td>
+                                                                        <td class="span1 txt-center b-point-right"><?= empty($mudcleaner[0]['screens5']) ? '&nbsp;' : $mudcleaner[0]['screens5']; ?></td>
+                                                                        <td class="span1 txt-center"><?= empty($mudcleaner[0]['operational_hours']) ? '&nbsp;' : $mudcleaner[0]['operational_hours']; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="b-point-right">DESANDER</td>
+                                                                        <td class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_cones']) ? '' : $mudcleaner[0]['desander_cones'].'*'.$mudcleaner[0]['desander_conediameter']; ?></td>
+                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_flow']) ? '' : $mudcleaner[0]['desander_flow'].' gpm'; ?></td>
+                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_presure']) ? '' : $mudcleaner[0]['desander_presure'].' psi'; ?></td>
                                                                         <td class="txt-center"><?= empty($mudcleaner[0]['desander_hours']) ? '' : $mudcleaner[0]['desander_hours']; ?></td>
                                                                 </tr> 
                                                                 <tr>
-                                                                        <td>DESILTER</td>
-                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['desilter_cones']) ? '' : $mudcleaner[0]['desilter_cones'].'*'.$mudcleaner[0]['desilter_conediameter']; ?></td>
-                                                                        <td colspan="2" class="txt-center"><?= empty($mudcleaner[0]['destiler_flow']) ? '' : $mudcleaner[0]['destiler_flow'].' gpm'; ?></td>
-                                                                        <td colspan="2" class="txt-center"><?= empty($mudcleaner[0]['destiler_presure']) ? '' : $mudcleaner[0]['destiler_presure'].' psi'; ?></td>
+                                                                        <td class="b-point-right">DESILTER</td>
+                                                                        <td class="txt-center b-point-right"><?= empty($mudcleaner[0]['desilter_cones']) ? '' : $mudcleaner[0]['desilter_cones'].'*'.$mudcleaner[0]['desilter_conediameter']; ?></td>
+                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['destiler_flow']) ? '' : $mudcleaner[0]['destiler_flow'].' gpm'; ?></td>
+                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['destiler_presure']) ? '' : $mudcleaner[0]['destiler_presure'].' psi'; ?></td>
                                                                         <td class="txt-center"><?= empty($mudcleaner[0]['destiler_hours']) ? '' : $mudcleaner[0]['destiler_hours']; ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td>SHAKER</td>
-                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['maker']) ? '' : $mudcleaner[0]['maker']; ?></td>
-                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['screens1']) ? '' : $mudcleaner[0]['screens1']; ?></td>
-                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['screens2']) ? '' : $mudcleaner[0]['screens2']; ?></td>
-                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['screens3']) ? '' : $mudcleaner[0]['screens3']; ?></td>
-                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['screens4']) ? '' : $mudcleaner[0]['screens4']; ?></td>
-                                                                        <td class="txt-center"><?= empty($mudcleaner[0]['operational_hours']) ? '' : $mudcleaner[0]['operational_hours']; ?></td>
-                                                                </tr>
+                                                                </tr>                                                                
                                                         </tbody>
                                                 </table>
                                                 
@@ -1224,11 +1206,11 @@
                                                                 <?php $counter = 0; ?>
                                                                 <?php foreach($centrifugues as $fila) : ?>
                                                                 <tr>
-                                                                        <td><?= $fila['maker']; ?></td>
-                                                                        <td class="txt-center"><?= $fila['speed']; ?></td>
-                                                                        <td class="txt-center"><?= $fila['overflow']; ?></td>
-                                                                        <td class="txt-center"><?= $fila['underflow']; ?></td>
-                                                                        <td class="txt-center"><?= $fila['feet_rate']; ?></td>
+                                                                        <td class="b-point-right"><?= $fila['maker']; ?></td>
+                                                                        <td class="txt-center b-point-right"><?= $fila['speed']; ?></td>
+                                                                        <td class="txt-center b-point-right"><?= $fila['overflow']; ?></td>
+                                                                        <td class="txt-center b-point-right"><?= $fila['underflow']; ?></td>
+                                                                        <td class="txt-center b-point-right"><?= $fila['feet_rate']; ?></td>
                                                                         <td class="txt-center"><?= $fila['operational_hours']; ?></td>                                                                        
                                                                 </tr>
                                                                 <?php $counter++; ?>
@@ -1236,12 +1218,12 @@
                                                                 <?php $counter++; ?>
                                                                 <?php while($counter <= 4 ) { ?>
                                                                 <tr>
-                                                                        <td>&nbsp;</td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>
-                                                                        <td class="txt-center"></td>                                                                        
+                                                                        <td class="b-point-right">&nbsp;</td>
+                                                                        <td class="txt-center b-point-right">&nbsp;</td>
+                                                                        <td class="txt-center b-point-right">&nbsp;</td>
+                                                                        <td class="txt-center b-point-right">&nbsp;</td>
+                                                                        <td class="txt-center b-point-right">&nbsp;</td>
+                                                                        <td class="txt-center">&nbsp;</td>                                                                        
                                                                 </tr>
                                                                 <?php $counter++; ?>
                                                                 <?php } ?>                                                                
@@ -1249,12 +1231,12 @@
                                                 </table>                                                
                                         </div>
                                         <div class="data-table-container" style="float:left; width: 34.8%">
-                                                <div class="sub-header b-right b-bottom"><h5>TIME BREAK DOWN</h5></div>                                                
+                                                <div class="sub-header b-bottom"><h5>TIME BREAK DOWN</h5></div>                                                
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
                                                                 <tr>
-                                                                        <th class="span7 txt-center">ACTIVITY</th>
-                                                                        <th class="span5 txt-center">TIME</th>
+                                                                        <th class="txt-center" style="width: 60%;">ACTIVITY</th>
+                                                                        <th class="txt-center" style="width: 40%;">TIME</th>
                                                                 </tr>                                                                
                                                         </thead>
                                                         <tbody>
@@ -1264,7 +1246,7 @@
                                                                 <?php foreach($drilling_time as $fila): ?>
                                                                         <tr>                                                                        
                                                                                 <td class=""><?= strtoupper($fila['drilling']); ?></td>
-                                                                                <td class="txt-center"><?= empty($fila['time']) ? '&nbsp;' : number_format($fila['time'], 2, ',', ''); ?></td>
+                                                                                <td class="txt-center b-point-left"><?= empty($fila['time']) ? '&nbsp;' : number_format($fila['time'], 2, ',', ''); ?></td>
                                                                         </tr>                                                                        
                                                                         <?php $counter++; ?>
                                                                         <?php $total_time = $total_time + $fila['time']; ?>
@@ -1273,13 +1255,13 @@
                                                                 <?php while($counter <= 10) { ?>
                                                                         <tr>                                                                        
                                                                                 <td class="">&nbsp;</td>
-                                                                                <td class="txt-center"></td>
+                                                                                <td class="txt-center b-point-left">&nbsp;</td>
                                                                         </tr>
                                                                         <?php $counter++; ?>
                                                                 <?php } ?>
                                                                 <tr>                                                                        
                                                                         <td class="">TOTAL</td>
-                                                                        <td class="txt-center"><?= number_format($total_time, 2, ',', '');?></td>
+                                                                        <td class="txt-center b-point-left"><?= number_format($total_time, 2, ',', '');?></td>
                                                                 </tr>
                                                         </tbody>
                                                 </table>
@@ -1287,38 +1269,38 @@
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
                                                                 <tr>
-                                                                        <th class="span7 txt-center">ACTIVITY</th>
-                                                                        <th class="span5 txt-center">TIME</th>
+                                                                        <th class="txt-center" style="width: 60%;">ACTIVITY</th>
+                                                                        <th class="txt-center" style="width: 40%;">TIME</th>
                                                                 </tr>                                                                
                                                         </thead>
                                                         <tbody>
                                                                 <tr>                                                                        
                                                                         <td class="">Feet Drilled:</td>
-                                                                        <td class="txt-center"><?= empty($drilling_parameters[5]['value']) ? '' : number_format($drilling_parameters[5]['value'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($drilling_parameters[5]['value']) ? '&nbsp;' : number_format($drilling_parameters[5]['value'], 2, ',', ''); ?></td>
                                                                 </tr> 
                                                                 <tr>                                                                        
                                                                         <td class="">Daily ROP:</td>
-                                                                        <td class="txt-center"><?= empty($drilling_parameters[6]['value']) ? '' : number_format($drilling_parameters[6]['value'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($drilling_parameters[6]['value']) ? '&nbsp;' : number_format($drilling_parameters[6]['value'], 2, ',', ''); ?></td>
                                                                 </tr>
                                                                 <tr>                                                                        
                                                                         <td class="">Daily RPM:</td>
-                                                                        <td class="txt-center"><?= empty($drilling_parameters[0]['value']) ? '' : number_format($drilling_parameters[0]['value'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($drilling_parameters[0]['value']) ? '&nbsp;' : number_format($drilling_parameters[0]['value'], 2, ',', ''); ?></td>
                                                                 </tr>
                                                                 <tr>                                                                        
                                                                         <td class="">Daily WOB:</td>
-                                                                        <td class="txt-center"><?= empty($drilling_parameters[1]['value']) ? '' : number_format($drilling_parameters[1]['value'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($drilling_parameters[1]['value']) ? '&nbsp;' : number_format($drilling_parameters[1]['value'], 2, ',', ''); ?></td>
                                                                 </tr>
                                                                 <tr>                                                                        
                                                                         <td class="">Daily avge Temp °F:</td>
-                                                                        <td class="txt-center"><?= empty($drilling_parameters[7]['value']) ? '' : number_format($drilling_parameters[7]['value'], 2, ',', ''); ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($drilling_parameters[7]['value']) ? '&nbsp;' : number_format($drilling_parameters[7]['value'], 2, ',', ''); ?></td>
                                                                 </tr>
                                                                 <tr>                                                                        
                                                                         <td class="">Average caving bbl/h:</td>
-                                                                        <td class="txt-center"><?= empty($drilling_parameters[3]['value']) ? '' : number_format($drilling_parameters[3]['value'], 2, ',', '') ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($drilling_parameters[3]['value']) ? '&nbsp;' : number_format($drilling_parameters[3]['value'], 2, ',', '') ?></td>
                                                                 </tr>
                                                                 <tr>                                                                        
                                                                         <td class="">Average cuttings bbl/h:</td>
-                                                                        <td class="txt-center"><?= empty($drilling_parameters[4]['value']) ? '' : number_format($drilling_parameters[4]['value'], 2, ',', '') ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($drilling_parameters[4]['value']) ? '&nbsp;' : number_format($drilling_parameters[4]['value'], 2, ',', '') ?></td>
                                                                 </tr>                                                                
                                                         </tbody>
                                                 </table>                                                                                                                                                
@@ -1326,24 +1308,24 @@
                                                 <table class="table table-stripted table-condensed">                                                        
                                                         <tbody>
                                                                 <tr>                                                                        
-                                                                        <td class="">Survey MD:</td>
-                                                                        <td class="txt-center"><?= empty($survey[0]['value']) ? '' : number_format($survey[0]['value'], 2 , ',',''); ?></td>
+                                                                        <td class="" style="width: 60%;">Survey MD:</td>
+                                                                        <td class="txt-center b-point-left" style="width: 40%;"><?= empty($survey[0]['value']) ? '&nbsp;' : number_format($survey[0]['value'], 2 , ',',''); ?></td>
                                                                 </tr> 
                                                                 <tr>                                                                        
                                                                         <td class="">Survey TVD:</td>
-                                                                        <td class="txt-center"><?= empty($survey[1]['value']) ? '' : number_format($survey[1]['value'], 2 , ',',''); ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($survey[1]['value']) ? '&nbsp;' : number_format($survey[1]['value'], 2 , ',',''); ?></td>
                                                                 </tr>
                                                                 <tr>                                                                        
                                                                         <td class="">Inclination:</td>
-                                                                        <td class="txt-center"><?= empty($survey[2]['value']) ? '' : number_format($survey[2]['value'], 2 , ',',''); ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($survey[2]['value']) ? '&nbsp;' : number_format($survey[2]['value'], 2 , ',',''); ?></td>
                                                                 </tr>
                                                                 <tr>                                                                        
                                                                         <td class="">Azimuth:</td>
-                                                                        <td class="txt-center"><?= empty($survey[3]['value']) ? '' : number_format($survey[3]['value'], 2 , ',',''); ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($survey[3]['value']) ? '&nbsp;' : number_format($survey[3]['value'], 2 , ',',''); ?></td>
                                                                 </tr>
                                                                 <tr>                                                                        
                                                                         <td class="">Dog leg:</td>
-                                                                        <td class="txt-center"><?= empty($survey[4]['value']) ? '' : number_format($survey[4]['value'], 2 , ',',''); ?></td>
+                                                                        <td class="txt-center b-point-left"><?= empty($survey[4]['value']) ? '&nbsp;' : number_format($survey[4]['value'], 2 , ',',''); ?></td>
                                                                 </tr>                                                                
                                                         </tbody>
                                                 </table>                                                                                                
@@ -1351,7 +1333,7 @@
                                 </div>                                                                                                                                                               
                         </div>
                 
-                        <div class="data-table b-right" style="width: 100%;">
+                        <div class="data-table" style="width: 100%;">
                                 <div class="b-top"></div>
                                 
                                 <div class="container-fluid">
