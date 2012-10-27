@@ -50,7 +50,7 @@
                         <td style="width: 15.875%"><?= $reporte['formation']; ?></td>
                         
                         <td><span class="strong">PUSHER:</span> </td>
-                        <td style="width: 15.875%" class="txt-overflow"> CARLOS DUARTE MELENDEZ SANCHEZ IVAN DAVID CARLOS DUARTE MELENDEZ SANCHEZ IVAN DAVID CARLOS DUARTE MELENDEZ SANCHEZ IVAN DAVID</td>
+                        <td style="width: 15.875%" class="txt-overflow">CARLOS DUARTE</td>
                 </tr>
         </table>
         
@@ -322,26 +322,26 @@
                                         <table class="table table-stripted table-condensed">                                               
                                                 <tbody>
                                                         <tr>
-                                                                <td class="strong span2">DIAMETER:</td>
-                                                                <td class="span2"><?= empty($bit[0]['odfracc']) ? '&nbsp;' : $bit[0]['odfracc']; ?></td>
-                                                                <td class="strong span2">TFA:</td>
-                                                                <td class="span2"><?= empty($bit[0]['tfa']) ? '&nbsp;' : number_format($bit[0]['tfa'], 3, ',', ''); ?></td>
-                                                                <td class="strong span2">JETS VEL:</td>
-                                                                <td class="span2"><?= empty($bit[0]['vel_jets']) ? '&nbsp;' : number_format($bit[0]['vel_jets'], 3, ',', ''); ?></td>
+                                                                <td class="strong" style="width: 15%">DIAMETER:</td>
+                                                                <td class=""  style="width: 18%"><?= empty($bit[0]['odfracc']) ? '&nbsp;' : $bit[0]['odfracc']; ?></td>
+                                                                <td class="strong" style="width: 10%">TFA:</td>
+                                                                <td class="" style="width: 24%"><?= empty($bit[0]['tfa']) ? '&nbsp;' : number_format($bit[0]['tfa'], 3, ',', ''); ?></td>
+                                                                <td class="strong" style="width: 18%">JETS VEL:</td>
+                                                                <td class="" style="width: 15%"><?= empty($bit[0]['vel_jets']) ? '&nbsp;' : number_format($bit[0]['vel_jets'], 3, ',', ''); ?></td>
                                                         </tr>
                                                         <tr>
-                                                                <td class="strong span2">TYPE:</td>
-                                                                <td class="span2"><?= empty($bit[0]['nombre_broca']) ? '&nbsp;' : $bit[0]['nombre_broca']; ?></td>
-                                                                <td class="strong span2">JETS:</td>
-                                                                <td class="span2"><?= empty($bit[0]['result_jets']) ? '&nbsp;' : $bit[0]['result_jets']; ?></td>
-                                                                <td class="strong span2">HHP (HP):</td>
-                                                                <td class="span2"><?= empty($bit[0]['hhp']) ? '&nbsp;' : number_format($bit[0]['hhp'], 3, ',', ''); ?></td>                                                                   
+                                                                <td class="strong">TYPE:</td>
+                                                                <td class=""><?= empty($bit[0]['nombre_broca']) ? '&nbsp;' : $bit[0]['nombre_broca']; ?></td>
+                                                                <td class="strong">JETS:</td>
+                                                                <td class=""><?= empty($bit[0]['result_jets']) ? '&nbsp;' : $bit[0]['result_jets']; ?></td>
+                                                                <td class="strong ">HHP (HP):</td>
+                                                                <td class=""><?= empty($bit[0]['hhp']) ? '&nbsp;' : number_format($bit[0]['hhp'], 3, ',', ''); ?></td>                                                                   
                                                         </tr>
                                                         <tr>
-                                                                <td class="strong span2">MODEL:</td>
-                                                                <td colspan="3" class="span6"><?= empty($bit[0]['nombre_modelo']) ? '' : $bit[0]['nombre_modelo']; ?></td>
-                                                                <td class="strong span2">HSI (HP/in2):</td>
-                                                                <td class="span2"><?= empty($bit[0]['hsi']) ? '&nbsp;' : number_format($bit[0]['hsi'], 3, ',', ''); ?></td>                                                                   
+                                                                <td class="strong">MODEL:</td>
+                                                                <td colspan="3" class=""><?= empty($bit[0]['nombre_modelo']) ? '' : $bit[0]['nombre_modelo']; ?></td>
+                                                                <td class="strong ">HSI (HP/in2):</td>
+                                                                <td class=""><?= empty($bit[0]['hsi']) ? '&nbsp;' : number_format($bit[0]['hsi'], 3, ',', ''); ?></td>                                                                   
                                                         </tr>
                                                 </tbody>                                
                                         </table>

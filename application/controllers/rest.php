@@ -774,7 +774,7 @@ class Rest extends CI_Controller {
                         $this->Api->total_remove_where('project_report_bit', array('report_id'=>$this->report_id));                
                         foreach ($values as $value) {  
                                 if(empty($values->brocas_modelos_id)) {//Para no generar error cuando no se digita algo
-                                        continue;
+                                        //continue; ¿? Bug?? aún teniendo dato el brocas_modelos_id no seguía
                                 }
                                 $this->Api->create('project_report_bit', array('bit_number'=>$value->bit_number, 'brocas_modelos_id'=>$value->brocas_modelos_id, 'report_id'=>$this->report_id, 'jets1'=>$value->jets1, 'jets2'=>$value->jets2, 'jets3'=>$value->jets3, 'jets4'=>$value->jets4, 'jets5'=>$value->jets5, 'jets6'=>$value->jets6, 'jets7'=>$value->jets7, 'jets8'=>$value->jets8, 'jets9'=>$value->jets9, 'jets10'=>$value->jets10, 'jets11'=>$value->jets11, 'jets12'=>$value->jets12, 'result_jets'=>$value->result_jets, 'tfa'=>$value->tfa, 'vel_jets'=>$value->vel_jets, 'pd1'=>$value->pd1, 'pd2'=>$value->pd2, 'hhp'=>$value->hhp, 'hsi'=>$value->hsi));
                         }
