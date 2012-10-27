@@ -910,6 +910,7 @@ CREATE TABLE `project_mudcleaner` (
   `desilter_cones` int(11) DEFAULT NULL,
   `desilter_conediameter` float DEFAULT NULL,
   `desilter_pumptype` varchar(255) DEFAULT NULL,
+  `shaker_maker` varchar(255) DEFAULT NULL,
   `shaker_model` varchar(255) DEFAULT NULL,
   `shaker_screens` int(11) DEFAULT NULL,
   `shaker_movement` varchar(255) DEFAULT NULL,

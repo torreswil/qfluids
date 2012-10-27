@@ -127,7 +127,8 @@
                                                         <?php $counter = 0; ?>
                                                         <?php foreach($casing as $fila) : ?>
                                                         <tr>
-                                                                <td class="txt-center"><?= $fila['odfrac']; ?></td>
+                                                                <td class="txt-center"><?= '10 3/4'; ?></td>
+                                                                <!--<td class="txt-center"><?= $fila['odfrac']; ?></td>-->
                                                                 <td class="txt-center"><?= number_format($fila['iddeci'], 3, ',', ''); ?></td>
                                                                 <td><?= $fila['length']; ?></td>                                                
                                                                 <?php $counter++; ?>
@@ -1159,10 +1160,10 @@
                                                 <table class="table table-stripted table-condensed">
                                                         <thead>
                                                                 <tr>
-                                                                        <th class="txt-center" colspan="7">MUD CLEANER</th>
+                                                                        <th class="txt-center" colspan="7">MUD CLEANER: <?= empty($mudcleaner[0]['shaker_maker']) ? '' : $mudcleaner[0]['shaker_maker']; ?> </th>
                                                                 </tr>                                                                
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody>                                                                
                                                                 <tr>
                                                                         <td class="b-point-right">SHAKER</td>                                                                        
                                                                         <td class="span1 txt-center b-point-right"><?= empty($mudcleaner[0]['screens1']) ? '&nbsp;' : $mudcleaner[0]['screens1']; ?></td>
@@ -1174,14 +1175,14 @@
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="b-point-right">DESANDER</td>
-                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_cones']) ? '' : $mudcleaner[0]['desander_cones'].'*'.$mudcleaner[0]['desander_conediameter']; ?></td>
+                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_cones']) ? '' : $mudcleaner[0]['desander_cones'].'*'.$mudcleaner[0]['desander_conediameter'].' in'; ?></td>
                                                                         <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_flow']) ? '' : $mudcleaner[0]['desander_flow'].' gpm'; ?></td>
                                                                         <td class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_presure']) ? '' : $mudcleaner[0]['desander_presure'].' psi'; ?></td>
                                                                         <td class="txt-center"><?= empty($mudcleaner[0]['desander_hours']) ? '' : $mudcleaner[0]['desander_hours']; ?></td>
                                                                 </tr> 
                                                                 <tr>
                                                                         <td class="b-point-right">DESILTER</td>
-                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desilter_cones']) ? '' : $mudcleaner[0]['desilter_cones'].'*'.$mudcleaner[0]['desilter_conediameter']; ?></td>
+                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desilter_cones']) ? '' : $mudcleaner[0]['desilter_cones'].'*'.$mudcleaner[0]['desilter_conediameter'].' in'; ?></td>
                                                                         <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['destiler_flow']) ? '' : $mudcleaner[0]['destiler_flow'].' gpm'; ?></td>
                                                                         <td class="txt-center b-point-right"><?= empty($mudcleaner[0]['destiler_presure']) ? '' : $mudcleaner[0]['destiler_presure'].' psi'; ?></td>
                                                                         <td class="txt-center"><?= empty($mudcleaner[0]['destiler_hours']) ? '' : $mudcleaner[0]['destiler_hours']; ?></td>

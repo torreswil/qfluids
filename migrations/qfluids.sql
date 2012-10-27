@@ -1199,6 +1199,7 @@ CREATE TABLE `project_mudcleaner` (
   `desilter_cones` int(11) DEFAULT NULL,
   `desilter_conediameter` float DEFAULT NULL,
   `desilter_pumptype` varchar(255) DEFAULT NULL,
+  `shaker_maker` varchar(255) DEFAULT NULL,
   `shaker_model` varchar(255) DEFAULT NULL,
   `shaker_screens` int(11) DEFAULT NULL,
   `shaker_movement` varchar(255) DEFAULT NULL,
@@ -1209,13 +1210,13 @@ CREATE TABLE `project_mudcleaner` (
 -- ----------------------------
 -- Records of project_mudcleaner
 -- ----------------------------
-INSERT INTO `project_mudcleaner` VALUES ('1', '1', '', '1150', null, '5.8', null, null, '4.2', null, 'SH01', null, null, '0');
-INSERT INTO `project_mudcleaner` VALUES ('2', '1', '', '333', null, '34.5', null, null, '54.2', null, 'TOSHIBA', null, null, '0');
-INSERT INTO `project_mudcleaner` VALUES ('3', '1', '', 'LALALLA', null, '0', null, null, '0', null, 'QMAX', null, null, '0');
-INSERT INTO `project_mudcleaner` VALUES ('4', '1', '', 'PATERNINA', '1', '5.6', '5_4', '1', '6.1', '6_5', 'JOSEDANIEL', '3', 'circular', '0');
-INSERT INTO `project_mudcleaner` VALUES ('5', '1', '', 'PATERNINA', '16', '3.5', '4_3', '13', '5', '4_3', 'JOSE DANIEL', '2', 'circular', '0');
-INSERT INTO `project_mudcleaner` VALUES ('6', '1', 'JOSE', 'PATERNINA', '5', '3.4', '4_3', '6', '4', '5_5', 'JOSE DANIEL', '4', 'circular', '0');
-INSERT INTO `project_mudcleaner` VALUES ('7', '1', 'DESARROLLO', '22', '1', '3.4', '5_4', '1', '3.4', '4_6', 'LALALAL', '2', 'eliptico', '1');
+INSERT INTO `project_mudcleaner` VALUES ('1', '1', '', '1150', null, '5.8', null, null, '4.2', null, '', 'SH01', null, null, '0');
+INSERT INTO `project_mudcleaner` VALUES ('2', '1', '', '333', null, '34.5', null, null, '54.2', null, '', 'TOSHIBA', null, null, '0');
+INSERT INTO `project_mudcleaner` VALUES ('3', '1', '', 'LALALLA', null, '0', null, null, '0', null, '', 'QMAX', null, null, '0');
+INSERT INTO `project_mudcleaner` VALUES ('4', '1', '', 'PATERNINA', '1', '5.6', '5_4', '1', '6.1', '6_5', '', 'JOSEDANIEL', '3', 'circular', '0');
+INSERT INTO `project_mudcleaner` VALUES ('5', '1', '', 'PATERNINA', '16', '3.5', '4_3', '13', '5', '4_3', '', 'JOSE DANIEL', '2', 'circular', '0');
+INSERT INTO `project_mudcleaner` VALUES ('6', '1', 'JOSE', 'PATERNINA', '5', '3.4', '4_3', '6', '4', '5_5', '', 'JOSE DANIEL', '4', 'circular', '0');
+INSERT INTO `project_mudcleaner` VALUES ('7', '1', 'DESARROLLO', '22', '1', '3.4', '5_4', '1', '3.4', '4_6', '', 'LALALAL', '2', 'eliptico', '1');
 
 -- ----------------------------
 -- Table structure for `project_report_annular_section`

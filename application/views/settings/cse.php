@@ -112,6 +112,7 @@
 				$mudcleaner['desilter_cones'] 			= '';
 				$mudcleaner['desilter_conediameter'] 	= '';
 				$mudcleaner['desilter_pumptype'] 		= '';
+                                $mudcleaner['shaker_maker'] 			= '';
 				$mudcleaner['shaker_model'] 			= '';
 				$mudcleaner['shaker_screens'] 			= '';
 				$mudcleaner['shaker_movement'] 			= '';
@@ -123,15 +124,17 @@
 				<td class="label_m"><label>Maker:</label></td>
 				<td class="label_m"><label>Model:</label></td>
 				<td class="label_m"><label></label></td>
+                                <td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="label_m"><label></label></td>
 				<td class="label_m"><input name="maker" type="text" style="width:150px;" value="<?= $mudcleaner['maker'] ?>" /></td>
 				<td class="label_m"><input name="model" type="text" style="width:150px;" value="<?= $mudcleaner['model'] ?>" /></td>
 				<td class="label_m"></td>
+                                <td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td colspan="4">
+				<td colspan="5">
 					&nbsp;
 				</td>
 			</tr>
@@ -140,6 +143,7 @@
 				<td class="label_m"><label>Cones:</label></td>
 				<td class="label_m"><label>Cone Diameter:</label></td>
 				<td class="label_m"><label>Pump Type:</label></td>
+                                <td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="label_m"><label>Desander:</label></td>
@@ -174,6 +178,7 @@
 						<option value="4_4" <?php $mudcleaner['desander_pumptype'] == '4_4' ? $selected = 'selected="selected"' : $selected = ''; echo $selected; ?> >Centrifugue 4x4</option>
 					</select>
 				</td>
+                                <td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="label_m"><label>Desilter:</label></td>
@@ -208,20 +213,23 @@
 						<option value="4_4" <?php $mudcleaner['desilter_pumptype'] == '4_4' ? $selected = 'selected="selected"' : $selected = ''; echo $selected; ?> >Centrifugue 4x4</option>
 					</select>
 				</td>
+                                <td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td colspan="4">
+				<td colspan="5">
 					&nbsp;
 				</td>
 			</tr>
 			<tr>
 				<td class="label_m"><label></label></td>
-				<td class="label_m"><label>Model:</label></td>
+				<td class="label_m"><label>Maker:</label></td>
+                                <td class="label_m"><label>Model:</label></td>
 				<td class="label_m"><label>Screens:</label></td>
 				<td class="label_m"><label>Movement:</label></td>
 			</tr> 
 			<tr>
 				<td class="label_m"><label>Shaker:</label></td>
+                                <td class="label_m"><input name="shaker_maker" value="<?= empty($mudcleaner['shaker_maker']) ? '' : $mudcleaner['shaker_maker'] ?>" type="text" style="width:150px;"></td>
 				<td class="label_m"><input name="shaker_model" value="<?= $mudcleaner['shaker_model'] ?>" type="text" style="width:150px;"></td>
 				<td class="label_m">
 					<select name="shaker_screens" style="width:164px;" class="required">

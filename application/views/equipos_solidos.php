@@ -78,8 +78,8 @@
         			</tr>
         			<tr>
         				<td class="label_m"><label></label></td>
-        				<td class="label_m"><input type="text" style="width:150px;" value="<?= $mudcleaner['maker'] ?>" /></td>
-        				<td class="label_m"><input type="text" style="width:150px;" value="<?= $mudcleaner['model'] ?>" /></td>
+        				<td class="label_m"><input type="text" style="width:150px;" value="<?= $mudcleaner['maker'] ?>" disabled="" /></td>
+        				<td class="label_m"><input type="text" style="width:150px;" value="<?= $mudcleaner['model'] ?>" disabled="" /></td>
         				<td class="label_m"><input type="hidden" value="<?= $mudcleaner['id']; ?>" id="data_mudcleaner"></td>
         			</tr>
         		</table>
@@ -152,10 +152,10 @@
 	        		</tr>	
 	        		<tr>
 	        			<td><label>Shaker</label></td>
-	        			<td><input type="text" style="width:100px;" disabled="disabled" value="Panasonic"></td>
-	        			<td><input type="text" style="width:120px;" disabled="disabled" value="KXP-1150i"></td>
+	        			<td><input type="text" style="width:100px;" disabled="disabled" value="<?= $mudcleaner['shaker_maker']; ?>"></td>
+	        			<td><input type="text" style="width:120px;" disabled="disabled" value="<?= $mudcleaner['shaker_model']; ?>"></td>
 	        			<td>
-	        				<input type="text" style="width:75px;" disabled="disabled" value="Eliptic" />
+	        				<input type="text" style="width:75px;" disabled="disabled" value="<?= ucfirst($mudcleaner['shaker_movement']); ?>" />
 	        			</td>
 	        			<td style="padding-bottom:20px;">
 	        				<table>

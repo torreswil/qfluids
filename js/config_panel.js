@@ -209,6 +209,7 @@ $(function(){
 			mud_cleaner.desilter_cones 			= $('#mudcleaner_table select[name="desilter_cones"]').val();
 			mud_cleaner.desilter_conediameter 	= $('#mudcleaner_table input[name="desilter_conediameter"]').val();
 			mud_cleaner.desilter_pumptype 		= $('#mudcleaner_table select[name="desilter_pumptype"]').val();
+                        mud_cleaner.shaker_maker 			= $('#mudcleaner_table input[name="shaker_maker"]').val();
 			mud_cleaner.shaker_model 			= $('#mudcleaner_table input[name="shaker_model"]').val();
 			mud_cleaner.shaker_screens 			= $('#mudcleaner_table select[name="shaker_screens"]').val();
 			mud_cleaner.shaker_movement 		= $('#mudcleaner_table select[name="shaker_movement"]').val();
