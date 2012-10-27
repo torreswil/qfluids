@@ -166,9 +166,9 @@
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">Diam./stk:</td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '&nbsp;' : $mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'; ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '&nbsp;' : $mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'; ?></td>
-                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '&nbsp;' : $mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'; ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '&nbsp;' : str_replace('"','',$mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '&nbsp;' : str_replace('"','',$mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'); ?></td>
+                                                                <td class="txt-center span3"><?= empty($mud_pumps[0]['maker']) ? '&nbsp;' : str_replace('"','',$mud_pumps[0]['linerdiameter_frac'].'" X '.$mud_pumps[0]['strokefrac'].'"'); ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="txt-left span3">Eff (%)</td>
