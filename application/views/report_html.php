@@ -1174,16 +1174,16 @@
                                                                 </tr>
                                                                 <tr>
                                                                         <td class="b-point-right">DESANDER</td>
-                                                                        <td class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_cones']) ? '' : $mudcleaner[0]['desander_cones'].'*'.$mudcleaner[0]['desander_conediameter']; ?></td>
+                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_cones']) ? '' : $mudcleaner[0]['desander_cones'].'*'.$mudcleaner[0]['desander_conediameter']; ?></td>
                                                                         <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_flow']) ? '' : $mudcleaner[0]['desander_flow'].' gpm'; ?></td>
-                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_presure']) ? '' : $mudcleaner[0]['desander_presure'].' psi'; ?></td>
+                                                                        <td class="txt-center b-point-right"><?= empty($mudcleaner[0]['desander_presure']) ? '' : $mudcleaner[0]['desander_presure'].' psi'; ?></td>
                                                                         <td class="txt-center"><?= empty($mudcleaner[0]['desander_hours']) ? '' : $mudcleaner[0]['desander_hours']; ?></td>
                                                                 </tr> 
                                                                 <tr>
                                                                         <td class="b-point-right">DESILTER</td>
-                                                                        <td class="txt-center b-point-right"><?= empty($mudcleaner[0]['desilter_cones']) ? '' : $mudcleaner[0]['desilter_cones'].'*'.$mudcleaner[0]['desilter_conediameter']; ?></td>
+                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['desilter_cones']) ? '' : $mudcleaner[0]['desilter_cones'].'*'.$mudcleaner[0]['desilter_conediameter']; ?></td>
                                                                         <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['destiler_flow']) ? '' : $mudcleaner[0]['destiler_flow'].' gpm'; ?></td>
-                                                                        <td colspan="2" class="txt-center b-point-right"><?= empty($mudcleaner[0]['destiler_presure']) ? '' : $mudcleaner[0]['destiler_presure'].' psi'; ?></td>
+                                                                        <td class="txt-center b-point-right"><?= empty($mudcleaner[0]['destiler_presure']) ? '' : $mudcleaner[0]['destiler_presure'].' psi'; ?></td>
                                                                         <td class="txt-center"><?= empty($mudcleaner[0]['destiler_hours']) ? '' : $mudcleaner[0]['destiler_hours']; ?></td>
                                                                 </tr>                                                                
                                                         </tbody>
