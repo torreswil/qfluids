@@ -16,6 +16,7 @@ class Rest_mvc extends CI_Controller {
 		$this->project_wellname = $project['well_name'];
 		$this->project_operator = $project['operator'];
 		$this->report_id 		= $report['id'];
+		$this->tanks 			= $this->Api->get_where('vista_tanks',array('project'=>$this->project_id));
 	}
 
 	public function index(){
@@ -44,7 +45,7 @@ class Rest_mvc extends CI_Controller {
 
 							//obtener la concentracion para este producto
 							$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
-							$concentracion = $concentracion[0]['concentracion'];	
+							if(count($concentracion) > 0){$concentracion = $concentracion[0]['concentracion'];}else{$concentracion = 0;}	
 						}else{
 							$concentracion = 0;
 						}
@@ -62,11 +63,7 @@ class Rest_mvc extends CI_Controller {
 
 						//obtener la concentracion para este producto
 						$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
-						if(count($concentracion) > 0){
-							$concentracion = $concentracion[0]['concentracion'];	
-						}else{
-							$concentracion = 0;	
-						}
+						if(count($concentracion) > 0){$concentracion = $concentracion[0]['concentracion'];}else{$concentracion = 0;}
 					?>
                   	<td><input type="text" style="width:55px;margin-right:0;" id="currentconc_<?= $material['product_id']?>_<?= $tank['id'] ?>" disabled value="<?= number_format($concentracion,2,'.','') ?>" /></td>
                 <?php }?>
@@ -82,7 +79,7 @@ class Rest_mvc extends CI_Controller {
 
 							//obtener la concentracion para este producto
 							$concentracion = $this->Api->get_where('concentrations',array('tank_status_time' => $id_estado_actual, 'material'=>$material['product_id']));
-							$concentracion = $concentracion[0]['concentracion'];	
+							if(count($concentracion) > 0){$concentracion = $concentracion[0]['concentracion'];}else{$concentracion = 0;}
 						}else{
 							$concentracion = 0;
 						}
@@ -219,6 +216,22 @@ class Rest_mvc extends CI_Controller {
 			);
 
 			$ca_id = $this->Api->create('chemical_aditions',$chemical_adition);
+
+
+			
+			if($tank == 0){
+				$tank_name = 'Active'; 
+			}else{
+				$tank_detail = $this->Api->get_where('vista_tanks',array('id'=>$tank));
+				$tank_name 	 = $tank_name[0]['tank_name'];
+			}
+			//guardar la adicion de quimica en el tronco
+			$trunk_data = array(
+				'description' 	=> $water.' bbl of water and '.$chemical.' bbl of chemicals added to '.$tank_name,
+				'tree' 			=> 'chemical_adition',
+				'subtree' 		=> $ca_id
+			);
+			$this->create_trunk_node($trunk_data);
 			
 			
 			foreach ($used_chemicals as $this_chemical) {
@@ -447,9 +460,41 @@ class Rest_mvc extends CI_Controller {
 				'from_origin_status' 	=> $estado_origen['id'],
 				'from_destiny_status' 	=> $estado_destino['id'],
 				'to_origin_status' 	  	=> 0,
-				'to_destiny_status'		=> 0
+				'to_destiny_status'		=> 0,
+				'volume' 				=> $volumen
 			);			
 			$id_transferencia = $this->Api->create('volume_transfers',$vt_data);
+
+			
+
+			//guardar la transferencia de volumen en el tronco
+			if($origen == 0){
+				$nombre_origen = 'Active';
+			}else if($origen == 99){
+				$nombre_origen = 'Out of Short Circuit';
+			}else{
+				$nombre_origen = $this->Api->get_where('vista_tanks',array('id'=>$origen));
+				$nombre_origen = $nombre_origen[0]['tank_name'];
+			}
+
+			if($destino == 0){
+				$nombre_destino = 'Active';
+			}else if($destino == 99){
+				$nombre_destino = 'Out of Short Circuit';
+			}else{
+				$nombre_destino = $this->Api->get_where('vista_tanks',array('id'=>$destino));
+				$nombre_destino = $nombre_destino[0]['tank_name'];
+			}
+
+			$trunk_data = array(
+				'description' 	=> $volumen.' bbl of mud moved from '.$nombre_origen.' to '.$nombre_destino,
+				'tree' 			=> 'volume_transfer',
+				'subtree' 		=> $id_transferencia
+			);
+			$this->create_trunk_node($trunk_data);
+
+
+
 
 			//calcular el nuevo estado del origen si el origen es el activo
 			if($origen == 0){
@@ -918,6 +963,127 @@ class Rest_mvc extends CI_Controller {
 		if(count($_POST) > 0){
 			$tank_info = $this->Api->get_where('vista_tanks',array('id'=>$_POST['tank']));
 			echo json_encode($tank_info[0]);
+		}
+	}
+
+
+	//METODO PARA CREAR UN NUEVO PASO EN LA HISTORIA DE VOLUMENES Y CONCENTRACIONES
+	public function create_trunk_node($data){
+		/*
+			SE CREA UN NUEVO PASO EN LA HISTORIA DE VOLUMENES Y CONCENTRACIONES
+			CUANDO OCURRE UNO DE LOS SIGUIENTES EVENTOS:
+
+			- UNA ADICION DE QUIMICA
+			- UNA TRANSFERENCIA DE VOLUMEN
+
+		*/
+
+
+		$data['timestamp'] 	= date('Y-m-d H:i:s');
+		$data['report'] 	= $this->report_id;
+
+		/* los otros componentes del arreglo son:
+		$data['description'];
+		$data['tree'];
+		$data['subtree'];
+		*/
+		//RETORNAR EL ID DEL PASO
+		return $this->Api->create('mvc_trunk',$data);
+	} 
+
+
+	public function step_by_step_mvc(){
+		$steps = $this->Api->get_where('mvc_trunk',array('report'=>$this->report_id,'active'=>1),array('id','desc'));
+		$count = 0;
+		foreach ($steps as $step) { $count++; ?>
+			<tr>
+				<td class="label_m" style="padding-right:10px;">
+					<?php if($count == 1){ ?>
+						<a href="deletestep_<?= $step['id'] ?>" class="delete_mvc_step"><img src="/img/brick_delete.png" /></a>
+					<?php }?>
+				</td>
+				<td class="label_m">
+					<input type="text" value="<?= $step['timestamp'] ?>" disabled style="width:200px;margin-right:0;"/>
+				</td>
+				<td class="label_m">
+					<input type="text" value="<?= $step['description'] ?>" disabled style="width:400px;max-width:500px;" />
+				</td>
+			</tr>
+		<?php }
+	}
+
+	public function undo_step(){
+		if(isset($_POST['id'])){
+			$step = $_POST['id'];
+
+			//get the step basic information
+			$step_info = $this->Api->get_where('mvc_trunk',array('id'=>$step));
+			$step_info = $step_info[0];
+
+			//if the trunk is a chemical adition
+			if($step_info['tree'] == 'chemical_adition'){
+				//obtener el detalle de la adicion
+				$adition 			= $this->Api->get_where('chemical_aditions',array('id'=>$step_info['subtree']));
+				$adition 			= $adition[0];
+				$adition_granules 	= $this->Api->get_where('chemical_aditions_detail',array('chemical_adition'=>$adition['id'])); 
+
+				foreach ($adition_granules as $granule) {
+					//devolver el material al inventario
+					$inventory_entry = $this->Api->get_where('inventory',array('product'=>$granule['material'],'project_id'=>$this->project_id));
+					$inventory_entry = $inventory_entry[0];
+
+					$updated_inventory = array(
+						'used' 		=> $inventory_entry['used'] - $granule['used'],
+						'avaliable' => $inventory_entry['avaliable'] + $granule['used']
+					);
+
+					$this->Api->update('inventory',$updated_inventory,$inventory_entry['id']);
+					
+					//actualizar el estado de la quimica para hoy
+					$status_entry = $this->Api->get_where('report_materialstatus',array('material'=>$granule['material'],'report'=>$this->report_id));						
+					$status_entry = $status_entry[0];
+
+					$updated_status = array(
+						'used' 	=> $status_entry['used'] - $granule['used'],
+						'stock' => $status_entry['stock'] + $granule['used']
+					);
+
+					$this->Api->update('report_materialstatus',$updated_status,$status_entry['id']);
+				}
+
+				//desactivar los movimientos del inventario
+				$this->Api->delete_where('inventory_movements',array('chemical_adition'=>$step_info['subtree']));
+
+
+				//establecer el estado actual de cada tanque afectado en 3
+				$this->Api->update('tank_status_time',array('activo'=>3),$adition['status_producido']);
+				
+				//seleccionar de manera inversa los estados del tanque que sean 0
+				$estados_tanque = $this->Api->get_where('tank_status_time',array('tank'=>$adition['tank'],'activo'=>0),array('id','desc'));
+				$nuevo_activo 	= $estados_tanque[0];
+				
+				//reactivar el primer estado de la lista (ponerle 1 nuevamente)
+				$this->Api->update('tank_status_time',array('activo'=>1),$nuevo_activo['id']);
+			}
+
+			//if the trunk is a volume transfer
+			else if($step_info['tree'] == 'volume_transfer'){
+				//obtener el detalle de la transferencia de volumen
+				$volume_transfer = $this->Api->get_where('volume_transfers',array('id'=>$step_info['subtree']));
+				$volume_transfer = $volume_transfer[0];
+
+				//convertir en 3 los estados resultantes
+				$this->Api->update('tank_status_time',array('activo'=>3),$volume_transfer['to_origin_status']);
+				$this->Api->update('tank_status_time',array('activo'=>3),$volume_transfer['to_destiny_status']);
+				//convertir en 1 los estados originales
+				$this->Api->update('tank_status_time',array('activo'=>1),$volume_transfer['from_origin_status']);
+				$this->Api->update('tank_status_time',array('activo'=>1),$volume_transfer['from_destiny_status']);
+			}
+
+			//destruir el paso
+			$this->Api->delete('mvc_trunk',$step);
+			echo json_encode(true);
+
 		}
 	}
 

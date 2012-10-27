@@ -14,6 +14,7 @@ $(function(){
 	load_current_concentrations();
 	load_tank_status();
 	load_today_consumptions();
+	step_by_step_mvc();
         
 	/*==========================================================================================================*/
 	// NAVIGATION
@@ -1668,6 +1669,7 @@ $(function(){
 								load_ac_status();
 								load_current_concentrations();
 								correr_calculos();
+								step_by_step_mvc();
 					
 								//emular click del usuario sobre el boton cancelar
 								$('#add_chemicals_overlay .close_link').show();
@@ -1817,6 +1819,7 @@ $(function(){
 									load_ac_status();
 									load_tank_status();
 									load_current_concentrations();
+									step_by_step_mvc();	
 
 									if(parseInt(origin) !== 0){
 										//preguntarle al servidor el tipo del tanque
@@ -1984,6 +1987,7 @@ $(function(){
 					load_ac_status();
 					load_tank_status();
 					load_current_concentrations();
+					step_by_step_mvc();	
 					
 					$('#tv_osc_overlay .close_link').click();
 					$('#transfer_osc_btn').show();
@@ -2043,8 +2047,32 @@ $(function(){
 		$.post('/rest_mvc/create_tank_status',$.toJSON(data),function(r){
 			load_tank_status();
 			load_current_concentrations();
+			step_by_step_mvc();
 			$('#mts_overlay .close_link').click();
 		},'json');		
+	});
+
+	function step_by_step_mvc(){
+		$('#step_by_step_mvc').load('/rest_mvc/step_by_step_mvc');
+	}
+
+	$('.delete_mvc_step').live('click',function(e){
+		e.preventDefault();
+		if(confirm('Are you sure yo want to undo this step?')){
+			var id = $(this).attr('href');
+				id = id.split('_');
+				id = id[1];
+
+			$.post('/rest_mvc/undo_step',{'id':id},function(r){
+				if(r == true){
+					load_materials_status();
+					load_ac_status();
+					load_tank_status();
+					load_current_concentrations();
+					step_by_step_mvc();
+				}
+			},'json');
+		}
 	});
 
 	/*==========================================================================================================*/
