@@ -302,11 +302,11 @@
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Hole empty:</td>
-                                                                        <td class="txt-right">&nbsp;</td><!-- REVISAR -->
+                                                                        <td class="txt-right"><?= empty($resumen['total_empty_hole']) ? '&nbsp;' : number_format($resumen['total_empty_hole'],2,',',''); ?></td><!-- REVISAR -->
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Hole W/String:</td>
-                                                                        <td class="txt-right">&nbsp;</td><!-- REVISAR -->
+                                                                        <td class="txt-right"><?= empty($resumen['hole_w_string']) ? '&nbsp;' : number_format($resumen['hole_w_string'],2,',',''); ?></td><!-- REVISAR -->
                                                                 </tr>                                                
                                                         </tbody>
                                                 </table>
@@ -352,21 +352,21 @@
                                                 <tbody>
                                                         <tr>
                                                                 <td class="strong span3">Active pits:</td>
-                                                                <td class="span3">&nbsp;</td>
+                                                                <td class="span3"><?= empty($resumen['active_pits']) ? '&nbsp;' : number_format($resumen['active_pits'],2,',',''); ?></td>
                                                                 <td class="strong span3">Total circulate:</td>
-                                                                <td class="span3">&nbsp;</td>
+                                                                <td class="span3"><?= empty($resumen['total_act_circulate']) ? '&nbsp;' : number_format($resumen['total_act_circulate'],2,',',''); ?></td>
                                                         </tr>
                                                         <tr>
                                                                 <td class="strong span3">Pill:</td>
-                                                                <td class="span3">&nbsp;</td>
+                                                                <td class="span3"><?= empty($resumen['pill']) ? '&nbsp;' : number_format($resumen['pill'],2,',',''); ?></td>
                                                                 <td class="strong span3">Total Reserve:</td>
-                                                                <td class="span3">&nbsp;</td>                                                                
+                                                                <td class="span3"><?= empty($resumen['total_reserve']) ? '&nbsp;' : number_format($resumen['total_reserve'],2,',',''); ?></td>                                                                
                                                         </tr>
                                                         <tr>
                                                                 <td class="strong span3">Trip tank:</td>
-                                                                <td class="span3">&nbsp;</td>
+                                                                <td class="span3"><?= empty($resumen['trip_tank']) ? '&nbsp;' : number_format($resumen['trip_tank'],2,',',''); ?></td>
                                                                 <td class="strong span3">Total mud:</td>
-                                                                <td class="span3">&nbsp;</td>                                                                
+                                                                <td class="span3"><?= empty($resumen['total_mud']) ? '&nbsp;' : number_format($resumen['total_mud'],2,',',''); ?></td>                                                                
                                                         </tr>
                                                 </tbody> 
                                         </table>
@@ -847,43 +847,43 @@
                                                         <td class="b-point-top b-point-right txt-center">&nbsp;</td>
                                                         <td class="b-point-top b-point-right txt-center">&nbsp;</td>
                                                         <td class="b-point-top b-point-right" style="width: 17%">Sub/surface</td>
-                                                        <td class="b-point-top b-point-right txt-center" style="width: 8%;">&nbsp;</td>
+                                                        <td class="b-point-top b-point-right txt-center" style="width: 8%;"><?= empty($losses['sub_surface']) ? '&nbsp;' : $losses['sub_surface']; ?></td>
                                                         <td class="b-point-top b-point-right" style="width: 17%">Daily Surf. Losses</td>
-                                                        <td class="b-point-top txt-center" style="width: 8%">&nbsp;</td>                                                        
+                                                        <td class="b-point-top txt-center" style="width: 8%"><?= empty($losses['daily_surface_losses']) ? '&nbsp;' : $losses['daily_surface_losses']; ?></td>                                                        
                                                 </tr>                                                                                                                                               
                                                 <tr class="">
                                                         <td class="b-point-top b-point-right">Received Mud</td>
                                                         <td class="b-point-top b-point-right txt-center"></td>
                                                         <td class="b-point-top b-point-right txt-center"></td>
                                                         <td class="b-point-top b-point-right">Surface</td>
-                                                        <td class="b-point-top b-point-right txt-center"></td>
+                                                        <td class="b-point-top b-point-right txt-center"><?= empty($losses['surface']) ? '&nbsp;' : $losses['surface']; ?></td>
                                                         <td class="b-point-top b-point-right">Cum. surf. losses</td>
-                                                        <td class="b-point-top txt-center"></td>                                                        
+                                                        <td class="b-point-top txt-center"><?= empty($losses['cumulative_surface_losses']) ? '&nbsp;' : $losses['cumulative_surface_losses']; ?></td>
                                                 </tr>
                                                 <tr class="">
                                                         <td class="b-point-top b-point-right">Chemicals</td>
                                                         <td class="b-point-top b-point-right txt-center"></td>
                                                         <td class="b-point-top b-point-right txt-center"></td>
                                                         <td class="b-point-top b-point-right">Cavingsr</td>
-                                                        <td class="b-point-top b-point-right txt-center"></td>
+                                                        <td class="b-point-top b-point-right txt-center"><?= empty($losses['cavings']) ? '&nbsp;' : $losses['cavings']; ?></td>
                                                         <td class="b-point-top b-point-right">Daily S/Surf.losses</td>
-                                                        <td class="b-point-top txt-center"></td>                                                        
+                                                        <td class="b-point-top txt-center"><?= empty($losses['daily_sub_surface_losses']) ? '&nbsp;' : $losses['daily_sub_surface_losses']; ?></td>                                                        
                                                 </tr>				
                                                 <tr class="">
                                                        <td class="b-point-top b-point-right ">Water</td>
                                                        <td class="b-point-top b-point-right txt-center"></td>
                                                        <td class="b-point-top b-point-right txt-center"></td>
                                                        <td class="b-point-top b-point-right ">Shakers</td>
-                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right txt-center"><?= empty($losses['shakers']) ? '&nbsp;' : $losses['shakers']; ?></td>
                                                        <td class="b-point-top b-point-right ">Cum. S/Surf. losses</td>
-                                                       <td class="b-point-top txt-center"></td>                                                        
+                                                       <td class="b-point-top txt-center"><?= empty($losses['cumulative_sub_surface_losses']) ? '&nbsp;' : $losses['cumulative_sub_surface_losses']; ?></td>
                                                 </tr>
                                                 <tr class="">
                                                        <td class="b-point-top b-point-right ">Builded mud</td>
                                                        <td class="b-point-top b-point-right txt-center"></td>
                                                        <td class="b-point-top b-point-right txt-center"></td>
                                                        <td class="b-point-top b-point-right ">Centrifugues</td>
-                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right txt-center"><?= empty($losses['centrifugues']) ? '&nbsp;' : $losses['centrifugues']; ?></td>
                                                        <td class="b-point-top" style="border-right: 0px !important">&nbsp;</td>
                                                        <td class="b-point-top txt-center" style="border-left: 0px !important">&nbsp;</td>
                                                 </tr>
@@ -892,7 +892,7 @@
                                                        <td class="b-point-top b-point-right txt-center"></td>
                                                        <td class="b-point-top b-point-right txt-center"></td>
                                                        <td class="b-point-top b-point-right ">Dewatering</td>
-                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right txt-center"><?= empty($losses['dewatering']) ? '&nbsp;' : $losses['dewatering']; ?></td>
                                                        <td class="b-point-top strong" style="border-right: 0px !important">BY EVAPORATED</td>
                                                        <td class="b-point-top txt-center strong" style="border-left: 0px !important">bbl/day</td>                                                        
                                                 </tr>                                                				
@@ -901,7 +901,7 @@
                                                        <td class="b-point-top b-point-right txt-center strong"></td>
                                                        <td class="b-point-top b-point-right txt-center strong"></td>
                                                        <td class="b-point-top b-point-right ">Behind Casing</td>
-                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right txt-center"><?= empty($losses['behind_casing']) ? '&nbsp;' : $losses['behind_casing']; ?></td>
                                                        <td class="b-point-top b-point-right ">Water Evaporated</td>
                                                        <td class="b-point-top txt-center"></td>                                                        
                                                 </tr>
@@ -910,7 +910,7 @@
                                                        <td class="b-point-top b-point-right txt-center"></td>
                                                        <td class="b-point-top b-point-right txt-center"></td>
                                                        <td class="b-point-top b-point-right ">Others</td>
-                                                       <td class="b-point-top b-point-right txt-center"></td>
+                                                       <td class="b-point-top b-point-right txt-center"><?= empty($losses['others']) ? '&nbsp;' : $losses['others']; ?></td>
                                                        <td class="b-point-top b-point-right ">Water added by Evp</td>
                                                        <td class="b-point-top txt-center"></td>                                                        
                                                 </tr>

@@ -852,6 +852,20 @@ class Rest extends CI_Controller {
 		}
 		echo json_encode(true);		
 	}
+        
+        public function save_volumen($type) {
+                $values = json_decode($this->data_input);
+                if($type=='resumen') {
+                        //Elimino los campos enviados con anterioridad para tener los nuevos almacenados
+                        $this->Api->total_remove_where('project_report_volumen', array('report_id'=>$this->report_id));
+                        $_POST['report_id'] = $this->report_id;
+                        $this->Api->create('project_report_volumen', $_POST);
+                } else if($type=='losses') {                        
+                        $this->Api->total_remove_where('project_report_losses', array('report_id'=>$this->report_id));
+                        $_POST['report_id'] = $this->report_id;                        
+                        $this->Api->create('project_report_losses', $_POST);
+                }
+        }
                 
 	public function dump_session(){
 		print_r($this->session->all_userdata());

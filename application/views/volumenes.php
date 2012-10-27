@@ -1,3 +1,5 @@
+<?php $reporte = $this->session->userdata('report'); ?>
+
 <div class="this_panel plusribbon" id="volumenes" >
 	<h2>Volumes</h2>
 	
@@ -5,7 +7,7 @@
 		<table style="float:left;" >
 			<tr>
 				<td class="label_m"><label class="emphasis">Balance del Fluido</label></td>
-				<td><input type="text" style="width:100px;" disabled="disabled" name="balancefluido" id="balancefluido"></td>
+				<td><input type="text" style="width:100px;" disabled="disabled" name="balancefluido" id="balancefluido" value="<?= empty($reporte['balance_fluido']) ? '0' : $reporte['balance_fluido']; ?>"></td>
 			</tr>
 		</table>
 	</fieldset>
@@ -19,6 +21,7 @@
 			<li><a href="#">Undo & Step by Step</a></li>
 	    </ul>
 	    <div class="simpleTabsContent">
+                <? $rs = $this->Api->get_where('project_report_volumen', array('report_id'=>$reporte['id'])); ?>                    
 	    	<table style="width:100%;">
 	    		<tr>
 	    			<td>
@@ -26,7 +29,7 @@
 	    					<table>
 		    					<tr>
 		    						<td class="label_m"><label>Total Act. Circulate:</label></td>
-		    						<td class="label_m"><input id="totalcirculate" name="totalcirculate" type="text" disabled="disabled" style="width:100px;" value="0" /> bbl</td>
+		    						<td class="label_m"><input id="totalcirculate" name="totalcirculate" type="text" disabled="disabled" style="width:100px;" value="<?= empty($rs[0]['total_act_circulate']) ? '0' : $rs[0]['total_act_circulate']; ?>" /> bbl</td>
 		    					</tr>
 		    				</table>
 	    				</fieldset>
@@ -42,27 +45,27 @@
 							<table>
 								<tr>
 									<td class="label_m"><label>Casing:</label></td>
-									<td><input type="text" name="volcsgt" id="volcsgt" disabled="disabled" style="width:100px;" /></td>
+									<td><input type="text" name="volcsgt" id="volcsgt" disabled="disabled" style="width:100px;" value="<?= empty($rs[0]['casing']) ? '0' : $rs[0]['casing']; ?>"/></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Open Hole:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="volhole" name="volhole" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="volhole" name="volhole" value="<?= empty($rs[0]['open_hole']) ? '0' : $rs[0]['open_hole']; ?>" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total Empty Hole:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="volholeempty" name="volholeempty" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="volholeempty" name="volholeempty" value="<?= empty($rs[0]['total_empty_hole']) ? '0' : $rs[0]['total_empty_hole']; ?>" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>String Displacement:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" name="zdisptotal" id="zdisptotal" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" name="zdisptotal" id="zdisptotal" value="<?= empty($rs[0]['string_displacement']) ? '0' : $rs[0]['string_displacement']; ?>" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Hole W/ String:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="volwstring" name="volwstring" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="volwstring" name="volwstring" value="<?= empty($rs[0]['hole_w_string']) ? '0' : $rs[0]['hole_w_string']; ?>"/></td>
 									<td class="label_m">bbl</td>
 								</tr>
 							</table>
@@ -74,27 +77,27 @@
 							<table>
 								<tr>
 									<td class="label_m"><label>Trip Tank:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="triptank" name="triptank" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="triptank" name="triptank" value="<?= empty($rs[0]['trip_tank']) ? '0' : $rs[0]['trip_tank']; ?>" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Active Pits:</label></td>
-									<td><input type="text" name="activepits" id="activepits" disabled="disabled" style="width:100px;" /></td>
+									<td><input type="text" name="activepits" id="activepits" disabled="disabled" style="width:100px;" value="<?= empty($rs[0]['active_pits']) ? '0' : $rs[0]['active_pits']; ?>" /></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Pill:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="pill" name="pill" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="pill" name="pill" value="<?= empty($rs[0]['pill']) ? '0' : $rs[0]['pill']; ?>"/></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total Reserve:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" name="totalreserve" id="totalreserve" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" name="totalreserve" id="totalreserve" value="<?= empty($rs[0]['total_reserve']) ? '0' : $rs[0]['total_reserve']; ?>"/></td>
 									<td class="label_m">bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total Mud:</label></td>
-									<td><input type="text" disabled="disabled" style="width:100px;" id="totalmud" name="totalmud" /></td>
+									<td><input type="text" disabled="disabled" style="width:100px;" id="totalmud" name="totalmud" value="<?= empty($rs[0]['total_mud']) ? '0' : $rs[0]['total_mud']; ?>"/></td>
 									<td class="label_m">bbl</td>
 								</tr>
 							</table>
@@ -631,45 +634,46 @@
 
 		<div class="simpleTabsContent">
 			<fieldset>
+                                <? $rs = $this->Api->get_where('project_report_losses', array('report_id'=>$reporte['id'])); ?>
 				<table>
 					<tr>
 						<td>
 							<table>
 								<tr>
 									<td class="label_m"><label>SUB/SURFACE:</label></td>
-									<td><input type="text" style="width:100px;" name="subsurf" id="subsurf" /> bbl</td>
+									<td><input type="text" style="width:100px;" name="subsurf" id="subsurf" value="<?= empty($rs[0]['sub_surface']) ? '' : $rs[0]['sub_surface']; ?>" /> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>SURFACE:</label></td>
-									<td class="label_m"><input type="text" style="width:100px;" name="surf" id="surf" /> bbl</td>
+									<td class="label_m"><input type="text" style="width:100px;" name="surf" id="surf"  value="<?= empty($rs[0]['surface']) ? '' : $rs[0]['surface']; ?>" /> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>CAVINGS:</label></td>
-									<td class="label_m"><input type="text" style="width:100px;" name="caving" id="caving" /> bbl</td>
+									<td class="label_m"><input type="text" style="width:100px;" name="caving" id="caving"  value="<?= empty($rs[0]['cavings']) ? '' : $rs[0]['cavings']; ?>" /> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>SHAKERS:</label></td>
-									<td class="label_m"><input type="text" style="width:100px;" name="shakes" id="shakes" /> bbl</td>
+									<td class="label_m"><input type="text" style="width:100px;" name="shakes" id="shakes"  value="<?= empty($rs[0]['shakers']) ? '' : $rs[0]['shakers']; ?>"/> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>MUD CLEANER:</label></td>
-									<td class="label_m"><input type="text" style="width:100px;" name="cleaner" id="cleaner" /> bbl</td>
+									<td class="label_m"><input type="text" style="width:100px;" name="cleaner" id="cleaner"  value="<?= empty($rs[0]['mud_cleaner']) ? '' : $rs[0]['mud_cleaner']; ?>" /> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>CENTRIFUGUES:</label></td>
-									<td class="label_m"><input type="text" style="width:100px;" name="centri" id="centri" /> bbl</td>
+									<td class="label_m"><input type="text" style="width:100px;" name="centri" id="centri"  value="<?= empty($rs[0]['centrifugues']) ? '' : $rs[0]['centrifugues']; ?>"/> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>DEWATERING:</label></td>
-									<td class="label_m"><input type="text" style="width:100px;" name="dew" id="dew" /> bbl</td>
+									<td class="label_m"><input type="text" style="width:100px;" name="dew" id="dew"  value="<?= empty($rs[0]['dewatering']) ? '' : $rs[0]['dewatering']; ?>"/> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>BEHIND CASING:</label></td>
-									<td class="label_m"><input type="text" style="width:100px;" name="becsg" id="becsg" /> bbl</td>
+									<td class="label_m"><input type="text" style="width:100px;" name="becsg" id="becsg"  value="<?= empty($rs[0]['behind_casing']) ? '' : $rs[0]['behind_casing']; ?>" /> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>OTHERS:</label></td>
-									<td class="label_m"><input type="text" style="width:100px;" name="other" id="other" /> bbl</td>
+									<td class="label_m"><input type="text" style="width:100px;" name="other" id="other"  value="<?= empty($rs[0]['others']) ? '' : $rs[0]['others']; ?>"/> bbl</td>
 								</tr>
 							</table>	
 						</td>
@@ -677,23 +681,23 @@
 							<table>
 								<tr>
 									<td class="label_m"><label>Daily Surface losses:</label></td>
-									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" id="dailysurface" name="dailysurface" /> bbl</td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" id="dailysurface" name="dailysurface"  value="<?= empty($rs[0]['daily_surface_losses']) ? '' : $rs[0]['daily_surface_losses']; ?>"/> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Cumulative Surface losses:</label></td>
-									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" /> bbl</td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" id="c_dailysurface"  value="<?= empty($rs[0]['cumulative_surface_losses']) ? '' : $rs[0]['cumulative_surface_losses']; ?>"/> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Daily Sub/Surface losses:</label></td>
-									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" name="dailysubsurface" id="dailysubsurface" /> bbl</td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" name="dailysubsurface" id="dailysubsurface" value="<?= empty($rs[0]['daily_sub_surface_losses']) ? '' : $rs[0]['daily_sub_surface_losses']; ?>"/> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Cumulative Sub/Surface losses:</label></td>
-									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" /> bbl</td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" id="c_dailysubsurface" value="<?= empty($rs[0]['cumulative_sub_surface_losses']) ? '' : $rs[0]['cumulative_sub_surface_losses']; ?>"/> bbl</td>
 								</tr>
 								<tr>
 									<td class="label_m"><label>Total losses:</label></td>
-									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" id="ztotallosses" name="ztotallosses" /> bbl</td>
+									<td class="label_m"><input type="text" disabled="disabled" style="width:100px;" id="ztotallosses" name="ztotallosses" value="<?= empty($rs[0]['total_losses']) ? '' : $rs[0]['total_losses']; ?>"/> bbl</td>
 								</tr>
 							</table>
 						</td>

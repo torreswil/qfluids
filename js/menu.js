@@ -41,7 +41,7 @@ $(function(){
 			//validate_data();
                         
                         //Se borra los textos de los trabajos registrados en el overlay
-                        $("#save_report_jobs").empty();
+                        $("#save_report_jobs").empty();                        
                         //Save hole geometry
                         save_hole_geometry();
                         //Save operational info
@@ -52,6 +52,8 @@ $(function(){
                         save_solids_control(); 
                         //Save personal
                         save_personal();
+                        //Save volumenes
+                        save_volumenes();
                         //Correr calculos
                         correr_calculos();
                         setStatusReport('All data saved!', 'valid');
@@ -673,6 +675,72 @@ $(function(){
                         async: false
                 });    
                 setStatusReport('Perasonal saved!');                
+        }
+        
+        /**
+        * VOLUMENES
+        */
+        function save_volumenes() {
+                //Armo la del resumen
+                var resumen = {
+                        total_act_circulate     : $('#totalcirculate').val(),
+                        casing                  : $('#volcsgt').val(),
+                        open_hole               : $('#volhole').val(),
+                        total_empty_hole        : $('#volholeempty').val(),
+                        string_displacement     : $('#zdisptotal').val(),
+                        hole_w_string           : $('#volwstring').val(),
+                        trip_tank               : $('#triptank').val(),
+                        active_pits             : $('#activepits').val(),                        
+                        pill                    : $('#pill').val(),
+                        total_reserve           : $('#totalreserve').val(),
+                        total_mud               : $('#totalmud').val()
+                };                
+                
+                //Save resumen
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_volumen/resumen/',
+                        data: resumen,
+                        dataType: 'json',
+                        async: false
+                });                
+                
+                //Armo la data de losses
+                var data_losses = {                        
+                        sub_surface                     : $('#subsurf').val(),
+                        surface                         : $('#surf').val(),
+                        cavings                         : $('#caving').val(),                                
+                        shakers                         : $('#shakes').val(),
+                        mud_cleaner                     : $('#cleaner').val(),
+                        centrifugues                    : $('#centri').val(),
+                        dewatering                      : $('#dew').val(),
+                        behind_casing                   : $('#becsg').val(),
+                        others                          : $('#other').val(),
+                        daily_surface_losses            : $('#dailysurface').val(),
+                        cumulative_surface_losses       : $('#c_dailysurface').val(),
+                        daily_sub_surface_losses        : $('#dailysubsurface').val(),
+                        cumulative_sub_surface_losses   : $('#c_dailysubsurface').val(),
+                        total_losses                    : $('#ztotallosses').val()
+                }                
+                //Save losses             
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_volumen/losses/',
+                        data: data_losses,
+                        dataType: 'json',
+                        async: false
+                }); 
+                
+                //Save report properties
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_report_settings',
+                        data: { balance_fluido: $('#balancefluido').val() },
+                        dataType: 'json',
+                        async: false
+                });
+                
+                setStatusReport('Volumenes saved!');
         }
 
 
