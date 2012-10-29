@@ -222,7 +222,7 @@
 						<td class="label_m"><label>BUILDED MUD</label></td>
 						<td class="label_m"><input disabled id="volconsact" name="volconsact" class="label_m" type="text"  style="width:100px;margin-right:3px;"> bbl</td>
 					</tr>
-					<tr style="display:none;">
+					<tr>
 						<td class="label_m"></td>
 						<td class="label_m"><label>MUD TRANSFERED TO OUT OF SHORT CIRCUIT</label></td>
 						<td class="label_m"><input class="label_m" type="text" disabled style="width:100px;margin-right:3px;" id="voltransosc" name="voltransosc"> bbl</td>

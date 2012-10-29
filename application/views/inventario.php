@@ -7,6 +7,7 @@
                <li><a href="#">Incoming Materials</a></li>
                <!-- <li><a href="#">Outgoing Materials</a></li> --> 
                <li><a href="#">Today Consumptions</a></li> 
+               <li><a href="#">Equipment</a></li>
                <li><a href="#">Daily Report</a></li>            
           </ul>
           <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
@@ -116,7 +117,11 @@
                 </table>
               </fieldset> 
           </div>
-
+          <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
+              <fieldset>
+                  listado de equipos que llegaron vía stock transfer
+              </fieldset>
+          </div>
           <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
              <fieldset>
                 <legend>Please note:</legend>
