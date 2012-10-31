@@ -166,10 +166,10 @@ class Main extends CI_Controller {
                                         $data['bit'] = $this->Api->sql("SELECT * FROM project_report_bit INNER JOIN brocas_modelos ON brocas_modelos.id = project_report_bit.brocas_modelos_id INNER JOIN brocas ON brocas.id = brocas_modelos.id_broca WHERE project_report_bit.report_id = {$current_report_data['id']}");
                                         //VOLUMENES LOSSES
                                         $losses = $this->Api->get_where('project_report_losses', array('report_id'=>$current_report_data['id']));
-                                        $data['losses'] = $losses[0];
+                                        $data['losses'] = isset($losses[0]) ? $losses[0] : null;
                                         //VOLUMENES RESUMEN
                                         $resumen = $this->Api->get_where('project_report_volumen', array('report_id'=>$current_report_data['id']));
-                                        $data['resumen'] = $resumen[0];
+                                        $data['resumen'] = isset($resumen[0]) ? $resumen[0] : null;
                                         
                                         
                                         //MUD PROPERITES
