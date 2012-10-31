@@ -32,7 +32,7 @@
 									} ?>
 									<input type="checkbox" <?= $checked; ?> value="<?= $material['id']?>" style="margin-right:10px;">
 								</td>
-								<td><input style="width:500px;max-width:500px;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+								<td><input title="Lubricante y reductor de torque - Anti-acresión y anti embotamiento (base hidrocarburo y/o vegetal)" style="cursor:pointer;width:500px;max-width:500px;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
 								<td><input style="width:50px;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
 								<td><input style="width:100px;" type="text" disabled="disabled" value="<?= $material['price'] ?>" /></td>
 								<td><input style="width:100px;" type="text" disabled="disabled" value="<?= $material['unit_name'] ?> (<?= $material['equivalencia'] ?><?= $material['unidad_destino'] ?>)" /></td>

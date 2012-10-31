@@ -1701,7 +1701,7 @@ $(function(){
 			completar_campo_val('volchem_0',Math.round(a.volumen_adicion_quimica));
 			completar_campo_val('volwateract',Math.round(a.volumen_adicion_agua));
 			completar_campo_val('volconsact',Math.round(a.volumen_construido));
-			completar_campo_val('voltransfact',Math.round(a.volumen_transferido_reservas));
+			completar_campo_val('voltransfact',Math.round(a.volumen_transferido_reservas) + Math.round(a.volumen_transferido_osc));
 			completar_campo_val('volfinalact',Math.round(a.volumen_final));
 			completar_campo_val('volrecosc',Math.round(a.volumen_recibido_osc));
 			completar_campo_val('voltransosc',Math.round(a.volumen_transferido_osc));
