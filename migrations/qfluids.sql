@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-10-22 06:15:21
+Date: 2012-10-31 16:07:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -313,7 +313,7 @@ CREATE TABLE `brocas_modelos` (
   `active` int(1) DEFAULT '1',
   `project_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of brocas_modelos
@@ -379,8 +379,6 @@ INSERT INTO `brocas_modelos` VALUES ('58', '1', '5 7/8', 'in', '5.875', 'in', '0
 INSERT INTO `brocas_modelos` VALUES ('59', '1', '5 7/8', 'in', '5.875', 'in', '0.82', 'ft', 'FM2633i', '0', '1', '1');
 INSERT INTO `brocas_modelos` VALUES ('60', '1', '5 7/8', 'in', '5.875', 'in', '0.66', 'ft', 'FM2641', '0', '1', '1');
 INSERT INTO `brocas_modelos` VALUES ('61', '1', '5 7/8', 'in', '5.875', 'in', '1.08', 'ft', 'FM2641r', '0', '1', '1');
-INSERT INTO `brocas_modelos` VALUES ('62', '1', '8 1/2', 'in', '8.5', 'in', '1', 'ft', 'cxxx', '0', '1', '1');
-INSERT INTO `brocas_modelos` VALUES ('63', '1', '17 1/4', 'in', '17.25', 'in', '7', 'ft', 'example', '0', '1', '1');
 
 -- ----------------------------
 -- Table structure for `casing`
@@ -400,13 +398,13 @@ CREATE TABLE `casing` (
   `active` int(1) DEFAULT '1',
   `project_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of casing
 -- ----------------------------
-INSERT INTO `casing` VALUES ('1', '1 1/20', '1.050', 'in', '0,824', '0.824', 'in', '1.140', 'ppf', '1', '0', '1');
-INSERT INTO `casing` VALUES ('2', '1 23/73', '1.315', 'in', '1,049', '1.049', 'in', '1.700', 'ppf', '1', '1', '1');
+INSERT INTO `casing` VALUES ('1', '1 1/20', '1.050', 'in', '0,824', '0.824', 'in', '1.140', 'ppf', '0', '1', '1');
+INSERT INTO `casing` VALUES ('2', '1 23/73', '1.315', 'in', '1,049', '1.049', 'in', '1.700', 'ppf', '0', '1', '1');
 INSERT INTO `casing` VALUES ('3', '1 33/50', '1.660', 'in', '1,41', '1.410', 'in', '2.100', 'ppf', '0', '1', '1');
 INSERT INTO `casing` VALUES ('4', '1 33/50', '1.660', 'in', '1,38', '1.380', 'in', '2.300', 'ppf', '0', '1', '1');
 INSERT INTO `casing` VALUES ('5', '1 9/10', '1.900', 'in', '1,65', '1.650', 'in', '2.400', 'ppf', '0', '1', '1');
@@ -600,12 +598,21 @@ INSERT INTO `casing` VALUES ('192', '42', '42.000', 'in', '41', '41.000', 'in', 
 INSERT INTO `casing` VALUES ('193', '42', '42.000', 'in', '40,75', '40.750', 'in', '276.200', 'ppf', '0', '1', '1');
 INSERT INTO `casing` VALUES ('194', '42', '42.000', 'in', '40,5', '40.500', 'in', '330.400', 'ppf', '0', '1', '1');
 INSERT INTO `casing` VALUES ('195', '42', '42.000', 'in', '40', '40.000', 'in', '437.900', 'ppf', '0', '1', '1');
-INSERT INTO `casing` VALUES ('196', '1 1/2', '1.500', null, null, '30.000', null, null, null, '0', '1', '1');
-INSERT INTO `casing` VALUES ('197', '1 1/2', '1.500', null, null, '2.800', null, null, null, '0', '1', '1');
-INSERT INTO `casing` VALUES ('198', '1 1/2', '1.500', null, null, '2.050', null, null, null, '0', '1', '1');
-INSERT INTO `casing` VALUES ('199', '6', '6.000', null, null, '5.000', null, null, null, '0', '1', '1');
-INSERT INTO `casing` VALUES ('200', '4', '4.000', null, null, '5.000', null, null, null, '0', '1', '1');
-INSERT INTO `casing` VALUES ('201', '2', '2.000', null, null, '5.000', null, null, null, '0', '1', '1');
+
+-- ----------------------------
+-- Table structure for `categories`
+-- ----------------------------
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
+  `id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  `parent` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of categories
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `chemical_aditions`
@@ -620,6 +627,7 @@ CREATE TABLE `chemical_aditions` (
   `increment_by_chemical` float DEFAULT NULL,
   `increment_by_water` float DEFAULT NULL,
   `status_producido` int(11) DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -654,11 +662,107 @@ CREATE TABLE `concentrations` (
   `material` int(11) DEFAULT NULL,
   `concentracion` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of concentrations
 -- ----------------------------
+INSERT INTO `concentrations` VALUES ('1', '1', '1', '0');
+INSERT INTO `concentrations` VALUES ('2', '2', '1', '0');
+INSERT INTO `concentrations` VALUES ('3', '1', '2', '0');
+INSERT INTO `concentrations` VALUES ('4', '2', '2', '0');
+INSERT INTO `concentrations` VALUES ('5', '1', '3', '0');
+INSERT INTO `concentrations` VALUES ('6', '2', '3', '0');
+INSERT INTO `concentrations` VALUES ('7', '1', '4', '0');
+INSERT INTO `concentrations` VALUES ('8', '2', '4', '0');
+INSERT INTO `concentrations` VALUES ('9', '1', '5', '0');
+INSERT INTO `concentrations` VALUES ('10', '2', '5', '0');
+INSERT INTO `concentrations` VALUES ('11', '1', '6', '0');
+INSERT INTO `concentrations` VALUES ('12', '2', '6', '0');
+INSERT INTO `concentrations` VALUES ('13', '1', '7', '0');
+INSERT INTO `concentrations` VALUES ('14', '2', '7', '0');
+INSERT INTO `concentrations` VALUES ('15', '1', '8', '0');
+INSERT INTO `concentrations` VALUES ('16', '2', '8', '0');
+INSERT INTO `concentrations` VALUES ('17', '1', '9', '0');
+INSERT INTO `concentrations` VALUES ('18', '2', '9', '0');
+INSERT INTO `concentrations` VALUES ('19', '1', '10', '0');
+INSERT INTO `concentrations` VALUES ('20', '2', '10', '0');
+INSERT INTO `concentrations` VALUES ('21', '1', '11', '0');
+INSERT INTO `concentrations` VALUES ('22', '2', '11', '0');
+INSERT INTO `concentrations` VALUES ('23', '1', '12', '0');
+INSERT INTO `concentrations` VALUES ('24', '2', '12', '0');
+INSERT INTO `concentrations` VALUES ('25', '3', '1', '0');
+INSERT INTO `concentrations` VALUES ('26', '4', '1', '0');
+INSERT INTO `concentrations` VALUES ('27', '3', '2', '0');
+INSERT INTO `concentrations` VALUES ('28', '4', '2', '0');
+INSERT INTO `concentrations` VALUES ('29', '3', '3', '0');
+INSERT INTO `concentrations` VALUES ('30', '4', '3', '0');
+INSERT INTO `concentrations` VALUES ('31', '3', '4', '0');
+INSERT INTO `concentrations` VALUES ('32', '4', '4', '0');
+INSERT INTO `concentrations` VALUES ('33', '3', '5', '0');
+INSERT INTO `concentrations` VALUES ('34', '4', '5', '0');
+INSERT INTO `concentrations` VALUES ('35', '3', '6', '0');
+INSERT INTO `concentrations` VALUES ('36', '4', '6', '0');
+INSERT INTO `concentrations` VALUES ('37', '3', '7', '0');
+INSERT INTO `concentrations` VALUES ('38', '4', '7', '0');
+INSERT INTO `concentrations` VALUES ('39', '3', '8', '0');
+INSERT INTO `concentrations` VALUES ('40', '4', '8', '0');
+INSERT INTO `concentrations` VALUES ('41', '3', '9', '0');
+INSERT INTO `concentrations` VALUES ('42', '4', '9', '0');
+INSERT INTO `concentrations` VALUES ('43', '3', '10', '0');
+INSERT INTO `concentrations` VALUES ('44', '4', '10', '0');
+INSERT INTO `concentrations` VALUES ('45', '3', '11', '0');
+INSERT INTO `concentrations` VALUES ('46', '4', '11', '0');
+INSERT INTO `concentrations` VALUES ('47', '3', '12', '0');
+INSERT INTO `concentrations` VALUES ('48', '4', '12', '0');
+INSERT INTO `concentrations` VALUES ('49', '5', '1', '0');
+INSERT INTO `concentrations` VALUES ('50', '6', '1', '0');
+INSERT INTO `concentrations` VALUES ('51', '5', '2', '0');
+INSERT INTO `concentrations` VALUES ('52', '6', '2', '0');
+INSERT INTO `concentrations` VALUES ('53', '5', '3', '0');
+INSERT INTO `concentrations` VALUES ('54', '6', '3', '0');
+INSERT INTO `concentrations` VALUES ('55', '5', '4', '0');
+INSERT INTO `concentrations` VALUES ('56', '6', '4', '0');
+INSERT INTO `concentrations` VALUES ('57', '5', '5', '0');
+INSERT INTO `concentrations` VALUES ('58', '6', '5', '0');
+INSERT INTO `concentrations` VALUES ('59', '5', '6', '0');
+INSERT INTO `concentrations` VALUES ('60', '6', '6', '0');
+INSERT INTO `concentrations` VALUES ('61', '5', '7', '0');
+INSERT INTO `concentrations` VALUES ('62', '6', '7', '0');
+INSERT INTO `concentrations` VALUES ('63', '5', '8', '0');
+INSERT INTO `concentrations` VALUES ('64', '6', '8', '0');
+INSERT INTO `concentrations` VALUES ('65', '5', '9', '0');
+INSERT INTO `concentrations` VALUES ('66', '6', '9', '0');
+INSERT INTO `concentrations` VALUES ('67', '5', '10', '0');
+INSERT INTO `concentrations` VALUES ('68', '6', '10', '0');
+INSERT INTO `concentrations` VALUES ('69', '5', '11', '0');
+INSERT INTO `concentrations` VALUES ('70', '6', '11', '0');
+INSERT INTO `concentrations` VALUES ('71', '5', '12', '0');
+INSERT INTO `concentrations` VALUES ('72', '6', '12', '0');
+INSERT INTO `concentrations` VALUES ('73', '7', '1', '0');
+INSERT INTO `concentrations` VALUES ('74', '8', '1', '0');
+INSERT INTO `concentrations` VALUES ('75', '7', '2', '0');
+INSERT INTO `concentrations` VALUES ('76', '8', '2', '0');
+INSERT INTO `concentrations` VALUES ('77', '7', '3', '0');
+INSERT INTO `concentrations` VALUES ('78', '8', '3', '0');
+INSERT INTO `concentrations` VALUES ('79', '7', '4', '0');
+INSERT INTO `concentrations` VALUES ('80', '8', '4', '0');
+INSERT INTO `concentrations` VALUES ('81', '7', '5', '0');
+INSERT INTO `concentrations` VALUES ('82', '8', '5', '0');
+INSERT INTO `concentrations` VALUES ('83', '7', '6', '0');
+INSERT INTO `concentrations` VALUES ('84', '8', '6', '0');
+INSERT INTO `concentrations` VALUES ('85', '7', '7', '0');
+INSERT INTO `concentrations` VALUES ('86', '8', '7', '0');
+INSERT INTO `concentrations` VALUES ('87', '7', '8', '0');
+INSERT INTO `concentrations` VALUES ('88', '8', '8', '0');
+INSERT INTO `concentrations` VALUES ('89', '7', '9', '0');
+INSERT INTO `concentrations` VALUES ('90', '8', '9', '0');
+INSERT INTO `concentrations` VALUES ('91', '7', '10', '0');
+INSERT INTO `concentrations` VALUES ('92', '8', '10', '0');
+INSERT INTO `concentrations` VALUES ('93', '7', '11', '0');
+INSERT INTO `concentrations` VALUES ('94', '8', '11', '0');
+INSERT INTO `concentrations` VALUES ('95', '7', '12', '0');
+INSERT INTO `concentrations` VALUES ('96', '8', '12', '0');
 
 -- ----------------------------
 -- Table structure for `conversions_table`
@@ -691,16 +795,23 @@ CREATE TABLE `inventory` (
   `project_id` int(11) DEFAULT NULL,
   `received` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of inventory
 -- ----------------------------
-INSERT INTO `inventory` VALUES ('1', '1', '550', '50', '0', '1', '600');
-INSERT INTO `inventory` VALUES ('2', '2', '525', '75', '0', '1', '600');
-INSERT INTO `inventory` VALUES ('3', '3', '0', '0', '0', '1', '0');
-INSERT INTO `inventory` VALUES ('4', '10', '565', '35', '0', '1', '600');
-INSERT INTO `inventory` VALUES ('5', '4', '501', '99', '0', '1', '600');
+INSERT INTO `inventory` VALUES ('1', '1', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('2', '2', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('3', '3', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('4', '10', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('5', '4', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('6', '5', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('7', '6', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('8', '7', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('9', '8', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('10', '9', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('11', '11', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('12', '12', '100', '0', '0', '1', '100');
 
 -- ----------------------------
 -- Table structure for `inventory_movements`
@@ -719,56 +830,85 @@ CREATE TABLE `inventory_movements` (
   `product` int(11) DEFAULT NULL,
   `stock_transfer` int(11) DEFAULT NULL,
   `chemical_adition` int(11) DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=257 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of inventory_movements
 -- ----------------------------
-INSERT INTO `inventory_movements` VALUES ('213', '1', '21', null, null, '2012-10-19 11:55:24', null, '0', '100', '1', '4', null);
-INSERT INTO `inventory_movements` VALUES ('214', '1', '21', null, null, '2012-10-19 11:55:24', null, '0', '200', '2', '4', null);
-INSERT INTO `inventory_movements` VALUES ('215', '1', '21', null, null, '2012-10-19 11:55:24', null, '0', '300', '4', '4', null);
-INSERT INTO `inventory_movements` VALUES ('216', '1', '21', null, null, '2012-10-19 11:55:24', null, '0', '400', '10', '4', null);
-INSERT INTO `inventory_movements` VALUES ('217', '1', '21', null, null, '2012-10-19 14:41:45', null, '0', '400', '1', '5', null);
-INSERT INTO `inventory_movements` VALUES ('218', '1', '21', null, null, '2012-10-19 14:41:45', null, '0', '300', '2', '5', null);
-INSERT INTO `inventory_movements` VALUES ('219', '1', '21', null, null, '2012-10-19 14:41:45', null, '0', '200', '4', '5', null);
-INSERT INTO `inventory_movements` VALUES ('220', '1', '21', null, null, '2012-10-19 14:41:45', null, '0', '100', '10', '5', null);
-INSERT INTO `inventory_movements` VALUES ('221', '1', '21', null, null, '2012-10-19 16:04:06', null, '0', '100', '1', '6', null);
-INSERT INTO `inventory_movements` VALUES ('222', '1', '21', null, null, '2012-10-19 16:04:06', null, '0', '100', '2', '6', null);
-INSERT INTO `inventory_movements` VALUES ('223', '1', '21', null, null, '2012-10-19 16:04:06', null, '0', '100', '4', '6', null);
-INSERT INTO `inventory_movements` VALUES ('224', '1', '21', null, null, '2012-10-19 16:04:06', null, '0', '100', '10', '6', null);
-INSERT INTO `inventory_movements` VALUES ('225', '1', '21', null, null, '2012-10-19 16:05:02', null, '2', '20', '1', null, '2');
-INSERT INTO `inventory_movements` VALUES ('226', '1', '21', null, null, '2012-10-19 16:05:02', null, '2', '30', '2', null, '2');
-INSERT INTO `inventory_movements` VALUES ('227', '1', '21', null, null, '2012-10-19 16:05:03', null, '2', '60', '4', null, '2');
-INSERT INTO `inventory_movements` VALUES ('228', '1', '21', null, null, '2012-10-19 16:05:03', null, '2', '0', '10', null, '2');
-INSERT INTO `inventory_movements` VALUES ('229', '1', '21', null, null, '2012-10-19 16:08:30', null, '2', '10', '1', null, '3');
-INSERT INTO `inventory_movements` VALUES ('230', '1', '21', null, null, '2012-10-19 16:08:30', null, '2', '10', '2', null, '3');
-INSERT INTO `inventory_movements` VALUES ('231', '1', '21', null, null, '2012-10-19 16:08:31', null, '2', '9', '4', null, '3');
-INSERT INTO `inventory_movements` VALUES ('232', '1', '21', null, null, '2012-10-19 16:08:31', null, '2', '0', '10', null, '3');
-INSERT INTO `inventory_movements` VALUES ('233', '1', '21', null, null, '2012-10-19 16:14:11', null, '2', '10', '1', null, '4');
-INSERT INTO `inventory_movements` VALUES ('234', '1', '21', null, null, '2012-10-19 16:14:12', null, '2', '20', '2', null, '4');
-INSERT INTO `inventory_movements` VALUES ('235', '1', '21', null, null, '2012-10-19 16:14:12', null, '2', '10', '4', null, '4');
-INSERT INTO `inventory_movements` VALUES ('236', '1', '21', null, null, '2012-10-19 16:14:12', null, '2', '10', '10', null, '4');
-INSERT INTO `inventory_movements` VALUES ('237', '1', '21', null, null, '2012-10-20 10:44:47', null, '2', '0', '1', null, '5');
-INSERT INTO `inventory_movements` VALUES ('238', '1', '21', null, null, '2012-10-20 10:44:47', null, '2', '0', '2', null, '5');
-INSERT INTO `inventory_movements` VALUES ('239', '1', '21', null, null, '2012-10-20 10:44:47', null, '2', '0', '4', null, '5');
-INSERT INTO `inventory_movements` VALUES ('240', '1', '21', null, null, '2012-10-20 10:44:47', null, '2', '0', '10', null, '5');
-INSERT INTO `inventory_movements` VALUES ('241', '1', '21', null, null, '2012-10-21 16:56:48', null, '2', '0', '1', null, '6');
-INSERT INTO `inventory_movements` VALUES ('242', '1', '21', null, null, '2012-10-21 16:56:48', null, '2', '0', '2', null, '6');
-INSERT INTO `inventory_movements` VALUES ('243', '1', '21', null, null, '2012-10-21 16:56:48', null, '2', '0', '4', null, '6');
-INSERT INTO `inventory_movements` VALUES ('244', '1', '21', null, null, '2012-10-21 16:56:48', null, '2', '0', '10', null, '6');
-INSERT INTO `inventory_movements` VALUES ('245', '1', '21', null, null, '2012-10-21 17:50:10', null, '2', '0', '1', null, '7');
-INSERT INTO `inventory_movements` VALUES ('246', '1', '21', null, null, '2012-10-21 17:50:10', null, '2', '0', '2', null, '7');
-INSERT INTO `inventory_movements` VALUES ('247', '1', '21', null, null, '2012-10-21 17:50:10', null, '2', '0', '4', null, '7');
-INSERT INTO `inventory_movements` VALUES ('248', '1', '21', null, null, '2012-10-21 17:50:10', null, '2', '0', '10', null, '7');
-INSERT INTO `inventory_movements` VALUES ('249', '1', '21', null, null, '2012-10-21 18:00:38', null, '2', '0', '1', null, '8');
-INSERT INTO `inventory_movements` VALUES ('250', '1', '21', null, null, '2012-10-21 18:00:38', null, '2', '0', '2', null, '8');
-INSERT INTO `inventory_movements` VALUES ('251', '1', '21', null, null, '2012-10-21 18:00:38', null, '2', '0', '4', null, '8');
-INSERT INTO `inventory_movements` VALUES ('252', '1', '21', null, null, '2012-10-21 18:00:38', null, '2', '0', '10', null, '8');
-INSERT INTO `inventory_movements` VALUES ('253', '1', '21', null, null, '2012-10-21 18:03:12', null, '2', '10', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('254', '1', '21', null, null, '2012-10-21 18:03:12', null, '2', '15', '2', null, '1');
-INSERT INTO `inventory_movements` VALUES ('255', '1', '21', null, null, '2012-10-21 18:03:13', null, '2', '20', '4', null, '1');
-INSERT INTO `inventory_movements` VALUES ('256', '1', '21', null, null, '2012-10-21 18:03:13', null, '2', '25', '10', null, '1');
+INSERT INTO `inventory_movements` VALUES ('1', '1', '1', null, null, '2012-10-26 07:06:32', null, '0', '100', '1', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('2', '1', '1', null, null, '2012-10-26 07:06:32', null, '0', '100', '2', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('3', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '3', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('4', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '4', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('5', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '5', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('6', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '6', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('7', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '7', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('8', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '8', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('9', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '9', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('10', '1', '1', null, null, '2012-10-26 07:06:34', null, '0', '100', '10', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('11', '1', '1', null, null, '2012-10-26 07:06:34', null, '0', '100', '11', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('12', '1', '1', null, null, '2012-10-26 07:06:34', null, '0', '100', '12', '1', null, '1');
+INSERT INTO `inventory_movements` VALUES ('13', '1', '1', null, null, '2012-10-26 07:06:58', null, '2', '10', '1', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('14', '1', '1', null, null, '2012-10-26 07:06:58', null, '2', '0', '2', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('15', '1', '1', null, null, '2012-10-26 07:06:59', null, '2', '0', '3', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('16', '1', '1', null, null, '2012-10-26 07:06:59', null, '2', '0', '4', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('17', '1', '1', null, null, '2012-10-26 07:06:59', null, '2', '0', '5', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('18', '1', '1', null, null, '2012-10-26 07:06:59', null, '2', '0', '6', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('19', '1', '1', null, null, '2012-10-26 07:06:59', null, '2', '0', '7', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('20', '1', '1', null, null, '2012-10-26 07:07:00', null, '2', '0', '8', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('21', '1', '1', null, null, '2012-10-26 07:07:00', null, '2', '0', '9', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('22', '1', '1', null, null, '2012-10-26 07:07:00', null, '2', '0', '10', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('23', '1', '1', null, null, '2012-10-26 07:07:00', null, '2', '0', '11', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('24', '1', '1', null, null, '2012-10-26 07:07:00', null, '2', '0', '12', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('25', '1', '1', null, null, '2012-10-26 07:09:49', null, '2', '0', '1', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('26', '1', '1', null, null, '2012-10-26 07:09:49', null, '2', '0', '2', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('27', '1', '1', null, null, '2012-10-26 07:09:49', null, '2', '0', '3', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('28', '1', '1', null, null, '2012-10-26 07:09:49', null, '2', '0', '4', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('29', '1', '1', null, null, '2012-10-26 07:09:49', null, '2', '0', '5', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('30', '1', '1', null, null, '2012-10-26 07:09:50', null, '2', '0', '6', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('31', '1', '1', null, null, '2012-10-26 07:09:50', null, '2', '0', '7', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('32', '1', '1', null, null, '2012-10-26 07:09:50', null, '2', '0', '8', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('33', '1', '1', null, null, '2012-10-26 07:09:50', null, '2', '0', '9', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('34', '1', '1', null, null, '2012-10-26 07:09:51', null, '2', '0', '10', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('35', '1', '1', null, null, '2012-10-26 07:09:51', null, '2', '0', '11', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('36', '1', '1', null, null, '2012-10-26 07:09:51', null, '2', '0', '12', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('37', '1', '1', null, null, '2012-10-26 11:40:57', null, '2', '0', '1', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('38', '1', '1', null, null, '2012-10-26 11:40:57', null, '2', '0', '2', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('39', '1', '1', null, null, '2012-10-26 11:40:57', null, '2', '0', '3', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('40', '1', '1', null, null, '2012-10-26 11:40:57', null, '2', '0', '4', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('41', '1', '1', null, null, '2012-10-26 11:40:57', null, '2', '0', '5', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('42', '1', '1', null, null, '2012-10-26 11:40:58', null, '2', '0', '6', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('43', '1', '1', null, null, '2012-10-26 11:40:58', null, '2', '0', '7', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('44', '1', '1', null, null, '2012-10-26 11:40:58', null, '2', '0', '8', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('45', '1', '1', null, null, '2012-10-26 11:40:58', null, '2', '0', '9', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('46', '1', '1', null, null, '2012-10-26 11:40:58', null, '2', '0', '10', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('47', '1', '1', null, null, '2012-10-26 11:40:59', null, '2', '0', '11', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('48', '1', '1', null, null, '2012-10-26 11:40:59', null, '2', '0', '12', null, '1', '0');
+INSERT INTO `inventory_movements` VALUES ('49', '1', '1', null, null, '2012-10-26 11:47:01', null, '2', '0', '1', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('50', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '2', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('51', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '3', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('52', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '4', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('53', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '5', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('54', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '6', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('55', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '7', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('56', '1', '1', null, null, '2012-10-26 11:47:03', null, '2', '0', '8', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('57', '1', '1', null, null, '2012-10-26 11:47:03', null, '2', '0', '9', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('58', '1', '1', null, null, '2012-10-26 11:47:03', null, '2', '0', '10', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('59', '1', '1', null, null, '2012-10-26 11:47:03', null, '2', '0', '11', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('60', '1', '1', null, null, '2012-10-26 11:47:03', null, '2', '0', '12', null, '2', '0');
+INSERT INTO `inventory_movements` VALUES ('61', '1', '1', null, null, '2012-10-26 11:52:32', null, '2', '0', '1', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('62', '1', '1', null, null, '2012-10-26 11:52:32', null, '2', '0', '2', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('63', '1', '1', null, null, '2012-10-26 11:52:32', null, '2', '0', '3', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('64', '1', '1', null, null, '2012-10-26 11:52:32', null, '2', '0', '4', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('65', '1', '1', null, null, '2012-10-26 11:52:32', null, '2', '0', '5', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('66', '1', '1', null, null, '2012-10-26 11:52:33', null, '2', '0', '6', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('67', '1', '1', null, null, '2012-10-26 11:52:33', null, '2', '0', '7', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('68', '1', '1', null, null, '2012-10-26 11:52:33', null, '2', '0', '8', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('69', '1', '1', null, null, '2012-10-26 11:52:33', null, '2', '0', '9', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('70', '1', '1', null, null, '2012-10-26 11:52:33', null, '2', '0', '10', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('71', '1', '1', null, null, '2012-10-26 11:52:34', null, '2', '0', '11', null, '3', '0');
+INSERT INTO `inventory_movements` VALUES ('72', '1', '1', null, null, '2012-10-26 11:52:34', null, '2', '0', '12', null, '3', '0');
 
 -- ----------------------------
 -- Table structure for `lodos`
@@ -798,21 +938,43 @@ INSERT INTO `lodos` VALUES ('9', 'Q - Vert', '0', '1', '1');
 INSERT INTO `lodos` VALUES ('10', 'Q - NK', '0', '1', '1');
 
 -- ----------------------------
--- Table structure for `mvc_road`
+-- Table structure for `materials`
 -- ----------------------------
-DROP TABLE IF EXISTS `mvc_road`;
-CREATE TABLE `mvc_road` (
+DROP TABLE IF EXISTS `materials`;
+CREATE TABLE `materials` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `timestamp` datetime DEFAULT NULL,
-  `report` int(11) DEFAULT NULL,
+  `project_id` int(11) DEFAULT NULL,
+  `erp_id` varchar(255) DEFAULT NULL,
+  `internal_name` varchar(255) DEFAULT NULL,
+  `unit` int(11) DEFAULT NULL,
+  `egravity` float DEFAULT NULL,
+  `category` int(11) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `step_tanks` int(11) DEFAULT NULL,
-  `step_concentrations` int(11) DEFAULT NULL,
+  `custom` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of mvc_road
+-- Records of materials
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `mvc_trunk`
+-- ----------------------------
+DROP TABLE IF EXISTS `mvc_trunk`;
+CREATE TABLE `mvc_trunk` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `timestamp` datetime DEFAULT NULL,
+  `report` int(11) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `tree` varchar(255) DEFAULT NULL,
+  `subtree` int(11) DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of mvc_trunk
 -- ----------------------------
 
 -- ----------------------------
@@ -829,32 +991,11 @@ CREATE TABLE `personal` (
   `rate` float DEFAULT NULL,
   `active` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of personal
 -- ----------------------------
-INSERT INTO `personal` VALUES ('1', '1030529971', 'Paternina', 'José', '1', '1', '500', '1');
-INSERT INTO `personal` VALUES ('2', '72302448', 'ANTEQUERA', 'DAVID', '1', '1', '700', '1');
-INSERT INTO `personal` VALUES ('3', '1098629008', 'Fernanda', 'Maria', '1', '1', '200', '0');
-INSERT INTO `personal` VALUES ('4', '12345678', 'GOMEZ', 'OSCAR', '1', '1', '499', '1');
-INSERT INTO `personal` VALUES ('5', '25845942', 'fsasf', 'fafad', '1', '1', '500', '0');
-INSERT INTO `personal` VALUES ('6', '123', 'lalala', 'lalal', '1', '2', '300', '0');
-INSERT INTO `personal` VALUES ('7', '098', 'iui', 'iui', '1', '4', '100', '0');
-INSERT INTO `personal` VALUES ('8', '91525414', 'gutierrez', 'fabian', '1', '4', '200', '0');
-INSERT INTO `personal` VALUES ('9', '13822956', 'gutierrez', 'jairo', '1', '5', '100', '0');
-INSERT INTO `personal` VALUES ('10', '', '', '', '1', '3', '0', '0');
-INSERT INTO `personal` VALUES ('11', '1098629008', 'gutierrez', 'fernanda', '1', '3', '0', '0');
-INSERT INTO `personal` VALUES ('12', '888999', 'gutierrez', 'fabian', '1', '4', '0', '1');
-INSERT INTO `personal` VALUES ('13', '7777888', 'gutierrez', 'jairo', '1', '5', '0', '1');
-INSERT INTO `personal` VALUES ('14', '123', 'perez', 'juan', '1', '4', '100', '1');
-INSERT INTO `personal` VALUES ('15', '234', 'jimenez', 'milagros', '1', '4', '100', '1');
-INSERT INTO `personal` VALUES ('16', '09878', 'PEREZ', 'JUAN', '1', '1', '500', '1');
-INSERT INTO `personal` VALUES ('17', '8888', 'ceceres', 'pedro', '1', '5', '50', '1');
-INSERT INTO `personal` VALUES ('18', '111111', 'aguirre', 'gustavo', '1', '5', '25', '1');
-INSERT INTO `personal` VALUES ('19', '9999999', 'claro', 'carlos', '1', '4', '100', '1');
-INSERT INTO `personal` VALUES ('20', '5654', 'gomez', 'henry', '1', '5', '50', '0');
-INSERT INTO `personal` VALUES ('21', 'r5435', 'ljlkj', 'kljklj', '1', '1', '500', '0');
 
 -- ----------------------------
 -- Table structure for `personal_categories`
@@ -889,14 +1030,11 @@ CREATE TABLE `personal_report_enginers` (
   `cover` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of personal_report_enginers
 -- ----------------------------
-INSERT INTO `personal_report_enginers` VALUES ('1', '1', '1', '1', '2012-09-12');
-INSERT INTO `personal_report_enginers` VALUES ('2', '1', '1', '1', '2012-09-28');
-INSERT INTO `personal_report_enginers` VALUES ('3', '1', '1', '1', '2012-09-27');
 
 -- ----------------------------
 -- Table structure for `program`
@@ -913,218 +1051,11 @@ CREATE TABLE `program` (
   KEY `fk_program_projects_idx` (`project_id`) USING BTREE,
   CONSTRAINT `program_ibfk_1` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `program_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of program
 -- ----------------------------
-INSERT INTO `program` VALUES ('1', '1', '1', '1', '1');
-INSERT INTO `program` VALUES ('2', '1', '1', '2', '1');
-INSERT INTO `program` VALUES ('3', '1', '1', '3', '1');
-INSERT INTO `program` VALUES ('4', '1', '2', '1', '1');
-INSERT INTO `program` VALUES ('5', '1', '2', '2', '1');
-INSERT INTO `program` VALUES ('6', '1', '2', '3', '1');
-INSERT INTO `program` VALUES ('7', '1', '3', '1', '11');
-INSERT INTO `program` VALUES ('8', '1', '3', '2', '1');
-INSERT INTO `program` VALUES ('9', '1', '3', '3', '1');
-INSERT INTO `program` VALUES ('10', '1', '4', '1', '1');
-INSERT INTO `program` VALUES ('11', '1', '4', '2', '1');
-INSERT INTO `program` VALUES ('12', '1', '4', '3', '1');
-INSERT INTO `program` VALUES ('13', '1', '5', '1', '1');
-INSERT INTO `program` VALUES ('14', '1', '5', '2', '1');
-INSERT INTO `program` VALUES ('15', '1', '5', '3', '1');
-INSERT INTO `program` VALUES ('16', '1', '6', '1', '1');
-INSERT INTO `program` VALUES ('17', '1', '6', '2', '1');
-INSERT INTO `program` VALUES ('18', '1', '6', '3', '11');
-INSERT INTO `program` VALUES ('19', '1', '7', '1', '1');
-INSERT INTO `program` VALUES ('20', '1', '7', '2', '1');
-INSERT INTO `program` VALUES ('21', '1', '7', '3', '1');
-INSERT INTO `program` VALUES ('22', '1', '8', '1', '1');
-INSERT INTO `program` VALUES ('23', '1', '8', '2', '1');
-INSERT INTO `program` VALUES ('24', '1', '8', '3', '1');
-INSERT INTO `program` VALUES ('25', '1', '9', '1', '1');
-INSERT INTO `program` VALUES ('26', '1', '9', '2', '1');
-INSERT INTO `program` VALUES ('27', '1', '9', '3', '1');
-INSERT INTO `program` VALUES ('28', '1', '10', '1', '1');
-INSERT INTO `program` VALUES ('29', '1', '10', '2', '1');
-INSERT INTO `program` VALUES ('30', '1', '10', '3', '1');
-INSERT INTO `program` VALUES ('31', '1', '11', '1', '1');
-INSERT INTO `program` VALUES ('32', '1', '11', '2', '1');
-INSERT INTO `program` VALUES ('33', '1', '11', '3', '1');
-INSERT INTO `program` VALUES ('34', '1', '12', '1', '1');
-INSERT INTO `program` VALUES ('35', '1', '12', '2', '1');
-INSERT INTO `program` VALUES ('36', '1', '12', '3', '1');
-INSERT INTO `program` VALUES ('37', '1', '13', '1', '1');
-INSERT INTO `program` VALUES ('38', '1', '13', '2', '1');
-INSERT INTO `program` VALUES ('39', '1', '13', '3', '1');
-INSERT INTO `program` VALUES ('40', '1', '14', '1', '1');
-INSERT INTO `program` VALUES ('41', '1', '14', '2', '1');
-INSERT INTO `program` VALUES ('42', '1', '14', '3', '1');
-INSERT INTO `program` VALUES ('43', '1', '15', '1', '1');
-INSERT INTO `program` VALUES ('44', '1', '15', '2', '1');
-INSERT INTO `program` VALUES ('45', '1', '15', '3', '1');
-INSERT INTO `program` VALUES ('46', '1', '1', '1', '0');
-INSERT INTO `program` VALUES ('47', '1', '1', '2', '0');
-INSERT INTO `program` VALUES ('48', '1', '1', '3', '0');
-INSERT INTO `program` VALUES ('49', '1', '2', '1', '0');
-INSERT INTO `program` VALUES ('50', '1', '2', '2', '0');
-INSERT INTO `program` VALUES ('51', '1', '2', '3', '0');
-INSERT INTO `program` VALUES ('52', '1', '3', '1', '0');
-INSERT INTO `program` VALUES ('53', '1', '3', '2', '0');
-INSERT INTO `program` VALUES ('54', '1', '3', '3', '0');
-INSERT INTO `program` VALUES ('55', '1', '4', '1', '0');
-INSERT INTO `program` VALUES ('56', '1', '4', '2', '0');
-INSERT INTO `program` VALUES ('57', '1', '4', '3', '0');
-INSERT INTO `program` VALUES ('58', '1', '5', '1', '0');
-INSERT INTO `program` VALUES ('59', '1', '5', '2', '0');
-INSERT INTO `program` VALUES ('60', '1', '5', '3', '0');
-INSERT INTO `program` VALUES ('61', '1', '6', '1', '0');
-INSERT INTO `program` VALUES ('62', '1', '6', '2', '0');
-INSERT INTO `program` VALUES ('63', '1', '6', '3', '0');
-INSERT INTO `program` VALUES ('64', '1', '7', '1', '0');
-INSERT INTO `program` VALUES ('65', '1', '7', '2', '0');
-INSERT INTO `program` VALUES ('66', '1', '7', '3', '0');
-INSERT INTO `program` VALUES ('67', '1', '8', '1', '0');
-INSERT INTO `program` VALUES ('68', '1', '8', '2', '0');
-INSERT INTO `program` VALUES ('69', '1', '8', '3', '0');
-INSERT INTO `program` VALUES ('70', '1', '9', '1', '0');
-INSERT INTO `program` VALUES ('71', '1', '9', '2', '0');
-INSERT INTO `program` VALUES ('72', '1', '9', '3', '0');
-INSERT INTO `program` VALUES ('73', '1', '10', '1', '0');
-INSERT INTO `program` VALUES ('74', '1', '10', '2', '0');
-INSERT INTO `program` VALUES ('75', '1', '10', '3', '0');
-INSERT INTO `program` VALUES ('76', '1', '11', '1', '0');
-INSERT INTO `program` VALUES ('77', '1', '11', '2', '0');
-INSERT INTO `program` VALUES ('78', '1', '11', '3', '0');
-INSERT INTO `program` VALUES ('79', '1', '12', '1', '0');
-INSERT INTO `program` VALUES ('80', '1', '12', '2', '0');
-INSERT INTO `program` VALUES ('81', '1', '12', '3', '0');
-INSERT INTO `program` VALUES ('82', '1', '13', '1', '0');
-INSERT INTO `program` VALUES ('83', '1', '13', '2', '0');
-INSERT INTO `program` VALUES ('84', '1', '13', '3', '0');
-INSERT INTO `program` VALUES ('85', '1', '14', '1', '0');
-INSERT INTO `program` VALUES ('86', '1', '14', '2', '0');
-INSERT INTO `program` VALUES ('87', '1', '14', '3', '0');
-INSERT INTO `program` VALUES ('88', '1', '15', '1', '0');
-INSERT INTO `program` VALUES ('89', '1', '15', '2', '0');
-INSERT INTO `program` VALUES ('90', '1', '15', '3', '0');
-INSERT INTO `program` VALUES ('91', '1', '1', '1', '0');
-INSERT INTO `program` VALUES ('92', '1', '1', '2', '0');
-INSERT INTO `program` VALUES ('93', '1', '1', '3', '0');
-INSERT INTO `program` VALUES ('94', '1', '2', '1', '0');
-INSERT INTO `program` VALUES ('95', '1', '2', '2', '0');
-INSERT INTO `program` VALUES ('96', '1', '2', '3', '0');
-INSERT INTO `program` VALUES ('97', '1', '3', '1', '0');
-INSERT INTO `program` VALUES ('98', '1', '3', '2', '0');
-INSERT INTO `program` VALUES ('99', '1', '3', '3', '0');
-INSERT INTO `program` VALUES ('100', '1', '4', '1', '0');
-INSERT INTO `program` VALUES ('101', '1', '4', '2', '0');
-INSERT INTO `program` VALUES ('102', '1', '4', '3', '0');
-INSERT INTO `program` VALUES ('103', '1', '5', '1', '0');
-INSERT INTO `program` VALUES ('104', '1', '5', '2', '0');
-INSERT INTO `program` VALUES ('105', '1', '5', '3', '0');
-INSERT INTO `program` VALUES ('106', '1', '6', '1', '0');
-INSERT INTO `program` VALUES ('107', '1', '6', '2', '0');
-INSERT INTO `program` VALUES ('108', '1', '6', '3', '0');
-INSERT INTO `program` VALUES ('109', '1', '7', '1', '0');
-INSERT INTO `program` VALUES ('110', '1', '7', '2', '0');
-INSERT INTO `program` VALUES ('111', '1', '7', '3', '0');
-INSERT INTO `program` VALUES ('112', '1', '8', '1', '0');
-INSERT INTO `program` VALUES ('113', '1', '8', '2', '0');
-INSERT INTO `program` VALUES ('114', '1', '8', '3', '0');
-INSERT INTO `program` VALUES ('115', '1', '9', '1', '0');
-INSERT INTO `program` VALUES ('116', '1', '9', '2', '0');
-INSERT INTO `program` VALUES ('117', '1', '9', '3', '0');
-INSERT INTO `program` VALUES ('118', '1', '10', '1', '0');
-INSERT INTO `program` VALUES ('119', '1', '10', '2', '0');
-INSERT INTO `program` VALUES ('120', '1', '10', '3', '0');
-INSERT INTO `program` VALUES ('121', '1', '11', '1', '0');
-INSERT INTO `program` VALUES ('122', '1', '11', '2', '0');
-INSERT INTO `program` VALUES ('123', '1', '11', '3', '0');
-INSERT INTO `program` VALUES ('124', '1', '12', '1', '0');
-INSERT INTO `program` VALUES ('125', '1', '12', '2', '0');
-INSERT INTO `program` VALUES ('126', '1', '12', '3', '0');
-INSERT INTO `program` VALUES ('127', '1', '13', '1', '0');
-INSERT INTO `program` VALUES ('128', '1', '13', '2', '0');
-INSERT INTO `program` VALUES ('129', '1', '13', '3', '0');
-INSERT INTO `program` VALUES ('130', '1', '14', '1', '0');
-INSERT INTO `program` VALUES ('131', '1', '14', '2', '0');
-INSERT INTO `program` VALUES ('132', '1', '14', '3', '0');
-INSERT INTO `program` VALUES ('133', '1', '15', '1', '0');
-INSERT INTO `program` VALUES ('134', '1', '15', '2', '0');
-INSERT INTO `program` VALUES ('135', '1', '15', '3', '0');
-INSERT INTO `program` VALUES ('136', '1', '17', '1', '2');
-INSERT INTO `program` VALUES ('137', '1', '17', '2', '2');
-INSERT INTO `program` VALUES ('138', '1', '17', '3', '2');
-INSERT INTO `program` VALUES ('139', '1', '18', '1', '2');
-INSERT INTO `program` VALUES ('140', '1', '18', '2', '2');
-INSERT INTO `program` VALUES ('141', '1', '18', '3', '2');
-INSERT INTO `program` VALUES ('142', '1', '19', '1', '2');
-INSERT INTO `program` VALUES ('143', '1', '19', '2', '2');
-INSERT INTO `program` VALUES ('144', '1', '19', '3', '2');
-INSERT INTO `program` VALUES ('145', '1', '20', '1', '2');
-INSERT INTO `program` VALUES ('146', '1', '20', '2', '2');
-INSERT INTO `program` VALUES ('147', '1', '20', '3', '2');
-INSERT INTO `program` VALUES ('148', '1', '21', '1', '2');
-INSERT INTO `program` VALUES ('149', '1', '21', '2', '2');
-INSERT INTO `program` VALUES ('150', '1', '21', '3', '2');
-INSERT INTO `program` VALUES ('151', '1', '22', '1', '2');
-INSERT INTO `program` VALUES ('152', '1', '22', '2', '2');
-INSERT INTO `program` VALUES ('153', '1', '22', '3', '2');
-INSERT INTO `program` VALUES ('154', '1', '23', '1', '2');
-INSERT INTO `program` VALUES ('155', '1', '23', '2', '2');
-INSERT INTO `program` VALUES ('156', '1', '23', '3', '2');
-INSERT INTO `program` VALUES ('157', '1', '24', '1', '2');
-INSERT INTO `program` VALUES ('158', '1', '24', '2', '2');
-INSERT INTO `program` VALUES ('159', '1', '24', '3', '2');
-INSERT INTO `program` VALUES ('160', '1', '25', '1', '2');
-INSERT INTO `program` VALUES ('161', '1', '25', '2', '2');
-INSERT INTO `program` VALUES ('162', '1', '25', '3', '2');
-INSERT INTO `program` VALUES ('163', '1', '26', '1', '2');
-INSERT INTO `program` VALUES ('164', '1', '26', '2', '2');
-INSERT INTO `program` VALUES ('165', '1', '26', '3', '2');
-INSERT INTO `program` VALUES ('166', '1', '27', '1', '2');
-INSERT INTO `program` VALUES ('167', '1', '27', '2', '2');
-INSERT INTO `program` VALUES ('168', '1', '27', '3', '2');
-INSERT INTO `program` VALUES ('169', '1', '28', '1', '2');
-INSERT INTO `program` VALUES ('170', '1', '28', '2', '2');
-INSERT INTO `program` VALUES ('171', '1', '28', '3', '2');
-INSERT INTO `program` VALUES ('172', '1', '29', '1', '2');
-INSERT INTO `program` VALUES ('173', '1', '29', '2', '2');
-INSERT INTO `program` VALUES ('174', '1', '29', '3', '2');
-INSERT INTO `program` VALUES ('175', '1', '30', '1', '2');
-INSERT INTO `program` VALUES ('176', '1', '30', '2', '2');
-INSERT INTO `program` VALUES ('177', '1', '30', '3', '2');
-INSERT INTO `program` VALUES ('178', '1', '31', '1', '2');
-INSERT INTO `program` VALUES ('179', '1', '31', '2', '2');
-INSERT INTO `program` VALUES ('180', '1', '31', '3', '2');
-INSERT INTO `program` VALUES ('181', '1', '32', '1', '3');
-INSERT INTO `program` VALUES ('182', '1', '32', '2', '3');
-INSERT INTO `program` VALUES ('183', '1', '32', '3', '3');
-INSERT INTO `program` VALUES ('184', '1', '33', '1', '3');
-INSERT INTO `program` VALUES ('185', '1', '33', '2', '3');
-INSERT INTO `program` VALUES ('186', '1', '33', '3', '3');
-INSERT INTO `program` VALUES ('187', '1', '34', '1', '3');
-INSERT INTO `program` VALUES ('188', '1', '34', '2', '3');
-INSERT INTO `program` VALUES ('189', '1', '34', '3', '3');
-INSERT INTO `program` VALUES ('190', '1', '35', '1', '3');
-INSERT INTO `program` VALUES ('191', '1', '35', '2', '3');
-INSERT INTO `program` VALUES ('192', '1', '35', '3', '3');
-INSERT INTO `program` VALUES ('193', '1', '36', '1', '3');
-INSERT INTO `program` VALUES ('194', '1', '36', '2', '3');
-INSERT INTO `program` VALUES ('195', '1', '36', '3', '3');
-INSERT INTO `program` VALUES ('196', '1', '37', '1', '3');
-INSERT INTO `program` VALUES ('197', '1', '37', '2', '3');
-INSERT INTO `program` VALUES ('198', '1', '37', '3', '3');
-INSERT INTO `program` VALUES ('199', '1', '38', '1', '3');
-INSERT INTO `program` VALUES ('200', '1', '38', '2', '3');
-INSERT INTO `program` VALUES ('201', '1', '38', '3', '3');
-INSERT INTO `program` VALUES ('202', '1', '39', '1', '3');
-INSERT INTO `program` VALUES ('203', '1', '39', '2', '3');
-INSERT INTO `program` VALUES ('204', '1', '39', '3', '3');
-INSERT INTO `program` VALUES ('205', '1', '50', '1', '1');
-INSERT INTO `program` VALUES ('206', '1', '50', '2', '1');
-INSERT INTO `program` VALUES ('207', '1', '50', '3', '1');
 
 -- ----------------------------
 -- Table structure for `project_centrifugues`
@@ -1144,12 +1075,12 @@ CREATE TABLE `project_centrifugues` (
 -- ----------------------------
 -- Records of project_centrifugues
 -- ----------------------------
-INSERT INTO `project_centrifugues` VALUES ('1', '1', 'QMAX', 'lgs', '1', '1000', '0');
-INSERT INTO `project_centrifugues` VALUES ('2', '1', 'DESARROLLO22', 'hgs', '1', '500', '0');
-INSERT INTO `project_centrifugues` VALUES ('3', '1', 'JOSE', 'hgs', '1', '1000', '0');
-INSERT INTO `project_centrifugues` VALUES ('4', '1', 'PATERNINA', 'lgs', '0', '2000', '0');
-INSERT INTO `project_centrifugues` VALUES ('5', '1', 'PANASONIC', 'hgs', '1', '2000', '1');
-INSERT INTO `project_centrifugues` VALUES ('6', '1', 'PANASONIC', 'hgs', '1', '1000', '1');
+INSERT INTO `project_centrifugues` VALUES ('1', '1', 'sharples5400', 'lgs', '1', '200', '0');
+INSERT INTO `project_centrifugues` VALUES ('2', '1', 'preco', 'hgs', '0', '100', '0');
+INSERT INTO `project_centrifugues` VALUES ('3', '1', 'sharples5400', 'lgs', '1', '200', '0');
+INSERT INTO `project_centrifugues` VALUES ('4', '1', 'preco', 'hgs', '0', '100', '0');
+INSERT INTO `project_centrifugues` VALUES ('5', '1', 'sharples5400', 'lgs', '1', '200', '1');
+INSERT INTO `project_centrifugues` VALUES ('6', '1', 'preco', 'hgs', '0', '100', '1');
 
 -- ----------------------------
 -- Table structure for `project_materials`
@@ -1165,24 +1096,26 @@ CREATE TABLE `project_materials` (
   `internal_name` varchar(255) DEFAULT NULL,
   `price` float DEFAULT NULL,
   `used_in_project` int(11) DEFAULT NULL,
+  `category` int(11) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of project_materials
 -- ----------------------------
-INSERT INTO `project_materials` VALUES ('1', '1', null, 'Acido Citrico', '2', '1', null, '20', '1');
-INSERT INTO `project_materials` VALUES ('2', '1', null, 'Bactericida Q CIDE L25', '2', '1.1', null, '10', '1');
-INSERT INTO `project_materials` VALUES ('3', '1', null, 'Barita', '1', '4.2', null, '15', '0');
-INSERT INTO `project_materials` VALUES ('4', '1', null, 'Bicarbonato de Sodio', '1', '2.16', null, '10', '1');
-INSERT INTO `project_materials` VALUES ('5', '1', null, 'CACO3 10-40', '1', '2.7', null, '10', '0');
-INSERT INTO `project_materials` VALUES ('6', '1', null, 'CACO3 M 200', '1', '2.7', null, '10', '0');
-INSERT INTO `project_materials` VALUES ('7', '1', null, 'CACO3 M 325', '1', '2.7', null, '10', '0');
-INSERT INTO `project_materials` VALUES ('8', '1', null, 'CACO3 M 40-100', '1', '2.7', null, '10', '0');
-INSERT INTO `project_materials` VALUES ('9', '1', null, 'CACO3 M 50-150', '1', '2.7', null, '10', '0');
-INSERT INTO `project_materials` VALUES ('10', '1', null, 'CAL HIDRATADA', '1', '1.42', null, '10', '1');
-INSERT INTO `project_materials` VALUES ('11', '1', null, 'CASCARILLA DE ARROZ', '1', '0.55', null, '10', '0');
-INSERT INTO `project_materials` VALUES ('12', '1', null, 'DESCO', '1', '1', null, '10', '0');
+INSERT INTO `project_materials` VALUES ('1', '1', null, 'Acido Citrico', '2', '1', null, '20', '1', null, null);
+INSERT INTO `project_materials` VALUES ('2', '1', null, 'Bactericida Q CIDE L25', '2', '1.1', null, '10', '1', null, null);
+INSERT INTO `project_materials` VALUES ('3', '1', null, 'Barita', '1', '4.2', null, '15', '1', null, null);
+INSERT INTO `project_materials` VALUES ('4', '1', null, 'Bicarbonato de Sodio', '1', '2.16', null, '10', '1', null, null);
+INSERT INTO `project_materials` VALUES ('5', '1', null, 'CACO3 10-40', '1', '2.7', null, '10', '1', null, null);
+INSERT INTO `project_materials` VALUES ('6', '1', null, 'CACO3 M 200', '1', '2.7', null, '10', '1', null, null);
+INSERT INTO `project_materials` VALUES ('7', '1', null, 'CACO3 M 325', '1', '2.7', null, '10', '1', null, null);
+INSERT INTO `project_materials` VALUES ('8', '1', null, 'CACO3 M 40-100', '1', '2.7', null, '10', '0', null, null);
+INSERT INTO `project_materials` VALUES ('9', '1', null, 'CACO3 M 50-150', '1', '2.7', null, '10', '0', null, null);
+INSERT INTO `project_materials` VALUES ('10', '1', null, 'CAL HIDRATADA', '1', '1.42', null, '10', '1', null, null);
+INSERT INTO `project_materials` VALUES ('11', '1', null, 'CASCARILLA DE ARROZ', '1', '0.55', null, '10', '1', null, null);
+INSERT INTO `project_materials` VALUES ('12', '1', null, 'DESCO', '1', '1', null, '10', '0', null, null);
 
 -- ----------------------------
 -- Table structure for `project_mudcleaner`
@@ -1205,18 +1138,14 @@ CREATE TABLE `project_mudcleaner` (
   `shaker_movement` varchar(255) DEFAULT NULL,
   `active` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of project_mudcleaner
 -- ----------------------------
-INSERT INTO `project_mudcleaner` VALUES ('1', '1', '', '1150', null, '5.8', null, null, '4.2', null, '', 'SH01', null, null, '0');
-INSERT INTO `project_mudcleaner` VALUES ('2', '1', '', '333', null, '34.5', null, null, '54.2', null, '', 'TOSHIBA', null, null, '0');
-INSERT INTO `project_mudcleaner` VALUES ('3', '1', '', 'LALALLA', null, '0', null, null, '0', null, '', 'QMAX', null, null, '0');
-INSERT INTO `project_mudcleaner` VALUES ('4', '1', '', 'PATERNINA', '1', '5.6', '5_4', '1', '6.1', '6_5', '', 'JOSEDANIEL', '3', 'circular', '0');
-INSERT INTO `project_mudcleaner` VALUES ('5', '1', '', 'PATERNINA', '16', '3.5', '4_3', '13', '5', '4_3', '', 'JOSE DANIEL', '2', 'circular', '0');
-INSERT INTO `project_mudcleaner` VALUES ('6', '1', 'JOSE', 'PATERNINA', '5', '3.4', '4_3', '6', '4', '5_5', '', 'JOSE DANIEL', '4', 'circular', '0');
-INSERT INTO `project_mudcleaner` VALUES ('7', '1', 'DESARROLLO', '22', '1', '3.4', '5_4', '1', '3.4', '4_6', '', 'LALALAL', '2', 'eliptico', '1');
+INSERT INTO `project_mudcleaner` VALUES ('1', '1', 'swaco', 'xx1', '2', '12', '6_5', '10', '2', '6_5', 'swaco', 'x1', '2', 'lineal', '0');
+INSERT INTO `project_mudcleaner` VALUES ('2', '1', 'swaco', 'xx1', '2', '12', '6_5', '10', '2', '6_5', 'swaco', 'x1', '2', 'lineal', '0');
+INSERT INTO `project_mudcleaner` VALUES ('3', '1', 'swaco', 'xx1', '2', '12', '6_5', '10', '2', '6_5', 'swaco', 'x1', '2', 'lineal', '1');
 
 -- ----------------------------
 -- Table structure for `project_report_annular_section`
@@ -1274,8 +1203,8 @@ CREATE TABLE `project_report_bit` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_bit_reports_idx` (`report_id`) USING BTREE,
   KEY `fk_project_report_bit_brocas_modelos_idx` (`brocas_modelos_id`) USING BTREE,
-  CONSTRAINT `fk_project_report_bit_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `fk_project_report_bit_brocas_modelos` FOREIGN KEY (`brocas_modelos_id`) REFERENCES `brocas_modelos` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  CONSTRAINT `fk_project_report_bit_brocas_modelos` FOREIGN KEY (`brocas_modelos_id`) REFERENCES `brocas_modelos` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `fk_project_report_bit_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
@@ -1298,8 +1227,8 @@ CREATE TABLE `project_report_casing` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_casing_reports_idx` (`report_id`) USING BTREE,
   KEY `fk_project_report_casing_casing_idx` (`casing_id`) USING BTREE,
-  CONSTRAINT `fk_project_report_casing_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `fk_project_report_casing_casing` FOREIGN KEY (`casing_id`) REFERENCES `casing` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  CONSTRAINT `fk_project_report_casing_casing` FOREIGN KEY (`casing_id`) REFERENCES `casing` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `fk_project_report_casing_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
@@ -1331,13 +1260,13 @@ CREATE TABLE `project_report_centrifugues` (
   KEY `fk_project_report_centrifugues_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_centrifugues_project_centrifugues` FOREIGN KEY (`project_centrifugues_id`) REFERENCES `project_centrifugues` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `fk_project_report_centrifugues_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_centrifugues
 -- ----------------------------
-INSERT INTO `project_report_centrifugues` VALUES ('19', '5', '21', '', '', '', '', '', '', '', '', '', null, '', '');
-INSERT INTO `project_report_centrifugues` VALUES ('20', '6', '21', '', '', '', '', '', '', '', '', '', null, '', '');
+INSERT INTO `project_report_centrifugues` VALUES ('1', '5', '1', '', '', '', '', '', '', '', '', '', null, '', '');
+INSERT INTO `project_report_centrifugues` VALUES ('2', '6', '1', '', '', '', '', '', '', '', '', '', null, '', '');
 
 -- ----------------------------
 -- Table structure for `project_report_drill_string`
@@ -1359,11 +1288,12 @@ CREATE TABLE `project_report_drill_string` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_drill_string_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_drill_string_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_drill_string
 -- ----------------------------
+INSERT INTO `project_report_drill_string` VALUES ('2', '1', '', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `project_report_drilling_parameters`
@@ -1378,11 +1308,19 @@ CREATE TABLE `project_report_drilling_parameters` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_drilling_parameters_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_drilling_parameters_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_drilling_parameters
 -- ----------------------------
+INSERT INTO `project_report_drilling_parameters` VALUES ('9', '1', 'Daily RPM', '', '0');
+INSERT INTO `project_report_drilling_parameters` VALUES ('10', '1', 'Daily WOB', '', '0');
+INSERT INTO `project_report_drilling_parameters` VALUES ('11', '1', 'Circ. Press', 'psi', '0');
+INSERT INTO `project_report_drilling_parameters` VALUES ('12', '1', 'Average cavings while', 'bbl/h', '0');
+INSERT INTO `project_report_drilling_parameters` VALUES ('13', '1', 'Average cutting while', 'bbl/h', '0');
+INSERT INTO `project_report_drilling_parameters` VALUES ('14', '1', 'Feet drilling', 'ft', '0');
+INSERT INTO `project_report_drilling_parameters` VALUES ('15', '1', 'Daily ROP', 'ft', '0');
+INSERT INTO `project_report_drilling_parameters` VALUES ('16', '1', 'Daily avge Temp', 'ºF', '34');
 
 -- ----------------------------
 -- Table structure for `project_report_drilling_time`
@@ -1396,11 +1334,21 @@ CREATE TABLE `project_report_drilling_time` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_drilling_time_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_drilling_time_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_drilling_time
 -- ----------------------------
+INSERT INTO `project_report_drilling_time` VALUES ('11', '1', 'Drilling', '0');
+INSERT INTO `project_report_drilling_time` VALUES ('12', '1', '', '0');
+INSERT INTO `project_report_drilling_time` VALUES ('13', '1', '', '0');
+INSERT INTO `project_report_drilling_time` VALUES ('14', '1', '', '0');
+INSERT INTO `project_report_drilling_time` VALUES ('15', '1', '', '0');
+INSERT INTO `project_report_drilling_time` VALUES ('16', '1', '', '0');
+INSERT INTO `project_report_drilling_time` VALUES ('17', '1', '', '0');
+INSERT INTO `project_report_drilling_time` VALUES ('18', '1', '', '0');
+INSERT INTO `project_report_drilling_time` VALUES ('19', '1', '', '0');
+INSERT INTO `project_report_drilling_time` VALUES ('20', '1', '', '0');
 
 -- ----------------------------
 -- Table structure for `project_report_hole`
@@ -1419,11 +1367,43 @@ CREATE TABLE `project_report_hole` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_hole_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_hole_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_hole
 -- ----------------------------
+INSERT INTO `project_report_hole` VALUES ('2', '1', '0', '0', '0', '0', '0', '0', '0');
+
+-- ----------------------------
+-- Table structure for `project_report_losses`
+-- ----------------------------
+DROP TABLE IF EXISTS `project_report_losses`;
+CREATE TABLE `project_report_losses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `report_id` int(11) NOT NULL,
+  `sub_surface` float DEFAULT NULL,
+  `surface` float DEFAULT NULL,
+  `cavings` float DEFAULT NULL,
+  `shakers` float DEFAULT NULL,
+  `mud_cleaner` float DEFAULT NULL,
+  `centrifugues` float DEFAULT NULL,
+  `dewatering` float DEFAULT NULL,
+  `behind_casing` float DEFAULT NULL,
+  `others` float DEFAULT NULL,
+  `daily_surface_losses` float DEFAULT '0',
+  `cumulative_surface_losses` float DEFAULT '0',
+  `daily_sub_surface_losses` float DEFAULT '0',
+  `cumulative_sub_surface_losses` float DEFAULT '0',
+  `total_losses` float DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `fk_project_report_losses_reports_idx` (`report_id`) USING BTREE,
+  CONSTRAINT `fk_project_report_losses_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of project_report_losses
+-- ----------------------------
+INSERT INTO `project_report_losses` VALUES ('1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `project_report_mudcleaner`
@@ -1450,12 +1430,12 @@ CREATE TABLE `project_report_mudcleaner` (
   KEY `fk_project_report_mudcleaner_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_mudcleaner_project_mudcleaner` FOREIGN KEY (`project_mudcleaner_id`) REFERENCES `project_mudcleaner` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `fk_project_report_mudcleaner_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_mudcleaner
 -- ----------------------------
-INSERT INTO `project_report_mudcleaner` VALUES ('10', '7', '21', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `project_report_mudcleaner` VALUES ('1', '3', '1', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for `project_report_personal`
@@ -1498,11 +1478,13 @@ CREATE TABLE `project_report_pressure_loss` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_pressure_loss_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_pressure_loss_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_pressure_loss
 -- ----------------------------
+INSERT INTO `project_report_pressure_loss` VALUES ('3', '1', 'powerlaw', '0', '0', '0', '0', '0', '0');
+INSERT INTO `project_report_pressure_loss` VALUES ('4', '1', '', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `project_report_pump`
@@ -1519,11 +1501,14 @@ CREATE TABLE `project_report_pump` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_pump_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_pump_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_pump
 -- ----------------------------
+INSERT INTO `project_report_pump` VALUES ('4', '0', '1', '0', '0', '0', '0');
+INSERT INTO `project_report_pump` VALUES ('5', '0', '1', '0', '0', '0', '0');
+INSERT INTO `project_report_pump` VALUES ('6', '0', '1', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `project_report_shakers`
@@ -1542,14 +1527,13 @@ CREATE TABLE `project_report_shakers` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_shakers_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_shakers_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_shakers
 -- ----------------------------
-INSERT INTO `project_report_shakers` VALUES ('28', '31', '21', '', '', '', '', '', '');
-INSERT INTO `project_report_shakers` VALUES ('29', '32', '21', '', '', '', '', '', '');
-INSERT INTO `project_report_shakers` VALUES ('30', '33', '21', '', '', '', '', '', '');
+INSERT INTO `project_report_shakers` VALUES ('1', '5', '1', '', '', '', '', '', '');
+INSERT INTO `project_report_shakers` VALUES ('2', '6', '1', '', '', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for `project_report_survey`
@@ -1564,11 +1548,16 @@ CREATE TABLE `project_report_survey` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_survey_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_survey_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_survey
 -- ----------------------------
+INSERT INTO `project_report_survey` VALUES ('6', '1', 'SURVEY MD', 'ft', '0');
+INSERT INTO `project_report_survey` VALUES ('7', '1', 'SURVEY TVD', 'ft', '0');
+INSERT INTO `project_report_survey` VALUES ('8', '1', 'INCLINATION', 'Deg', '0');
+INSERT INTO `project_report_survey` VALUES ('9', '1', 'AZIMUT', '', '0');
+INSERT INTO `project_report_survey` VALUES ('10', '1', 'DOG LEG', '', '0');
 
 -- ----------------------------
 -- Table structure for `project_report_test`
@@ -1588,128 +1577,125 @@ CREATE TABLE `project_report_test` (
   CONSTRAINT `project_report_test_ibfk_1` FOREIGN KEY (`program_id`) REFERENCES `program` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `project_report_test_ibfk_2` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `project_report_test_ibfk_3` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1066 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of project_report_test
 -- ----------------------------
-INSERT INTO `project_report_test` VALUES ('949', '21', '1', '3', '07:00:00', '12');
-INSERT INTO `project_report_test` VALUES ('950', '21', '1', '3', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('951', '21', '1', '3', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('952', '21', '2', '6', '07:00:00', '');
-INSERT INTO `project_report_test` VALUES ('953', '21', '2', '6', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('954', '21', '2', '6', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('955', '21', '3', '9', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('956', '21', '3', '9', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('957', '21', '3', '9', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('958', '21', '4', '12', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('959', '21', '4', '12', '15:00:00', '22');
-INSERT INTO `project_report_test` VALUES ('960', '21', '4', '12', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('961', '21', '5', '15', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('962', '21', '5', '15', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('963', '21', '5', '15', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('964', '21', '6', '18', '07:00:00', '2/2');
-INSERT INTO `project_report_test` VALUES ('965', '21', '6', '18', '15:00:00', '2/2');
-INSERT INTO `project_report_test` VALUES ('966', '21', '6', '18', '22:00:00', '2/2');
-INSERT INTO `project_report_test` VALUES ('967', '21', '7', '21', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('968', '21', '7', '21', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('969', '21', '7', '21', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('970', '21', '8', '24', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('971', '21', '8', '24', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('972', '21', '8', '24', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('973', '21', '9', '27', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('974', '21', '9', '27', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('975', '21', '9', '27', '22:00:00', '22');
-INSERT INTO `project_report_test` VALUES ('976', '21', '10', '30', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('977', '21', '10', '30', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('978', '21', '10', '30', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('979', '21', '11', '33', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('980', '21', '11', '33', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('981', '21', '11', '33', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('982', '21', '12', '36', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('983', '21', '12', '36', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('984', '21', '12', '36', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('985', '21', '13', '39', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('986', '21', '13', '39', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('987', '21', '13', '39', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('988', '21', '14', '42', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('989', '21', '14', '42', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('990', '21', '14', '42', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('991', '21', '15', '45', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('992', '21', '15', '45', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('993', '21', '15', '45', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('994', '21', '50', '207', '07:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('995', '21', '50', '207', '15:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('996', '21', '50', '207', '22:00:00', '2');
-INSERT INTO `project_report_test` VALUES ('997', '21', '17', '138', '07:00:00', '45');
-INSERT INTO `project_report_test` VALUES ('998', '21', '17', '138', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('999', '21', '17', '138', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1000', '21', '18', '141', '07:00:00', '32');
-INSERT INTO `project_report_test` VALUES ('1001', '21', '18', '141', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1002', '21', '18', '141', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1003', '21', '19', '144', '07:00:00', '54');
-INSERT INTO `project_report_test` VALUES ('1004', '21', '19', '144', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1005', '21', '19', '144', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1006', '21', '20', '147', '07:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1007', '21', '20', '147', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1008', '21', '20', '147', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1009', '21', '21', '150', '07:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1010', '21', '21', '150', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1011', '21', '21', '150', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1012', '21', '22', '153', '07:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1013', '21', '22', '153', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1014', '21', '22', '153', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1015', '21', '23', '156', '07:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1016', '21', '23', '156', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1017', '21', '23', '156', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1018', '21', '24', '159', '07:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1019', '21', '24', '159', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1020', '21', '24', '159', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1021', '21', '25', '162', '07:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1022', '21', '25', '162', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1023', '21', '25', '162', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1024', '21', '26', '165', '07:00:00', '13');
-INSERT INTO `project_report_test` VALUES ('1025', '21', '26', '165', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1026', '21', '26', '165', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1027', '21', '27', '168', '07:00:00', '19');
-INSERT INTO `project_report_test` VALUES ('1028', '21', '27', '168', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1029', '21', '27', '168', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1030', '21', '28', '171', '07:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1031', '21', '28', '171', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1032', '21', '28', '171', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1033', '21', '29', '174', '07:00:00', '0.491');
-INSERT INTO `project_report_test` VALUES ('1034', '21', '29', '174', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1035', '21', '29', '174', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1036', '21', '30', '177', '07:00:00', '1.498');
-INSERT INTO `project_report_test` VALUES ('1037', '21', '30', '177', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1038', '21', '30', '177', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1039', '21', '31', '180', '07:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1040', '21', '31', '180', '15:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1041', '21', '31', '180', '22:00:00', '');
-INSERT INTO `project_report_test` VALUES ('1042', '21', '32', '183', '07:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1043', '21', '32', '183', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1044', '21', '32', '183', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1045', '21', '33', '186', '07:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1046', '21', '33', '186', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1047', '21', '33', '186', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1048', '21', '34', '189', '07:00:00', '0.00');
-INSERT INTO `project_report_test` VALUES ('1049', '21', '34', '189', '15:00:00', '0.00');
-INSERT INTO `project_report_test` VALUES ('1050', '21', '34', '189', '22:00:00', '0.00');
-INSERT INTO `project_report_test` VALUES ('1051', '21', '35', '192', '07:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1052', '21', '35', '192', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1053', '21', '35', '192', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1054', '21', '36', '195', '07:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1055', '21', '36', '195', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1056', '21', '36', '195', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1057', '21', '37', '198', '07:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1058', '21', '37', '198', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1059', '21', '37', '198', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1060', '21', '38', '201', '07:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1061', '21', '38', '201', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1062', '21', '38', '201', '22:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1063', '21', '39', '204', '07:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1064', '21', '39', '204', '15:00:00', '0');
-INSERT INTO `project_report_test` VALUES ('1065', '21', '39', '204', '22:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('115', '1', '1', null, '06:00:00', '100');
+INSERT INTO `project_report_test` VALUES ('116', '1', '1', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('117', '1', '1', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('118', '1', '2', null, '06:00:00', '');
+INSERT INTO `project_report_test` VALUES ('119', '1', '2', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('120', '1', '2', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('121', '1', '3', null, '06:00:00', '34');
+INSERT INTO `project_report_test` VALUES ('122', '1', '3', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('123', '1', '3', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('124', '1', '4', null, '06:00:00', '9');
+INSERT INTO `project_report_test` VALUES ('125', '1', '4', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('126', '1', '4', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('127', '1', '5', null, '06:00:00', '53');
+INSERT INTO `project_report_test` VALUES ('128', '1', '5', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('129', '1', '5', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('130', '1', '6', null, '06:00:00', '');
+INSERT INTO `project_report_test` VALUES ('131', '1', '6', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('132', '1', '6', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('133', '1', '7', null, '06:00:00', '4');
+INSERT INTO `project_report_test` VALUES ('134', '1', '7', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('135', '1', '7', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('136', '1', '8', null, '06:00:00', '3');
+INSERT INTO `project_report_test` VALUES ('137', '1', '8', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('138', '1', '8', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('139', '1', '9', null, '06:00:00', '45');
+INSERT INTO `project_report_test` VALUES ('140', '1', '9', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('141', '1', '9', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('142', '1', '10', null, '06:00:00', '67');
+INSERT INTO `project_report_test` VALUES ('143', '1', '10', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('144', '1', '10', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('145', '1', '11', null, '06:00:00', '');
+INSERT INTO `project_report_test` VALUES ('146', '1', '11', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('147', '1', '11', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('148', '1', '12', null, '06:00:00', '');
+INSERT INTO `project_report_test` VALUES ('149', '1', '12', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('150', '1', '12', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('151', '1', '13', null, '06:00:00', '');
+INSERT INTO `project_report_test` VALUES ('152', '1', '13', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('153', '1', '13', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('154', '1', '14', null, '06:00:00', '');
+INSERT INTO `project_report_test` VALUES ('155', '1', '14', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('156', '1', '14', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('157', '1', '15', null, '06:00:00', '');
+INSERT INTO `project_report_test` VALUES ('158', '1', '15', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('159', '1', '15', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('160', '1', '17', null, '06:00:00', '43');
+INSERT INTO `project_report_test` VALUES ('161', '1', '17', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('162', '1', '17', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('163', '1', '18', null, '06:00:00', '23');
+INSERT INTO `project_report_test` VALUES ('164', '1', '18', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('165', '1', '18', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('166', '1', '19', null, '06:00:00', '18');
+INSERT INTO `project_report_test` VALUES ('167', '1', '19', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('168', '1', '19', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('169', '1', '20', null, '06:00:00', '17');
+INSERT INTO `project_report_test` VALUES ('170', '1', '20', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('171', '1', '20', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('172', '1', '21', null, '06:00:00', '4');
+INSERT INTO `project_report_test` VALUES ('173', '1', '21', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('174', '1', '21', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('175', '1', '22', null, '06:00:00', '3');
+INSERT INTO `project_report_test` VALUES ('176', '1', '22', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('177', '1', '22', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('178', '1', '23', null, '06:00:00', '5');
+INSERT INTO `project_report_test` VALUES ('179', '1', '23', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('180', '1', '23', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('181', '1', '24', null, '06:00:00', '13');
+INSERT INTO `project_report_test` VALUES ('182', '1', '24', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('183', '1', '24', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('184', '1', '25', null, '06:00:00', '12');
+INSERT INTO `project_report_test` VALUES ('185', '1', '25', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('186', '1', '25', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('187', '1', '26', null, '06:00:00', '20');
+INSERT INTO `project_report_test` VALUES ('188', '1', '26', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('189', '1', '26', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('190', '1', '27', null, '06:00:00', '3');
+INSERT INTO `project_report_test` VALUES ('191', '1', '27', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('192', '1', '27', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('193', '1', '28', null, '06:00:00', '2');
+INSERT INTO `project_report_test` VALUES ('194', '1', '28', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('195', '1', '28', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('196', '1', '29', null, '06:00:00', '0.901');
+INSERT INTO `project_report_test` VALUES ('197', '1', '29', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('198', '1', '29', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('199', '1', '30', null, '06:00:00', '0.083');
+INSERT INTO `project_report_test` VALUES ('200', '1', '30', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('201', '1', '30', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('202', '1', '31', null, '06:00:00', '');
+INSERT INTO `project_report_test` VALUES ('203', '1', '31', null, '14:00:00', '');
+INSERT INTO `project_report_test` VALUES ('204', '1', '31', null, '23:00:00', '');
+INSERT INTO `project_report_test` VALUES ('205', '1', '32', null, '06:00:00', '95');
+INSERT INTO `project_report_test` VALUES ('206', '1', '32', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('207', '1', '32', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('208', '1', '33', null, '06:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('209', '1', '33', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('210', '1', '33', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('211', '1', '34', null, '06:00:00', '5.00');
+INSERT INTO `project_report_test` VALUES ('212', '1', '34', null, '14:00:00', '0.00');
+INSERT INTO `project_report_test` VALUES ('213', '1', '34', null, '23:00:00', '0.00');
+INSERT INTO `project_report_test` VALUES ('214', '1', '35', null, '06:00:00', '2.61');
+INSERT INTO `project_report_test` VALUES ('215', '1', '35', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('216', '1', '35', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('217', '1', '36', null, '06:00:00', '47.59');
+INSERT INTO `project_report_test` VALUES ('218', '1', '36', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('219', '1', '36', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('220', '1', '37', null, '06:00:00', '0.00');
+INSERT INTO `project_report_test` VALUES ('221', '1', '37', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('222', '1', '37', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('223', '1', '38', null, '06:00:00', '5.13');
+INSERT INTO `project_report_test` VALUES ('224', '1', '38', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('225', '1', '38', null, '23:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('226', '1', '39', null, '06:00:00', '0.00');
+INSERT INTO `project_report_test` VALUES ('227', '1', '39', null, '14:00:00', '0');
+INSERT INTO `project_report_test` VALUES ('228', '1', '39', null, '23:00:00', '0');
 
 -- ----------------------------
 -- Table structure for `project_report_velocity`
@@ -1736,11 +1722,40 @@ CREATE TABLE `project_report_velocity` (
   PRIMARY KEY (`id`),
   KEY `fk_project_report_velocity_reports_idx` (`report_id`) USING BTREE,
   CONSTRAINT `fk_project_report_velocity_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of project_report_velocity
 -- ----------------------------
+INSERT INTO `project_report_velocity` VALUES ('2', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0.862', '0', '0');
+
+-- ----------------------------
+-- Table structure for `project_report_volumen`
+-- ----------------------------
+DROP TABLE IF EXISTS `project_report_volumen`;
+CREATE TABLE `project_report_volumen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `report_id` int(11) NOT NULL,
+  `total_act_circulate` float DEFAULT NULL,
+  `casing` float DEFAULT NULL,
+  `open_hole` float DEFAULT NULL,
+  `total_empty_hole` float DEFAULT NULL,
+  `string_displacement` float DEFAULT NULL,
+  `hole_w_string` float DEFAULT NULL,
+  `trip_tank` float DEFAULT '0',
+  `active_pits` float DEFAULT '0',
+  `pill` float DEFAULT '0',
+  `total_reserve` float DEFAULT '0',
+  `total_mud` float DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `fk_project_report_volumen_reports_idx` (`report_id`) USING BTREE,
+  CONSTRAINT `fk_project_report_volumen_reports` FOREIGN KEY (`report_id`) REFERENCES `reports` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of project_report_volumen
+-- ----------------------------
+INSERT INTO `project_report_volumen` VALUES ('1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `project_shakers`
@@ -1756,44 +1771,17 @@ CREATE TABLE `project_shakers` (
   `screens` int(11) DEFAULT NULL,
   `active` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of project_shakers
 -- ----------------------------
-INSERT INTO `project_shakers` VALUES ('1', '1', 'lalal', 'lalala', '1', 'eliptico', '2', '0');
-INSERT INTO `project_shakers` VALUES ('2', '1', 'PANASONIC', 'KXP1150', '1', 'circular', '3', '0');
-INSERT INTO `project_shakers` VALUES ('3', '1', 'SALAMANDRA', '567654', '1', 'eliptico', '5', '0');
-INSERT INTO `project_shakers` VALUES ('4', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
-INSERT INTO `project_shakers` VALUES ('5', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
-INSERT INTO `project_shakers` VALUES ('6', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
-INSERT INTO `project_shakers` VALUES ('7', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
-INSERT INTO `project_shakers` VALUES ('8', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
-INSERT INTO `project_shakers` VALUES ('9', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
-INSERT INTO `project_shakers` VALUES ('10', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
-INSERT INTO `project_shakers` VALUES ('11', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
-INSERT INTO `project_shakers` VALUES ('12', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
-INSERT INTO `project_shakers` VALUES ('13', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
-INSERT INTO `project_shakers` VALUES ('14', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
-INSERT INTO `project_shakers` VALUES ('15', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
-INSERT INTO `project_shakers` VALUES ('16', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
-INSERT INTO `project_shakers` VALUES ('17', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
-INSERT INTO `project_shakers` VALUES ('18', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
-INSERT INTO `project_shakers` VALUES ('19', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
-INSERT INTO `project_shakers` VALUES ('20', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
-INSERT INTO `project_shakers` VALUES ('21', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
-INSERT INTO `project_shakers` VALUES ('22', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
-INSERT INTO `project_shakers` VALUES ('23', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
-INSERT INTO `project_shakers` VALUES ('24', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
-INSERT INTO `project_shakers` VALUES ('25', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
-INSERT INTO `project_shakers` VALUES ('26', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
-INSERT INTO `project_shakers` VALUES ('27', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
-INSERT INTO `project_shakers` VALUES ('28', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '0');
-INSERT INTO `project_shakers` VALUES ('29', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '0');
-INSERT INTO `project_shakers` VALUES ('30', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '0');
-INSERT INTO `project_shakers` VALUES ('31', '1', 'PANASONIC', '5654', '4.5', 'circular', '5', '1');
-INSERT INTO `project_shakers` VALUES ('32', '1', 'SALAMANDRA', 'KXP', '34.9', 'eliptico', '3', '1');
-INSERT INTO `project_shakers` VALUES ('33', '1', 'PANASONIC', 'L35', '3.2', 'lineal', '1', '1');
+INSERT INTO `project_shakers` VALUES ('1', '1', 'swaco', 'mongoose', '350', 'circular', '2', '0');
+INSERT INTO `project_shakers` VALUES ('2', '1', 'Brand', 'cobra', '300', 'lineal', '3', '0');
+INSERT INTO `project_shakers` VALUES ('3', '1', 'swaco', 'mongoose', '350', 'circular', '2', '0');
+INSERT INTO `project_shakers` VALUES ('4', '1', 'Brand', 'cobra', '300', 'lineal', '3', '0');
+INSERT INTO `project_shakers` VALUES ('5', '1', 'swaco', 'mongoose', '350', 'circular', '2', '1');
+INSERT INTO `project_shakers` VALUES ('6', '1', 'Brand', 'cobra', '300', 'lineal', '3', '1');
 
 -- ----------------------------
 -- Table structure for `project_tanks`
@@ -1818,26 +1806,16 @@ CREATE TABLE `project_tanks` (
   `order` int(11) DEFAULT NULL,
   `active` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of project_tanks
 -- ----------------------------
-INSERT INTO `project_tanks` VALUES ('1', '1', '0', '34', null, null, null, null, null, null, null, '2', '0', '100', '0', '6', '0');
-INSERT INTO `project_tanks` VALUES ('2', '1', '0', '36', null, null, null, null, null, null, null, '2', '0', '500', '0', '4', '0');
-INSERT INTO `project_tanks` VALUES ('3', '1', '0', '33', null, null, null, null, null, null, null, '0', '0', '1000', '0', '4', '0');
-INSERT INTO `project_tanks` VALUES ('4', '1', '1', '3', '100', '100', '100', null, null, null, null, '1', '0', '103.1', '100', '1', '1');
-INSERT INTO `project_tanks` VALUES ('5', '1', '1', '9', '100', '100', '100', null, null, null, null, '3', '0', '103.1', '100', '5', '1');
-INSERT INTO `project_tanks` VALUES ('6', '1', '1', '12', '100', '100', '100', null, null, null, null, '0', '0', '103.1', '100', '4', '1');
-INSERT INTO `project_tanks` VALUES ('7', '1', '1', '15', '100', '100', '100', null, null, null, null, '0', '0', '103.1', '100', '3', '1');
-INSERT INTO `project_tanks` VALUES ('8', '1', '1', '16', '100', '100', '100', null, null, null, null, '0', '0', '103.1', '100', '6', '1');
-INSERT INTO `project_tanks` VALUES ('9', '1', '1', '17', '10', '30', '20', null, null, null, null, '0', '0', '0.6', '10', '7', '1');
-INSERT INTO `project_tanks` VALUES ('10', '1', '1', '18', '30', '20', '10', null, null, null, null, '0', '0', '0.6', '30', '8', '1');
-INSERT INTO `project_tanks` VALUES ('11', '1', '1', '19', '30', '20', '10', null, null, null, null, '0', '0', '0.6', '30', '9', '1');
-INSERT INTO `project_tanks` VALUES ('12', '1', '0', '33', null, null, null, null, null, null, null, '2', '0', '100', '0', '10', '1');
-INSERT INTO `project_tanks` VALUES ('13', '1', '2', '5', '100', '100', '100', '100', '100', '100', null, '0', '0', '184.2', '200', '3', '0');
-INSERT INTO `project_tanks` VALUES ('14', '1', '1', '1', '100', '100', '100', null, null, null, null, '0', '0', '103.1', '100', '2', '1');
-INSERT INTO `project_tanks` VALUES ('15', '1', '1', '5', '100', '100', '100', null, null, null, null, '0', '0', '103.1', '100', '3', '1');
+INSERT INTO `project_tanks` VALUES ('1', '1', '1', '2', '100', '100', '100', null, null, null, null, '0', '0', '103.1', '100', '1', '1');
+INSERT INTO `project_tanks` VALUES ('2', '1', '1', '3', '100', '100', '100', null, null, null, null, '0', '0', '103.1', '100', '2', '1');
+INSERT INTO `project_tanks` VALUES ('3', '1', '1', '15', '100', '100', '100', null, null, null, null, '0', '0', '103.1', '100', '1', '1');
+INSERT INTO `project_tanks` VALUES ('4', '1', '0', '33', null, null, null, null, null, null, null, '0', '0', '200', '0', '2', '1');
+INSERT INTO `project_tanks` VALUES ('5', '1', '1', '18', '100', '100', '100', null, null, null, null, '0', '0', '103.1', '100', '3', '1');
 
 -- ----------------------------
 -- Table structure for `projects`
@@ -1870,7 +1848,7 @@ CREATE TABLE `projects` (
 -- ----------------------------
 -- Records of projects
 -- ----------------------------
-INSERT INTO `projects` VALUES ('1', 'FCKGW', '2012-09-05 10:06:37', 'ORITO', 'PETROMINERALES', 'CAMBRIA1', 'ORITO', '0000', 'ORITO', '1', null, '2012-09-05 10:06:37', '2012-09-05', '0', '3', '3', '3', '3', '1', '0');
+INSERT INTO `projects` VALUES ('1', 'FCKGW', '2012-09-05 10:06:37', 'ORITO', 'PETROMINERALES', 'CAMBRIA1', 'ORITO', '0000', 'ORITO', '1', null, '2012-09-05 10:06:37', '2012-09-05', '0', '2', '3', '1', '3', '1', '0');
 
 -- ----------------------------
 -- Table structure for `report_materialstatus`
@@ -1886,15 +1864,23 @@ CREATE TABLE `report_materialstatus` (
   `used` int(11) DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of report_materialstatus
 -- ----------------------------
-INSERT INTO `report_materialstatus` VALUES ('1', '21', '1', '0', '600', '0', '50', '550');
-INSERT INTO `report_materialstatus` VALUES ('2', '21', '2', '0', '600', '0', '75', '525');
-INSERT INTO `report_materialstatus` VALUES ('3', '21', '4', '0', '600', '0', '99', '501');
-INSERT INTO `report_materialstatus` VALUES ('4', '21', '10', '0', '600', '0', '35', '565');
+INSERT INTO `report_materialstatus` VALUES ('1', '1', '1', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('2', '1', '2', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('3', '1', '3', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('4', '1', '4', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('5', '1', '5', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('6', '1', '6', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('7', '1', '7', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('8', '1', '8', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('9', '1', '9', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('10', '1', '10', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('11', '1', '11', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('12', '1', '12', '0', '100', '0', '0', '100');
 
 -- ----------------------------
 -- Table structure for `reports`
@@ -1928,28 +1914,14 @@ CREATE TABLE `reports` (
   `bha` varchar(45) DEFAULT NULL,
   `bha_length` varchar(45) DEFAULT NULL,
   `hydraulic_type` varchar(45) DEFAULT NULL,
+  `balance_fluido` float DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of reports
 -- ----------------------------
-INSERT INTO `reports` VALUES ('1', '1', 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', '1', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('5', '1', 'FCKGW_qflrpt_2', 'FCKGW', '2012-09-06', '2', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('6', '1', 'FCKGW_qflrpt_3', 'FCKGW', '2012-09-07', '3', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('7', '1', 'FCKGW_qflrpt_4', 'FCKGW', '2012-09-08', '4', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('8', '1', 'FCKGW_qflrpt_5', 'FCKGW', '2012-09-09', '5', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('9', '1', 'FCKGW_qflrpt_6', 'FCKGW', '2012-09-10', '6', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('10', '1', 'FCKGW_qflrpt_7', 'FCKGW', '2012-09-11', '7', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('11', null, 'YXRKT01_qflrpt_1', 'YXRKT01', '2012-09-06', '1', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('12', null, 'YXRKT01_qflrpt_2', 'YXRKT01', '2012-09-07', '2', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('13', null, 'YXRKT01_qflrpt_3', 'YXRKT01', '2012-09-08', '3', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('14', '1', 'FCKGW_qflrpt_8', 'FCKGW', '2012-09-12', '8', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('15', null, 'QWERTY_qflrpt_1', 'QWERTY', '2012-09-11', '1', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('16', '1', 'FCKGW_qflrpt_9', 'FCKGW', '2012-09-13', '9', '0', null, null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('17', '1', 'FCKGW_qflrpt_10', 'FCKGW', '2012-09-14', '10', '0', '1', null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('20', '1', 'FCKGW_qflrpt_11', 'FCKGW', '2012-09-15', '11', '0', '2', null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
-INSERT INTO `reports` VALUES ('21', '1', 'FCKGW_qflrpt_12', 'FCKGW', '2012-09-16', '12', '0', '3', null, null, null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', null, null, null);
+INSERT INTO `reports` VALUES ('1', '1', 'FCKGW_qflrpt_1', 'FCKGW', '2012-09-05', '1', '0', '1', 'Q - Drill in', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '34', '0', '0', '', '0', 'powerlaw', '0');
 
 -- ----------------------------
 -- Table structure for `rig`
@@ -1995,14 +1967,12 @@ CREATE TABLE `stock_transfers` (
   `project_id` int(11) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of stock_transfers
 -- ----------------------------
-INSERT INTO `stock_transfers` VALUES ('4', '1235', '2012-10-19', 'bogota', 'ORITO (PETROMINERALES)', '1', 'incoming');
-INSERT INTO `stock_transfers` VALUES ('5', '001', '2012-10-19', 'CERETE', 'ORITO (PETROMINERALES)', '1', 'incoming');
-INSERT INTO `stock_transfers` VALUES ('6', '002', '2012-10-19', 'CERETE', 'ORITO (PETROMINERALES)', '1', 'incoming');
+INSERT INTO `stock_transfers` VALUES ('1', '0001', '2012-10-26', 'CERETE', 'ORITO (PETROMINERALES)', '1', 'incoming');
 
 -- ----------------------------
 -- Table structure for `tank_names`
@@ -2102,7 +2072,7 @@ CREATE TABLE `test` (
   `custom` int(1) DEFAULT '0',
   `active` int(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of test
@@ -2145,17 +2115,6 @@ INSERT INTO `test` VALUES ('36', 'LGS', 'ppb', '3', '0', '1');
 INSERT INTO `test` VALUES ('37', 'HGS', 'ppb', '3', '0', '1');
 INSERT INTO `test` VALUES ('38', 'LGS vol', '% Vol', '3', '0', '1');
 INSERT INTO `test` VALUES ('39', 'HGS vol', '% Vol', '3', '0', '1');
-INSERT INTO `test` VALUES ('40', 'oscar', 'lb', '1', '1', '0');
-INSERT INTO `test` VALUES ('41', 'pedro', 'gal', '1', '1', '0');
-INSERT INTO `test` VALUES ('42', 'glymax', 'gpb', '1', '1', '0');
-INSERT INTO `test` VALUES ('43', 'maxdrill', 'gpb', '1', '1', '0');
-INSERT INTO `test` VALUES ('44', 'lube', 'gpb', '1', '1', '0');
-INSERT INTO `test` VALUES ('45', 'lubricante', 'gpb', '1', '1', '0');
-INSERT INTO `test` VALUES ('46', 'glymax', 'gpb', '1', '1', '0');
-INSERT INTO `test` VALUES ('47', 'maxdrill', 'gpb', '1', '1', '0');
-INSERT INTO `test` VALUES ('48', 'cst', 'lb', '1', '1', '0');
-INSERT INTO `test` VALUES ('49', 'oscar', 'und', '1', '1', '0');
-INSERT INTO `test` VALUES ('50', 'JOSEDANIEL', 'JDL', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for `volume_transfers`
@@ -2171,6 +2130,7 @@ CREATE TABLE `volume_transfers` (
   `from_destiny_status` int(11) DEFAULT NULL,
   `to_origin_status` int(11) DEFAULT NULL,
   `to_destiny_status` int(11) DEFAULT NULL,
+  `volume` float DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -2182,46 +2142,46 @@ CREATE TABLE `volume_transfers` (
 -- View structure for `vista_brocas`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_brocas`;
-CREATE VIEW `vista_brocas` AS select `brocas_modelos`.`id` AS `id`,`brocas_modelos`.`id_broca` AS `id_broca`,`brocas_modelos`.`odfracc` AS `odfracc`,`brocas_modelos`.`unit_oddfracc` AS `unit_oddfracc`,`brocas_modelos`.`odddeci` AS `odddeci`,`brocas_modelos`.`unit_odddeci` AS `unit_odddeci`,`brocas_modelos`.`length` AS `length`,`brocas_modelos`.`unit_length` AS `unit_length`,`brocas_modelos`.`nombre_modelo` AS `nombre_modelo`,`brocas`.`nombre_broca` AS `nombre_broca`,`brocas_modelos`.`custom` AS `custom`,`brocas_modelos`.`active` AS `active`,`brocas_modelos`.`project_id` AS `project_id` from (`brocas` join `brocas_modelos` on((`brocas`.`id` = `brocas_modelos`.`id_broca`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_brocas` AS select `brocas_modelos`.`id` AS `id`,`brocas_modelos`.`id_broca` AS `id_broca`,`brocas_modelos`.`odfracc` AS `odfracc`,`brocas_modelos`.`unit_oddfracc` AS `unit_oddfracc`,`brocas_modelos`.`odddeci` AS `odddeci`,`brocas_modelos`.`unit_odddeci` AS `unit_odddeci`,`brocas_modelos`.`length` AS `length`,`brocas_modelos`.`unit_length` AS `unit_length`,`brocas_modelos`.`nombre_modelo` AS `nombre_modelo`,`brocas`.`nombre_broca` AS `nombre_broca`,`brocas_modelos`.`custom` AS `custom`,`brocas_modelos`.`active` AS `active`,`brocas_modelos`.`project_id` AS `project_id` from (`brocas` join `brocas_modelos` on((`brocas`.`id` = `brocas_modelos`.`id_broca`))) ;
 
 -- ----------------------------
 -- View structure for `vista_detalle_adicion_quimica`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_detalle_adicion_quimica`;
-CREATE VIEW `vista_detalle_adicion_quimica` AS select `chemical_aditions_detail`.`id` AS `id`,`chemical_aditions_detail`.`chemical_adition` AS `chemical_adition`,`chemical_aditions_detail`.`material` AS `material`,`chemical_aditions_detail`.`used` AS `used`,`chemical_aditions_detail`.`volume_increment` AS `volume_increment`,`chemical_aditions`.`project` AS `project`,`chemical_aditions`.`report` AS `report`,`chemical_aditions`.`tank` AS `tank`,`chemical_aditions`.`total_volume_increment` AS `total_volume_increment`,`chemical_aditions`.`increment_by_chemical` AS `increment_by_chemical`,`chemical_aditions`.`increment_by_water` AS `increment_by_water`,`chemical_aditions`.`status_producido` AS `status_producido` from (`chemical_aditions_detail` left join `chemical_aditions` on((`chemical_aditions`.`id` = `chemical_aditions_detail`.`chemical_adition`))) ;
-
--- ----------------------------
--- View structure for `vista_materiales`
--- ----------------------------
-DROP VIEW IF EXISTS `vista_materiales`;
-CREATE VIEW `vista_materiales` AS select `project_materials`.`id` AS `id`,`project_materials`.`project_id` AS `project`,`project_materials`.`erp_id` AS `erp_id`,`project_materials`.`commercial_name` AS `commercial_name`,`project_materials`.`unit` AS `unit`,`project_materials`.`egravity` AS `egravity`,`project_materials`.`internal_name` AS `internal_name`,`project_materials`.`price` AS `price`,`project_materials`.`used_in_project` AS `used_in_project`,`conversions_table`.`nombre_unidad` AS `unit_name`,`conversions_table`.`equivalencia` AS `equivalencia`,`conversions_table`.`unidad_destino` AS `unidad_destino` from (`project_materials` left join `conversions_table` on((`conversions_table`.`id` = `project_materials`.`unit`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_detalle_adicion_quimica` AS select `chemical_aditions_detail`.`id` AS `id`,`chemical_aditions_detail`.`chemical_adition` AS `chemical_adition`,`chemical_aditions_detail`.`material` AS `material`,`chemical_aditions_detail`.`used` AS `used`,`chemical_aditions_detail`.`volume_increment` AS `volume_increment`,`chemical_aditions`.`project` AS `project`,`chemical_aditions`.`report` AS `report`,`chemical_aditions`.`tank` AS `tank`,`chemical_aditions`.`total_volume_increment` AS `total_volume_increment`,`chemical_aditions`.`increment_by_chemical` AS `increment_by_chemical`,`chemical_aditions`.`increment_by_water` AS `increment_by_water`,`chemical_aditions`.`status_producido` AS `status_producido` from (`chemical_aditions_detail` left join `chemical_aditions` on((`chemical_aditions`.`id` = `chemical_aditions_detail`.`chemical_adition`))) ;
 
 -- ----------------------------
 -- View structure for `vista_inventario`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_inventario`;
-CREATE VIEW `vista_inventario` AS select `vista_materiales`.`id` AS `product_id`,`vista_materiales`.`project` AS `project`,`vista_materiales`.`commercial_name` AS `commercial_name`,`inventory`.`received` AS `received`,`inventory`.`transfered` AS `transfered`,`inventory`.`used` AS `used`,`inventory`.`avaliable` AS `avaliable`,`vista_materiales`.`erp_id` AS `erp_id`,`vista_materiales`.`unit` AS `unit`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`internal_name` AS `internal_name`,`vista_materiales`.`price` AS `price`,`vista_materiales`.`used_in_project` AS `used_in_project`,`vista_materiales`.`unit_name` AS `unit_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino` from (`inventory` left join `vista_materiales` on((`vista_materiales`.`id` = `inventory`.`product`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_inventario` AS select `vista_materiales`.`id` AS `product_id`,`vista_materiales`.`project` AS `project`,`vista_materiales`.`commercial_name` AS `commercial_name`,`inventory`.`received` AS `received`,`inventory`.`transfered` AS `transfered`,`inventory`.`used` AS `used`,`inventory`.`avaliable` AS `avaliable`,`vista_materiales`.`erp_id` AS `erp_id`,`vista_materiales`.`unit` AS `unit`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`internal_name` AS `internal_name`,`vista_materiales`.`price` AS `price`,`vista_materiales`.`used_in_project` AS `used_in_project`,`vista_materiales`.`unit_name` AS `unit_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino` from (`inventory` left join `vista_materiales` on((`vista_materiales`.`id` = `inventory`.`product`))) ;
+
+-- ----------------------------
+-- View structure for `vista_materiales`
+-- ----------------------------
+DROP VIEW IF EXISTS `vista_materiales`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_materiales` AS select `project_materials`.`id` AS `id`,`project_materials`.`project_id` AS `project`,`project_materials`.`erp_id` AS `erp_id`,`project_materials`.`commercial_name` AS `commercial_name`,`project_materials`.`unit` AS `unit`,`project_materials`.`egravity` AS `egravity`,`project_materials`.`internal_name` AS `internal_name`,`project_materials`.`price` AS `price`,`project_materials`.`used_in_project` AS `used_in_project`,`conversions_table`.`nombre_unidad` AS `unit_name`,`conversions_table`.`equivalencia` AS `equivalencia`,`conversions_table`.`unidad_destino` AS `unidad_destino` from (`project_materials` left join `conversions_table` on((`conversions_table`.`id` = `project_materials`.`unit`))) ;
 
 -- ----------------------------
 -- View structure for `vista_personal`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_personal`;
-CREATE VIEW `vista_personal` AS select `personal`.`id` AS `id`,`personal`.`identification` AS `identification`,`personal`.`lastname` AS `lastname`,`personal`.`name` AS `name`,`personal`.`project` AS `project`,`personal`.`category` AS `category`,`personal_categories`.`name` AS `category_name`,`personal_categories`.`type` AS `type`,`personal`.`active` AS `active`,`personal`.`rate` AS `rate` from (`personal` join `personal_categories` on((`personal_categories`.`id` = `personal`.`category`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_personal` AS select `personal`.`id` AS `id`,`personal`.`identification` AS `identification`,`personal`.`lastname` AS `lastname`,`personal`.`name` AS `name`,`personal`.`project` AS `project`,`personal`.`category` AS `category`,`personal_categories`.`name` AS `category_name`,`personal_categories`.`type` AS `type`,`personal`.`active` AS `active`,`personal`.`rate` AS `rate` from (`personal` join `personal_categories` on((`personal_categories`.`id` = `personal`.`category`))) ;
 
 -- ----------------------------
 -- View structure for `vista_reporte_estado_material`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_reporte_estado_material`;
-CREATE VIEW `vista_reporte_estado_material` AS select `report_materialstatus`.`id` AS `id`,`vista_materiales`.`project` AS `project`,`report_materialstatus`.`report` AS `report`,`report_materialstatus`.`material` AS `material`,`vista_materiales`.`commercial_name` AS `commercial_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino`,`report_materialstatus`.`initial` AS `initial`,`report_materialstatus`.`received` AS `received`,`report_materialstatus`.`transfered` AS `transfered`,`report_materialstatus`.`used` AS `used`,`report_materialstatus`.`stock` AS `stock`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`price` AS `price` from (`report_materialstatus` left join `vista_materiales` on((`report_materialstatus`.`material` = `vista_materiales`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_reporte_estado_material` AS select `report_materialstatus`.`id` AS `id`,`vista_materiales`.`project` AS `project`,`report_materialstatus`.`report` AS `report`,`report_materialstatus`.`material` AS `material`,`vista_materiales`.`commercial_name` AS `commercial_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino`,`report_materialstatus`.`initial` AS `initial`,`report_materialstatus`.`received` AS `received`,`report_materialstatus`.`transfered` AS `transfered`,`report_materialstatus`.`used` AS `used`,`report_materialstatus`.`stock` AS `stock`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`price` AS `price` from (`report_materialstatus` left join `vista_materiales` on((`report_materialstatus`.`material` = `vista_materiales`.`id`))) ;
 
 -- ----------------------------
 -- View structure for `vista_reporte_personal`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_reporte_personal`;
-CREATE VIEW `vista_reporte_personal` AS select `vista_personal`.`id` AS `id`,`vista_personal`.`identification` AS `identification`,`vista_personal`.`lastname` AS `lastname`,`vista_personal`.`name` AS `name`,`vista_personal`.`project` AS `project`,`vista_personal`.`category` AS `category`,`vista_personal`.`category_name` AS `category_name`,`vista_personal`.`type` AS `type`,`vista_personal`.`active` AS `active`,`vista_personal`.`rate` AS `rate`,`personal_report_enginers`.`date` AS `date`,`personal_report_enginers`.`cover` AS `cover`,`projects`.`well_name` AS `well_name`,`projects`.`operator` AS `operator` from ((`personal_report_enginers` left join `vista_personal` on((`vista_personal`.`id` = `personal_report_enginers`.`enginer`))) left join `projects` on((`projects`.`id` = `personal_report_enginers`.`project`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_reporte_personal` AS select `vista_personal`.`id` AS `id`,`vista_personal`.`identification` AS `identification`,`vista_personal`.`lastname` AS `lastname`,`vista_personal`.`name` AS `name`,`vista_personal`.`project` AS `project`,`vista_personal`.`category` AS `category`,`vista_personal`.`category_name` AS `category_name`,`vista_personal`.`type` AS `type`,`vista_personal`.`active` AS `active`,`vista_personal`.`rate` AS `rate`,`personal_report_enginers`.`date` AS `date`,`personal_report_enginers`.`cover` AS `cover`,`projects`.`well_name` AS `well_name`,`projects`.`operator` AS `operator` from ((`personal_report_enginers` left join `vista_personal` on((`vista_personal`.`id` = `personal_report_enginers`.`enginer`))) left join `projects` on((`projects`.`id` = `personal_report_enginers`.`project`))) ;
 
 -- ----------------------------
 -- View structure for `vista_tanks`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_tanks`;
-CREATE VIEW `vista_tanks` AS select `project_tanks`.`id` AS `id`,`project_tanks`.`project` AS `project`,`project_tanks`.`type` AS `type`,`project_tanks`.`name` AS `name`,`project_tanks`.`sh1` AS `sh1`,`project_tanks`.`sa1` AS `sa1`,`project_tanks`.`sl1` AS `sl1`,`project_tanks`.`sh2` AS `sh2`,`project_tanks`.`sa2` AS `sa2`,`project_tanks`.`sl2` AS `sl2`,`project_tanks`.`diametro` AS `diametro`,`project_tanks`.`agitators` AS `agitators`,`project_tanks`.`jets` AS `jets`,`project_tanks`.`voltkaforo` AS `voltkaforo`,`project_tanks`.`hlibremax` AS `hlibremax`,`project_tanks`.`active` AS `active`,`tank_names`.`name` AS `tank_name`,`tanks_types`.`name` AS `tank_type`,`tank_names`.`type` AS `tank_category`,`project_tanks`.`order` AS `order` from ((`project_tanks` left join `tank_names` on((`tank_names`.`id` = `project_tanks`.`name`))) left join `tanks_types` on((`tanks_types`.`id` = `project_tanks`.`type`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_tanks` AS select `project_tanks`.`id` AS `id`,`project_tanks`.`project` AS `project`,`project_tanks`.`type` AS `type`,`project_tanks`.`name` AS `name`,`project_tanks`.`sh1` AS `sh1`,`project_tanks`.`sa1` AS `sa1`,`project_tanks`.`sl1` AS `sl1`,`project_tanks`.`sh2` AS `sh2`,`project_tanks`.`sa2` AS `sa2`,`project_tanks`.`sl2` AS `sl2`,`project_tanks`.`diametro` AS `diametro`,`project_tanks`.`agitators` AS `agitators`,`project_tanks`.`jets` AS `jets`,`project_tanks`.`voltkaforo` AS `voltkaforo`,`project_tanks`.`hlibremax` AS `hlibremax`,`project_tanks`.`active` AS `active`,`tank_names`.`name` AS `tank_name`,`tanks_types`.`name` AS `tank_type`,`tank_names`.`type` AS `tank_category`,`project_tanks`.`order` AS `order` from ((`project_tanks` left join `tank_names` on((`tank_names`.`id` = `project_tanks`.`name`))) left join `tanks_types` on((`tanks_types`.`id` = `project_tanks`.`type`))) ;

@@ -34,7 +34,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td colspan="6"><input type="text" style="width:780px;max-width:1000px;margin-right:0;" placeholder="Write down a material description, uses, etc"></td>
+							<td colspan="6"><input type="text" style="width:780px;max-width:1000px;margin-right:0;" placeholder="Write down the material description, uses, etc"></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -85,7 +85,7 @@
 	    	</fieldset>
 	    </div>
 	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
-	    	
+
 	    </div>
 	</div>
 </div>
