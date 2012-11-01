@@ -192,11 +192,13 @@ class Main extends CI_Controller {
                                         //SURVEY
                                         $data['survey'] = $this->Api->get_where('project_report_survey', array('report_id'=>$current_report_data['id']));
 
+                                        $data['main_content'] = 'report_html';                                    
+                                        $this->load->view('partials/printer',$data);                                                                        
+                                        
                                 } else {
-                                        redirect('/');
+                                        redirect('/');                                                                    
                                 }                                                                                             
-                                $data['main_content'] = 'report_html';                                    
-                                $this->load->view('partials/printer',$data);                                                                        
+                                
                                 
 			} else{
 				redirect('/');
