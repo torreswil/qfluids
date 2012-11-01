@@ -30,7 +30,7 @@ $(function(){
 	load_personal();
 	load_current_tanks();
 	load_tools_and_mud();
-        load_test();        
+    load_test();        
 
 	/*==========================================================================================================*/
 	// 1. GENERAL
@@ -1250,10 +1250,25 @@ $(function(){
 
     }
 
-        /*==========================================================================================================*/
+    /*==========================================================================================================*/
 	// 8. MATERIALS
 	/*==========================================================================================================*/    
-            
+          
+	$('#filter_materials').quicksearch('.buscar_materiales_aqui');
+	$('.shon_n_hide_unselected_materials').click(function(e){
+		e.preventDefault();
+		if($(this).hasClass('selected_hidden')){
+			//mostrar todos los materiales
+			//cambiar el html del link
+			//eliminar la clase 'selected_hidden'
+		}else{
+			//ocultar los materiales marcados 
+			$('#materials_activation_table input[type="checkbox"]:checked').parents('tr').hide();
+			//agregar la clase 'selected_hidden'
+			//cambiar el html del link
+		}
+	});
+
 	$('.update_materials').click(function(e){
 		var checked_materials = [];
 		$('#materials_activation_table input[type="checkbox"]:checked').each(function(){
