@@ -87,7 +87,7 @@
 								</td>
 								<td><input title="Lubricante y reductor de torque - Anti-acresión y anti embotamiento (base hidrocarburo y/o vegetal)" style="cursor:pointer;width:200px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
 								<td><input title="Lubricante y reductor de torque - Anti-acresión y anti embotamiento (base hidrocarburo y/o vegetal)" style="cursor:pointer;width:200px;max-width:500px;margin-right:0;" type="text" value="<?= $material['commercial_name'] ?>" length="30" /></td>
-								<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['unit_name'] ?> (<?= $material['equivalencia'] ?><?= $material['unidad_destino'] ?>)" /></td>
+								<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?><?= $material['unidad_destino'] ?>" /></td>
 								<td><input style="width:50px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
 								<td><input style="width:50px;margin-right:0;" type="text" value="<?= $material['price'] ?>" /></td>
 							</tr>
