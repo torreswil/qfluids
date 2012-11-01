@@ -34,7 +34,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td colspan="6"><input type="text" style="width:780px;max-width:1000px;margin-right:0;" placeholder="Write down a material description, uses, etc"></td>
+							<td colspan="6"><input type="text" style="width:780px;max-width:1000px;margin-right:0;" placeholder="Write down the material description, uses, etc"></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -46,6 +46,15 @@
 				</table>
 			</fieldset>
 			<fieldset>
+				<table style="margin-bottom:20px;">
+					<tr>
+						<td style="width:20px;"></td>
+						<td class="label_m"><input type="text" placeholder="Filter..." style="width:200px;" id="filter_materials" /></td>
+						<td class="label_m" style="padding-left:20px;">
+							<a href="#show_hide_unselected_materials" class="shon_n_hide_unselected_materials">Show unselected materials only</a>
+						</td>
+					</tr>
+				</table>
 				<table>
 					<thead>
 						<tr>
@@ -60,7 +69,7 @@
 					</thead>
 					<tbody id="materials_activation_table">
 						<?php foreach ($all_materials as $material) { ?>
-							<tr class="this_material_<?= $material['id']?> ">
+							<tr class="this_material_<?= $material['id']?> buscar_materiales_aqui" id="este_row_material_<?= $material['id']?>">
 								<td class="label_m">
 									<?php if($material['used_in_project'] == 1){
 										$checked = 'checked="checked"';
@@ -68,13 +77,17 @@
 										$checked = '';
 									} ?>
 									<input type="checkbox" <?= $checked; ?> value="<?= $material['id']?>" style="margin-right:10px;">
+									<span style="display:none;">
+										Lubricante y reductor de torque - Anti-acresión y anti embotamiento (base hidrocarburo y/o vegetal) <br/>
+										<?= $material['commercial_name'] ?>	
+									</span>
 								</td>
 								<td>
 									<input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="00000" />	
 								</td>
 								<td><input title="Lubricante y reductor de torque - Anti-acresión y anti embotamiento (base hidrocarburo y/o vegetal)" style="cursor:pointer;width:200px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
 								<td><input title="Lubricante y reductor de torque - Anti-acresión y anti embotamiento (base hidrocarburo y/o vegetal)" style="cursor:pointer;width:200px;max-width:500px;margin-right:0;" type="text" value="<?= $material['commercial_name'] ?>" length="30" /></td>
-								<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['unit_name'] ?> (<?= $material['equivalencia'] ?><?= $material['unidad_destino'] ?>)" /></td>
+								<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?><?= $material['unidad_destino'] ?>" /></td>
 								<td><input style="width:50px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
 								<td><input style="width:50px;margin-right:0;" type="text" value="<?= $material['price'] ?>" /></td>
 							</tr>
@@ -85,7 +98,7 @@
 	    	</fieldset>
 	    </div>
 	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
-	    	
+
 	    </div>
 	</div>
 </div>
