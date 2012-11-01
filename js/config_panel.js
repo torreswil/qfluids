@@ -1257,16 +1257,17 @@ $(function(){
 	$('#filter_materials').quicksearch('.buscar_materiales_aqui');
 	$('.shon_n_hide_unselected_materials').click(function(e){
 		e.preventDefault();
-		if($(this).hasClass('selected_hidden')){
+		if($(this).hasClass('unselected_hidden')){
 			//mostrar todos los materiales
 			$('#materials_activation_table tr').show();
 			//cambiar el html del link
-			$(this).removeClass('selected_hidden').html('Show unselected materials only');
+			$(this).removeClass('unselected_hidden').html('Show selected materials only');
 		}else{
+			$('#materials_activation_table tr').hide();
 			//ocultar los materiales marcados 
-			$('#materials_activation_table input[type="checkbox"]:checked').parents('tr').hide();
+			$('#materials_activation_table input[type="checkbox"]:checked').parents('tr').show();
 			//agregar la clase 'selected_hidden' y cambiar el html del link
-			$(this).addClass('selected_hidden').html('Show all materials');
+			$(this).addClass('unselected_hidden').html('Show all materials');
 			 
 		}
 	});
