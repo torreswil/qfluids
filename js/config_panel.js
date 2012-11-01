@@ -1259,13 +1259,15 @@ $(function(){
 		e.preventDefault();
 		if($(this).hasClass('selected_hidden')){
 			//mostrar todos los materiales
+			$('#materials_activation_table tr').show();
 			//cambiar el html del link
-			//eliminar la clase 'selected_hidden'
+			$(this).removeClass('selected_hidden').html('Show unselected materials only');
 		}else{
 			//ocultar los materiales marcados 
 			$('#materials_activation_table input[type="checkbox"]:checked').parents('tr').hide();
-			//agregar la clase 'selected_hidden'
-			//cambiar el html del link
+			//agregar la clase 'selected_hidden' y cambiar el html del link
+			$(this).addClass('selected_hidden').html('Show all materials');
+			 
 		}
 	});
 
