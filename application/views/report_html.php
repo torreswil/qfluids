@@ -4,13 +4,13 @@
         <table class="table table-stripted table-condensed b-bottom table-fixed">
                 <tr class="">
                         <td class="span2 txt-center b-right-2 b-bottom-2">
-                                <img width="80" src="/img/qmax_logo.jpg">
+                                <img width="80" src="/img/qmax_logo.png">
                         </td>
                         <td class="span5 txt-center-all b-right-2 b-bottom-2">
                                 <h3>DAILY DRILLING FLUIDS REPORT N. <?= $reporte['number']; ?></h3>
                         </td>
                         <td class="span3 txt-center b-right-2 b-bottom-2">
-                                <img width="80" src="/img/qmax_logo.jpg">
+                                <img width="80" src="/img/qmax_logo.png">
                         </td>
                         <td class="txt-center-all b-bottom-2" style="width: 100px;">
                                 Fo IF 002 V-01 <br />
