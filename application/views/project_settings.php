@@ -9,7 +9,7 @@
 				<li><a href="#cse">Control Solids Eq.</a></li>
 				<li><a href="#tanks">Tanks</a></li>
 				<li><a href="#mudproperties" id="mud_properties_link">Mud properties</a></li>
-				<li><a href="#inventario">Materials & Equipment</a></li>
+				<li><a href="#inventario">Materials & Equipement</a></li>
 				<li><a href="#enginers" id="personal_settings_link">Personnel</a></li>
                 <li><a href="#tools_and_mud" id="tools_settings_link">Mud and Tools library</a></li>
 			</ul>

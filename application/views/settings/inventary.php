@@ -7,14 +7,17 @@
 	    </ul>
 	  
 	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
-			
+			<fieldset>
+				<legend>Instructions</legend>
+				<p style="margin:5px 0 10px 0;">To activate or deactivate materials from the material list, just check the ones you need and click <strong>'Save'</strong> at the bottom of the list in order to them to appear in the Material Stock tab. </p>
+			</fieldset>
 			<fieldset>
 				<table style="margin-bottom:20px;">
 					<tr>
 						<td style="width:20px;"></td>
 						<td class="label_m"><input type="text" placeholder="Filter..." style="width:200px;" id="filter_materials" /></td>
 						<td class="label_m" style="padding-left:20px;">
-							<a href="#show_hide_unselected_materials" class="shon_n_hide_unselected_materials">Show unselected materials only</a>
+							<a href="#show_hide_unselected_materials" class="shon_n_hide_unselected_materials">Show selected materials only</a>
 						</td>
 					</tr>
 				</table>
