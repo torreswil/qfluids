@@ -1,11 +1,10 @@
 <!-- CREATE MATERIAL OVERLAY -->
 <div class="overlay_wrapper" id="cm_overlay" style="display:block;">
-	<div class="overlay_dialog_wrapper" style="margin-top:0;width:600px;">
-		<div class="overlay_dialog" style="width:600px;">
+	<div class="overlay_dialog_wrapper" style="margin-top:0;width:325px;">
+		<div class="overlay_dialog" style="width:325px;">
 			<h5 style="margin-bottom:0;">New Material:</h5>
 			<div class="content">
-				<fieldset>
-					<table>
+					<table style="margin-top:20px;">
 							<tr>
 								<td class="label_m"><label>Code:</label></td>
 								<td><input type="text" /></td>
@@ -41,9 +40,8 @@
 								<td><input type="text" placeholder="Write down the material description, uses, etc" /></td>
 							</tr>
 					</table>
-				</fieldset>
 			</div>
-			<div class="cancel_link" style="width:152px;">
+			<div class="cancel_link" style="width:133px;">
 				<a href="#cancel" class="cancel_overlay">Cancel</a>
 			</div>
 			<div class="continue_button">
