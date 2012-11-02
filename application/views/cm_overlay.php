@@ -1,5 +1,5 @@
 <!-- CREATE MATERIAL OVERLAY -->
-<div class="overlay_wrapper" id="cm_overlay" style="display:block;">
+<div class="overlay_wrapper" id="cm_overlay">
 	<div class="overlay_dialog_wrapper" style="margin-top:0;width:325px;">
 		<div class="overlay_dialog" style="width:325px;">
 			<h5 style="margin-bottom:0;">New Material:</h5>
