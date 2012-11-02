@@ -9,7 +9,12 @@
 	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
 			<fieldset>
 				<legend>Instructions</legend>
-				<p style="margin:5px 0 10px 0;">To activate or deactivate materials from the material list, just check the ones you need and click <strong>'Save'</strong> at the bottom of the list in order to them to appear in the Material Stock tab. </p>
+				<p style="margin:5px 0 10px 0;">
+					To activate or deactivate materials from the material list, just check the ones you need 
+					and click <strong>'Save'</strong> at the bottom of the list in order to them to appear 
+					in the Material Stock tab. If the material you need does not appear in the list, <a href="#link_create_material" class="link_create_material" style="text-decoration:underline;">click here to create it.</a>
+
+				</p>
 			</fieldset>
 			<fieldset>
 				<table style="margin-bottom:20px;">

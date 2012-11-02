@@ -1253,7 +1253,12 @@ $(function(){
     /*==========================================================================================================*/
 	// 8. MATERIALS
 	/*==========================================================================================================*/    
-          
+      
+	$('.link_create_material').click(function(e){
+		e.preventDefault();
+		$('#cm_overlay').slideDown();
+	});
+
 	$('#filter_materials').quicksearch('.buscar_materiales_aqui');
 	$('.shon_n_hide_unselected_materials').click(function(e){
 		e.preventDefault();
