@@ -7,44 +7,7 @@
 	    </ul>
 	  
 	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
-			<fieldset>
-				<table>
-					<thead>
-						<tr>
-							<td></td>
-							<td class="label_m"><label>Code</label></td>
-							<td class="label_m"><label>Internal Name</label></td>
-							<td class="label_m"><label>Commercial Name</label></td>
-							<td class="label_m"><label>Unit</label></td>
-							<td class="label_m"><label>SG</label></td>
-							<td class="label_m"><label>U. Cost</label></td>	
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td style="width:25px;"></td>
-							<td>
-								<input style="width:100px;margin-right:0;" type="text" />	
-							</td>
-							<td><input style="width:200px;max-width:500px;margin-right:0;" type="text" /></td>
-							<td><input style=";width:200px;max-width:500px;margin-right:0;" type="text" length="30" /></td>
-							<td><input style="width:100px;margin-right:0;" type="text" /></td>
-							<td><input style="width:50px;margin-right:0;" type="text" /></td>
-							<td><input style="width:50px;margin-right:0;" type="text" /></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td colspan="6"><input type="text" style="width:780px;max-width:1000px;margin-right:0;" placeholder="Write down the material description, uses, etc"></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td colspan="6">
-								<input type="button" value="Create Material" style="margin-top:10px;margin-right:0;" />
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</fieldset>
+			
 			<fieldset>
 				<table style="margin-bottom:20px;">
 					<tr>
