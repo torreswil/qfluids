@@ -40,6 +40,9 @@
                                                                         <tr>                                                                             
                                                                                 <td><input type="text" class="medium" id="report_pusher" name="report_pusher" style="min-width:300px !important;" value="<?= empty($comments['pusher']) ? '' : $comments['pusher']; ?>"></td>
                                                                         </tr>
+                                                                        <tr>                                                                             
+                                                                                <td>&nbsp;</td>
+                                                                        </tr>
                                                                         <tr>
                                                                                 <td class="label_m"><label>COMPANY MAN:</label></td>
                                                                         </tr>
@@ -48,9 +51,12 @@
                                                                         </tr>
                                                                         <tr>
                                                                                 <td class="label_m"><label>REPRESENTATIVE:</label></td>
-                                                                        </tr>
+                                                                        </tr>                                                                        
                                                                         <tr>                                                                             
                                                                                 <td><input type="text" class="medium" id="report_representative" name="report_representative" style="min-width:300px !important;" value="<?= empty($comments['representative']) ? '' : $comments['representative']; ?>"></td>
+                                                                        </tr>
+                                                                        <tr>                                                                             
+                                                                                <td>&nbsp;</td>
                                                                         </tr>
                                                                         <tr>
                                                                                 <td class="label_m"><label>MUD ENNGINERS:</label></td>
