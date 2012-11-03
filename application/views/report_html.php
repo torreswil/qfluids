@@ -50,7 +50,7 @@
                         <td style="width: 15.875%"><?= $reporte['formation']; ?></td>
                         
                         <td><span class="strong">PUSHER:</span> </td>
-                        <td style="width: 15.875%" class="txt-overflow">CARLOS DUARTE</td>
+                        <td style="width: 15.875%; text-transform: uppercase;" class="txt-overflow"><?= empty($comments['pusher']) ? '' : $comments['pusher']; ?></td>
                 </tr>
         </table>
         
@@ -1008,7 +1008,7 @@
                                                 <tr>
                                                         <td style="height: 458px">
                                                                 <p class="txt-justify">
-                                                                        RIG ACTIVITY: Se recibio taladro sinopec 166, y se inicio operaciones de perforacion a las XXXX.
+                                                                        <?= empty($comments['comments']) ? '' : substr($comments['comments'], 0, 2050).'...'; ?>
                                                                 </p>
                                                         </td>
                                                 </tr>
@@ -1019,8 +1019,8 @@
                                 <table class="table table-stripted table-condensed">
                                         <tbody>
                                                 <tr>
-                                                        <td class="span2 strong">CHARLA HSE:</td>
-                                                        <td class="span10"></td>
+                                                        <td class="strong" style="width: 105px;">CHARLA HSE: </td>
+                                                        <td class="span10"><?= empty($comments['charla_hse']) ? '' : substr($comments['charla_hse'], 0, 80).'...'; ?></td>
                                                 </tr>
                                         </tbody>
                                 </table>                                                               
@@ -1340,11 +1340,11 @@
                                 <div class="container-fluid">
                                         <div class="data-table-container b-right" style="float:left; width: 50%;">
                                                 <strong>Company Man/Representative:</strong>
-                                                <p class="txt-center" style="padding-top: 30px; margin-bottom:5px;">OSCAR GOMEZ / JUAN DANIEL MOLANO</p>                                                                                            
+                                                <p class="txt-center" style="padding-top: 30px; margin-bottom:5px; text-transform: uppercase;"><?= empty($comments['company_man']) ? '' : $comments['company_man']; ?> / <?= empty($comments['representative']) ? '' : $comments['representative']; ?></p>
                                         </div>
                                         <div class="data-table-container" style="float:left; width: 49.8%">                                                                                                                                                                                                                                                                                            
                                                 <strong>Mud Engs.</strong>                                                
-                                                <p class="txt-center" style="padding-top: 30px; margin-bottom:5px;">CARLOS PARRA / DEIDER MENGUAL</p>
+                                                <p class="txt-center" style="padding-top: 30px; margin-bottom:5px; text-transform: uppercase;"><?= empty($comments['mud_enginers_1']) ? '' : $comments['mud_enginers_1']; ?> / <?= empty($comments['mud_enginers_2']) ? '' : $comments['mud_enginers_2']; ?></p>
                                         </div>
                                 </div>                                                                                                                                                               
                         </div>

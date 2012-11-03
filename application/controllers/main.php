@@ -191,7 +191,11 @@ class Main extends CI_Controller {
                                         $data['drilling_time'] = $this->Api->get_where('project_report_drilling_time', array('report_id'=>$current_report_data['id']));
                                         //SURVEY
                                         $data['survey'] = $this->Api->get_where('project_report_survey', array('report_id'=>$current_report_data['id']));
-
+                                        
+                                        //COMMENTS
+                                        $comments = $this->Api->get_where('project_report_comments', array('report_id'=>$current_report_data['id'])); 
+                                        $data['comments'] = isset($comments[0]) ? $comments[0] : null;
+                                        
                                         $data['main_content'] = 'report_html';                                    
                                         $this->load->view('partials/printer',$data);                                                                        
                                         

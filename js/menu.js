@@ -42,6 +42,7 @@ $(function(){
                         
                         //Se borra los textos de los trabajos registrados en el overlay
                         $("#save_report_jobs").empty();                        
+                        /*
                         //Save hole geometry
                         save_hole_geometry();
                         //Save operational info
@@ -53,7 +54,9 @@ $(function(){
                         //Save personal
                         save_personal();
                         //Save volumenes
-                        save_volumenes();
+                        save_volumenes();*/
+                        //Save comments
+                        save_comments();
                         //Correr calculos
                         correr_calculos();
                         setStatusReport('All data saved!', 'valid');
@@ -741,6 +744,30 @@ $(function(){
                 });
                 
                 setStatusReport('Volumenes saved!');
+        }
+        
+        /**
+         * COMMENTS
+         */ 
+        function save_comments() {
+                var data = {
+                        comments                : $("#report_comments").val(),
+                        charla_hse              : $("#report_charla_hse").val(),
+                        pusher                  : $("#report_pusher").val(),
+                        company_man             : $("#report_company_man").val(),
+                        representative          : $("#report_representative").val(),
+                        mud_enginers_1         : $("#report_mud_enginers_1").val(),
+                        mud_enginers_2         : $("#report_mud_enginers_2").val()
+                }                
+                //Save comments
+                $.ajax({
+                        type: 'POST',
+                        url: '/rest/save_comments/',
+                        data: data,
+                        dataType: 'json',
+                        async: false
+                });    
+                setStatusReport('Comments saved!');                
         }
 
 
