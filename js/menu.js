@@ -41,8 +41,7 @@ $(function(){
 			//validate_data();
                         
                         //Se borra los textos de los trabajos registrados en el overlay
-                        $("#save_report_jobs").empty();                        
-                        /*
+                        $("#save_report_jobs").empty();                                                
                         //Save hole geometry
                         save_hole_geometry();
                         //Save operational info
@@ -54,7 +53,7 @@ $(function(){
                         //Save personal
                         save_personal();
                         //Save volumenes
-                        save_volumenes();*/
+                        save_volumenes();
                         //Save comments
                         save_comments();
                         //Correr calculos
