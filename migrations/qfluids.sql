@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-10-31 16:07:03
+Date: 2012-11-06 14:15:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -604,15 +604,17 @@ INSERT INTO `casing` VALUES ('195', '42', '42.000', 'in', '40', '40.000', 'in', 
 -- ----------------------------
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `code` varchar(255) DEFAULT NULL,
-  `parent` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `parent` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of categories
 -- ----------------------------
+INSERT INTO `categories` VALUES ('1', 'SAMPLE', 'QWERTY', '0');
 
 -- ----------------------------
 -- Table structure for `chemical_aditions`
@@ -662,107 +664,11 @@ CREATE TABLE `concentrations` (
   `material` int(11) DEFAULT NULL,
   `concentracion` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of concentrations
 -- ----------------------------
-INSERT INTO `concentrations` VALUES ('1', '1', '1', '0');
-INSERT INTO `concentrations` VALUES ('2', '2', '1', '0');
-INSERT INTO `concentrations` VALUES ('3', '1', '2', '0');
-INSERT INTO `concentrations` VALUES ('4', '2', '2', '0');
-INSERT INTO `concentrations` VALUES ('5', '1', '3', '0');
-INSERT INTO `concentrations` VALUES ('6', '2', '3', '0');
-INSERT INTO `concentrations` VALUES ('7', '1', '4', '0');
-INSERT INTO `concentrations` VALUES ('8', '2', '4', '0');
-INSERT INTO `concentrations` VALUES ('9', '1', '5', '0');
-INSERT INTO `concentrations` VALUES ('10', '2', '5', '0');
-INSERT INTO `concentrations` VALUES ('11', '1', '6', '0');
-INSERT INTO `concentrations` VALUES ('12', '2', '6', '0');
-INSERT INTO `concentrations` VALUES ('13', '1', '7', '0');
-INSERT INTO `concentrations` VALUES ('14', '2', '7', '0');
-INSERT INTO `concentrations` VALUES ('15', '1', '8', '0');
-INSERT INTO `concentrations` VALUES ('16', '2', '8', '0');
-INSERT INTO `concentrations` VALUES ('17', '1', '9', '0');
-INSERT INTO `concentrations` VALUES ('18', '2', '9', '0');
-INSERT INTO `concentrations` VALUES ('19', '1', '10', '0');
-INSERT INTO `concentrations` VALUES ('20', '2', '10', '0');
-INSERT INTO `concentrations` VALUES ('21', '1', '11', '0');
-INSERT INTO `concentrations` VALUES ('22', '2', '11', '0');
-INSERT INTO `concentrations` VALUES ('23', '1', '12', '0');
-INSERT INTO `concentrations` VALUES ('24', '2', '12', '0');
-INSERT INTO `concentrations` VALUES ('25', '3', '1', '0');
-INSERT INTO `concentrations` VALUES ('26', '4', '1', '0');
-INSERT INTO `concentrations` VALUES ('27', '3', '2', '0');
-INSERT INTO `concentrations` VALUES ('28', '4', '2', '0');
-INSERT INTO `concentrations` VALUES ('29', '3', '3', '0');
-INSERT INTO `concentrations` VALUES ('30', '4', '3', '0');
-INSERT INTO `concentrations` VALUES ('31', '3', '4', '0');
-INSERT INTO `concentrations` VALUES ('32', '4', '4', '0');
-INSERT INTO `concentrations` VALUES ('33', '3', '5', '0');
-INSERT INTO `concentrations` VALUES ('34', '4', '5', '0');
-INSERT INTO `concentrations` VALUES ('35', '3', '6', '0');
-INSERT INTO `concentrations` VALUES ('36', '4', '6', '0');
-INSERT INTO `concentrations` VALUES ('37', '3', '7', '0');
-INSERT INTO `concentrations` VALUES ('38', '4', '7', '0');
-INSERT INTO `concentrations` VALUES ('39', '3', '8', '0');
-INSERT INTO `concentrations` VALUES ('40', '4', '8', '0');
-INSERT INTO `concentrations` VALUES ('41', '3', '9', '0');
-INSERT INTO `concentrations` VALUES ('42', '4', '9', '0');
-INSERT INTO `concentrations` VALUES ('43', '3', '10', '0');
-INSERT INTO `concentrations` VALUES ('44', '4', '10', '0');
-INSERT INTO `concentrations` VALUES ('45', '3', '11', '0');
-INSERT INTO `concentrations` VALUES ('46', '4', '11', '0');
-INSERT INTO `concentrations` VALUES ('47', '3', '12', '0');
-INSERT INTO `concentrations` VALUES ('48', '4', '12', '0');
-INSERT INTO `concentrations` VALUES ('49', '5', '1', '0');
-INSERT INTO `concentrations` VALUES ('50', '6', '1', '0');
-INSERT INTO `concentrations` VALUES ('51', '5', '2', '0');
-INSERT INTO `concentrations` VALUES ('52', '6', '2', '0');
-INSERT INTO `concentrations` VALUES ('53', '5', '3', '0');
-INSERT INTO `concentrations` VALUES ('54', '6', '3', '0');
-INSERT INTO `concentrations` VALUES ('55', '5', '4', '0');
-INSERT INTO `concentrations` VALUES ('56', '6', '4', '0');
-INSERT INTO `concentrations` VALUES ('57', '5', '5', '0');
-INSERT INTO `concentrations` VALUES ('58', '6', '5', '0');
-INSERT INTO `concentrations` VALUES ('59', '5', '6', '0');
-INSERT INTO `concentrations` VALUES ('60', '6', '6', '0');
-INSERT INTO `concentrations` VALUES ('61', '5', '7', '0');
-INSERT INTO `concentrations` VALUES ('62', '6', '7', '0');
-INSERT INTO `concentrations` VALUES ('63', '5', '8', '0');
-INSERT INTO `concentrations` VALUES ('64', '6', '8', '0');
-INSERT INTO `concentrations` VALUES ('65', '5', '9', '0');
-INSERT INTO `concentrations` VALUES ('66', '6', '9', '0');
-INSERT INTO `concentrations` VALUES ('67', '5', '10', '0');
-INSERT INTO `concentrations` VALUES ('68', '6', '10', '0');
-INSERT INTO `concentrations` VALUES ('69', '5', '11', '0');
-INSERT INTO `concentrations` VALUES ('70', '6', '11', '0');
-INSERT INTO `concentrations` VALUES ('71', '5', '12', '0');
-INSERT INTO `concentrations` VALUES ('72', '6', '12', '0');
-INSERT INTO `concentrations` VALUES ('73', '7', '1', '0');
-INSERT INTO `concentrations` VALUES ('74', '8', '1', '0');
-INSERT INTO `concentrations` VALUES ('75', '7', '2', '0');
-INSERT INTO `concentrations` VALUES ('76', '8', '2', '0');
-INSERT INTO `concentrations` VALUES ('77', '7', '3', '0');
-INSERT INTO `concentrations` VALUES ('78', '8', '3', '0');
-INSERT INTO `concentrations` VALUES ('79', '7', '4', '0');
-INSERT INTO `concentrations` VALUES ('80', '8', '4', '0');
-INSERT INTO `concentrations` VALUES ('81', '7', '5', '0');
-INSERT INTO `concentrations` VALUES ('82', '8', '5', '0');
-INSERT INTO `concentrations` VALUES ('83', '7', '6', '0');
-INSERT INTO `concentrations` VALUES ('84', '8', '6', '0');
-INSERT INTO `concentrations` VALUES ('85', '7', '7', '0');
-INSERT INTO `concentrations` VALUES ('86', '8', '7', '0');
-INSERT INTO `concentrations` VALUES ('87', '7', '8', '0');
-INSERT INTO `concentrations` VALUES ('88', '8', '8', '0');
-INSERT INTO `concentrations` VALUES ('89', '7', '9', '0');
-INSERT INTO `concentrations` VALUES ('90', '8', '9', '0');
-INSERT INTO `concentrations` VALUES ('91', '7', '10', '0');
-INSERT INTO `concentrations` VALUES ('92', '8', '10', '0');
-INSERT INTO `concentrations` VALUES ('93', '7', '11', '0');
-INSERT INTO `concentrations` VALUES ('94', '8', '11', '0');
-INSERT INTO `concentrations` VALUES ('95', '7', '12', '0');
-INSERT INTO `concentrations` VALUES ('96', '8', '12', '0');
 
 -- ----------------------------
 -- Table structure for `conversions_table`
@@ -771,16 +677,19 @@ DROP TABLE IF EXISTS `conversions_table`;
 CREATE TABLE `conversions_table` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_unidad` varchar(255) DEFAULT NULL,
+  `prefijo` varchar(255) DEFAULT NULL,
   `equivalencia` float DEFAULT NULL,
   `unidad_destino` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of conversions_table
 -- ----------------------------
-INSERT INTO `conversions_table` VALUES ('1', 'SX25', '25', 'lb');
-INSERT INTO `conversions_table` VALUES ('2', 'CX40', '40', 'gal');
+INSERT INTO `conversions_table` VALUES ('1', 'SX25', 'SX', '25', 'lb');
+INSERT INTO `conversions_table` VALUES ('2', 'CX40', 'CX', '40', 'gal');
+INSERT INTO `conversions_table` VALUES ('3', 'DIA', 'DIA', '1', 'dia');
+INSERT INTO `conversions_table` VALUES ('4', 'UNIDAD', 'UNIDAD', '1', 'unidad');
 
 -- ----------------------------
 -- Table structure for `inventory`
@@ -795,23 +704,15 @@ CREATE TABLE `inventory` (
   `project_id` int(11) DEFAULT NULL,
   `received` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of inventory
 -- ----------------------------
-INSERT INTO `inventory` VALUES ('1', '1', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('2', '2', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('3', '3', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('4', '10', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('5', '4', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('6', '5', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('7', '6', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('8', '7', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('9', '8', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('10', '9', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('11', '11', '100', '0', '0', '1', '100');
-INSERT INTO `inventory` VALUES ('12', '12', '100', '0', '0', '1', '100');
+INSERT INTO `inventory` VALUES ('1', '1', '0', '0', '0', '1', '0');
+INSERT INTO `inventory` VALUES ('2', '3', '0', '0', '0', '1', '0');
+INSERT INTO `inventory` VALUES ('3', '6', '0', '0', '0', '1', '0');
+INSERT INTO `inventory` VALUES ('4', '7', '0', '0', '0', '1', '0');
 
 -- ----------------------------
 -- Table structure for `inventory_movements`
@@ -832,83 +733,11 @@ CREATE TABLE `inventory_movements` (
   `chemical_adition` int(11) DEFAULT NULL,
   `active` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of inventory_movements
 -- ----------------------------
-INSERT INTO `inventory_movements` VALUES ('1', '1', '1', null, null, '2012-10-26 07:06:32', null, '0', '100', '1', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('2', '1', '1', null, null, '2012-10-26 07:06:32', null, '0', '100', '2', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('3', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '3', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('4', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '4', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('5', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '5', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('6', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '6', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('7', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '7', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('8', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '8', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('9', '1', '1', null, null, '2012-10-26 07:06:33', null, '0', '100', '9', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('10', '1', '1', null, null, '2012-10-26 07:06:34', null, '0', '100', '10', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('11', '1', '1', null, null, '2012-10-26 07:06:34', null, '0', '100', '11', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('12', '1', '1', null, null, '2012-10-26 07:06:34', null, '0', '100', '12', '1', null, '1');
-INSERT INTO `inventory_movements` VALUES ('13', '1', '1', null, null, '2012-10-26 07:06:58', null, '2', '10', '1', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('14', '1', '1', null, null, '2012-10-26 07:06:58', null, '2', '0', '2', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('15', '1', '1', null, null, '2012-10-26 07:06:59', null, '2', '0', '3', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('16', '1', '1', null, null, '2012-10-26 07:06:59', null, '2', '0', '4', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('17', '1', '1', null, null, '2012-10-26 07:06:59', null, '2', '0', '5', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('18', '1', '1', null, null, '2012-10-26 07:06:59', null, '2', '0', '6', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('19', '1', '1', null, null, '2012-10-26 07:06:59', null, '2', '0', '7', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('20', '1', '1', null, null, '2012-10-26 07:07:00', null, '2', '0', '8', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('21', '1', '1', null, null, '2012-10-26 07:07:00', null, '2', '0', '9', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('22', '1', '1', null, null, '2012-10-26 07:07:00', null, '2', '0', '10', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('23', '1', '1', null, null, '2012-10-26 07:07:00', null, '2', '0', '11', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('24', '1', '1', null, null, '2012-10-26 07:07:00', null, '2', '0', '12', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('25', '1', '1', null, null, '2012-10-26 07:09:49', null, '2', '0', '1', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('26', '1', '1', null, null, '2012-10-26 07:09:49', null, '2', '0', '2', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('27', '1', '1', null, null, '2012-10-26 07:09:49', null, '2', '0', '3', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('28', '1', '1', null, null, '2012-10-26 07:09:49', null, '2', '0', '4', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('29', '1', '1', null, null, '2012-10-26 07:09:49', null, '2', '0', '5', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('30', '1', '1', null, null, '2012-10-26 07:09:50', null, '2', '0', '6', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('31', '1', '1', null, null, '2012-10-26 07:09:50', null, '2', '0', '7', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('32', '1', '1', null, null, '2012-10-26 07:09:50', null, '2', '0', '8', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('33', '1', '1', null, null, '2012-10-26 07:09:50', null, '2', '0', '9', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('34', '1', '1', null, null, '2012-10-26 07:09:51', null, '2', '0', '10', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('35', '1', '1', null, null, '2012-10-26 07:09:51', null, '2', '0', '11', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('36', '1', '1', null, null, '2012-10-26 07:09:51', null, '2', '0', '12', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('37', '1', '1', null, null, '2012-10-26 11:40:57', null, '2', '0', '1', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('38', '1', '1', null, null, '2012-10-26 11:40:57', null, '2', '0', '2', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('39', '1', '1', null, null, '2012-10-26 11:40:57', null, '2', '0', '3', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('40', '1', '1', null, null, '2012-10-26 11:40:57', null, '2', '0', '4', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('41', '1', '1', null, null, '2012-10-26 11:40:57', null, '2', '0', '5', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('42', '1', '1', null, null, '2012-10-26 11:40:58', null, '2', '0', '6', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('43', '1', '1', null, null, '2012-10-26 11:40:58', null, '2', '0', '7', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('44', '1', '1', null, null, '2012-10-26 11:40:58', null, '2', '0', '8', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('45', '1', '1', null, null, '2012-10-26 11:40:58', null, '2', '0', '9', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('46', '1', '1', null, null, '2012-10-26 11:40:58', null, '2', '0', '10', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('47', '1', '1', null, null, '2012-10-26 11:40:59', null, '2', '0', '11', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('48', '1', '1', null, null, '2012-10-26 11:40:59', null, '2', '0', '12', null, '1', '0');
-INSERT INTO `inventory_movements` VALUES ('49', '1', '1', null, null, '2012-10-26 11:47:01', null, '2', '0', '1', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('50', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '2', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('51', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '3', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('52', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '4', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('53', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '5', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('54', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '6', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('55', '1', '1', null, null, '2012-10-26 11:47:02', null, '2', '0', '7', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('56', '1', '1', null, null, '2012-10-26 11:47:03', null, '2', '0', '8', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('57', '1', '1', null, null, '2012-10-26 11:47:03', null, '2', '0', '9', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('58', '1', '1', null, null, '2012-10-26 11:47:03', null, '2', '0', '10', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('59', '1', '1', null, null, '2012-10-26 11:47:03', null, '2', '0', '11', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('60', '1', '1', null, null, '2012-10-26 11:47:03', null, '2', '0', '12', null, '2', '0');
-INSERT INTO `inventory_movements` VALUES ('61', '1', '1', null, null, '2012-10-26 11:52:32', null, '2', '0', '1', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('62', '1', '1', null, null, '2012-10-26 11:52:32', null, '2', '0', '2', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('63', '1', '1', null, null, '2012-10-26 11:52:32', null, '2', '0', '3', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('64', '1', '1', null, null, '2012-10-26 11:52:32', null, '2', '0', '4', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('65', '1', '1', null, null, '2012-10-26 11:52:32', null, '2', '0', '5', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('66', '1', '1', null, null, '2012-10-26 11:52:33', null, '2', '0', '6', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('67', '1', '1', null, null, '2012-10-26 11:52:33', null, '2', '0', '7', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('68', '1', '1', null, null, '2012-10-26 11:52:33', null, '2', '0', '8', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('69', '1', '1', null, null, '2012-10-26 11:52:33', null, '2', '0', '9', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('70', '1', '1', null, null, '2012-10-26 11:52:33', null, '2', '0', '10', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('71', '1', '1', null, null, '2012-10-26 11:52:34', null, '2', '0', '11', null, '3', '0');
-INSERT INTO `inventory_movements` VALUES ('72', '1', '1', null, null, '2012-10-26 11:52:34', null, '2', '0', '12', null, '3', '0');
 
 -- ----------------------------
 -- Table structure for `lodos`
@@ -938,25 +767,242 @@ INSERT INTO `lodos` VALUES ('9', 'Q - Vert', '0', '1', '1');
 INSERT INTO `lodos` VALUES ('10', 'Q - NK', '0', '1', '1');
 
 -- ----------------------------
--- Table structure for `materials`
+-- Table structure for `maestra_equipos`
 -- ----------------------------
-DROP TABLE IF EXISTS `materials`;
-CREATE TABLE `materials` (
+DROP TABLE IF EXISTS `maestra_equipos`;
+CREATE TABLE `maestra_equipos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `project_id` int(11) DEFAULT NULL,
+  `erp_id` varchar(255) DEFAULT NULL,
+  `product_name` varchar(255) DEFAULT NULL,
+  `unit` int(11) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `category` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of maestra_equipos
+-- ----------------------------
+INSERT INTO `maestra_equipos` VALUES ('1', 'N0109000009', 'ANILLOS DE CORROSION', '3', 'Anillo de corrosión - Incluye envio y analisis', '1');
+INSERT INTO `maestra_equipos` VALUES ('2', 'N0301000042', 'CARRO TANQUE 6000 GAL CAPACIDAD 0 -50 KM', '3', 'Carro Tanque 6000 Gal Capacidad 0 -50 Km', '1');
+INSERT INTO `maestra_equipos` VALUES ('3', 'N0401000043', 'CARTUCHOS FILTRANTES', '3', 'Cartuchos Filtrantes', '1');
+INSERT INTO `maestra_equipos` VALUES ('4', 'N0401000046', 'CASETA DE FILTRACION', '3', 'Caseta de Filtracion', '1');
+INSERT INTO `maestra_equipos` VALUES ('5', 'N0202000254', 'CASETA STAND BY', '3', 'Caseta Stand By', '1');
+INSERT INTO `maestra_equipos` VALUES ('6', 'N0402000118', 'OPERADOR UNIDAD DE FILTRACION', '3', '', '1');
+INSERT INTO `maestra_equipos` VALUES ('7', 'N0402000119', 'OPERADOR UNIDAD DE FLOCULACION SELECTIVA', '3', '', '1');
+INSERT INTO `maestra_equipos` VALUES ('8', 'N0403000243', 'SISTEMA Q MAX DRILL PHPA (3600-7500)', '3', 'Sistema Q Max Drill Phpa (3600-7500)', '1');
+INSERT INTO `maestra_equipos` VALUES ('9', 'N0403000244', 'SISTEMA Q Nca', '3', 'Sistema Q Nca', '1');
+INSERT INTO `maestra_equipos` VALUES ('10', 'N0403000245', 'SISTEMA Q Nca (500-3600)', '3', 'Sistema Q Nca (500-3600)', '1');
+INSERT INTO `maestra_equipos` VALUES ('11', 'N0402000260', 'SUPERVISOR TFM', '3', 'Supervisor TFM', '1');
+INSERT INTO `maestra_equipos` VALUES ('12', 'N0301000268', 'TRANSPORTE CAMIONETA', '3', 'Transporte Camioneta', '1');
+INSERT INTO `maestra_equipos` VALUES ('13', 'N0301000269', 'TRANSPORTE SENCILLO', '3', 'Transporte Sencillo', '1');
+INSERT INTO `maestra_equipos` VALUES ('14', 'N0301000270', 'TRANSPORTE TRACTOMULA', '3', 'Transporte Tractomula', '1');
+INSERT INTO `maestra_equipos` VALUES ('15', 'N0301000271', 'TRANSPORTE TURBO', '3', 'Transporte Turbo', '1');
+INSERT INTO `maestra_equipos` VALUES ('16', 'N0401000273', 'UNIDAD DE FLOCULACION SELECTIVA', '3', 'Unidad De Floculacion Selectiva', '1');
+INSERT INTO `maestra_equipos` VALUES ('17', 'N0401000274', 'UNIDAD FILTRADO', '3', 'Unidad Filtrado', '1');
+INSERT INTO `maestra_equipos` VALUES ('18', 'N0401000275', 'UNIDAD FILTRADO STAND BY', '3', 'Unidad Filtrado Stand By', '1');
+
+-- ----------------------------
+-- Table structure for `maestra_materials`
+-- ----------------------------
+DROP TABLE IF EXISTS `maestra_materials`;
+CREATE TABLE `maestra_materials` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `erp_id` varchar(255) DEFAULT NULL,
   `internal_name` varchar(255) DEFAULT NULL,
   `unit` int(11) DEFAULT NULL,
   `egravity` float DEFAULT NULL,
   `category` int(11) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `custom` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=366 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of materials
+-- Records of maestra_materials
 -- ----------------------------
+INSERT INTO `maestra_materials` VALUES ('183', 'N0110000003', 'ACIDO CITRICO EN CRISTALES', '1', '1.665', '1', 'Regulador de pH para contaminación con cemento');
+INSERT INTO `maestra_materials` VALUES ('184', 'N0110000004', 'ACIDO CITRICO EN CRISTALES', '1', '1.665', '1', 'Regulador de pH para contaminación con cemento');
+INSERT INTO `maestra_materials` VALUES ('185', 'N0110000005', 'ALKAPAM', '1', '0.8', '1', 'Polímero para tratamiento de sólidos');
+INSERT INTO `maestra_materials` VALUES ('186', 'N0110000006', 'ALKAPAM A 1103', '1', '0.8', '1', 'Polímero para tratamiento de sólidos');
+INSERT INTO `maestra_materials` VALUES ('187', 'N0105000010', 'ATAPULGITE', '1', '0.9', '1', 'Atapulgite');
+INSERT INTO `maestra_materials` VALUES ('188', 'N0103000011', 'BARITA', '1', '4.25', '1', 'Material densificante - Barita');
+INSERT INTO `maestra_materials` VALUES ('189', 'N0105000012', 'BENEX', '1', '0.644', '1', 'Extendedor de Bentonita');
+INSERT INTO `maestra_materials` VALUES ('190', 'N0102000013', 'BENTONE 910', '1', '2.5', '1', 'Arcilla Organofilica');
+INSERT INTO `maestra_materials` VALUES ('191', 'N0105000014', 'BENTONITA NATURAL GEL', '1', '2.5', '1', 'Bentonita Premium tipo Wyoming Viscosificante');
+INSERT INTO `maestra_materials` VALUES ('192', 'N0105000016', 'BENTONITA REGULAR', '1', '2.5', '1', 'Bentonita Nacional');
+INSERT INTO `maestra_materials` VALUES ('193', 'N0110000017', 'BICARBONATO DE SODIO', '1', '2.159', '1', 'Precipitador de Ca++');
+INSERT INTO `maestra_materials` VALUES ('194', 'N0110000018', 'BICARBONATO DE SODIO', '1', '2.159', '1', 'Precipitador de Ca++');
+INSERT INTO `maestra_materials` VALUES ('195', 'N0109000021', 'BRIDGESAL ULTRA', '1', '2.18', '1', 'Sal puenteante de diferente granulometría');
+INSERT INTO `maestra_materials` VALUES ('196', 'N0110000024', 'CAL HIDRATADA', '1', '3', '1', 'Cal Hidratada.  Regulador de pH');
+INSERT INTO `maestra_materials` VALUES ('197', 'N0110000025', 'CAL HIDRATADA', '1', '3', '1', 'Cal Hidratada.  Regulador de pH');
+INSERT INTO `maestra_materials` VALUES ('198', 'N0110000026', 'CAL HIDRATADA', '1', '3', '1', 'Cal Hidratada.  Regulador de pH');
+INSERT INTO `maestra_materials` VALUES ('199', 'N0110000027', 'CAL VIVA', '1', '3.3', '1', 'Cal Viva');
+INSERT INTO `maestra_materials` VALUES ('200', 'N0110000028', 'CAL VIVA', '1', '3.3', '1', 'Cal Viva');
+INSERT INTO `maestra_materials` VALUES ('201', 'N0103000029', 'CARBONATO DE CALCIO', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('202', 'N0103000030', 'CARBONATO DE CALCIO M1000', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('203', 'N0103000031', 'CARBONATO DE CALCIO M10-40', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('204', 'N0103000032', 'CARBONATO DE CALCIO M1200', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('205', 'N0103000033', 'CARBONATO DE CALCIO M200', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('206', 'N0103000034', 'CARBONATO DE CALCIO M325', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('207', 'N0103000035', 'CARBONATO DE CALCIO M400', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('208', 'N0103000036', 'CARBONATO DE CALCIO M40-100', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('209', 'N0103000037', 'CARBONATO DE CALCIO M50-150', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('210', 'N0103000038', 'CARBONATO DE CALCIO M5-10', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('211', 'N0103000039', 'CARBONATO DE CALCIO M600', '1', '2.7', '1', 'Material densificante y puenteante');
+INSERT INTO `maestra_materials` VALUES ('212', 'N0110000040', 'CARBONATO DE SODIO', '1', '0.96', '1', 'Precipitador de Calcio');
+INSERT INTO `maestra_materials` VALUES ('213', 'N0108000044', 'CASCARILLA DE ARROZ', '1', '0.7', '1', 'Cascarilla de arroz. LCM');
+INSERT INTO `maestra_materials` VALUES ('214', 'N0108000045', 'CASCARILLA DE ARROZ', '1', '0.7', '1', 'Cascarilla de arroz. LCM');
+INSERT INTO `maestra_materials` VALUES ('215', 'N0105000050', 'CLAYTONE II', '1', '1.57', '1', 'Arcilla organofílica');
+INSERT INTO `maestra_materials` VALUES ('216', 'N0105000051', 'CLAYTONE II', '1', '1.57', '1', 'Arcilla organofílica');
+INSERT INTO `maestra_materials` VALUES ('217', 'N0108000052', 'CLEAREX', '1', '2.5', '1', 'LCM mezclado con polímero expandible para no yacimiento');
+INSERT INTO `maestra_materials` VALUES ('218', 'N0109000053', 'CLORURO DE CALCIO', '1', '2.2', '1', 'Cloruro de calcio. Sal - (95% pureza)');
+INSERT INTO `maestra_materials` VALUES ('219', 'N0109000054', 'CLORURO DE CALCIO', '1', '2.2', '1', 'Cloruro de calcio. Sal - (95% pureza)');
+INSERT INTO `maestra_materials` VALUES ('220', 'N0109000055', 'CLORURO DE POTASIO', '1', '1.988', '1', 'Cloruro de potasio. Sal - Pureza >95%');
+INSERT INTO `maestra_materials` VALUES ('221', 'N0109000056', 'CLORURO DE POTASIO', '1', '1.988', '1', 'Cloruro de potasio. Sal - Pureza >95%');
+INSERT INTO `maestra_materials` VALUES ('222', 'N0109000057', 'CLORURO DE SODIO', '1', '2.16', '1', 'Colururo de Sodio. Sal');
+INSERT INTO `maestra_materials` VALUES ('223', 'N0106000058', 'CMC', '1', '1.55', '1', 'Carboximetilcelulosa');
+INSERT INTO `maestra_materials` VALUES ('224', 'N0106000059', 'CMC R', '1', '1.55', '1', 'Carboximetilcelulosa Regular');
+INSERT INTO `maestra_materials` VALUES ('225', 'N0107000062', 'CYDRILL 4000', '1', '0.85', '1', 'PHPA Liquido');
+INSERT INTO `maestra_materials` VALUES ('226', 'N0106000063', 'CYPAN', '1', '1.5', '1', 'Copolimero controlador de filtrado');
+INSERT INTO `maestra_materials` VALUES ('227', 'N0106000064', 'CYPAN L', '1', '1.28', '1', 'Poliacrilato de Sodio (Liq.)');
+INSERT INTO `maestra_materials` VALUES ('228', 'N0106000065', 'CYPAN S', '1', '0.75', '1', 'Poliacrilato de Sodio (Sol.)');
+INSERT INTO `maestra_materials` VALUES ('229', 'N0110000066', 'CYTEMP', '1', '2.2', '1', 'Adelgazante polimérico');
+INSERT INTO `maestra_materials` VALUES ('230', 'N0110000067', 'DESCO CF', '1', '1.6', '1', 'Dispersante - Tanino libre de cromo');
+INSERT INTO `maestra_materials` VALUES ('231', 'N0110000069', 'DETERGENTE BREAK', '1', '1', '1', 'Detergente');
+INSERT INTO `maestra_materials` VALUES ('232', 'N0110000070', 'DRILLING DETERGENT', '1', '1', '1', 'Drilling Detergent');
+INSERT INTO `maestra_materials` VALUES ('233', 'N0110000071', 'DRILLING DETERGENT', '1', '1', '1', 'Drilling Detergent');
+INSERT INTO `maestra_materials` VALUES ('234', 'N0106000072', 'DRISCAL D', '1', '1.033', '1', 'Polímero controlador de filtrado para zona de interés HTHP');
+INSERT INTO `maestra_materials` VALUES ('235', 'N0107000075', 'ECODRILL', '1', '0.58', '1', 'Silicato de Potasio');
+INSERT INTO `maestra_materials` VALUES ('236', 'N0110000077', 'ESTEARATO DE ALUMINIO', '1', '1.01', '1', 'Antiespumante - Estereato de aluminio');
+INSERT INTO `maestra_materials` VALUES ('237', 'N0109000082', 'FORMIATO DE POTASIO', '1', '1.08', '1', 'Sal - Formiato de potasio sólido');
+INSERT INTO `maestra_materials` VALUES ('238', 'N0109000083', 'FORMIATO DE POTASIO', '1', '1.08', '1', 'Sal - Formiato de potasio sólido');
+INSERT INTO `maestra_materials` VALUES ('239', 'N0109000084', 'FORMIATO DE POTASIO LIQUIDO', '1', '1.2', '1', 'Salmuera - Formiato de potasio líquido, 13 lpg');
+INSERT INTO `maestra_materials` VALUES ('240', 'N0109000085', 'FORMIATO DE SODIO', '1', '0.94', '1', 'Sal - Formiato de sodio');
+INSERT INTO `maestra_materials` VALUES ('241', 'N0104000087', 'GILSOBLOCK', '1', '1.05', '1', 'Gilsonita dispersable en agua');
+INSERT INTO `maestra_materials` VALUES ('242', 'N0102000088', 'GILSONITE HT', '1', '1.5', '1', 'Asfalto en polvo OBM - HPHT Controlador De Filtrado,EmulsioInvertida');
+INSERT INTO `maestra_materials` VALUES ('243', 'N0110000089', 'GLASS BEAD', '1', '2.5', '1', 'Lubricante mecánico tipo micro esfereas de vidrio');
+INSERT INTO `maestra_materials` VALUES ('244', 'N0107000090', 'GLYMAX', '1', '1.1', '1', 'Glicol polialquilenico -  Lubricante e inhibidor de arcillas');
+INSERT INTO `maestra_materials` VALUES ('245', 'N0104000091', 'GRAFITE', '1', '2.25', '1', 'Material puenteante y sellante - Grafito material obturante (F,M,C)');
+INSERT INTO `maestra_materials` VALUES ('246', 'N0104000092', 'GRAFITE', '1', '2.25', '1', 'Material puenteante y sellante - Grafito material obturante (F,M,C)');
+INSERT INTO `maestra_materials` VALUES ('247', 'N0103000096', 'HEMATITA', '1', '4.7', '1', 'Material densificante - Hematita');
+INSERT INTO `maestra_materials` VALUES ('248', 'N0110000099', 'K 17', '1', '1.7', '1', 'Lignito Caustizado. Dispersante y Controlador de Filtrado');
+INSERT INTO `maestra_materials` VALUES ('249', 'N0105000100', 'KELZAN XC', '1', '1.5', '1', 'Goma xántica.  Viscosificante');
+INSERT INTO `maestra_materials` VALUES ('250', 'N0105000101', 'KELZAN XCD', '1', '1.5', '1', 'Goma xántica.  Viscosificante - BiopolímeroPremium,GomaXanticaDispersa');
+INSERT INTO `maestra_materials` VALUES ('251', 'N0108000102', 'KWIK SEAL', '1', '1.05', '1', 'LMC - (F,M,C)');
+INSERT INTO `maestra_materials` VALUES ('252', 'N0110000103', 'LIGNITO', '1', '1.7', '1', 'Lignito');
+INSERT INTO `maestra_materials` VALUES ('253', 'N0110000106', 'LUBRAGLIDE', '1', '1.06', '1', 'Lubricante mecánico tipo microesfereas de Copolímero');
+INSERT INTO `maestra_materials` VALUES ('254', 'N0110000107', 'LUBRAGLIDE COARSE', '1', '1.06', '1', 'Lubricante Sólido - Lubricante mecánico tipo microesfereas de Copolímero');
+INSERT INTO `maestra_materials` VALUES ('255', 'N0110000108', 'LUBRAGLIDE FINE', '1', '1.06', '1', 'Lubricante Sólido - Lubricante mecánico tipo microesfereas de Copolímero');
+INSERT INTO `maestra_materials` VALUES ('256', 'N0110000109', 'MF 55', '1', '1.01', '1', 'Floculante selectivo');
+INSERT INTO `maestra_materials` VALUES ('257', 'N0108000110', 'MICA', '1', '2.09', '1', 'LMC - (F,M,C)');
+INSERT INTO `maestra_materials` VALUES ('258', 'N0108000111', 'MICA', '1', '2.09', '1', 'LMC - (F,M,C)');
+INSERT INTO `maestra_materials` VALUES ('259', 'N0108000112', 'MICA', '1', '2.09', '1', 'LMC - (F,M,C)');
+INSERT INTO `maestra_materials` VALUES ('260', 'N0108000113', 'MICA', '1', '2.09', '1', 'LMC - (F,M,C)');
+INSERT INTO `maestra_materials` VALUES ('261', 'N0110000116', 'NITRATO DE SODIO', '1', '1.5', '1', 'Trazador - Nitrato de Sodio');
+INSERT INTO `maestra_materials` VALUES ('262', 'N0110000117', 'NITRATO DE SODIO', '1', '1.5', '1', 'Trazador - Nitrato de Sodio');
+INSERT INTO `maestra_materials` VALUES ('263', 'N0110000120', 'OXIDO DE MAGNESIO', '1', '3.56', '1', 'Oxido de Magnesio - ph Buffer');
+INSERT INTO `maestra_materials` VALUES ('264', 'N0110000121', 'OXIDO DE MAGNESIO', '1', '3.56', '1', 'Oxido de Magnesio - ph Buffer');
+INSERT INTO `maestra_materials` VALUES ('265', 'N0110000122', 'OXIDO DE MAGNESIO', '1', '3.56', '1', 'Oxido de Magnesio - ph Buffer');
+INSERT INTO `maestra_materials` VALUES ('266', 'N0110000123', 'OXIDO DE ZINC', '1', '0.9', '1', 'Oxido de Zinc - Removedor de H2S');
+INSERT INTO `maestra_materials` VALUES ('267', 'N0110000124', 'PIPELAX', '1', '0.91', '1', 'Fluido liberador de tubería');
+INSERT INTO `maestra_materials` VALUES ('268', 'N0109000126', 'PLUGSAL', '1', '2.17', '1', 'Sal puenteante');
+INSERT INTO `maestra_materials` VALUES ('269', 'N0109000127', 'PLUGSAL X', '1', '2.17', '1', 'Sal puenteante');
+INSERT INTO `maestra_materials` VALUES ('270', 'N0108000129', 'POLY PLUG', '1', '0.91', '1', 'LCM Polímero para control pérdidas de circulación - Material obturante para polímero entrecruzable');
+INSERT INTO `maestra_materials` VALUES ('271', 'N0108000130', 'POLY PLUG', '1', '0.91', '1', 'LCM Polímero para control pérdidas de circulación - Material obturante para polímero entrecruzable');
+INSERT INTO `maestra_materials` VALUES ('272', 'N0108000131', 'POLY PLUG', '1', '0.91', '1', 'LCM Polímero para control pérdidas de circulación - Material obturante para polímero entrecruzable');
+INSERT INTO `maestra_materials` VALUES ('273', 'N0110000132', 'POTASA CAUSTICA EN ESCAMAS', '1', '2.04', '1', 'Alcalinizante - Hidroxido De Potasio');
+INSERT INTO `maestra_materials` VALUES ('274', 'N0401000133', 'PREMIX TANK 250 bbl', '1', '0', '1', 'Premix Tank 250 Bbl');
+INSERT INTO `maestra_materials` VALUES ('275', 'N0401000134', 'PREMIX TANK 300 bbl', '1', '0', '1', 'Premix Tank 300 Bbl');
+INSERT INTO `maestra_materials` VALUES ('276', 'N0401000135', 'PREMIX TANK 350 bbl', '1', '0', '1', 'Premix Tank 350 Bbl');
+INSERT INTO `maestra_materials` VALUES ('277', 'N0104000138', 'Q ASPHALT W', '1', '1.49', '1', 'Asfalto dispersable en agua');
+INSERT INTO `maestra_materials` VALUES ('278', 'N0110000141', 'Q BREAKER', '1', '1.54', '1', 'Rompedor de Cake de lodo');
+INSERT INTO `maestra_materials` VALUES ('279', 'N0110000142', 'Q CAUSTIC LIG', '1', '1.7', '1', 'Lignito caustizado');
+INSERT INTO `maestra_materials` VALUES ('280', 'N0110000143', 'Q CF THINNER', '1', '1.14', '1', 'Adelgazante');
+INSERT INTO `maestra_materials` VALUES ('281', 'N0110000144', 'Q CIDE L14', '1', '1.08', '1', 'Glutaraldehido - Bactericida Biocida');
+INSERT INTO `maestra_materials` VALUES ('282', 'N0110000145', 'Q CIDE L25', '1', '1.08', '1', 'Glutaraldehido - Bactericida Biocida');
+INSERT INTO `maestra_materials` VALUES ('283', 'N0109000146', 'Q CLEAN SURF L', '1', '0.91', '1', 'Surfactante limpieza de tuberías OBM');
+INSERT INTO `maestra_materials` VALUES ('284', 'N0106000147', 'Q CMC', '1', '1.55', '1', 'Controlador de filtrado.  CMC modificado');
+INSERT INTO `maestra_materials` VALUES ('285', 'N0104000148', 'Q CS GRAFITO', '1', '1.8', '1', 'Material puenteante y sellante');
+INSERT INTO `maestra_materials` VALUES ('286', 'N0110000149', 'Q DEFOAM', '1', '0.99', '1', 'Antiespumante');
+INSERT INTO `maestra_materials` VALUES ('287', 'N0110000150', 'Q DEFOAM OS', '1', '0.99', '1', 'Antiespumante base silicona');
+INSERT INTO `maestra_materials` VALUES ('288', 'N0110000151', 'Q DRILL THIN', '1', '1.6', '1', 'Tanino modificado');
+INSERT INTO `maestra_materials` VALUES ('289', 'N0110000152', 'Q DRILL UP', '1', '1.031', '1', 'Lubricante y reductor de torque - Anti-acresión y anti embotamiento (base hidrocarburo y/o vegetal)');
+INSERT INTO `maestra_materials` VALUES ('290', 'N0108000154', 'Q FIBER', '1', '1.2', '1', 'Material celulósico fibroso (fino, medio grueso) - Fibra Mineral Especial');
+INSERT INTO `maestra_materials` VALUES ('291', 'N0108000155', 'Q FIBER FLUID', '1', '1.2', '1', 'Fibra acidificable para control de pérdidas de circulación en calizas fracturadas');
+INSERT INTO `maestra_materials` VALUES ('292', 'N0102000156', 'Q FILM', '1', '0.92', '1', 'Acido graso aminado (Activador polar)');
+INSERT INTO `maestra_materials` VALUES ('293', 'N0110000158', 'Q FOAM', '1', '1', '1', 'Espumante');
+INSERT INTO `maestra_materials` VALUES ('294', 'N0110000159', 'Q FREE', '1', '0.91', '1', 'Liberador de tubería - Agente Liberador');
+INSERT INTO `maestra_materials` VALUES ('295', 'N0102000160', 'Q GIL HT', '1', '1.5', '1', 'Agente Controlador de Filtrado OBM Tipo Gilsonita');
+INSERT INTO `maestra_materials` VALUES ('296', 'N0102000163', 'Q GILTROL', '1', '1.2', '1', 'Agente controlador de filtrado OBM tipo polímero');
+INSERT INTO `maestra_materials` VALUES ('297', 'N0108000165', 'Q GRAFITO', '1', '1.8', '1', 'Grafito material obturante (F,M,C)');
+INSERT INTO `maestra_materials` VALUES ('298', 'N0107000168', 'Q INHIBIDROL G', '1', '1.06', '1', 'Amina en base a glicol.  Inhibidor de arcilla - Inhibidor de arcilla (tipo Amina base Glicol)');
+INSERT INTO `maestra_materials` VALUES ('299', 'N0110000169', 'Q KLEEN', '1', '1.061', '1', 'Agente Surfactante - Surfactante para limpieza de tubería WBM');
+INSERT INTO `maestra_materials` VALUES ('300', 'N0110000170', 'Q KLEEN', '1', '1.061', '1', 'Agente Surfactante - Surfactante para limpieza de tubería WBM');
+INSERT INTO `maestra_materials` VALUES ('301', 'N0110000171', 'Q KLEEN SURF', '1', '1.061', '1', 'Surfactante');
+INSERT INTO `maestra_materials` VALUES ('302', 'N0110000172', 'Q LIG M', '1', '1.32', '1', 'Lignito modificado');
+INSERT INTO `maestra_materials` VALUES ('303', 'N0110000174', 'Q LUBE', '1', '1.016', '1', 'Lubricante OBM Mejorador de ROP (base hidrocarburos) - Reductor de torque de origen vegetal');
+INSERT INTO `maestra_materials` VALUES ('304', 'N0110000175', 'Q LUBE FA', '1', '1.016', '1', 'Lubricante y reductor de Torque de origen ácido graso y esteres');
+INSERT INTO `maestra_materials` VALUES ('305', 'N0110000176', 'Q LUBE HT', '1', '1.016', '1', 'Lubricante para altas temperaturas');
+INSERT INTO `maestra_materials` VALUES ('306', 'N0110000177', 'Q LUBE M', '1', '1.016', '1', 'Lubricante y reductor de torque de origen mineral o sintético');
+INSERT INTO `maestra_materials` VALUES ('307', 'N0102000178', 'Q LUBE OBM', '1', '1.016', '1', 'Lubricante OBM');
+INSERT INTO `maestra_materials` VALUES ('308', 'N0109000179', 'Q M 08', '1', '0.86', '1', 'Solvente removedor de cake para limpieza de tuberías');
+INSERT INTO `maestra_materials` VALUES ('309', 'N0107000183', 'Q MAX DRILL', '1', '1.07', '1', 'Amina. Inhibidor de arcilla - Estabilizador De Shale Y Arcilla');
+INSERT INTO `maestra_materials` VALUES ('310', 'N0107000184', 'Q MAX GUARD', '1', '1.07', '1', 'Inhibidor de arcilla tipo amina - Inhibidor De Esmectita - Estabilizador De Shale');
+INSERT INTO `maestra_materials` VALUES ('311', 'N0102000186', 'Q MOD', '1', '1.01', '1', 'Modificador de reología lecturas bajas OBM');
+INSERT INTO `maestra_materials` VALUES ('312', 'N0102000187', 'Q MUL C', '1', '0.95', '1', 'Emulsificante concentrado OBM');
+INSERT INTO `maestra_materials` VALUES ('313', 'N0105000188', 'Q MUL GEL', '1', '1.57', '1', 'Arcilla Organofilica OBM');
+INSERT INTO `maestra_materials` VALUES ('314', 'N0102000189', 'Q MUL I', '1', '0.9', '1', 'Emulsificador Primario OBM');
+INSERT INTO `maestra_materials` VALUES ('315', 'N0102000190', 'Q MUL II', '1', '0.945', '1', 'Emulsificador Secundario OBM');
+INSERT INTO `maestra_materials` VALUES ('316', 'N0107000192', 'Q NCa', '1', '1.1', '1', 'Nitrato de calcio. Inhibidor de arcilla');
+INSERT INTO `maestra_materials` VALUES ('317', 'N0107000193', 'Q NCa', '1', '1.1', '1', 'Nitrato de calcio. Inhibidor de arcilla');
+INSERT INTO `maestra_materials` VALUES ('318', 'N0107000194', 'Q NCa LIQ', '1', '1.56', '1', 'Nitrato de calcio. Inhibidor de arcilla');
+INSERT INTO `maestra_materials` VALUES ('319', 'N0107000196', 'Q NK', '1', '2.109', '1', 'Nitrato de Potasio. Inhibidor de Arcillas');
+INSERT INTO `maestra_materials` VALUES ('320', 'N0110000197', 'Q NOFOAM', '1', '0.9', '1', 'Antiespumante líquido mezcla de alcoholes de alto peso molecular y ácidos grasos modificados');
+INSERT INTO `maestra_materials` VALUES ('321', 'N0106000199', 'Q PAC L', '1', '0.8', '1', 'Polímero controlador de filtrado LV - Celulosa polianionica de baja viscosidad');
+INSERT INTO `maestra_materials` VALUES ('322', 'N0106000200', 'Q PAC R', '1', '0.8', '1', 'Polímero controlador de filtrado y viscosificante HV - Celulosa polianionica de alta viscosidad');
+INSERT INTO `maestra_materials` VALUES ('323', 'N0110000201', 'Q PHPA', '1', '0.8', '1', 'Encapsulador de arcilla PHPA');
+INSERT INTO `maestra_materials` VALUES ('324', 'N0110000203', 'Q RHL', '1', '1.04', '1', 'Q SAFE SC');
+INSERT INTO `maestra_materials` VALUES ('325', 'N0110000205', 'Q SCAV H2S', '1', '1.07', '1', 'Secuestrador de H2S');
+INSERT INTO `maestra_materials` VALUES ('326', 'N0110000206', 'Q SCAV O2', '1', '1.07', '1', 'Secuestrador de oxígeno');
+INSERT INTO `maestra_materials` VALUES ('327', 'N0108000208', 'Q SEC 3525', '1', '1.4', '1', 'Secuestrador de oxígeno');
+INSERT INTO `maestra_materials` VALUES ('328', 'N0107000211', 'Q STABILITY', '1', '1.1', '1', 'Nitrato de Calcio');
+INSERT INTO `maestra_materials` VALUES ('329', 'N0107000212', 'Q STABILITY', '1', '1.1', '1', 'Nitrato de Calcio');
+INSERT INTO `maestra_materials` VALUES ('330', 'N0102000213', 'Q STABLE', '1', '0.88', '1', 'Mejorador de interfase solido/aceite');
+INSERT INTO `maestra_materials` VALUES ('331', 'N0106000214', 'Q STAR', '1', '1.5', '1', 'Almidon modificado');
+INSERT INTO `maestra_materials` VALUES ('332', 'N0106000215', 'Q STAR HT', '1', '2.109', '1', 'Almidón controlador de filtrado para zona de interés - Almidon Para Alta Temperatura');
+INSERT INTO `maestra_materials` VALUES ('333', 'N0106000217', 'Q STAR M', '1', '1.5', '1', 'Almidon controlador de filtrado para zona de interés');
+INSERT INTO `maestra_materials` VALUES ('334', 'N0108000218', 'Q STOP', '1', '0.613', '1', 'Material  fibroso para pérdida de circulación (Zona Interes) - (F,M,G)');
+INSERT INTO `maestra_materials` VALUES ('335', 'N0108000219', 'Q STOP', '1', '0.613', '1', 'Material  fibroso para pérdida de circulación (Zona Interes) - (F,M,G)');
+INSERT INTO `maestra_materials` VALUES ('336', 'N0108000220', 'Q STOP', '1', '0.613', '1', 'Material  fibroso para pérdida de circulación (Zona Interes) - (F,M,G)');
+INSERT INTO `maestra_materials` VALUES ('337', 'N0108000222', 'Q STOP', '1', '0.613', '1', 'Material  fibroso para pérdida de circulación (Zona Interes) - (F,M,G)');
+INSERT INTO `maestra_materials` VALUES ('338', 'N0109000223', 'Q TDL 13', '1', '0.86', '1', 'Inhibidor de Corrosion');
+INSERT INTO `maestra_materials` VALUES ('339', 'N0109000224', 'Q TDL 15', '1', '0.86', '1', 'Inhibidor de Corrosion');
+INSERT INTO `maestra_materials` VALUES ('340', 'N0102000227', 'Q THIN O', '1', '1.25', '1', 'Adelgazante OBM');
+INSERT INTO `maestra_materials` VALUES ('341', 'N0106000230', 'Q THINTEX', '1', '0.6', '1', 'Adelgazante polimérico - Defoculante Polimérico');
+INSERT INTO `maestra_materials` VALUES ('342', 'N0102000232', 'Q WET', '1', '0.955', '1', 'Humectante OBM');
+INSERT INTO `maestra_materials` VALUES ('343', 'N0105000233', 'Q XAN', '1', '1.5', '1', 'Goma xántica.  Viscosificante - Goma de xanthan');
+INSERT INTO `maestra_materials` VALUES ('344', 'N0105000237', 'RHEOXAN', '1', '1.5', '1', 'Goma xantica');
+INSERT INTO `maestra_materials` VALUES ('345', 'N0110000239', 'SAPP', '1', '1.86', '1', 'Dispersante');
+INSERT INTO `maestra_materials` VALUES ('346', 'N0107000242', 'SILICATO DE POTASIO', '1', '1.26', '1', 'Silicato de Potasio');
+INSERT INTO `maestra_materials` VALUES ('347', 'N0108000246', 'SMART SEAL', '1', '0', '1', 'Material sellante para OBM');
+INSERT INTO `maestra_materials` VALUES ('348', 'N0108000247', 'SMART SEAL', '1', '0', '1', 'Material sellante para OBM');
+INSERT INTO `maestra_materials` VALUES ('349', 'N0110000248', 'SODA ASH', '1', '2.5', '1', 'Carbonato de Sodio - Control Ca++');
+INSERT INTO `maestra_materials` VALUES ('350', 'N0110000249', 'SODA CAUSTICA', '1', '2.13', '1', 'Soda Caustica - Controlador de pH. Alcalinizante');
+INSERT INTO `maestra_materials` VALUES ('351', 'N0104000252', 'SOLTEX', '1', '1.35', '1', 'Asfalto sulfonato soloble en agua - Control Shale');
+INSERT INTO `maestra_materials` VALUES ('352', 'N0106000253', 'SP 101', '1', '1.05', '1', 'Poliacrilato de Sodio');
+INSERT INTO `maestra_materials` VALUES ('353', 'N0107000255', 'STOKOPOL', '1', '0.8', '1', 'PHPA Poliacrilamida. Inhibidor mecánico de arcillas');
+INSERT INTO `maestra_materials` VALUES ('354', 'N0107000256', 'STOKOPOL', '1', '0.8', '1', 'PHPA Poliacrilamida. Inhibidor mecánico de arcillas');
+INSERT INTO `maestra_materials` VALUES ('355', 'N0110000257', 'SULFITO DE SODIO', '1', '2.6', '1', 'Secuestrante de Oxigeno');
+INSERT INTO `maestra_materials` VALUES ('356', 'N0110000258', 'SUPER SWEEP', '1', '1', '1', 'Fibra de monofilamentos usada como agente de barrido');
+INSERT INTO `maestra_materials` VALUES ('357', 'N0107000261', 'SYNERFLOC A25D', '1', '0.8', '1', 'PHPA Solido - Polímero inhibidor  de arcillas y encapsulante bajo peso molecular (sistema HPWBM)');
+INSERT INTO `maestra_materials` VALUES ('358', 'N0110000267', 'THINTEX CYTHEM', '1', '10.33', '1', 'Adelgazante Polimerico');
+INSERT INTO `maestra_materials` VALUES ('359', 'N0102000277', 'VERSAMOD', '1', '1.01', '1', 'Modificador de reología OBM');
+INSERT INTO `maestra_materials` VALUES ('360', 'N0102000278', 'VERSATHIN', '1', '0.825', '1', 'Adelgazante para lodo base aceite');
+INSERT INTO `maestra_materials` VALUES ('361', 'N0102000279', 'VERSATROL', '1', '1.05', '1', 'Lignito Organofilico - Controlador de filtrado fluidos base aceite');
+INSERT INTO `maestra_materials` VALUES ('362', 'N0108000280', 'WAL NUT PLUG', '1', '2.2', '1', 'Cascara de Nuez (F,M,G) - LCM');
+INSERT INTO `maestra_materials` VALUES ('363', 'N0108000283', 'X LINK', '1', '1.2', '1', 'Polímero para control de pérdidas de circulación - PolÍmero Entrecruzado');
+INSERT INTO `maestra_materials` VALUES ('364', 'N0105000284', 'XANVIS', '1', '1.5', '1', 'Goma xántica clarificada');
+INSERT INTO `maestra_materials` VALUES ('365', 'N0105000285', 'XANVIS L', '1', '1.104', '1', 'Goma xántica clarificada líquida');
 
 -- ----------------------------
 -- Table structure for `mvc_trunk`
@@ -1083,6 +1129,48 @@ INSERT INTO `project_centrifugues` VALUES ('5', '1', 'sharples5400', 'lgs', '1',
 INSERT INTO `project_centrifugues` VALUES ('6', '1', 'preco', 'hgs', '0', '100', '1');
 
 -- ----------------------------
+-- Table structure for `project_equipement`
+-- ----------------------------
+DROP TABLE IF EXISTS `project_equipement`;
+CREATE TABLE `project_equipement` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_id` int(11) DEFAULT NULL,
+  `erp_id` varchar(255) DEFAULT NULL,
+  `product_name` varchar(255) DEFAULT NULL,
+  `unit` int(11) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `used_in_project` int(11) DEFAULT NULL,
+  `price` float DEFAULT '0',
+  `category` int(11) DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
+  `custom` int(11) DEFAULT '1',
+  `commercial_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of project_equipement
+-- ----------------------------
+INSERT INTO `project_equipement` VALUES ('1', '1', 'N0109000009', 'ANILLOS DE CORROSION', '3', 'Anillo de corrosión - Incluye envio y analisis', '0', '0', '1', '1', '0', 'ANILLOS DE CORROSION');
+INSERT INTO `project_equipement` VALUES ('2', '1', 'N0301000042', 'CARRO TANQUE 6000 GAL CAPACIDAD 0 -50 KM', '3', 'Carro Tanque 6000 Gal Capacidad 0 -50 Km', '0', '0', '1', '1', '0', 'CARRO TANQUE 6000 GAL CAPACIDAD 0 -50 KM');
+INSERT INTO `project_equipement` VALUES ('3', '1', 'N0401000043', 'CARTUCHOS FILTRANTES', '3', 'Cartuchos Filtrantes', '0', '0', '1', '1', '0', 'CARTUCHOS FILTRANTES');
+INSERT INTO `project_equipement` VALUES ('4', '1', 'N0401000046', 'CASETA DE FILTRACION', '3', 'Caseta de Filtracion', '0', '0', '1', '1', '0', 'CASETA DE FILTRACION');
+INSERT INTO `project_equipement` VALUES ('5', '1', 'N0202000254', 'CASETA STAND BY', '3', 'Caseta Stand By', '0', '0', '1', '1', '0', 'CASETA STAND BY');
+INSERT INTO `project_equipement` VALUES ('6', '1', 'N0402000118', 'OPERADOR UNIDAD DE FILTRACION', '3', '', '0', '0', '1', '1', '0', 'OPERADOR UNIDAD DE FILTRACION');
+INSERT INTO `project_equipement` VALUES ('7', '1', 'N0402000119', 'OPERADOR UNIDAD DE FLOCULACION SELECTIVA', '3', '', '0', '0', '1', '1', '0', 'OPERADOR UNIDAD DE FLOCULACION SELECTIVA');
+INSERT INTO `project_equipement` VALUES ('8', '1', 'N0403000243', 'SISTEMA Q MAX DRILL PHPA (3600-7500)', '3', 'Sistema Q Max Drill Phpa (3600-7500)', '0', '0', '1', '1', '0', 'SISTEMA Q MAX DRILL PHPA (3600-7500)');
+INSERT INTO `project_equipement` VALUES ('9', '1', 'N0403000244', 'SISTEMA Q Nca', '3', 'Sistema Q Nca', '0', '0', '1', '1', '0', 'SISTEMA Q Nca');
+INSERT INTO `project_equipement` VALUES ('10', '1', 'N0403000245', 'SISTEMA Q Nca (500-3600)', '3', 'Sistema Q Nca (500-3600)', '0', '0', '1', '1', '0', 'SISTEMA Q Nca (500-3600)');
+INSERT INTO `project_equipement` VALUES ('11', '1', 'N0402000260', 'SUPERVISOR TFM', '3', 'Supervisor TFM', '0', '0', '1', '1', '0', 'SUPERVISOR TFM');
+INSERT INTO `project_equipement` VALUES ('12', '1', 'N0301000268', 'TRANSPORTE CAMIONETA', '3', 'Transporte Camioneta', '0', '0', '1', '1', '0', 'TRANSPORTE CAMIONETA');
+INSERT INTO `project_equipement` VALUES ('13', '1', 'N0301000269', 'TRANSPORTE SENCILLO', '3', 'Transporte Sencillo', '0', '0', '1', '1', '0', 'TRANSPORTE SENCILLO');
+INSERT INTO `project_equipement` VALUES ('14', '1', 'N0301000270', 'TRANSPORTE TRACTOMULA', '3', 'Transporte Tractomula', '0', '0', '1', '1', '0', 'TRANSPORTE TRACTOMULA');
+INSERT INTO `project_equipement` VALUES ('15', '1', 'N0301000271', 'TRANSPORTE TURBO', '3', 'Transporte Turbo', '0', '0', '1', '1', '0', 'TRANSPORTE TURBO');
+INSERT INTO `project_equipement` VALUES ('16', '1', 'N0401000273', 'UNIDAD DE FLOCULACION SELECTIVA', '3', 'Unidad De Floculacion Selectiva', '0', '0', '1', '1', '0', 'UNIDAD DE FLOCULACION SELECTIVA');
+INSERT INTO `project_equipement` VALUES ('17', '1', 'N0401000274', 'UNIDAD FILTRADO', '3', 'Unidad Filtrado', '0', '0', '1', '1', '0', 'UNIDAD FILTRADO');
+INSERT INTO `project_equipement` VALUES ('18', '1', 'N0401000275', 'UNIDAD FILTRADO STAND BY', '3', 'Unidad Filtrado Stand By', '0', '0', '1', '1', '0', 'UNIDAD FILTRADO STAND BY');
+
+-- ----------------------------
 -- Table structure for `project_materials`
 -- ----------------------------
 DROP TABLE IF EXISTS `project_materials`;
@@ -1094,28 +1182,201 @@ CREATE TABLE `project_materials` (
   `unit` int(255) DEFAULT NULL,
   `egravity` float DEFAULT NULL,
   `internal_name` varchar(255) DEFAULT NULL,
-  `price` float DEFAULT NULL,
+  `price` float DEFAULT '0',
   `used_in_project` int(11) DEFAULT NULL,
   `category` int(11) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
+  `active` int(11) DEFAULT '1',
+  `custom` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of project_materials
 -- ----------------------------
-INSERT INTO `project_materials` VALUES ('1', '1', null, 'Acido Citrico', '2', '1', null, '20', '1', null, null);
-INSERT INTO `project_materials` VALUES ('2', '1', null, 'Bactericida Q CIDE L25', '2', '1.1', null, '10', '1', null, null);
-INSERT INTO `project_materials` VALUES ('3', '1', null, 'Barita', '1', '4.2', null, '15', '1', null, null);
-INSERT INTO `project_materials` VALUES ('4', '1', null, 'Bicarbonato de Sodio', '1', '2.16', null, '10', '1', null, null);
-INSERT INTO `project_materials` VALUES ('5', '1', null, 'CACO3 10-40', '1', '2.7', null, '10', '1', null, null);
-INSERT INTO `project_materials` VALUES ('6', '1', null, 'CACO3 M 200', '1', '2.7', null, '10', '1', null, null);
-INSERT INTO `project_materials` VALUES ('7', '1', null, 'CACO3 M 325', '1', '2.7', null, '10', '1', null, null);
-INSERT INTO `project_materials` VALUES ('8', '1', null, 'CACO3 M 40-100', '1', '2.7', null, '10', '0', null, null);
-INSERT INTO `project_materials` VALUES ('9', '1', null, 'CACO3 M 50-150', '1', '2.7', null, '10', '0', null, null);
-INSERT INTO `project_materials` VALUES ('10', '1', null, 'CAL HIDRATADA', '1', '1.42', null, '10', '1', null, null);
-INSERT INTO `project_materials` VALUES ('11', '1', null, 'CASCARILLA DE ARROZ', '1', '0.55', null, '10', '1', null, null);
-INSERT INTO `project_materials` VALUES ('12', '1', null, 'DESCO', '1', '1', null, '10', '0', null, null);
+INSERT INTO `project_materials` VALUES ('1', '1', 'N0110000003', 'ACIDO CITRICO EN CRISTALES', '1', '1.665', 'ACIDO CITRICO EN CRISTALES', '0', '1', '1', 'Regulador de pH para contaminación con cemento', '1', '0');
+INSERT INTO `project_materials` VALUES ('2', '1', 'N0110000004', 'ACIDO CITRICO EN CRISTALES', '1', '1.665', 'ACIDO CITRICO EN CRISTALES', '0', '0', '1', 'Regulador de pH para contaminación con cemento', '1', '0');
+INSERT INTO `project_materials` VALUES ('3', '1', 'N0110000005', 'ALKAPAM', '1', '0.8', 'ALKAPAM', '0', '1', '1', 'Polímero para tratamiento de sólidos', '1', '0');
+INSERT INTO `project_materials` VALUES ('4', '1', 'N0110000006', 'ALKAPAM A 1103', '1', '0.8', 'ALKAPAM A 1103', '0', '0', '1', 'Polímero para tratamiento de sólidos', '1', '0');
+INSERT INTO `project_materials` VALUES ('5', '1', 'N0105000010', 'ATAPULGITE', '1', '0.9', 'ATAPULGITE', '0', '0', '1', 'Atapulgite', '1', '0');
+INSERT INTO `project_materials` VALUES ('6', '1', 'N0103000011', 'BARITA', '1', '4.25', 'BARITA', '0', '1', '1', 'Material densificante - Barita', '1', '0');
+INSERT INTO `project_materials` VALUES ('7', '1', 'N0105000012', 'BENEX', '1', '0.644', 'BENEX', '0', '1', '1', 'Extendedor de Bentonita', '1', '0');
+INSERT INTO `project_materials` VALUES ('8', '1', 'N0102000013', 'BENTONE 910', '1', '2.5', 'BENTONE 910', '0', '0', '1', 'Arcilla Organofilica', '1', '0');
+INSERT INTO `project_materials` VALUES ('9', '1', 'N0105000014', 'BENTONITA NATURAL GEL', '1', '2.5', 'BENTONITA NATURAL GEL', '0', '0', '1', 'Bentonita Premium tipo Wyoming Viscosificante', '1', '0');
+INSERT INTO `project_materials` VALUES ('10', '1', 'N0105000016', 'BENTONITA REGULAR', '1', '2.5', 'BENTONITA REGULAR', '0', '0', '1', 'Bentonita Nacional', '1', '0');
+INSERT INTO `project_materials` VALUES ('11', '1', 'N0110000017', 'BICARBONATO DE SODIO', '1', '2.159', 'BICARBONATO DE SODIO', '0', '0', '1', 'Precipitador de Ca++', '1', '0');
+INSERT INTO `project_materials` VALUES ('12', '1', 'N0110000018', 'BICARBONATO DE SODIO', '1', '2.159', 'BICARBONATO DE SODIO', '0', '0', '1', 'Precipitador de Ca++', '1', '0');
+INSERT INTO `project_materials` VALUES ('13', '1', 'N0109000021', 'BRIDGESAL ULTRA', '1', '2.18', 'BRIDGESAL ULTRA', '0', '0', '1', 'Sal puenteante de diferente granulometría', '1', '0');
+INSERT INTO `project_materials` VALUES ('14', '1', 'N0110000024', 'CAL HIDRATADA', '1', '3', 'CAL HIDRATADA', '0', '0', '1', 'Cal Hidratada.  Regulador de pH', '1', '0');
+INSERT INTO `project_materials` VALUES ('15', '1', 'N0110000025', 'CAL HIDRATADA', '1', '3', 'CAL HIDRATADA', '0', '0', '1', 'Cal Hidratada.  Regulador de pH', '1', '0');
+INSERT INTO `project_materials` VALUES ('16', '1', 'N0110000026', 'CAL HIDRATADA', '1', '3', 'CAL HIDRATADA', '0', '0', '1', 'Cal Hidratada.  Regulador de pH', '1', '0');
+INSERT INTO `project_materials` VALUES ('17', '1', 'N0110000027', 'CAL VIVA', '1', '3.3', 'CAL VIVA', '0', '0', '1', 'Cal Viva', '1', '0');
+INSERT INTO `project_materials` VALUES ('18', '1', 'N0110000028', 'CAL VIVA', '1', '3.3', 'CAL VIVA', '0', '0', '1', 'Cal Viva', '1', '0');
+INSERT INTO `project_materials` VALUES ('19', '1', 'N0103000029', 'CARBONATO DE CALCIO', '1', '2.7', 'CARBONATO DE CALCIO', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('20', '1', 'N0103000030', 'CARBONATO DE CALCIO M1000', '1', '2.7', 'CARBONATO DE CALCIO M1000', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('21', '1', 'N0103000031', 'CARBONATO DE CALCIO M10-40', '1', '2.7', 'CARBONATO DE CALCIO M10-40', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('22', '1', 'N0103000032', 'CARBONATO DE CALCIO M1200', '1', '2.7', 'CARBONATO DE CALCIO M1200', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('23', '1', 'N0103000033', 'CARBONATO DE CALCIO M200', '1', '2.7', 'CARBONATO DE CALCIO M200', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('24', '1', 'N0103000034', 'CARBONATO DE CALCIO M325', '1', '2.7', 'CARBONATO DE CALCIO M325', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('25', '1', 'N0103000035', 'CARBONATO DE CALCIO M400', '1', '2.7', 'CARBONATO DE CALCIO M400', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('26', '1', 'N0103000036', 'CARBONATO DE CALCIO M40-100', '1', '2.7', 'CARBONATO DE CALCIO M40-100', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('27', '1', 'N0103000037', 'CARBONATO DE CALCIO M50-150', '1', '2.7', 'CARBONATO DE CALCIO M50-150', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('28', '1', 'N0103000038', 'CARBONATO DE CALCIO M5-10', '1', '2.7', 'CARBONATO DE CALCIO M5-10', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('29', '1', 'N0103000039', 'CARBONATO DE CALCIO M600', '1', '2.7', 'CARBONATO DE CALCIO M600', '0', '0', '1', 'Material densificante y puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('30', '1', 'N0110000040', 'CARBONATO DE SODIO', '1', '0.96', 'CARBONATO DE SODIO', '0', '0', '1', 'Precipitador de Calcio', '1', '0');
+INSERT INTO `project_materials` VALUES ('31', '1', 'N0108000044', 'CASCARILLA DE ARROZ', '1', '0.7', 'CASCARILLA DE ARROZ', '0', '0', '1', 'Cascarilla de arroz. LCM', '1', '0');
+INSERT INTO `project_materials` VALUES ('32', '1', 'N0108000045', 'CASCARILLA DE ARROZ', '1', '0.7', 'CASCARILLA DE ARROZ', '0', '0', '1', 'Cascarilla de arroz. LCM', '1', '0');
+INSERT INTO `project_materials` VALUES ('33', '1', 'N0105000050', 'CLAYTONE II', '1', '1.57', 'CLAYTONE II', '0', '0', '1', 'Arcilla organofílica', '1', '0');
+INSERT INTO `project_materials` VALUES ('34', '1', 'N0105000051', 'CLAYTONE II', '1', '1.57', 'CLAYTONE II', '0', '0', '1', 'Arcilla organofílica', '1', '0');
+INSERT INTO `project_materials` VALUES ('35', '1', 'N0108000052', 'CLEAREX', '1', '2.5', 'CLEAREX', '0', '0', '1', 'LCM mezclado con polímero expandible para no yacimiento', '1', '0');
+INSERT INTO `project_materials` VALUES ('36', '1', 'N0109000053', 'CLORURO DE CALCIO', '1', '2.2', 'CLORURO DE CALCIO', '0', '0', '1', 'Cloruro de calcio. Sal - (95% pureza)', '1', '0');
+INSERT INTO `project_materials` VALUES ('37', '1', 'N0109000054', 'CLORURO DE CALCIO', '1', '2.2', 'CLORURO DE CALCIO', '0', '0', '1', 'Cloruro de calcio. Sal - (95% pureza)', '1', '0');
+INSERT INTO `project_materials` VALUES ('38', '1', 'N0109000055', 'CLORURO DE POTASIO', '1', '1.988', 'CLORURO DE POTASIO', '0', '0', '1', 'Cloruro de potasio. Sal - Pureza >95%', '1', '0');
+INSERT INTO `project_materials` VALUES ('39', '1', 'N0109000056', 'CLORURO DE POTASIO', '1', '1.988', 'CLORURO DE POTASIO', '0', '0', '1', 'Cloruro de potasio. Sal - Pureza >95%', '1', '0');
+INSERT INTO `project_materials` VALUES ('40', '1', 'N0109000057', 'CLORURO DE SODIO', '1', '2.16', 'CLORURO DE SODIO', '0', '0', '1', 'Colururo de Sodio. Sal', '1', '0');
+INSERT INTO `project_materials` VALUES ('41', '1', 'N0106000058', 'CMC', '1', '1.55', 'CMC', '0', '0', '1', 'Carboximetilcelulosa', '1', '0');
+INSERT INTO `project_materials` VALUES ('42', '1', 'N0106000059', 'CMC R', '1', '1.55', 'CMC R', '0', '0', '1', 'Carboximetilcelulosa Regular', '1', '0');
+INSERT INTO `project_materials` VALUES ('43', '1', 'N0107000062', 'CYDRILL 4000', '1', '0.85', 'CYDRILL 4000', '0', '0', '1', 'PHPA Liquido', '1', '0');
+INSERT INTO `project_materials` VALUES ('44', '1', 'N0106000063', 'CYPAN', '1', '1.5', 'CYPAN', '0', '0', '1', 'Copolimero controlador de filtrado', '1', '0');
+INSERT INTO `project_materials` VALUES ('45', '1', 'N0106000064', 'CYPAN L', '1', '1.28', 'CYPAN L', '0', '0', '1', 'Poliacrilato de Sodio (Liq.)', '1', '0');
+INSERT INTO `project_materials` VALUES ('46', '1', 'N0106000065', 'CYPAN S', '1', '0.75', 'CYPAN S', '0', '0', '1', 'Poliacrilato de Sodio (Sol.)', '1', '0');
+INSERT INTO `project_materials` VALUES ('47', '1', 'N0110000066', 'CYTEMP', '1', '2.2', 'CYTEMP', '0', '0', '1', 'Adelgazante polimérico', '1', '0');
+INSERT INTO `project_materials` VALUES ('48', '1', 'N0110000067', 'DESCO CF', '1', '1.6', 'DESCO CF', '0', '0', '1', 'Dispersante - Tanino libre de cromo', '1', '0');
+INSERT INTO `project_materials` VALUES ('49', '1', 'N0110000069', 'DETERGENTE BREAK', '1', '1', 'DETERGENTE BREAK', '0', '0', '1', 'Detergente', '1', '0');
+INSERT INTO `project_materials` VALUES ('50', '1', 'N0110000070', 'DRILLING DETERGENT', '1', '1', 'DRILLING DETERGENT', '0', '0', '1', 'Drilling Detergent', '1', '0');
+INSERT INTO `project_materials` VALUES ('51', '1', 'N0110000071', 'DRILLING DETERGENT', '1', '1', 'DRILLING DETERGENT', '0', '0', '1', 'Drilling Detergent', '1', '0');
+INSERT INTO `project_materials` VALUES ('52', '1', 'N0106000072', 'DRISCAL D', '1', '1.033', 'DRISCAL D', '0', '0', '1', 'Polímero controlador de filtrado para zona de interés HTHP', '1', '0');
+INSERT INTO `project_materials` VALUES ('53', '1', 'N0107000075', 'ECODRILL', '1', '0.58', 'ECODRILL', '0', '0', '1', 'Silicato de Potasio', '1', '0');
+INSERT INTO `project_materials` VALUES ('54', '1', 'N0110000077', 'ESTEARATO DE ALUMINIO', '1', '1.01', 'ESTEARATO DE ALUMINIO', '0', '0', '1', 'Antiespumante - Estereato de aluminio', '1', '0');
+INSERT INTO `project_materials` VALUES ('55', '1', 'N0109000082', 'FORMIATO DE POTASIO', '1', '1.08', 'FORMIATO DE POTASIO', '0', '0', '1', 'Sal - Formiato de potasio sólido', '1', '0');
+INSERT INTO `project_materials` VALUES ('56', '1', 'N0109000083', 'FORMIATO DE POTASIO', '1', '1.08', 'FORMIATO DE POTASIO', '0', '0', '1', 'Sal - Formiato de potasio sólido', '1', '0');
+INSERT INTO `project_materials` VALUES ('57', '1', 'N0109000084', 'FORMIATO DE POTASIO LIQUIDO', '1', '1.2', 'FORMIATO DE POTASIO LIQUIDO', '0', '0', '1', 'Salmuera - Formiato de potasio líquido, 13 lpg', '1', '0');
+INSERT INTO `project_materials` VALUES ('58', '1', 'N0109000085', 'FORMIATO DE SODIO', '1', '0.94', 'FORMIATO DE SODIO', '0', '0', '1', 'Sal - Formiato de sodio', '1', '0');
+INSERT INTO `project_materials` VALUES ('59', '1', 'N0104000087', 'GILSOBLOCK', '1', '1.05', 'GILSOBLOCK', '0', '0', '1', 'Gilsonita dispersable en agua', '1', '0');
+INSERT INTO `project_materials` VALUES ('60', '1', 'N0102000088', 'GILSONITE HT', '1', '1.5', 'GILSONITE HT', '0', '0', '1', 'Asfalto en polvo OBM - HPHT Controlador De Filtrado,EmulsioInvertida', '1', '0');
+INSERT INTO `project_materials` VALUES ('61', '1', 'N0110000089', 'GLASS BEAD', '1', '2.5', 'GLASS BEAD', '0', '0', '1', 'Lubricante mecánico tipo micro esfereas de vidrio', '1', '0');
+INSERT INTO `project_materials` VALUES ('62', '1', 'N0107000090', 'GLYMAX', '1', '1.1', 'GLYMAX', '0', '0', '1', 'Glicol polialquilenico -  Lubricante e inhibidor de arcillas', '1', '0');
+INSERT INTO `project_materials` VALUES ('63', '1', 'N0104000091', 'GRAFITE', '1', '2.25', 'GRAFITE', '0', '0', '1', 'Material puenteante y sellante - Grafito material obturante (F,M,C)', '1', '0');
+INSERT INTO `project_materials` VALUES ('64', '1', 'N0104000092', 'GRAFITE', '1', '2.25', 'GRAFITE', '0', '0', '1', 'Material puenteante y sellante - Grafito material obturante (F,M,C)', '1', '0');
+INSERT INTO `project_materials` VALUES ('65', '1', 'N0103000096', 'HEMATITA', '1', '4.7', 'HEMATITA', '0', '0', '1', 'Material densificante - Hematita', '1', '0');
+INSERT INTO `project_materials` VALUES ('66', '1', 'N0110000099', 'K 17', '1', '1.7', 'K 17', '0', '0', '1', 'Lignito Caustizado. Dispersante y Controlador de Filtrado', '1', '0');
+INSERT INTO `project_materials` VALUES ('67', '1', 'N0105000100', 'KELZAN XC', '1', '1.5', 'KELZAN XC', '0', '0', '1', 'Goma xántica.  Viscosificante', '1', '0');
+INSERT INTO `project_materials` VALUES ('68', '1', 'N0105000101', 'KELZAN XCD', '1', '1.5', 'KELZAN XCD', '0', '0', '1', 'Goma xántica.  Viscosificante - BiopolímeroPremium,GomaXanticaDispersa', '1', '0');
+INSERT INTO `project_materials` VALUES ('69', '1', 'N0108000102', 'KWIK SEAL', '1', '1.05', 'KWIK SEAL', '0', '0', '1', 'LMC - (F,M,C)', '1', '0');
+INSERT INTO `project_materials` VALUES ('70', '1', 'N0110000103', 'LIGNITO', '1', '1.7', 'LIGNITO', '0', '0', '1', 'Lignito', '1', '0');
+INSERT INTO `project_materials` VALUES ('71', '1', 'N0110000106', 'LUBRAGLIDE', '1', '1.06', 'LUBRAGLIDE', '0', '0', '1', 'Lubricante mecánico tipo microesfereas de Copolímero', '1', '0');
+INSERT INTO `project_materials` VALUES ('72', '1', 'N0110000107', 'LUBRAGLIDE COARSE', '1', '1.06', 'LUBRAGLIDE COARSE', '0', '0', '1', 'Lubricante Sólido - Lubricante mecánico tipo microesfereas de Copolímero', '1', '0');
+INSERT INTO `project_materials` VALUES ('73', '1', 'N0110000108', 'LUBRAGLIDE FINE', '1', '1.06', 'LUBRAGLIDE FINE', '0', '0', '1', 'Lubricante Sólido - Lubricante mecánico tipo microesfereas de Copolímero', '1', '0');
+INSERT INTO `project_materials` VALUES ('74', '1', 'N0110000109', 'MF 55', '1', '1.01', 'MF 55', '0', '0', '1', 'Floculante selectivo', '1', '0');
+INSERT INTO `project_materials` VALUES ('75', '1', 'N0108000110', 'MICA', '1', '2.09', 'MICA', '0', '0', '1', 'LMC - (F,M,C)', '1', '0');
+INSERT INTO `project_materials` VALUES ('76', '1', 'N0108000111', 'MICA', '1', '2.09', 'MICA', '0', '0', '1', 'LMC - (F,M,C)', '1', '0');
+INSERT INTO `project_materials` VALUES ('77', '1', 'N0108000112', 'MICA', '1', '2.09', 'MICA', '0', '0', '1', 'LMC - (F,M,C)', '1', '0');
+INSERT INTO `project_materials` VALUES ('78', '1', 'N0108000113', 'MICA', '1', '2.09', 'MICA', '0', '0', '1', 'LMC - (F,M,C)', '1', '0');
+INSERT INTO `project_materials` VALUES ('79', '1', 'N0110000116', 'NITRATO DE SODIO', '1', '1.5', 'NITRATO DE SODIO', '0', '0', '1', 'Trazador - Nitrato de Sodio', '1', '0');
+INSERT INTO `project_materials` VALUES ('80', '1', 'N0110000117', 'NITRATO DE SODIO', '1', '1.5', 'NITRATO DE SODIO', '0', '0', '1', 'Trazador - Nitrato de Sodio', '1', '0');
+INSERT INTO `project_materials` VALUES ('81', '1', 'N0110000120', 'OXIDO DE MAGNESIO', '1', '3.56', 'OXIDO DE MAGNESIO', '0', '0', '1', 'Oxido de Magnesio - ph Buffer', '1', '0');
+INSERT INTO `project_materials` VALUES ('82', '1', 'N0110000121', 'OXIDO DE MAGNESIO', '1', '3.56', 'OXIDO DE MAGNESIO', '0', '0', '1', 'Oxido de Magnesio - ph Buffer', '1', '0');
+INSERT INTO `project_materials` VALUES ('83', '1', 'N0110000122', 'OXIDO DE MAGNESIO', '1', '3.56', 'OXIDO DE MAGNESIO', '0', '0', '1', 'Oxido de Magnesio - ph Buffer', '1', '0');
+INSERT INTO `project_materials` VALUES ('84', '1', 'N0110000123', 'OXIDO DE ZINC', '1', '0.9', 'OXIDO DE ZINC', '0', '0', '1', 'Oxido de Zinc - Removedor de H2S', '1', '0');
+INSERT INTO `project_materials` VALUES ('85', '1', 'N0110000124', 'PIPELAX', '1', '0.91', 'PIPELAX', '0', '0', '1', 'Fluido liberador de tubería', '1', '0');
+INSERT INTO `project_materials` VALUES ('86', '1', 'N0109000126', 'PLUGSAL', '1', '2.17', 'PLUGSAL', '0', '0', '1', 'Sal puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('87', '1', 'N0109000127', 'PLUGSAL X', '1', '2.17', 'PLUGSAL X', '0', '0', '1', 'Sal puenteante', '1', '0');
+INSERT INTO `project_materials` VALUES ('88', '1', 'N0108000129', 'POLY PLUG', '1', '0.91', 'POLY PLUG', '0', '0', '1', 'LCM Polímero para control pérdidas de circulación - Material obturante para polímero entrecruzable', '1', '0');
+INSERT INTO `project_materials` VALUES ('89', '1', 'N0108000130', 'POLY PLUG', '1', '0.91', 'POLY PLUG', '0', '0', '1', 'LCM Polímero para control pérdidas de circulación - Material obturante para polímero entrecruzable', '1', '0');
+INSERT INTO `project_materials` VALUES ('90', '1', 'N0108000131', 'POLY PLUG', '1', '0.91', 'POLY PLUG', '0', '0', '1', 'LCM Polímero para control pérdidas de circulación - Material obturante para polímero entrecruzable', '1', '0');
+INSERT INTO `project_materials` VALUES ('91', '1', 'N0110000132', 'POTASA CAUSTICA EN ESCAMAS', '1', '2.04', 'POTASA CAUSTICA EN ESCAMAS', '0', '0', '1', 'Alcalinizante - Hidroxido De Potasio', '1', '0');
+INSERT INTO `project_materials` VALUES ('92', '1', 'N0401000133', 'PREMIX TANK 250 bbl', '1', '0', 'PREMIX TANK 250 bbl', '0', '0', '1', 'Premix Tank 250 Bbl', '1', '0');
+INSERT INTO `project_materials` VALUES ('93', '1', 'N0401000134', 'PREMIX TANK 300 bbl', '1', '0', 'PREMIX TANK 300 bbl', '0', '0', '1', 'Premix Tank 300 Bbl', '1', '0');
+INSERT INTO `project_materials` VALUES ('94', '1', 'N0401000135', 'PREMIX TANK 350 bbl', '1', '0', 'PREMIX TANK 350 bbl', '0', '0', '1', 'Premix Tank 350 Bbl', '1', '0');
+INSERT INTO `project_materials` VALUES ('95', '1', 'N0104000138', 'Q ASPHALT W', '1', '1.49', 'Q ASPHALT W', '0', '0', '1', 'Asfalto dispersable en agua', '1', '0');
+INSERT INTO `project_materials` VALUES ('96', '1', 'N0110000141', 'Q BREAKER', '1', '1.54', 'Q BREAKER', '0', '0', '1', 'Rompedor de Cake de lodo', '1', '0');
+INSERT INTO `project_materials` VALUES ('97', '1', 'N0110000142', 'Q CAUSTIC LIG', '1', '1.7', 'Q CAUSTIC LIG', '0', '0', '1', 'Lignito caustizado', '1', '0');
+INSERT INTO `project_materials` VALUES ('98', '1', 'N0110000143', 'Q CF THINNER', '1', '1.14', 'Q CF THINNER', '0', '0', '1', 'Adelgazante', '1', '0');
+INSERT INTO `project_materials` VALUES ('99', '1', 'N0110000144', 'Q CIDE L14', '1', '1.08', 'Q CIDE L14', '0', '0', '1', 'Glutaraldehido - Bactericida Biocida', '1', '0');
+INSERT INTO `project_materials` VALUES ('100', '1', 'N0110000145', 'Q CIDE L25', '1', '1.08', 'Q CIDE L25', '0', '0', '1', 'Glutaraldehido - Bactericida Biocida', '1', '0');
+INSERT INTO `project_materials` VALUES ('101', '1', 'N0109000146', 'Q CLEAN SURF L', '1', '0.91', 'Q CLEAN SURF L', '0', '0', '1', 'Surfactante limpieza de tuberías OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('102', '1', 'N0106000147', 'Q CMC', '1', '1.55', 'Q CMC', '0', '0', '1', 'Controlador de filtrado.  CMC modificado', '1', '0');
+INSERT INTO `project_materials` VALUES ('103', '1', 'N0104000148', 'Q CS GRAFITO', '1', '1.8', 'Q CS GRAFITO', '0', '0', '1', 'Material puenteante y sellante', '1', '0');
+INSERT INTO `project_materials` VALUES ('104', '1', 'N0110000149', 'Q DEFOAM', '1', '0.99', 'Q DEFOAM', '0', '0', '1', 'Antiespumante', '1', '0');
+INSERT INTO `project_materials` VALUES ('105', '1', 'N0110000150', 'Q DEFOAM OS', '1', '0.99', 'Q DEFOAM OS', '0', '0', '1', 'Antiespumante base silicona', '1', '0');
+INSERT INTO `project_materials` VALUES ('106', '1', 'N0110000151', 'Q DRILL THIN', '1', '1.6', 'Q DRILL THIN', '0', '0', '1', 'Tanino modificado', '1', '0');
+INSERT INTO `project_materials` VALUES ('107', '1', 'N0110000152', 'Q DRILL UP', '1', '1.031', 'Q DRILL UP', '0', '0', '1', 'Lubricante y reductor de torque - Anti-acresión y anti embotamiento (base hidrocarburo y/o vegetal)', '1', '0');
+INSERT INTO `project_materials` VALUES ('108', '1', 'N0108000154', 'Q FIBER', '1', '1.2', 'Q FIBER', '0', '0', '1', 'Material celulósico fibroso (fino, medio grueso) - Fibra Mineral Especial', '1', '0');
+INSERT INTO `project_materials` VALUES ('109', '1', 'N0108000155', 'Q FIBER FLUID', '1', '1.2', 'Q FIBER FLUID', '0', '0', '1', 'Fibra acidificable para control de pérdidas de circulación en calizas fracturadas', '1', '0');
+INSERT INTO `project_materials` VALUES ('110', '1', 'N0102000156', 'Q FILM', '1', '0.92', 'Q FILM', '0', '0', '1', 'Acido graso aminado (Activador polar)', '1', '0');
+INSERT INTO `project_materials` VALUES ('111', '1', 'N0110000158', 'Q FOAM', '1', '1', 'Q FOAM', '0', '0', '1', 'Espumante', '1', '0');
+INSERT INTO `project_materials` VALUES ('112', '1', 'N0110000159', 'Q FREE', '1', '0.91', 'Q FREE', '0', '0', '1', 'Liberador de tubería - Agente Liberador', '1', '0');
+INSERT INTO `project_materials` VALUES ('113', '1', 'N0102000160', 'Q GIL HT', '1', '1.5', 'Q GIL HT', '0', '0', '1', 'Agente Controlador de Filtrado OBM Tipo Gilsonita', '1', '0');
+INSERT INTO `project_materials` VALUES ('114', '1', 'N0102000163', 'Q GILTROL', '1', '1.2', 'Q GILTROL', '0', '0', '1', 'Agente controlador de filtrado OBM tipo polímero', '1', '0');
+INSERT INTO `project_materials` VALUES ('115', '1', 'N0108000165', 'Q GRAFITO', '1', '1.8', 'Q GRAFITO', '0', '0', '1', 'Grafito material obturante (F,M,C)', '1', '0');
+INSERT INTO `project_materials` VALUES ('116', '1', 'N0107000168', 'Q INHIBIDROL G', '1', '1.06', 'Q INHIBIDROL G', '0', '0', '1', 'Amina en base a glicol.  Inhibidor de arcilla - Inhibidor de arcilla (tipo Amina base Glicol)', '1', '0');
+INSERT INTO `project_materials` VALUES ('117', '1', 'N0110000169', 'Q KLEEN', '1', '1.061', 'Q KLEEN', '0', '0', '1', 'Agente Surfactante - Surfactante para limpieza de tubería WBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('118', '1', 'N0110000170', 'Q KLEEN', '1', '1.061', 'Q KLEEN', '0', '0', '1', 'Agente Surfactante - Surfactante para limpieza de tubería WBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('119', '1', 'N0110000171', 'Q KLEEN SURF', '1', '1.061', 'Q KLEEN SURF', '0', '0', '1', 'Surfactante', '1', '0');
+INSERT INTO `project_materials` VALUES ('120', '1', 'N0110000172', 'Q LIG M', '1', '1.32', 'Q LIG M', '0', '0', '1', 'Lignito modificado', '1', '0');
+INSERT INTO `project_materials` VALUES ('121', '1', 'N0110000174', 'Q LUBE', '1', '1.016', 'Q LUBE', '0', '0', '1', 'Lubricante OBM Mejorador de ROP (base hidrocarburos) - Reductor de torque de origen vegetal', '1', '0');
+INSERT INTO `project_materials` VALUES ('122', '1', 'N0110000175', 'Q LUBE FA', '1', '1.016', 'Q LUBE FA', '0', '0', '1', 'Lubricante y reductor de Torque de origen ácido graso y esteres', '1', '0');
+INSERT INTO `project_materials` VALUES ('123', '1', 'N0110000176', 'Q LUBE HT', '1', '1.016', 'Q LUBE HT', '0', '0', '1', 'Lubricante para altas temperaturas', '1', '0');
+INSERT INTO `project_materials` VALUES ('124', '1', 'N0110000177', 'Q LUBE M', '1', '1.016', 'Q LUBE M', '0', '0', '1', 'Lubricante y reductor de torque de origen mineral o sintético', '1', '0');
+INSERT INTO `project_materials` VALUES ('125', '1', 'N0102000178', 'Q LUBE OBM', '1', '1.016', 'Q LUBE OBM', '0', '0', '1', 'Lubricante OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('126', '1', 'N0109000179', 'Q M 08', '1', '0.86', 'Q M 08', '0', '0', '1', 'Solvente removedor de cake para limpieza de tuberías', '1', '0');
+INSERT INTO `project_materials` VALUES ('127', '1', 'N0107000183', 'Q MAX DRILL', '1', '1.07', 'Q MAX DRILL', '0', '0', '1', 'Amina. Inhibidor de arcilla - Estabilizador De Shale Y Arcilla', '1', '0');
+INSERT INTO `project_materials` VALUES ('128', '1', 'N0107000184', 'Q MAX GUARD', '1', '1.07', 'Q MAX GUARD', '0', '0', '1', 'Inhibidor de arcilla tipo amina - Inhibidor De Esmectita - Estabilizador De Shale', '1', '0');
+INSERT INTO `project_materials` VALUES ('129', '1', 'N0102000186', 'Q MOD', '1', '1.01', 'Q MOD', '0', '0', '1', 'Modificador de reología lecturas bajas OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('130', '1', 'N0102000187', 'Q MUL C', '1', '0.95', 'Q MUL C', '0', '0', '1', 'Emulsificante concentrado OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('131', '1', 'N0105000188', 'Q MUL GEL', '1', '1.57', 'Q MUL GEL', '0', '0', '1', 'Arcilla Organofilica OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('132', '1', 'N0102000189', 'Q MUL I', '1', '0.9', 'Q MUL I', '0', '0', '1', 'Emulsificador Primario OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('133', '1', 'N0102000190', 'Q MUL II', '1', '0.945', 'Q MUL II', '0', '0', '1', 'Emulsificador Secundario OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('134', '1', 'N0107000192', 'Q NCa', '1', '1.1', 'Q NCa', '0', '0', '1', 'Nitrato de calcio. Inhibidor de arcilla', '1', '0');
+INSERT INTO `project_materials` VALUES ('135', '1', 'N0107000193', 'Q NCa', '1', '1.1', 'Q NCa', '0', '0', '1', 'Nitrato de calcio. Inhibidor de arcilla', '1', '0');
+INSERT INTO `project_materials` VALUES ('136', '1', 'N0107000194', 'Q NCa LIQ', '1', '1.56', 'Q NCa LIQ', '0', '0', '1', 'Nitrato de calcio. Inhibidor de arcilla', '1', '0');
+INSERT INTO `project_materials` VALUES ('137', '1', 'N0107000196', 'Q NK', '1', '2.109', 'Q NK', '0', '0', '1', 'Nitrato de Potasio. Inhibidor de Arcillas', '1', '0');
+INSERT INTO `project_materials` VALUES ('138', '1', 'N0110000197', 'Q NOFOAM', '1', '0.9', 'Q NOFOAM', '0', '0', '1', 'Antiespumante líquido mezcla de alcoholes de alto peso molecular y ácidos grasos modificados', '1', '0');
+INSERT INTO `project_materials` VALUES ('139', '1', 'N0106000199', 'Q PAC L', '1', '0.8', 'Q PAC L', '0', '0', '1', 'Polímero controlador de filtrado LV - Celulosa polianionica de baja viscosidad', '1', '0');
+INSERT INTO `project_materials` VALUES ('140', '1', 'N0106000200', 'Q PAC R', '1', '0.8', 'Q PAC R', '0', '0', '1', 'Polímero controlador de filtrado y viscosificante HV - Celulosa polianionica de alta viscosidad', '1', '0');
+INSERT INTO `project_materials` VALUES ('141', '1', 'N0110000201', 'Q PHPA', '1', '0.8', 'Q PHPA', '0', '0', '1', 'Encapsulador de arcilla PHPA', '1', '0');
+INSERT INTO `project_materials` VALUES ('142', '1', 'N0110000203', 'Q RHL', '1', '1.04', 'Q RHL', '0', '0', '1', 'Q SAFE SC', '1', '0');
+INSERT INTO `project_materials` VALUES ('143', '1', 'N0110000205', 'Q SCAV H2S', '1', '1.07', 'Q SCAV H2S', '0', '0', '1', 'Secuestrador de H2S', '1', '0');
+INSERT INTO `project_materials` VALUES ('144', '1', 'N0110000206', 'Q SCAV O2', '1', '1.07', 'Q SCAV O2', '0', '0', '1', 'Secuestrador de oxígeno', '1', '0');
+INSERT INTO `project_materials` VALUES ('145', '1', 'N0108000208', 'Q SEC 3525', '1', '1.4', 'Q SEC 3525', '0', '0', '1', 'Secuestrador de oxígeno', '1', '0');
+INSERT INTO `project_materials` VALUES ('146', '1', 'N0107000211', 'Q STABILITY', '1', '1.1', 'Q STABILITY', '0', '0', '1', 'Nitrato de Calcio', '1', '0');
+INSERT INTO `project_materials` VALUES ('147', '1', 'N0107000212', 'Q STABILITY', '1', '1.1', 'Q STABILITY', '0', '0', '1', 'Nitrato de Calcio', '1', '0');
+INSERT INTO `project_materials` VALUES ('148', '1', 'N0102000213', 'Q STABLE', '1', '0.88', 'Q STABLE', '0', '0', '1', 'Mejorador de interfase solido/aceite', '1', '0');
+INSERT INTO `project_materials` VALUES ('149', '1', 'N0106000214', 'Q STAR', '1', '1.5', 'Q STAR', '0', '0', '1', 'Almidon modificado', '1', '0');
+INSERT INTO `project_materials` VALUES ('150', '1', 'N0106000215', 'Q STAR HT', '1', '2.109', 'Q STAR HT', '0', '0', '1', 'Almidón controlador de filtrado para zona de interés - Almidon Para Alta Temperatura', '1', '0');
+INSERT INTO `project_materials` VALUES ('151', '1', 'N0106000217', 'Q STAR M', '1', '1.5', 'Q STAR M', '0', '0', '1', 'Almidon controlador de filtrado para zona de interés', '1', '0');
+INSERT INTO `project_materials` VALUES ('152', '1', 'N0108000218', 'Q STOP', '1', '0.613', 'Q STOP', '0', '0', '1', 'Material  fibroso para pérdida de circulación (Zona Interes) - (F,M,G)', '1', '0');
+INSERT INTO `project_materials` VALUES ('153', '1', 'N0108000219', 'Q STOP', '1', '0.613', 'Q STOP', '0', '0', '1', 'Material  fibroso para pérdida de circulación (Zona Interes) - (F,M,G)', '1', '0');
+INSERT INTO `project_materials` VALUES ('154', '1', 'N0108000220', 'Q STOP', '1', '0.613', 'Q STOP', '0', '0', '1', 'Material  fibroso para pérdida de circulación (Zona Interes) - (F,M,G)', '1', '0');
+INSERT INTO `project_materials` VALUES ('155', '1', 'N0108000222', 'Q STOP', '1', '0.613', 'Q STOP', '0', '0', '1', 'Material  fibroso para pérdida de circulación (Zona Interes) - (F,M,G)', '1', '0');
+INSERT INTO `project_materials` VALUES ('156', '1', 'N0109000223', 'Q TDL 13', '1', '0.86', 'Q TDL 13', '0', '0', '1', 'Inhibidor de Corrosion', '1', '0');
+INSERT INTO `project_materials` VALUES ('157', '1', 'N0109000224', 'Q TDL 15', '1', '0.86', 'Q TDL 15', '0', '0', '1', 'Inhibidor de Corrosion', '1', '0');
+INSERT INTO `project_materials` VALUES ('158', '1', 'N0102000227', 'Q THIN O', '1', '1.25', 'Q THIN O', '0', '0', '1', 'Adelgazante OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('159', '1', 'N0106000230', 'Q THINTEX', '1', '0.6', 'Q THINTEX', '0', '0', '1', 'Adelgazante polimérico - Defoculante Polimérico', '1', '0');
+INSERT INTO `project_materials` VALUES ('160', '1', 'N0102000232', 'Q WET', '1', '0.955', 'Q WET', '0', '0', '1', 'Humectante OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('161', '1', 'N0105000233', 'Q XAN', '1', '1.5', 'Q XAN', '0', '0', '1', 'Goma xántica.  Viscosificante - Goma de xanthan', '1', '0');
+INSERT INTO `project_materials` VALUES ('162', '1', 'N0105000237', 'RHEOXAN', '1', '1.5', 'RHEOXAN', '0', '0', '1', 'Goma xantica', '1', '0');
+INSERT INTO `project_materials` VALUES ('163', '1', 'N0110000239', 'SAPP', '1', '1.86', 'SAPP', '0', '0', '1', 'Dispersante', '1', '0');
+INSERT INTO `project_materials` VALUES ('164', '1', 'N0107000242', 'SILICATO DE POTASIO', '1', '1.26', 'SILICATO DE POTASIO', '0', '0', '1', 'Silicato de Potasio', '1', '0');
+INSERT INTO `project_materials` VALUES ('165', '1', 'N0108000246', 'SMART SEAL', '1', '0', 'SMART SEAL', '0', '0', '1', 'Material sellante para OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('166', '1', 'N0108000247', 'SMART SEAL', '1', '0', 'SMART SEAL', '0', '0', '1', 'Material sellante para OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('167', '1', 'N0110000248', 'SODA ASH', '1', '2.5', 'SODA ASH', '0', '0', '1', 'Carbonato de Sodio - Control Ca++', '1', '0');
+INSERT INTO `project_materials` VALUES ('168', '1', 'N0110000249', 'SODA CAUSTICA', '1', '2.13', 'SODA CAUSTICA', '0', '0', '1', 'Soda Caustica - Controlador de pH. Alcalinizante', '1', '0');
+INSERT INTO `project_materials` VALUES ('169', '1', 'N0104000252', 'SOLTEX', '1', '1.35', 'SOLTEX', '0', '0', '1', 'Asfalto sulfonato soloble en agua - Control Shale', '1', '0');
+INSERT INTO `project_materials` VALUES ('170', '1', 'N0106000253', 'SP 101', '1', '1.05', 'SP 101', '0', '0', '1', 'Poliacrilato de Sodio', '1', '0');
+INSERT INTO `project_materials` VALUES ('171', '1', 'N0107000255', 'STOKOPOL', '1', '0.8', 'STOKOPOL', '0', '0', '1', 'PHPA Poliacrilamida. Inhibidor mecánico de arcillas', '1', '0');
+INSERT INTO `project_materials` VALUES ('172', '1', 'N0107000256', 'STOKOPOL', '1', '0.8', 'STOKOPOL', '0', '0', '1', 'PHPA Poliacrilamida. Inhibidor mecánico de arcillas', '1', '0');
+INSERT INTO `project_materials` VALUES ('173', '1', 'N0110000257', 'SULFITO DE SODIO', '1', '2.6', 'SULFITO DE SODIO', '0', '0', '1', 'Secuestrante de Oxigeno', '1', '0');
+INSERT INTO `project_materials` VALUES ('174', '1', 'N0110000258', 'SUPER SWEEP', '1', '1', 'SUPER SWEEP', '0', '0', '1', 'Fibra de monofilamentos usada como agente de barrido', '1', '0');
+INSERT INTO `project_materials` VALUES ('175', '1', 'N0107000261', 'SYNERFLOC A25D', '1', '0.8', 'SYNERFLOC A25D', '0', '0', '1', 'PHPA Solido - Polímero inhibidor  de arcillas y encapsulante bajo peso molecular (sistema HPWBM)', '1', '0');
+INSERT INTO `project_materials` VALUES ('176', '1', 'N0110000267', 'THINTEX CYTHEM', '1', '10.33', 'THINTEX CYTHEM', '0', '0', '1', 'Adelgazante Polimerico', '1', '0');
+INSERT INTO `project_materials` VALUES ('177', '1', 'N0102000277', 'VERSAMOD', '1', '1.01', 'VERSAMOD', '0', '0', '1', 'Modificador de reología OBM', '1', '0');
+INSERT INTO `project_materials` VALUES ('178', '1', 'N0102000278', 'VERSATHIN', '1', '0.825', 'VERSATHIN', '0', '0', '1', 'Adelgazante para lodo base aceite', '1', '0');
+INSERT INTO `project_materials` VALUES ('179', '1', 'N0102000279', 'VERSATROL', '1', '1.05', 'VERSATROL', '0', '0', '1', 'Lignito Organofilico - Controlador de filtrado fluidos base aceite', '1', '0');
+INSERT INTO `project_materials` VALUES ('180', '1', 'N0108000280', 'WAL NUT PLUG', '1', '2.2', 'WAL NUT PLUG', '0', '0', '1', 'Cascara de Nuez (F,M,G) - LCM', '1', '0');
+INSERT INTO `project_materials` VALUES ('181', '1', 'N0108000283', 'X LINK', '1', '1.2', 'X LINK', '0', '0', '1', 'Polímero para control de pérdidas de circulación - PolÍmero Entrecruzado', '1', '0');
+INSERT INTO `project_materials` VALUES ('182', '1', 'N0105000284', 'XANVIS', '1', '1.5', 'XANVIS', '0', '0', '1', 'Goma xántica clarificada', '1', '0');
+INSERT INTO `project_materials` VALUES ('183', '1', 'N0105000285', 'XANVIS L', '1', '1.104', 'XANVIS L', '0', '0', '1', 'Goma xántica clarificada líquida', '1', '0');
 
 -- ----------------------------
 -- Table structure for `project_mudcleaner`
@@ -1267,6 +1528,27 @@ CREATE TABLE `project_report_centrifugues` (
 -- ----------------------------
 INSERT INTO `project_report_centrifugues` VALUES ('1', '5', '1', '', '', '', '', '', '', '', '', '', null, '', '');
 INSERT INTO `project_report_centrifugues` VALUES ('2', '6', '1', '', '', '', '', '', '', '', '', '', null, '', '');
+
+-- ----------------------------
+-- Table structure for `project_report_comments`
+-- ----------------------------
+DROP TABLE IF EXISTS `project_report_comments`;
+CREATE TABLE `project_report_comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `report_id` int(11) NOT NULL,
+  `comments` text,
+  `charla_hse` varchar(150) DEFAULT NULL,
+  `pusher` varchar(150) DEFAULT NULL,
+  `company_man` varchar(150) DEFAULT NULL,
+  `representative` varchar(150) DEFAULT NULL,
+  `mud_enginers_1` varchar(150) DEFAULT NULL,
+  `mud_enginers_2` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of project_report_comments
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `project_report_drill_string`
@@ -1864,23 +2146,15 @@ CREATE TABLE `report_materialstatus` (
   `used` int(11) DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of report_materialstatus
 -- ----------------------------
-INSERT INTO `report_materialstatus` VALUES ('1', '1', '1', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('2', '1', '2', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('3', '1', '3', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('4', '1', '4', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('5', '1', '5', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('6', '1', '6', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('7', '1', '7', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('8', '1', '8', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('9', '1', '9', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('10', '1', '10', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('11', '1', '11', '0', '100', '0', '0', '100');
-INSERT INTO `report_materialstatus` VALUES ('12', '1', '12', '0', '100', '0', '0', '100');
+INSERT INTO `report_materialstatus` VALUES ('1', '1', '1', '0', '0', '0', '0', '0');
+INSERT INTO `report_materialstatus` VALUES ('2', '1', '3', '0', '0', '0', '0', '0');
+INSERT INTO `report_materialstatus` VALUES ('3', '1', '6', '0', '0', '0', '0', '0');
+INSERT INTO `report_materialstatus` VALUES ('4', '1', '7', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `reports`
@@ -1967,12 +2241,11 @@ CREATE TABLE `stock_transfers` (
   `project_id` int(11) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of stock_transfers
 -- ----------------------------
-INSERT INTO `stock_transfers` VALUES ('1', '0001', '2012-10-26', 'CERETE', 'ORITO (PETROMINERALES)', '1', 'incoming');
 
 -- ----------------------------
 -- Table structure for `tank_names`
@@ -2142,46 +2415,54 @@ CREATE TABLE `volume_transfers` (
 -- View structure for `vista_brocas`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_brocas`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_brocas` AS select `brocas_modelos`.`id` AS `id`,`brocas_modelos`.`id_broca` AS `id_broca`,`brocas_modelos`.`odfracc` AS `odfracc`,`brocas_modelos`.`unit_oddfracc` AS `unit_oddfracc`,`brocas_modelos`.`odddeci` AS `odddeci`,`brocas_modelos`.`unit_odddeci` AS `unit_odddeci`,`brocas_modelos`.`length` AS `length`,`brocas_modelos`.`unit_length` AS `unit_length`,`brocas_modelos`.`nombre_modelo` AS `nombre_modelo`,`brocas`.`nombre_broca` AS `nombre_broca`,`brocas_modelos`.`custom` AS `custom`,`brocas_modelos`.`active` AS `active`,`brocas_modelos`.`project_id` AS `project_id` from (`brocas` join `brocas_modelos` on((`brocas`.`id` = `brocas_modelos`.`id_broca`))) ;
+CREATE VIEW `vista_brocas` AS select `brocas_modelos`.`id` AS `id`,`brocas_modelos`.`id_broca` AS `id_broca`,`brocas_modelos`.`odfracc` AS `odfracc`,`brocas_modelos`.`unit_oddfracc` AS `unit_oddfracc`,`brocas_modelos`.`odddeci` AS `odddeci`,`brocas_modelos`.`unit_odddeci` AS `unit_odddeci`,`brocas_modelos`.`length` AS `length`,`brocas_modelos`.`unit_length` AS `unit_length`,`brocas_modelos`.`nombre_modelo` AS `nombre_modelo`,`brocas`.`nombre_broca` AS `nombre_broca`,`brocas_modelos`.`custom` AS `custom`,`brocas_modelos`.`active` AS `active`,`brocas_modelos`.`project_id` AS `project_id` from (`brocas` join `brocas_modelos` on((`brocas`.`id` = `brocas_modelos`.`id_broca`))) ;
 
 -- ----------------------------
 -- View structure for `vista_detalle_adicion_quimica`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_detalle_adicion_quimica`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_detalle_adicion_quimica` AS select `chemical_aditions_detail`.`id` AS `id`,`chemical_aditions_detail`.`chemical_adition` AS `chemical_adition`,`chemical_aditions_detail`.`material` AS `material`,`chemical_aditions_detail`.`used` AS `used`,`chemical_aditions_detail`.`volume_increment` AS `volume_increment`,`chemical_aditions`.`project` AS `project`,`chemical_aditions`.`report` AS `report`,`chemical_aditions`.`tank` AS `tank`,`chemical_aditions`.`total_volume_increment` AS `total_volume_increment`,`chemical_aditions`.`increment_by_chemical` AS `increment_by_chemical`,`chemical_aditions`.`increment_by_water` AS `increment_by_water`,`chemical_aditions`.`status_producido` AS `status_producido` from (`chemical_aditions_detail` left join `chemical_aditions` on((`chemical_aditions`.`id` = `chemical_aditions_detail`.`chemical_adition`))) ;
+CREATE VIEW `vista_detalle_adicion_quimica` AS select `chemical_aditions_detail`.`id` AS `id`,`chemical_aditions_detail`.`chemical_adition` AS `chemical_adition`,`chemical_aditions_detail`.`material` AS `material`,`chemical_aditions_detail`.`used` AS `used`,`chemical_aditions_detail`.`volume_increment` AS `volume_increment`,`chemical_aditions`.`project` AS `project`,`chemical_aditions`.`report` AS `report`,`chemical_aditions`.`tank` AS `tank`,`chemical_aditions`.`total_volume_increment` AS `total_volume_increment`,`chemical_aditions`.`increment_by_chemical` AS `increment_by_chemical`,`chemical_aditions`.`increment_by_water` AS `increment_by_water`,`chemical_aditions`.`status_producido` AS `status_producido` from (`chemical_aditions_detail` left join `chemical_aditions` on((`chemical_aditions`.`id` = `chemical_aditions_detail`.`chemical_adition`))) ;
 
 -- ----------------------------
--- View structure for `vista_inventario`
+-- View structure for `vista_equipos`
 -- ----------------------------
-DROP VIEW IF EXISTS `vista_inventario`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_inventario` AS select `vista_materiales`.`id` AS `product_id`,`vista_materiales`.`project` AS `project`,`vista_materiales`.`commercial_name` AS `commercial_name`,`inventory`.`received` AS `received`,`inventory`.`transfered` AS `transfered`,`inventory`.`used` AS `used`,`inventory`.`avaliable` AS `avaliable`,`vista_materiales`.`erp_id` AS `erp_id`,`vista_materiales`.`unit` AS `unit`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`internal_name` AS `internal_name`,`vista_materiales`.`price` AS `price`,`vista_materiales`.`used_in_project` AS `used_in_project`,`vista_materiales`.`unit_name` AS `unit_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino` from (`inventory` left join `vista_materiales` on((`vista_materiales`.`id` = `inventory`.`product`))) ;
+DROP VIEW IF EXISTS `vista_equipos`;
+CREATE VIEW `vista_equipos` AS select `project_equipement`.`id` AS `id`,`project_equipement`.`project_id` AS `project`,`project_equipement`.`erp_id` AS `erp_id`,`project_equipement`.`product_name` AS `product_name`,`project_equipement`.`unit` AS `unit`,`project_equipement`.`description` AS `description`,`project_equipement`.`used_in_project` AS `used_in_project`,`project_equipement`.`price` AS `price`,`conversions_table`.`nombre_unidad` AS `nombre_unidad`,`conversions_table`.`equivalencia` AS `equivalencia`,`conversions_table`.`unidad_destino` AS `unidad_destino`,`project_equipement`.`active` AS `active`,`project_equipement`.`custom` AS `custom`,`project_equipement`.`commercial_name` AS `commercial_name` from (`project_equipement` left join `conversions_table` on((`conversions_table`.`id` = `project_equipement`.`unit`))) ;
 
 -- ----------------------------
 -- View structure for `vista_materiales`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_materiales`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_materiales` AS select `project_materials`.`id` AS `id`,`project_materials`.`project_id` AS `project`,`project_materials`.`erp_id` AS `erp_id`,`project_materials`.`commercial_name` AS `commercial_name`,`project_materials`.`unit` AS `unit`,`project_materials`.`egravity` AS `egravity`,`project_materials`.`internal_name` AS `internal_name`,`project_materials`.`price` AS `price`,`project_materials`.`used_in_project` AS `used_in_project`,`conversions_table`.`nombre_unidad` AS `unit_name`,`conversions_table`.`equivalencia` AS `equivalencia`,`conversions_table`.`unidad_destino` AS `unidad_destino` from (`project_materials` left join `conversions_table` on((`conversions_table`.`id` = `project_materials`.`unit`))) ;
+CREATE VIEW `vista_materiales` AS select `project_materials`.`id` AS `id`,`project_materials`.`project_id` AS `project`,`project_materials`.`erp_id` AS `erp_id`,`project_materials`.`commercial_name` AS `commercial_name`,`project_materials`.`unit` AS `unit`,`project_materials`.`egravity` AS `egravity`,`project_materials`.`internal_name` AS `internal_name`,`project_materials`.`price` AS `price`,`project_materials`.`used_in_project` AS `used_in_project`,`conversions_table`.`nombre_unidad` AS `unit_name`,`conversions_table`.`equivalencia` AS `equivalencia`,`conversions_table`.`unidad_destino` AS `unidad_destino`,`project_materials`.`description` AS `description`,`project_materials`.`custom` AS `custom`,`project_materials`.`active` AS `active` from (`project_materials` left join `conversions_table` on((`conversions_table`.`id` = `project_materials`.`unit`))) ;
+
+
+-- ----------------------------
+-- View structure for `vista_inventario`
+-- ----------------------------
+DROP VIEW IF EXISTS `vista_inventario`;
+CREATE VIEW `vista_inventario` AS select `vista_materiales`.`id` AS `product_id`,`vista_materiales`.`project` AS `project`,`vista_materiales`.`commercial_name` AS `commercial_name`,`inventory`.`received` AS `received`,`inventory`.`transfered` AS `transfered`,`inventory`.`used` AS `used`,`inventory`.`avaliable` AS `avaliable`,`vista_materiales`.`erp_id` AS `erp_id`,`vista_materiales`.`unit` AS `unit`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`internal_name` AS `internal_name`,`vista_materiales`.`price` AS `price`,`vista_materiales`.`used_in_project` AS `used_in_project`,`vista_materiales`.`unit_name` AS `unit_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino` from (`inventory` left join `vista_materiales` on((`vista_materiales`.`id` = `inventory`.`product`))) ;
+
 
 -- ----------------------------
 -- View structure for `vista_personal`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_personal`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_personal` AS select `personal`.`id` AS `id`,`personal`.`identification` AS `identification`,`personal`.`lastname` AS `lastname`,`personal`.`name` AS `name`,`personal`.`project` AS `project`,`personal`.`category` AS `category`,`personal_categories`.`name` AS `category_name`,`personal_categories`.`type` AS `type`,`personal`.`active` AS `active`,`personal`.`rate` AS `rate` from (`personal` join `personal_categories` on((`personal_categories`.`id` = `personal`.`category`))) ;
+CREATE VIEW `vista_personal` AS select `personal`.`id` AS `id`,`personal`.`identification` AS `identification`,`personal`.`lastname` AS `lastname`,`personal`.`name` AS `name`,`personal`.`project` AS `project`,`personal`.`category` AS `category`,`personal_categories`.`name` AS `category_name`,`personal_categories`.`type` AS `type`,`personal`.`active` AS `active`,`personal`.`rate` AS `rate` from (`personal` join `personal_categories` on((`personal_categories`.`id` = `personal`.`category`))) ;
 
 -- ----------------------------
 -- View structure for `vista_reporte_estado_material`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_reporte_estado_material`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_reporte_estado_material` AS select `report_materialstatus`.`id` AS `id`,`vista_materiales`.`project` AS `project`,`report_materialstatus`.`report` AS `report`,`report_materialstatus`.`material` AS `material`,`vista_materiales`.`commercial_name` AS `commercial_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino`,`report_materialstatus`.`initial` AS `initial`,`report_materialstatus`.`received` AS `received`,`report_materialstatus`.`transfered` AS `transfered`,`report_materialstatus`.`used` AS `used`,`report_materialstatus`.`stock` AS `stock`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`price` AS `price` from (`report_materialstatus` left join `vista_materiales` on((`report_materialstatus`.`material` = `vista_materiales`.`id`))) ;
+CREATE VIEW `vista_reporte_estado_material` AS select `report_materialstatus`.`id` AS `id`,`vista_materiales`.`project` AS `project`,`report_materialstatus`.`report` AS `report`,`report_materialstatus`.`material` AS `material`,`vista_materiales`.`commercial_name` AS `commercial_name`,`vista_materiales`.`equivalencia` AS `equivalencia`,`vista_materiales`.`unidad_destino` AS `unidad_destino`,`report_materialstatus`.`initial` AS `initial`,`report_materialstatus`.`received` AS `received`,`report_materialstatus`.`transfered` AS `transfered`,`report_materialstatus`.`used` AS `used`,`report_materialstatus`.`stock` AS `stock`,`vista_materiales`.`egravity` AS `egravity`,`vista_materiales`.`price` AS `price` from (`report_materialstatus` left join `vista_materiales` on((`report_materialstatus`.`material` = `vista_materiales`.`id`))) ;
 
 -- ----------------------------
 -- View structure for `vista_reporte_personal`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_reporte_personal`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_reporte_personal` AS select `vista_personal`.`id` AS `id`,`vista_personal`.`identification` AS `identification`,`vista_personal`.`lastname` AS `lastname`,`vista_personal`.`name` AS `name`,`vista_personal`.`project` AS `project`,`vista_personal`.`category` AS `category`,`vista_personal`.`category_name` AS `category_name`,`vista_personal`.`type` AS `type`,`vista_personal`.`active` AS `active`,`vista_personal`.`rate` AS `rate`,`personal_report_enginers`.`date` AS `date`,`personal_report_enginers`.`cover` AS `cover`,`projects`.`well_name` AS `well_name`,`projects`.`operator` AS `operator` from ((`personal_report_enginers` left join `vista_personal` on((`vista_personal`.`id` = `personal_report_enginers`.`enginer`))) left join `projects` on((`projects`.`id` = `personal_report_enginers`.`project`))) ;
+CREATE VIEW `vista_reporte_personal` AS select `vista_personal`.`id` AS `id`,`vista_personal`.`identification` AS `identification`,`vista_personal`.`lastname` AS `lastname`,`vista_personal`.`name` AS `name`,`vista_personal`.`project` AS `project`,`vista_personal`.`category` AS `category`,`vista_personal`.`category_name` AS `category_name`,`vista_personal`.`type` AS `type`,`vista_personal`.`active` AS `active`,`vista_personal`.`rate` AS `rate`,`personal_report_enginers`.`date` AS `date`,`personal_report_enginers`.`cover` AS `cover`,`projects`.`well_name` AS `well_name`,`projects`.`operator` AS `operator` from ((`personal_report_enginers` left join `vista_personal` on((`vista_personal`.`id` = `personal_report_enginers`.`enginer`))) left join `projects` on((`projects`.`id` = `personal_report_enginers`.`project`))) ;
 
 -- ----------------------------
 -- View structure for `vista_tanks`
 -- ----------------------------
 DROP VIEW IF EXISTS `vista_tanks`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_tanks` AS select `project_tanks`.`id` AS `id`,`project_tanks`.`project` AS `project`,`project_tanks`.`type` AS `type`,`project_tanks`.`name` AS `name`,`project_tanks`.`sh1` AS `sh1`,`project_tanks`.`sa1` AS `sa1`,`project_tanks`.`sl1` AS `sl1`,`project_tanks`.`sh2` AS `sh2`,`project_tanks`.`sa2` AS `sa2`,`project_tanks`.`sl2` AS `sl2`,`project_tanks`.`diametro` AS `diametro`,`project_tanks`.`agitators` AS `agitators`,`project_tanks`.`jets` AS `jets`,`project_tanks`.`voltkaforo` AS `voltkaforo`,`project_tanks`.`hlibremax` AS `hlibremax`,`project_tanks`.`active` AS `active`,`tank_names`.`name` AS `tank_name`,`tanks_types`.`name` AS `tank_type`,`tank_names`.`type` AS `tank_category`,`project_tanks`.`order` AS `order` from ((`project_tanks` left join `tank_names` on((`tank_names`.`id` = `project_tanks`.`name`))) left join `tanks_types` on((`tanks_types`.`id` = `project_tanks`.`type`))) ;
+CREATE VIEW `vista_tanks` AS select `project_tanks`.`id` AS `id`,`project_tanks`.`project` AS `project`,`project_tanks`.`type` AS `type`,`project_tanks`.`name` AS `name`,`project_tanks`.`sh1` AS `sh1`,`project_tanks`.`sa1` AS `sa1`,`project_tanks`.`sl1` AS `sl1`,`project_tanks`.`sh2` AS `sh2`,`project_tanks`.`sa2` AS `sa2`,`project_tanks`.`sl2` AS `sl2`,`project_tanks`.`diametro` AS `diametro`,`project_tanks`.`agitators` AS `agitators`,`project_tanks`.`jets` AS `jets`,`project_tanks`.`voltkaforo` AS `voltkaforo`,`project_tanks`.`hlibremax` AS `hlibremax`,`project_tanks`.`active` AS `active`,`tank_names`.`name` AS `tank_name`,`tanks_types`.`name` AS `tank_type`,`tank_names`.`type` AS `tank_category`,`project_tanks`.`order` AS `order` from ((`project_tanks` left join `tank_names` on((`tank_names`.`id` = `project_tanks`.`name`))) left join `tanks_types` on((`tanks_types`.`id` = `project_tanks`.`type`))) ;

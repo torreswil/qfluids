@@ -125,6 +125,39 @@ class Rest extends CI_Controller {
         }
 
 
+    public function popular_maestras(){
+
+    	if(count($this->Api->get_where('project_materials',array('project_id'=>$this->project_id))) == 0){
+    		//maestra de materiales
+			$materiales = $this->Api->get('maestra_materials');
+			foreach ($materiales as &$material) {
+				$material['project_id'] 		= $this->project_id;
+				$material['commercial_name'] 	= $material['internal_name'];
+				$material['used_in_project'] 	= 0;
+				unset($material['id']);
+				$this->Api->create('project_materials',$material);
+			}	
+    	}else{
+    		echo json_encode('materials_already_populated');
+    	}
+		
+
+    	if(count($this->Api->get_where('project_equipement',array('project_id'=>$this->project_id))) == 0){
+    		//maestra de equipos
+			$equipos = $this->Api->get('maestra_equipos');
+			foreach ($equipos as &$equipo) {
+				$equipo['project_id'] 		= $this->project_id;
+				$equipo['used_in_project'] 	= 0;
+				$equipo['commercial_name'] 	= $equipo['product_name'];
+				unset($equipo['id']);
+				$this->Api->create('project_equipement',$equipo); 
+			}	
+    	}else{
+    		echo json_encode('equipement_already_populated');
+    	}
+			
+	}
+
 	/*==========================================================================================================*/
 	// TOOL CATALOGS METHODS
 	/*==========================================================================================================*/

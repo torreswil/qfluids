@@ -82,6 +82,7 @@ class Main extends CI_Controller {
 				
 				//INVENTARIO Y MATERIALES
 				$data['all_materials']			= $this->Api->get_where('vista_materiales',array('project'=>$project_data['id']),array('commercial_name','asc'));
+				$data['all_equipement'] 		= $this->Api->get_where('vista_equipos',array('project'=>$project_data['id']),array('product_name','asc'));
 				$data['materials']				= $this->Api->get_where('vista_inventario',array('project'=>$project_data['id'],'used_in_project'=>1),array('commercial_name','asc'));
 
 				//DATOS BASE
