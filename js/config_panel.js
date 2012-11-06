@@ -30,7 +30,9 @@ $(function(){
 	load_personal();
 	load_current_tanks();
 	load_tools_and_mud();
-    load_test();        
+    load_test();
+    load_settings_materials();
+    load_settings_equipement();        
 
 	/*==========================================================================================================*/
 	// 1. GENERAL
@@ -1296,7 +1298,15 @@ $(function(){
 				alert('An error has ocurred. Please try again.');
 			}
 		},'json');
-	});                        
+	}); 
+
+	function load_settings_materials(){
+		$('#materials_activation_table').load('/rest_mvc/load_settings_materials');
+	}
+
+	function load_settings_equipement(){
+		$('#equipement_activation_table').load('/rest_mvc/load_settings_equipement');
+	}                       
                 
         /*==========================================================================================================*/
 	// 8. MUD PROPERTIES
