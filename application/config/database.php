@@ -51,8 +51,8 @@ $active_record = TRUE;
 if($_SERVER['HTTP_HOST'] == 'qfluids.josepaternina.dev' || $_SERVER['HTTP_HOST'] == 'qfluids.juanpablo.dev' || $_SERVER['HTTP_HOST'] == 'qfluids.josepaternina.com'){
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'root';
-	$db['default']['password'] = '';
-	$db['default']['database'] = 'qfluids';
+        $db['default']['password'] = '';
+        $db['default']['database'] = 'qfluids';	
 	$db['default']['dbdriver'] = 'mysql';
 	$db['default']['dbprefix'] = '';
 	$db['default']['pconnect'] = TRUE;
@@ -65,10 +65,10 @@ if($_SERVER['HTTP_HOST'] == 'qfluids.josepaternina.dev' || $_SERVER['HTTP_HOST']
 	$db['default']['autoinit'] = TRUE;
 	$db['default']['stricton'] = FALSE;
 }else{
-	$db['default']['hostname'] = 'localhost';
-	$db['default']['username'] = 'jose_qfluids';
-	$db['default']['password'] = 'sgQ58chEFWP0yujda';
-	$db['default']['database'] = 'jose_qfluids';
+        $db['default']['hostname'] = 'localhost';
+        $db['default']['username'] = 'jose_qfluids';
+        $db['default']['password'] = 'sgQ58chEFWP0yujda';
+        $db['default']['database'] = 'jose_qfluids';	
 	$db['default']['dbdriver'] = 'mysql';
 	$db['default']['dbprefix'] = '';
 	$db['default']['pconnect'] = TRUE;
