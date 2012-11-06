@@ -1280,17 +1280,27 @@ $(function(){
 	});
 
 	$('.update_materials').click(function(e){
-		var checked_materials = [];
-		$('#materials_activation_table input[type="checkbox"]:checked').each(function(){
+		var materials = [];
+		$('#materials_activation_table input[type="checkbox"]').each(function(){
+			if($(this).attr('checked') == 'checked'){
+				var uip = 1;
+			}else{
+				var uip = 0;
+			}
+			var mid = $(this).val();
 			var this_material = {
-				id 				: $(this).val(),
-				used_in_project : 1
+				id 				: mid,
+				used_in_project : uip,
+				price 			: $('#mprice_'+mid).val(), 
+				commercial_name : $('#mcname_'+mid).val(), 
+				erp_id 			: $('#merpid_'+mid).val(),
 			};
 
-			checked_materials.push(this_material);
+			materials.push(this_material);
 		});
-
-		$.post('/rest/update_materials',$.toJSON(checked_materials),function(r){
+		
+		
+		$.post('/rest/update_materials',$.toJSON(materials),function(r){
 			if(r == true){
 				alert('Materials list updated.');         
 				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
@@ -1298,6 +1308,7 @@ $(function(){
 				alert('An error has ocurred. Please try again.');
 			}
 		},'json');
+		
 	}); 
 
 	function load_settings_materials(){
