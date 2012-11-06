@@ -1118,7 +1118,7 @@ class Rest_mvc extends CI_Controller {
 				<td><input style="width:50px;margin-right:0;" type="text" value="<?= $material['price'] ?>" /></td>
 				<td>
 					<?php if($material['custom'] == 1){ ?>
-						<a href="#remove_material_<?= $material['id'] ?>"><img src="/img/delete.png" /></a>
+						<a href="#remove_material_<?= $material['id'] ?>" id="remove_material_<?= $material['id'] ?>" class="remove_material"><img src="/img/delete.png" /></a>
 					<?php } ?>
 				</td>
 			</tr>
@@ -1154,11 +1154,25 @@ class Rest_mvc extends CI_Controller {
 				<td class="label_m"><input type="text" value="<?= $equipement['price'] ?>" style="margin-right:0;width:50px;" /></td>
 				<td class="label_m">
 					<?php if($equipement['custom'] == 1){ ?>
-						<a href="#remove_equipement_<?= $equipement['id'] ?>"><img src="/img/delete.png" /></a>
+						<a href="#remove_equipement_<?= $equipement['id'] ?>" id="remove_equipement_<?= $equipement['id'] ?>" class="remove_equipement"><img src="/img/delete.png" /></a>
 					<?php } ?>
 				</td>
 			</tr>
 		<?php }
+	}
+
+	public function remove_material(){
+		if(count($_POST) == 1){
+			$this->Api->delete('project_materials',$_POST['id']);
+			echo json_encode(true);
+		}
+	}
+
+	public function remove_equipement(){
+		if(count($_POST) == 1){
+			$this->Api->delete('project_equipement',$_POST['id']);
+			echo json_encode(true);
+		}
 	}
 
 }

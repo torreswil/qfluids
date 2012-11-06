@@ -1307,8 +1307,44 @@ $(function(){
 	function load_settings_equipement(){
 		$('#equipement_activation_table').load('/rest_mvc/load_settings_equipement');
 	}                       
-                
-        /*==========================================================================================================*/
+       
+	$('.remove_material').live('click',function(e){
+		e.preventDefault();
+		if(confirm('Are you sure to remove this material?')){
+			var id = $(this).attr('id');
+				id = id.split('_');
+				id = id[2];
+
+			$.post('/rest_mvc/remove_material',{id:id},function(r){
+				if(r == true){
+					load_settings_materials();
+				}else{
+					alert('An error has ocurred. Please verify and try again.');
+					load_settings_materials();
+				}
+			},'json');
+		}
+	});
+
+	$('.remove_equipement').live('click',function(e){
+		e.preventDefault();
+		if(confirm('Are you sure to remove this equipement?')){
+			var id = $(this).attr('id');
+				id = id.split('_');
+				id = id[2];
+
+			$.post('/rest_mvc/remove_equipement',{id:id},function(r){
+				if(r == true){
+					load_settings_equipement();
+				}else{
+					alert('An error has ocurred. Please verify and try again.');
+					load_settings_equipement();
+				}
+			},'json');
+		}
+	});
+
+    /*==========================================================================================================*/
 	// 8. MUD PROPERTIES
 	/*==========================================================================================================*/    
         
