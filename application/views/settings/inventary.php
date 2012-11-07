@@ -20,7 +20,7 @@
 				<table style="margin-bottom:20px;">
 					<tr>
 						<td style="width:20px;"></td>
-						<td class="label_m"><input type="text" placeholder="Filter..." style="width:200px;" id="filter_materials" /></td>
+						<td class="label_m"><input type="button" value="Save" class="update_materials" style="margin:0 10px 0 0;" /> <input type="text" placeholder="Filter..." style="width:200px;" id="filter_materials" /></td>
 						<td class="label_m" style="padding-left:20px;">
 							<a href="#show_hide_unselected_materials" class="shon_n_hide_unselected_materials">Show selected materials only</a>
 						</td>
@@ -43,7 +43,6 @@
 						<!-- AJAX LOADADED -->
 					</tbody>
 				</table>
-				<input type="button" value="Save" class="update_materials" style="margin:10px 25px;" />
 	    	</fieldset>
 	    </div>
 	    
@@ -64,7 +63,7 @@
 				<table style="margin-bottom:20px;">
 					<tr>
 						<td style="width:20px;"></td>
-						<td class="label_m"><input type="text" placeholder="Filter..." style="width:200px;" id="filter_equipement" /></td>
+						<td class="label_m"><input type="button" value="Save" class="update_equipement" style="margin: 0 20px 0 0;" /><input type="text" placeholder="Filter..." style="width:200px;" id="filter_equipement" /></td>
 						<td class="label_m" style="padding-left:20px;">
 							<a href="#show_hide_unselected_equipement" class="shon_n_hide_unselected_equipement">Show selected equipement only</a>
 						</td>
@@ -86,7 +85,6 @@
 						<!-- AJAX LOADADED-->
 					</tbody>
 				</table>
-				<input type="button" value="Save" class="update_equipement" style="margin:10px 25px;" />
 			</fieldset>	
 	    </div>
 	</div>
