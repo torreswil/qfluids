@@ -613,6 +613,8 @@ class Rest extends CI_Controller {
                 $data = $_POST;
                 $data['project_id'] = $this->project_id;
                 $value = $data['value'];
+
+                //PRODUCTOS SOLIDOS
                 if($data['unit_value'] == 'lb'){
 	                if($value <= 2004) { //Sx
 	                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"SX{$value}"));
@@ -629,7 +631,9 @@ class Rest extends CI_Controller {
 	                    if(empty($unit[0]['id'])) { //Se crea si no existe
 	                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"TN2{$value}", 'prefijo'=>'TN2', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
 	                    }
-	                }	
+	                }
+
+	            //PRODUCTOS LIQUIDOS    	
                 }else if($data['unit_value'] == 'gal'){
                 	if($value <= 15) { //CN
 	                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"CN{$value}"));
