@@ -1308,7 +1308,12 @@ $(function(){
         
     $('#ce_overlay .cancel_overlay').click(function(e){
 		e.preventDefault();
-		$('#ce_overlay').hide();
+		$('#ce_overlay').slideUp();
+	});
+
+	$('#cm_overlay .cancel_overlay').click(function(e){
+		e.preventDefault();
+		$('#cm_overlay').slideUp();
 	});
 
 	$('.update_materials').click(function(e){
