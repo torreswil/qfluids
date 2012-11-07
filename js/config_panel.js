@@ -1261,6 +1261,11 @@ $(function(){
 		$('#cm_overlay').slideDown();
 	});
 
+	$('.link_create_equipement').click(function(e){
+		e.preventDefault();
+		$('#ce_overlay').slideDown();
+	});
+
 	$('#filter_materials').quicksearch('.buscar_materiales_aqui');
 	$('.shon_n_hide_unselected_materials').click(function(e){
 		e.preventDefault();
@@ -1280,19 +1285,30 @@ $(function(){
 	});
 
 	$("#btn_material_create").click(function(e) {
-            e.preventDefault();
-            var data =  $("#new_material_form").serialize();
-            $.post('/rest/new_material', data, function(r){
-                    alert('Material saved!');
-                    $('#cm_overlay').hide();
-                    $("#new_material_form")[0].reset();                        
-                    $('#materials_activation_table').load('/rest_mvc/load_settings_materials');
-            });
-        })
+        e.preventDefault();
+        var data =  $("#new_material_form").serialize();
+        $.post('/rest/new_material', data, function(r){
+                alert('Material saved!');
+                $('#cm_overlay').hide();
+                $("#new_material_form")[0].reset();                        
+                $('#materials_activation_table').load('/rest_mvc/load_settings_materials');
+        });
+    });
+
+    $("#btn_equipement_create").click(function(e) {
+        e.preventDefault();
+        var data =  $("#new_equipement_form").serialize();
+        $.post('/rest/new_equipement', data, function(r){
+                alert('Equipement saved!');
+                $('#ce_overlay').hide();
+                $("#new_equipement_form")[0].reset();                        
+                $('#equipement_activation_table').load('/rest_mvc/load_settings_equipement');
+        });
+    });
         
-        $('#cm_overlay .cancel_overlay').click(function(e){
+    $('#ce_overlay .cancel_overlay').click(function(e){
 		e.preventDefault();
-		$('#cm_overlay').hide();
+		$('#ce_overlay').hide();
 	});
 
 	$('.update_materials').click(function(e){

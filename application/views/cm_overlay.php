@@ -4,7 +4,7 @@
 		<div class="overlay_dialog" style="width:325px;">
 			<h5 style="margin-bottom:0;">New Material:</h5>
 			<div class="content">
-                                <form id="new_material_form">
+                <form id="new_material_form">
 					<table style="margin-top:20px;">
 							<tr>
 								<td class="label_m"><label>Code:</label></td>
@@ -40,16 +40,17 @@
 								<td class="label_m"><label>Description:</label></td>
 								<td><input type="text" name="description" placeholder="Write down the material description, uses, etc" /></td>
 							</tr>
-                                                        <tr>
-								<td><input type="hidden" name="used_in_project" value="0" /></td>
-								<td><input type="hidden" name="custom" value="1" /></td>
-							</tr>
-                                                        <tr>
-								<td><input type="hidden" name="category" value="1" /></td>
-								<td><input type="hidden" name="active" value="1" /></td>
+                            <tr>
+								<td>
+									<input type="hidden" name="used_in_project" value="0" />
+									<input type="hidden" name="custom" value="1" />
+									<input type="hidden" name="category" value="1" />
+									<input type="hidden" name="active" value="1" />
+
+								</td>
 							</tr>
 					</table>
-                                </form>
+                </form>
 			</div>
 			<div class="cancel_link" style="width:133px;">
 				<a href="#cancel" class="cancel_overlay">Cancel</a>

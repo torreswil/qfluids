@@ -663,7 +663,7 @@ class Rest extends CI_Controller {
 		}
     }
         
-    public function new_equipment() {
+    public function new_equipement() {
         if(count($_POST) > 0){
             $data = $_POST;
             $data['project_id'] = $this->project_id;

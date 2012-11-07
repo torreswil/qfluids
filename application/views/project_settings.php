@@ -403,3 +403,4 @@
 </div>
 
 <?php $this->load->view('cm_overlay'); ?>
+<?php $this->load->view('ce_overlay'); ?>
