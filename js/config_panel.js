@@ -1343,7 +1343,7 @@ $(function(){
         if(eqty > 0){
         	alert('Some fields are empty. Please verify and try again.')
         }else{
-        	
+
         	$("#new_equipement_form .default_cero").each(function(){
         		if($(this).val() == ''){
         			$(this).val(0);
@@ -1364,11 +1364,13 @@ $(function(){
     $('#ce_overlay .cancel_overlay').click(function(e){
 		e.preventDefault();
 		$('#ce_overlay').slideUp();
+		$("#new_equipement_form")[0].reset(); 
 	});
 
 	$('#cm_overlay .cancel_overlay').click(function(e){
 		e.preventDefault();
 		$('#cm_overlay').slideUp();
+		$("#new_material_form")[0].reset(); 
 	});
 
 	$('.update_materials').click(function(e){
