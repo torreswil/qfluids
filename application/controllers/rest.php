@@ -719,6 +719,120 @@ class Rest extends CI_Controller {
 			echo json_encode(true);
 		}
     }
+    
+        public function update_conversions_table() {                
+                $materiales = $this->Api->get('maestra_materials');                
+                foreach($materiales as $material) {
+                        //Conviero las unidades en mayúsculas para no generar inconvenientes
+                        $unidad = strtoupper($material['unit_description']);
+                        //Verifico si existe esa medida
+                        $tmp = $this->Api->get_where('conversions_table', array('nombre_unidad'=>$unidad));
+                        if(empty($tmp[0]['id'])) {
+                                $data = array();
+                                //Verifico si tiene el SX
+                                str_replace('SX',  '', $unidad, $checked);
+                                if($checked) {
+                                        $sx = explode('SX', $unidad);                                        
+                                        $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'SX2004';                                        
+                                        $data['prefijo'] = 'SX';
+                                        $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 2004;
+                                        $data['unidad_destino'] = 'lb';
+                                } 
+                                if(!$checked) {
+                                        //Verifico si tiene el TN1
+                                        str_replace('TN1',  '', $unidad, $checked);
+                                        if($checked) {
+                                                $sx = explode('TN1', $unidad);                                        
+                                                $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'TN14009';
+                                                $data['prefijo'] = 'TN1';
+                                                $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 4009;
+                                                $data['unidad_destino'] = 'lb';
+                                        }
+                                } 
+                                if(!$checked) {
+                                        //Verifico si tiene el TN2
+                                        str_replace('TN2',  '', $unidad, $checked);
+                                        if($checked) {
+                                                $sx = explode('TN2', $unidad);                                        
+                                                $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'TN24010';
+                                                $data['prefijo'] = 'TN2';
+                                                $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 4009;
+                                                $data['unidad_destino'] = 'lb';
+                                        }
+                                }                                         
+                                if(!$checked) {
+                                        //Verifico si tiene el CN
+                                        str_replace('CN',  '', $unidad, $checked);
+                                        if($checked) {
+                                                $sx = explode('CN', $unidad);                                        
+                                                $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'CN1';
+                                                $data['prefijo'] = 'CN';
+                                                $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 1;
+                                                $data['unidad_destino'] = 'gal';
+                                        }
+                                } 
+                                if(!$checked) {
+                                        //Verifico si tiene el TM
+                                        str_replace('TM',  '', $unidad, $checked);
+                                        if($checked) {
+                                                $sx = explode('TM', $unidad);                                        
+                                                $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'TM16';
+                                                $data['prefijo'] = 'TM';
+                                                $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 1;
+                                                $data['unidad_destino'] = 'gal';
+                                        }
+                                } 
+                                if(!$checked) {
+                                        //Verifico si tiene el IBC
+                                        str_replace('IBC',  '', $unidad, $checked);
+                                        if($checked) {
+                                                $sx = explode('IBC', $unidad);                                        
+                                                $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'IBC260';
+                                                $data['prefijo'] = 'IBC';
+                                                $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 1;
+                                                $data['unidad_destino'] = 'gal';
+                                        }
+                                } 
+                                $tmp = $this->Api->create('conversions_table', $data);
+                        }                 
+                        $unit = empty($tmp[0]['id']) ? $tmp : $tmp[0]['id'];
+                        //Actualizo el material
+                        $this->Api->update_where('maestra_materials', array('unit'=>$unit), array('id'=>$material['id']));                        
+                }
+                //Equipos
+                $equipos = $this->Api->get('maestra_equipos');
+                foreach($equipos as $equipo) {
+                        //Conviero las unidades en mayúsculas para no generar inconvenientes
+                        $unidad = strtoupper($equipo['unit_description']);                        
+                        //Verifico si existe esa medida
+                        $tmp = $this->Api->get_where('conversions_table', array('nombre_unidad'=>$unidad));
+                        //Si no existe
+                        if(empty($tmp[0]['id'])) {
+                                $data = array();
+                                //Verifico si tiene el DIA
+                                str_replace('DIA',  '', $unidad, $checked);
+                                if($checked) {
+                                        $var = explode('DIA', $unidad);                                        
+                                        $data['nombre_unidad'] = empty($var[1]) ? $unidad : 'DIA';                                        
+                                        $data['prefijo'] = 'DIA';
+                                        //Por si tiene DIAS quito la S
+                                        $var[1] = trim($var[1], 'S');
+                                        $data['equivalencia'] = empty($var[1]) ? $var[1] : 1;
+                                        $data['unidad_destino'] = 'DIA';
+                                } else {
+                                        $var = explode('UN', $unidad);
+                                        $data['nombre_unidad'] = empty($var[1]) ? $unidad : 'UNIDAD';
+                                        $data['prefijo'] = 'UNIDAD';
+                                        $data['equivalencia'] = empty($var[1]) ? $var[1] : 1;
+                                        $data['unidad_destino'] = 'UNIDAD';
+                                }
+                                $tmp = $this->Api->create('conversions_table', $data);
+                        }
+                        $unit = empty($tmp[0]['id']) ? $tmp : $tmp[0]['id'];
+                        //Actualizo el equipo maestro
+                        $this->Api->update_where('maestra_equipos', array('unit'=>$unit), array('id'=>$equipo['id']));
+                }
+        }
 
 
 	public function load_ac_status(){
