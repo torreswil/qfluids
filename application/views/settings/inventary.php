@@ -30,7 +30,7 @@
 					<thead>
 						<tr>
 							<td></td>
-							<td class="label_m"><label>Code</label></td>
+							<td class="label_m"><label style="display:none;">Code</label></td>
 							<td class="label_m"><label>Internal Name</label></td>
 							<td class="label_m"><label>Commercial Name</label></td>
 							<td class="label_m"><label>Unit</label></td>
@@ -74,7 +74,7 @@
 					<thead>
 						<tr>
 							<td></td>
-							<td class="label_m"><label>Code</label></td>
+							<td class="label_m"><label style="display:none;">Code</label></td>
 							<td class="label_m"><label>Internal Name</label></td>
 							<td class="label_m"><label>Commercial Name</label></td>
 							<td class="label_m"><label>Unit</label></td>
