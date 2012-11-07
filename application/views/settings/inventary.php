@@ -30,12 +30,12 @@
 					<thead>
 						<tr>
 							<td></td>
-							<td class="label_m"><label style="display:none;">Code</label></td>
 							<td class="label_m"><label>Internal Name</label></td>
 							<td class="label_m"><label>Commercial Name</label></td>
 							<td class="label_m"><label>Unit</label></td>
 							<td class="label_m"><label>SG</label></td>
 							<td class="label_m"><label>U. Cost</label></td>
+							<td class="label_m"><label style="display:none;">Code</label></td>
 							<td></td>
 						</tr>
 					</thead>
@@ -74,11 +74,11 @@
 					<thead>
 						<tr>
 							<td></td>
-							<td class="label_m"><label style="display:none;">Code</label></td>
 							<td class="label_m"><label>Internal Name</label></td>
 							<td class="label_m"><label>Commercial Name</label></td>
 							<td class="label_m"><label>Unit</label></td>
 							<td class="label_m"><label>U. Cost</label></td>
+							<td class="label_m"><label style="display:none;">Code</label></td>
 							<td></td>
 						</tr>
 					</thead>
