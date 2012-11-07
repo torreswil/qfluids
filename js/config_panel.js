@@ -1280,6 +1280,8 @@ $(function(){
 	});
 
 	$('.update_materials').click(function(e){
+		var action_button = $(this);
+		$(this).val('Working...').removeClass('update_materials');
 		var materials = [];
 		$('#materials_activation_table input[type="checkbox"]').each(function(){
 			if($(this).attr('checked') == 'checked'){
@@ -1302,17 +1304,23 @@ $(function(){
 		
 		$.post('/rest/update_materials',$.toJSON(materials),function(r){
 			if(r == true){
-				alert('Materials list updated.');         
-				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
+				alert('Materials list updated.');
+				load_settings_materials();         
+				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+				action_button.val('Save').addClass('update_materials');	
 			}else{
 				alert('An error has ocurred. Please try again.');
+				action_button.val('Save').addClass('update_materials');
 			}
 		},'json');
 		
 	}); 
 
 	function load_settings_materials(){
-		$('#materials_activation_table').load('/rest_mvc/load_settings_materials');
+		$('#materials_activation_table').load('/rest_mvc/load_settings_materials',function(){
+			$('#filter_materials').quicksearch('.buscar_materiales_aqui');	
+		});
+		
 	}
 
 	function load_settings_equipement(){

@@ -74,7 +74,7 @@
 						</tr>
 					</thead>
 					<tbody id="equipement_activation_table">
-						<!-- AJAX LOADADED -->
+						<!-- AJAX LOADADED-->
 					</tbody>
 				</table>
 			</fieldset>	
