@@ -16,7 +16,7 @@
 						</tr>
 						<tr>	
 							<td class="label_m"><label>Commercial Name:</label></td>
-							<td><input type="text" name="commercial_name"/></td>
+							<td><input type="text" name="commercial_name" maxlength="30" /></td>
 						</tr>
 						<tr>	
 							<td class="label_m"><label>Unit:</label></td>
