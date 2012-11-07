@@ -801,10 +801,10 @@ class Rest extends CI_Controller {
                 $equipos = $this->Api->get('maestra_equipos');
                 foreach($equipos as $equipo) {
                         //Conviero las unidades en mayúsculas para no generar inconvenientes
-                        $unidad = strtoupper($equipo['unit_description']);    
+                        $unidad = strtoupper($equipo['unit_description']);                            
                         if($unidad=='UN') {
-                                $unidad == 'UNIDAD';
-                        }
+                                $unidad = 'UNIDAD';
+                        }                        
                         //Verifico si existe esa medida
                         $tmp = $this->Api->get_where('conversions_table', array('nombre_unidad'=>$unidad));
                         //Si no existe
