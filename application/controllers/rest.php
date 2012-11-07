@@ -733,9 +733,9 @@ class Rest extends CI_Controller {
                                 str_replace('SX',  '', $unidad, $checked);
                                 if($checked) {
                                         $sx = explode('SX', $unidad);                                        
-                                        $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'SX2004';                                        
+                                        $data['nombre_unidad'] = (!empty($sx[1])) ? $unidad : 'SX2004';                                        
                                         $data['prefijo'] = 'SX';
-                                        $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 2004;
+                                        $data['equivalencia'] = (!empty($sx[1])) ? $sx[1] : 2004;
                                         $data['unidad_destino'] = 'lb';
                                 } 
                                 if(!$checked) {
@@ -743,9 +743,9 @@ class Rest extends CI_Controller {
                                         str_replace('TN1',  '', $unidad, $checked);
                                         if($checked) {
                                                 $sx = explode('TN1', $unidad);                                        
-                                                $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'TN14009';
+                                                $data['nombre_unidad'] = (!empty($sx[1])) ? $unidad : 'TN14009';
                                                 $data['prefijo'] = 'TN1';
-                                                $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 4009;
+                                                $data['equivalencia'] = (!empty($sx[1])) ? $sx[1] : 4009;
                                                 $data['unidad_destino'] = 'lb';
                                         }
                                 } 
@@ -754,9 +754,9 @@ class Rest extends CI_Controller {
                                         str_replace('TN2',  '', $unidad, $checked);
                                         if($checked) {
                                                 $sx = explode('TN2', $unidad);                                        
-                                                $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'TN24010';
+                                                $data['nombre_unidad'] = (!empty($sx[1])) ? $unidad : 'TN24010';
                                                 $data['prefijo'] = 'TN2';
-                                                $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 4009;
+                                                $data['equivalencia'] = (!empty($sx[1])) ? $sx[1] : 4009;
                                                 $data['unidad_destino'] = 'lb';
                                         }
                                 }                                         
@@ -765,9 +765,9 @@ class Rest extends CI_Controller {
                                         str_replace('CN',  '', $unidad, $checked);
                                         if($checked) {
                                                 $sx = explode('CN', $unidad);                                        
-                                                $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'CN1';
+                                                $data['nombre_unidad'] = (!empty($sx[1])) ? $unidad : 'CN1';
                                                 $data['prefijo'] = 'CN';
-                                                $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 1;
+                                                $data['equivalencia'] = (!empty($sx[1])) ? $sx[1] : 1;
                                                 $data['unidad_destino'] = 'gal';
                                         }
                                 } 
@@ -776,9 +776,9 @@ class Rest extends CI_Controller {
                                         str_replace('TM',  '', $unidad, $checked);
                                         if($checked) {
                                                 $sx = explode('TM', $unidad);                                        
-                                                $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'TM16';
+                                                $data['nombre_unidad'] = (!empty($sx[1])) ? $unidad : 'TM16';
                                                 $data['prefijo'] = 'TM';
-                                                $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 1;
+                                                $data['equivalencia'] = (!empty($sx[1])) ? $sx[1] : 1;
                                                 $data['unidad_destino'] = 'gal';
                                         }
                                 } 
@@ -787,9 +787,9 @@ class Rest extends CI_Controller {
                                         str_replace('IBC',  '', $unidad, $checked);
                                         if($checked) {
                                                 $sx = explode('IBC', $unidad);                                        
-                                                $data['nombre_unidad'] = empty($sx[1]) ? $unidad : 'IBC260';
+                                                $data['nombre_unidad'] = (!empty($sx[1])) ? $unidad : 'IBC260';
                                                 $data['prefijo'] = 'IBC';
-                                                $data['equivalencia'] = (empty($sx[1])) ? $sx[1] : 1;
+                                                $data['equivalencia'] = (!empty($sx[1])) ? $sx[1] : 1;
                                                 $data['unidad_destino'] = 'gal';
                                         }
                                 } 
