@@ -1108,7 +1108,7 @@ class Rest_mvc extends CI_Controller {
 					<?php if($material['custom'] == 1){ ?>
 						<input style="width:100px;margin-right:0;" type="text" value="<?= $material['erp_id']; ?>" id="merpid_<?= $material['id'] ?>" />
 					<?php }else{ ?>
-						<input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['erp_id']; ?>" id="merpid_<?= $material['id'] ?>" />
+						<input style="width:100px;margin-right:0;display:none;" type="text" disabled="disabled" value="<?= $material['erp_id']; ?>" id="merpid_<?= $material['id'] ?>" />
 					<?php } ?>	
 				</td>
 				<td><input title="<?= $material['description'] ?>" style="cursor:pointer;width:200px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['internal_name'] ?>" /></td>
@@ -1145,12 +1145,12 @@ class Rest_mvc extends CI_Controller {
 					<?php if($equipement['custom'] == 1){ ?>
 					<input type="text" value="<?= $equipement['erp_id'] ?>" style="margin-right:0;width:100px;" id="eerpid_<?= $equipement['id'] ?>" />
 					<?php }else{?>
-					<input type="text" disabled value="<?= $equipement['erp_id'] ?>" style="margin-right:0;width:100px;" id="eerpid_<?= $equipement['id'] ?>" />
+					<input type="text" disabled value="<?= $equipement['erp_id'] ?>" style="margin-right:0;width:100px;display:none;" id="eerpid_<?= $equipement['id'] ?>" />
 					<?php } ?>
 				</td>
 				<td class="label_m"><input type="text" disabled value="<?= $equipement['product_name'] ?>" style="margin-right:0;width:200px;max-width:500px;" /></td>
 				<td class="label_m"><input type="text" value="<?= $equipement['commercial_name'] ?>" style="margin-right:0;width:200px;max-width:500px;" id="ecname_<?= $equipement['id'] ?>" /></td>
-				<td class="label_m"><input type="text" disabled value="<?= $equipement['equivalencia'] ?><?= $equipement['unidad_destino'] ?>" style="margin-right:0;width:50px;" /></td>
+				<td class="label_m"><input type="text" disabled value="<?= $equipement['equivalencia'] ?> <?= $equipement['unidad_destino'] ?>" style="margin-right:0;width:50px;" /></td>
 				<td class="label_m"><input type="text" value="<?= $equipement['price'] ?>" style="margin-right:0;width:50px;" id="eprice_<?= $equipement['id'] ?>" /></td>
 				<td class="label_m">
 					<?php if($equipement['custom'] == 1){ ?>
