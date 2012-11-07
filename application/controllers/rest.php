@@ -814,18 +814,16 @@ class Rest extends CI_Controller {
                                 str_replace('DIA',  '', $unidad, $checked);
                                 if($checked) {
                                         $var = explode('DIA', $unidad);                                        
-                                        $data['nombre_unidad'] = (!empty($var[1])) ? $unidad : 'DIA';                                        
-                                        $data['prefijo'] = 'DIA';
-                                        //Por si tiene DIAS quito la S
-                                        $var[1] = trim($var[1], 'S');
-                                        $data['equivalencia'] = (!empty($var[1])) ? $var[1] : 1;
+                                        $data['nombre_unidad'] = 'DIA';                                        
+                                        $data['prefijo'] = 'DIA';                                        
+                                        $data['equivalencia'] = (!empty($var[0])) ? $var[0] : 1;
                                         $data['unidad_destino'] = 'DIA';
                                 } else {
-                                        $var = explode('UN', $unidad);
-                                        $data['nombre_unidad'] = (!empty($var[1])) ? $unidad : 'UNIDAD';
+                                        $var = explode('UNIDAD', $unidad);
+                                        $data['nombre_unidad'] = 'UNIDAD';
                                         $data['prefijo'] = 'UNIDAD';
-                                        $data['equivalencia'] = (!empty($var[1])) ? $var[1] : 1;
-                                        $data['unidad_destino'] = 'UNIDAD';
+                                        $data['equivalencia'] = (!empty($var[0])) ? $var[0] : 1;
+                                        $data['unidad_destino'] = 'UND';
                                 }
                                 $tmp = $this->Api->create('conversions_table', $data);
                         }
