@@ -733,9 +733,9 @@ class Rest extends CI_Controller {
                                 str_replace('SX',  '', $unidad, $checked);
                                 if($checked) {
                                         $sx = explode('SX', $unidad);                                        
-                                        $data['nombre_unidad'] = (!empty($sx[1])) ? $unidad : 'SX2004';                                        
+                                        $data['nombre_unidad'] = (!empty($sx[1])) ? $unidad : 'SX';                                        
                                         $data['prefijo'] = 'SX';
-                                        $data['equivalencia'] = (!empty($sx[1])) ? $sx[1] : 2004;
+                                        $data['equivalencia'] = (!empty($sx[1])) ? $sx[1] : 1;
                                         $data['unidad_destino'] = 'lb';
                                 } 
                                 if(!$checked) {
