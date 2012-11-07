@@ -11,8 +11,8 @@
 							<td><input type="text" name="erp_id"/></td>
 						</tr>
 						<tr>
-							<td class="label_m"><label>Internal Name:</label></td>
-							<td><input type="text" name="product_name"/></td>
+							<td class="label_m"><label>Internal Name:*</label></td>
+							<td><input type="text" name="product_name" class="required" /></td>
 						</tr>
 						<tr>	
 							<td class="label_m"><label>Commercial Name:</label></td>
@@ -21,7 +21,7 @@
 						<tr>	
 							<td class="label_m"><label>Unit:</label></td>
 							<td>
-								<input type="text" style="width:98px;margin-right:0;" name="value"/>
+								<input type="text" style="width:98px;margin-right:0;" name="value" class="required"/>
 								<select style="width:60px;" name="unit_value">
 									<option value="dias">DAYS</option>
 									<option value="unidades">UNITS</option>
@@ -30,7 +30,7 @@
 						</tr>
 						<tr>	
 							<td class="label_m"><label>U. Cost:</label></td>	
-							<td><input type="text" name="price" /></td>
+							<td><input type="text" name="price" class="default_cero" /></td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Description:</label></td>

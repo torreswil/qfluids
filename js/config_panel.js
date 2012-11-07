@@ -1332,13 +1332,33 @@ $(function(){
 
     $("#btn_equipement_create").click(function(e) {
         e.preventDefault();
-        var data =  $("#new_equipement_form").serialize();
-        $.post('/rest/new_equipement', data, function(r){
+
+         var eqty = 0;
+        $("#new_equipement_form .required").each(function(){
+        	if($(this).val() == ''){
+        		eqty = eqty + 1;
+        	}
+        });
+
+        if(eqty > 0){
+        	alert('Some fields are empty. Please verify and try again.')
+        }else{
+        	
+        	$("#new_equipement_form .default_cero").each(function(){
+        		if($(this).val() == ''){
+        			$(this).val(0);
+        		}	
+        	});
+
+        	var data =  $("#new_equipement_form").serialize();
+	        $.post('/rest/new_equipement', data, function(r){
                 alert('Equipement saved!');
                 $('#ce_overlay').hide();
                 $("#new_equipement_form")[0].reset();                        
                 $('#equipement_activation_table').load('/rest_mvc/load_settings_equipement');
-        });
+	        });
+        }
+        
     });
         
     $('#ce_overlay .cancel_overlay').click(function(e){
