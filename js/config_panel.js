@@ -1279,6 +1279,22 @@ $(function(){
 		}
 	});
 
+	$("#btn_material_create").click(function(e) {
+            e.preventDefault();
+            var data =  $("#new_material_form").serialize();
+            $.post('/rest/new_material', data, function(r){
+                    alert('Material saved!');
+                    $('#cm_overlay').hide();
+                    $("#new_material_form")[0].reset();                        
+                    $('#materials_activation_table').load('/rest_mvc/load_settings_materials');
+            });
+        })
+        
+        $('#cm_overlay .cancel_overlay').click(function(e){
+		e.preventDefault();
+		$('#cm_overlay').hide();
+	});
+
 	$('.update_materials').click(function(e){
 		var action_button = $(this);
 		$(this).val('Working...').removeClass('update_materials');

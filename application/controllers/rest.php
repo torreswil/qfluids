@@ -609,33 +609,54 @@ class Rest extends CI_Controller {
 	}
         
         public function new_material() {
-                if(count($_POST) > 0){
-                        $data = $_POST;
-                        $data['project_id'] = $this->project_id;
-                        $value = $data['value'];
-                        if($value < 2004) { //Sx
-                                $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"SX{$value}"));
-                                if(empty($unit[0]['id'])) { //Se crea si no existe
-                                        $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"SX{$value}", 'prefijo'=>'SX', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
-                                }                                
-                        } else if($value < 4010) { //tn1
-                                $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"TN1{$value}"));
-                                if(empty($unit[0]['id'])) { //Se crea si no existe
-                                        $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"TN1{$value}", 'prefijo'=>'TN1', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
-                                }                                
-                        } else {  //tn2
-                                $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"TN2{$value}"));
-                                if(empty($unit[0]['id'])) { //Se crea si no existe
-                                        $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"TN2{$value}", 'prefijo'=>'TN2', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
-                                }
-                        }                         
-                        $data['unit'] = empty($unit[0]['id']) ? $unit : $unit[0]['id'];
-                        //Elimino el value y el unit_value
-                        unset($data['value']);
-                        unset($data['unit_value']);                        
-			$this->Api->create('project_materials',$data);
-			echo json_encode(true);
-		}
+            if(count($_POST) > 0){
+                $data = $_POST;
+                $data['project_id'] = $this->project_id;
+                $value = $data['value'];
+                if($data['unit_value'] == 'lb'){
+	                if($value <= 2004) { //Sx
+	                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"SX{$value}"));
+	                    if(empty($unit[0]['id'])) { //Se crea si no existe
+	                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"SX{$value}", 'prefijo'=>'SX', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+	                    }                                
+	                } else if($value > 2004 && $value < 4010) { //tn1
+	                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"TN1{$value}"));
+	                    if(empty($unit[0]['id'])) { //Se crea si no existe
+	                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"TN1{$value}", 'prefijo'=>'TN1', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+	                    }                                
+	                } else if($value >= 4010) {  //tn2
+	                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"TN2{$value}"));
+	                    if(empty($unit[0]['id'])) { //Se crea si no existe
+	                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"TN2{$value}", 'prefijo'=>'TN2', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+	                    }
+	                }	
+                }else if($data['unit_value'] == 'gal'){
+                	if($value <= 15) { //CN
+	                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"CN{$value}"));
+	                    if(empty($unit[0]['id'])) { //Se crea si no existe
+	                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"CN{$value}", 'prefijo'=>'CN', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+	                    }                                
+	                }else if($value >= 16 && $value <= 259) { //TM
+	                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"TM{$value}"));
+	                    if(empty($unit[0]['id'])) { //Se crea si no existe
+	                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"TM{$value}", 'prefijo'=>'TM', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+	                    }                                
+	                }else if($value >= 260) { //IBC
+	                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"IBC{$value}"));
+	                    if(empty($unit[0]['id'])) { //Se crea si no existe
+	                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"IBC{$value}", 'prefijo'=>'IBC', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+	                    }                                
+	                }
+                }
+                
+
+                $data['unit'] = empty($unit[0]['id']) ? $unit : $unit[0]['id'];
+                //Elimino el value y el unit_value
+                unset($data['value']);
+                unset($data['unit_value']);                        
+				$this->Api->create('project_materials',$data);
+				echo json_encode(true);
+			}
         }
         
         public function new_equipment() {
