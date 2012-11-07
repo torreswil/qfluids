@@ -694,7 +694,7 @@ class Rest extends CI_Controller {
             	}else{
             		$unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"{$value}DIA"));
 	                if(empty($unit[0]['id'])) { //Se crea si no existe
-	                        $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"{$value}DIA", 'prefijo'=>'DIAS', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+	                        $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"{$value}DIA", 'prefijo'=>'DIA', 'equivalencia'=>$value, 'unidad_destino'=>'dia'));
 	                }	
             	}
             	 	
