@@ -787,7 +787,7 @@ class Rest extends CI_Controller {
                                                 $sx = explode('IBC', $unidad);                                        
                                                 $data['nombre_unidad'] = (!empty($sx[1])) ? $unidad : 'IBC';
                                                 $data['prefijo'] = 'IBC';
-                                                $data['equivalencia'] = (!empty($sx[1])) ? $sx[1] : 1;
+                                                $data['equivalencia'] = (!empty($sx[1])) ? $sx[1] : 260;
                                                 $data['unidad_destino'] = 'gal';
                                         }
                                 } 
@@ -801,7 +801,10 @@ class Rest extends CI_Controller {
                 $equipos = $this->Api->get('maestra_equipos');
                 foreach($equipos as $equipo) {
                         //Conviero las unidades en mayúsculas para no generar inconvenientes
-                        $unidad = strtoupper($equipo['unit_description']);                        
+                        $unidad = strtoupper($equipo['unit_description']);    
+                        if($unidad=='UN') {
+                                $unidad == 'UNIDAD';
+                        }
                         //Verifico si existe esa medida
                         $tmp = $this->Api->get_where('conversions_table', array('nombre_unidad'=>$unidad));
                         //Si no existe
