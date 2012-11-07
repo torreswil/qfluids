@@ -61,6 +61,15 @@
 				</p>
 			</fieldset>
 			<fieldset>
+				<table style="margin-bottom:20px;">
+					<tr>
+						<td style="width:20px;"></td>
+						<td class="label_m"><input type="text" placeholder="Filter..." style="width:200px;" id="filter_equipement" /></td>
+						<td class="label_m" style="padding-left:20px;">
+							<a href="#show_hide_unselected_equipement" class="shon_n_hide_unselected_equipement">Show selected equipement only</a>
+						</td>
+					</tr>
+				</table>
 				<table>
 					<thead>
 						<tr>
