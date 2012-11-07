@@ -825,7 +825,7 @@ class Rest_mvc extends CI_Controller {
 					'volumen_perdido'				=> 0,
 					'volumen_final'					=> 0,
 					'volumen_transferido_osc' 		=> 0,
-					'volumen_recibido_osc' 			=> 0	
+					'volumen_recibido_osc' 			=> 0
 				);
 				$output['concentrations'] 	= array();
 				foreach ($materials as $material) {

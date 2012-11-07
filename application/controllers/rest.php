@@ -629,15 +629,25 @@ class Rest extends CI_Controller {
                     if(empty($unit[0]['id'])) { //Se crea si no existe
                             $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"SX{$value}", 'prefijo'=>'SX', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
                     }                                
-                } else if($value > 2004 && $value < 4010) { //tn1
-                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"TN1{$value}"));
+                } else if($value == 2005) { //TN1
+                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"TN1"));
                     if(empty($unit[0]['id'])) { //Se crea si no existe
-                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"TN1{$value}", 'prefijo'=>'TN1', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"TN1", 'prefijo'=>'TN1', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
                     }                                
-                } else if($value >= 4010) {  //tn2
-                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"TN2{$value}"));
+                }else if($value > 2005 && $value < 4010) { //SX
+                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"SX{$value}"));
                     if(empty($unit[0]['id'])) { //Se crea si no existe
-                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"TN2{$value}", 'prefijo'=>'TN2', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"SX{$value}", 'prefijo'=>'SX', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+                    }                                
+                } else if($value == 4010) { //TN2
+                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"TN2"));
+                    if(empty($unit[0]['id'])) { //Se crea si no existe
+                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"TN2", 'prefijo'=>'TN2', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+                    }                                
+                }else if($value > 4010) {  //SX
+                    $unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"SX{$value}"));
+                    if(empty($unit[0]['id'])) { //Se crea si no existe
+                            $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"SX{$value}", 'prefijo'=>'SX', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
                     }
                 }
 
@@ -682,19 +692,19 @@ class Rest extends CI_Controller {
             	if($value == 1){
             		$unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"DIA"));	
             	}else{
-            		$unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"{$value}DIAS"));
+            		$unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"{$value}DIA"));
 	                if(empty($unit[0]['id'])) { //Se crea si no existe
-	                        $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"{$value}DIAS", 'prefijo'=>'DIAS', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+	                        $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"{$value}DIA", 'prefijo'=>'DIAS', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
 	                }	
             	}
             	 	
             }else if($data['unit_value'] == 'unidades'){
             	if($value == 1){
-            		$unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"UNIDAD"));	
+            		$unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"UN"));	
             	}else{
-            		$unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"{$value}UNIDADES"));
+            		$unit = $this->Api->get_where('conversions_table', array('nombre_unidad'=>"{$value}UN"));
 	                if(empty($unit[0]['id'])) { //Se crea si no existe
-	                    $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"{$value}UNIDADES", 'prefijo'=>'UNIDADES', 'equivalencia'=>$value, 'unidad_destino'=>$data['unit_value']));
+	                    $unit = $this->Api->create('conversions_table', array('nombre_unidad'=>"{$value}UN", 'prefijo'=>'UN', 'equivalencia'=>$value, 'unidad_destino'=>'und'));
 	                }	
             	}
             }
