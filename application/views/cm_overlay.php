@@ -12,7 +12,7 @@
 							</tr>
 							<tr>
 								<td class="label_m"><label>Internal Name:</label></td>
-								<td><input type="text" name="internal_name"/></td>
+								<td><input type="text" name="internal_name" class="required" /></td>
 							</tr>
 							<tr>	
 								<td class="label_m"><label>Commercial Name:</label></td>
@@ -21,7 +21,7 @@
 							<tr>	
 								<td class="label_m"><label>Unit:</label></td>
 								<td>
-									<input type="text" style="width:98px;margin-right:0;" name="value"/>
+									<input type="text" style="width:98px;margin-right:0;" name="value" class="required"/>
 									<select style="width:60px;" name="unit_value">
 										<option value="lb">lb</option>
 										<option value="gal">gal</option>
@@ -30,11 +30,11 @@
 							</tr>
 							<tr>	
 								<td class="label_m"><label>SG:</label></td>
-								<td><input type="text" name="egravity"/></td>
+								<td><input type="text" name="egravity" value="0" class="required default_cero" /></td>
 							</tr>
 							<tr>	
 								<td class="label_m"><label>U. Cost:</label></td>	
-								<td><input type="text" name="price" /></td>
+								<td><input type="text" name="price" value="0" class="default_cero" /></td>
 							</tr>
 							<tr>
 								<td class="label_m"><label>Description:</label></td>

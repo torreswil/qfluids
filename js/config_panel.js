@@ -1304,13 +1304,30 @@ $(function(){
 
 	$("#btn_material_create").click(function(e) {
         e.preventDefault();
-        var data =  $("#new_material_form").serialize();
-        $.post('/rest/new_material', data, function(r){
+        var eqty = 0;
+        $("#new_material_form .required").each(function(){
+        	if($(this).val() == ''){
+        		eqty = eqty + 1;
+        	}
+        });
+
+        if(eqty > 0){
+        	alert('Some required fields are empty. Please verify and try again');
+        }else{
+        	$("#new_material_form .default_cero").each(function(){
+        		if($(this).val() == ''){
+        			$(this).val(0);
+        		}	
+        	});
+
+	        var data =  $("#new_material_form").serialize();
+	        $.post('/rest/new_material', data, function(r){
                 alert('Material saved!');
                 $('#cm_overlay').hide();
                 $("#new_material_form")[0].reset();                        
                 $('#materials_activation_table').load('/rest_mvc/load_settings_materials');
-        });
+	        });	
+        }
     });
 
     $("#btn_equipement_create").click(function(e) {
