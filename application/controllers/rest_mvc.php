@@ -1111,7 +1111,7 @@ class Rest_mvc extends CI_Controller {
 						<input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['erp_id']; ?>" id="merpid_<?= $material['id'] ?>" />
 					<?php } ?>	
 				</td>
-				<td><input title="<?= $material['description'] ?>" style="cursor:pointer;width:200px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['commercial_name'] ?>" /></td>
+				<td><input title="<?= $material['description'] ?>" style="cursor:pointer;width:200px;max-width:500px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['internal_name'] ?>" /></td>
 				<td><input title="<?= $material['description'] ?>" style="cursor:pointer;width:200px;max-width:500px;margin-right:0;" type="text" value="<?= $material['commercial_name'] ?>" length="30" id="mcname_<?= $material['id'] ?>" /></td>
 				<td><input style="width:100px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['equivalencia'] ?><?= $material['unidad_destino'] ?>" /></td>
 				<td><input style="width:50px;margin-right:0;" type="text" disabled="disabled" value="<?= $material['egravity'] ?>" /></td>
