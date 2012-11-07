@@ -77,9 +77,8 @@
 						<!-- AJAX LOADADED-->
 					</tbody>
 				</table>
+				<input type="button" value="Save" class="update_equipement" style="margin:10px 25px;" />
 			</fieldset>	
 	    </div>
-
-
 	</div>
 </div>

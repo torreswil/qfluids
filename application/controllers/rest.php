@@ -607,6 +607,14 @@ class Rest extends CI_Controller {
 		}
 		echo json_encode(true);	
 	}
+
+	public function update_equipement(){
+		$equipos = json_decode($this->data_input);
+		foreach ($equipos as $equipo) {
+			$this->Api->update('project_equipement',$equipo,$equipo->id);
+		}
+		echo json_encode(true);
+	}
         
     public function new_material() {
         if(count($_POST) > 0){

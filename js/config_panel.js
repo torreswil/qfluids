@@ -1395,6 +1395,46 @@ $(function(){
 		}
 	});
 
+	$('.update_equipement').click(function(e){
+		var action_button = $(this);
+		$(this).val('Working...').removeClass('update_equipement');
+		var equipement = [];
+		$('#equipement_activation_table input[type="checkbox"]').each(function(){
+			if($(this).attr('checked') == 'checked'){
+				var uip = 1;
+			}else{
+				var uip = 0;
+			}
+			var eid = $(this).val();
+			var this_equipement = {
+				id 				: eid,
+				used_in_project : uip,
+				price 			: $('#eprice_'+eid).val(), 
+				commercial_name : $('#ecname_'+eid).val(), 
+				erp_id 			: $('#eerpid_'+eid).val(),
+			};
+
+			equipement.push(this_equipement);
+		});
+		
+		log(equipement);
+		$.post('/rest/update_equipement',$.toJSON(equipement),function(r){
+			if(r == true){
+				alert('Equipement list updated.');
+				load_settings_equipement();         
+				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+				action_button.val('Save').addClass('update_equipement');	
+			}else{
+				alert('An error has ocurred. Please try again.');
+				action_button.val('Save').addClass('update_equipement');
+			}
+		},'json');
+		
+	});
+
+
+
+
     /*==========================================================================================================*/
 	// 8. MUD PROPERTIES
 	/*==========================================================================================================*/    
