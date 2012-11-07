@@ -1284,6 +1284,24 @@ $(function(){
 		}
 	});
 
+	$('#filter_equipement').quicksearch('.buscar_equipos_aqui');
+	$('.shon_n_hide_unselected_equipement').click(function(e){
+		e.preventDefault();
+		if($(this).hasClass('unselected_hidden')){
+			//mostrar todos los materiales
+			$('#equipement_activation_table tr').show();
+			//cambiar el html del link
+			$(this).removeClass('unselected_hidden').html('Show selected equipement only');
+		}else{
+			$('#equipement_activation_table tr').hide();
+			//ocultar los materiales marcados 
+			$('#equipement_activation_table input[type="checkbox"]:checked').parents('tr').show();
+			//agregar la clase 'selected_hidden' y cambiar el html del link
+			$(this).addClass('unselected_hidden').html('Show all equipement');
+			 
+		}
+	});
+
 	$("#btn_material_create").click(function(e) {
         e.preventDefault();
         var data =  $("#new_material_form").serialize();
@@ -1361,7 +1379,9 @@ $(function(){
 	}
 
 	function load_settings_equipement(){
-		$('#equipement_activation_table').load('/rest_mvc/load_settings_equipement');
+		$('#equipement_activation_table').load('/rest_mvc/load_settings_equipement',function(){
+			$('#filter_equipement').quicksearch('.buscar_equipos_aqui');
+		});
 	}                       
        
 	$('.remove_material').live('click',function(e){

@@ -1128,7 +1128,7 @@ class Rest_mvc extends CI_Controller {
 	public function load_settings_equipement(){
 		$all_equipement = $this->Api->get_where('vista_equipos',array('project'=>$this->project_id,'active'=>1),array('product_name','asc'));
 		foreach ($all_equipement as $equipement) { ?>
-			<tr>
+			<tr class="this_equipement_<?= $equipement['id']?> buscar_equipos_aqui" id="este_row_equipement_<?= $equipement['id']?>">
 				<td class="label_m">
 					<?php if($equipement['used_in_project'] == 1){
 						$checked = 'checked="checked"';
