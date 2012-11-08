@@ -1,19 +1,21 @@
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : localhost
-Source Server Version : 50516
-Source Host           : localhost:3306
-Source Database       : qfluids
-
-Target Server Type    : MYSQL
-Target Server Version : 50516
-File Encoding         : 65001
-
-Date: 2012-11-08 10:31:50
-*/
+-- phpMyAdmin SQL Dump
+-- version 3.4.11.1deb1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 08-11-2012 a las 15:44:20
+-- Versión del servidor: 5.5.28
+-- Versión de PHP: 5.4.6-1ubuntu1
 
 SET FOREIGN_KEY_CHECKS=0;
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de datos: `work_qfluids`
+--
+
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `bombas`
