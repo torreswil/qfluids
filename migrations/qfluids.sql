@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-11-2012 a las 15:44:20
+-- Tiempo de generación: 08-11-2012 a las 16:25:19
 -- Versión del servidor: 5.5.28
 -- Versión de PHP: 5.4.6-1ubuntu1
 
@@ -1804,11 +1804,13 @@ DROP TABLE IF EXISTS `project_report_comments`;
 CREATE TABLE IF NOT EXISTS `project_report_comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `report_id` int(11) NOT NULL,
-  `comments` text,
+  `rig_activity` text,
+  `mud_activity` text NOT NULL,
+  `comments` text NOT NULL,
   `charla_hse` varchar(150) DEFAULT NULL,
   `pusher` varchar(150) DEFAULT NULL,
-  `company_man` varchar(150) DEFAULT NULL,
-  `representative` varchar(150) DEFAULT NULL,
+  `company_man_1` varchar(150) DEFAULT NULL,
+  `company_man_2` varchar(150) DEFAULT NULL,
   `mud_enginers_1` varchar(150) DEFAULT NULL,
   `mud_enginers_2` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)

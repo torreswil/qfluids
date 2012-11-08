@@ -750,13 +750,15 @@ $(function(){
          */ 
         function save_comments() {
                 var data = {
+                        rig_activity            : $("#report_rig_activity").val(),
+                        mud_activity            : $("#report_mud_activity").val(),
                         comments                : $("#report_comments").val(),
                         charla_hse              : $("#report_charla_hse").val(),
                         pusher                  : $("#report_pusher").val(),
-                        company_man             : $("#report_company_man").val(),
-                        representative          : $("#report_representative").val(),
-                        mud_enginers_1         : $("#report_mud_enginers_1").val(),
-                        mud_enginers_2         : $("#report_mud_enginers_2").val()
+                        company_man_1           : $("#report_company_man_1").val(),
+                        company_man_2           : $("#report_company_man_2").val(),
+                        mud_enginers_1          : $("#report_mud_enginers_1").val(),
+                        mud_enginers_2          : $("#report_mud_enginers_2").val()
                 }                
                 //Save comments
                 $.ajax({

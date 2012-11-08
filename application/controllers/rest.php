@@ -1133,9 +1133,12 @@ class Rest extends CI_Controller {
         public function save_comments() {                
                 //Elimino los campos enviados con anterioridad para tener los nuevos almacenados
                 $this->Api->total_remove_where('project_report_comments', array('report_id'=>$this->report_id));
-                $_POST['report_id'] = $this->report_id;
-                $_POST['comments'] = nl2br($_POST["comments"]);                
-                $this->Api->create('project_report_comments', $_POST);                
+                $data = $_POST;
+                $data['report_id'] = $this->report_id;
+                $data['rig_activity'] = nl2br($data["rig_activity"]);                
+                $data['mud_activity'] = nl2br($data["mud_activity"]);                
+                $data['comments'] = nl2br($data["comments"]);                
+                $this->Api->create('project_report_comments', $data);
         }
                 
 	public function dump_session(){

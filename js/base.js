@@ -130,12 +130,16 @@ function numbersonly(e, decimal) {
  * IvanMel
  * class="count[max]/count[min,max]" counter-target="help-block" counter-type="digits/words"
  */
-$(document).ready(function() {        
+$(document).ready(function() {     
+
+        var allCounter = $('.counter-join');
+
     $("[class^='counter[']").each(function() {
         var este = $(this);
         var typeCounter = ($(this).attr('counter-type')=='words') ? 'words' : 'digits';                
         var sizeEnter = ($(this).attr('counter-size-enter') > 0 ) ? parseInt($(this).attr('counter-size-enter')) : 0;        
         var attrClass = $(this).attr('class');
+        var counterJoin = ($(this).hasClass('counter-join')) ? true : false;
         var target = $(this).attr('counter-target');
         var minSize = 0;
         var maxSize = 0;        
@@ -148,25 +152,77 @@ $(document).ready(function() {
         } else {
                 maxSize = countControl[0];
         }
-               
-        $(this).bind('keyup click blur focus change paste', function(e) {
-                var sizeInput = (typeCounter=='digits') ? $.trim($(this).val()).length : $.trim($(this).val()).split(' ').length;
-                if($(this).val() === '') {
-                        sizeInput = 0;
-                }  
-                if(sizeEnter > 0) {
-                        totalEnter = ($(this).val().split("\n").length)-1;
-                        sizeInput = sizeInput + (sizeEnter*totalEnter);                        
-                }                                
-                var tmp = este.find('.'+target+':first');
-                var counter = (tmp.length == 0) ? este.next().find('.'+target+':first') : tmp;
-                counter.text(sizeInput);
-                if(sizeInput < minSize || (sizeInput > maxSize && maxSize != 0)) {
-                        counter.removeClass('label-warning').addClass('label-important');
-                } else {
-                        counter.removeClass('label-important').addClass('label-warning');
-                }
-        });
+        
+        if(counterJoin) {                
+                $('.counter-join').bind('keyup click blur focus change paste', function(e) {                        
+                        //Reviso donde está el contador
+                        var tmp = este.find('.'+target+':first');
+                        if(tmp.length == 0) {
+                                tmp = $('.'+target+':first');
+                        }
+                        var counter = (tmp.length == 0) ? este.next().find('.'+target+':first') : tmp;
+                        //Tomo el tamaño digitado
+                        var sizeInput = (typeCounter=='digits') ? $.trim($(this).val()).length : $.trim($(this).val()).split(' ').length;
+                        
+                        if($(this).val() === '') {
+                                sizeInput = parseInt(counter.text());
+                        } else {
+                                actual = $(this).attr('id');
+                                totalSizeInput = 0;
+                                allCounter.each(function(i){
+                                        if($(this).attr('id') != actual) {                                                
+                                                tmpTotalSizeInput = (typeCounter=='digits') ? $.trim($(this).val()).length : $.trim($(this).val()).split(' ').length;                                                
+                                                if(sizeEnter > 0) {
+                                                        tmpTotalEnter = ($(this).val().split("\n").length)-1;
+                                                        tmpTotalSizeInput = tmpTotalSizeInput + (sizeEnter*tmpTotalEnter);
+                                                }
+                                                totalSizeInput = totalSizeInput + tmpTotalSizeInput;
+                                        }
+                                });                                
+                                sizeInput = sizeInput + totalSizeInput;
+                        }                                                                       
+                        
+                        if(sizeEnter > 0) {
+                                totalEnter = ($(this).val().split("\n").length)-1;
+                                sizeInput = sizeInput + (sizeEnter*totalEnter);                        
+                        }                          
+                        counter.text(sizeInput);
+                        if(sizeInput < minSize || (sizeInput > maxSize && maxSize != 0)) {
+                                counter.removeClass('label-warning').addClass('label-important');
+                                tmpSubstr = (sizeInput-$(this).val().length) - maxSize;
+                                if(tmpSubstr < 0) {
+                                        tmpSubstr = tmpSubstr*(-1);
+                                }                                
+                                $(this).val($(this).val().substr(0, tmpSubstr));
+                        } else {
+                                counter.removeClass('label-important').addClass('label-warning');
+                        }
+                });
+                
+        } else {
+                $(this).bind('keyup click blur focus change paste', function(e) {
+                        var sizeInput = (typeCounter=='digits') ? $.trim($(this).val()).length : $.trim($(this).val()).split(' ').length;
+                        if($(this).val() === '') {
+                                sizeInput = 0;
+                        }  
+                        if(sizeEnter > 0) {
+                                totalEnter = ($(this).val().split("\n").length)-1;
+                                sizeInput = sizeInput + (sizeEnter*totalEnter);                        
+                        }                          
+                        var tmp = este.find('.'+target+':first');
+                        if(tmp.length == 0) {
+                                tmp = este.next('.'+target+':first');
+                        }                
+                        var counter = (tmp.length == 0) ? este.next().find('.'+target+':first') : tmp;
+                        counter.text(sizeInput);
+                        if(sizeInput < minSize || (sizeInput > maxSize && maxSize != 0)) {
+                                counter.removeClass('label-warning').addClass('label-important');
+                                $(this).val($(this).val().substr(0, maxSize));
+                        } else {
+                                counter.removeClass('label-important').addClass('label-warning');
+                        }
+                });
+        }                       
                     
     });
 });

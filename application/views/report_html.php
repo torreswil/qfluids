@@ -1,7 +1,10 @@
 <?php $reporte = $this->session->userdata('report'); ?>
+<?php error_reporting(0); ?>
 <style type="text/css">
         .txt-monospace {
-                font-family: monospace;                
+                font-family: monospace; 
+                /*margin-left: 2px;
+                margin-right: 2px;*/
         }
 </style>
 <div class="row">
@@ -839,9 +842,9 @@
                                         <thead>
                                                 <tr class="">
                                                         <th class="txt-left b-point-right" style="width: 20%">VOLUME</th>
-                                                        <th class="txt-center b-point-right" style="width: 14%">ACTIVE</th>
-                                                        <th class="txt-center b-point-right" style="width: 14%">RESERVE</th>
-                                                        <th colspan="4" class="txt-center"  style="width: 52%; border-bottom: 0px;">LOSSES ANALYSIS</th>
+                                                        <th class="txt-center b-point-right" style="width: 13%">ACTIVE</th>
+                                                        <th class="txt-center b-point-right" style="width: 13%">RESERVE</th>
+                                                        <th colspan="4" class="txt-center"  style="width: 54%; border-bottom: 0px;">LOSSES ANALYSIS</th>
                                                 </tr>
                                         </thead>
                                         
@@ -850,10 +853,10 @@
                                                         <td class="b-point-top b-point-right">Starting Vol</td>
                                                         <td class="b-point-top b-point-right txt-center">&nbsp;</td>
                                                         <td class="b-point-top b-point-right txt-center">&nbsp;</td>
-                                                        <td class="b-point-top b-point-right" style="width: 17%">Sub/surface</td>
-                                                        <td class="b-point-top b-point-right txt-center" style="width: 8%;"><?= empty($losses['sub_surface']) ? '&nbsp;' : $losses['sub_surface']; ?></td>
-                                                        <td class="b-point-top b-point-right" style="width: 17%">Daily Surf. Losses</td>
-                                                        <td class="b-point-top txt-center" style="width: 8%"><?= empty($losses['daily_surface_losses']) ? '&nbsp;' : $losses['daily_surface_losses']; ?></td>                                                        
+                                                        <td class="b-point-top b-point-right" style="width: 17.5%">Sub/surface</td>
+                                                        <td class="b-point-top b-point-right txt-center" style="width: 8.5%;"><?= empty($losses['sub_surface']) ? '&nbsp;' : $losses['sub_surface']; ?></td>
+                                                        <td class="b-point-top b-point-right" style="width: 17.5%">Daily Surf. Losses</td>
+                                                        <td class="b-point-top txt-center" style="width: 8.5%"><?= empty($losses['daily_surface_losses']) ? '&nbsp;' : $losses['daily_surface_losses']; ?></td>                                                        
                                                 </tr>                                                                                                                                               
                                                 <tr class="">
                                                         <td class="b-point-top b-point-right">Received Mud</td>
@@ -1011,8 +1014,10 @@
                                         <tbody>
                                                 <tr>
                                                         <td style="height: 458px">
-                                                                <p class="txt-justify txt-monospace">                      
-                                                                        <?= empty($comments['comments']) ? '' : substr($comments['comments'], 0, 2570).'...'; ?> 
+                                                                <p class="txt-justify txt-monospace">
+                                                                        <?= empty($comments['rig_activity']) ? '' : str_replace('RIG ACTIVITY:', '<b>RIG ACTIVITY: </b>',$comments['rig_activity']).' <br /> <br />'; ?> 
+                                                                        <?= empty($comments['mud_activity']) ? '' : str_replace('MUD ACTIVITY:', '<b>MUD ACTIVITY: </b>',$comments['mud_activity']).' <br /> <br />'; ?> 
+                                                                        <?= empty($comments['comments']) ? '' : str_replace('COMMENTS:', '<b>COMMENTS: </b>',$comments['comments']); ?>
                                                                 </p>
                                                         </td>
                                                 </tr>
@@ -1343,12 +1348,17 @@
                                 
                                 <div class="container-fluid">
                                         <div class="data-table-container b-right" style="float:left; width: 50%;">
-                                                <strong>Company Man/Representative:</strong>
-                                                <p class="txt-center" style="padding-top: 30px; margin-bottom:5px; text-transform: uppercase;"><?= empty($comments['company_man']) ? '' : $comments['company_man']; ?> / <?= empty($comments['representative']) ? '' : $comments['representative']; ?></p>
+                                                <strong>Company Man:</strong>
+                                                <p class="txt-center" style="padding-top: 15px; margin-bottom:5px; text-transform: uppercase;">
+                                                        <?= trim($comments['company_man_1'].' / '.$comments['company_man_2'], ' / ').'&nbsp;'; ?>
+                                                </p>
+                                                <strong>Representative: </strong><?= empty($project['operator']) ? '' : $project['operator']; ?>
                                         </div>
                                         <div class="data-table-container" style="float:left; width: 49.8%">                                                                                                                                                                                                                                                                                            
                                                 <strong>Mud Engs.</strong>                                                
-                                                <p class="txt-center" style="padding-top: 30px; margin-bottom:5px; text-transform: uppercase;"><?= empty($comments['mud_enginers_1']) ? '' : $comments['mud_enginers_1']; ?> / <?= empty($comments['mud_enginers_2']) ? '' : $comments['mud_enginers_2']; ?></p>
+                                                <p class="txt-center" style="padding-top: 15px; margin-bottom:5px; text-transform: uppercase;">
+                                                        <?= trim($comments['mud_enginers_1']. ' / '.$comments['mud_enginers_2'], ' / ').'&nbsp;'; ?>
+                                                </p>
                                         </div>
                                 </div>                                                                                                                                                               
                         </div>
