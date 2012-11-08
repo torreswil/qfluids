@@ -1,11 +1,10 @@
 <div class="config_panel" id="general" style="display:block;">
-	<h2>General Settings</h2>
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Project Properties</a></li>
 	    </ul>
 	  
-	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+	    <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
 	    	<fieldset>
 		    	<table>
 					<tr>
@@ -38,7 +37,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" value="Update Settings" style="margin-top:20px;"></td>
+						<td><input type="button" value="Update Settings" style="margin-top:20px;display:none;"></td>
 					</tr>	
 				</table>
 			</fieldset>

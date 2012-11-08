@@ -11,6 +11,12 @@ $(function(){
 	//NAVIGATION
 	$('.options_sidebar a').click(function(e){
 		e.preventDefault();
+		var title = $(this).html();
+		$('.options_sidebar a').each(function(){
+			$(this).removeClass('active');
+		});
+		$('.options_header .section_name').html(title);
+		$(this).addClass('active');
 		var target = $(this).attr('href');
 		$('.config_panel').hide();
 		$(target+'.config_panel').show();
@@ -20,10 +26,16 @@ $(function(){
 	$('#close_settings_btn').click(function(e){
 		e.preventDefault();
 		if($(this).hasClass('just_close')){
-			$('#project_settings').slideUp();
+			if(confirm('You are leaving without saving changes. Are you sure?')){
+				$('#project_settings').slideUp();
+			}
 		}else{
 			location.reload();
 		}
+	});
+
+	$('#save_settings_btn').click(function(){
+		$(this).val('Working...');
 	});
 
 	//load async data on page load

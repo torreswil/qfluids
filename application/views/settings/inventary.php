@@ -1,12 +1,11 @@
 <div class="config_panel" id="inventario">
-	<h2>Materials & Equipement</h2>
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Materials</a></li>
 			<li><a href="#">Equipement</a></li>
 	    </ul>
 	  
-	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+	    <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
 			<fieldset>
 				<legend>Instructions</legend>
 				<p style="margin:5px 0 10px 0;">
@@ -20,7 +19,7 @@
 				<table style="margin-bottom:20px;">
 					<tr>
 						<td style="width:20px;"></td>
-						<td class="label_m"><input type="button" value="Save" class="update_materials" style="margin:0 10px 0 0;" /> <input type="text" placeholder="Filter..." style="width:200px;" id="filter_materials" /></td>
+						<td class="label_m"><input type="button" value="Save" class="update_materials" style="margin:0 10px 0 0;display:none;" /> <input type="text" placeholder="Filter..." style="width:200px;" id="filter_materials" /></td>
 						<td class="label_m" style="padding-left:20px;">
 							<a href="#show_hide_unselected_materials" class="shon_n_hide_unselected_materials">Show selected materials only</a>
 						</td>
@@ -50,7 +49,7 @@
 
 
 	    <!-- EQUIPAMIENTO -->
-	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+	    <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
 	    	<fieldset>
 				<legend>Instructions</legend>
 				<p style="margin:5px 0 10px 0;">
@@ -63,7 +62,7 @@
 				<table style="margin-bottom:20px;">
 					<tr>
 						<td style="width:20px;"></td>
-						<td class="label_m"><input type="button" value="Save" class="update_equipement" style="margin: 0 20px 0 0;" /><input type="text" placeholder="Filter..." style="width:200px;" id="filter_equipement" /></td>
+						<td class="label_m"><input type="button" value="Save" class="update_equipement" style="margin: 0 20px 0 0;display:none;" /><input type="text" placeholder="Filter..." style="width:200px;" id="filter_equipement" /></td>
 						<td class="label_m" style="padding-left:20px;">
 							<a href="#show_hide_unselected_equipement" class="shon_n_hide_unselected_equipement">Show selected equipement only</a>
 						</td>

@@ -1,12 +1,11 @@
 <div class="config_panel" id="cse">
-	<h2>Control Solids Equipment Settings</h2>
 	<div class="simpleTabs">
         <ul class="simpleTabsNavigation">
             <li><a href="#">Shakers</a></li>
             <li><a href="#">Mud Cleaner</a></li>
             <li><a href="#">Centrifugues</a></li>
         </ul>
-        <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+        <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
 			<fieldset>
 				<legend>Shakers</legend>
 				
@@ -107,7 +106,7 @@
 		    		</table>
 			</fieldset>	        
         </div>
-	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+	    <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
 			<fieldset>
 				<legend>Mud Cleaner</legend>
 				<?php
@@ -259,7 +258,7 @@
 				</table>
 			</fieldset>    
 	    </div>
-	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+	    <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
 	    	<fieldset>
 				<legend>Centrifugues</legend>
 				<table id="centrifugues_table">
@@ -331,6 +330,6 @@
 			</fieldset>
 	    </div>
 
-		<input type="button" value="Update Equipment" id="btn_save_cse">
+		<input type="button" value="Update Equipment" id="btn_save_cse" style="display:none;">
 	</div>
 </div>

@@ -1,12 +1,11 @@
 <div class="config_panel" id="rig">
         <form>                        
-                <h2>Rig Settings</h2>
                 <div class="simpleTabs">
                         <ul class="simpleTabsNavigation">
                                 <li><a href="#">Rig Properties</a></li>
                         </ul>
 
-                        <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+                        <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
                                 
                                 <fieldset>
                                         <legend>Anular System BOP's</legend>
@@ -112,7 +111,7 @@
                                 <?= !empty($rig['id']) ? '<input type="hidden" value="'.$rig["id"].'" name="id">' : ''; ?>                        
                                 <input type="hidden" value="<?= $project['rig'] ?>" name="name" />
                                 <input type="hidden" value="<?= $project['id']; ?>" name="project_id">
-                                <input type="button" value="Update Rig Settings" style="margin-top:20px; " id="rig_form_submit">                       
+                                <input type="button" value="Update Rig Settings" style="margin-top:20px; display:none;" id="rig_form_submit">                       
                         </div>
                 </div>        
         </form>
