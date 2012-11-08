@@ -1,6 +1,4 @@
-<div class="config_panel" id="tools_and_mud">
-	<h2>Mud and tools librarys</h2>
-	
+<div class="config_panel" id="tools_and_mud">	
 	<div class="simpleTabs">
             <ul class="simpleTabsNavigation">
                 <li><a href="#">Bit</a></li>
@@ -9,7 +7,7 @@
                 <li><a href="#">Mud</a></li>
 	    </ul>
             
-            <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+            <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
                     <legend>Bits list</legend>                    
                     <table>
@@ -28,7 +26,7 @@
         	</fieldset>
 	    </div>
             
-            <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+            <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
                     <legend>Pumps list</legend> 
                     <table>
@@ -53,7 +51,7 @@
         	</fieldset>
 	    </div>
             
-            <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+            <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
                     <legend>Casings list</legend>    
                     <table>
@@ -72,7 +70,7 @@
         	</fieldset>
 	    </div>
             
-            <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+            <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
                     <legend>Muds list</legend>  
                     <table>

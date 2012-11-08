@@ -1,5 +1,4 @@
 <div class="config_panel" id="mudproperties">
-	<h2>Mud Properties</h2>
 	<div class="simpleTabs">
         <ul class="simpleTabsNavigation">
 			<li><a href="#">Phases</a></li>
@@ -9,7 +8,7 @@
 			<li><a href="#">Adicional Tests</a></li>
     	</ul>
         
-		<div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+		<div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
 			<fieldset>
 				<legend>Phases Number</legend>
 				<table>
@@ -27,12 +26,12 @@
 					</tr>
                                         <tr>
 	        				<td></td>	
-	        				<td><input type="button" value="Save phases number" id="save_phases_number" style="margin-top:10px;" /></td>
+	        				<td><input type="button" value="Save phases number" id="save_phases_number" style="margin-top:10px;display:none;" /></td>
 	        			</tr>
 				</table>
 			</fieldset>
 		</div>
-        <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+        <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
         		<table id="settings_physical_and_chemical_list">
                                                                 
@@ -42,7 +41,7 @@
                         </div>
         	</fieldset>
         </div>
-        <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+        <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
         		<table id="settings_rheology_list">
                                 
@@ -52,7 +51,7 @@
                         </div>
         	</fieldset>
         </div>
-        <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+        <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
 	        	<table id="settings_solids_math_list">
                                 
@@ -62,7 +61,7 @@
                         </div>
         	</fieldset>
         </div>
-        <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+        <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
         		<legend>Create a new test</legend>
                         <form id="form_new_test">

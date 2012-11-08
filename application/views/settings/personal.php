@@ -1,6 +1,4 @@
-<div class="config_panel" id="enginers">
-	<h2>Personnel Settings</h2>
-	
+<div class="config_panel" id="enginers">	
 	<div class="simpleTabs">
 		<ul class="simpleTabsNavigation">
 			<li><a href="#">Report Settings</a></li>
@@ -9,7 +7,7 @@
             <li class="tab_yard_workers"><a href="#">Patio Hands</a></li>
         </ul>
 	  
-	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+	    <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
         		<legend>Personnel report settings</legend>
         		<form id="enginer_configuration">
@@ -72,7 +70,7 @@
 	        			</tr>
 	        			<tr>
 	        				<td></td>	
-	        				<td><input type="button" value="Save report setings" id="save_enginer_settings" style="margin-top:20px;" /></td>
+	        				<td><input type="button" value="Save report setings" id="save_enginer_settings" style="margin-top:20px;display:none;" /></td>
 	        			</tr>
 	        		</table>
         		</form>
@@ -80,7 +78,7 @@
 	    </div>
 
 
-	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+	    <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
         		<legend>Create and Remove enginers</legend>
         		<form id="form_new_enginer">
@@ -123,7 +121,7 @@
 	    </div>
 
 
-	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+	    <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
         		<legend>Create and Remove Operators</legend>
         		<form id="form_new_operator">
@@ -158,7 +156,7 @@
 	    </div>
 
 
-	    <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+	    <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
 			<fieldset>
         		<legend>Create and Remove Yard Workers</legend>
         		<form id="form_new_yardworker">

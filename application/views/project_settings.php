@@ -1,10 +1,17 @@
 <?php $project['last_report'] == 0 ? $settings_style	='display:block;' : $settings_style	='display:none;'; ?>
-<div class="options_panel" id="project_settings" style="<?= $settings_style ?>">
+<div class="options_panel" id="project_settings" style="<?= $settings_style ?>;display:block;">
+	<div class="options_header">
+		<div class="qmplan_logo">
+			<img src="/img/qmud_plan.png">
+		</div>
+		<div class="section_name">
+			General Settings
+		</div>
+	</div>
 	<div class="op_content">
 		<div class="options_sidebar">
-			<h1>Qmud Plan</h1>
 			<ul>
-				<li><a href="#general">General</a></li>
+				<li><a href="#general" class="active">General</a></li>
 				<li><a href="#rig">Rig</a></li>
 				<li><a href="#cse">Control Solids Eq.</a></li>
 				<li><a href="#tanks">Tanks</a></li>
@@ -13,6 +20,7 @@
 				<li><a href="#enginers" id="personal_settings_link">Personnel</a></li>
                 <li><a href="#tools_and_mud" id="tools_settings_link">Mud and Tools library</a></li>
 			</ul>
+			<input type="button" value="Save" id="save_settings_btn" style="margin-bottom:20px;" />
 			<input type="button" value="Close Settings" id="close_settings_btn" class="just_close" />
 		</div>
 		<div class="content">

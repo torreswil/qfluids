@@ -380,7 +380,7 @@
 
 .options_panel{
 	position:absolute;
-    top:0;
+    top:20px;
     left:50px;
     right: 50px;
     bottom: 50px;
@@ -389,19 +389,52 @@
     background-color: #fff;
     background-image: url('/img/square_bg.png');
     box-shadow: 0 0 25px 5px #000;
-    border-top:1px solid #eee;
+    border:1px solid #444;
+
+    .options_header{
+		position: absolute;
+		background-color: #262721;
+		top:0;
+		right: 0;
+		left: 0;
+		height: 32px;
+		border-bottom: 1px solid #333;
+
+		.qmplan_logo{
+			float:left;
+			img{
+				display: block;
+				float: left;
+				margin:10px 0 0 0;
+			}	
+		}
+
+		.section_name{
+			color:#fff;
+			font-size: 16px;
+			font-family: 'OpenSansSemibold', Arial, sans-serif;
+			margin: 5px 0 0 120px;
+			float: left;
+		}
+
+		.action_bar{
+			float: left;
+			margin: 5px 0 0 150px;
+		}
+		
+
+	}
 
     .op_content{
 		position: absolute;
-		top:20px;
+		top:40px;
 		right: 20px;
 		bottom: 20px;
 		left: 20px;
 
-
 		.options_sidebar{
 			float:left;
-			width:250px - 20px;
+			width:160px;
 			text-align: left;
 			margin-right: 20px;
 			height: 100%;
@@ -420,6 +453,9 @@
 
 				li{
 					margin-top: 5px;
+					a.active{
+						text-decoration: underline;
+					}
 				}
 			}
 		}
@@ -429,7 +465,7 @@
 			top:0px;
 			right: 0px;
 			bottom: 0px;
-			left: 270px;
+			left: 198px;
 
 			.config_panel{
 				display: none;
