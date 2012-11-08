@@ -1,5 +1,9 @@
 <?php $reporte = $this->session->userdata('report'); ?>
-
+<style type="text/css">
+        .txt-monospace {
+                font-family: monospace;                
+        }
+</style>
 <div class="row">
         <table class="table table-stripted table-condensed b-bottom table-fixed">
                 <tr class="">
@@ -1007,8 +1011,8 @@
                                         <tbody>
                                                 <tr>
                                                         <td style="height: 458px">
-                                                                <p class="txt-justify">
-                                                                        <?= empty($comments['comments']) ? '' : substr($comments['comments'], 0, 2050).'...'; ?>
+                                                                <p class="txt-justify txt-monospace">                      
+                                                                        <?= empty($comments['comments']) ? '' : substr($comments['comments'], 0, 2570).'...'; ?> 
                                                                 </p>
                                                         </td>
                                                 </tr>

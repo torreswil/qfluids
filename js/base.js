@@ -125,8 +125,48 @@ function numbersonly(e, decimal) {
 	   return false;
 	}
 }
-
-
-
-
-
+/** 
+ * Contador de letras y palabras y capturar enter según el tamaño del mismo
+ * IvanMel
+ * class="count[max]/count[min,max]" counter-target="help-block" counter-type="digits/words"
+ */
+$(document).ready(function() {        
+    $("[class^='counter[']").each(function() {
+        var este = $(this);
+        var typeCounter = ($(this).attr('counter-type')=='words') ? 'words' : 'digits';                
+        var sizeEnter = ($(this).attr('counter-size-enter') > 0 ) ? parseInt($(this).attr('counter-size-enter')) : 0;        
+        var attrClass = $(this).attr('class');
+        var target = $(this).attr('counter-target');
+        var minSize = 0;
+        var maxSize = 0;        
+        
+        var countControl = attrClass.substring((attrClass.indexOf('['))+1, attrClass.lastIndexOf(']')).split(',');
+		
+        if(countControl.length > 1) {
+                minSize = countControl[0];
+                maxSize = countControl[1];
+        } else {
+                maxSize = countControl[0];
+        }
+               
+        $(this).bind('keyup click blur focus change paste', function(e) {
+                var sizeInput = (typeCounter=='digits') ? $.trim($(this).val()).length : $.trim($(this).val()).split(' ').length;
+                if($(this).val() === '') {
+                        sizeInput = 0;
+                }  
+                if(sizeEnter > 0) {
+                        totalEnter = ($(this).val().split("\n").length)-1;
+                        sizeInput = sizeInput + (sizeEnter*totalEnter);                        
+                }                                
+                var tmp = este.find('.'+target+':first');
+                var counter = (tmp.length == 0) ? este.next().find('.'+target+':first') : tmp;
+                counter.text(sizeInput);
+                if(sizeInput < minSize || (sizeInput > maxSize && maxSize != 0)) {
+                        counter.removeClass('label-warning').addClass('label-important');
+                } else {
+                        counter.removeClass('label-important').addClass('label-warning');
+                }
+        });
+                    
+    });
+});

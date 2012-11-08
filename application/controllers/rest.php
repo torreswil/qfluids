@@ -1130,7 +1130,7 @@ class Rest extends CI_Controller {
                 //Elimino los campos enviados con anterioridad para tener los nuevos almacenados
                 $this->Api->total_remove_where('project_report_comments', array('report_id'=>$this->report_id));
                 $_POST['report_id'] = $this->report_id;
-                $_POST['comments'] = nl2br($_POST["comments"]);
+                $_POST['comments'] = nl2br($_POST["comments"]);                
                 $this->Api->create('project_report_comments', $_POST);                
         }
                 

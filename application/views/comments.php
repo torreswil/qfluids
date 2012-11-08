@@ -1,6 +1,31 @@
 <?php $reporte = $this->session->userdata('report'); ?>
 <?php $comments = $this->Api->get_where('project_report_comments', array('report_id'=>$reporte['id'])); ?>
 <?php $comments = isset($comments[0]) ? $comments[0] : null; ?>
+
+<style type="text/css">
+        p.help-block .label {
+                border-radius: 3px 3px 3px 3px;
+                background-color: #999999;
+                color: #FFFFFF;
+                display: inline-block;
+                font-size: 11.844px;
+                font-weight: bold;
+                line-height: 12px;
+                padding: 2px 4px;
+                text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+                vertical-align: baseline;
+                white-space: nowrap;
+        }
+        
+        p.help-block .label-warning {
+                background-color: #F89406;
+        }
+        
+        p.help-block .label-important {
+                background-color: #B94A48;
+        }
+</style>
+
 <div class="this_panel" id="comments">
         <h2>Comments</h2>
 	<div class="simpleTabs">
@@ -20,7 +45,12 @@
                                                                                 <td class="label_m"><label>Comments:</label></td>                                                                            
                                                                         </tr>
                                                                         <tr>                                                                                
-                                                                                <td><textarea rows="5" class="medium" id="report_comments" name="report_comments" style="min-width: 300px !important"><?= empty($comments['comments']) ? '' : $comments['comments']; ?></textarea></td>
+                                                                                <td>
+                                                                                        <textarea rows="5" class="counter[2500] medium" counter-target="counter-word" counter-size-enter="74" id="report_comments" name="report_comments" style="min-width: 300px !important"><?= empty($comments['comments']) ? '' : str_replace('<br />', '', $comments['comments']); ?></textarea>
+                                                                                        <p class="help-block">
+                                                                                                Caracteres permitidos: <span class="label label-info">2500</span>. Utilizados <span class="label label-warning counter-word">0</span>
+                                                                                        </p>
+                                                                                </td>
                                                                         </tr>
                                                                         <tr>
                                                                                 <td class="label_m"><label>CHARLA HSE:</label></td>
