@@ -134,6 +134,7 @@ class Rest extends CI_Controller {
 				$material['project_id'] 		= $this->project_id;
 				$material['commercial_name'] 	= $material['internal_name'];
 				$material['used_in_project'] 	= 0;
+                        $material['custom'] = 0;
 				unset($material['id']);
 				unset($material['unit_description']);
 				$this->Api->create('project_materials',$material);
@@ -150,6 +151,7 @@ class Rest extends CI_Controller {
 				$equipo['project_id'] 		= $this->project_id;
 				$equipo['used_in_project'] 	= 0;
 				$equipo['commercial_name'] 	= $equipo['product_name'];
+                        $equipo['custom'] = 0;
 				unset($equipo['id']);
 				unset($equipo['unit_description']);
 				$this->Api->create('project_equipement',$equipo); 

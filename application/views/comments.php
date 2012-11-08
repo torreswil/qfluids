@@ -3,6 +3,9 @@
 <?php $comments = isset($comments[0]) ? $comments[0] : null; ?>
 
 <style type="text/css">
+        p.help-block {
+                font-size: 11px;
+        }
         p.help-block .label {
                 border-radius: 3px 3px 3px 3px;
                 background-color: #999999;
@@ -39,14 +42,14 @@
                                         <tr>
                                                 <td style="width: 50%">
                                                         <!-- BIT -->
-                                                        <fieldset style="height:257px;width:90%;">
+                                                        <fieldset style="height:277px;width:90%;">
                                                                 <table>
                                                                         <tr>
                                                                                 <td class="label_m"><label>Comments:</label></td>                                                                            
                                                                         </tr>
                                                                         <tr>                                                                                
                                                                                 <td>
-                                                                                        <textarea rows="5" class="counter[2500] medium" counter-target="counter-word" counter-size-enter="74" id="report_comments" name="report_comments" style="min-width: 300px !important"><?= empty($comments['comments']) ? '' : str_replace('<br />', '', $comments['comments']); ?></textarea>
+                                                                                        <textarea rows="5" cols="45" class="counter[2500] medium" counter-target="counter-word" counter-size-enter="74" id="report_comments" name="report_comments" style="min-width: 300px !important"><?= empty($comments['comments']) ? '' : str_replace('<br />', '', $comments['comments']); ?></textarea>
                                                                                         <p class="help-block">
                                                                                                 Caracteres permitidos: <span class="label label-info">2500</span>. Utilizados <span class="label label-warning counter-word">0</span>
                                                                                         </p>
@@ -62,7 +65,7 @@
                                                         </fieldset>
                                                 </td>
                                                 <td style="width: 50%">
-                                                        <fieldset style="height:257px;width:90%;">
+                                                        <fieldset style="height:277px;width:90%;">
                                                                 <table>
                                                                         <tr>
                                                                                 <td class="label_m"><label>PUSHER:</label></td>
