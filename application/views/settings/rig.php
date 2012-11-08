@@ -1,8 +1,15 @@
 <div class="config_panel" id="rig">
         <form>                        
                 <h2>Rig Settings</h2>
-                <fieldset>
-                        <fieldset>
+                <div class="simpleTabs">
+                        <ul class="simpleTabsNavigation">
+                                <li><a href="#">Rig Properties</a></li>
+                        </ul>
+
+                        <div class="simpleTabsContent" style="top:65px;border-bottom:1px solid #E0E0E0;">
+                                
+                                <fieldset>
+                                        <legend>Anular System BOP's</legend>
                                 <table>
                                         <tr>
                                                 <td class="label_m"><label>Rig Name:</label></td>
@@ -35,10 +42,10 @@
                                                 </td>
                                         </tr>
                                 </table>
-                        </fieldset>
+                                </fieldset>
 
 
-                        <fieldset>
+                                <fieldset>
                                 <legend>Anular System BOP's</legend>
                                 <table>
                                         <tr>
@@ -50,8 +57,8 @@
                                                 <td><input name="anular_capacity" type="text" value="<?= !empty($rig['anular_capacity']) ? $rig['anular_capacity'] : ''; ?>" style="width:150px;" />Psi.</td>
                                         </tr>
                                 </table>
-                        </fieldset>
-                        <fieldset>
+                                </fieldset>
+                                <fieldset>
                                 <legend>Rams System BOP's</legend>
                                 <table>
                                         <tr>
@@ -100,13 +107,13 @@
                                                 <td><input name="shear_ram_capacity" type="text" class="shear_ram" value="<?= !empty($rig['shear_ram_capacity']) ? $rig['shear_ram_capacity'] : ''; ?>" style="width:150px;" />Psi.</td>
                                         </tr>
                                 </table>
-                        </fieldset>
+                                </fieldset>
                                                 
-                        <?= !empty($rig['id']) ? '<input type="hidden" value="'.$rig["id"].'" name="id">' : ''; ?>                        
-                        <input type="hidden" value="<?= $project['rig'] ?>" name="name" />
-                        <input type="hidden" value="<?= $project['id']; ?>" name="project_id">
-                        <input type="button" value="Update Rig Settings" style="margin-top:20px; " id="rig_form_submit">
-
-                </fieldset>        
+                                <?= !empty($rig['id']) ? '<input type="hidden" value="'.$rig["id"].'" name="id">' : ''; ?>                        
+                                <input type="hidden" value="<?= $project['rig'] ?>" name="name" />
+                                <input type="hidden" value="<?= $project['id']; ?>" name="project_id">
+                                <input type="button" value="Update Rig Settings" style="margin-top:20px; " id="rig_form_submit">                       
+                        </div>
+                </div>        
         </form>
 </div>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-11-07 17:59:50
+Date: 2012-11-08 09:16:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1341,27 +1341,27 @@ CREATE TABLE `project_equipement` (
 -- ----------------------------
 -- Records of project_equipement
 -- ----------------------------
-INSERT INTO `project_equipement` VALUES ('1', '1', 'N0121000001', 'CARRO TANQUE 6000 GAL CAPACIDAD 0 -50 KM', '17', 'Carro Tanque 6000 Gal Capacidad 0 -50 Km', '0', '0', '1', '1', '1', 'CARRO TANQUE 6000 GAL CAPACIDAD 0 -50 KM');
-INSERT INTO `project_equipement` VALUES ('2', '1', 'N0121000002', 'EXCEDENTE MOV O DESMOV AREAS VIAJE', '18', 'Excedente Mov o Desmov Areas Viaje', '0', '0', '1', '1', '1', 'EXCEDENTE MOV O DESMOV AREAS VIAJE');
-INSERT INTO `project_equipement` VALUES ('3', '1', 'N0121000003', 'MOVILIZACION - DESMOVILIZACION', '18', 'Movilizacion - Desmovilizacion', '0', '0', '1', '1', '1', 'MOVILIZACION - DESMOVILIZACION');
-INSERT INTO `project_equipement` VALUES ('4', '1', 'N0121000004', 'TRANSPORTE CAMIONETA', '18', 'Transporte Camioneta', '0', '0', '1', '1', '1', 'TRANSPORTE CAMIONETA');
-INSERT INTO `project_equipement` VALUES ('5', '1', 'N0121000005', 'TRANSPORTE SENCILLO', '18', 'Transporte Sencillo', '0', '0', '1', '1', '1', 'TRANSPORTE SENCILLO');
-INSERT INTO `project_equipement` VALUES ('6', '1', 'N0121000006', 'TRANSPORTE TRACTOMULA', '18', 'Transporte Tractomula', '0', '0', '1', '1', '1', 'TRANSPORTE TRACTOMULA');
-INSERT INTO `project_equipement` VALUES ('7', '1', 'N0121000007', 'TRANSPORTE TURBO', '18', 'Transporte Turbo', '0', '0', '1', '1', '1', 'TRANSPORTE TURBO');
-INSERT INTO `project_equipement` VALUES ('8', '1', 'N0122000001', 'CARTUCHOS FILTRANTES', '18', 'Cartuchos Filtrantes', '0', '0', '1', '1', '1', 'CARTUCHOS FILTRANTES');
-INSERT INTO `project_equipement` VALUES ('9', '1', 'N0122000002', 'CASETA DE FILTRACION', '17', 'Caseta de Filtracion', '0', '0', '1', '1', '1', 'CASETA DE FILTRACION');
-INSERT INTO `project_equipement` VALUES ('10', '1', 'N0122000003', 'PREMIX TANK 250 bbl', '17', 'Premix Tank 250 Bbl', '0', '0', '1', '1', '1', 'PREMIX TANK 250 bbl');
-INSERT INTO `project_equipement` VALUES ('11', '1', 'N0122000004', 'PREMIX TANK 300 bbl', '18', 'Premix Tank 300 Bbl', '0', '0', '1', '1', '1', 'PREMIX TANK 300 bbl');
-INSERT INTO `project_equipement` VALUES ('12', '1', 'N0122000005', 'PREMIX TANK 350 bbl', '18', 'Premix Tank 350 Bbl', '0', '0', '1', '1', '1', 'PREMIX TANK 350 bbl');
-INSERT INTO `project_equipement` VALUES ('13', '1', 'N0122000006', 'UNIDAD DE FLOCULACION SELECTIVA', '17', 'Unidad De Floculacion Selectiva', '0', '0', '1', '1', '1', 'UNIDAD DE FLOCULACION SELECTIVA');
-INSERT INTO `project_equipement` VALUES ('14', '1', 'N0122000007', 'UNIDAD FILTRADO', '17', 'Unidad Filtrado', '0', '0', '1', '1', '1', 'UNIDAD FILTRADO');
-INSERT INTO `project_equipement` VALUES ('15', '1', 'N0122000008', 'UNIDAD FILTRADO STAND BY', '17', 'Unidad Filtrado Stand By', '0', '0', '1', '1', '1', 'UNIDAD FILTRADO STAND BY');
-INSERT INTO `project_equipement` VALUES ('16', '1', 'N0122000009', 'SILO DE 350 FT3 O 60 TON', '17', 'Silo de 350 ft3 o 60 ton', '0', '0', '1', '1', '1', 'SILO DE 350 FT3 O 60 TON');
-INSERT INTO `project_equipement` VALUES ('17', '1', 'N0122000010', 'COMPRESOR SISTEMA DE SILIOS', '17', 'Compresor sistema de silos', '0', '0', '1', '1', '1', 'COMPRESOR SISTEMA DE SILIOS');
-INSERT INTO `project_equipement` VALUES ('18', '1', 'N0122000011', 'ANILLOS DE CORROSION', '18', 'Anillo de corrosión - Incluye envio y analisis', '0', '0', '1', '1', '1', 'ANILLOS DE CORROSION');
-INSERT INTO `project_equipement` VALUES ('19', '1', 'N0120000001', 'SISTEMA Q MAX DRILL PHPA (3600-7500)', '18', 'Sistema Q Max Drill Phpa (3600-7500)', '0', '0', '1', '1', '1', 'SISTEMA Q MAX DRILL PHPA (3600-7500)');
-INSERT INTO `project_equipement` VALUES ('20', '1', 'N0120000002', 'SISTEMA Q Nca', '18', 'Sistema Q Nca', '0', '0', '1', '1', '1', 'SISTEMA Q Nca');
-INSERT INTO `project_equipement` VALUES ('21', '1', 'N0120000003', 'SISTEMA Q Nca (500-3600)', '18', 'Sistema Q Nca (500-3600)', '0', '0', '1', '1', '1', 'SISTEMA Q Nca (500-3600)');
+INSERT INTO `project_equipement` VALUES ('1', '1', 'N0121000001', 'CARRO TANQUE 6000 GAL CAPACIDAD 0 -50 KM', '17', 'Carro Tanque 6000 Gal Capacidad 0 -50 Km', '0', '0', '1', '1', '0', 'CARRO TANQUE 6000 GAL CAPACIDAD 0 -50 KM');
+INSERT INTO `project_equipement` VALUES ('2', '1', 'N0121000002', 'EXCEDENTE MOV O DESMOV AREAS VIAJE', '18', 'Excedente Mov o Desmov Areas Viaje', '0', '0', '1', '1', '0', 'EXCEDENTE MOV O DESMOV AREAS VIAJE');
+INSERT INTO `project_equipement` VALUES ('3', '1', 'N0121000003', 'MOVILIZACION - DESMOVILIZACION', '18', 'Movilizacion - Desmovilizacion', '0', '0', '1', '1', '0', 'MOVILIZACION - DESMOVILIZACION');
+INSERT INTO `project_equipement` VALUES ('4', '1', 'N0121000004', 'TRANSPORTE CAMIONETA', '18', 'Transporte Camioneta', '0', '0', '1', '1', '0', 'TRANSPORTE CAMIONETA');
+INSERT INTO `project_equipement` VALUES ('5', '1', 'N0121000005', 'TRANSPORTE SENCILLO', '18', 'Transporte Sencillo', '0', '0', '1', '1', '0', 'TRANSPORTE SENCILLO');
+INSERT INTO `project_equipement` VALUES ('6', '1', 'N0121000006', 'TRANSPORTE TRACTOMULA', '18', 'Transporte Tractomula', '0', '0', '1', '1', '0', 'TRANSPORTE TRACTOMULA');
+INSERT INTO `project_equipement` VALUES ('7', '1', 'N0121000007', 'TRANSPORTE TURBO', '18', 'Transporte Turbo', '0', '0', '1', '1', '0', 'TRANSPORTE TURBO');
+INSERT INTO `project_equipement` VALUES ('8', '1', 'N0122000001', 'CARTUCHOS FILTRANTES', '18', 'Cartuchos Filtrantes', '0', '0', '1', '1', '0', 'CARTUCHOS FILTRANTES');
+INSERT INTO `project_equipement` VALUES ('9', '1', 'N0122000002', 'CASETA DE FILTRACION', '17', 'Caseta de Filtracion', '0', '0', '1', '1', '0', 'CASETA DE FILTRACION');
+INSERT INTO `project_equipement` VALUES ('10', '1', 'N0122000003', 'PREMIX TANK 250 bbl', '17', 'Premix Tank 250 Bbl', '0', '0', '1', '1', '0', 'PREMIX TANK 250 bbl');
+INSERT INTO `project_equipement` VALUES ('11', '1', 'N0122000004', 'PREMIX TANK 300 bbl', '18', 'Premix Tank 300 Bbl', '0', '0', '1', '1', '0', 'PREMIX TANK 300 bbl');
+INSERT INTO `project_equipement` VALUES ('12', '1', 'N0122000005', 'PREMIX TANK 350 bbl', '18', 'Premix Tank 350 Bbl', '0', '0', '1', '1', '0', 'PREMIX TANK 350 bbl');
+INSERT INTO `project_equipement` VALUES ('13', '1', 'N0122000006', 'UNIDAD DE FLOCULACION SELECTIVA', '17', 'Unidad De Floculacion Selectiva', '0', '0', '1', '1', '0', 'UNIDAD DE FLOCULACION SELECTIVA');
+INSERT INTO `project_equipement` VALUES ('14', '1', 'N0122000007', 'UNIDAD FILTRADO', '17', 'Unidad Filtrado', '0', '0', '1', '1', '0', 'UNIDAD FILTRADO');
+INSERT INTO `project_equipement` VALUES ('15', '1', 'N0122000008', 'UNIDAD FILTRADO STAND BY', '17', 'Unidad Filtrado Stand By', '0', '0', '1', '1', '0', 'UNIDAD FILTRADO STAND BY');
+INSERT INTO `project_equipement` VALUES ('16', '1', 'N0122000009', 'SILO DE 350 FT3 O 60 TON', '17', 'Silo de 350 ft3 o 60 ton', '0', '0', '1', '1', '0', 'SILO DE 350 FT3 O 60 TON');
+INSERT INTO `project_equipement` VALUES ('17', '1', 'N0122000010', 'COMPRESOR SISTEMA DE SILIOS', '17', 'Compresor sistema de silos', '0', '0', '1', '1', '0', 'COMPRESOR SISTEMA DE SILIOS');
+INSERT INTO `project_equipement` VALUES ('18', '1', 'N0122000011', 'ANILLOS DE CORROSION', '18', 'Anillo de corrosión - Incluye envio y analisis', '0', '0', '1', '1', '0', 'ANILLOS DE CORROSION');
+INSERT INTO `project_equipement` VALUES ('19', '1', 'N0120000001', 'SISTEMA Q MAX DRILL PHPA (3600-7500)', '18', 'Sistema Q Max Drill Phpa (3600-7500)', '0', '0', '1', '1', '0', 'SISTEMA Q MAX DRILL PHPA (3600-7500)');
+INSERT INTO `project_equipement` VALUES ('20', '1', 'N0120000002', 'SISTEMA Q Nca', '18', 'Sistema Q Nca', '0', '0', '1', '1', '0', 'SISTEMA Q Nca');
+INSERT INTO `project_equipement` VALUES ('21', '1', 'N0120000003', 'SISTEMA Q Nca (500-3600)', '18', 'Sistema Q Nca (500-3600)', '0', '0', '1', '1', '0', 'SISTEMA Q Nca (500-3600)');
 
 -- ----------------------------
 -- Table structure for `project_materials`
