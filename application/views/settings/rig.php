@@ -1,5 +1,5 @@
 <div class="config_panel" id="rig">
-        <form>                        
+        <form id="rig_settings_form">                        
                 <div class="simpleTabs">
                         <ul class="simpleTabsNavigation">
                                 <li><a href="#">Rig Properties</a></li>

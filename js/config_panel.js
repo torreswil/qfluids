@@ -36,7 +36,60 @@ $(function(){
 
 	$('#save_settings_btn').click(function(){
 		$(this).val('Working...');
+		if(settings_save_routine()){
+			$(this).val('Save');	
+			$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
+		}else{
+			alert('Error saving changes. Please try again.');
+		}
+				
 	});
+
+
+
+	function settings_save_routine(){
+		$.ajaxSetup({async:false});
+		
+		//guardar general_settings
+		var general_settings = save_general();
+		if(general_settings.result == 'success'){
+			log(general_settings.message);
+
+			//guardar rig settings
+			var rig_settings = save_rig_settings();
+			if(rig_settings.result == 'success'){
+				log(rig_settings.message);	
+			
+				//guardar cse
+				var cse_settings = save_cse_settings();
+				if(cse_settings.result == 'success'){
+					log(cse_settings.message);
+
+					//guardar tanques
+					var tanks_order = save_tanks_order();
+					if(tanks_order.result == 'success'){
+						log(tanks_order.message);
+
+						//mud properties
+						return true;
+					}else{
+						alert(tanks_order.source+': '+tanks_order.message);
+						return true;	
+					}
+				}else{
+					alert(cse_settings.source+': '+cse_settings.message);
+					return true;
+				}
+			}else{
+				alert(rig_settings.source+': '+rig_settings.message);
+				return true;	
+			}
+		}else{
+			alert(general_settings.source+': '+general_settings.message);
+			return true;
+		}
+		$.ajaxSetup({async:true});			
+	}
 
 	//load async data on page load
 	load_personal();
@@ -50,8 +103,42 @@ $(function(){
 	// 1. GENERAL
 	/*==========================================================================================================*/
 	$('#btn_save_general_settings').click(function(){
-		
+		log(save_general());
 	});
+
+	function save_general(){
+		var save_status = {};
+		var eqty = 0;
+		$('#general_properties_form .required').each(function(){
+			if($(this).val() == ''){eqty = eqty + 1;}
+		});
+
+		if(eqty > 0){
+			save_status.source 	= 'General Settings';
+			save_status.message = 'Some required fields are empty. Please verify and try again.';
+			save_status.result 	= 'error';
+			return save_status;
+		}else{
+			var data = $('#general_properties_form').serialize();
+			$.post('/rest/save_project_settings',data,function(r){
+				if(r.message == 'project_updated'){
+					save_status.source 	= 'General Settings';
+					save_status.message = 'General settings saved.';
+					save_status.result 	= 'success';
+				}else{
+					save_status.source 	= 'General Settings';
+					save_status.message = 'Server error. Please try again.';
+					save_status.result 	= 'error';	
+				}
+			},'json').error(function(){
+				save_status.source 	= 'General Settings';
+				save_status.message = 'Network error. Please try again.';
+				save_status.result 	= 'error';
+			});
+
+			return save_status;		
+		}
+	}
 
 
 
@@ -119,16 +206,31 @@ $(function(){
 		}
 	});
         
-        $('#rig_form_submit').click(function(e){
+    $('#rig_form_submit').click(function(e){
 		e.preventDefault();
-                var form = $(this).parents('form:first');                                
-                $.post('/rest/save_rig', form.serialize(), function(r) {                        
-                        if(r == true){
-                                alert('Rig saved!');                                
-                                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
-                        }
-                }, 'json');                
-        });
+		save_rig_settings();               
+    });
+
+    function save_rig_settings(){
+    	var save_status = {};
+    	var data = $('#rig_settings_form').serialize(); 
+		$.post('/rest/save_rig', data, function(r) {                        
+            if(r == true){
+				save_status.source 	= 'Rig Settings';
+				save_status.message = 'Rig settings saved.';
+				save_status.result 	= 'success';
+			}else{
+				save_status.source 	= 'Rig Settings';
+				save_status.message = 'Server error. Please try again.';
+				save_status.result 	= 'error';		
+			}
+		},'json').error(function(){
+			save_status.source 	= 'Rig Settings';
+			save_status.message = 'Network error. Please try again.';
+			save_status.result 	= 'error';
+		});
+		return save_status;
+    }
 
 
 
@@ -161,7 +263,12 @@ $(function(){
 	//save cse button
 	$('#btn_save_cse').click(function(e){
 		e.preventDefault();
-		
+		save_cse_settings();
+	});
+
+	function save_cse_settings(){
+		var save_status = {};
+
 		//VALIDATIONS
 		var error_qty = 0;
 		//===============================================================
@@ -192,7 +299,9 @@ $(function(){
 		});
 
 		if(error_qty > 0){
-			alert('Some required fields are empty.\nPlease verify and try again');
+			save_status.source 	= 'Control Solids Equipement';
+			save_status.message = 'Some required fields are empty.Please verify and try again';
+			save_status.result 	= 'error'; 
 		}else{
 
 			//SAVE ROUTINES
@@ -225,7 +334,7 @@ $(function(){
 			mud_cleaner.desilter_cones 			= $('#mudcleaner_table select[name="desilter_cones"]').val();
 			mud_cleaner.desilter_conediameter 	= $('#mudcleaner_table input[name="desilter_conediameter"]').val();
 			mud_cleaner.desilter_pumptype 		= $('#mudcleaner_table select[name="desilter_pumptype"]').val();
-                        mud_cleaner.shaker_maker 			= $('#mudcleaner_table input[name="shaker_maker"]').val();
+            mud_cleaner.shaker_maker 			= $('#mudcleaner_table input[name="shaker_maker"]').val();
 			mud_cleaner.shaker_model 			= $('#mudcleaner_table input[name="shaker_model"]').val();
 			mud_cleaner.shaker_screens 			= $('#mudcleaner_table select[name="shaker_screens"]').val();
 			mud_cleaner.shaker_movement 		= $('#mudcleaner_table select[name="shaker_movement"]').val();
@@ -258,16 +367,30 @@ $(function(){
 						if(r == true){
 							log('Mud cleaner saved, saving centrifugues...');
 							$.post('/rest/config_centrifugues',jsoncentrifuges,function(r){
-								log('Centrifugues saved, process complete.');
-								$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
-							},'json');
+								save_status.source 	= 'Control Solids Equipement';
+								save_status.message = 'CSE saved.';
+								save_status.result 	= 'success';
+							},'json').error(function(){
+								save_status.source 	= 'Control Solids Equipement';
+								save_status.message = 'Network error. Please verify try again';
+								save_status.result 	= 'error'; 	
+							});
 						}
-					},'json');
+					},'json').error(function(){
+						save_status.source 	= 'Control Solids Equipement';
+						save_status.message = 'Network error. Please verify try again';
+						save_status.result 	= 'error'; 	
+					});
 				}
-			},'json');
+			},'json').error(function(){
+				save_status.source 	= 'Control Solids Equipement';
+				save_status.message = 'Network error. Please verify try again';
+				save_status.result 	= 'error'; 	
+			});
 
-		}
-	});
+			return save_status;
+		}		
+	}
 
 	/*==========================================================================================================*/
 	// 4. TANKS
@@ -595,53 +718,72 @@ $(function(){
 
 	$('.update_tank_order').click(function(e){
 		e.preventDefault();
-		if($(this).attr('id') == 'active_order'){
-			var context = $('#current_active_tanks');
-		}else if($(this).attr('id') == 'reserve_order'){
-			var context = $('#current_reserve_tanks');
-		}
+		save_tanks_order();
+	});
 
-		var eqty = 0;
-		//validate there is not repeated order numbers
-		$('.tank_order',context).each(function(){
-			var value 	= $(this).val();
-			var matches = 0;
+	function save_tanks_order(){
+		var save_status = {};
+		
+		var context_array = [$('#current_active_tanks'),$('#current_reserve_tanks'),$('#current_pill_tanks')];
+		$(context_array).each(function(){
+			var context = this;
+			var eqty = 0;
+			
+			//validate there is not repeated order numbers
 			$('.tank_order',context).each(function(){
-				if($(this).val() == value){
-					matches = matches + 1;
+				var value 	= $(this).val();
+				var matches = 0;
+				$('.tank_order',context).each(function(){
+					if($(this).val() == value){
+						matches = matches + 1;
+					}
+				});
+				if(matches > 1){
+					eqty = eqty + 1;
 				}
 			});
-			if(matches > 1){
-				eqty = eqty + 1;
+
+			if(eqty > 0){
+				save_status.source 		= "Tanks"; 
+				save_status.message 	= 'There are tanks with the same order number. Please verify and try again.';
+				save_status.result 		= 'error';
+				return false;	
+			}else{
+				var data = [];
+				$('.tank_order').each(function(){
+					var id = $(this).attr('id');
+						id = id.split('tank_order_');
+						id = id[1];
+					var order = $(this).val();
+					this_tank = {
+						'id'	: id,
+						'order'	: order
+					}
+
+					data.push(this_tank);
+				});
+
+				$.post('/rest/update_tank_order',$.toJSON(data),function(r){
+					if(r == true){
+						save_status.source 		= "Tanks"; 
+						save_status.message 	= 'Tanks saved.';
+						save_status.result 		= 'success';	
+					}
+				},'json').error(function(){
+					save_status.source 		= "Tanks"; 
+					save_status.message 	= 'Network error. Please try again.';
+					save_status.result 		= 'error';	
+				});
+
+				if(save_status.result == 'error'){
+					return false;
+				}
 			}
+
 		});
 
-		if(eqty > 0){
-			alert('There are tanks with the same order number. Please verify and try again.');	
-		}else{
-			var data = [];
-			$('.tank_order').each(function(){
-				var id = $(this).attr('id');
-					id = id.split('tank_order_');
-					id = id[1];
-				var order = $(this).val();
-				this_tank = {
-					'id'	: id,
-					'order'	: order
-				}
-
-				data.push(this_tank);
-			});
-
-			$.post('/rest/update_tank_order',$.toJSON(data),function(r){
-				if(r == true){
-					load_current_tanks();
-					$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
-					alert('Order updated.');	
-				}
-			},'json');
-		}
-	});
+		return save_status;		
+	}
 
 	function load_current_tanks(){
 		var active_data = {
