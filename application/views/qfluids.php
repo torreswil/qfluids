@@ -21,7 +21,7 @@
 			<li <?= $option_display; ?> ><a href="#new_report" title="New report" id="btn_new_report"><img src="/img/icons/icon_add.png" /></a></li>
 		</ul>
 		<ul class="settings_menu">
-			<li><a href="#menu" title="Menu" id="menu_btn"><img src="/img/icons/icon_list_bullets.png" /></a></li>
+			<li><a href="#menu" title="Menu" id="settings_btn"><img src="/img/icons/icon_manage.png" /></a></li>
 		</ul>
 	</div>
 	<div class="panels">
