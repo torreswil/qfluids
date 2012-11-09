@@ -49,37 +49,37 @@ $active_group = 'default';
 $active_record = TRUE;
 
 if($_SERVER['HTTP_HOST'] == 'qfluids.josepaternina.dev' || $_SERVER['HTTP_HOST'] == 'qfluids.juanpablo.dev' || $_SERVER['HTTP_HOST'] == 'qfluids.josepaternina.com'){
-	$db['default']['hostname'] = 'localhost';
-	$db['default']['username'] = 'root';
+        $db['default']['hostname'] = 'localhost';
+        $db['default']['username'] = 'root';
         $db['default']['password'] = '';
         $db['default']['database'] = 'qfluids';	
-	$db['default']['dbdriver'] = 'mysql';
-	$db['default']['dbprefix'] = '';
-	$db['default']['pconnect'] = TRUE;
-	$db['default']['db_debug'] = TRUE;
-	$db['default']['cache_on'] = FALSE;
-	$db['default']['cachedir'] = '';
-	$db['default']['char_set'] = 'utf8';
-	$db['default']['dbcollat'] = 'utf8_general_ci';
-	$db['default']['swap_pre'] = '';
-	$db['default']['autoinit'] = TRUE;
-	$db['default']['stricton'] = FALSE;
+        $db['default']['dbdriver'] = 'mysql';
+        $db['default']['dbprefix'] = '';
+        $db['default']['pconnect'] = TRUE;
+        $db['default']['db_debug'] = TRUE;
+        $db['default']['cache_on'] = FALSE;
+        $db['default']['cachedir'] = '';
+        $db['default']['char_set'] = 'utf8';
+        $db['default']['dbcollat'] = 'utf8_general_ci';
+        $db['default']['swap_pre'] = '';
+        $db['default']['autoinit'] = TRUE;
+        $db['default']['stricton'] = FALSE;
 }else{
         $db['default']['hostname'] = 'localhost';
         $db['default']['username'] = 'jose_qfluids';
         $db['default']['password'] = 'sgQ58chEFWP0yujda';
         $db['default']['database'] = 'jose_qfluids';	
-	$db['default']['dbdriver'] = 'mysql';
-	$db['default']['dbprefix'] = '';
-	$db['default']['pconnect'] = TRUE;
-	$db['default']['db_debug'] = TRUE;
-	$db['default']['cache_on'] = FALSE;
-	$db['default']['cachedir'] = '';
-	$db['default']['char_set'] = 'utf8';
-	$db['default']['dbcollat'] = 'utf8_general_ci';
-	$db['default']['swap_pre'] = '';
-	$db['default']['autoinit'] = TRUE;
-	$db['default']['stricton'] = FALSE;
+        $db['default']['dbdriver'] = 'mysql';
+        $db['default']['dbprefix'] = '';
+        $db['default']['pconnect'] = TRUE;
+        $db['default']['db_debug'] = TRUE;
+        $db['default']['cache_on'] = FALSE;
+        $db['default']['cachedir'] = '';
+        $db['default']['char_set'] = 'utf8';
+        $db['default']['dbcollat'] = 'utf8_general_ci';
+        $db['default']['swap_pre'] = '';
+        $db['default']['autoinit'] = TRUE;
+        $db['default']['stricton'] = FALSE;
 }
 
 
