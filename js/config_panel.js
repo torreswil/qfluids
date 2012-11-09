@@ -35,15 +35,25 @@ $(function(){
 	});
 
 	$('#save_settings_btn').click(function(){
-		$(this).val('Working...');
+		save_settings_btn(settings_save_routine);
+		/*
 		if(settings_save_routine()){
-			$(this).val('Save');	
+			$('#save_settings_btn').val('Save');	
 			$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
 		}else{
 			alert('Error saving changes. Please try again.');
-		}
+		}*/
 				
 	});
+
+	function save_settings_btn(callback){
+		$('#save_settings_btn').val('Working...');
+		setTimeout(function() {
+			if(typeof callback == 'function'){
+				callback();
+			}
+		},500);
+	}
 
 
 
@@ -71,22 +81,27 @@ $(function(){
 						log(tanks_order.message);
 
 						//mud properties
-						return true;
+						$('#save_settings_btn').val('Save');	
+						$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 					}else{
 						alert(tanks_order.source+': '+tanks_order.message);
-						return true;	
+						$('#save_settings_btn').val('Save');	
+						$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
 					}
 				}else{
 					alert(cse_settings.source+': '+cse_settings.message);
-					return true;
+					$('#save_settings_btn').val('Save');	
+					$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 				}
 			}else{
 				alert(rig_settings.source+': '+rig_settings.message);
-				return true;	
+				$('#save_settings_btn').val('Save');	
+				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
 			}
 		}else{
 			alert(general_settings.source+': '+general_settings.message);
-			return true;
+			$('#save_settings_btn').val('Save');	
+			$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
 		}
 		$.ajaxSetup({async:true});			
 	}
