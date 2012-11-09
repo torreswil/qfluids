@@ -1,5 +1,5 @@
 <?php $project['last_report'] == 0 ? $settings_style	='display:block;' : $settings_style	='display:none;'; ?>
-<div class="options_panel" id="project_settings" style="<?= $settings_style ?>;display:block;">
+<div class="options_panel" id="project_settings" style="<?= $settings_style ?>;">
 	<div class="options_header">
 		<div class="qmplan_logo">
 			<img src="/img/qmud_plan.png">

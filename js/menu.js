@@ -916,9 +916,9 @@ $(function(){
 	/*==========================================================================================================*/
 	
 	//show the menu
-	$('#menu_btn').click(function(e){
+	$('#settings_btn').click(function(e){
 		e.preventDefault();
-		$('#menu_overlay').show();
+		$('#project_settings').fadeIn('fast');
 	});
 
 	//hide the menu
