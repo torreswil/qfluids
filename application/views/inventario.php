@@ -119,8 +119,21 @@
           </div>
           <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
               <fieldset>
-                  listado de equipos que llegaron vía stock transfer
-              </fieldset>
+                    <table>
+                         <thead>
+                              <tr>
+                                <td class="label_m" style="width:300px;max-width:500px;"><label>Equipment Name</label></td>
+                                <td class="label_m" style="width:100px;"><label>Unit</label></td>                                
+                                <td class="label_m" style="width:55px;"><label>U. Cost</label></td>
+                                <td class="label_m" style="width:55px;"><label>Used</label></td>                                
+                                <td class="label_m" style="width:55px;"><label>T. Cost</label></td>
+                              </tr>     
+                         </thead>
+                         <tbody id="equipment_status_table">
+                            <!-- ajax loadaded -->
+                         </tbody>     
+                    </table>
+               </fieldset>
           </div>
           <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
              <fieldset>

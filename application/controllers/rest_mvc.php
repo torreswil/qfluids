@@ -1160,6 +1160,19 @@ class Rest_mvc extends CI_Controller {
 			</tr>
 		<?php }
 	}
+      
+      public function load_equipment_status(){
+		$equipments = $this->Api->get_where('vista_equipos',array('project'=>$this->project_id, 'used_in_project'=>'1'), array('commercial_name','asc'));
+		foreach ($equipments as $equipment) { ?>
+			<tr class="this_equipment_<?= $equipment['id']?> ">
+	            <td><input style="margin-right:0;" type="text" disabled="disabled" value="<?= $equipment['commercial_name'] ?>" /></td>
+	            <td><input style="margin-right:0;" type="text" disabled="disabled" value="<?= $equipment['equivalencia'] ?> <?= $equipment['unidad_destino'] ?>" /></td>	            
+	            <td><input style="margin-right:0;" type="text" disabled="disabled" value="$<?= $equipment['price'] ?>" /></td>	            
+	            <td><input style="margin-right:0;" type="text" disabled="disabled" value="" /></td>	            
+	            <td><input style="margin-right:0;" type="text" disabled="disabled" value="" /></td>
+	          </tr>  <?php
+		}
+	}
 
 	public function remove_material(){
 		if(count($_POST) == 1){

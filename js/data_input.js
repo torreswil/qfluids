@@ -1361,8 +1361,12 @@ $(function(){
         var data = {'project_id' : $('#project_id').val()};
         $.post('/rest_mvc/load_materials_status',data,function(r){
         	$('#materials_status_table').html(r);	
-        });
-                                                                     
+        });                      
+        //Equipos
+        $.post('/rest_mvc/load_equipment_status',data,function(r){
+                $('#equipment_status_table').html(r);	
+        });   
+           
         var project = $('#project_id').val();
         var incoming_list = {
             project_id          : project,
