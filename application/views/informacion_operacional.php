@@ -544,6 +544,7 @@
 	    				<input type="text" id="drillingt_8" name="drillingt_8" class="drillingt" value="<?= empty($rs[8]['time']) ? '' : $rs[8]['time']; ?>" />
 	    			</td>
 	    		</tr>
+                  <!--
 	    		<tr>
 	    			<td>
 	    				<select style="width:100px;" class="drilling_time_select" id="drillingtime_9">
@@ -569,7 +570,7 @@
 	    			<td>
 	    				<input type="text" id="drillingt_9" name="drillingt_9" class="drillingt" value="<?= empty($rs[9]['time']) ? '' : $rs[9]['time']; ?>" />
 	    			</td>
-	    		</tr>
+	    		</tr>-->
 	    		<tr>
 	    			<td class="label_m" style="text-align:right;"><label>Total:</label></td>
 	    			<td><input type="text" disabled="disabled" id="drillingtimetotal" name="drillingtimetotal"/></td>
