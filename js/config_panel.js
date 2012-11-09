@@ -48,6 +48,7 @@ $(function(){
 
 	function save_settings_btn(callback){
 		$('#save_settings_btn').val('Working...');
+		$('#close_settings_btn').hide();
 		setTimeout(function() {
 			if(typeof callback == 'function'){
 				callback();
@@ -82,26 +83,26 @@ $(function(){
 
 						//mud properties
 						$('#save_settings_btn').val('Save');	
-						$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+						$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();
 					}else{
 						alert(tanks_order.source+': '+tanks_order.message);
 						$('#save_settings_btn').val('Save');	
-						$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
+						$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();	
 					}
 				}else{
 					alert(cse_settings.source+': '+cse_settings.message);
 					$('#save_settings_btn').val('Save');	
-					$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+					$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();
 				}
 			}else{
 				alert(rig_settings.source+': '+rig_settings.message);
 				$('#save_settings_btn').val('Save');	
-				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
+				$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();	
 			}
 		}else{
 			alert(general_settings.source+': '+general_settings.message);
 			$('#save_settings_btn').val('Save');	
-			$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+			$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();
 		}
 		$.ajaxSetup({async:true});			
 	}
