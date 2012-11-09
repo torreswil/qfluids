@@ -21,7 +21,10 @@
                         </td>
                         <td class="txt-center-all b-bottom-2" style="width: 100px;">
                                 Fo IF 002 V-01 <br />
-                                1 de 1                                        
+                                1 de 1 
+                                <p style="margin-top:15px">
+                                        <a href="/reports/daily/view/<?=$project['id']; ?>/<?=$reporte['id']; ?>/" target="_blank" class="no-print strong">Ver pdf</a>                                        
+                                </p>
                         </td>
                 </tr>
         </table>
@@ -985,16 +988,18 @@
                                 <table class="table b-left table-stripted table-condensed">                                                                                
                                         <tbody>                                                  
                                                 <tr>
-                                                        <td class="" style="width: 39.1%">Daily Engineering Cost US$:</td>
-                                                        <td class="b-point-right" style="width: 10.9%">88,00</td>                                                        
-                                                        <td class="span4 b-point-bottom strong" style="width: 39.1%">&nbsp;Daily Mud Cost US$:</td>
-                                                        <td class="b-point-bottom" style="width: 10.9%">88,00</td>
+                                                        <td class="" style="width: 35.2%">Daily Engineering Cost $:</td>
+                                                        <td class="b-point-right b-point-left txt-center" style="width: 6%"></td>
+                                                        <td class="b-point-right txt-right" style="width: 9%">$250,00</td>
+                                                        <td class="b-point-bottom strong" style="width: 24.8%">Daily mud cost $:</td>
+                                                        <td class="b-point-bottom txt-right strong" style="width: 25%">$250,00</td>
                                                 </tr>
                                                 <tr>
-                                                        <td class="span4 b-point-top">Daily Operator Cost US$:</td>
-                                                        <td class="span2 b-point-top b-point-right">&nbsp;</td>
-                                                        <td class="span5 b-point-top strong">&nbsp;Cum. Mud Cost US$:</td> 
-                                                        <td class="span2 b-point-top">&nbsp;</td>
+                                                        <td class="b-point-top">Daily filtration unit Operator Cost $:</td>
+                                                        <td class="b-point-top b-point-right b-point-left txt-center"></td>
+                                                        <td class="b-point-top txt-right b-point-right">$250,00</td>
+                                                        <td class="b-point-top strong">Cum. Mud Cost $:</td>
+                                                        <td class="b-point-top txt-right strong">$250,00</td>
                                                 </tr>
                                         </tbody> 
                                 </table>                               
@@ -1029,7 +1034,7 @@
                                         <tbody>
                                                 <tr>
                                                         <td class="strong" style="width: 105px;">CHARLA HSE: </td>
-                                                        <td class="span10"><?= empty($comments['charla_hse']) ? '' : substr($comments['charla_hse'], 0, 80).'...'; ?></td>
+                                                        <td class="span10"><?= empty($comments['charla_hse']) ? '' : substr($comments['charla_hse'], 0, 90); ?></td>
                                                 </tr>
                                         </tbody>
                                 </table>                                                               
@@ -1043,17 +1048,26 @@
                                 <table class="table table-stripted table-condensed">
                                         <tbody>
                                                 <tr>
-                                                        <td class="" style="width: 39%">Daily Patio Handsc Cost US$:</td>
-                                                        <td class="b-point-right" style="width: 11%">88,00</td>
-                                                        <td class="b-point-bottom" style="width: 39%">&nbsp;Cost / ft (USD) Daily:</td>
-                                                        <td class="b-point-bottom" style="width: 11%">88,00</td>
+                                                        <td class="" style="width: 35%">Daily floculation unit Operator Cost $:</td>
+                                                        <td class="b-point-right b-point-left txt-center" style="width: 6%"></td>
+                                                        <td class="b-point-right txt-right" style="width: 9%">$250,00</td>
+                                                        <td class="b-point-bottom strong" style="width: 25%">Daily personnel cost $:</td>
+                                                        <td class="b-point-bottom txt-right strong" style="width: 25%">$250,00</td>
                                                 </tr>
                                                 <tr>
-                                                        <td class="span4 b-point-top strong">Cum. Personnel Cost US$:</td>
-                                                        <td class="b-point-top b-point-right" style="width: 11%">&nbsp;</td>
-                                                        <td class="span5 b-point-top strong">&nbsp;Dilution, Bbl/ft Daily:</td> 
-                                                        <td class="b-point-top" style="width: 11%">88,00</td>
-                                                </tr>                                                
+                                                        <td class="b-point-top">Daily Silos unit Opertar Cost $:</td>
+                                                        <td class="b-point-top b-point-right b-point-left txt-center"></td>
+                                                        <td class="b-point-top txt-right b-point-right">$250,00</td>
+                                                        <td class="b-point-top strong">Cum. Personnel Cost $:</td>
+                                                        <td class="b-point-top txt-right strong">$250,00</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="b-point-top">Daily Patio Handsc Cost $:</td>
+                                                        <td class="b-point-top b-point-right b-point-left txt-center"></td>
+                                                        <td class="b-point-top txt-right b-point-right">$250,00</td>
+                                                        <td class="b-point-top strong">Total Cost$</td>
+                                                        <td class="b-point-top txt-right strong">$250,00</td>
+                                                </tr>
                                         </tbody>
                                 </table>                                                                
                                 
@@ -1113,12 +1127,7 @@
                                                                         <td class="b-point-top b-point-right">&nbsp;</td>
                                                                         <td class="txt-center b-point-top b-point-right">&nbsp;</td>
                                                                         <td class="txt-center b-point-top">&nbsp;</td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td class="b-point-top b-point-right">&nbsp;</td>
-                                                                        <td class="txt-center b-point-top b-point-right">&nbsp;</td>
-                                                                        <td class="txt-center b-point-top">&nbsp;</td>
-                                                                </tr>
+                                                                </tr>                                                                
                                                                 <tr>
                                                                         <td colspan="3" class="b-point-top">*0,42 gpb = 1% Vol</td><!--*0,42 gpb = 1% Vol-->                                                                        
                                                                 </tr>
@@ -1254,6 +1263,7 @@
                                                                 <?php $counter = 0; ?>
                                                                 <?php $total_time = 0 ; ?>
                                                                 <?php foreach($drilling_time as $fila): ?>
+                                                                        <?php if($counter > 8) { break; } ?>
                                                                         <tr>                                                                        
                                                                                 <td class=""><?= strtoupper($fila['drilling']); ?></td>
                                                                                 <td class="txt-center b-point-left"><?= empty($fila['time']) ? '&nbsp;' : number_format($fila['time'], 2, ',', ''); ?></td>
@@ -1262,7 +1272,7 @@
                                                                         <?php $total_time = $total_time + $fila['time']; ?>
                                                                 <?php endforeach; ?>
                                                                 <?php $counter++; ?>
-                                                                <?php while($counter <= 10) { ?>
+                                                                <?php while($counter <= 9) { ?>
                                                                         <tr>                                                                        
                                                                                 <td class="">&nbsp;</td>
                                                                                 <td class="txt-center b-point-left">&nbsp;</td>
