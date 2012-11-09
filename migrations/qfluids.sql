@@ -1189,7 +1189,7 @@ INSERT INTO `materiales` VALUES ('138', 'N0102000007', 'TENAZAMOD', 'Modificador
 INSERT INTO `materiales` VALUES ('139', 'N0102000008', 'TENAZAWET', 'Humectante OBM', 'Tm55', null, null, null, null, null, null);
 INSERT INTO `materiales` VALUES ('140', 'N0109000016', 'ULTRASAL 20R/30R', 'Sal puenteante de granulometría específica ', 'Sx50', null, null, null, null, null, null);
 INSERT INTO `materiales` VALUES ('141', 'N0102000009', 'VERSAMOD', 'Modificador de reología OBM', 'Tm55', '1,01', null, null, null, null, null);
-INSERT INTO `materiales` VALUES ('142', 'N0102000010', 'VERSATHIN', 'Adelgazante para lodo base aceite', 'Tm55', '0,825', null, null, null, null, null);
+INSERT INTO `materiales` VALUES ('142', 'N0102000010', 'VERSATHIN', 'Adelgazacnte para lodo base aceite', 'Tm55', '0,825', null, null, null, null, null);
 INSERT INTO `materiales` VALUES ('143', 'N0102000011', 'VERSATROL', 'Lignito Organofilico - Controlador de filtrado fluidos base aceite', 'Sx50', '1,05', null, null, null, null, null);
 INSERT INTO `materiales` VALUES ('144', 'N0108000019', 'WAL NUT PLUG ', 'Cascara de Nuez (F,M,G) - LCM', 'Sx50', '2,2', null, null, null, null, null);
 INSERT INTO `materiales` VALUES ('145', 'N0110000046', 'WL 100', 'WL 100', 'Sx50', null, null, null, null, null, null);
