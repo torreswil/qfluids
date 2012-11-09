@@ -35,20 +35,12 @@ $(function(){
 	});
 
 	$('#save_settings_btn').click(function(){
-		save_settings_btn(settings_save_routine);
-		/*
-		if(settings_save_routine()){
-			$('#save_settings_btn').val('Save');	
-			$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
-		}else{
-			alert('Error saving changes. Please try again.');
-		}*/
-				
+		save_settings_btn(settings_save_routine);		
 	});
 
 	function save_settings_btn(callback){
-		$('#save_settings_btn').val('Working...');
 		$('#close_settings_btn').hide();
+		$('#save_settings_btn').val('Working...');
 		setTimeout(function() {
 			if(typeof callback == 'function'){
 				callback();
