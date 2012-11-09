@@ -8,7 +8,7 @@
 					<tr>
 						<td class="label_m"><label>Date:</label></td>
 						<td>
-							<input name="date" type="text" class="datepicker" value="<?= date('yy-mm-ddd'); ?>" style="width:120px;margin-right:0;" />
+							<input name="date" type="text" class="datepicker" value="<?= @date('yy-mm-ddd'); ?>" style="width:120px;margin-right:0;" />
 						</td>
 					</tr>
 					<tr>
