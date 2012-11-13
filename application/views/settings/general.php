@@ -32,6 +32,18 @@
 							<td class="label_m"><label>Field:</label></td>
 							<td><input type="text" style="width:150px;" value="<?= $project['field'] ?>" name="field" /></td>
 						</tr>
+						<tr>
+							<td class="label_m"><label>Phases:</label></td>
+							<td>
+								<select name="max_phase" style="width:164px;">
+	                                <?php for($i=1 ; $i<11 ; $i++) { ?>
+	                                        <?php $selected = ($project['max_phase'] == $i) ? 'selected="selected"' : ''; ?>
+	                                        <option value="<?= $i; ?>" <?= $selected; ?>><?= $i; ?></option>
+	                                <?php } ?>
+	    							<option value="1" >1</option>																
+								</select>
+							</td>
+						</tr>
 						<tr style="display:none;">
 							<td class="label_m"><label>Operator Logo*:</label></td>
 							<td><input type="text" style="width:150px;" placeholder="Click to select..." /></td>

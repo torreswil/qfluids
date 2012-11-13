@@ -7,6 +7,7 @@
 		<div class="section_name">
 			General Settings
 		</div>
+		<div class="log_section" style=" float: right; text-align: right; color: #fff; min-width: 20px; height: 20px; margin: 5px 10px 0 0;"></div>
 	</div>
 	<div class="op_content">
 		<div class="options_sidebar">

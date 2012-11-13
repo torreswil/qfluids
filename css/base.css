@@ -493,6 +493,11 @@ td { vertical-align: top; }
 	/* PANTALLA DE LOGIN */
 	.login_wrapper{
 		width:100%;
+		position: absolute;
+		bottom: 0;
+		top: 0;
+		left: 0;
+		background-image: url('/img/tasky_pattern.png');
 	}
 	.logo{
 		width:195px;
@@ -536,6 +541,15 @@ td { vertical-align: top; }
 
 	.emphasis{
 		color:#384939;;
+	}
+
+	.main_content.projects{
+		background-image: url('/img/tasky_pattern.png');
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 	}
 
 	.project_selector{
@@ -585,7 +599,7 @@ td { vertical-align: top; }
 	
 	.project_selector h1{
 	    float:left;
-	    color:#384939;
+	    color:#E77800;
 	}
 
 	.filter_section{

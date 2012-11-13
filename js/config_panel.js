@@ -56,26 +56,54 @@ $(function(){
 		//guardar general_settings
 		var general_settings = save_general();
 		if(general_settings.result == 'success'){
-			log(general_settings.message);
+			log_section(general_settings.message);
 
 			//guardar rig settings
 			var rig_settings = save_rig_settings();
 			if(rig_settings.result == 'success'){
-				log(rig_settings.message);	
+				log_section(rig_settings.message);	
 			
 				//guardar cse
 				var cse_settings = save_cse_settings();
 				if(cse_settings.result == 'success'){
-					log(cse_settings.message);
+					log_section(cse_settings.message);
 
 					//guardar tanques
 					var tanks_order = save_tanks_order();
 					if(tanks_order.result == 'success'){
-						log(tanks_order.message);
+						log_section(tanks_order.message);
 
 						//mud properties
-						$('#save_settings_btn').val('Save');	
-						$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();
+						var mud_properties = save_program_test();
+						if(mud_properties.result == 'success'){
+							log_section(mud_properties.message);
+
+							//materials
+							var materials = save_materials();
+							if(materials.result == 'success'){
+								log_section(materials.message);
+								//equipement
+								var equipement = save_equipement();
+								if(equipement.result == 'success'){
+									log_section(equipement.message);
+									$('#save_settings_btn').val('Save');	
+									$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();
+									log_section('Settings saved. System reload required.');
+								}else{
+									alert(equipement.source+': '+equipement.message);
+									$('#save_settings_btn').val('Save');	
+									$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();	
+								}
+							}else{
+								alert(materials.source+': '+materials.message);
+								$('#save_settings_btn').val('Save');	
+								$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();
+							}
+						}else{
+							alert(mud_properties.source+': '+mud_properties.message);
+							$('#save_settings_btn').val('Save');	
+							$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();	
+						}
 					}else{
 						alert(tanks_order.source+': '+tanks_order.message);
 						$('#save_settings_btn').val('Save');	
@@ -97,6 +125,10 @@ $(function(){
 			$('#close_settings_btn').val('Close & Reload').removeClass('just_close').show();
 		}
 		$.ajaxSetup({async:true});			
+	}
+
+	function log_section(data){
+		$('.log_section').html(data);
 	}
 
 	//load async data on page load
@@ -1174,22 +1206,6 @@ $(function(){
 			}
 		},'json');
 	});
-
-	//save phases number
-	$('#save_phases_number').click(function(e){
-		e.preventDefault();		                    
-                max_phase = $('select[name="phase_number"] option:selected').val();	
-                var data = {'max_phase':max_phase};
-                $.post('/rest/save_project_settings',data,function(r){
-                        if(r.message == 'project_updated'){
-                                alert('Number of phases saved');                                
-                                load_test();
-                                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
-                        } else{
-                                alert('An error has ocurred. Please try again, or ask the system administrator for help.');
-                        }
-                },'json');		
-	});
         
     //save enginer settings
 	$('#save_enginer_settings').click(function(e){
@@ -1537,9 +1553,8 @@ $(function(){
 		$("#new_material_form")[0].reset(); 
 	});
 
-	$('.update_materials').click(function(e){
-		var action_button = $(this);
-		$(this).val('Working...').removeClass('update_materials');
+	function save_materials(){
+		var save_status = {}
 		var materials = [];
 		$('#materials_activation_table input[type="checkbox"]').each(function(){
 			if($(this).attr('checked') == 'checked'){
@@ -1562,23 +1577,25 @@ $(function(){
 		
 		$.post('/rest/update_materials',$.toJSON(materials),function(r){
 			if(r == true){
-				alert('Materials list updated.');
+				save_status.source  = 'Materials';
+				save_status.message = 'Materials list updated.';
+				save_status.result 	= 'success';
 				load_settings_materials();         
 				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
-				action_button.val('Save').addClass('update_materials');	
-			}else{
-				alert('An error has ocurred. Please try again.');
-				action_button.val('Save').addClass('update_materials');
 			}
-		},'json');
-		
-	}); 
+		},'json').error(function(){
+			save_status.source  = 'Materials';
+			save_status.message = 'Network error. Please try again.';
+			save_status.result 	= 'error';	
+		});
+
+		return save_status;	
+	}
 
 	function load_settings_materials(){
 		$('#materials_activation_table').load('/rest_mvc/load_settings_materials',function(){
 			$('#filter_materials').quicksearch('.buscar_materiales_aqui');	
 		});
-		
 	}
 
 	function load_settings_equipement(){
@@ -1623,9 +1640,8 @@ $(function(){
 		}
 	});
 
-	$('.update_equipement').click(function(e){
-		var action_button = $(this);
-		$(this).val('Working...').removeClass('update_equipement');
+	function save_equipement(){
+		var save_status = {};
 		var equipement = [];
 		$('#equipement_activation_table input[type="checkbox"]').each(function(){
 			if($(this).attr('checked') == 'checked'){
@@ -1645,20 +1661,22 @@ $(function(){
 			equipement.push(this_equipement);
 		});
 		
-		log(equipement);
 		$.post('/rest/update_equipement',$.toJSON(equipement),function(r){
 			if(r == true){
-				alert('Equipement list updated.');
+				save_status.source 	= 'Equipement';
+				save_status.message = 'Equipement list updated.';
+				save_status.result 	= 'success';
 				load_settings_equipement();         
-				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');
-				action_button.val('Save').addClass('update_equipement');	
-			}else{
-				alert('An error has ocurred. Please try again.');
-				action_button.val('Save').addClass('update_equipement');
+				$('#close_settings_btn').val('Close & Reload').removeClass('just_close');	
 			}
-		},'json');
+		},'json').error(function(){
+			save_status.source 	= 'Equipement';
+			save_status.message = 'Network error. Please try again.';
+			save_status.result 	= 'error';	
+		});
 		
-	});
+		return save_status;	
+	}
 
 
 
@@ -1710,14 +1728,12 @@ $(function(){
 	$('#form_new_test a').click(function(e){
 		e.preventDefault();
                 
-                total = $("#custom_test_list").find('tr');                
-                if(total.length >= 5) {
-                        /*
-                         *@TODO traducir
-                         */
-                        alert('Ha ingresado el número máximo de pruebas adicionales para este proyecto.');
-                        return false;
-                }
+        total = $("#custom_test_list").find('tr');                
+        if(total.length >= 5) {
+                
+            alert('You can create 5 aditional tests only.');
+            return false;
+        }
                 
 		var current_form = $(this).parents('form');
 		var eqty = 0;
@@ -1742,7 +1758,7 @@ $(function(){
 		}
 	});
         
-        //remove an test
+    //remove an test
 	$('.remove_test_link').live('click',function(e){
 		e.preventDefault();
 		var id = $(this).attr('id');
@@ -1757,40 +1773,66 @@ $(function(){
 		},'json');
 	});
         
-        
-        $('.save_program_test').click(function(e){
+     $('.save_program_test').click(function(e){
 		e.preventDefault();                
-                var table = $(this).parent().prev();                
-                var fields = table.find('.program_value');                                
-                var data = [];
-                var project = $('#project_id').val();
-                fields.each(function() {                                
-                        var phase = $(this).attr('data-phase');
-                        var test = $(this).attr('data-test');;
-                        var id = $(this).attr('data-program-id');
-                        if(id==undefined || id==null || id=='') {
-                            id = null;    
-                        }
-                        var value_program = $(this).val();                                				
-                        this_program = {
-                                'id'            : id,
-                                'project_id'	: project,
-                                'test_id'	: test,
-                                'value_program' : value_program,
-                                'phase'         : phase
-                        }
-
-                        data.push(this_program);
-                });
-
-                $.post('/rest/save_program',$.toJSON(data),function(r){
-                        if(r == true){
-                                load_test();
-                                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
-                                alert('Programs saved.');	
-                        }
-                },'json');		
+       	save_program_test(); 	
 	});
+	    
+    function save_program_test(){
+    	var save_status = {};
+    	var table = $('.mproperties_table');                
+        var fields = table.find('.program_value');                                
+        var data = [];
+        var project = $('#project_id').val();
+        fields.each(function() {                                
+            var phase 	= $(this).attr('data-phase');
+            var test 	= $(this).attr('data-test');;
+            var id 		= $(this).attr('data-program-id');
+            if(id == undefined || id == null || id== '') {
+                id = null;
+            }
+            var value_program = $(this).val();                                				
+            this_program = {
+                'id'            : id,
+                'project_id'	: project,
+                'test_id'		: test,
+                'value_program' : value_program,
+                'phase'         : phase
+            }
+            data.push(this_program);
+        });
+
+        $.post('/rest/save_program',$.toJSON(data),function(r){
+            if(r == true){
+                load_test();
+                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+                save_status.source 		= "Mud Properties"; 
+				save_status.message 	= 'Mud properties saved.';
+				save_status.result 		= 'success';	
+            }
+        },'json').error(function(){
+        	save_status.source 		= "Mud Properties"; 
+			save_status.message 	= 'Network error. Please try again.';
+			save_status.result 		= 'error';
+        });
+
+        return save_status;		
+	}
+
+	//save phases number
+	$('select[name="max_phase"]').change(function(e){
+		e.preventDefault();		                    
+        max_phase = $(this).val();	
+        var data = {'max_phase':max_phase};
+        $.post('/rest/save_project_settings',data,function(r){
+            if(r.message == 'project_updated'){                               
+                load_test();
+                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+            } else{
+                alert('An error has ocurred. Please try again, or ask the system administrator for help.');
+            }
+        },'json');		
+    });
 
 });
 /****** THE END ******/

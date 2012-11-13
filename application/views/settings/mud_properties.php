@@ -1,63 +1,41 @@
 <div class="config_panel" id="mudproperties">
 	<div class="simpleTabs">
         <ul class="simpleTabsNavigation">
-			<li><a href="#">Phases</a></li>
 			<li><a href="#">Physical and Chemical Properties</a></li>
 			<li><a href="#">Rheology</a></li>
 			<li><a href="#">Solids math</a></li>
-			<li><a href="#">Adicional Tests</a></li>
+			<li><a href="#">Aditional Tests</a></li>
     	</ul>
-        
-		<div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
-			<fieldset>
-				<legend>Phases Number</legend>
-				<table>
-					<tr>
-						<td>How many phases this project will have?</td>
-						<td>
-							<select name="phase_number">
-                                                                <?php for($i=1 ; $i<11 ; $i++) { ?>
-                                                                        <?php $selected = ($project['max_phase'] == $i) ? 'selected="selected"' : ''; ?>
-                                                                        <option value="<?= $i; ?>" <?= $selected; ?>><?= $i; ?></option>
-                                                                <?php } ?>
-								<option value="1" >1</option>																
-							</select>
-						</td>
-					</tr>
-                                        <tr>
-	        				<td></td>	
-	        				<td><input type="button" value="Save phases number" id="save_phases_number" style="margin-top:10px;display:none;" /></td>
-	        			</tr>
-				</table>
-			</fieldset>
-		</div>
         <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
-        		<table id="settings_physical_and_chemical_list">
+                <legend>Phisical and Chemical properties program</legend>
+        		<table id="settings_physical_and_chemical_list" class="mproperties_table">
                                                                 
                         </table>
                         <div class="">
-                            <input type="button" value="Save program" class="save_program_test" style="margin-top:10px;" />    
+                            <input type="button" value="Save program" class="save_program_test" style="margin-top:10px;display:none;" />    
                         </div>
         	</fieldset>
         </div>
         <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
-        		<table id="settings_rheology_list">
+                 <legend>Rheology program</legend>
+        		<table id="settings_rheology_list" class="mproperties_table">
                                 
                         </table>
                         <div class="">
-                            <input type="button" value="Save program" class="save_program_test" style="margin-top:10px;" />    
+                            <input type="button" value="Save program" class="save_program_test" style="margin-top:10px;display:none;" />    
                         </div>
         	</fieldset>
         </div>
         <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
-	        	<table id="settings_solids_math_list">
+               <legend>Solids Math program</legend>
+	        	<table id="settings_solids_math_list" class="mproperties_table">
                                 
                         </table>
                         <div class="">
-                            <input type="button" value="Save program" class="save_program_test" style="margin-top:10px;" />    
+                            <input type="button" value="Save program" class="save_program_test" style="margin-top:10px;display:none;" />    
                         </div>
         	</fieldset>
         </div>
