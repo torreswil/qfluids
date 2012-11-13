@@ -1445,7 +1445,7 @@ $(function(){
 		e.preventDefault();
 		$('#ce_overlay').slideDown();
 	});
-
+            
 	$('#filter_materials').quicksearch('.buscar_materiales_aqui');
 	$('.shon_n_hide_unselected_materials').click(function(e){
 		e.preventDefault();
@@ -1677,6 +1677,17 @@ $(function(){
 		
 		return save_status;	
 	}
+      
+      $('.btn_stock_transfers').click(function(e){
+		e.preventDefault();
+		$('#stock_transfers_overlay').show();
+	});
+
+	$('#stock_transfers_overlay .close_link').click(function(e){              
+		e.preventDefault();                        
+		$('#stock_transfers_overlay').hide();
+	});
+      
 
 
 
