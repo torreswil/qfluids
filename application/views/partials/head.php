@@ -12,8 +12,9 @@
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/js/jquery-ui/css/south-street/jquery-ui-1.8.23.custom.css"  />
-  <link rel="stylesheet/less" type="text/css" href="/css/qfluids.less">
+  <!-- <link rel="stylesheet/less" type="text/css" href="/css/qfluids.less"> -->
   <link rel="stylesheet" href="/css/media.css">
+  <link rel="stylesheet" href="/css/qfluids.css">
 
   <script src="/js/libs/modernizr-2.5.0.min.js"></script>
 </head>

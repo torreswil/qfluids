@@ -26,7 +26,7 @@ $(function(){
 	$('#close_settings_btn').click(function(e){
 		e.preventDefault();
 		if($(this).hasClass('just_close')){
-			if(confirm('You are leaving without saving changes. Are you sure?')){
+			if(confirm('You are leaving without saving changes. Most of your settings changes will be descarted.')){
 				$('#project_settings').slideUp();
 			}
 		}else{

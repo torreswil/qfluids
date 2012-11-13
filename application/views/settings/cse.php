@@ -148,7 +148,7 @@
 					<tr>
 						<td class="label_m"><label></label></td>
 						<td class="label_m"><label>Cones:</label></td>
-						<td class="label_m"><label>Cone Diameter:</label></td>
+						<td class="label_m"><label>Cone Diameter</label> (in):</td>
 						<td class="label_m"><label>Pump Type:</label></td>
 		                                <td>&nbsp;</td>
 					</tr>

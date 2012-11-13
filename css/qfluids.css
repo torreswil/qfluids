@@ -1,0 +1,448 @@
+.main_content {
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+.main_content .qfluids_wrapper .sidebar {
+  width: 215px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('/img/tasky_pattern.png');
+  background-repeat: repeat;
+  box-shadow: inset 0 0 10px #000;
+  font-family: 'OpenSansRegular', Arial, sans-serif;
+}
+.main_content .qfluids_wrapper .sidebar #qmax_logo {
+  background-color: #fff;
+  padding: 10px;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  box-shadow: 0 0 10px #000;
+  border-radius: 0.2em;
+}
+.main_content .qfluids_wrapper .sidebar #qmax_logo img {
+  width: 100px;
+}
+.main_content .qfluids_wrapper .sidebar .app_logo {
+  float: right;
+  height: 23px;
+  margin-right: 24px;
+  margin-top: 12px;
+  text-align: right;
+  width: 191px;
+}
+.main_content .qfluids_wrapper .sidebar h2 {
+  font-size: 12px;
+  color: #8D8262;
+  font-weight: normal;
+  float: left;
+  display: block;
+  width: 191px;
+  margin-bottom: 15px;
+  margin-top: 12px;
+}
+.main_content .qfluids_wrapper .sidebar .navigation_wrapper {
+  display: none;
+  float: left;
+  margin-top: 36px;
+}
+.main_content .qfluids_wrapper .sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0;
+  float: left;
+  width: 191px;
+  margin-right: 24px;
+  text-align: right;
+}
+.main_content .qfluids_wrapper .sidebar ul li {
+  display: block;
+  width: 191px;
+  margin-bottom: 10px;
+}
+.main_content .qfluids_wrapper .sidebar ul li ul {
+  margin: 0;
+}
+.main_content .qfluids_wrapper .sidebar ul li a {
+  color: #fff;
+}
+.main_content .qfluids_wrapper .sidebar ul li a:hover {
+  text-decoration: none;
+}
+.main_content .qfluids_wrapper .sidebar ul li a.active {
+  color: #f90;
+}
+.main_content .qfluids_wrapper .toolbar {
+  position: absolute;
+  top: 0px;
+  left: 215px;
+  right: 0px;
+  bottom: 35px;
+  background-color: #000;
+  background-image: url('/img/tasky_pattern.png');
+}
+.main_content .qfluids_wrapper .toolbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+.main_content .qfluids_wrapper .toolbar ul li {
+  float: left;
+}
+.main_content .qfluids_wrapper .toolbar .file_menu {
+  float: left;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+.main_content .qfluids_wrapper .toolbar .file_menu li {
+  margin-right: 10px;
+}
+.main_content .qfluids_wrapper .toolbar .settings_menu {
+  float: right;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.main_content .qfluids_wrapper .panels {
+  position: absolute;
+  top: 35px;
+  left: 215px;
+  right: 0px;
+  bottom: 0px;
+  float: left;
+  min-width: 1000px;
+  background-color: #fafafa;
+}
+.main_content .qfluids_wrapper .panels .project_info_wrapper {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  height: 38px;
+  background-color: #f3f3f3;
+  font-family: 'OpenSansRegular', Arial, sans-serif;
+  border-bottom: 1px solid #eee;
+}
+.main_content .qfluids_wrapper .panels .project_info_wrapper #project_info {
+  float: left;
+  margin: 7px 12px 0 7px;
+}
+.main_content .qfluids_wrapper .panels .project_info_wrapper #project_info strong {
+  text-transform: uppercase;
+  color: #384939;
+  font-weight: normal;
+  font-family: 'OpenSansSemibold', Arial, sans-serif;
+}
+.main_content .qfluids_wrapper .panels .project_info_wrapper #project_info span {
+  font-family: 'OpenSansSemibold', Arial, sans-serif;
+  color: #444;
+}
+.main_content .qfluids_wrapper .panels .project_info_wrapper #project_info td {
+  text-align: left;
+  vertical-align: middle;
+}
+.main_content .qfluids_wrapper .panels #welcome_panel {
+  padding-top: 50px;
+  text-align: center;
+}
+.main_content .qfluids_wrapper .panels .this_panel {
+  display: none;
+  font-size: 12px;
+  float: left;
+  margin-top: 38px;
+  width: 100%;
+  font-family: 'OpenSansRegular', Arial, sans-serif;
+}
+.main_content .qfluids_wrapper .panels .this_panel #start_message {
+  font-size: 16px;
+  font-family: 'OpenSansSemibold', Arial, sans-serif;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ececec;
+  box-shadow: 0 0 15px 5px #eee;
+}
+.main_content .qfluids_wrapper .panels .this_panel h2 {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 20px;
+  font-family: 'OpenSansRegular', Arial, sans-serif;
+  background-image: url('/img/tasky_pattern.png');
+  height: 31px;
+  padding: 7px 0 0 7px;
+}
+.main_content .qfluids_wrapper .panels .this_panel .top_ribbon {
+  background-color: #f3f3f3;
+  color: #363232;
+  border: 1px solid #ddd;
+  margin: 10px;
+}
+.main_content .qfluids_wrapper .panels .this_panel .top_ribbon label {
+  color: #363232;
+}
+.main_content .qfluids_wrapper .panels .this_panel .left {
+  float: left;
+}
+.main_content .qfluids_wrapper .panels .this_panel .right {
+  float: right;
+}
+.main_content .qfluids_wrapper .panels .this_panel .column {
+  width: 450px;
+  margin-right: 20px;
+}
+.main_content .qfluids_wrapper .panels .this_panel input[type="text"] {
+  width: 35px;
+}
+.main_content .qfluids_wrapper .panels .this_panel input[type="text"].medium {
+  width: 110px;
+}
+.overlay_wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+}
+.overlay_wrapper .overlay_dialog_wrapper {
+  width: 405px;
+  margin: 130px auto 0 auto;
+}
+.overlay_wrapper .overlay_dialog_wrapper .overlay_dialog {
+  background-color: #fff;
+  width: 365px;
+  float: left;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 25px 5px #999;
+}
+.overlay_wrapper .overlay_dialog_wrapper .overlay_dialog h5 {
+  color: #384939;
+  font-size: 18px;
+  margin: 0 0 20px 0;
+  font-family: 'OpenSansSemibold', Arial, sans-serif;
+  font-weight: normal;
+}
+.overlay_wrapper .overlay_dialog_wrapper .overlay_dialog .content {
+  float: left;
+  margin-bottom: 20px;
+}
+.overlay_wrapper .overlay_dialog_wrapper .overlay_dialog .content select {
+  width: 175px;
+}
+.overlay_wrapper .overlay_dialog_wrapper .overlay_dialog .content input[type="text"] {
+  width: 162px;
+}
+.overlay_wrapper .overlay_dialog_wrapper .overlay_dialog .cancel_link {
+  float: left;
+  width: 182px;
+  padding-top: 10px;
+}
+.overlay_wrapper .overlay_dialog_wrapper .overlay_dialog .continue_button {
+  float: left;
+  width: 182px;
+  text-align: right;
+}
+.unit_field {
+  text-align: right;
+  padding-right: 5px;
+  vertical-align: middle;
+}
+.casing_tool_row {
+  display: none;
+}
+.this_hidden_panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+  width: 100%;
+  padding-top: 80px;
+}
+.hp_content {
+  background-color: #fff;
+  width: 900px;
+  overflow: auto;
+  border: 1px solid #999;
+  box-shadow: 0 0 25px 5px #555;
+  padding-bottom: 20px;
+  margin: 0 auto;
+}
+.hp_content .title {
+  float: left;
+  margin: 20px 0 20px 0;
+  width: 100%;
+  background-color: #fff;
+}
+.hp_content .title h2 {
+  text-transform: uppercase;
+  display: block;
+  float: left;
+  margin: 0 0 0 20px;
+  color: #384939;
+}
+.hp_content .realcontent {
+  float: left;
+  margin-left: 20px;
+}
+.hp_content .realcontent fieldset {
+  float: left;
+}
+#geometria_pozo .warning {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 3px 5px 3px 5px;
+  background-color: #FFFF99;
+  border: 1px solid #FFCC00;
+}
+#create_project_overlay .step {
+  width: 100%;
+  float: left;
+  display: none;
+}
+.options_panel {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  right: 50px;
+  bottom: 50px;
+  z-index: 999;
+  float: left;
+  background-color: #fff;
+  background-image: url('/img/square_bg.png');
+  box-shadow: 0 0 25px 5px #000;
+  border: 1px solid #444;
+}
+.options_panel .options_header {
+  position: absolute;
+  background-color: #262721;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 32px;
+  border-bottom: 1px solid #333;
+}
+.options_panel .options_header .qmplan_logo {
+  float: left;
+}
+.options_panel .options_header .qmplan_logo img {
+  display: block;
+  float: left;
+  margin: 10px 0 0 0;
+}
+.options_panel .options_header .section_name {
+  color: #fff;
+  font-size: 16px;
+  font-family: 'OpenSansSemibold', Arial, sans-serif;
+  margin: 5px 0 0 120px;
+  float: left;
+}
+.options_panel .options_header .action_bar {
+  float: left;
+  margin: 5px 0 0 150px;
+}
+.options_panel .op_content {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+}
+.options_panel .op_content .options_sidebar {
+  float: left;
+  width: 160px;
+  text-align: left;
+  margin-right: 20px;
+  height: 100%;
+}
+.options_panel .op_content .options_sidebar h1 {
+  font-size: 18px;
+  font-family: 'OpenSansSemibold', Arial, sans-serif;
+  font-weight: normal;
+  color: #384939;
+}
+.options_panel .op_content .options_sidebar ul {
+  list-style: none;
+  margin: 20px 0 20px 0;
+  padding: 0;
+}
+.options_panel .op_content .options_sidebar ul li {
+  margin-top: 5px;
+}
+.options_panel .op_content .options_sidebar ul li a.active {
+  text-decoration: underline;
+}
+.options_panel .op_content .content {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 198px;
+}
+.options_panel .op_content .content .config_panel {
+  display: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  overflow: auto;
+}
+.options_panel .op_content .content .config_panel h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-family: 'OpenSansSemibold', Arial, sans-serif;
+  font-weight: normal;
+  color: #384939;
+}
+.options_panel .op_content .content .config_panel .update_tank_order {
+  margin: 20px 0 0 20px;
+}
+#shakers_table .disabled {
+  display: none;
+}
+.zrrange_top,
+.zrrange_btm {
+  display: none;
+}
+.datatable {
+  border: 1px solid #eee;
+}
+.datatable thead {
+  color: #fff;
+  background-color: #384939;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.datatable thead td {
+  padding: 5px 5px;
+}
+.datatable tbody td {
+  padding: 5px 5px;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #eee;
+  text-transform: uppercase;
+}
+.datatable tbody tr {
+  cursor: pointer;
+}
+.datatable tbody tr:nth-of-type(even) {
+  background-color: #F8F8F8;
+}
+.datatable tbody tr:nth-of-type(odd) {
+  background-color: #fff;
+}
+.input_error {
+  border: 1px solid #D50000 !important;
+  color: #d50000 !important;
+}
