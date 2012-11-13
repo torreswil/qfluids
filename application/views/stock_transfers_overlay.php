@@ -1,10 +1,10 @@
-<div class="options_panel" id="stock_transfers_overlay" style="display:none; background-image: none; left: 100px; right: 100px; z-index: 998">	
+<div class="options_panel" id="stock_transfers_overlay" style="display:none; background-image: none; left: 100px; right: 100px; bottom: 80px; z-index: 998">	
         <div style="margin: 20px">		
                 <h5 style="color: #384939; font-family: 'OpenSansSemibold',Arial,sans-serif; font-size: 18px; font-weight: normal; margin: 0 0 20px;">Stock Transfers</h5>		
         </div>
 	<div class="op_content">		
 		<div class="content" style="left: 0px; min-height: 500px;">                    
-			<div class="config_panel" style="display: block; max-height: 470px; padding-bottom: 20px">                        
+			<div class="config_panel" style="display: block; max-height: 470px; padding-bottom: 10px">                        
                         <div class="simpleTabs">
                                 <ul class="simpleTabsNavigation">
                                         <li><a href="#">General</a></li>
