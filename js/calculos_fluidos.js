@@ -416,7 +416,7 @@ function calculos_raw(){
 	// CALCULOS GEOMETRIA DEL POZO
 	//**************************************************
 	
-	// 1. CASING (REVESTIMIENTO)
+	// 1. CASING (REVESTIDORES)
 
 	$('#casing_table .active').each(function(){
 		var target =  $(this).attr('id');
@@ -426,13 +426,16 @@ function calculos_raw(){
 		if($('#'+target + ' .pick_casing').val() == 'Casing'){
 			var length = parseFloat($('#bottomcsg_'+id).val());
 			completar_campo_val('longcsg_'+id,length);
+		
 		}else if($('#'+ target + ' .pick_casing').val() == 'Liner'){
 			var last_id = parseFloat(id) - 1;
+			
 			if($('#casing_tool_'+ last_id + ' .pick_casing').val() == 'Liner'){
 				var last_length = parseFloat($('#topscsg_'+id).val()) - parseFloat($('#topscsg_'+last_id).val());	
 				completar_campo_val('longcsg_'+last_id,last_length);
 				var length = parseFloat($('#bottomcsg_'+id).val()) - parseFloat($('#topscsg_'+id).val());
 				completar_campo_val('longcsg_'+id,length);
+			
 			}else if($('#casing_tool_'+ last_id + ' .pick_casing').val() == 'Casing'){
 				var last_length = parseFloat($('#topscsg_'+id).val());
 				completar_campo_val('longcsg_'+last_id,last_length);
@@ -441,11 +444,18 @@ function calculos_raw(){
 			}
 		}
 
-		var volcsg = 0;
-		volcsg = power('idcsg_'+id,2) * $('#longcsg_'+id).val() / 1029.4;
-		completar_campo_val('volcsg_'+id,volcsg.toFixed(2));
-
 	});
+
+	$('#casing_table .active').each(function(){
+		var target =  $(this).attr('id');
+		var id 	= target.split('casing_tool_');
+		id 		= id[1];
+
+		var volcsg = 0;
+		volcsg = power('idcsg_'+id,2) * fval('longcsg_'+id) / 1029.4;
+		completar_campo_val('volcsg_'+id,volcsg.toFixed(2));	
+	});
+	
 
 
 	//2. HUECO
