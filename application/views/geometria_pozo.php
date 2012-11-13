@@ -33,6 +33,7 @@
 	    <div class="simpleTabsContent">
 			<!-- CASING -->
 			<fieldset>
+				<legend>Active Casing</legend>
 				<table id="casing_table">
 					<tr>
 						<td class="label_m"><label>NAME:</label></td>
