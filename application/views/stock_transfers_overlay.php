@@ -1,8 +1,10 @@
 <div class="options_panel" id="stock_transfers_overlay" style="display:none; background-image: none; left: 100px; right: 100px; z-index: 998">	
+        <div style="margin: 20px">		
+                <h5 style="color: #384939; font-family: 'OpenSansSemibold',Arial,sans-serif; font-size: 18px; font-weight: normal; margin: 0 0 20px;">Stock Transfers</h5>		
+        </div>
 	<div class="op_content">		
-		<div class="content" style="left: 0px;">
-			<div class="config_panel" style="display: block">
-                        <a href="#" class="close_link" style="float: right; margin-left: 350px; margin-top: 20px; font-weight: bold">Close</a>                          
+		<div class="content" style="left: 0px; min-height: 500px;">                    
+			<div class="config_panel" style="display: block; max-height: 470px; padding-bottom: 20px">                        
                         <div class="simpleTabs">
                                 <ul class="simpleTabsNavigation">
                                         <li><a href="#">General</a></li>
@@ -113,31 +115,15 @@
                                                    <?php } ?>
                                                 </tbody>
                                         </table>
-                                        <input type="button" style="margin-top:20px;" value="Load Materials" class="btn_new_transfer" />
-                                        </fieldset>
-                                        <fieldset>
-                                                <legend>Archive</legend>
-                                                <table>
-                                                        <thead>
-                                                                <tr>
-                                                                        <td></td>
-                                                                        <td class="label_m"><label>Date</label></td>
-                                                                        <td class="label_m"><label>Code</label></td>
-                                                                        <td class="label_m"><label>Origin</label></td>
-                                                                        <td class="label_m"><label>Destiny</label></td>
-                                                                </tr>
-                                                        </thead>
-                                                        <tbody id="incoming_stock_list">
-
-                                                        </tbody>
-                                                </table>
-                                        </fieldset>
+                                        <!--<input type="button" style="margin-top:20px;" value="Load Materials" class="btn_new_transfer" />-->
                                 </div>
                                 <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
                                         
                                 </div>
-                        </div>                        
+                        </div>
                 </div>
+                <a href="#" class="close_link" style="float: left; margin-top: 500px;">Close</a>
+                <input type="button" value="Save" style="float:right; margin-top: 500px;" id="btn_save_stock_transfers" />
 		</div>
 	</div>
 </div>
