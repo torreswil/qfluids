@@ -1,6 +1,6 @@
 <div class="config_panel" id="tanks">
         
-	<a href="#create_tank" id="link_create_tank" style="display:block;float:left;margin-left: 38%;margin-top: 20px; font-weight: bold; text-decoration: underline;">+ Add Tank</a>
+	<a href="#create_tank" id="link_create_tank" style="display:block;float:left;margin-left: 348px;margin-top: 20px; font-weight: bold; text-decoration: underline;">+ Add Tank</a>
 	
 	<div class="simpleTabs">
 		
