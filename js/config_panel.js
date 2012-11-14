@@ -1369,17 +1369,19 @@ $(function(){
         
     $('.remove_casing_link').live('click',function(e){
 		e.preventDefault();
-		var id = $(this).attr('id');
-		id = id.split('rm_casing_')[1];
-		
-        var data = {'id':id};
+		if(confirm('Are you sure? If you remove this item you won\'t be able to use it again in the casing tool.')){
+			var id = $(this).attr('id');
+			id = id.split('rm_casing_')[1];
+			
+	        var data = {'id':id};
 
-		$.post('/rest/remove_casing',data,function(r){
-			if(r.message == 'deactivated'){
-                load_tools_and_mud();
-                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
-			}
-		},'json');
+			$.post('/rest/remove_casing',data,function(r){
+				if(r.message == 'deactivated'){
+	                load_tools_and_mud();
+	                $('#close_settings_btn').val('Close & Reload').removeClass('just_close');
+				}
+			},'json');			
+		}
 	});
         
     $('.remove_mud_link').live('click',function(e){

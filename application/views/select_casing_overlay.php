@@ -94,6 +94,7 @@
 							<td class="label_m">ft</td>
 						</tr>
 					</table>
+					<iput type="hidden" name="project_id" value="<?= $project['id'] ?>" />
 				</form>
 			</div>
 			<div class="cancel_link">

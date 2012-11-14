@@ -1,7 +1,7 @@
 <?php $reporte = $this->session->userdata('report'); ?>
 <?php $reporte = $this->Api->get_where('reports', array('id'=>$reporte['id'])); ?>
 <?php $reporte = isset($reporte[0]) ? $reporte[0] : null; ?>
-<div class="this_panel plusribbon" id="geometria_pozo" style="display:block;">
+<div class="this_panel plusribbon" id="geometria_pozo">
 	<h2>Hole Geometry</h2>
 	<fieldset class="top_ribbon">
 		<table style="float:left;">
