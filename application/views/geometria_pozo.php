@@ -68,11 +68,16 @@
 					</thead>
 					<tbody>
 						<!-- todo: completar dinamicamente -->
+						<?php 
+							$revestidores = $this->Api->sql("SELECT * FROM project_report_casing INNER JOIN casing ON casing.id = project_report_casing.casing_id WHERE project_report_casing.report_id = {$reporte['id']} ORDER BY project_report_casing.id ASC"); 
+							print_r($revestidores);
+						?>
+						
 					</tbody>
 						<!--
 					</tr>
                                         
-                                        <?php $rs = $this->Api->sql("SELECT * FROM project_report_casing INNER JOIN casing ON casing.id = project_report_casing.casing_id WHERE project_report_casing.report_id = {$reporte['id']} ORDER BY project_report_casing.id ASC"); ?>
+                                        
                                         <?php $c_tam = count($rs); ?>
                                         <?php for($i=1 ; $i<=$c_tam ; $i++) { ?>
                                         <tr id="casing_tool_<?= $i; ?>" class="casing_tool_row" <?= empty($rs[$i-1]['casing_id']) ? '' : 'style="display: table-row;"'; ?>>

@@ -7,8 +7,8 @@ $(function(){
                 
 		e.preventDefault();
                 
-                //Muestro el overlay para el estado del save report
-                $("#save_report_overlay").show();                
+        //Muestro el overlay para el estado del save report
+        $("#save_report_overlay").show();                
                 
 		//day 0
 		if(parseInt($('#master_report_count').val()) == 0){
