@@ -321,7 +321,7 @@ $(function(){
 		 	html = html + '<tr id="casing_tool_'+id+'" class="casing_tool_row active" style="display: table-row;">';
             html = html + '   <td>';
             html = html + '       <input type="text" value="'+data.name+'" id="picker_'+id+'" style="width:100px;margin-right:0;" class="pick_casing" disabled="disabled" />';
-            html = html + '       <input type="hidden" value="'+data.cid+'"  id="picker_id_'+id+'">';
+            html = html + '       <input type="hidden" value="'+data.cid+'"  id="picker_id_'+id+'" class="pick_casing_id" />';
             html = html + '   </td>';
             html = html + '   <td>';
             html = html + '       <input type="hidden" class="od" value="'+data.od+'" name="odcsg_'+id+'" id="odcsg_'+id+'" />';
@@ -353,7 +353,6 @@ $(function(){
 		$('#pickcasing_type').val('');
 		$('#pickcasing_top').val('');
 		$('#pickcasing_bottom').val('');
-		$('.pick_casing').removeAttr('disabled');
 		$('#table_createcasing select,#table_createcasing input').attr('disabled','disabled');
 		$('#table_createcasing').hide();
 		$('#checkbox_casing_not_found').removeAttr('checked');

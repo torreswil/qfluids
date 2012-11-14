@@ -89,12 +89,12 @@ $(function(){
                 var data_casing = [];                
                 $('tr.casing_tool_row').each(function(j) {                                                                        
                     values = {
-                            casing_id       : $(this).find('.pick_casing_id').val(),
-                            type            : $(this).find('.pick_casing').val(),                                
-                            top             : $(this).find('.top').val(),
-                            bottom          : $(this).find('.bottom').val(),
-                            capacity        : $(this).find('.volume').val(),
-                            length          : $(this).find('.length').val()
+                        casing_id       : $(this).find('.pick_casing_id').val(),
+                        type            : $(this).find('.pick_casing').val(),                                
+                        top             : $(this).find('.top').val(),
+                        bottom          : $(this).find('.bottom').val(),
+                        capacity        : $(this).find('.volume').val(),
+                        length          : $(this).find('.length').val()
                     }
                     data_casing.push(values);
                 });
