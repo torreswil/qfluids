@@ -45,6 +45,12 @@ $(function(){
 	// 1. HOLE GEOMETRY
 	/*==========================================================================================================*/
 	
+	//mostrar la tabla de casing si hay casing precargado
+	if(($('#casing_table tbody tr').length) > 0){
+		$('#casing_table').show();
+		$('#ip_add_casing').hide();
+	}
+
 	//mostrar la hidraulica
 	$('#pressure_loss_fieldset a').click(function(e){
 		e.preventDefault();
