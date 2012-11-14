@@ -1363,7 +1363,7 @@ $(function(){
 		e.preventDefault();
 
 		//get the context
-		var context = $(this).parents('fieldset');
+		var context = $(this).parents('.content');
 
 		//validate there are not general information fields empty
 		var eqty = 0;
@@ -1378,9 +1378,26 @@ $(function(){
 		}else{
 			//init the data object
 			var data = {
-				code 		: $('.st_number',context).val(),
-				origin 		: $('.st_origin',context).val(),
-				type 		: 'incoming'
+				code            : $('.st_number',context).val(),
+                        from            : $('.st_from',context).val(),
+                        to              : $('.st_to',context).val(),
+				origin          : $('.st_origin',context).val(),
+                        destiny         : $('.st_destiny',context).val(),
+                        address_from    : $('.st_address_from',context).val(),
+                        address_to      : $('.st_address_to',context).val(),
+                        city_from       : $('.st_city_from',context).val(),
+                        city_to         : $('.st_city_to',context).val(),
+                        date            : $('.st_date',context).val(),
+                        attention       : $('.st_attention',context).val(),
+                        conveyor        : $('.st_conveyor',context).val(),
+                        vehicle_type    : $('.st_vehicle_type',context).val(),
+                        company         : $('.st_company',context).val(),
+                        identification  : $('.st_identification',context).val(),
+                        driver          : $('.st_driver',context).val(),
+                        plates          : $('.st_plates',context).val(),
+                        endorsement     : $('.st_endorsement',context).val(),
+                        phone           : $('.st_phone',context).val(),
+				type            : 'incoming'
 			};
 
 			data.materials 	= [];
@@ -1416,13 +1433,16 @@ $(function(){
 					}
 				});
 
-				$.post('/rest_mvc/register_stock_transfer',$.toJSON(data),function(r){
+				$.post('/rest_mvc/register_stock_transfer',$.toJSON(data),function(r){                                
 					if(r == true){
 						$('.materials_table .material_qty',context).val('');
 						$('.general_st_info input',context).val('');
 						alert('Stock Transfer registered.');
 						load_ac_status();
-						load_materials_status();                                                
+						load_materials_status();
+                                    context.find('.material_qty').each(function(){ $(this).val('') });
+                                    document.getElementById("form_stock_transfers_incoming").reset();
+                                    
 					}
 				},'json');
 			}

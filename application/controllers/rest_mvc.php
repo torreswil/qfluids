@@ -130,16 +130,31 @@ class Rest_mvc extends CI_Controller {
 
 	//registrar un stock transfer
 	public function register_stock_transfer(){
-		$data = json_decode($this->data_input);
-		
+		$data = json_decode($this->data_input);		
 		//save the stock transfer
 		$stock_transfer = array(
-			'code'			=> $data->code,
-			'date'			=> date('Y-m-d'),
-			'origin'		=> $data->origin,
-			'destiny'		=> $this->project_wellname.' ('.$this->project_operator.')',
-			'project_id'	=> $this->project_id,
-			'type'			=> $data->type
+			'code'                => $data->code,
+			'date'                => date('Y-m-d'),
+			'origin'              => $data->origin,
+			'destiny'             => $this->project_wellname.' ('.$this->project_operator.')',
+                  'from'                => $data->from,
+                  'to'                  => $data->to,
+                  'address_from'        => $data->address_from,
+                  'address_to'          => $data->address_to,
+                  'city_from'           => $data->city_from,
+                  'city_to'             => $data->city_to,
+                  'attention'           => $data->attention,
+                  'conveyor'            => $data->conveyor,
+                  'vehicle_type'        => $data->vehicle_type,
+                  'company'             => $data->company,
+                  'address_from'        => $data->address_from,
+                  'identification'      => $data->identification,                
+			'driver'              => $data->driver,
+                  'plates'              => $data->plates,
+                  'endorsement'         => $data->endorsement,
+                  'phone'               => $data->phone,                  
+                  'project_id'          => $this->project_id,
+			'type'                => $data->type                    
 		);
 		$id_st = $this->Api->create('stock_transfers',$stock_transfer);
 
