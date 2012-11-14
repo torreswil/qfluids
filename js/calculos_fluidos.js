@@ -492,14 +492,24 @@ function calculos_raw(){
 		zcaliper = parseFloat($('#zcaliper').val());
 	}
 
-	openhole = zhole + zrice + zcuttings + zcaliper; 
+
+	if($('input[name="calculo_openhole"]:checked').val() == 'normal'){
+		
+		openhole = zhole + zrice + zcuttings + zcaliper;
+		//zwashout
+		var zwashout = 0;
+		zwashout = 100 * (openhole - zhole) / zhole;
+		completar_campo_val('zwashout',zwashout.toFixed(2));
+
+	}else{
+
+		openhole = (fval('zwashout') * zhole ) / 100 + zhole;
+	}
+
 	completar_campo_val('openhole',openhole.toFixed(3));
 
-	//zwashout
-	var zwashout = 0;
-	zwashout = 100 * (openhole - zhole) / zhole;
-	completar_campo_val('zwashout',zwashout.toFixed(2));
-	completar_campo_val('zwout',zwashout.toFixed(2));
+	//zwashout = fval('zwashout');
+	completar_campo_val('zwout',fval('zwashout'));
 
 	//longhoyo
 	var longhoyo = 0;
@@ -818,7 +828,7 @@ function calculos_raw(){
 		zascount = zascount + 1;
 		
 		hidraulics_table = hidraulics_table + '<tr>'
-        hidraulics_table = hidraulics_table + '    <td><input type="text" style="width:100px;" value="'+this.name+'" class="adescription" /></td>';
+        hidraulics_table = hidraulics_table + '    <td><input type="text" style="width:100px;margin-right:0px;" value="'+this.name+'" class="adescription" disabled /></td>';
         hidraulics_table = hidraulics_table + '    <td><input type="text" id="idhole_'+zascount+'" name="idhole_'+zascount+'" class="idhole" style="margin-right: 0px; width: 70px;" value="'+this.idhole+'" disabled="disabled" /></td>';
         hidraulics_table = hidraulics_table + '    <td><input type="text" id="odstring_'+zascount+'" name="odstring_'+zascount+'" class="odstring" style="margin-right: 0px; width: 70px;" value="'+this.odstring+'" disabled="disabled"/></td>';
         hidraulics_table = hidraulics_table + '    <td><input type="text" id="longanular_'+zascount+'" name="longanular_'+zascount+'" class="longanular" style="margin-right: 0px; width: 70px;" value="'+this.len+'" disabled="disabled" /></td>';
@@ -1147,7 +1157,9 @@ function calculos_raw(){
 
 		//velcritbha
 		var velcritbha = 0;
-		velcritbha = (97 * pv + 97 * Math.sqrt( ( Math.pow(pv,2) + (8.2 * mw * power('idbha_'+id,2) * yp)))) / (mw * parseFloat($('#idbha_'+id).val()) * 60);
+		if(fval('qgaltotal') !== 0){
+			velcritbha = (97 * pv + 97 * Math.sqrt( ( Math.pow(pv,2) + (8.2 * mw * power('idbha_'+id,2) * yp)))) / (mw * parseFloat($('#idbha_'+id).val()) * 60);	
+		}	
 		completar_campo_val('velcritbha_'+id,velcritbha.toFixed(2));
 	});
 
@@ -1164,7 +1176,10 @@ function calculos_raw(){
 
 		//ptblbha
 		var ptblbha = 0;
-		ptblbha = ((pv * parseFloat($('#veltubbha_'+id).val())) / (1500 * power('idbha_'+id,2)) + yp / (225 * parseFloat($('#idbha_'+id).val()))) * parseFloat($('#longbha_'+id).val());
+		if(fval('qgaltotal') !== 0){
+			ptblbha = ((pv * parseFloat($('#veltubbha_'+id).val())) / (1500 * power('idbha_'+id,2)) + yp / (225 * parseFloat($('#idbha_'+id).val()))) * parseFloat($('#longbha_'+id).val());
+		}
+		
 		completar_campo_val('ptblbha_'+id,ptblbha.toFixed(2));
 	});
 
@@ -1413,8 +1428,13 @@ function calculos_raw(){
 
 		//velcritanul
 		var velcritanul = 0;
-		var raiz = Math.sqrt(Math.pow(pv,2) + 9.256 * Math.pow((fval('idhole_'+id) - fval('odstring_'+id)),2) * yp * mw);
-		velcritanul = (1.078 * pv + 1.078 * raiz) / (mw * (fval('idhole_'+ id) - fval('odstring_'+id)));
+		
+		if(fval('qgaltotal') !== 0){
+			var raiz = Math.sqrt(Math.pow(pv,2) + 9.256 * Math.pow((fval('idhole_'+id) - fval('odstring_'+id)),2) * yp * mw);
+			velcritanul = (1.078 * pv + 1.078 * raiz) / (mw * (fval('idhole_'+ id) - fval('odstring_'+id)));	
+		}
+		
+		
 		completar_campo_val('velcritanul_'+id,velcritanul.toFixed(2));
 		completar_campo_val('zasvel_'+id,velcritanul.toFixed(2));
 	});
@@ -1438,7 +1458,9 @@ function calculos_raw(){
 
 		//pbinlam
 		var pbinlam = 0;
-		pbinlam = (pv * fval('velanular_'+id) / (1000 * Math.pow((fval('idhole_'+id) - fval('odstring_'+id)),2)) + yp / (200*(fval('idhole_'+id) - fval('odstring_'+id)))) * fval('longanular_'+id);
+		if(fval('pbinlam') !== 0){
+			pbinlam = (pv * fval('velanular_'+id) / (1000 * Math.pow((fval('idhole_'+id) - fval('odstring_'+id)),2)) + yp / (200*(fval('idhole_'+id) - fval('odstring_'+id)))) * fval('longanular_'+id);	
+		}
 		completar_campo_val('pbinlam_'+id,pbinlam.toFixed(2));
 	});
 

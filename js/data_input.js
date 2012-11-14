@@ -45,8 +45,19 @@ $(function(){
 	// 1. HOLE GEOMETRY
 	/*==========================================================================================================*/
 	
+	//seleccionar una formula de calcular el washout y el open hole
+	$('input[name="calculo_openhole"]').change(function(){
+		if($(this).val() == 'normal'){
+			$('#hole_left input').removeAttr('disabled');
+			$('#hole_right input').attr('disabled','disabled');
+		}else if($(this).val() == 'washout'){
+			$('#hole_left input').attr('disabled','disabled');
+			$('#hole_right input').attr('disabled','disabled');
+			$('#zwashout').removeAttr('disabled');
+		}
+	});
+
 	//mostrar la tabla de casing si hay casing precargado
-	
 	if($('#casing_table tbody tr').length > 0){
 		$('#casing_table').show();
 		$('#ip_add_casing').hide();

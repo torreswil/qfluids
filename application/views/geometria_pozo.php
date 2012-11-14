@@ -113,8 +113,8 @@
 					<tr>
 						<td class="label_m"><label class="emphasis">OPEN HOLE:</label></td>
 						<td>
-                                                        <input type="hidden" name="zholed" id="zholed" disabled="disabled">
-                                                        <input type="text" name="zhole" id="zhole" value="<?= empty($rs['open_hole']) ? '0' : $rs['open_hole']; ?>"></td>
+		                    <input type="hidden" name="zholed" id="zholed" disabled="disabled">
+		                    <input type="text" name="zhole" id="zhole" value="<?= empty($rs['open_hole']) ? '0' : $rs['open_hole']; ?>"></td>
 						<td class="label_m">in [decimals, not fracs]</td>
 					</tr>
 				</table>
@@ -122,40 +122,54 @@
 			
 			<fieldset>
 				<legend>Washout Estimation From...:</legend>
+				<div class="info_panel" style="margin-bottom:20px;">
+					<table>
+						<tr>
+							<td class="label_m"><input type="radio" name="calculo_openhole" checked="checked" value="normal" /></td>
+							<td class="label_m">Open Hole and Washout calcs</td>
+						</tr>
+						<tr>
+							<td class="label_m"><input type="radio" name="calculo_openhole" value="washout" /></td>
+							<td class="label_m">Open Hole calc (with Washout previous knowledge)</td>
+						</tr>
+					</table>
+				</div>
+				
+
 				<p style="margin-top:0px;">
 					Open hole increment in inches, by the following items:
 				</p>
-				<table style="float:left;">
+				<table style="float:left;" id="hole_left">
 					<tr>
 						<td class="label_m"><label>Rice & Carbide Test:</label></td>
-						<td><input class="zero" type="text" name="zrice" id="zrice" style="margin-right:3px;" value="<?= empty($rs['rice_carbide_test']) ? '0' : $rs['rice_carbide_test']; ?>"></td>
+						<td><input class="zero" type="text" name="zrice" id="zrice" style="margin-right:3px;" value="<?= empty($rs['rice_carbide_test']) ? '' : $rs['rice_carbide_test']; ?>"></td>
 						<td class="label_m" style="text-align:left;">in</td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Cuttings & Caving record:</label></td>
-						<td><input class="zero" type="text" name="zcuttings" id="zcuttings" style="margin-right:3px;" value="<?= empty($rs['cuttings_caving_record']) ? '0' : $rs['cuttings_caving_record']; ?>"></td>
+						<td><input class="zero" type="text" name="zcuttings" id="zcuttings" style="margin-right:3px;" value="<?= empty($rs['cuttings_caving_record']) ? '' : $rs['cuttings_caving_record']; ?>"></td>
 						<td class="label_m" style="text-align:left;">in</td>
 					</tr>
 					<tr>
 						<td class="label_m"><label>Caliper:</label></td>
-						<td><input class="zero" type="text" name="zcalipper" id="zcaliper" style="margin-right:3px;" value="<?= empty($rs['caliper']) ? '0' : $rs['caliper']; ?>"></td>
+						<td><input class="zero" type="text" name="zcalipper" id="zcaliper" style="margin-right:3px;" value="<?= empty($rs['caliper']) ? '' : $rs['caliper']; ?>"></td>
 						<td class="label_m" style="text-align:left;">in</td>
 					</tr>
 				</table>
-				<table style="float:left;margin-left:50px;">
+				<table style="float:left;margin-left:50px;" id="hole_right" >
 					<tr>
 						<td class="label_m" style="padding-left:6px;"><label>WASHOUT:</label></td>
-						<td><input type="text" name="zwashout" id="zwashout" disabled="disabled" style="width:50px;" value="<?= empty($rs['washout']) ? '0' : $rs['washout']; ?>"></td>
+						<td><input type="text" name="zwashout" id="zwashout" disabled="disabled" style="width:50px;" value="<?= empty($rs['washout']) ? '' : $rs['washout']; ?>"></td>
 						<td class="label_m">%</td>
 					</tr>
 					<tr>
 						<td class="label_m" style="padding-left:6px;"><label>AVERAGE HOLE:</label></td>
-						<td><input type="text" name="openhole" id="openhole" disabled="disabled" style="width:50px;" value="<?= empty($rs['average_hole']) ? '0' : $rs['average_hole']; ?>"></td>
+						<td><input type="text" name="openhole" id="openhole" disabled="disabled" style="width:50px;" value="<?= empty($rs['average_hole']) ? '' : $rs['average_hole']; ?>"></td>
 						<td class="label_m">in</td>
 					</tr>
 					<tr>
 						<td class="label_m" style="padding-left:6px;"><label>OPEN HOLE LENGTH:</label></td>
-						<td><input type="text" name="longhoyo" id="longhoyo" disabled="disabled" style="width:50px;" value="<?= empty($rs['open_hole_length ']) ? '0' : $rs['open_hole_length ']; ?>"></td>
+						<td><input type="text" name="longhoyo" id="longhoyo" disabled="disabled" style="width:50px;" value="<?= empty($rs['open_hole_length ']) ? '' : $rs['open_hole_length ']; ?>"></td>
 						<td class="label_m">ft</td>
 					</tr>
 				</table>
@@ -163,7 +177,7 @@
 	    </div>
         <div class="simpleTabsContent">
         		<!-- DRILL STRING -->
-                                <? $rs = $this->Api->get_where('project_report_drill_string', array('report_id'=>$reporte['id'])); ?>                               
+                <? $rs = $this->Api->get_where('project_report_drill_string', array('report_id'=>$reporte['id'])); ?>                               
 				<table>
 					<tr>
 						<td colspan="2">
