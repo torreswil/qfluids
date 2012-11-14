@@ -1429,7 +1429,26 @@ $(function(){
 	function load_today_consumptions(){
 		$('#today_consumptions_table').load('/rest_mvc/load_today_consumptions');
 	} 
-                   
+      
+      $('.btn_stock_transfers').click(function(e){
+		e.preventDefault();
+		$('#stock_transfers_overlay').show();
+	});
+
+	$('#stock_transfers_overlay .close_link').click(function(e){              
+		e.preventDefault();                        
+		$('#stock_transfers_overlay').hide();
+	});
+            
+      $('.btn_outgoing_materials').click(function(e){
+		e.preventDefault();
+		$('#outgoing_materials_overlay').show();
+	});
+
+	$('#outgoing_materials_overlay .close_link').click(function(e){               
+		e.preventDefault();                        
+		$('#outgoing_materials_overlay').hide();
+	});
 
 	/*==========================================================================================================*/
 	// 7. VOLUMES
