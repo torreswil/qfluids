@@ -415,9 +415,13 @@ function calculos_raw(){
 	
 	// CALCULOS GEOMETRIA DEL POZO
 	//**************************************************
-	
+
 	// 1. CASING (REVESTIDORES)
 
+	//mostrar el boton de eliminar casing solo en el ultimo casing de la tabla
+	$('#casing_table a').hide().last().show();
+
+	
 	$('.casing_tool_row').each(function(){
 		var target =  $(this).attr('id');
 		var id 	= target.split('casing_tool_');
