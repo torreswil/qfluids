@@ -307,16 +307,17 @@ class Rest extends CI_Controller {
 	}
 
 	public function insert_casing(){
-                if(isset($_POST['createcasing_top'])) {
-                        unset($_POST['createcasing_top']);
-                }
+        if(isset($_POST['createcasing_top'])) {
+            unset($_POST['createcasing_top']);
+        }
 		echo json_encode($this->Api->create('casing',$_POST));
 	}
-        public function load_casing(){
-            $cubiertas = $this->Api->get_where('casing', $_POST);                
-            foreach ($cubiertas as $cubierta) {
-                    echo '<tr id="this_casing_'.$cubierta['id'].'"><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['odfrac'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['oddeci'].' '.$cubierta['od_unit'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['idfrac'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['iddeci'].' '.$cubierta['id_unit'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['weight'].' '.$cubierta['w_unit'].'" /></td><td><a href="#remove_casing" class="remove_casing_link" id="rm_casing_'.$cubierta['id'].'"><img src="/img/delete.png" /></a></td></tr>';
-            }
+	
+    public function load_casing(){
+        $cubiertas = $this->Api->get_where('casing', $_POST);                
+        foreach ($cubiertas as $cubierta) {
+           	echo '<tr id="this_casing_'.$cubierta['id'].'"><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['odfrac'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['oddeci'].' '.$cubierta['od_unit'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['idfrac'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['iddeci'].' '.$cubierta['id_unit'].'" /></td><td><input type="text" style="width:100px;" disabled="" value="'.$cubierta['weight'].' '.$cubierta['w_unit'].'" /></td><td><a href="#remove_casing" class="remove_casing_link" id="rm_casing_'.$cubierta['id'].'"><img src="/img/delete.png" /></a></td></tr>';
+        }
 	}
         public function remove_casing(){
 		if(count($_POST) > 0){
