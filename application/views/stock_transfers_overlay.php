@@ -12,89 +12,92 @@
                                         <li><a href="#">Equipment</a></li>                                        
                                 </ul>
                                 <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
-                                        <fieldset>                                
-                                                <table style="margin-bottom:20px;" class="general_st_info">
-                                                        <tr>
-                                                                <td class="label_m"><label>Stock Transfer Number:</label></td>                                                
-                                                        </tr>
-                                                        <tr>
-                                                                <td><input type="text" style="width:200px;" class="st_number" /></td>                                                
-                                                        </tr>                                                                                
-                                                </table>                                
-                                        </fieldset>
-                                        <fieldset>                                                        
-                                                <table style="width: 100%">
-                                                        <tr>
-                                                                <td class="label_m" width="110px"><label>FROM: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                                <td width="50px">&nbsp;</td>
-                                                                <td class="label_m" width="110px"><label>TO: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td class="label_m" width="110px"><label>ORIGIN: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                                <td width="50px">&nbsp;</td>
-                                                                <td class="label_m" width="110px"><label>DESTINY: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td class="label_m" width="110px"><label>ADDRESS: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                                <td width="50px">&nbsp;</td>
-                                                                <td class="label_m" width="110px"><label>ADDRESS: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td class="label_m" width="110px"><label>CITY: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                                <td width="50px">&nbsp;</td>
-                                                                <td class="label_m" width="110px"><label>CITY: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td class="label_m" width="110px"><label>DATE: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                                <td width="50px">&nbsp;</td>
-                                                                <td class="label_m" width="110px"><label>ATTENTION: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                        </tr>
-                                                </table>
-                                        </fieldset>
+                                        <form id="form_stock_transfers_incoming">
+                                                <fieldset>                                
+                                                        <table style="margin-bottom:20px;" class="general_st_info">
+                                                                <tr>
+                                                                        <td class="label_m"><label>Stock Transfer Number:</label></td>                                                
+                                                                </tr>
+                                                                <tr>
+                                                                        <td><input type="text" style="width:200px;" class="st_number" name="code" /></td>
+                                                                </tr>                                                                                
+                                                        </table>                                
+                                                </fieldset>
+                                                <fieldset>                                                        
+                                                        <table style="width: 100%">
+                                                                <tr>
+                                                                        <td class="label_m" width="110px"><label>FROM: </label></td>
+                                                                        <td><input type="text" class="medium st_from" value="" style="min-width:250px; width: 250px"></td>
+                                                                        <td width="50px">&nbsp;</td>
+                                                                        <td class="label_m" width="110px"><label>TO: </label></td>
+                                                                        <td><input type="text" class="medium st_to" value="" style="min-width:250px; width: 250px"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m" width="110px"><label>ORIGIN: </label></td>
+                                                                        <td><input type="text" class="medium st_origin" value="" style="min-width:250px; width: 250px"></td>
+                                                                        <td width="50px">&nbsp;</td>
+                                                                        <td class="label_m" width="110px"><label>DESTINY: </label></td>
+                                                                        <td><input type="text" class="medium st_destiny" value="" style="min-width:250px; width: 250px"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m" width="110px"><label>ADDRESS: </label></td>
+                                                                        <td><input type="text" class="medium st_address_from" value="" style="min-width:250px; width: 250px"></td>
+                                                                        <td width="50px">&nbsp;</td>
+                                                                        <td class="label_m" width="110px"><label>ADDRESS: </label></td>
+                                                                        <td><input type="text" class="medium st_address_to" value="" style="min-width:250px; width: 250px"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m" width="110px"><label>CITY: </label></td>
+                                                                        <td><input type="text" class="medium st_city_from" value="" style="min-width:250px; width: 250px"></td>
+                                                                        <td width="50px">&nbsp;</td>
+                                                                        <td class="label_m" width="110px"><label>CITY: </label></td>
+                                                                        <td><input type="text" class="medium st_city_to" value="" style="min-width:250px; width: 250px"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m" width="110px"><label>DATE: </label></td>
+                                                                        <td><input type="text" class="medium st_date" value="" style="min-width:250px; width: 250px"></td>
+                                                                        <td width="50px">&nbsp;</td>
+                                                                        <td class="label_m" width="110px"><label>ATTENTION: </label></td>
+                                                                        <td><input type="text" class="medium st_attention" value="" style="min-width:250px; width: 250px"></td>
+                                                                </tr>
+                                                        </table>
+                                                </fieldset>
 
-                                        <fieldset style="margin: 10px 0px;">                                                        
-                                                <table style="width: 100%">
-                                                        <tr>
-                                                                <td class="label_m" width="110px"><label>CONVEYOR: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                                <td width="50px">&nbsp;</td>
-                                                                <td class="label_m" width="110px"><label>VEHICLE TYPE: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td class="label_m" width="110px"><label>COMPANY: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                                <td width="50px">&nbsp;</td>
-                                                                <td class="label_m" width="110px"><label>ID: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td class="label_m" width="110px"><label>DRIVER: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                                <td width="50px">&nbsp;</td>
-                                                                <td class="label_m" width="110px"><label>PLATES: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td class="label_m" width="110px"><label>ENDORSEMENT: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                                <td width="50px">&nbsp;</td>
-                                                                <td class="label_m" width="110px"><label>PHONE: </label></td>
-                                                                <td><input type="text" class="medium" value="" style="min-width:250px; width: 250px"></td>
-                                                        </tr>
+                                                <fieldset style="margin: 10px 0px;">                                                        
+                                                        <table style="width: 100%">
+                                                                <tr>
+                                                                        <td class="label_m" width="110px"><label>CONVEYOR: </label></td>
+                                                                        <td><input type="text" class="medium st_conveyor" value="" style="min-width:250px; width: 250px"></td>
+                                                                        <td width="50px">&nbsp;</td>
+                                                                        <td class="label_m" width="110px"><label>VEHICLE TYPE: </label></td>
+                                                                        <td><input type="text" class="medium st_vehicle_type" value="" style="min-width:250px; width: 250px"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m" width="110px"><label>COMPANY: </label></td>
+                                                                        <td><input type="text" class="medium st_company" value="" style="min-width:250px; width: 250px"></td>
+                                                                        <td width="50px">&nbsp;</td>
+                                                                        <td class="label_m" width="110px"><label>ID: </label></td>
+                                                                        <td><input type="text" class="medium st_identification" value="" style="min-width:250px; width: 250px"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m" width="110px"><label>DRIVER: </label></td>
+                                                                        <td><input type="text" class="medium st_driver" value="" style="min-width:250px; width: 250px"></td>
+                                                                        <td width="50px">&nbsp;</td>
+                                                                        <td class="label_m" width="110px"><label>PLATES: </label></td>
+                                                                        <td><input type="text" class="medium st_plates" value="" style="min-width:250px; width: 250px"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m" width="110px"><label>ENDORSEMENT: </label></td>
+                                                                        <td><input type="text" class="medium st_endorsement" value="" style="min-width:250px; width: 250px"></td>
+                                                                        <td width="50px">&nbsp;</td>
+                                                                        <td class="label_m" width="110px"><label>PHONE: </label></td>
+                                                                        <td><input type="text" class="medium st_phone" value="" style="min-width:250px; width: 250px"></td>
+                                                                </tr>
 
-                                                </table>                                                
-                                        </fieldset>
+                                                        </table>                                                
+                                                </fieldset>
+                                                <input type="hidden" name="type" value="incoming">
+                                        </form>
                                 </div>
                                 <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">                                        
                                         <table>
@@ -114,16 +117,15 @@
                                                         </tr>
                                                    <?php } ?>
                                                 </tbody>
-                                        </table>
-                                        <!--<input type="button" style="margin-top:20px;" value="Load Materials" class="btn_new_transfer" />-->
+                                        </table>                                        
                                 </div>
                                 <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
                                         
                                 </div>
                         </div>
                 </div>
-                <a href="#" class="close_link" style="float: left; margin-top: 500px;">Close</a>
-                <input type="button" value="Save" style="float:right; margin-top: 500px;" id="btn_save_stock_transfers" />
+                <a href="#" class="close_link" style="float: left; margin-top: 500px;">Cancel</a>
+                <input type="button" value="Register Stock Transfers" style="float:right; margin-top: 500px;" class="btn_new_transfer" />
 		</div>
 	</div>
 </div>
