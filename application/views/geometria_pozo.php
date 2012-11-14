@@ -74,7 +74,7 @@
 							foreach ($revestidores as $revestidor) {
 								$count++;
 							?>
-		 						<tr id="casing_tool_<?= $count; ?>'" class="casing_tool_row active" style="display: table-row;">
+		 						<tr id="casing_tool_<?= $count; ?>" class="casing_tool_row active" style="display: table-row;">
             					   <td>
             					       <input type="text" value="<?= $revestidor['type'] ?>" id="picker_<?= $count; ?>" style="width:100px;margin-right:0;" class="pick_casing" disabled="disabled" />
             					       <input type="hidden" value="<?= $revestidor['casing_id'] ?>"  id="picker_id_<?= $count; ?>" class="pick_casing_id" />
