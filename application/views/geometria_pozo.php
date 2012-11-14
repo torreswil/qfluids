@@ -92,7 +92,7 @@
             					       <input type="hidden" class="zrrange_top" id="zrrange_top_<?= $count; ?>" name="zrrange_top_<?= $count; ?>" disabled="disabled" value="0">
             					       <input type="hidden" class="zrrange_btm" id="zrrange_btm_<?= $count; ?>" name="zrrange_btm_<?= $count; ?>" disabled="disabled" value="0">
             					  </td>
-            					   <td>ELIMINAR</td>
+            					   <td class="label_m"><a href="#remove_casing" class="remove_casing"><img src="/img/delete.png" /></a></td>
             					</tr>								
 						<?php	}
 						?>

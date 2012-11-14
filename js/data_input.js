@@ -344,7 +344,7 @@ $(function(){
             html = html + '       <input type="hidden" class="zrrange_top" id="zrrange_top_'+id+'" name="zrrange_top_'+id+'" disabled="disabled" value="0">';
             html = html + '       <input type="hidden" class="zrrange_btm" id="zrrange_btm_'+id+'" name="zrrange_btm_'+id+'" disabled="disabled" value="0">';
             html = html + '  </td>';
-            html = html + '   <td>ELIMINAR</td>';
+            html = html + '   <td class="label_m"><a href="#remove_casing" title="Remove Casing" class="remove_casing"><img src="/img/delete.png" /></a></td>';
             html = html + '</tr>';
 
             $('#casing_table tbody').append(html).parent().slideDown();
@@ -352,6 +352,19 @@ $(function(){
             correr_calculos();
 
 	}
+
+
+	$('.remove_casing').live('click',function(e){
+		e.preventDefault();
+		$(this).parents('tr').remove();
+
+		if($('#casing_table tbody tr').length == 0){
+			$('#casing_table').hide();
+			$('#ip_add_casing').show();	
+		}
+
+		correr_calculos();
+	});
 
 	function hide_casing_overlay(){
 		var no_option = '<option value="" selected="selected">Select...</option>';
