@@ -140,4 +140,5 @@
         <?php $this->load->view('select_type_report'); ?>
         <?php $this->load->view('mud_properties_overlay'); ?>
         <?php $this->load->view('stock_transfers_overlay'); ?>
+        <?php $this->load->view('outgoing_materials_overlay'); ?>
 </div>

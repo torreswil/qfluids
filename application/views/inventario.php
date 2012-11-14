@@ -107,8 +107,23 @@
                         </fieldset>
                 </div>                
                 <div class="simpleTabsContent" style="border-bottom:1px solid #E0E0E0;">
+                        <input type="button" style="margin-top:20px;" value="New outgoing materials" class="btn_outgoing_materials" />
                         <fieldset>
-                                <legend>Outgoing</legend>
+                                <legend>Archive</legend>
+                                <table>
+                                        <thead>
+                                                <tr>
+                                                        <td></td>
+                                                        <td class="label_m"><label>Date</label></td>
+                                                        <td class="label_m"><label>Code</label></td>
+                                                        <td class="label_m"><label>Origin</label></td>
+                                                        <td class="label_m"><label>Destiny</label></td>
+                                                </tr>
+                                        </thead>
+                                        <tbody id="incoming_stock_list">
+
+                                        </tbody>
+                                </table>
                         </fieldset>
                 </div>                
         </div>

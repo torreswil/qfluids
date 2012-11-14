@@ -1675,21 +1675,7 @@ $(function(){
 		});
 		
 		return save_status;	
-	}
-      
-      $('.btn_stock_transfers').click(function(e){
-		e.preventDefault();
-		$('#stock_transfers_overlay').show();
-	});
-
-	$('#stock_transfers_overlay .close_link').click(function(e){              
-		e.preventDefault();                        
-		$('#stock_transfers_overlay').hide();
-	});
-      
-
-
-
+	}      
 
     /*==========================================================================================================*/
 	// 8. MUD PROPERTIES
