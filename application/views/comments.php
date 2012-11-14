@@ -193,5 +193,87 @@
                                 </tr>
                         </table>                                                
                 </div>
+                
+                <div class="simpleTabsContent">                         
+                        <table style="width:100%;" class="">
+                                <tr>                
+                                        <td style="width: 50%">
+                                                <fieldset style="height:277px;width:95%;">
+                                                        <table>
+                                                                <tr>
+                                                                        <td class="label_m"><label>DAILY ENGINEERING COST $: </label></td>
+                                                                        <td><input type="text" class="small" value=""></td>
+                                                                        <td><input type="text" class="medium" value=""></td>
+                                                                </tr>
+                                                                <tr>                                                                             
+                                                                        <td colspan="3">&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m"><label>DAILY FILTRATION UNIT OPERATOR COST $: </label></td>
+                                                                        <td><input type="text" class="small" value=""></td>
+                                                                        <td><input type="text" class="medium" value=""></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m"><label>DAILY FLOCULATION UNIT OPERATOR COST $: </label></td>
+                                                                        <td><input type="text" class="small" value=""></td>
+                                                                        <td><input type="text" class="medium" value=""></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m"><label>DAILY SILOS UNIT OPERATOR COST $: </label></td>
+                                                                        <td><input type="text" class="small" value=""></td>
+                                                                        <td><input type="text" class="medium" value=""></td>
+                                                                </tr>  
+                                                                <tr>                                                                             
+                                                                        <td colspan="3">&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m"><label>DAILY PATION HANDS COST $: </label></td>
+                                                                        <td><input type="text" class="small" value=""></td>
+                                                                        <td><input type="text" class="medium" value=""></td>
+                                                                </tr>
+                                                        </table>
+                                                </fieldset>
+                                        </td>
+                                        
+                                        <td style="width: 50%">
+                                                <fieldset style="height:277px;width:95%;">
+                                                        <table>                                                                                                                                
+                                                                <tr>
+                                                                        <td class="label_m"><label>DAILY MUD COST $: </label></td>
+                                                                        <td><input type="text" class="small" value=""></td>
+                                                                        <td><input type="text" class="medium" value=""></td>
+                                                                </tr>                                                                
+                                                                <tr>
+                                                                        <td class="label_m"><label>CUM. MUD COST $: </label></td>
+                                                                        <td><input type="text" class="small" value=""></td>
+                                                                        <td><input type="text" class="medium" value=""></td>
+                                                                </tr>
+                                                                <tr>                                                                             
+                                                                        <td colspan="3">&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m"><label>DAILY PERSONNEL COST $: </label></td>
+                                                                        <td><input type="text" class="small" value=""></td>
+                                                                        <td><input type="text" class="medium" value=""></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m"><label>CUM. PERSONNEL COST $: </label></td>
+                                                                        <td><input type="text" class="small" value=""></td>
+                                                                        <td><input type="text" class="medium" value=""></td>
+                                                                </tr> 
+                                                                <tr>                                                                             
+                                                                        <td colspan="3">&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td class="label_m"><label>TOTAL COST $: </label></td>
+                                                                        <td><input type="text" class="small" value=""></td>
+                                                                        <td><input type="text" class="medium" value=""></td>
+                                                                </tr>
+                                                        </table>
+                                                </fieldset>
+                                        </td>
+                                </tr>
+                        </table>                                                
+                </div>
         </div>
 </div>
