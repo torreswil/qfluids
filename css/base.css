@@ -608,6 +608,12 @@ td { vertical-align: top; }
 		margin-top: 5px;
 	}
 
+	.info_panel{
+		background-color: #FDFBCA;
+		padding: 5px 10px;
+		border: 1px dashed #FFE57B;
+	}
+
 	/*SIMPLETABS*/
 	div.simpleTabs { padding:20px 0 0 0; margin-top:20px; }
 	ul.simpleTabsNavigation { margin:-20px 10px 0 10px; padding:0; text-align:left; position: fixed; z-index: 1; }

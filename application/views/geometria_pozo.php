@@ -1,7 +1,7 @@
 <?php $reporte = $this->session->userdata('report'); ?>
 <?php $reporte = $this->Api->get_where('reports', array('id'=>$reporte['id'])); ?>
 <?php $reporte = isset($reporte[0]) ? $reporte[0] : null; ?>
-<div class="this_panel plusribbon" id="geometria_pozo">
+<div class="this_panel plusribbon" id="geometria_pozo" style="display:block;">
 	<h2>Hole Geometry</h2>
 	<fieldset class="top_ribbon">
 		<table style="float:left;">
@@ -34,32 +34,42 @@
 			<!-- CASING -->
 			<fieldset>
 				<legend>Active Casing</legend>
-				<table id="casing_table">
-					<tr>
-						<td class="label_m"><label>NAME:</label></td>
-						<td class="label_m"  style="text-align: center"><label>OD: </td>
-						<td class="label_m"  style="text-align: center"><label>ID: </td>
-						<td class="label_m"  style="text-align: center"><label>TOP: </td>	
-						<td class="label_m"  style="text-align: center"><label>BOTTOM: </td>
-						<td class="label_m"  style="text-align: center"><label>CAPAC.:</td>
-						<td class="label_m"  style="text-align: center"><label>LENGTH:</td>														
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td class="label_m" style="text-align:center">
-							<span style="text-transform:lowercase;">in</span></td>
-						<td class="label_m" style="text-align: center">
-							<span style="text-transform:lowercase;">in</span></td>
-						<td class="label_m" style="text-align: center">
-							<span style="text-transform:lowercase;">ft</span></td>	
-						<td class="label_m" style="text-align: center">
-							<span style="text-transform:lowercase;">ft</span></td>
-						<td class="label_m" style="text-align: center">
-							<span style="text-transform:lowercase;">bbl</span></td>
-						<td class="label_m" style="text-align: center">
-							<span style="text-transform:lowercase;">ft</span></td>														
-						<td></td>
+				<div class="info_panel" id="ip_add_casing">
+					<p>To add casing for the first time  please make sure the <strong>Depth MD</strong>  is greater than 0 and hit the button <strong>'Add Casing'</strong> below.</p>
+				</div>
+				<table id="casing_table" style="float:left;display:none;">
+					<thead>
+						<tr>
+							<td class="label_m"><label>NAME:</label></td>
+							<td class="label_m"  style="text-align: center"><label>OD: </td>
+							<td class="label_m"  style="text-align: center"><label>ID: </td>
+							<td class="label_m"  style="text-align: center"><label>TOP: </td>	
+							<td class="label_m"  style="text-align: center"><label>BOTTOM: </td>
+							<td class="label_m"  style="text-align: center"><label>CAPAC.:</td>
+							<td class="label_m"  style="text-align: center"><label>LENGTH:</td>														
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="label_m" style="text-align:center">
+								<span style="text-transform:lowercase;">in</span></td>
+							<td class="label_m" style="text-align: center">
+								<span style="text-transform:lowercase;">in</span></td>
+							<td class="label_m" style="text-align: center">
+								<span style="text-transform:lowercase;">ft</span></td>	
+							<td class="label_m" style="text-align: center">
+								<span style="text-transform:lowercase;">ft</span></td>
+							<td class="label_m" style="text-align: center">
+								<span style="text-transform:lowercase;">bbl</span></td>
+							<td class="label_m" style="text-align: center">
+								<span style="text-transform:lowercase;">ft</span></td>														
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- todo: completar dinamicamente -->
+					</tbody>
+						<!--
 					</tr>
                                         
                                         <?php $rs = $this->Api->sql("SELECT * FROM project_report_casing INNER JOIN casing ON casing.id = project_report_casing.casing_id WHERE project_report_casing.report_id = {$reporte['id']} ORDER BY project_report_casing.id ASC"); ?>
@@ -67,26 +77,26 @@
                                         <?php for($i=1 ; $i<=$c_tam ; $i++) { ?>
                                         <tr id="casing_tool_<?= $i; ?>" class="casing_tool_row" <?= empty($rs[$i-1]['casing_id']) ? '' : 'style="display: table-row;"'; ?>>
                                                 <td>
-                                                        <input type="text" value="<?= empty($rs[$i-1]['type']) ? 'Select...' : $rs[$i-1]['type']; ?>" class="pick_casing" id="picker_<?= $i; ?>" style="width:100px;">
+                                                        <input type="text" value="<?= empty($rs[$i-1]['type']) ? 'Select...' : $rs[$i-1]['type']; ?>" class="pick_casing" id="picker_<?= $i; ?>" style="width:100px;margin-right:0px;">
                                                         <input type="hidden" value="<?= empty($rs[$i-1]['casing_id']) ? '' : $rs[$i-1]['casing_id']; ?>" class="pick_casing_id" id="picker_id_<?= $i; ?>">
                                                 </td>
                                                 <td>
                                                         <input type="hidden" class="od" disabled="disabled" value="<?= empty($rs[$i-1]['oddeci']) ? '0' : $rs[$i-1]['oddeci']; ?>" name="odcsg_<?= $i; ?>" id="odcsg_<?= $i; ?>" />
-                                                        <input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['odfrac']) ? '0' : $rs[$i-1]['odfrac']; ?>" />
+                                                        <input type="text" class="od_dummie" style="width:60px;margin-right:0px;" disabled="disabled" value="<?= empty($rs[$i-1]['odfrac']) ? '0' : $rs[$i-1]['odfrac']; ?>" />
                                                 </td>
-                                                        <td><input type="text" class="id" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['iddeci']) ? '0' : $rs[$i-1]['iddeci']; ?>" name="idcsg_<?=$i;?>" id="idcsg_<?=$i;?>" /></td>
-                                                        <td><input type="text" class="top" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['top']) ? '0' : $rs[$i-1]['top']; ?>" name="topcsg_<?=$i;?>" id="topscsg_<?=$i;?>" /></td>
-                                                        <td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['bottom']) ? '0' : $rs[$i-1]['bottom']; ?>" name="bottomcsg_<?=$i;?>" id="bottomcsg_<?=$i;?>" /></td>
-                                                        <td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['capacity']) ? '0' : $rs[$i-1]['capacity']; ?>" name="volcsg_<?=$i;?>" id="volcsg_<?=$i;?>" /></td>
+                                                        <td><input type="text" class="id" style="width:60px;margin-right:0px;" disabled="disabled" value="<?= empty($rs[$i-1]['iddeci']) ? '0' : $rs[$i-1]['iddeci']; ?>" name="idcsg_<?=$i;?>" id="idcsg_<?=$i;?>" /></td>
+                                                        <td><input type="text" class="top" style="width:60px;margin-right:0px;" disabled="disabled" value="<?= empty($rs[$i-1]['top']) ? '0' : $rs[$i-1]['top']; ?>" name="topcsg_<?=$i;?>" id="topscsg_<?=$i;?>" /></td>
+                                                        <td><input type="text" class="bottom" style="width:60px;margin-right:0px;" disabled="disabled" value="<?= empty($rs[$i-1]['bottom']) ? '0' : $rs[$i-1]['bottom']; ?>" name="bottomcsg_<?=$i;?>" id="bottomcsg_<?=$i;?>" /></td>
+                                                        <td><input type="text" class="volume" style="width:60px;margin-right:0px;" disabled="disabled" value="<?= empty($rs[$i-1]['capacity']) ? '0' : $rs[$i-1]['capacity']; ?>" name="volcsg_<?=$i;?>" id="volcsg_<?=$i;?>" /></td>
                                                 <td>
-                                                        <input type="text" class="length" style="width:60px;" disabled="disabled" value="<?= empty($rs[$i-1]['length']) ? '0' : $rs[$i-1]['length']; ?>" name="longcsg_<?=$i;?>" id="longcsg_<?=$i;?>" />
+                                                        <input type="text" class="length" style="width:60px;margin-right:0px;" disabled="disabled" value="<?= empty($rs[$i-1]['length']) ? '0' : $rs[$i-1]['length']; ?>" name="longcsg_<?=$i;?>" id="longcsg_<?=$i;?>" />
                                                         <input type="text" class="zrrange_top" id="zrrange_top_<?=$i;?>" name="zrrange_top_<?=$i;?>" disabled="disabled" value="0">
                                                         <input type="text" class="zrrange_btm" id="zrrange_btm_<?=$i;?>" name="zrrange_btm_<?=$i;?>" disabled="disabled" value="0">
                                                 </td>
                                                 <?php if($i==1) { ?>
-                                                <td><a href="#casingclear_<?=$i;?>" class="casingclear" <?= (!empty($rs[$i-1]['casing_id']) && !empty($rs[$i]['casing_id'])) ? 'style="display:none;"' : ''; ?>>Clear</a></td>
+                                                <td class="label_m" style="padding-left:10px;"><a href="#casingclear_<?=$i;?>" class="casingclear" <?= (!empty($rs[$i-1]['casing_id']) && !empty($rs[$i]['casing_id'])) ? 'style="display:none;"' : ''; ?>>Clear</a></td>
                                                 <?php } else { ?>
-                                                <td><a href="#casingclear_<?=$i;?>" class="casingclear" <?= (!empty($rs[$i-1]['casing_id']) && !empty($rs[$i]['casing_id'])) ? 'style="display:none;"' : ''; ?>>Remove</a></td>
+                                                <td class="label_m" style="padding-left:10px;"><a href="#casingclear_<?=$i;?>" class="casingclear" <?= (!empty($rs[$i-1]['casing_id']) && !empty($rs[$i]['casing_id'])) ? 'style="display:none;"' : ''; ?>>Remove</a></td>
                                                 <?php }?>
                                         </tr>
                                         <?php } ?>
@@ -95,31 +105,35 @@
                                         <?php while($c_counter <= 7 ) { ?>
                                         <tr id="casing_tool_<?= $c_counter; ?>" class="casing_tool_row" <?= ($c_inicial==$c_counter) ? 'style="display: table-row;"' : ''; ?>>
                                                 <td>
-                                                        <input type="text" value="Select..." class="pick_casing" id="picker_<?= $c_counter; ?>" style="width:100px;">
+                                                        <input type="text" value="Select..." class="pick_casing" id="picker_<?= $c_counter; ?>" style="width:100px;margin-right:0px;">
                                                         <input type="hidden" value="" class="pick_casing_id" id="picker_id_<?= $c_counter; ?>">
                                                 </td>
                                                 <td>
                                                         <input type="hidden" class="od" disabled="disabled" value="0" name="odcsg_<?= $c_counter; ?>" id="odcsg_<?= $c_counter; ?>" />
-                                                        <input type="text" class="od_dummie" style="width:60px;" disabled="disabled" value="0" />
+                                                        <input type="text" class="od_dummie" style="width:60px;margin-right:0px;" disabled="disabled" value="0" />
                                                 </td>
-                                                        <td><input type="text" class="id" style="width:60px;" disabled="disabled" value="0" name="idcsg_<?=$c_counter;?>" id="idcsg_<?=$c_counter;?>" /></td>
-                                                        <td><input type="text" class="top" style="width:60px;" disabled="disabled" value="0" name="topcsg_<?=$c_counter;?>" id="topscsg_<?=$c_counter;?>" /></td>
-                                                        <td><input type="text" class="bottom" style="width:60px;" disabled="disabled" value="0" name="bottomcsg_<?=$c_counter;?>" id="bottomcsg_<?=$c_counter;?>" /></td>
-                                                        <td><input type="text" class="volume" style="width:60px;" disabled="disabled" value="0" name="volcsg_<?=$c_counter;?>" id="volcsg_<?=$c_counter;?>" /></td>
+                                                        <td><input type="text" class="id" style="width:60px;margin-right:0px;" disabled="disabled" value="0" name="idcsg_<?=$c_counter;?>" id="idcsg_<?=$c_counter;?>" /></td>
+                                                        <td><input type="text" class="top" style="width:60px;margin-right:0px;" disabled="disabled" value="0" name="topcsg_<?=$c_counter;?>" id="topscsg_<?=$c_counter;?>" /></td>
+                                                        <td><input type="text" class="bottom" style="width:60px;margin-right:0px;" disabled="disabled" value="0" name="bottomcsg_<?=$c_counter;?>" id="bottomcsg_<?=$c_counter;?>" /></td>
+                                                        <td><input type="text" class="volume" style="width:60px;margin-right:0px;" disabled="disabled" value="0" name="volcsg_<?=$c_counter;?>" id="volcsg_<?=$c_counter;?>" /></td>
                                                 <td>
-                                                        <input type="text" class="length" style="width:60px;" disabled="disabled" value="0" name="longcsg_<?=$c_counter;?>" id="longcsg_<?=$c_counter;?>" />
+                                                        <input type="text" class="length" style="width:60px;margin-right:0px;" disabled="disabled" value="0" name="longcsg_<?=$c_counter;?>" id="longcsg_<?=$c_counter;?>" />
                                                         <input type="text" class="zrrange_top" id="zrrange_top_<?=$c_counter;?>" name="zrrange_top_<?=$c_counter;?>" disabled="disabled" value="0">
                                                         <input type="text" class="zrrange_btm" id="zrrange_btm_<?=$c_counter;?>" name="zrrange_btm_<?=$c_counter;?>" disabled="disabled" value="0">
                                                 </td>
                                                 <?php if($c_counter==1) { ?>
-                                                <td><a href="#casingclear_<?=$c_counter;?>" class="casingclear">Clear</a></td>
+                                                <td class="label_m" style="padding-left:10px;"><a href="#casingclear_<?=$c_counter;?>" class="casingclear">Clear</a></td>
                                                 <?php } else { ?>
-                                                <td><a href="#casingclear_<?=$c_counter;?>" class="casingclear" <?= ($c_counter > $c_inicial) ? 'style="display:none;"' : ''; ?>><?=($c_counter==1) ? 'Clear' : 'Remove'; ?></a></td>
+                                                <td class="label_m" style="padding-left:10px;"><a href="#casingclear_<?=$c_counter;?>" class="casingclear" <?= ($c_counter > $c_inicial) ? 'style="display:none;"' : ''; ?>><?=($c_counter==1) ? 'Clear' : 'Remove'; ?></a></td>
                                                 <?php }?>
                                         </tr>
                                         <?php $c_counter++; ?>
                                         <?php } ?>
+                                  -->
 				</table>
+				<div style="float:left;width:100%;margin-top:10px;">
+					<input type="button" value="Add Casing" id="btn_add_casing" />
+				</div>
 			</fieldset>
         </div>
 	    <div class="simpleTabsContent">

@@ -67,24 +67,23 @@ $(function(){
     	$('.this_hidden_panel').fadeOut('fast');
     });
 
-	//CUADRO DE DIALOGO SELECCION DE CASING
-	$('.pick_casing').click(function(){
-		if(fval('md') <= 0){
+    //add casing button
+    $('#btn_add_casing').click(function(e){
+    	e.preventDefault();
+    	if(fval('md') <= 0){
 			alert('To place Casign, first verify the open hole is greater than 0');
+		}else{
+			var casing_qty = $('#casing_table tbody tr').length;
+			if(casing_qty == 7){
+				alert('You can only place 7 casing tools.');
+			}else{
+				$('#select_casing_overlay').show();	
+			}
 		}
-	});	
+    });
 
-	$('.pick_casing').focus(function(){
-			if($(this).val() !== ''){
-				$('#select_casing_overlay').show();
-				$(this).attr('disabled','disabled');
-				var casing_id = $(this).attr('id');
-				casing_id = casing_id.split('picker_');
-				casing_id = casing_id[1];
-				$('#casing_number').val(casing_id);
-			}	
-	});
 
+	//CUADRO DE DIALOGO SELECCION DE CASING
 	$('#pickcasing_type').change(function(){
 		if($(this).val() == 'Casing'){
 			$('#pickcasing_top').val(0).attr('disabled','disabled');
@@ -110,16 +109,16 @@ $(function(){
 		}
 	});
         
-        //Consulta el ID de según los campos seleccionados
-        $('#pickcasing_id').change(function(e){
-                var data = {
-                        'oddeci'		: $('#pickcasing_od').val(),
-                        'iddeci'                : $(this).val(),                        
-                        'project_id'            : $('#project_id').val()
-                };
-                $.post('/rest/get_casing',data,function(r){                                                     
-                        $("#pickcasing_selected_id").val(r[0].id);
-                }, 'json');		
+    //Consulta el ID de según los campos seleccionados
+    $('#pickcasing_id').change(function(e){
+        var data = {
+            'oddeci'		: $('#pickcasing_od').val(),
+            'iddeci'        : $(this).val(),                        
+            'project_id'    : $('#project_id').val()
+        };
+        $.post('/rest/get_casing',data,function(r){                                                     
+                $("#pickcasing_selected_id").val(r[0].id);
+        }, 'json');		
 	});
 	
 	$('#select_casing_overlay .cancel_overlay').click(function(e){
@@ -149,76 +148,95 @@ $(function(){
 
 	$('#btn_casing_selected').click(function(e){
 		e.preventDefault();
-		
+
+		//cuantos revestidores existen e información del ultimo revestidor creado
+		var csgqty  = $('#casing_table tbody tr').length;
+		if(csgqty !== 0){
+			var lastcsg = $('#casing_tool_'+csgqty);
+			var lastcsg_data = {
+				'name'			: $('#picker_'+csgqty).val(),
+				'od'			: fval('odcsg_'+csgqty),
+				'od_dummie'		: $('#od_dummie_'+csgqty).val(),
+				'id'			: fval('idcsg_'+csgqty),
+				'top'			: fval('topcsg_'+csgqty),
+				'bottom'		: fval('bottomcsg_'+csgqty),
+				'capacity'		: fval('volcsg_'+csgqty),
+				'len'			: fval('longcsg_'+csgqty),
+				'zrrange_top' 	: fval('zrrange_top'+csgqty),
+				'zrrange_btm' 	: fval('zrrange_btm'+csgqty)
+			}			
+		}else{
+			lastcsg 		= false;
+			lastcsg_data 	= false;
+		}
+ 		
+ 		log(lastcsg_data);
+				
 		//CASING FOUND
 		if($('#checkbox_casing_not_found:checked').length == 0){
+			
 			var eqty = 0;
-			$('#table_pickcasing input,#table_pickcasing select').each(function(){
+			$('#form_pickcasing .required').each(function(){
 				if($(this).val() == ''){
 					eqty = eqty + 1;
 				}
-			});	
+			});
 
 			if(eqty > 0){
-				alert('Some fields are empty. Please verify and try again.');
+				alert('All fields are required.');
 			}else{
-				var target = $('#casing_number').val();
-				var last_target = parseInt(target) - 1;
-				if(last_target > 0){
-					//VALIDATE THE OD IS LESS THAN THE OD OF THE LAST SELECTED CASING
-					if(parseFloat($('#casing_tool_'+last_target+' .od').val()) <= parseFloat($('#pickcasing_od').val())){
-						alert('The OD in this tool cannot be greater than the OD in the last selected tool');
-					}else{
-						var new_casing = parseInt(target) + 1;
-						if(parseFloat($('#pickcasing_top').val()) > parseFloat($('#pickcasing_bottom').val())){
-							alert('Top value must be less than bottom value');	
-						}else{
-							$('#picker_'+target).val($('#pickcasing_type').val());
-							$('#casing_tool_'+target+' .od').val($('#pickcasing_od').val());
-							$('#casing_tool_'+target+' .od_dummie').val($('#pickcasing_od option:selected').html());
-							$('#casing_tool_'+target+' .id').val($('#pickcasing_id').val());
-							$('#casing_tool_'+target+' .top').val($('#pickcasing_top').val());
-							$('#casing_tool_'+target+' .bottom').val($('#pickcasing_bottom').val());
-							$('#casing_tool_'+new_casing).show();
-							$('.casingclear').each(function(){
-								$(this).hide();
-							});
-							$('.casingclear','#casing_tool_'+new_casing).show();
-							$('#casing_tool_'+target).addClass('active');
-							if(new_casing == 8){
-								$('#casing_tool_7 .casingclear').show();
-							}  
-                                                        $('#picker_id_'+target).val($("#pickcasing_selected_id").val());
-							hide_casing_overlay();	
-						}
-							
-					}	
-				}else{
-					var new_casing = parseInt(target) + 1;
-					if(parseFloat($('#pickcasing_top').val()) > parseFloat($('#pickcasing_bottom').val())){
-						alert('Top value must be less than bottom value');	
-					}else{
-						$('#picker_'+target).val($('#pickcasing_type').val());
-						$('#casing_tool_'+target+' .od').val($('#pickcasing_od').val());
-						$('#casing_tool_'+target+' .od_dummie').val($('#pickcasing_od option:selected').html());
-						$('#casing_tool_'+target+' .id').val($('#pickcasing_id').val());
-						$('#casing_tool_'+target+' .top').val($('#pickcasing_top').val());
-						$('#casing_tool_'+target+' .bottom').val($('#pickcasing_bottom').val());
-						$('#casing_tool_'+new_casing).show();
-						$('.casingclear').each(function(){
-							$(this).hide();
-						});
-						$('.casingclear','#casing_tool_'+new_casing).show();
-						$('#casing_tool_'+target).addClass('active');
-						if(new_casing == 8){
-							$('#casing_tool_7 .casingclear').show();
-						}
-                                                $('#picker_id_'+target).val($("#pickcasing_selected_id").val());                                                
-						hide_casing_overlay();	
-					}
+				//armar el paquete de datos que se va al front
+				var newcsg = {
+					'cid'			: $('#pickcasing_selected_id').val(),
+					'name'			: $('#pickcasing_type').val(),
+					'od'			: fval('pickcasing_od'),
+					'od_dummie'		: $('#pickcasing_od option:selected').html(),
+					'id'			: fval('pickcasing_id'),
+					'top'			: fval('pickcasing_top'),
+					'bottom'		: fval('pickcasing_bottom')
 				}
+
+				if(lastcsg_data != false){
+					//validar el diametro del tubo
+					if(newcsg.od >= lastcsg_data.id){
+						alert('The internal diameter cannot be equal or greater than the external diameter of the last selected tool.');
+					}else{
+						var top_validation = false;
+						
+						//validar que el tope de la herramienta este acorde al montaje
+						if(newcsg.name == 'Liner'){
+							if(newcsg.top > lastcsg_data.bottom){
+								alert('The top value cannot be greater than the bottom of the last selected tool.');
+							}else{
+								top_validation = true;
+							}
+						}else{
+							top_validation = true;
+						}
+
+						if(top_validation == true){
+
+							//all validations passed, proceed	
+							append_casing_to_dom(newcsg);
+							hide_casing_overlay();
+						
+						}else{
+							return false;
+						}
+					}					
+				}else{
+					//all validations passed, proceed	
+					append_casing_to_dom(newcsg);
+					hide_casing_overlay();	
+				}
+
+
+
+
 			}
 
+
+			
 		//CASING NOT FOUND
 		}else{
 			var eqty = 0;
@@ -290,11 +308,42 @@ $(function(){
 							hide_casing_overlay();	
 						}
 					}
-                                        $('#picker_id_'+target).val(r);
+                    $('#picker_id_'+target).val(r);
 				},'json');
 			}
 		}
 	});
+
+	function append_casing_to_dom(data){
+		
+		var id = $('#casing_table tbody tr').length + 1;
+		var html = ''
+		 	html = html + '<tr id="casing_tool_'+id+'" class="casing_tool_row active" style="display: table-row;">';
+            html = html + '   <td>';
+            html = html + '       <input type="text" value="'+data.name+'" id="picker_'+id+'" style="width:100px;margin-right:0;" class="pick_casing" disabled="disabled" />';
+            html = html + '       <input type="hidden" value="'+data.cid+'"  id="picker_id_'+id+'">';
+            html = html + '   </td>';
+            html = html + '   <td>';
+            html = html + '       <input type="hidden" class="od" value="'+data.od+'" name="odcsg_'+id+'" id="odcsg_'+id+'" />';
+            html = html + '       <input type="text" class="od_dummie" style="width:60px;margin-right:0;" disabled="disabled" value="'+data.od_dummie+'" id="od_dummie_'+id+'" />';
+            html = html + '  </td>';
+            html = html + '       <td><input type="text" class="id" style="width:60px;margin-right:0;" disabled="disabled" value="'+data.id+'" name="idcsg_'+id+'" id="idcsg_'+id+'" /></td>';
+            html = html + '       <td><input type="text" class="top" style="width:60px;margin-right:0;" disabled="disabled" value="'+data.top+'" name="topcsg_'+id+'" id="topscsg_'+id+'" /></td>';
+            html = html + '       <td><input type="text" class="bottom" style="width:60px;margin-right:0;" disabled="disabled" value="'+data.bottom+'" name="bottomcsg_'+id+'" id="bottomcsg_'+id+'" /></td>';
+            html = html + '       <td><input type="text" class="volume" style="width:60px;margin-right:0;" disabled="disabled" name="volcsg_'+id+'" id="volcsg_'+id+'" /></td>';
+            html = html + '   <td>';
+            html = html + '       <input type="text" class="length" style="width:60px;margin-right:0;" disabled="disabled" name="longcsg_'+id+'" id="longcsg_'+id+'" />';
+            html = html + '       <input type="hidden" class="zrrange_top" id="zrrange_top_'+id+'" name="zrrange_top_'+id+'" disabled="disabled" value="0">';
+            html = html + '       <input type="hidden" class="zrrange_btm" id="zrrange_btm_'+id+'" name="zrrange_btm_'+id+'" disabled="disabled" value="0">';
+            html = html + '  </td>';
+            html = html + '   <td>ELIMINAR</td>';
+            html = html + '</tr>';
+
+            $('#casing_table tbody').append(html).parent().slideDown();
+            $('#ip_add_casing').slideUp();
+            correr_calculos();
+
+	}
 
 	function hide_casing_overlay(){
 		var no_option = '<option value="" selected="selected">Select...</option>';

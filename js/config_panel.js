@@ -427,9 +427,8 @@ $(function(){
 				save_status.message = 'Network error. Please verify try again';
 				save_status.result 	= 'error'; 	
 			});
-
-			return save_status;
-		}		
+		}
+		return save_status;		
 	}
 
 	/*==========================================================================================================*/

@@ -10,7 +10,7 @@
 						<tr>
 							<td class="label_m"><label>Type:</label></td>
 							<td>
-								<select id="pickcasing_type">
+								<select id="pickcasing_type" class="required">
 									<option value="">Select...</option>
 									<option value="Casing">Casing</option>
 									<option value="Liner">Liner</option>
@@ -21,7 +21,7 @@
 						<tr>
 							<td class="label_m"><label>OD:</label></td>
 							<td>
-								<select id="pickcasing_od">
+								<select id="pickcasing_od" class="required">
 									<option value="">Select...</option>
 									<?php foreach($lista_casing as $casing){ ?>
 										<option value="<?= $casing['oddeci'] ?>"><?= $casing['odfrac'] ?></option>
@@ -33,7 +33,7 @@
 						<tr>
 							<td class="label_m"><label>ID:</label></td>
 							<td>
-								<select id="pickcasing_id">
+								<select id="pickcasing_id" class="required">
 									<option value="">Select...</option>
 								</select>
 							</td>
@@ -41,17 +41,17 @@
 						</tr>
 						<tr>
 							<td class="label_m"><label>Top:</label></td>
-							<td><input type="text" name="" id="pickcasing_top" /></td>
+							<td><input type="text" name="" id="pickcasing_top" class="required" /></td>
 							<td class="label_m">ft</td>
 						</tr>
 						<tr>
 							<td class="label_m"><label>Bottom:</label></td>
-							<td><input type="text" name="" id="pickcasing_bottom" /></td>
+							<td><input type="text" name="" id="pickcasing_bottom" class="required" /></td>
 							<td class="label_m">ft</td>
 						</tr>
-                                                <tr>
-                                                        <td colspan="3"><input type="hidden" id="pickcasing_selected_id" value="" /></td>
-                                                </tr>
+                        <tr>
+                            <td colspan="3"><input type="hidden" id="pickcasing_selected_id" value="" /></td>
+                        </tr>
 					</table>
 				</form>
 				<p><input type="checkbox" id="checkbox_casing_not_found" />I can't find the casing I need. I wish to create a new one.</p>

@@ -418,7 +418,7 @@ function calculos_raw(){
 	
 	// 1. CASING (REVESTIDORES)
 
-	$('#casing_table .active').each(function(){
+	$('.casing_tool_row').each(function(){
 		var target =  $(this).attr('id');
 		var id 	= target.split('casing_tool_');
 		id 		= id[1];
@@ -446,7 +446,7 @@ function calculos_raw(){
 
 	});
 
-	$('#casing_table .active').each(function(){
+	$('.casing_tool_row').each(function(){
 		var target =  $(this).attr('id');
 		var id 	= target.split('casing_tool_');
 		id 		= id[1];

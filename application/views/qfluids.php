@@ -89,7 +89,7 @@
 			</div>
 		</div>
 		
-		<div class="this_panel" id="welcome_panel" style="display:block;">
+		<div class="this_panel" id="welcome_panel">
 			<p id="start_message">
 				<?php if($project['spud_date'] == ''){
 					echo 'Pick a spud date to start.<br />Then, save changes to generate the first report.';
