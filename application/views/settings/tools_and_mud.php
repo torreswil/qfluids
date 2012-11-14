@@ -53,15 +53,13 @@
             
             <div class="simpleTabsContent" style="top:40px;border-bottom:1px solid #E0E0E0;">
         	<fieldset>
-                    <legend>Casings list</legend>    
+                    <legend>Custom Casing List</legend>    
                     <table>
                         <thead  style="display: none;">
                             <tr>
-                                <th style="text-align: left">Od/Frac</th>
-                                <th style="text-align: left">Od/Deci</th>                                
-                                <th style="text-align: left">Id/Frac</th>
-                                <th style="text-align: left">Id/Deci</th>                                
-                                <th style="text-align: left">Weight</th>
+                                <th style="text-align: left"><label>Od/Frac</label></th>
+                                <th style="text-align: left"><label>Od/Deci</label></th>                                
+                                <th style="text-align: left"><label>Id/Deci</label></th>                                
                                 <th></th>
                             </tr>                            
                         </thead>                        

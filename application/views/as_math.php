@@ -4,7 +4,7 @@
             <h2>Anular Section Math</h2>
             <a href="#close" style="display: block;float: right;margin-right: 20px;margin-top: 10px;">Close</a>
         </div>
-        <div class="realcontent">
+        <div class="realcontent" style="max-height:500px;overflow-y:scroll;">
             <fieldset>
                 <legend>Power Law</legend>
                 <table>

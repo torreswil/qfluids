@@ -45,6 +45,14 @@ $(function(){
 	// 1. HOLE GEOMETRY
 	/*==========================================================================================================*/
 	
+	//mostrar la tabla de casing si hay casing precargado
+	
+	if($('#casing_table tbody tr').length > 0){
+		$('#casing_table').show();
+		$('#ip_add_casing').hide();
+	}
+
+
 	//mostrar la hidraulica
 	$('#pressure_loss_fieldset a').click(function(e){
 		e.preventDefault();
@@ -170,7 +178,6 @@ $(function(){
 			lastcsg_data 	= false;
 		}
  		
- 		log(lastcsg_data);
 				
 		//CASING FOUND
 		if($('#checkbox_casing_not_found:checked').length == 0){
@@ -251,64 +258,57 @@ $(function(){
 				alert('Some fields are empty. Please verify and try again. create');
 			}else{
 				var data = $('#form_createcasing').serialize();
+
+				//crear el nuevo revestidor en la base de datos
 				$.post('/rest/insert_casing',data,function(r){
-					var target = $('#casing_number').val();
-					var last_target = parseInt(target) - 1;
-					if(last_target > 0){
-						if(parseFloat($('#casing_tool_'+last_target+' .od').val()) <= parseFloat($('#createcasing_od').val())){
-							alert('The OD in this tool cannot be greater than the OD in the last selected tool');	
-						}else{
-							var new_casing = parseInt(target) + 1;
-							if(parseFloat($('#createcasing_top').val()) > parseFloat($('#createcasing_bottom').val())){
-								alert('Top value must be less than bottom value');	
-							}else{
-								$('#picker_'+target).val($('#createcasing_type').val());
-								$('#casing_tool_'+target+' .od_dummie').val($('#createcasing_odfrac').val());
-								$('#casing_tool_'+target+' .od').val($('#createcasing_od').val());
-								$('#casing_tool_'+target+' .id').val($('#createcasing_id').val());
-								$('#casing_tool_'+target+' .top').val($('#createcasing_top').val());
-								$('#casing_tool_'+target+' .bottom').val($('#createcasing_bottom').val());
-								$('#casing_tool_' + parseInt(target) + 1).show();
-								$('#casing_tool_'+new_casing).show();
-								$('.casingclear').each(function(){
-									$(this).hide();
-								});
-								$('.casingclear','#casing_tool_'+new_casing).show();
-								$('#casing_tool_'+target).addClass('active');
-								if(new_casing == 8){
-									$('#casing_tool_7 .casingclear').show();
-								}
-								hide_casing_overlay();	
-							}
-						}
-					}else{
-						var new_casing = parseInt(target) + 1;
-						if(parseFloat($('#createcasing_top').val()) > parseFloat($('#createcasing_bottom').val())){
-							alert('Top value must be less than bottom value');	
-						}else{
-							$('#picker_'+target).val($('#createcasing_type').val());
-							$('#casing_tool_'+target+' .od_dummie').val($('#createcasing_odfrac').val());
-							$('#casing_tool_'+target+' .od').val($('#createcasing_od').val());
-							$('#casing_tool_'+target+' .id').val($('#createcasing_id').val());
-							$('#casing_tool_'+target+' .top').val($('#createcasing_top').val());
-							$('#casing_tool_'+target+' .bottom').val($('#createcasing_bottom').val());
-							
 
-							$('#casing_tool_'+new_casing).show();
-							$('.casingclear').each(function(){
-								$(this).hide();	
-							});
-
-							$('.casingclear','#casing_tool_' + new_casing).show();
-							$('#casing_tool_'+target).addClass('active');
-
-							if(new_casing == 8){
-								$('#casing_tool_7 .casingclear').show();
-							}
-							hide_casing_overlay();	
-						}
+					log(r);
+					//armar el paquete de datos que se va al front
+					
+					var newcsg = {
+						'cid'			: r,
+						'name'			: $('#createcasing_type').val(),
+						'od'			: fval('createcasing_od'),
+						'od_dummie'		: $('#createcasing_odfrac').val(),
+						'id'			: fval('createcasing_id'),
+						'top'			: fval('createcasing_top'),
+						'bottom'		: fval('createcasing_bottom')
 					}
-                    $('#picker_id_'+target).val(r);
+
+					if(lastcsg_data != false){
+						//validar el diametro del tubo
+						if(newcsg.od >= lastcsg_data.id){
+							alert('The internal diameter cannot be equal or greater than the external diameter of the last selected tool.');
+						}else{
+							var top_validation = false;
+							
+							//validar que el tope de la herramienta este acorde al montaje
+							if(newcsg.name == 'Liner'){
+								if(newcsg.top > lastcsg_data.bottom){
+									alert('The top value cannot be greater than the bottom of the last selected tool.');
+								}else{
+									top_validation = true;
+								}
+							}else{
+								top_validation = true;
+							}
+
+							if(top_validation == true){
+
+								//all validations passed, proceed	
+								append_casing_to_dom(newcsg);
+								hide_casing_overlay();
+							
+							}else{
+								return false;
+							}
+						}					
+					}else{
+						//all validations passed, proceed	
+						append_casing_to_dom(newcsg);
+						hide_casing_overlay();	
+					}
+						
 				},'json');
 			}
 		}
@@ -321,7 +321,7 @@ $(function(){
 		 	html = html + '<tr id="casing_tool_'+id+'" class="casing_tool_row active" style="display: table-row;">';
             html = html + '   <td>';
             html = html + '       <input type="text" value="'+data.name+'" id="picker_'+id+'" style="width:100px;margin-right:0;" class="pick_casing" disabled="disabled" />';
-            html = html + '       <input type="hidden" value="'+data.cid+'"  id="picker_id_'+id+'">';
+            html = html + '       <input type="hidden" value="'+data.cid+'"  id="picker_id_'+id+'" class="pick_casing_id" />';
             html = html + '   </td>';
             html = html + '   <td>';
             html = html + '       <input type="hidden" class="od" value="'+data.od+'" name="odcsg_'+id+'" id="odcsg_'+id+'" />';
@@ -336,7 +336,7 @@ $(function(){
             html = html + '       <input type="hidden" class="zrrange_top" id="zrrange_top_'+id+'" name="zrrange_top_'+id+'" disabled="disabled" value="0">';
             html = html + '       <input type="hidden" class="zrrange_btm" id="zrrange_btm_'+id+'" name="zrrange_btm_'+id+'" disabled="disabled" value="0">';
             html = html + '  </td>';
-            html = html + '   <td>ELIMINAR</td>';
+            html = html + '   <td class="label_m"><a href="#remove_casing" title="Remove Casing" class="remove_casing"><img src="/img/delete.png" /></a></td>';
             html = html + '</tr>';
 
             $('#casing_table tbody').append(html).parent().slideDown();
@@ -344,6 +344,19 @@ $(function(){
             correr_calculos();
 
 	}
+
+
+	$('.remove_casing').live('click',function(e){
+		e.preventDefault();
+		$(this).parents('tr').remove();
+
+		if($('#casing_table tbody tr').length == 0){
+			$('#casing_table').hide();
+			$('#ip_add_casing').show();	
+		}
+
+		correr_calculos();
+	});
 
 	function hide_casing_overlay(){
 		var no_option = '<option value="" selected="selected">Select...</option>';
@@ -353,7 +366,6 @@ $(function(){
 		$('#pickcasing_type').val('');
 		$('#pickcasing_top').val('');
 		$('#pickcasing_bottom').val('');
-		$('.pick_casing').removeAttr('disabled');
 		$('#table_createcasing select,#table_createcasing input').attr('disabled','disabled');
 		$('#table_createcasing').hide();
 		$('#checkbox_casing_not_found').removeAttr('checked');
