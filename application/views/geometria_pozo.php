@@ -231,41 +231,42 @@
 										</tr>
 									</thead>
 									<tbody class="drill_string_pieces">
-                                                                                <?php $tam = count($rs); ?>
-                                                                                <?php if($tam>1) { ?>
-                                                                                        <?php for($i=1 ; $i<=$tam ; $i++) { ?>
-                                                                                <tr id="row_select_drill_string_<?=$i;?>" class="row_select_drill_string">
-                                                                                                        <td>
-                                                                                                                <select class="select_drill_string drillstring_tool_<?=$i;?>" id="select_drill_string_<?=$i;?>">
-                                                                                                                        <option value="">Select...</option>
-                                                                                                                        <option value="bit_sub" <?= (isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='bit_sub') ? 'selected' : ''; ?>>Bit + Sub</option>
-                                                                                                                        <option value="bit" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='bit' ? 'selected' : ''; ?>>Bit</option>
-                                                                                                                        <option value="hw" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='hw' ? 'selected' : ''; ?>>HW</option>
-                                                                                                                        <option value="dc" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='dc' ? 'selected' : ''; ?>>DC</option>
-                                                                                                                        <option value="motor" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='motor' ? 'selected' : ''; ?>>Motor</option>
-                                                                                                                        <option value="stb" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='stb' ? 'selected' : ''; ?>>STB</option>
-                                                                                                                        <option value="xo" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='xo' ? 'selected' : ''; ?>>XO</option>
-                                                                                                                        <option value="hwdp" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='hwdp' ? 'selected' : ''; ?>>HWDP</option>
-                                                                                                                        <option value="mwd" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='mwd' ? 'selected' : ''; ?>>MWD</option>
-                                                                                                                        <option value="dp" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='dp' ? 'selected' : ''; ?>>DP</option>
-                                                                                                                        <option value="xodp" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='xodp' ? 'selected' : ''; ?>>XODP</option>
-                                                                                                                        <option value="jar" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='jar' ? 'selected' : ''; ?>>Jar</option>
-                                                                                                                        <option value="power_drive" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='power_drive' ? 'selected' : ''; ?>>Power Drive</option>
-                                                                                                                        <option value="vortex" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='vortex' ? 'selected' : ''; ?>>Vortex</option>
-                                                                                                                        <option value="lwd" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='lwd' ? 'selected' : ''; ?>>LWD</option>
-                                                                                                                </select>
-                                                                                                        </td>
-                                                                                                        <td><input type="text" type="text" name="odbha_<?=$i;?>" id="odbha_<?=$i;?>" class="odbha_<?=$i;?> odbha" value="<?= empty($rs[$i-1]['oddeci']) ? '' : $rs[$i-1]['oddeci']; ?>" /></td>
-                                                                                                        <td><input type="text" type="text" name="idbha_<?=$i;?>" id="idbha_<?=$i;?>" class="idbha_<?=$i;?> idbha" value="<?= empty($rs[$i-1]['iddeci']) ? '' : $rs[$i-1]['iddeci']; ?>"/></td>
-                                                                                                        <td><input type="text" type="text" name="longbha_<?=$i;?>" id="longbha_<?=$i;?>" class="longbha_<?=$i;?> longbha" value="<?= empty($rs[$i-1]['length']) ? '0' : $rs[$i-1]['length']; ?>" style="width:40px;" /></td>
-                                                                                                        <td><input type="text" type="text" name="capvbha_<?=$i;?>" id="capvbha_<?=$i;?>" disabled="disabled" class="capvbha_<?=$i;?> capvbha" value="<?= empty($rs[$i-1]['capacity_vol']) ? '' : $rs[$i-1]['capacity_vol']; ?>" /></td>
-                                                                                                        <td><input type="text" type="text" name="dispvbha_<?=$i;?>" id="dispvbha_<?=$i;?>" class="dispvbha_<?=$i;?> dispvbha" disabled="disabled" value="<?= empty($rs[$i-1]['displacement_vol']) ? '' : $rs[$i-1]['displacement_vol']; ?>"/></td>
-                                                                                                        <td><input type="text" type="text" name="capbha_<?=$i;?>" id="capbha_<?=$i;?>" class="capbha_<?=$i;?> capbha" disabled="disabled" style="width:40px;" value="<?= empty($rs[$i-1]['capacity_ft']) ? '' : $rs[$i-1]['capacity_ft']; ?>" /></td>
-                                                                                                        <td><input type="text" type="text" name="dispbha_<?=$i;?>" id="dispbha_<?=$i;?>" class="dispbha_<?=$i;?> dispbha" disabled="disabled" style="width:40px;" value="<?= empty($rs[$i-1]['displacement_ft']) ? '' : $rs[$i-1]['displacement_ft']; ?>" /></td>
-                                                                                                        <td><input type="text" type="text" name="powerlossbha_<?=$i;?>" id="powerlossbha_<?=$i;?>" class="powerlossbha" disabled="disabled" value="<?= empty($rs[$i-1]['pressure']) ? '0' : $rs[$i-1]['pressure']; ?>"/></td>
-                                                                                                        <td><input type="text" type="text" name="zbinglossbha_<?=$i;?>" id="zbinglossbha_<?=$i;?>" class="zbinglossbha" disabled="disabled" value="<?= empty($rs[$i-1]['losses']) ? '0' : $rs[$i-1]['losses']; ?>"/></td>
-                                                                                                        <td class="label_m"><a href="#removeds_<?=$i;?>" class="remove_ds">Remove</a></td>
-                                                                                                </tr>                                                                                                
+                                        <?php $tam = count($rs); ?>
+                                        <?php if($tam>1) { ?>
+                                                <?php for($i=1 ; $i<=$tam ; $i++) { ?>
+                                        <tr id="row_select_drill_string_<?=$i;?>" class="row_select_drill_string">
+                                                <td>
+                                                    <select class="select_drill_string drillstring_tool_<?=$i;?>" id="select_drill_string_<?=$i;?>">
+                                                        <option value="">Select...</option>
+                                                        <option value="bit_sub" <?= (isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='bit_sub') ? 'selected' : ''; ?>>Bit + Sub</option>
+                                                        <option value="bit" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='bit' ? 'selected' : ''; ?>>Bit</option>
+                                                        <option value="dc" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='dc' ? 'selected' : ''; ?>>DC</option>
+                                                        <option value="hw" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='hw' ? 'selected' : ''; ?>>HW</option>
+                                                        <option value="motor" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='motor' ? 'selected' : ''; ?>>Motor</option>
+                                                        <option value="stb" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='stb' ? 'selected' : ''; ?>>STB</option>
+                                                        <option value="xo" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='xo' ? 'selected' : ''; ?>>XO</option>
+                                                        <option value="hwdp" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='hwdp' ? 'selected' : ''; ?>>HWDP</option>
+                                                        <option value="mwd" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='mwd' ? 'selected' : ''; ?>>MWD</option>
+                                                        <option value="dp" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='dp' ? 'selected' : ''; ?>>DP</option>
+                                                        <option value="xodp" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='xodp' ? 'selected' : ''; ?>>XODP</option>
+                                                        <option value="jar" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='jar' ? 'selected' : ''; ?>>Jar</option>
+                                                        <option value="power_drive" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='power_drive' ? 'selected' : ''; ?>>Power Drive</option>
+                                                        <option value="vortex" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='vortex' ? 'selected' : ''; ?>>Vortex</option>
+                                                        <option value="lwd" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='lwd' ? 'selected' : ''; ?>>LWD</option>
+                                                        <option value="csg" <?= isset($rs[$i-1]['bha_name']) && $rs[$i-1]['bha_name']=='csg' ? 'selected' : ''; ?>>CSG</option>
+                                                    </select>
+                                                </td>
+                                                <td><input type="text" type="text" name="odbha_<?=$i;?>" id="odbha_<?=$i;?>" class="odbha_<?=$i;?> odbha" value="<?= empty($rs[$i-1]['oddeci']) ? '' : $rs[$i-1]['oddeci']; ?>" /></td>
+                                                <td><input type="text" type="text" name="idbha_<?=$i;?>" id="idbha_<?=$i;?>" class="idbha_<?=$i;?> idbha" value="<?= empty($rs[$i-1]['iddeci']) ? '' : $rs[$i-1]['iddeci']; ?>"/></td>
+                                                <td><input type="text" type="text" name="longbha_<?=$i;?>" id="longbha_<?=$i;?>" class="longbha_<?=$i;?> longbha" value="<?= empty($rs[$i-1]['length']) ? '0' : $rs[$i-1]['length']; ?>" style="width:40px;" /></td>
+                                                <td><input type="text" type="text" name="capvbha_<?=$i;?>" id="capvbha_<?=$i;?>" disabled="disabled" class="capvbha_<?=$i;?> capvbha" value="<?= empty($rs[$i-1]['capacity_vol']) ? '' : $rs[$i-1]['capacity_vol']; ?>" /></td>
+                                                <td><input type="text" type="text" name="dispvbha_<?=$i;?>" id="dispvbha_<?=$i;?>" class="dispvbha_<?=$i;?> dispvbha" disabled="disabled" value="<?= empty($rs[$i-1]['displacement_vol']) ? '' : $rs[$i-1]['displacement_vol']; ?>"/></td>
+                                                <td><input type="text" type="text" name="capbha_<?=$i;?>" id="capbha_<?=$i;?>" class="capbha_<?=$i;?> capbha" disabled="disabled" style="width:40px;" value="<?= empty($rs[$i-1]['capacity_ft']) ? '' : $rs[$i-1]['capacity_ft']; ?>" /></td>
+                                                <td><input type="text" type="text" name="dispbha_<?=$i;?>" id="dispbha_<?=$i;?>" class="dispbha_<?=$i;?> dispbha" disabled="disabled" style="width:40px;" value="<?= empty($rs[$i-1]['displacement_ft']) ? '' : $rs[$i-1]['displacement_ft']; ?>" /></td>
+                                                <td><input type="text" type="text" name="powerlossbha_<?=$i;?>" id="powerlossbha_<?=$i;?>" class="powerlossbha" disabled="disabled" value="<?= empty($rs[$i-1]['pressure']) ? '0' : $rs[$i-1]['pressure']; ?>"/></td>
+                                                <td><input type="text" type="text" name="zbinglossbha_<?=$i;?>" id="zbinglossbha_<?=$i;?>" class="zbinglossbha" disabled="disabled" value="<?= empty($rs[$i-1]['losses']) ? '0' : $rs[$i-1]['losses']; ?>"/></td>
+                                                <td class="label_m"><a href="#removeds_<?=$i;?>" class="remove_ds">Remove</a></td>
+                                        </tr>                                                                                                
                                                                                         <?php } ?>
                                                                                 <?php } else { ?>
 										<tr id="row_select_drill_string_1" class="row_select_drill_string">											
